@@ -26,12 +26,12 @@ namespace Xperimen.View
 
             if (string.IsNullOrEmpty(user))
             {
-                await DisplayAlert("hanat", "masuk usernama la hanjink", "OK");
+                await DisplayAlert("Alert", "Please insert username", "OK");
                 entry_username.Isfocus = true;
             }
             else if (string.IsNullOrEmpty(password))
             {
-                await DisplayAlert("hanat", "masuk password la lanjiao", "OK");
+                await DisplayAlert("Alert", "Please insert password", "OK");
                 entry_password.Isfocus = true;
             }
             else await Navigation.PushAsync(new MainPage());
