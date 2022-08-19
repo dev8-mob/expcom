@@ -2,8 +2,9 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Xperimen.View.Login"
-             Title="Login">
-    
+             xmlns:stylekit="clr-namespace:Xperimen.Stylekit" 
+             NavigationPage.HasNavigationBar="False">
+
     <ContentPage.Content>
 
         <AbsoluteLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="Transparent">
@@ -14,37 +15,26 @@
 
                     <StackLayout Padding="25,0,25,0" Orientation="Vertical" VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand" Spacing="0">
                         <Image BackgroundColor="LightGray" HeightRequest="130" WidthRequest="130" HorizontalOptions="CenterAndExpand" VerticalOptions="Center" Aspect="AspectFit"/>
-                        <Frame Padding="0" CornerRadius="5" BorderColor="DarkGray" Margin="0,50,0,0" HasShadow="False" HorizontalOptions="FillAndExpand" IsClippedToBounds="True">
-                            <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand" Spacing="0">
-                                <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Spacing="0">
-                                    <Image BackgroundColor="LightGray" HeightRequest="25" WidthRequest="25" VerticalOptions="Center" Margin="8,0,8,0"/>
-                                    <Entry x:Name="entry_username" Placeholder="Username"/>
-                                </StackLayout>
-                                <BoxView HorizontalOptions="FillAndExpand" HeightRequest="2" BackgroundColor="DarkGray" Margin="0,0,0,1"/>
-                            </StackLayout>
-                        </Frame>
-
-                        <Frame Padding="0" CornerRadius="5" BorderColor="DarkGray" Margin="0,10,0,0" HasShadow="False" HorizontalOptions="FillAndExpand" IsClippedToBounds="True">
-                            <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand" Spacing="0">
-                                <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Spacing="0">
-                                    <Image BackgroundColor="LightGray" HeightRequest="25" WidthRequest="25" VerticalOptions="Center" Margin="8,0,8,0"/>
-                                    <Entry x:Name="entry_password" Placeholder="Password" IsPassword="True"/>
-                                </StackLayout>
-                                <BoxView HorizontalOptions="FillAndExpand" HeightRequest="2" BackgroundColor="DarkGray" Margin="0,0,0,1"/>
-                            </StackLayout>
-                        </Frame>
-
+                        <stylekit:CustomEntry x:Name="entry_username" Placeholder="username" ImgLeft="black_user.png" Margin="0,20,0,0" />
+                        <stylekit:CustomEntry x:Name="entry_password" Ispassword="True" ImgLeft="black_password.png" Placeholder="password" Margin="0,10,0,0"
+                                              ImgRight="black_visible.png" ImgRight2="black_invisible.png" />
                         <Frame Padding="0,10,0,10" CornerRadius="3" BorderColor="{DynamicResource Key=Primary}" HorizontalOptions="FillAndExpand"
                                Margin="0,20,0,0" BackgroundColor="{DynamicResource Key=Primary}" HasShadow="False" IsClippedToBounds="True">
-                            <Label Text="SUBMIT" HorizontalOptions="Center" VerticalOptions="Center"/>
+                            <Label Text="Submit" FontAttributes="Bold" TextColor="White" HorizontalOptions="Center" VerticalOptions="Center"/>
                             <Frame.GestureRecognizers>
                                 <TapGestureRecognizer Tapped="Submit_Clicked"/>
                             </Frame.GestureRecognizers>
                         </Frame>
-
                     </StackLayout>
                     <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
-                    <Label Text="Version 1.0.0" HorizontalOptions="Center" VerticalOptions="End" FontSize="10" Margin="0,0,0,20"/>
+                    <Label Text="Version 1.0.0" HorizontalOptions="Center" VerticalOptions="End" FontSize="10" Margin="0,0,0,20">
+                        <!--<Label.Text>
+                            <MultiBinding StringFormat="{}{0} {1}">
+                                <Binding Path="Currency" />
+                                <Binding Path="Amount" Converter="{StaticResource AmountConverter}" />
+                            </MultiBinding>
+                        </Label.Text>-->
+                    </Label>
 
                 </StackLayout>
 

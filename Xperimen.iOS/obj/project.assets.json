@@ -998,11 +998,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\muham\\Desktop\\XPERIMENT\\Xperimen.iOS\\Xperimen.iOS.csproj",
+      "projectUniqueName": "C:\\AppLab\\XPERIMENT\\Xperimen.iOS\\Xperimen.iOS.csproj",
       "projectName": "Xperimen.iOS",
-      "projectPath": "C:\\Users\\muham\\Desktop\\XPERIMENT\\Xperimen.iOS\\Xperimen.iOS.csproj",
+      "projectPath": "C:\\AppLab\\XPERIMENT\\Xperimen.iOS\\Xperimen.iOS.csproj",
       "packagesPath": "C:\\Users\\muham\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\muham\\Desktop\\XPERIMENT\\Xperimen.iOS\\obj\\",
+      "outputPath": "C:\\AppLab\\XPERIMENT\\Xperimen.iOS\\obj\\",
       "projectStyle": "PackageReference",
       "skipContentFileWrite": true,
       "fallbackFolders": [
@@ -1027,8 +1027,8 @@
       "frameworks": {
         "xamarinios10": {
           "projectReferences": {
-            "C:\\Users\\muham\\Desktop\\XPERIMENT\\Xperimen\\Xperimen.csproj": {
-              "projectPath": "C:\\Users\\muham\\Desktop\\XPERIMENT\\Xperimen\\Xperimen.csproj"
+            "C:\\AppLab\\XPERIMENT\\Xperimen\\Xperimen.csproj": {
+              "projectPath": "C:\\AppLab\\XPERIMENT\\Xperimen\\Xperimen.csproj"
             }
           }
         }

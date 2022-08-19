@@ -2,7 +2,49 @@
 <Application xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Xperimen.App">
-    <Application.Resources>
 
+    <Application.Resources>
+        <ResourceDictionary>
+            <Color x:Key="Primary">#f46a11</Color>
+            <Color x:Key="DimGray1">#F2F2F2</Color>
+            <Color x:Key="DimGray2">#e7e7e7</Color>
+            <Color x:Key="CustomGreen">#04B404</Color>
+            <Color x:Key="CustomRed">#DF0101</Color>
+            <Color x:Key="CustomYellow">#DEAF14</Color>
+            <Color x:Key="CustomBlue">#01A9DB</Color>
+            <Color x:Key="LabelTextColor">#666666</Color>
+            <Style TargetType="Button">
+                <Setter Property="TextColor" Value="White"></Setter>
+                <Setter Property="VisualStateManager.VisualStateGroups">
+                    <VisualStateGroupList>
+                        <VisualStateGroup x:Name="CommonStates">
+                            <VisualState x:Name="Normal">
+                                <VisualState.Setters>
+                                    <Setter Property="BackgroundColor" Value="{StaticResource Primary}" />
+                                </VisualState.Setters>
+                            </VisualState>
+                            <VisualState x:Name="Disabled">
+                                <VisualState.Setters>
+                                    <Setter Property="BackgroundColor" Value="#332196F3" />
+                                </VisualState.Setters>
+                            </VisualState>
+                        </VisualStateGroup>
+                    </VisualStateGroupList>
+                </Setter>
+            </Style>
+            <Style TargetType="Label">
+                <Setter Property="FontSize" Value="14"></Setter>
+                <Setter Property="TextColor" Value="{StaticResource LabelTextColor}"></Setter>
+            </Style>
+            <Style TargetType="Editor">
+                <Setter Property="FontSize" Value="14"></Setter>
+                <Setter Property="TextColor" Value="{StaticResource LabelTextColor}"></Setter>
+            </Style>
+            <Style TargetType="NavigationPage">
+                <Setter Property="BarBackgroundColor" Value="White"/>
+                <Setter Property="BarTextColor" Value="{StaticResource LabelTextColor}"/>
+            </Style>
+        </ResourceDictionary>
     </Application.Resources>
+    
 </Application>

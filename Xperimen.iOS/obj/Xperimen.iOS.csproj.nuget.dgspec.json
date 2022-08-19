@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\muham\\Desktop\\XPERIMENT\\Xperimen.iOS\\Xperimen.iOS.csproj": {}
+    "C:\\AppLab\\XPERIMENT\\Xperimen.iOS\\Xperimen.iOS.csproj": {}
   },
   "projects": {
-    "C:\\Users\\muham\\Desktop\\XPERIMENT\\Xperimen.iOS\\Xperimen.iOS.csproj": {
+    "C:\\AppLab\\XPERIMENT\\Xperimen.iOS\\Xperimen.iOS.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\muham\\Desktop\\XPERIMENT\\Xperimen.iOS\\Xperimen.iOS.csproj",
+        "projectUniqueName": "C:\\AppLab\\XPERIMENT\\Xperimen.iOS\\Xperimen.iOS.csproj",
         "projectName": "Xperimen.iOS",
-        "projectPath": "C:\\Users\\muham\\Desktop\\XPERIMENT\\Xperimen.iOS\\Xperimen.iOS.csproj",
+        "projectPath": "C:\\AppLab\\XPERIMENT\\Xperimen.iOS\\Xperimen.iOS.csproj",
         "packagesPath": "C:\\Users\\muham\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\muham\\Desktop\\XPERIMENT\\Xperimen.iOS\\obj\\",
+        "outputPath": "C:\\AppLab\\XPERIMENT\\Xperimen.iOS\\obj\\",
         "projectStyle": "PackageReference",
         "skipContentFileWrite": true,
         "fallbackFolders": [
@@ -36,8 +36,8 @@
         "frameworks": {
           "xamarinios10": {
             "projectReferences": {
-              "C:\\Users\\muham\\Desktop\\XPERIMENT\\Xperimen\\Xperimen.csproj": {
-                "projectPath": "C:\\Users\\muham\\Desktop\\XPERIMENT\\Xperimen\\Xperimen.csproj"
+              "C:\\AppLab\\XPERIMENT\\Xperimen\\Xperimen.csproj": {
+                "projectPath": "C:\\AppLab\\XPERIMENT\\Xperimen\\Xperimen.csproj"
               }
             }
           }
@@ -69,14 +69,14 @@
         }
       }
     },
-    "C:\\Users\\muham\\Desktop\\XPERIMENT\\Xperimen\\Xperimen.csproj": {
+    "C:\\AppLab\\XPERIMENT\\Xperimen\\Xperimen.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\muham\\Desktop\\XPERIMENT\\Xperimen\\Xperimen.csproj",
+        "projectUniqueName": "C:\\AppLab\\XPERIMENT\\Xperimen\\Xperimen.csproj",
         "projectName": "Xperimen",
-        "projectPath": "C:\\Users\\muham\\Desktop\\XPERIMENT\\Xperimen\\Xperimen.csproj",
+        "projectPath": "C:\\AppLab\\XPERIMENT\\Xperimen\\Xperimen.csproj",
         "packagesPath": "C:\\Users\\muham\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\muham\\Desktop\\XPERIMENT\\Xperimen\\obj\\",
+        "outputPath": "C:\\AppLab\\XPERIMENT\\Xperimen\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
