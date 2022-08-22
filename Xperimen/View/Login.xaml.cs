@@ -9,10 +9,13 @@ namespace Xperimen.View
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class Login : ContentPage
     {
+        public LoginViewmodel model;
+
         public Login()
         {
             InitializeComponent();
-            BindingContext = new LoginViewmodel();
+            model = new LoginViewmodel();
+            BindingContext = model;
         }
 
         public async void Submit_Clicked(object sender, EventArgs e)
@@ -26,15 +29,24 @@ namespace Xperimen.View
 
             if (string.IsNullOrEmpty(user))
             {
-                await DisplayAlert("Alert", "Please insert username", "OK");
+                model.IsLoading = true;
+                SetDisplayAlert("Alert", "Please insert username");
                 entry_username.Isfocus = true;
             }
             else if (string.IsNullOrEmpty(password))
             {
-                await DisplayAlert("Alert", "Please insert password", "OK");
+                model.IsLoading = true;
+                SetDisplayAlert("Alert", "Please insert password");
                 entry_password.Isfocus = true;
             }
             else await Navigation.PushAsync(new MainPage());
+        }
+
+        public void SetDisplayAlert(string title, string description)
+        {
+            alert.Title = title;
+            alert.Description = description;
+            alert.IsVisible = true;
         }
     }
 }

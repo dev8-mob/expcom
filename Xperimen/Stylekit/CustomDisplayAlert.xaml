@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Frame xmlns="http://xamarin.com/schemas/2014/forms"
+       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+       x:Class="Xperimen.Stylekit.CustomDisplayAlert"
+       AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0.5,0.5,-1,-1"
+       BackgroundColor="White" BorderColor="DarkGray" 
+       CornerRadius="10" Padding="20,15,20,15" IsClippedToBounds="True">
+
+    <StackLayout Orientation="Vertical">
+        <Label x:Name="lbl_title" HorizontalOptions="CenterAndExpand" HorizontalTextAlignment="Center" FontAttributes="Bold"/>
+        <Label x:Name="lbl_desc" HorizontalOptions="StartAndExpand" HorizontalTextAlignment="Start" Margin="0,15,0,15"/>
+    </StackLayout>
+
+</Frame>

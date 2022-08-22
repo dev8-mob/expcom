@@ -2149,11 +2149,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\muham\\Desktop\\XPERIMENT\\Xperimen.Android\\Xperimen.Android.csproj",
+      "projectUniqueName": "C:\\AppLab\\XPERIMENT\\Xperimen.Android\\Xperimen.Android.csproj",
       "projectName": "Xperimen.Android",
-      "projectPath": "C:\\Users\\muham\\Desktop\\XPERIMENT\\Xperimen.Android\\Xperimen.Android.csproj",
+      "projectPath": "C:\\AppLab\\XPERIMENT\\Xperimen.Android\\Xperimen.Android.csproj",
       "packagesPath": "C:\\Users\\muham\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\muham\\Desktop\\XPERIMENT\\Xperimen.Android\\obj\\",
+      "outputPath": "C:\\AppLab\\XPERIMENT\\Xperimen.Android\\obj\\",
       "projectStyle": "PackageReference",
       "skipContentFileWrite": true,
       "fallbackFolders": [
@@ -2178,8 +2178,8 @@
       "frameworks": {
         "monoandroid11.0": {
           "projectReferences": {
-            "C:\\Users\\muham\\Desktop\\XPERIMENT\\Xperimen\\Xperimen.csproj": {
-              "projectPath": "C:\\Users\\muham\\Desktop\\XPERIMENT\\Xperimen\\Xperimen.csproj"
+            "C:\\AppLab\\XPERIMENT\\Xperimen\\Xperimen.csproj": {
+              "projectPath": "C:\\AppLab\\XPERIMENT\\Xperimen\\Xperimen.csproj"
             }
           }
         }

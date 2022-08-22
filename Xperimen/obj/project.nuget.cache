@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "CJ9KIJz4a6RAaZAlFGc+UUbYysieSsAqrToYKa2OZbIpibpK48E3t0MHHW7hMBV6mx9ritGZC3L12tpOi1lnWQ==",
+  "dgSpecHash": "r9us7T3Q9hccUnGmDmsZDWQ0T7E7M7E5t1TZZlYx3k4s6NYOKlURG9k0XbEXG4kPz3wzkVWyiYUdmDEHJ2W+Mg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\muham\\Desktop\\XPERIMENT\\Xperimen\\Xperimen.csproj",
+  "projectFilePath": "C:\\AppLab\\XPERIMENT\\Xperimen\\Xperimen.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\muham\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
     "C:\\Users\\muham\\.nuget\\packages\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512",

@@ -542,11 +542,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\muham\\Desktop\\XPERIMENT\\Xperimen\\Xperimen.csproj",
+      "projectUniqueName": "C:\\AppLab\\XPERIMENT\\Xperimen\\Xperimen.csproj",
       "projectName": "Xperimen",
-      "projectPath": "C:\\Users\\muham\\Desktop\\XPERIMENT\\Xperimen\\Xperimen.csproj",
+      "projectPath": "C:\\AppLab\\XPERIMENT\\Xperimen\\Xperimen.csproj",
       "packagesPath": "C:\\Users\\muham\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\muham\\Desktop\\XPERIMENT\\Xperimen\\obj\\",
+      "outputPath": "C:\\AppLab\\XPERIMENT\\Xperimen\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",

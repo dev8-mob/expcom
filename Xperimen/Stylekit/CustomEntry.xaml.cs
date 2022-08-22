@@ -13,7 +13,7 @@ namespace Xperimen.Stylekit
         public string Text
         {
             get { return (string)GetValue(TextProperty); }
-            set { SetValue(TextProperty, value); OnPropertyChanged(); }
+            set { SetValue(TextProperty, value); }
         }
         public string GetText() { return entry.Text; }
         public string Placeholder

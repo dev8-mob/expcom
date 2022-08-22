@@ -17,16 +17,20 @@ namespace Xperimen.View {
     public partial class Login : global::Xamarin.Forms.ContentPage {
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]
-        private global::Xamarin.Forms.Entry entry_username;
+        private global::Xperimen.Stylekit.CustomEntry entry_username;
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]
-        private global::Xamarin.Forms.Entry entry_password;
+        private global::Xperimen.Stylekit.CustomEntry entry_password;
+        
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]
+        private global::Xperimen.Stylekit.CustomDisplayAlert alert;
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]
         private void InitializeComponent() {
             global::Xamarin.Forms.Xaml.Extensions.LoadFromXaml(this, typeof(Login));
-            entry_username = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.Entry>(this, "entry_username");
-            entry_password = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.Entry>(this, "entry_password");
+            entry_username = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xperimen.Stylekit.CustomEntry>(this, "entry_username");
+            entry_password = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xperimen.Stylekit.CustomEntry>(this, "entry_password");
+            alert = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xperimen.Stylekit.CustomDisplayAlert>(this, "alert");
         }
     }
 }
