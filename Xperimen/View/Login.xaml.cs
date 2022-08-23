@@ -30,22 +30,24 @@ namespace Xperimen.View
             if (string.IsNullOrEmpty(user))
             {
                 model.IsLoading = true;
-                SetDisplayAlert("Alert", "Please insert username");
+                SetDisplayAlert("Alert", "Please insert username", "Okay", "Not Okay");
                 entry_username.Isfocus = true;
             }
             else if (string.IsNullOrEmpty(password))
             {
                 model.IsLoading = true;
-                SetDisplayAlert("Alert", "Please insert password");
+                SetDisplayAlert("Alert", "Please insert password", "", "Wartaparg");
                 entry_password.Isfocus = true;
             }
             else await Navigation.PushAsync(new MainPage());
         }
 
-        public void SetDisplayAlert(string title, string description)
+        public void SetDisplayAlert(string title, string description, string btn1, string btn2)
         {
             alert.Title = title;
             alert.Description = description;
+            alert.TxtBtn1 = btn1;
+            alert.TxtBtn2 = btn2;
             alert.IsVisible = true;
         }
     }
