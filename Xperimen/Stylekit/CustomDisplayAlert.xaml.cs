@@ -30,16 +30,6 @@ namespace Xperimen.Stylekit
             get { return (string)GetValue(TxtBtn2Property); }
             set { SetValue(TxtBtn2Property, value); }
         }
-        public bool IsOkay
-        {
-            get { return (bool)GetValue(IsOkayProperty); }
-            set { SetValue(IsOkayProperty, value); }
-        }
-        public bool IsCancel
-        {
-            get { return (bool)GetValue(IsCancelProperty); }
-            set { SetValue(IsCancelProperty, value); }
-        }
         #endregion
         #region properties binding
         public static BindableProperty TitleProperty =
@@ -54,12 +44,6 @@ namespace Xperimen.Stylekit
         public static BindableProperty TxtBtn2Property =
             BindableProperty.Create(nameof(TxtBtn2), typeof(string), typeof(CustomDisplayAlert), defaultValue: "",
                 propertyChanged: (bindable, oldVal, newVal) => { ((CustomDisplayAlert)bindable).UpdateTxtBtn2((string)newVal); });
-        public static BindableProperty IsOkayProperty =
-            BindableProperty.Create(nameof(IsOkay), typeof(bool), typeof(CustomDisplayAlert), defaultValue: false,
-                propertyChanged: (bindable, oldVal, newVal) => { ((CustomDisplayAlert)bindable).UpdateIsOkay((bool)newVal); });
-        public static BindableProperty IsCancelProperty =
-            BindableProperty.Create(nameof(IsCancel), typeof(bool), typeof(CustomDisplayAlert), defaultValue: false,
-                propertyChanged: (bindable, oldVal, newVal) => { ((CustomDisplayAlert)bindable).UpdateIsCancel((bool)newVal); });
         #endregion
         #region binding implementation
         public void UpdateTitle(string data) { lbl_title.Text = data; }
@@ -68,18 +52,20 @@ namespace Xperimen.Stylekit
         {
             var isEmpty = string.IsNullOrEmpty(data);
             lbl_btn1.Text = data;
-            lbl_btn1.IsVisible = !isEmpty;
+            stack_btn1.IsVisible = !isEmpty;
+
+            if (string.IsNullOrEmpty(TxtBtn1) && string.IsNullOrEmpty(TxtBtn2)) stack_buttons.IsVisible = false;
+            else stack_buttons.IsVisible = true;
         }
         public void UpdateTxtBtn2(string data) 
         {
             var isEmpty = string.IsNullOrEmpty(data);
             lbl_btn2.Text = data;
-            lbl_btn2.IsVisible = !isEmpty;
+            stack_btn2.IsVisible = !isEmpty;
+
+            if (string.IsNullOrEmpty(TxtBtn1) && string.IsNullOrEmpty(TxtBtn2)) stack_buttons.IsVisible = false;
+            else stack_buttons.IsVisible = true;
         }
-        public void UpdateIsOkay(bool data)
-        { IsOkay = data; }
-        public void UpdateIsCancel(bool data)
-        { IsCancel = data; }
         #endregion
         #endregion
 
@@ -93,7 +79,8 @@ namespace Xperimen.Stylekit
             var view = (StackLayout)sender;
             await view.ScaleTo(0.9, 100);
             view.Scale = 1;
-            IsOkay = true;
+            IsVisible = false;
+            MessagingCenter.Send(this, "DisplayAlertSelection", lbl_btn1.Text);
         }
 
         public async void Btn2Tapped(object sender, EventArgs e)
@@ -101,7 +88,8 @@ namespace Xperimen.Stylekit
             var view = (StackLayout)sender;
             await view.ScaleTo(0.9, 100);
             view.Scale = 1;
-            IsCancel = true;
+            IsVisible = false;
+            MessagingCenter.Send(this, "DisplayAlertSelection", lbl_btn2.Text);
         }
 
         public async void CloseTapped(object sender, EventArgs e)
@@ -109,6 +97,8 @@ namespace Xperimen.Stylekit
             var view = (Image)sender;
             await view.ScaleTo(0.9, 100);
             view.Scale = 1;
+            IsVisible = false;
+            MessagingCenter.Send(this, "DisplayAlertSelection", "");
         }
     }
 }

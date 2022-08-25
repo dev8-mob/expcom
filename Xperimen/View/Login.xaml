@@ -45,10 +45,13 @@
 
             <Frame IsVisible="{Binding IsLoading, Mode=TwoWay}" AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0.5,0.5,-1,-1" 
                    HasShadow="False" CornerRadius="10" BorderColor="DarkGray">
-                <StackLayout BackgroundColor="{DynamicResource Primary}" Padding="12" Orientation="Vertical">
+                <StackLayout BackgroundColor="{DynamicResource Primary}" Padding="10" Orientation="Vertical">
                     <ActivityIndicator IsRunning="{Binding IsLoading, Mode=TwoWay}" Color="Black" HorizontalOptions="Center"/>
                     <Label Text="Loading.." HorizontalOptions="Center" TextColor="Black"/>
                 </StackLayout>
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnTestTapped"/>
+                </Frame.GestureRecognizers>
             </Frame>
 
             <stylekit:CustomDisplayAlert x:Name="alert" IsVisible="False"/>
