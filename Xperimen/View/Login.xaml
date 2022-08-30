@@ -14,7 +14,7 @@
                 <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
 
                     <StackLayout Padding="25,0,25,0" Orientation="Vertical" VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand" Spacing="0">
-                        <Image BackgroundColor="LightGray" HeightRequest="130" WidthRequest="130" HorizontalOptions="CenterAndExpand" 
+                        <Image Source="{Binding Logo}" HeightRequest="130" WidthRequest="130" HorizontalOptions="CenterAndExpand" 
                                VerticalOptions="Center" Aspect="AspectFit">
                             <Image.GestureRecognizers>
                                 <TapGestureRecognizer Command="{Binding StartTest}"/>
@@ -30,7 +30,6 @@
                                 <TapGestureRecognizer Tapped="Submit_Clicked"/>
                             </Frame.GestureRecognizers>
                         </Frame>
-                        <Label Text="{Binding PurchaseRequisitions, UpdateSourceEventName=}" HorizontalOptions="Start" FontAttributes="Bold"/>
                     </StackLayout>
                     <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
                     <Label Text="Version 1.0.0" HorizontalOptions="Center" VerticalOptions="End" FontSize="10" Margin="0,0,0,20">

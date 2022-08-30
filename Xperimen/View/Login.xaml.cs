@@ -43,12 +43,14 @@ namespace Xperimen.View
 
             if (string.IsNullOrEmpty(user))
             {
-                SetDisplayAlert("Username empty !?", "Where is your username !? Please insert your username.", "", "");
+                model.IsLoading = true;
+                SetDisplayAlert("Username empty", "Where is your username !? Please insert your username.", "OK", "Cancel");
                 entry_username.Isfocus = true;
             }
             else if (string.IsNullOrEmpty(password))
             {
-                SetDisplayAlert("Password Empty !?", "Where is your password !? Please insert your password.", "", "Cancel");
+                model.IsLoading = true;
+                SetDisplayAlert("Password Empty", "Where is your password !? Please insert your password.", "", "");
                 entry_password.Isfocus = true;
             }
             else await Navigation.PushAsync(new MainPage());
@@ -56,7 +58,6 @@ namespace Xperimen.View
 
         public void SetDisplayAlert(string title, string description, string btn1, string btn2)
         {
-            model.IsLoading = true;
             alert.Title = title;
             alert.Description = description;
             alert.TxtBtn1 = btn1;

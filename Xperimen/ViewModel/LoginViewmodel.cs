@@ -1,20 +1,19 @@
 ﻿
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
-using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
-using Xperimen.Helper;
+using Xperimen.Model;
 
 namespace Xperimen.ViewModel
 {
     public class LoginViewmodel : BaseViewModel, INotifyPropertyChanged
     {
-        string _purchaseRequisitions;
-        public string PurchaseRequisitions
+        string _logo;
+        public string Logo
         {
-            get { return _purchaseRequisitions; }
-            set { _purchaseRequisitions = value; OnPropertyChanged(); }
+            get { return _logo; }
+            set { _logo = value; OnPropertyChanged(); }
         }
 
         public new event PropertyChangedEventHandler PropertyChanged;
@@ -24,14 +23,14 @@ namespace Xperimen.ViewModel
 
         public LoginViewmodel()
         {
-            StartTest = new Command(SetView);
-            PurchaseRequisitions = "First time assign text";
+            StartTest = new Command(ChangeView);
+            Logo = "black_whatshot.png";
         }
 
-        public async void SetView()
+        public void ChangeView()
         {
-            await Task.Delay(2000);
-            PurchaseRequisitions = "Second time assign text !!";
+            if (Logo.Equals("black_whatshot.png")) Logo = "white_whatshot.png";
+            else if (Logo.Equals("white_whatshot.png")) Logo = "black_whatshot.png";
         }
     }
 }

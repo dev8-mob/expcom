@@ -13,7 +13,7 @@
             <Label x:Name="lbl_title" HorizontalOptions="CenterAndExpand" HorizontalTextAlignment="Center" FontAttributes="Bold"/>
             <Label x:Name="lbl_desc" HorizontalOptions="StartAndExpand" HorizontalTextAlignment="Start" Margin="0,20,0,20"/>
             <StackLayout x:Name="stack_buttons" Orientation="Horizontal" HorizontalOptions="FillAndExpand" IsVisible="False"
-                         Spacing="0" Margin="-20,20,-20,-20">
+                         Spacing="2" Margin="-20,20,-20,-20">
                 <StackLayout x:Name="stack_btn1" HorizontalOptions="FillAndExpand" VerticalOptions="Center" IsVisible="False"
                              BackgroundColor="{DynamicResource DimGray2}">
                     <Label x:Name="lbl_btn1" HorizontalOptions="CenterAndExpand" VerticalOptions="Center" FontAttributes="Bold"
@@ -23,7 +23,7 @@
                     </StackLayout.GestureRecognizers>
                 </StackLayout>
                 <StackLayout x:Name="stack_btn2" HorizontalOptions="FillAndExpand" VerticalOptions="Center" IsVisible="False"
-                             BackgroundColor="{DynamicResource DimGray1}">
+                             BackgroundColor="{DynamicResource DimGray2}">
                     <Label x:Name="lbl_btn2" HorizontalOptions="CenterAndExpand" VerticalOptions="Center" FontAttributes="Bold"
                            TextColor="Black" Margin="0,10,0,10"/>
                     <StackLayout.GestureRecognizers>

@@ -33,10 +33,12 @@ path;obj\Debug\110\res\drawable\black_invisible.xml
 path;obj\Debug\110\res\drawable\black_password.xml
 path;obj\Debug\110\res\drawable\black_user.xml
 path;obj\Debug\110\res\drawable\black_visible.xml
+path;obj\Debug\110\res\drawable\black_whatshot.xml
 path;obj\Debug\110\res\drawable\white_invisible.xml
 path;obj\Debug\110\res\drawable\white_password.xml
 path;obj\Debug\110\res\drawable\white_user.xml
 path;obj\Debug\110\res\drawable\white_visible.xml
+path;obj\Debug\110\res\drawable\white_whatshot.xml
 paths;C:\AppLab\XPERIMENT\Xperimen.Android\obj\Debug\110\lp\44\jl\res\xml\xamarin_essentials_fileprovider_file_paths.xml
 resources;C:\AppLab\XPERIMENT\Xperimen.Android\obj\Debug\110\lp\45\jl\res\values\attrs.xml
 resources;C:\AppLab\XPERIMENT\Xperimen.Android\obj\Debug\110\lp\45\jl\res\values\strings.xml
@@ -58,9 +60,11 @@ vector;obj\Debug\110\res\drawable\black_invisible.xml
 vector;obj\Debug\110\res\drawable\black_password.xml
 vector;obj\Debug\110\res\drawable\black_user.xml
 vector;obj\Debug\110\res\drawable\black_visible.xml
+vector;obj\Debug\110\res\drawable\black_whatshot.xml
 vector;obj\Debug\110\res\drawable\white_invisible.xml
 vector;obj\Debug\110\res\drawable\white_password.xml
 vector;obj\Debug\110\res\drawable\white_user.xml
 vector;obj\Debug\110\res\drawable\white_visible.xml
+vector;obj\Debug\110\res\drawable\white_whatshot.xml
 xamarin.forms.platform.android.appcompat.FormsViewPager;C:\AppLab\XPERIMENT\Xperimen.Android\obj\Debug\110\lp\45\jl\res\layout\rootlayout.xml
 xamarin.forms.platform.android.ShellFlyoutLayout;C:\AppLab\XPERIMENT\Xperimen.Android\obj\Debug\110\lp\45\jl\res\layout\flyoutcontent.xml
