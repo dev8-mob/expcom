@@ -8,10 +8,12 @@ namespace Xperimen.View.Dashboard
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class MainPage : ContentPage
     {
+        private readonly MainpageViewmodel viewmodel;
+
         public MainPage()
         {
             InitializeComponent();
-            BindingContext = new MainpageViewmodel();
+            BindingContext = viewmodel = new MainpageViewmodel();
         }
     }
 }

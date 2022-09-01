@@ -48,3 +48,9 @@ C:\AppLab\XPERIMENT\Xperimen\obj\Debug\netstandard2.0\Xperimen.dll
 C:\AppLab\XPERIMENT\Xperimen\obj\Debug\netstandard2.0\refint\Xperimen.dll
 C:\AppLab\XPERIMENT\Xperimen\obj\Debug\netstandard2.0\Xperimen.pdb
 C:\AppLab\XPERIMENT\Xperimen\obj\Debug\netstandard2.0\ref\Xperimen.dll
+C:\AppLab\XPERIMENT\Xperimen\obj\Debug\netstandard2.0\View\NavigationDrawer\DrawerMaster.xaml.g.cs
+C:\AppLab\XPERIMENT\Xperimen\obj\Debug\netstandard2.0\View\NavigationDrawer\DrawerMenu.xaml.g.cs
+C:\AppLab\XPERIMENT\Xperimen\obj\Debug\netstandard2.0\Stylekit\CustomSearchBar.xaml.g.cs
+C:\AppLab\XPERIMENT\Xperimen\obj\Debug\netstandard2.0\View\Dashboard\TabbedDashboard.xaml.g.cs
+C:\AppLab\XPERIMENT\Xperimen\obj\Debug\netstandard2.0\View\Dashboard\TabOne.xaml.g.cs
+C:\AppLab\XPERIMENT\Xperimen\obj\Debug\netstandard2.0\View\Dashboard\TabTwo.xaml.g.cs

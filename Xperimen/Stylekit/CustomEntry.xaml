@@ -11,7 +11,7 @@
         <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal" Spacing="0" Padding="15,0,15,0">
             <Image x:Name="img_left" HeightRequest="30" WidthRequest="30" Aspect="AspectFit" IsVisible="False"
                    HorizontalOptions="Start" VerticalOptions="Center"/>
-            <stylekit:EntryBorderless x:Name="entry" Placeholder="Username"/>
+            <stylekit:EntryBorderless x:Name="entry" Text="{Binding DataString}"/>
             <Image x:Name="img_right" HeightRequest="30" WidthRequest="30" Aspect="AspectFit" IsVisible="False"
                    HorizontalOptions="End" VerticalOptions="Center"/>
         </StackLayout>

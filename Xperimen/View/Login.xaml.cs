@@ -2,7 +2,7 @@
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using Xperimen.Stylekit;
-using Xperimen.View.Dashboard;
+using Xperimen.View.NavigationDrawer;
 using Xperimen.ViewModel;
 
 namespace Xperimen.View
@@ -19,19 +19,10 @@ namespace Xperimen.View
             BindingContext = model;
 
             MessagingCenter.Subscribe<CustomDisplayAlert, string>(this, "DisplayAlertSelection", (sender, arg) =>
-            {
-                model.IsLoading = false;
-            });
+            { model.IsLoading = false; });
         }
 
-        public async void OnTestTapped(object sender, EventArgs e)
-        {
-            var view = (Frame)sender;
-            await view.ScaleTo(0.9, 50);
-            view.Scale = 1;
-            model.IsLoading = false;
-        }
-
+        [Obsolete]
         public async void Submit_Clicked(object sender, EventArgs e)
         {
             var view = (Frame)sender;
@@ -53,7 +44,12 @@ namespace Xperimen.View
                 SetDisplayAlert("Password Empty", "Where is your password !? Please insert your password.", "", "");
                 entry_password.Isfocus = true;
             }
-            else await Navigation.PushAsync(new MainPage());
+            else
+            {
+                model.Username = user;
+                model.Password = password;
+                Application.Current.MainPage = new NavigationPage(new DrawerMaster());
+            }
         }
 
         public void SetDisplayAlert(string title, string description, string btn1, string btn2)

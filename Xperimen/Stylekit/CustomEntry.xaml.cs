@@ -79,6 +79,10 @@ namespace Xperimen.Stylekit
             {
                 img_left.Source = data;
                 img_left.IsVisible = true;
+
+                var tap = new TapGestureRecognizer();
+                tap.Tapped += ImgTapSetFocus;
+                img_left.GestureRecognizers.Add(tap);
             }
             else img_left.IsVisible = false;
         }
@@ -127,12 +131,19 @@ namespace Xperimen.Stylekit
 
         private void Entry_Unfocused(object sender, FocusEventArgs e)
         {
-            var view = (Entry)sender;
             if (!e.IsFocused)
             {
                 line.BackgroundColor = Color.DarkGray;
                 BackgroundColor = Color.FromHex(App.DimGray2);
             }
+        }
+
+        private async void ImgTapSetFocus(object sender, EventArgs e)
+        {
+            var view = (Image)sender;
+            await view.ScaleTo(0.9, 100);
+            view.Scale = 1;
+            entry.Focus();
         }
 
         private async void OnShowHideTap(object sender, EventArgs e)

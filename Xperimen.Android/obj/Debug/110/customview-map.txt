@@ -31,11 +31,13 @@ item;C:\AppLab\XPERIMENT\Xperimen.Android\obj\Debug\110\lp\45\jl\res\values\styl
 LinearLayout;C:\AppLab\XPERIMENT\Xperimen.Android\obj\Debug\110\lp\45\jl\res\layout\bottomtablayout.xml
 path;obj\Debug\110\res\drawable\black_invisible.xml
 path;obj\Debug\110\res\drawable\black_password.xml
+path;obj\Debug\110\res\drawable\black_search.xml
 path;obj\Debug\110\res\drawable\black_user.xml
 path;obj\Debug\110\res\drawable\black_visible.xml
 path;obj\Debug\110\res\drawable\black_whatshot.xml
 path;obj\Debug\110\res\drawable\white_invisible.xml
 path;obj\Debug\110\res\drawable\white_password.xml
+path;obj\Debug\110\res\drawable\white_search.xml
 path;obj\Debug\110\res\drawable\white_user.xml
 path;obj\Debug\110\res\drawable\white_visible.xml
 path;obj\Debug\110\res\drawable\white_whatshot.xml
@@ -58,11 +60,13 @@ translate;C:\AppLab\XPERIMENT\Xperimen.Android\obj\Debug\110\lp\45\jl\res\anim\e
 translate;C:\AppLab\XPERIMENT\Xperimen.Android\obj\Debug\110\lp\45\jl\res\anim\exittoright.xml
 vector;obj\Debug\110\res\drawable\black_invisible.xml
 vector;obj\Debug\110\res\drawable\black_password.xml
+vector;obj\Debug\110\res\drawable\black_search.xml
 vector;obj\Debug\110\res\drawable\black_user.xml
 vector;obj\Debug\110\res\drawable\black_visible.xml
 vector;obj\Debug\110\res\drawable\black_whatshot.xml
 vector;obj\Debug\110\res\drawable\white_invisible.xml
 vector;obj\Debug\110\res\drawable\white_password.xml
+vector;obj\Debug\110\res\drawable\white_search.xml
 vector;obj\Debug\110\res\drawable\white_user.xml
 vector;obj\Debug\110\res\drawable\white_visible.xml
 vector;obj\Debug\110\res\drawable\white_whatshot.xml

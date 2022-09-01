@@ -54,9 +54,6 @@
                     <ActivityIndicator IsRunning="{Binding IsLoading, Mode=TwoWay}" Color="Black" HorizontalOptions="Center"/>
                     <Label Text="Loading.." HorizontalOptions="Center" TextColor="Black"/>
                 </StackLayout>
-                <Frame.GestureRecognizers>
-                    <TapGestureRecognizer Tapped="OnTestTapped"/>
-                </Frame.GestureRecognizers>
             </Frame>
 
             <stylekit:CustomDisplayAlert x:Name="alert" IsVisible="False"/>
