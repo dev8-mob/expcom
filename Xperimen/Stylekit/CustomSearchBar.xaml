@@ -2,6 +2,7 @@
 <StackLayout xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Xperimen.Stylekit.CustomSearchBar"
+             xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
              xmlns:stylekit="clr-namespace:Xperimen.Stylekit"
              BackgroundColor="Transparent" Spacing="0">
 
@@ -13,7 +14,12 @@
             <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal" Spacing="0" Padding="15,0,15,0">
                 <Image Source="black_search.png" HeightRequest="30" WidthRequest="30" Aspect="AspectFit"
                        HorizontalOptions="Start" VerticalOptions="Center"/>
-                <stylekit:EntryBorderless x:Name="entry" Text="{Binding DataString}" Placeholder="search keyword.."/>
+                <stylekit:EntryBorderless x:Name="entry" Text="{Binding DataString}" Placeholder="search keyword..">
+                    <Entry.Behaviors>
+                        <xct:UserStoppedTypingBehavior Command="{Binding LoadItemsCommand}" StoppedTypingTimeThreshold="1000"
+                                                       MinimumLengthThreshold="2" />
+                    </Entry.Behaviors>
+                </stylekit:EntryBorderless>
                 <Image Source="black_close.png" HeightRequest="30" WidthRequest="30" Aspect="AspectFit"
                        HorizontalOptions="End" VerticalOptions="Center">
                     <Image.GestureRecognizers>
@@ -25,7 +31,7 @@
         </StackLayout>
 
     </Frame>
-    <StackLayout IsVisible="{Binding IsFound}" HorizontalOptions="FillAndExpand" Padding="0,8,0,8" BackgroundColor="{DynamicResource Key=CustomGreen}">
+    <StackLayout IsVisible="{Binding IsFound}" HorizontalOptions="FillAndExpand" Padding="10,8,10,8" BackgroundColor="{DynamicResource Key=CustomGreen}">
         <Label Text="{Binding ItemCount, StringFormat='{0} Record(s) found'}" TextColor="Black" HorizontalOptions="StartAndExpand"/>
     </StackLayout>
 
