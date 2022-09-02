@@ -1,9 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Frame xmlns="http://xamarin.com/schemas/2014/forms"
        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-       x:Class="Xperimen.View.Dashboard.TabOne">
+       x:Class="Xperimen.View.Dashboard.TabOne"
+       Padding="0" BackgroundColor="{DynamicResource Key=DimGray1}">
 
-    <AbsoluteLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="Transparent">
+    <AbsoluteLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
 
         <StackLayout HorizontalOptions="FillAndExpand" AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,0,1,1">
 
@@ -16,7 +17,7 @@
                                 <StackLayout Orientation="Horizontal" VerticalOptions="Center" Spacing="15" Padding="15,10,15,10">
                                     <Image BackgroundColor="LightGray" HeightRequest="50" WidthRequest="50" VerticalOptions="Center"/>
                                     <StackLayout Orientation="Vertical" VerticalOptions="Center" Spacing="0">
-                                        <Label Text="{Binding AppName, Converter={StaticResource StringNullConverter}}" HorizontalOptions="Start" FontAttributes="Bold" FontSize="16"/>
+                                        <Label Text="{Binding AppName}" HorizontalOptions="Start" FontAttributes="Bold" FontSize="16"/>
                                         <Label Text="{Binding AppSize}" HorizontalOptions="Start"/>
                                         <Label Text="{Binding AppRating}" HorizontalOptions="Start"/>
                                         <Label Text="{Binding Description}" HorizontalOptions="Start" FontAttributes="Italic"/>

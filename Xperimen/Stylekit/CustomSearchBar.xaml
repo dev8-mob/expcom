@@ -11,10 +11,10 @@
 
         <StackLayout HorizontalOptions="FillAndExpand" Orientation="Vertical" Spacing="0">
             <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal" Spacing="0" Padding="15,0,15,0">
-                <Image Source="black_search" HeightRequest="30" WidthRequest="30" Aspect="AspectFit" IsVisible="False"
+                <Image Source="black_search.png" HeightRequest="30" WidthRequest="30" Aspect="AspectFit"
                        HorizontalOptions="Start" VerticalOptions="Center"/>
                 <stylekit:EntryBorderless x:Name="entry" Text="{Binding DataString}" Placeholder="search keyword.."/>
-                <Image Source="black_close.png" HeightRequest="30" WidthRequest="30" Aspect="AspectFit" IsVisible="False"
+                <Image Source="black_close.png" HeightRequest="30" WidthRequest="30" Aspect="AspectFit"
                        HorizontalOptions="End" VerticalOptions="Center">
                     <Image.GestureRecognizers>
                         <TapGestureRecognizer Command="{Binding ClearSearch}"/>

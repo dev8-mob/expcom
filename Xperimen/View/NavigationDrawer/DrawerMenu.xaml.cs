@@ -25,8 +25,8 @@ namespace Xperimen.View.NavigationDrawer
             lbl_email.Text = "--";
             List<ItemMenu> menulist = new List<ItemMenu>();
 
-            menulist.Add(new ItemMenu { ImageIcon = "black_user.png", Title = "Dashboard", Contentpage = typeof(TabbedDashboard) });
-            menulist.Add(new ItemMenu { ImageIcon = "black_whatshot.png", Title = "Page One", Contentpage = typeof(MainPage) });
+            menulist.Add(new ItemMenu { ImageIcon = "black_user.png", Title = "Dashboard", Contentpage = typeof(MainPage) });
+            menulist.Add(new ItemMenu { ImageIcon = "black_whatshot.png", Title = "Tabbed Page", Contentpage = typeof(TabbedDashboard) });
             menulist.Add(new ItemMenu { ImageIcon = "black_password.png", Title = "Page Two", Contentpage = typeof(MainPage) });
             listview.ItemsSource = menulist;
         }

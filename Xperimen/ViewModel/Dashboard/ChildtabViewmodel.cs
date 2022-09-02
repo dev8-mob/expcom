@@ -29,8 +29,8 @@ namespace Xperimen.ViewModel.Dashboard
         public ChildtabViewmodel(string TabType)
         {
             this.TabType = TabType;
+            ListData = new ObservableCollection<MobileApp>();
             LoadDataCommand = new Command(LoadData);
-            LoadData();
         }
 
         public void LoadData()
@@ -51,18 +51,27 @@ namespace Xperimen.ViewModel.Dashboard
             finally
             {
                 IsLoading = false;
-                if (!string.IsNullOrEmpty(SearchString))
+
+                try
                 {
-                    var search = ListData.Where(p => p.AppName.Contains(SearchString)).ToList();
-                    if (search.Count > 0)
+                    if (!string.IsNullOrEmpty(SearchString))
                     {
-                        ListData.Clear();
-                        foreach (var data in search)
-                            ListData.Add(data);
+                        var search = ListData.Where(p => p.AppName.Contains(SearchString)).ToList();
+                        if (search.Count > 0)
+                        {
+                            ListData.Clear();
+                            foreach (var data in search)
+                                ListData.Add(data);
+                        }
                     }
+                    ItemCount = ListData.Count;
                 }
-                ItemCount = ListData.Count;
-                ParentViewmodel.SetSearchResult();
+                catch (Exception ex)
+                {
+                    var error = ex.Message;
+                    var desc = ex.StackTrace;
+                }
+                //ParentViewmodel.SetSearchResult();
             }
         }
 

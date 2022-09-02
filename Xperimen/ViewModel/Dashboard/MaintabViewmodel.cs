@@ -1,4 +1,5 @@
 ﻿
+using System;
 using System.Collections.Generic;
 using System.Windows.Input;
 using Xamarin.Forms;
@@ -48,7 +49,6 @@ namespace Xperimen.ViewModel.Dashboard
             ChildViewModels = new Dictionary<string, ChildtabViewmodel>();
             LoadDataCommand = new Command(LoadData);
             ClearSearch = new Command(ClearSearchResult);
-            LoadData();
         }
 
         public void LoadData()
@@ -61,7 +61,17 @@ namespace Xperimen.ViewModel.Dashboard
         }
 
         public void SetSearchResult()
-        { ItemCount = ChildViewModels[SelectedTab].ItemCount; }
+        {
+            try
+            {
+                ItemCount = ChildViewModels[SelectedTab].ItemCount;
+            }
+            catch (Exception ex) 
+            {
+                var error = ex.Message;
+                var desc = ex.StackTrace;
+            }
+        }
 
         public void ClearSearchResult()
         { DataString = string.Empty; }

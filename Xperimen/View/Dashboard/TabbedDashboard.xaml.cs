@@ -23,6 +23,7 @@ namespace Xperimen.View.Dashboard
             var view = (StackLayout)sender;
             await view.ScaleTo(0.9, 100);
             view.Scale = 1;
+
             viewmodel.SetSelectedTab(view.ClassId);
         }
     }
