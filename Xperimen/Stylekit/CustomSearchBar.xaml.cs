@@ -19,7 +19,7 @@ namespace Xperimen.Stylekit
             if (e.IsFocused)
             {
                 line.BackgroundColor = Color.FromHex(App.Primary);
-                BackgroundColor = Color.White;
+                frame_bg.BackgroundColor = Color.White;
             }
         }
 
@@ -28,7 +28,7 @@ namespace Xperimen.Stylekit
             if (!e.IsFocused)
             {
                 line.BackgroundColor = Color.DarkGray;
-                BackgroundColor = Color.FromHex(App.DimGray2);
+                frame_bg.BackgroundColor = Color.FromHex(App.DimGray2);
             }
         }
     }

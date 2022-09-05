@@ -61,19 +61,12 @@ namespace Xperimen.ViewModel.Dashboard
         }
 
         public void SetSearchResult()
-        {
-            try
-            {
-                ItemCount = ChildViewModels[SelectedTab].ItemCount;
-            }
-            catch (Exception ex) 
-            {
-                var error = ex.Message;
-                var desc = ex.StackTrace;
-            }
-        }
+        { ItemCount = ChildViewModels[SelectedTab].ItemCount; }
 
         public void ClearSearchResult()
-        { DataString = string.Empty; }
+        { 
+            DataString = string.Empty;
+            LoadData();
+        }
     }
 }

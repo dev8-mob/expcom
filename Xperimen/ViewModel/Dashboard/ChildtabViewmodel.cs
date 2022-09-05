@@ -39,6 +39,7 @@ namespace Xperimen.ViewModel.Dashboard
             try
             {
                 IsLoading = true;
+                ListData.Clear();
                 if (TabType.Equals("tab_one"))
                 {
                     ListData.Add(new MobileApp { Id = Guid.NewGuid().ToString(), AppName = "Donatello", AppSize = "25.6 MB", AppRating = "4.9", Description = "There's a gross fly on the ceiling." });
@@ -67,7 +68,7 @@ namespace Xperimen.ViewModel.Dashboard
                 {
                     if (!string.IsNullOrEmpty(SearchString))
                     {
-                        var search = ListData.Where(p => p.AppName.Contains(SearchString)).ToList();
+                        var search = ListData.Where(p => p.AppName.ToLower().Contains(SearchString.ToLower())).ToList();
                         if (search.Count > 0)
                         {
                             ListData.Clear();
@@ -76,13 +77,13 @@ namespace Xperimen.ViewModel.Dashboard
                         }
                     }
                     ItemCount = ListData.Count;
+                    ParentViewmodel.SetSearchResult();
                 }
                 catch (Exception ex)
                 {
                     var error = ex.Message;
                     var desc = ex.StackTrace;
                 }
-                //ParentViewmodel.SetSearchResult();
             }
         }
 
@@ -93,6 +94,9 @@ namespace Xperimen.ViewModel.Dashboard
         }
 
         public void SearchKeyword(string SearchString)
-        { this.SearchString = SearchString; }
+        { 
+            this.SearchString = SearchString;
+            LoadData();
+        }
     }
 }

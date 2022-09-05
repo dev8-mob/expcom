@@ -2,7 +2,7 @@
 <Frame xmlns="http://xamarin.com/schemas/2014/forms"
        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
        x:Class="Xperimen.View.Dashboard.TabTwo"
-       Padding="0" BackgroundColor="{DynamicResource Key=DimGray1}">
+       Padding="0" BackgroundColor="White">
 
     <AbsoluteLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
 

@@ -8,7 +8,7 @@
     
     <ContentPage.Content>
 
-        <Grid HorizontalOptions="FillAndExpand" BackgroundColor="{DynamicResource Key=DimGray1}">
+        <Grid HorizontalOptions="FillAndExpand" BackgroundColor="{DynamicResource Key=DimGray1}" RowSpacing="0">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
@@ -19,17 +19,26 @@
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
             <stylekit:CustomSearchBar Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Margin="15,0,15,0"/>
-            <StackLayout HorizontalOptions="FillAndExpand" ClassId="tab_one" Grid.Row="1" Grid.Column="0" Padding="0,10,0,10">
-                <Label Text="Page One" HorizontalOptions="CenterAndExpand" FontAttributes="Bold"/>
-                <StackLayout.GestureRecognizers>
-                    <TapGestureRecognizer Tapped="OnTabTapped"/>
-                </StackLayout.GestureRecognizers>
+            <StackLayout x:Name="stack_one" HorizontalOptions="FillAndExpand" Spacing="0" Grid.Row="1" Grid.Column="0" Margin="0,15,0,0"
+                         BackgroundColor="White">
+                <StackLayout Orientation="Vertical" HorizontalOptions="Center" ClassId="tab_one" Spacing="0">
+                    <Label Text="Page One" HorizontalOptions="Center" VerticalOptions="FillAndExpand" FontAttributes="Bold" Margin="10"/>
+                    <BoxView x:Name="line1" HeightRequest="1" HorizontalOptions="FillAndExpand" VerticalOptions="End" 
+                             BackgroundColor="{DynamicResource Key=Primary}"/>
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnTabTapped"/>
+                    </StackLayout.GestureRecognizers>
+                </StackLayout>
             </StackLayout>
-            <StackLayout HorizontalOptions="FillAndExpand" ClassId="tab_two" Grid.Row="1" Grid.Column="1" Padding="0,10,0,10">
-                <Label Text="Page Two" HorizontalOptions="CenterAndExpand" FontAttributes="Bold"/>
-                <StackLayout.GestureRecognizers>
-                    <TapGestureRecognizer Tapped="OnTabTapped"/>
-                </StackLayout.GestureRecognizers>
+            <StackLayout x:Name="stack_two" HorizontalOptions="FillAndExpand" Spacing="0" Grid.Row="1" Grid.Column="1" Margin="0,15,0,0">
+                <StackLayout Orientation="Vertical" HorizontalOptions="Center" ClassId="tab_two" Spacing="0">
+                    <Label Text="Page Two" HorizontalOptions="Center" VerticalOptions="FillAndExpand" FontAttributes="Bold" Margin="10"/>
+                    <BoxView x:Name="line2" HeightRequest="1" HorizontalOptions="FillAndExpand" VerticalOptions="End" 
+                             BackgroundColor="{DynamicResource Key=Primary}"/>
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnTabTapped"/>
+                    </StackLayout.GestureRecognizers>
+                </StackLayout>
             </StackLayout>
             <tabpage:TabOne x:Name="tab_one" HorizontalOptions="FillAndExpand" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2"/>
             <tabpage:TabTwo x:Name="tab_two" HorizontalOptions="FillAndExpand" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" IsVisible="False"/>

@@ -41,7 +41,7 @@
                 <Setter Property="TextColor" Value="{StaticResource LabelTextColor}"></Setter>
             </Style>
             <Style TargetType="NavigationPage">
-                <Setter Property="BarBackgroundColor" Value="White"/>
+                <Setter Property="BarBackgroundColor" Value="{StaticResource DimGray1}"/>
                 <Setter Property="BarTextColor" Value="{StaticResource LabelTextColor}"/>
             </Style>
         </ResourceDictionary>

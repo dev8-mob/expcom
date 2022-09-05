@@ -15,11 +15,11 @@ public class TimePickerBorderlessRenderer
 	}
 
 
-	public TimePickerBorderlessRenderer (android.content.Context p0, android.util.AttributeSet p1, int p2)
+	public TimePickerBorderlessRenderer (android.content.Context p0)
 	{
-		super (p0, p1, p2);
+		super (p0);
 		if (getClass () == TimePickerBorderlessRenderer.class)
-			mono.android.TypeManager.Activate ("Xperimen.Droid.CustomRenderer.TimePickerBorderlessRenderer, Xperimen.Android", "Android.Content.Context, Mono.Android:Android.Util.IAttributeSet, Mono.Android:System.Int32, mscorlib", this, new java.lang.Object[] { p0, p1, p2 });
+			mono.android.TypeManager.Activate ("Xperimen.Droid.CustomRenderer.TimePickerBorderlessRenderer, Xperimen.Android", "Android.Content.Context, Mono.Android", this, new java.lang.Object[] { p0 });
 	}
 
 
@@ -31,11 +31,11 @@ public class TimePickerBorderlessRenderer
 	}
 
 
-	public TimePickerBorderlessRenderer (android.content.Context p0)
+	public TimePickerBorderlessRenderer (android.content.Context p0, android.util.AttributeSet p1, int p2)
 	{
-		super (p0);
+		super (p0, p1, p2);
 		if (getClass () == TimePickerBorderlessRenderer.class)
-			mono.android.TypeManager.Activate ("Xperimen.Droid.CustomRenderer.TimePickerBorderlessRenderer, Xperimen.Android", "Android.Content.Context, Mono.Android", this, new java.lang.Object[] { p0 });
+			mono.android.TypeManager.Activate ("Xperimen.Droid.CustomRenderer.TimePickerBorderlessRenderer, Xperimen.Android", "Android.Content.Context, Mono.Android:Android.Util.IAttributeSet, Mono.Android:System.Int32, mscorlib", this, new java.lang.Object[] { p0, p1, p2 });
 	}
 
 	private java.util.ArrayList refList;

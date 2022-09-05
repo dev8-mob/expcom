@@ -6,8 +6,7 @@
              xmlns:stylekit="clr-namespace:Xperimen.Stylekit"
              BackgroundColor="Transparent" Spacing="0">
 
-    <Frame HorizontalOptions="FillAndExpand" BorderColor="DarkGray" 
-           HasShadow="False" CornerRadius="3" BackgroundColor="{DynamicResource Key=DimGray2}"
+    <Frame x:Name="frame_bg" HorizontalOptions="FillAndExpand" HasShadow="False" CornerRadius="3" BackgroundColor="{DynamicResource Key=DimGray2}"
            IsClippedToBounds="True" Padding="0">
 
         <StackLayout HorizontalOptions="FillAndExpand" Orientation="Vertical" Spacing="0">
@@ -16,7 +15,7 @@
                        HorizontalOptions="Start" VerticalOptions="Center"/>
                 <stylekit:EntryBorderless x:Name="entry" Text="{Binding DataString}" Placeholder="search keyword..">
                     <Entry.Behaviors>
-                        <xct:UserStoppedTypingBehavior Command="{Binding LoadItemsCommand}" StoppedTypingTimeThreshold="1000"
+                        <xct:UserStoppedTypingBehavior Command="{Binding LoadDataCommand}" StoppedTypingTimeThreshold="1000"
                                                        MinimumLengthThreshold="2" />
                     </Entry.Behaviors>
                 </stylekit:EntryBorderless>
@@ -31,8 +30,9 @@
         </StackLayout>
 
     </Frame>
-    <StackLayout IsVisible="{Binding IsFound}" HorizontalOptions="FillAndExpand" Padding="10,8,10,8" BackgroundColor="{DynamicResource Key=CustomGreen}">
-        <Label Text="{Binding ItemCount, StringFormat='{0} Record(s) found'}" TextColor="Black" HorizontalOptions="StartAndExpand"/>
+    <StackLayout IsVisible="{Binding IsFound}" HorizontalOptions="FillAndExpand" Padding="10,5,10,5" Margin="45,0,0,0"
+                 BackgroundColor="{DynamicResource Key=Primary}">
+        <Label Text="{Binding ItemCount, StringFormat='{0} Record(s) found'}" TextColor="White" HorizontalOptions="StartAndExpand"/>
     </StackLayout>
 
 </StackLayout>
