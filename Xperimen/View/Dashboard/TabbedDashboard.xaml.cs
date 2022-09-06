@@ -31,6 +31,8 @@ namespace Xperimen.View.Dashboard
                 stack_two.BackgroundColor = Color.Transparent;
                 line1.IsVisible = true;
                 line2.IsVisible = false;
+                tab_one.IsVisible = true;
+                tab_two.IsVisible = false;
             }
             else if (tab.Equals("tab_two"))
             {
@@ -38,6 +40,8 @@ namespace Xperimen.View.Dashboard
                 stack_two.BackgroundColor = Color.White;
                 line1.IsVisible = false;
                 line2.IsVisible = true;
+                tab_one.IsVisible = false;
+                tab_two.IsVisible = true;
             }
             viewmodel.SetSelectedTab(tab);
         }

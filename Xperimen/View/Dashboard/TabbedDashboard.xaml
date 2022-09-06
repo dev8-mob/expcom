@@ -33,7 +33,7 @@
             <StackLayout x:Name="stack_two" HorizontalOptions="FillAndExpand" Spacing="0" Grid.Row="1" Grid.Column="1" Margin="0,15,0,0">
                 <StackLayout Orientation="Vertical" HorizontalOptions="Center" ClassId="tab_two" Spacing="0">
                     <Label Text="Page Two" HorizontalOptions="Center" VerticalOptions="FillAndExpand" FontAttributes="Bold" Margin="10"/>
-                    <BoxView x:Name="line2" HeightRequest="1" HorizontalOptions="FillAndExpand" VerticalOptions="End" 
+                    <BoxView x:Name="line2" HeightRequest="1" HorizontalOptions="FillAndExpand" VerticalOptions="End" IsVisible="False"
                              BackgroundColor="{DynamicResource Key=Primary}"/>
                     <StackLayout.GestureRecognizers>
                         <TapGestureRecognizer Tapped="OnTabTapped"/>
