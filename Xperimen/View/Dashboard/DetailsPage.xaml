@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Xperimen.View.Dashboard.DetailsPage"
+             xmlns:cell="clr-namespace:Xperimen.View.Dashboard"
+             xmlns:vm="clr-namespace:Xperimen.ViewModel.Dashboard" 
+             x:DataType="vm:DetailspageViewmodel"
+             Title="Details Page" BackgroundColor="{DynamicResource Key=DimGray1}">
+    
+    <ContentPage.Content>
+
+        <AbsoluteLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+
+            <StackLayout HorizontalOptions="FillAndExpand" Orientation="Vertical" Padding="15" Spacing="0"
+                         AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,0,1,1">
+                <Label Text="This is Header" FontSize="20" FontAttributes="Bold" VerticalOptions="Start" HorizontalOptions="Start" />
+                <Label Text="Name : Xamarin Visual Studio" VerticalOptions="Start" HorizontalOptions="Start" Margin="0,15,0,0"/>
+                <Label Text="Tools : ASP.NET and Web Tools 2019 17.1.363.30963" VerticalOptions="Start" HorizontalOptions="Start" />
+                <Label Text="Version : Azure App Service Tools v3.0.0 17.1.363.30963" VerticalOptions="Start" HorizontalOptions="Start" />
+                <Label Text="Stranger : Microsoft Visual C++ Wizards 1.0" VerticalOptions="Start" HorizontalOptions="Start" />
+                <Frame Margin="0,15,0,0" HasShadow="False" CornerRadius="7" BackgroundColor="{DynamicResource Key=DimGray2}" IsClippedToBounds="True">
+                    <StackLayout BindableLayout.ItemsSource="{Binding ListItems}">
+                        <BindableLayout.ItemTemplate>
+                            <DataTemplate>
+                                <cell:ItemCell/>
+                            </DataTemplate>
+                        </BindableLayout.ItemTemplate>
+                        <!--<StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="OnItemTapped"/>
+                            </StackLayout.GestureRecognizers>-->
+                    </StackLayout>
+                </Frame>
+            </StackLayout>
+
+            <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="Black" Opacity="0.7"
+                         AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,0,1,1" IsVisible="{Binding IsLoading, Mode=TwoWay}"/>
+
+            <Frame IsVisible="{Binding IsLoading, Mode=TwoWay}" HasShadow="False" CornerRadius="10" BorderColor="DarkGray"
+                   AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0.5,0.5,-1,-1">
+                <StackLayout BackgroundColor="{DynamicResource Primary}" Padding="10" Orientation="Vertical">
+                    <ActivityIndicator IsRunning="{Binding IsLoading, Mode=TwoWay}" Color="Black" HorizontalOptions="Center"/>
+                    <Label Text="Loading.." HorizontalOptions="Center" TextColor="Black"/>
+                </StackLayout>
+            </Frame>
+
+        </AbsoluteLayout>
+
+    </ContentPage.Content>
+    
+</ContentPage>

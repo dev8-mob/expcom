@@ -9,7 +9,8 @@
         <StackLayout HorizontalOptions="FillAndExpand" AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,0,1,1">
 
             <ListView x:Name="listview" HorizontalOptions="FillAndExpand" IsPullToRefreshEnabled="True" RefreshCommand="{Binding LoadDataCommand}"
-                      ItemsSource="{Binding ListData}" IsRefreshing="{Binding IsLoading}" HasUnevenRows="True" SeparatorVisibility="None">
+                      ItemsSource="{Binding ListData}" IsRefreshing="{Binding IsLoading}" HasUnevenRows="True" SeparatorVisibility="None"
+                      ItemSelected="listview_ItemSelected">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>

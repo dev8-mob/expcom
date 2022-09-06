@@ -69,9 +69,9 @@ namespace Xperimen.ViewModel.Dashboard
                     if (!string.IsNullOrEmpty(SearchString))
                     {
                         var search = ListData.Where(p => p.AppName.ToLower().Contains(SearchString.ToLower())).ToList();
+                        ListData.Clear();
                         if (search.Count > 0)
                         {
-                            ListData.Clear();
                             foreach (var data in search)
                                 ListData.Add(data);
                         }

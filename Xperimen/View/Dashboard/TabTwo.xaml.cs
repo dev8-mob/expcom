@@ -18,5 +18,15 @@ namespace Xperimen.View.Dashboard
 
         public void BindContextToParent(MaintabViewmodel parent)
         { viewmodel.SetParentBinding(parent); }
+
+        private async void listview_ItemSelected(object sender, SelectedItemChangedEventArgs e)
+        {
+            var view = (ListView)sender;
+            if (view.SelectedItem != null)
+            {
+                await Navigation.PushAsync(new DetailsPage());
+                view.SelectedItem = null;
+            }
+        }
     }
 }
