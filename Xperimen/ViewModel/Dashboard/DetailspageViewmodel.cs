@@ -8,7 +8,7 @@ namespace Xperimen.ViewModel.Dashboard
 {
     public class DetailspageViewmodel : BaseViewModel
     {
-        public ObservableCollection<MobileApp> ListItems { get; set; }
+        public ObservableCollection<MobileApp> ListItems { get; }
         public ICommand LoadDataCommand { get; }
 
         public DetailspageViewmodel()
