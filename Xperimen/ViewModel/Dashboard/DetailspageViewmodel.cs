@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
 using Xamarin.Forms;
@@ -8,14 +9,14 @@ namespace Xperimen.ViewModel.Dashboard
 {
     public class DetailspageViewmodel : BaseViewModel
     {
-        public ObservableCollection<MobileApp> ListItems { get; }
+        public List<MobileApp> ListItems { get; }
         public ICommand LoadDataCommand { get; }
 
         public DetailspageViewmodel()
         {
-            ListItems = new ObservableCollection<MobileApp>();
+            ListItems = new List<MobileApp>();
             LoadDataCommand = new Command(SetupView);
-            //SetupView();
+            SetupView();
         }
 
         public void SetupView()
