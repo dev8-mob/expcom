@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Xperimen.View.Dashboard.DetailsPage"
              xmlns:cell="clr-namespace:Xperimen.View.Dashboard"
-             xmlns:vm="clr-namespace:Xperimen.ViewModel.Dashboard" 
+             xmlns:vm="clr-namespace:Xperimen.ViewModel.Dashboard"
              x:DataType="vm:DetailspageViewmodel"
              Title="Details Page" BackgroundColor="{DynamicResource Key=DimGray1}">
     
@@ -19,13 +19,11 @@
                 <Label Text="Version : Azure App Service Tools v3.0.0 17.1.363.30963" VerticalOptions="Start" HorizontalOptions="Start" />
                 <Label Text="Update(s) : Microsoft Visual C++ Wizards 1.0" VerticalOptions="Start" HorizontalOptions="Start" />
                 <Frame Margin="0,15,0,0" HasShadow="False" CornerRadius="7" BackgroundColor="{DynamicResource Key=DimGray2}" IsClippedToBounds="True">
-                    <StackLayout BindableLayout.ItemsSource="{Binding ListItems}">
+                    <StackLayout BindableLayout.ItemsSource="{Binding ListDummy}">
                         <BindableLayout.ItemTemplate>
                             <DataTemplate>
-                                <!--<cell:ItemCell/>-->
-                                <StackLayout HorizontalOptions="FillAndExpand">
-                                    <Label Text="{Binding AppName}" HorizontalOptions="Start"/>
-                                </StackLayout>
+                                <cell:ItemCell/>
+                                <!--<Label Text="Item Cell Testing"/>-->
                             </DataTemplate>
                         </BindableLayout.ItemTemplate>
                         <!--<StackLayout.GestureRecognizers>
