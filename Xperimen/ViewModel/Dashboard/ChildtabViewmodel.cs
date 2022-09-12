@@ -56,15 +56,21 @@ namespace Xperimen.ViewModel.Dashboard
                     ListData.Add(new MobileApp { Id = Guid.NewGuid().ToString(), AppName = "Stain", AppSize = "56.1 MB", AppRating = "4.8", Description = "Nothing is as cautiously cuddly as a pet porcupine.", CreatedDatetime = DateTime.Now.AddDays(4) });
                 }
 
-                var tempList = ListData.OrderBy(p => p.CreatedDatetime);
-                tempList.ToList().ForEach(q =>
-                {
-                    ListData.Remove(q);
-                    ListData.Add(q);
-                });
-                ListData = new ObservableCollection<MobileApp>(tempList);
+                #region sort in descending order, still not working
+                //ListData.Move(0, 3);
+                //ListData.Move(1, 2);
+                //ListData.Move(3, 1);
+                //ListData.Reverse();
 
-                //Comparison<MobileApp> datas = new Comparison<MobileApp>((p, q) => 
+                //var tempList = ListData.OrderBy(p => p.CreatedDatetime);
+                //tempList.ToList().ForEach(q =>
+                //{
+                //    ListData.Remove(q);
+                //    ListData.Add(q);
+                //});
+                //ListData = new ObservableCollection<MobileApp>(tempList);
+
+                //Comparison<MobileApp> datas = new Comparison<MobileApp>((p, q) =>
                 //{
                 //    if (p.CreatedDatetime == q.CreatedDatetime) return 0;
                 //    if (p.CreatedDatetime > q.CreatedDatetime) return 1;
@@ -73,6 +79,8 @@ namespace Xperimen.ViewModel.Dashboard
                 //List<MobileApp> templist = ListData.ToList();
                 //templist.Sort(datas);
                 //ListData = new ObservableCollection<MobileApp>(templist);
+                //ListData.Reverse();
+                #endregion
             }
             catch (Exception ex)
             {
