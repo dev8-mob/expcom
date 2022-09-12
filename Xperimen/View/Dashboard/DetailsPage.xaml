@@ -19,7 +19,7 @@
                 <Label Text="Version : Azure App Service Tools v3.0.0 17.1.363.30963" VerticalOptions="Start" HorizontalOptions="Start" />
                 <Label Text="Update(s) : Microsoft Visual C++ Wizards 1.0" VerticalOptions="Start" HorizontalOptions="Start" />
                 <Frame Margin="0,15,0,0" HasShadow="False" CornerRadius="7" BackgroundColor="{DynamicResource Key=DimGray2}" IsClippedToBounds="True">
-                    <StackLayout BindableLayout.ItemsSource="{Binding ListDummy}">
+                    <StackLayout BindableLayout.ItemsSource="{Binding ListItems}">
                         <BindableLayout.ItemTemplate>
                             <DataTemplate>
                                 <cell:ItemCell/>
