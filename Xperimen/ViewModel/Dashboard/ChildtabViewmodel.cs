@@ -56,7 +56,30 @@ namespace Xperimen.ViewModel.Dashboard
                     ListData.Add(new MobileApp { Id = Guid.NewGuid().ToString(), AppName = "Stain", AppSize = "56.1 MB", AppRating = "4.8", Description = "Nothing is as cautiously cuddly as a pet porcupine.", CreatedDatetime = DateTime.Now.AddDays(4) });
                 }
 
-                #region sort in descending order, still not working
+                #region sort in descending order (sample coding)
+                //if (ListData.Count > 0)
+                //{
+                //    try
+                //    {
+                //        foreach (var data in ListData)
+                //        {
+                //            foreach (var item in ListData)
+                //            {
+                //                var result = data.CreatedDatetime.CompareTo(item.CreatedDatetime);
+                //                if (result < 0)
+                //                {
+                //                    ListData.Move(ListData.IndexOf(data), ListData.IndexOf(item));
+                //                    //return;
+                //                }
+                //            }
+                //        }
+                //    }
+                //    catch (Exception ex)
+                //    {
+                //        var error = ex.Message;
+                //        var desc = ex.StackTrace;
+                //    }
+                //}
                 //ListData.Move(0, 3);
                 //ListData.Move(1, 2);
                 //ListData.Move(3, 1);
@@ -68,7 +91,6 @@ namespace Xperimen.ViewModel.Dashboard
                 //    ListData.Remove(q);
                 //    ListData.Add(q);
                 //});
-                //ListData = new ObservableCollection<MobileApp>(tempList);
 
                 //Comparison<MobileApp> datas = new Comparison<MobileApp>((p, q) =>
                 //{
@@ -103,6 +125,9 @@ namespace Xperimen.ViewModel.Dashboard
                                 ListData.Add(data);
                         }
                     }
+
+                    var sorted = ListData.OrderByDescending(x => x.CreatedDatetime).ToList();
+                    ListData = new ObservableCollection<MobileApp>(sorted);
                     ItemCount = ListData.Count;
                     ParentViewmodel.SetSearchResult();
                 }
