@@ -1,20 +1,19 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ViewCell xmlns="http://xamarin.com/schemas/2014/forms"
-          xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-          x:Class="Xperimen.View.Dashboard.ItemCell"
-          xmlns:model="clr-namespace:Xperimen.Model">
+<StackLayout xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Xperimen.View.Dashboard.ItemCell"
+             xmlns:model="clr-namespace:Xperimen.Model"
+             HorizontalOptions="FillAndExpand" Orientation="Vertical" 
+             Spacing="0" x:DataType="model:MobileApp">
 
-    <ViewCell.View>
-        <Grid HorizontalOptions="FillAndExpand" x:DataType="model:MobileApp">
-            <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal" Spacing="0" Grid.Row="0" Grid.Column="0">
-                <Label Text="{Binding Id}" FontAttributes="Bold" HorizontalOptions="Start" VerticalOptions="Start" FontSize="20"/>
-                <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="Center" Orientation="Vertical" Spacing="0">
-                    <Label Text="{Binding AppName}" HorizontalOptions="Start"/>
-                    <Label Text="{Binding AppSize}" HorizontalOptions="Start"/>
-                    <Label Text="{Binding Description}" HorizontalOptions="Start"/>
-                </StackLayout>
-            </StackLayout>
-        </Grid>
-    </ViewCell.View>
-    
-</ViewCell>
+    <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="Center" Orientation="Horizontal" Spacing="0" Margin="15">
+        <Label Text="{Binding Id}" FontAttributes="Bold" HorizontalOptions="StartAndExpand" VerticalOptions="Start" Margin="0,0,15,0"/>
+        <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="Center" Orientation="Vertical" Spacing="0">
+            <Label Text="{Binding AppName}" HorizontalOptions="Start"/>
+            <Label Text="{Binding AppSize}" HorizontalOptions="Start"/>
+            <Label Text="{Binding Description}" HorizontalOptions="Start"/>
+        </StackLayout>
+    </StackLayout>
+    <BoxView HeightRequest="1" BackgroundColor="LightGray" HorizontalOptions="FillAndExpand"/>
+
+</StackLayout>
