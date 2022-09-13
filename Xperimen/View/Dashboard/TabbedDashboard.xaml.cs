@@ -27,8 +27,8 @@ namespace Xperimen.View.Dashboard
             var tab = view.ClassId;
             if (tab.Equals("tab_one"))
             {
-                stack_one.BackgroundColor = Color.White;
-                stack_two.BackgroundColor = Color.Transparent;
+                frame_one.BackgroundColor = Color.White;
+                frame_two.BackgroundColor = Color.Transparent;
                 line1.IsVisible = true;
                 line2.IsVisible = false;
                 tab_one.IsVisible = true;
@@ -36,8 +36,8 @@ namespace Xperimen.View.Dashboard
             }
             else if (tab.Equals("tab_two"))
             {
-                stack_one.BackgroundColor = Color.Transparent;
-                stack_two.BackgroundColor = Color.White;
+                frame_one.BackgroundColor = Color.Transparent;
+                frame_two.BackgroundColor = Color.White;
                 line1.IsVisible = false;
                 line2.IsVisible = true;
                 tab_one.IsVisible = false;

@@ -2,6 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Xperimen.View.Dashboard.TabbedDashboard"
+             xmlns:frame="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
              xmlns:tabpage="clr-namespace:Xperimen.View.Dashboard"
              xmlns:stylekit="clr-namespace:Xperimen.Stylekit"
              Title="Tabbed Page" BackgroundColor="{DynamicResource Key=DimGray1}">
@@ -19,8 +20,8 @@
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
             <stylekit:CustomSearchBar Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Margin="15,0,15,0"/>
-            <StackLayout x:Name="stack_one" HorizontalOptions="FillAndExpand" Spacing="0" Grid.Row="1" Grid.Column="0" Margin="0,15,0,0"
-                         BackgroundColor="White">
+            <frame:PancakeView x:Name="frame_one" HorizontalOptions="FillAndExpand" Grid.Row="1" Grid.Column="0" Margin="0,15,0,0"
+                               BackgroundColor="White" Padding="0" CornerRadius="8,8,0,0">
                 <StackLayout Orientation="Vertical" HorizontalOptions="Center" ClassId="tab_one" Spacing="0">
                     <Label Text="Page One" HorizontalOptions="Center" VerticalOptions="FillAndExpand" FontAttributes="Bold" Margin="10"/>
                     <BoxView x:Name="line1" HeightRequest="1" HorizontalOptions="FillAndExpand" VerticalOptions="End" 
@@ -29,8 +30,9 @@
                         <TapGestureRecognizer Tapped="OnTabTapped"/>
                     </StackLayout.GestureRecognizers>
                 </StackLayout>
-            </StackLayout>
-            <StackLayout x:Name="stack_two" HorizontalOptions="FillAndExpand" Spacing="0" Grid.Row="1" Grid.Column="1" Margin="0,15,0,0">
+            </frame:PancakeView>
+            <frame:PancakeView x:Name="frame_two" HorizontalOptions="FillAndExpand" Grid.Row="1" Grid.Column="1" Margin="0,15,0,0"
+                               BackgroundColor="Transparent" Padding="0" CornerRadius="8,8,0,0">
                 <StackLayout Orientation="Vertical" HorizontalOptions="Center" ClassId="tab_two" Spacing="0">
                     <Label Text="Page Two" HorizontalOptions="Center" VerticalOptions="FillAndExpand" FontAttributes="Bold" Margin="10"/>
                     <BoxView x:Name="line2" HeightRequest="1" HorizontalOptions="FillAndExpand" VerticalOptions="End" IsVisible="False"
@@ -39,7 +41,7 @@
                         <TapGestureRecognizer Tapped="OnTabTapped"/>
                     </StackLayout.GestureRecognizers>
                 </StackLayout>
-            </StackLayout>
+            </frame:PancakeView>
             <tabpage:TabOne x:Name="tab_one" HorizontalOptions="FillAndExpand" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2"/>
             <tabpage:TabTwo x:Name="tab_two" HorizontalOptions="FillAndExpand" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" IsVisible="False"/>
         </Grid>

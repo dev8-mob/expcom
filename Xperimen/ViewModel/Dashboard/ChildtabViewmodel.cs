@@ -126,8 +126,8 @@ namespace Xperimen.ViewModel.Dashboard
                         }
                     }
 
-                    var sorted = ListData.OrderByDescending(x => x.CreatedDatetime).ToList();
-                    ListData = new ObservableCollection<MobileApp>(sorted);
+                    //var sorted = ListData.OrderByDescending(x => x.CreatedDatetime).ToList();
+                    //ListData = new ObservableCollection<MobileApp>(sorted);
                     ItemCount = ListData.Count;
                     ParentViewmodel.SetSearchResult();
                 }
