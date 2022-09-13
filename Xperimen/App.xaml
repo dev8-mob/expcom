@@ -13,8 +13,21 @@
             <Color x:Key="CustomYellow">#DEAF14</Color>
             <Color x:Key="CustomBlue">#01A9DB</Color>
             <Color x:Key="LabelTextColor">#666666</Color>
+            <OnPlatform x:TypeArguments="x:String" x:Key="NormalFont">
+                <On Platform="Android" Value="Ubuntu-Regular.ttf#Ubuntu Regular" />
+                <On Platform="iOS" Value="Ubuntu-Regular" />
+            </OnPlatform>
+            <OnPlatform x:TypeArguments="x:String" x:Key="BoldFont">
+                <On Platform="Android" Value="Ubuntu-Bold.ttf#Ubuntu Bold" />
+                <On Platform="iOS" Value="Ubuntu-Bold" />
+            </OnPlatform>
+            <OnPlatform x:TypeArguments="x:String" x:Key="ItalicFont">
+                <On Platform="Android" Value="Ubuntu-Italic.ttf#Ubuntu Italic" />
+                <On Platform="iOS" Value="Ubuntu-Italic" />
+            </OnPlatform>
             <Style TargetType="Button">
                 <Setter Property="TextColor" Value="White"></Setter>
+                <Setter Property="FontFamily" Value="{StaticResource Key=NormalFont}"/>
                 <Setter Property="VisualStateManager.VisualStateGroups">
                     <VisualStateGroupList>
                         <VisualStateGroup x:Name="CommonStates">
@@ -35,15 +48,23 @@
             <Style TargetType="Label">
                 <Setter Property="FontSize" Value="14"></Setter>
                 <Setter Property="TextColor" Value="{StaticResource LabelTextColor}"></Setter>
+                <Setter Property="FontFamily" Value="{StaticResource Key=NormalFont}"/>
             </Style>
             <Style TargetType="Editor">
                 <Setter Property="FontSize" Value="14"></Setter>
                 <Setter Property="TextColor" Value="{StaticResource LabelTextColor}"></Setter>
+                <Setter Property="FontFamily" Value="{StaticResource Key=NormalFont}"/>
+            </Style>
+            <Style TargetType="Entry">
+                <Setter Property="FontSize" Value="14"></Setter>
+                <Setter Property="TextColor" Value="{StaticResource LabelTextColor}"></Setter>
+                <Setter Property="FontFamily" Value="{StaticResource Key=NormalFont}"/>
             </Style>
             <Style TargetType="NavigationPage">
                 <Setter Property="BarBackgroundColor" Value="{StaticResource DimGray1}"/>
                 <Setter Property="BarTextColor" Value="{StaticResource LabelTextColor}"/>
             </Style>
+
         </ResourceDictionary>
     </Application.Resources>
     

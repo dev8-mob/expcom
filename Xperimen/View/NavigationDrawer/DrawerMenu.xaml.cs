@@ -4,6 +4,7 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using Xperimen.Model;
 using Xperimen.View.Dashboard;
+using Xperimen.View.Setting;
 
 namespace Xperimen.View.NavigationDrawer
 {
@@ -28,6 +29,7 @@ namespace Xperimen.View.NavigationDrawer
             menulist.Add(new ItemMenu { ImageIcon = "black_user.png", Title = "Dashboard", Contentpage = typeof(MainPage) });
             menulist.Add(new ItemMenu { ImageIcon = "black_whatshot.png", Title = "Tabbed Page", Contentpage = typeof(TabbedDashboard) });
             menulist.Add(new ItemMenu { ImageIcon = "black_password.png", Title = "Page Two", Contentpage = typeof(MainPage) });
+            menulist.Add(new ItemMenu { ImageIcon = "black_setting.png", Title = "Setting", Contentpage = typeof(MainSetting) });
             listview.ItemsSource = menulist;
         }
 

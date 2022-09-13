@@ -22,14 +22,14 @@ namespace Xperimen.View.NavigationDrawer
             Detail = new NavigationPage(new MainPage());
         }
 
-        private async void MenuSelected(object sender, SelectedItemChangedEventArgs e)
+        private void MenuSelected(object sender, SelectedItemChangedEventArgs e)
         {
             if (e.SelectedItem != null)
             {
                 var item = (ItemMenu)e.SelectedItem;
                 Type page = item.Contentpage;
                 var openPage = (Page)Activator.CreateInstance(page);
-                await Navigation.PushAsync(openPage);
+                Detail = new NavigationPage(openPage);
 
                 #region old code
                 //Detail = new NavigationPage(openPage);
