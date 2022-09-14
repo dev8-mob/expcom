@@ -79,8 +79,10 @@ namespace Xperimen.Stylekit
             var view = (StackLayout)sender;
             await view.ScaleTo(0.9, 100);
             view.Scale = 1;
+            await this.FadeTo(0, 500);
             IsVisible = false;
             MessagingCenter.Send(this, "DisplayAlertSelection", lbl_btn1.Text);
+            Opacity = 1;
         }
 
         public async void Btn2Tapped(object sender, EventArgs e)
@@ -88,8 +90,10 @@ namespace Xperimen.Stylekit
             var view = (StackLayout)sender;
             await view.ScaleTo(0.9, 100);
             view.Scale = 1;
+            await this.FadeTo(0, 500);
             IsVisible = false;
             MessagingCenter.Send(this, "DisplayAlertSelection", lbl_btn2.Text);
+            Opacity = 1;
         }
 
         public async void CloseTapped(object sender, EventArgs e)
@@ -97,8 +101,10 @@ namespace Xperimen.Stylekit
             var view = (Image)sender;
             await view.ScaleTo(0.9, 100);
             view.Scale = 1;
+            await this.FadeTo(0, 500);
             IsVisible = false;
             MessagingCenter.Send(this, "DisplayAlertSelection", "");
+            Opacity = 1;
         }
     }
 }

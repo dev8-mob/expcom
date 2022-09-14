@@ -115,9 +115,7 @@ namespace Xperimen.Stylekit
             InitializeComponent();
             entry.Focused += Entry_Focused;
             entry.Unfocused += Entry_Unfocused;
-
-            if (Ispassword) entry.IsPassword = true;
-            else entry.IsPassword = false;
+            entry.IsPassword = Ispassword;
         }
 
         private void Entry_Focused(object sender, FocusEventArgs e)

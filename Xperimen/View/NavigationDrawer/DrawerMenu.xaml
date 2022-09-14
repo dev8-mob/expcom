@@ -12,8 +12,8 @@
                 <Image x:Name="img_logo" Source="black_whatshot.png" WidthRequest="60" HeightRequest="60" Aspect="AspectFit"
                        HorizontalOptions="Start" VerticalOptions="Center" Margin="20"/>
                 <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
-                    <Label x:Name="lbl_name" Text="-" FontAttributes="Bold" TextColor="Black"/>
-                    <Label x:Name="lbl_email" Text="-"/>
+                    <Label x:Name="lbl_name" Text="-" FontFamily="{DynamicResource Key=BoldFont}" TextColor="Black"/>
+                    <Label x:Name="lbl_desc" Text="-"/>
                 </StackLayout>
                 <StackLayout.Padding>
                     <OnPlatform x:TypeArguments="Thickness" Android="0" iOS="0,25,0,0"/>

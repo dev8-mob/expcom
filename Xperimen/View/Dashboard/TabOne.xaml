@@ -19,7 +19,7 @@
                                 <StackLayout Orientation="Horizontal" VerticalOptions="Center" Spacing="15" Padding="15,10,15,10">
                                     <Image BackgroundColor="LightGray" HeightRequest="50" WidthRequest="50" VerticalOptions="Center"/>
                                     <StackLayout Orientation="Vertical" VerticalOptions="Center" Spacing="0">
-                                        <Label Text="{Binding AppName}" HorizontalOptions="Start" FontAttributes="Bold" FontSize="16"/>
+                                        <Label Text="{Binding AppName}" HorizontalOptions="Start" FontSize="16" FontFamily="{DynamicResource Key=BoldFont}"/>
                                         <Label Text="{Binding AppSize}" HorizontalOptions="Start"/>
                                         <Label Text="{Binding AppRating}" HorizontalOptions="Start"/>
                                         <Label Text="{Binding Description}" HorizontalOptions="Start" FontAttributes="Italic"/>

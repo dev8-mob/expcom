@@ -7,7 +7,6 @@ using Xperimen.View.Dashboard;
 namespace Xperimen.View.NavigationDrawer
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    [Obsolete]
     public partial class DrawerMaster : MasterDetailPage
     {
         public ListView listview;
