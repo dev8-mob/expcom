@@ -1,15 +1,30 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Xperimen.View.Setting.MainSetting">
+             x:Class="Xperimen.View.Setting.MainSetting"
+             xmlns:stylekit="clr-namespace:Xperimen.Stylekit" >
     
     <ContentPage.Content>
         
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
+        <stylekit:MyStackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand" Padding="20">
+            <stylekit:MyLabel Text="Testing Dummy String" HorizontalOptions="Start"/>
+            <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal" Spacing="0" Margin="0,15,0,0">
+                <Frame Padding="0" HasShadow="False" CornerRadius="5" HorizontalOptions="FillAndExpand"
+                       BackgroundColor="{DynamicResource Primary}">
+                    <stylekit:MyLabel Text="Light Theme" HorizontalOptions="Center" Margin="0,5,0,5"/>
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="LightThemeTapped"/>
+                    </Frame.GestureRecognizers>
+                </Frame>
+                <Frame Padding="0" HasShadow="False" CornerRadius="5" HorizontalOptions="FillAndExpand"
+                       BackgroundColor="{DynamicResource Primary}" Margin="5,0,0,0">
+                    <stylekit:MyLabel Text="Dark Theme" HorizontalOptions="Center" Margin="0,5,0,5"/>
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="DarkThemeTapped"/>
+                    </Frame.GestureRecognizers>
+                </Frame>
+            </StackLayout>
+        </stylekit:MyStackLayout>
         
     </ContentPage.Content>
     

@@ -32,51 +32,52 @@ namespace Xperimen.ViewModel.Dashboard
             AppsList = new ObservableCollection<MobileApp>();
             AppsList.Add(new MobileApp {
                 Id = Guid.NewGuid().ToString(),
+                AppName = "Dictate",
                 AppIcon = "", 
-                AppRating = "test value == null", 
+                AppRating = "3.9", 
                 AppSize = "35.1 MB", 
                 Description = "The fox in the tophat whispered into the ear of the rabbit.",
                 CreatedDatetime = new DateTime(1993,8,4)
             });
             AppsList.Add(new MobileApp {
                 Id = Guid.NewGuid().ToString(),
-                AppName = "commonsense",
+                AppName = "Cabin",
                 AppIcon = "",
-                AppRating = "test value != null",
+                AppRating = "4.1",
                 AppSize = "24.6 MB",
                 Description = "Your girlfriend bought your favorite cookie crisp cereal but forgot to get milk.",
             });
             AppsList.Add(new MobileApp {
                 Id = Guid.NewGuid().ToString(),
-                AppName = "NULL",
+                AppName = "Eyebrow",
                 AppIcon = "",
-                AppRating = "text.Contains(\"NULL\")",
+                AppRating = "3.8",
                 AppSize = "49.2 MB",
                 Description = "As time wore on, simple dog commands turned into full paragraphs explaining why the dog couldn’t do something.",
                 CreatedDatetime = new DateTime(1993, 8, 5)
             });
             AppsList.Add(new MobileApp {
                 Id = Guid.NewGuid().ToString(),
-                AppName = "",
+                AppName = "Tease",
                 AppIcon = "",
-                AppRating = "text == string.Empty",
+                AppRating = "4.5",
                 AppSize = "18.5 MB",
                 Description = "The clouds formed beautiful animals in the sky that eventually created a tornado to wreak havoc."
             });
             AppsList.Add(new MobileApp {
                 Id = Guid.NewGuid().ToString(),
-                AppName = "depart",
+                AppName = "Depart",
                 AppIcon = "",
-                AppRating = "hero",
+                AppRating = "4.7",
                 AppSize = "35 MB",
                 Description = "Grape jelly was leaking out the hole in the roof.",
                 CreatedDatetime = new DateTime(1993, 8, 6)
             });
             AppsList.Add(new MobileApp {
                 Id = Guid.NewGuid().ToString(),
-                AppName = "assignment",
+                AppName = "Assignment",
                 AppIcon = "",
-                AppRating = "cylinder",
+                AppRating = "3.7",
                 AppSize = "27.8 MB",
                 Description = "He quietly entered the museum as the super bowl started."
             });

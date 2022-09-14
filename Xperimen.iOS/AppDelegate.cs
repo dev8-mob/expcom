@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-
+using System.IO;
 using Foundation;
 using UIKit;
 
@@ -23,7 +21,11 @@ namespace Xperimen.iOS
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
             global::Xamarin.Forms.Forms.Init();
-            LoadApplication(new App());
+
+            string fileName = "Xperiment.sqlite";
+            string fileLocation = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
+            string sql_path = Path.Combine(fileLocation, fileName);
+            LoadApplication(new App(sql_path));
 
             return base.FinishedLaunching(app, options);
         }

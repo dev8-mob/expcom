@@ -5,12 +5,12 @@
       HorizontalOptions="FillAndExpand" BackgroundColor="Transparent" VerticalOptions="Center"
       AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,0,1,1">
 
-    <Frame HorizontalOptions="FillAndExpand" VerticalOptions="Center" Grid.Row="0" Grid.Column="0"
-           BackgroundColor="{DynamicResource Key=DimGray1}" BorderColor="DarkGray" Margin="20,0,30,0"
+    <Frame HorizontalOptions="FillAndExpand" VerticalOptions="Center" Grid.Row="0" Grid.Column="0" Margin="20,0,30,0"
+           BackgroundColor="{DynamicResource Key=DimGray1}" BorderColor="{DynamicResource Primary}" 
            CornerRadius="10" Padding="0" IsClippedToBounds="True">
 
         <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand" VerticalOptions="Center" Padding="20">
-            <Label x:Name="lbl_title" HorizontalOptions="CenterAndExpand" HorizontalTextAlignment="Center" FontAttributes="Bold"/>
+            <Label x:Name="lbl_title" HorizontalOptions="CenterAndExpand" HorizontalTextAlignment="Center" FontFamily="{DynamicResource Key=BoldFont}"/>
             <Label x:Name="lbl_desc" HorizontalOptions="StartAndExpand" HorizontalTextAlignment="Start" Margin="0,20,0,20"/>
             <StackLayout x:Name="stack_buttons" Orientation="Horizontal" HorizontalOptions="FillAndExpand" IsVisible="False"
                          Spacing="2" Margin="-20,20,-20,-20">
@@ -35,11 +35,13 @@
 
     </Frame>
 
-    <Image Source="white_cancel.png" HeightRequest="50" WidthRequest="50" Aspect="AspectFit" Margin="0,-15,15,0"
-           HorizontalOptions="End" VerticalOptions="Start" Grid.Row="0" Grid.Column="0">
-        <Image.GestureRecognizers>
-            <TapGestureRecognizer Tapped="CloseTapped"/>
-        </Image.GestureRecognizers>
-    </Image>
+    <Frame Padding="0" HasShadow="False" CornerRadius="50" HorizontalOptions="End" VerticalOptions="Start" Grid.Row="0" Grid.Column="0"
+           Margin="0,-15,15,0" BorderColor="{DynamicResource Primary}" IsClippedToBounds="True">
+        <Image Source="white_cancel.png" HeightRequest="50" WidthRequest="50" Aspect="AspectFit">
+            <Image.GestureRecognizers>
+                <TapGestureRecognizer Tapped="CloseTapped"/>
+            </Image.GestureRecognizers>
+        </Image>
+    </Frame>
 
 </Grid>

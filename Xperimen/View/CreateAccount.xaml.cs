@@ -1,25 +1,26 @@
-﻿using System;
+﻿
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-using Xperimen.Stylekit;
-using Xperimen.View.NavigationDrawer;
-using Xperimen.ViewModel;
 using Xperimen.Model;
+using Xperimen.Stylekit;
+using Xperimen.ViewModel;
 using SQLite;
+using System;
 using System.Linq;
 
 namespace Xperimen.View
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class Login : ContentPage
+    public partial class CreateAccount : ContentPage
     {
-        public LoginViewmodel viewmodel;
+        public CreateaccViewmodel viewmodel;
         public SQLiteConnection connection;
+        public string theme;
 
-        public Login()
+        public CreateAccount()
         {
             InitializeComponent();
-            viewmodel = new LoginViewmodel();
+            viewmodel = new CreateaccViewmodel();
             connection = new SQLiteConnection(App.DB_PATH);
             BindingContext = viewmodel;
 
@@ -27,69 +28,76 @@ namespace Xperimen.View
             { viewmodel.IsLoading = false; });
         }
 
-        public async void SubmitClicked(object sender, EventArgs e)
+        public async void ThemeClicked(object sender, EventArgs e)
+        {
+            var view = (Label)sender;
+            await view.ScaleTo(0.9, 50);
+            view.Scale = 1;
+
+            if (view.Text.Equals("Dark Theme")) theme = "dark";
+            else if (view.Text.Equals("Light Theme")) theme = "light";
+        }
+
+        public async void CreateAccClicked(object sender, EventArgs e)
         {
             var view = (Frame)sender;
             await view.ScaleTo(0.9, 50);
             view.Scale = 1;
 
-            var user = entry_username.GetText();
+            var username = entry_username.GetText();
             var password = entry_password.GetText();
+            var desc = editor_desc.GetText();
 
-            if (string.IsNullOrEmpty(user))
+            if (string.IsNullOrEmpty(username))
             {
                 viewmodel.IsLoading = true;
-                SetDisplayAlert("Alert", "Please insert your username.", "", "");
+                SetDisplayAlert("Alert", "Username cannot be empty. Please choose a username.", "", "");
                 entry_username.Isfocus = true;
             }
             else if (string.IsNullOrEmpty(password))
             {
                 viewmodel.IsLoading = true;
-                SetDisplayAlert("Alert", "Please insert your password.", "", "");
+                SetDisplayAlert("Alert", "Password cannot be empty. Please insert your password.", "", "");
                 entry_password.Isfocus = true;
+            }
+            else if (string.IsNullOrEmpty(desc))
+            {
+                viewmodel.IsLoading = true;
+                SetDisplayAlert("Alert", "Please provide any description about you.", "", "");
+                editor_desc.Isfocus = true;
             }
             else
             {
-                viewmodel.IsLoading = true;
-                string query = "SELECT * FROM Clients WHERE Username = '" + user + "' AND Password = '" + password + "'";
+                string query = "SELECT * FROM Clients WHERE Username = '" + username + "'";
                 var result = connection.Query<Clients>(query).ToList();
                 if (result.Count > 0)
                 {
-                    var login = new ClientCurrent
-                    {
-                        UserId = result[0].Id,
-                        Username = result[0].Username,
-                        Description = result[0].Description
-                    };
-                    connection.DeleteAll<ClientCurrent>();
-                    connection.Insert(login);
-                    Application.Current.MainPage = new NavigationPage(new DrawerMaster());
+                    viewmodel.IsLoading = true;
+                    SetDisplayAlert("Alert", "The username is already exist. Please choose different username.", "", "");
                 }
                 else
                 {
-                    query = "SELECT * FROM Clients WHERE Username = '" + user + "'";
-                    result = connection.Query<Clients>(query).ToList();
-                    if (result.Count > 0)
+                    var data = new Clients
                     {
-                        SetDisplayAlert("Alert", "Your password is incorrect. Please insert the correct password.", "", "");
-                        entry_password.Text = string.Empty;
-                        entry_password.Isfocus = true;
-                    }
-                    else
-                    {
-                        SetDisplayAlert("Alert", "The username is not found.", "", "");
-                        entry_username.Isfocus = true;
-                    }
+                        Id = Guid.NewGuid().ToString(),
+                        Username = username,
+                        Password = password,
+                        Description = desc,
+                        AppTheme = theme
+                    };
+                    connection.Insert(data);
+                    await DisplayAlert("Success", "Successfully created your account.", "OK");
+                    await Navigation.PopAsync();
                 }
             }
         }
 
-        public async void CreateAccClicked(object sender, EventArgs e)
+        public async void CancelClicked(object sender, EventArgs e)
         {
             var view = (Label)sender;
             await view.ScaleTo(0.9, 50);
             view.Scale = 1;
-            await Navigation.PushAsync(new CreateAccount());
+            await Navigation.PopAsync();
         }
 
         public void SetDisplayAlert(string title, string description, string btn1, string btn2)

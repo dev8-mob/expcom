@@ -5,6 +5,7 @@ using Xamarin.Forms.Xaml;
 using Xperimen.Model;
 using Xperimen.View.Dashboard;
 using Xperimen.View.Setting;
+using SQLite;
 
 namespace Xperimen.View.NavigationDrawer
 {
@@ -12,18 +13,25 @@ namespace Xperimen.View.NavigationDrawer
     public partial class DrawerMenu : ContentPage
     {
         public ListView listview_menu;
+        public SQLiteConnection connection;
 
         public DrawerMenu()
         {
             InitializeComponent();
+            connection = new SQLiteConnection(App.DB_PATH);
             listview_menu = listview;
             CreateMenuList();
         }
 
         public void CreateMenuList()
         {
-            lbl_name.Text = "--";
-            lbl_email.Text = "--";
+            var login = connection.Table<ClientCurrent>().ToList();
+            if (login.Count > 0)
+            {
+                lbl_name.Text = login[0].Username;
+                lbl_desc.Text = login[0].Description;
+            }
+            
             List<ItemMenu> menulist = new List<ItemMenu>();
 
             menulist.Add(new ItemMenu { ImageIcon = "black_user.png", Title = "Dashboard", Contentpage = typeof(MainPage) });

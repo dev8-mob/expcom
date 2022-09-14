@@ -14,22 +14,23 @@
                 <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
 
                     <StackLayout Padding="25,0,25,0" Orientation="Vertical" VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand" Spacing="0">
-                        <Image Source="{Binding Logo}" HeightRequest="130" WidthRequest="130" HorizontalOptions="CenterAndExpand" 
-                               VerticalOptions="Center" Aspect="AspectFit">
-                            <Image.GestureRecognizers>
-                                <TapGestureRecognizer Command="{Binding StartTest}"/>
-                            </Image.GestureRecognizers>
-                        </Image>
+                        <Image Source="black_whatshot.png" HeightRequest="130" WidthRequest="130" HorizontalOptions="CenterAndExpand" 
+                               VerticalOptions="Center" Aspect="AspectFit"/>
                         <stylekit:CustomEntry x:Name="entry_username" Placeholder="username" ImgLeft="black_user.png" Margin="0,20,0,0" />
                         <stylekit:CustomEntry x:Name="entry_password" Ispassword="True" ImgLeft="black_password.png" Placeholder="password" Margin="0,10,0,0"
                                               ImgRight="black_visible.png" ImgRight2="black_invisible.png" />
                         <Frame Padding="0,10,0,10" CornerRadius="3" BorderColor="{DynamicResource Key=Primary}" HorizontalOptions="FillAndExpand"
                                Margin="0,20,0,0" BackgroundColor="{DynamicResource Key=Primary}" HasShadow="False" IsClippedToBounds="True">
-                            <Label Text="Submit" FontAttributes="Bold" TextColor="White" HorizontalOptions="Center" VerticalOptions="Center"/>
+                            <Label Text="Submit" FontFamily="{DynamicResource Key=BoldFont}" TextColor="White" HorizontalOptions="Center" VerticalOptions="Center"/>
                             <Frame.GestureRecognizers>
-                                <TapGestureRecognizer Tapped="Submit_Clicked"/>
+                                <TapGestureRecognizer Tapped="SubmitClicked"/>
                             </Frame.GestureRecognizers>
                         </Frame>
+                        <Label Text="Create An Account" HorizontalOptions="Center" FontFamily="{DynamicResource Key=BoldFont}" Margin="0,30,0,0">
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="CreateAccClicked"/>
+                            </Label.GestureRecognizers>
+                        </Label>
                     </StackLayout>
                     <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
                     <Label Text="Version 1.0.0" HorizontalOptions="Center" VerticalOptions="End" FontSize="10" Margin="0,0,0,20">
@@ -48,13 +49,11 @@
             <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="Black" Opacity="0.7"
                          AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,0,1,1" IsVisible="{Binding IsLoading, Mode=TwoWay}"/>
 
-            <Frame IsVisible="{Binding IsLoading, Mode=TwoWay}" AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0.5,0.5,-1,-1" 
-                   HasShadow="False" CornerRadius="10" BorderColor="DarkGray">
-                <StackLayout BackgroundColor="{DynamicResource Primary}" Padding="10" Orientation="Vertical">
-                    <ActivityIndicator IsRunning="{Binding IsLoading, Mode=TwoWay}" Color="Black" HorizontalOptions="Center"/>
-                    <Label Text="Loading.." HorizontalOptions="Center" TextColor="Black"/>
-                </StackLayout>
-            </Frame>
+            <StackLayout IsVisible="{Binding IsLoading, Mode=TwoWay}" BackgroundColor="Transparent" Orientation="Vertical" Spacing="0"
+                         AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0.5,0.5,-1,-1" >
+                <ActivityIndicator IsRunning="{Binding IsLoading, Mode=TwoWay}" Color="White" HorizontalOptions="Center"/>
+                <Label Text="loading..." HorizontalOptions="Center" TextColor="White" FontFamily="{DynamicResource BoldFont}"/>
+            </StackLayout>
 
             <stylekit:CustomDisplayAlert x:Name="alert" IsVisible="False"/>
 
