@@ -11,7 +11,7 @@
 
             <ScrollView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,0,1,1">
                 <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="Center" Orientation="Vertical" Spacing="0" Padding="20" Margin="0,-20,0,0">
-                    <Label Text="Create An Account" HorizontalOptions="Center" FontFamily="BoldFont" FontSize="18"/>
+                    <stylekit:MyLabel Text="Create An Account" HorizontalOptions="Center" FontFamily="BoldFont" FontSize="18"/>
                     <stylekit:CustomEntry x:Name="entry_username" Placeholder="choose your username" ImgLeft="black_user.png" Margin="0,20,0,0" />
                     <stylekit:CustomEntry x:Name="entry_password" Ispassword="True" ImgLeft="black_password.png" Placeholder="insert your password" 
                                           Margin="0,10,0,0" ImgRight="black_visible.png" ImgRight2="black_invisible.png" />
