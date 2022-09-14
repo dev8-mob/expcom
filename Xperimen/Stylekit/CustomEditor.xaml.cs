@@ -5,7 +5,7 @@ using Xamarin.Forms.Xaml;
 namespace Xperimen.Stylekit
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class CustomEditorExpandable : Frame
+    public partial class CustomEditor : Frame
     {
         #region bindables
         #region custom properties
@@ -28,14 +28,14 @@ namespace Xperimen.Stylekit
         #endregion
         #region custom properties binding
         public static BindableProperty TextProperty =
-            BindableProperty.Create(nameof(Text), typeof(string), typeof(CustomEditorExpandable), defaultValue: "",
-                propertyChanged: (bindable, oldVal, newVal) => { ((CustomEditorExpandable)bindable).UpdateText((string)newVal); });
+            BindableProperty.Create(nameof(Text), typeof(string), typeof(CustomEditor), defaultValue: "",
+                propertyChanged: (bindable, oldVal, newVal) => { ((CustomEditor)bindable).UpdateText((string)newVal); });
         public static BindableProperty PlaceholderProperty =
-            BindableProperty.Create(nameof(Placeholder), typeof(string), typeof(CustomEditorExpandable), defaultValue: "",
-                propertyChanged: (bindable, oldVal, newVal) => { ((CustomEditorExpandable)bindable).UpdatePlaceholder((string)newVal); });
+            BindableProperty.Create(nameof(Placeholder), typeof(string), typeof(CustomEditor), defaultValue: "",
+                propertyChanged: (bindable, oldVal, newVal) => { ((CustomEditor)bindable).UpdatePlaceholder((string)newVal); });
         public static BindableProperty IsFocusProperty =
-            BindableProperty.Create(nameof(Isfocus), typeof(bool), typeof(CustomEditorExpandable), defaultValue: false,
-                propertyChanged: (bindable, oldVal, newVal) => { ((CustomEditorExpandable)bindable).UpdateIsfocus((bool)newVal); });
+            BindableProperty.Create(nameof(Isfocus), typeof(bool), typeof(CustomEditor), defaultValue: false,
+                propertyChanged: (bindable, oldVal, newVal) => { ((CustomEditor)bindable).UpdateIsfocus((bool)newVal); });
         #endregion
         #region binding implementation
         public void UpdateText(string data) { editor.Text = data; }
@@ -44,7 +44,7 @@ namespace Xperimen.Stylekit
         #endregion
         #endregion
 
-        public CustomEditorExpandable()
+        public CustomEditor()
         {
             InitializeComponent();
             editor.Focused += Editor_Focused;

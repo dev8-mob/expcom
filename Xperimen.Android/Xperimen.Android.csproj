@@ -67,8 +67,7 @@
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CustomRenderer\EditorExpandableBorderlessRenderer.cs" />
-    <Compile Include="CustomRenderer\EditorFixedBorderlessRenderer.cs" />
+    <Compile Include="CustomRenderer\EditorBorderlessRenderer.cs" />
     <Compile Include="CustomRenderer\EntryBorderlessRenderer.cs" />
     <Compile Include="CustomRenderer\PickerBorderlessRenderer.cs" />
     <Compile Include="CustomRenderer\TimePickerBorderlessRenderer.cs" />

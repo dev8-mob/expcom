@@ -34,8 +34,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Update="Stylekit\CustomEditorExpandable.xaml.cs">
-      <DependentUpon>CustomEditorExpandable.xaml</DependentUpon>
+    <Compile Update="Stylekit\CustomEditor.xaml.cs">
+      <DependentUpon>CustomEditor.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
 
@@ -43,7 +43,7 @@
     <EmbeddedResource Update="Stylekit\CustomDisplayAlert.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Stylekit\CustomEditorExpandable.xaml">
+    <EmbeddedResource Update="Stylekit\CustomEditor.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Stylekit\CustomSearchBar.xaml">
