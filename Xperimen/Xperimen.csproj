@@ -22,6 +22,7 @@
     <Folder Include="ViewModel\HumanResource\" />
     <Folder Include="ViewModel\Media\" />
     <Folder Include="ViewModel\NavigationDrawer\" />
+    <Folder Include="ViewModel\Setting\" />
     <Folder Include="ViewModel\Staff\" />
     <Folder Include="ViewModel\Sales\" />
     <Folder Include="View\Media\" />
@@ -63,6 +64,9 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="View\NavigationDrawer\DrawerMenu.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="View\Setting\MainSetting.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>
