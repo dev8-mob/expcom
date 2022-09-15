@@ -3,8 +3,6 @@ using SQLite;
 using System.Linq;
 using Xamarin.Forms;
 using Xperimen.Model;
-using Xperimen.View;
-using Xperimen.View.Setting;
 
 namespace Xperimen.Stylekit
 {
@@ -16,8 +14,6 @@ namespace Xperimen.Stylekit
         {
             Connection = new SQLiteConnection(App.DB_PATH);
             BackgroundColor = Color.White;
-            MessagingCenter.Subscribe<MainSetting>(this, "SelectedTheme", s => { SetupView(); });
-            MessagingCenter.Subscribe<CreateAccount>(this, "SelectedTheme", s => { SetupView(); });
             SetupView();
         }
 
@@ -31,6 +27,7 @@ namespace Xperimen.Stylekit
                 if (result.Count > 0)
                 {
                     if (result[0].AppTheme.Equals("dark")) BackgroundColor = Color.Black;
+                    if (result[0].AppTheme.Equals("dim")) BackgroundColor = Color.White;
                     if (result[0].AppTheme.Equals("light")) BackgroundColor = Color.White;
                 }
             }

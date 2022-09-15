@@ -33,12 +33,14 @@ namespace Xperimen.View
 
         public async void ThemeClicked(object sender, EventArgs e)
         {
-            var view = (Label)sender;
+            var view = (Frame)sender;
+            var lbl = (Label)view.Content;
             await view.ScaleTo(0.9, 50);
             view.Scale = 1;
 
-            if (view.Text.Equals("Dark Theme")) theme = "dark";
-            else if (view.Text.Equals("Light Theme")) theme = "light";
+            if (lbl.Text.Equals("Dark Theme")) theme = "dark";
+            else if (lbl.Text.Equals("Dim Theme")) theme = "dim";
+            else if (lbl.Text.Equals("Light Theme")) theme = "light";
         }
 
         public async void CreateAccClicked(object sender, EventArgs e)
@@ -55,6 +57,7 @@ namespace Xperimen.View
             if (string.IsNullOrEmpty(username)) SetDisplayAlert("Alert", "Username cannot be empty. Please choose a username.", "", "");
             else if (string.IsNullOrEmpty(password)) SetDisplayAlert("Alert", "Password cannot be empty. Please insert your password.", "", "");
             else if (string.IsNullOrEmpty(desc)) SetDisplayAlert("Alert", "Please provide any description about you.", "", "");
+            else if (string.IsNullOrEmpty(theme)) SetDisplayAlert("Alert", "Please choose application theme.", "", "");
             else
             {
                 string query = "SELECT * FROM Clients WHERE Username = '" + username + "'";
@@ -71,8 +74,8 @@ namespace Xperimen.View
                         AppTheme = theme
                     };
                     connection.Insert(data);
-                    MessagingCenter.Send(this, "SelectedTheme");
                     SetDisplayAlert("Success", "Successfully created your account.", "", "Okay");
+                    lbl_cancel.Text = "Go To Login";
                 }
             }
         }

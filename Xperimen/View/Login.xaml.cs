@@ -53,6 +53,7 @@ namespace Xperimen.View
                     };
                     connection.DeleteAll<ClientCurrent>();
                     connection.Insert(login);
+
                     Application.Current.MainPage = new NavigationPage(new DrawerMaster());
                 }
                 else

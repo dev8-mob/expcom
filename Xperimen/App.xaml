@@ -25,7 +25,7 @@
                 <On Platform="Android" Value="Ubuntu-Italic.ttf#Ubuntu Italic" />
                 <On Platform="iOS" Value="Ubuntu-Italic" />
             </OnPlatform>
-            <Style TargetType="Button">
+            <Style x:Key="StyleButton" TargetType="Button">
                 <Setter Property="TextColor" Value="White"></Setter>
                 <Setter Property="FontFamily" Value="{StaticResource Key=NormalFont}"/>
                 <Setter Property="VisualStateManager.VisualStateGroups">
@@ -63,6 +63,9 @@
             <Style TargetType="NavigationPage">
                 <Setter Property="BarBackgroundColor" Value="{StaticResource DimGray1}"/>
                 <Setter Property="BarTextColor" Value="{StaticResource LabelTextColor}"/>
+            </Style>
+            <Style TargetType="ContentPage">
+                <Setter Property="BackgroundColor" Value="{StaticResource DimGray1}"/>
             </Style>
 
         </ResourceDictionary>

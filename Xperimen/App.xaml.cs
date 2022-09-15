@@ -28,6 +28,7 @@ namespace Xperimen
             connection.CreateTable<Clients>();
             connection.CreateTable<ClientCurrent>();
 
+            connection.DeleteAll<Clients>();
             var login = connection.Table<ClientCurrent>().ToList();
             if (login.Count > 0) Current.MainPage = new NavigationPage(new DrawerMaster());
             else MainPage = new NavigationPage(new Login());

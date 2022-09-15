@@ -2,9 +2,9 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Xperimen.View.CreateAccount"
-             xmlns:stylekit="clr-namespace:Xperimen.Stylekit" 
+             xmlns:stylekit="clr-namespace:Xperimen.Stylekit"
              NavigationPage.HasNavigationBar="False">
-    
+
     <ContentPage.Content>
 
         <AbsoluteLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="Transparent">
@@ -18,17 +18,21 @@
                     <Label Text="Describe yourself" HorizontalOptions="Start" Margin="0,10,0,0"/>
                     <stylekit:CustomEditor x:Name="editor_desc" Margin="0,5,0,0" Placeholder="Bio, tagline, quotes, etc..."/>
                     <Label Text="Choose your theme" HorizontalOptions="Start" Margin="0,10,0,0"/>
-                    <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal" Spacing="0">
-                        <Label Text="Dark Theme" HorizontalOptions="Center">
-                            <Label.GestureRecognizers>
+                    <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal" Margin="0,5,0,0" Spacing="0">
+                        <Frame Padding="0,8,0,8" HorizontalOptions="FillAndExpand" HasShadow="False" CornerRadius="3"
+                               BackgroundColor="{DynamicResource Key=DimGray1}" BorderColor="{DynamicResource Key=Primary}">
+                            <Label Text="Dark Theme" HorizontalOptions="Center"/>
+                            <Frame.GestureRecognizers>
                                 <TapGestureRecognizer Tapped="ThemeClicked"/>
-                            </Label.GestureRecognizers>
-                        </Label>
-                        <Label Text="Light Theme" HorizontalOptions="Center">
-                            <Label.GestureRecognizers>
+                            </Frame.GestureRecognizers>
+                        </Frame>
+                        <Frame Padding="0,8,0,8" HorizontalOptions="FillAndExpand" HasShadow="False" CornerRadius="3" Margin="5,0,0,0"
+                               BackgroundColor="{DynamicResource Key=DimGray1}" BorderColor="{DynamicResource Key=Primary}">
+                            <Label Text="Light Theme" HorizontalOptions="Center"/>
+                            <Frame.GestureRecognizers>
                                 <TapGestureRecognizer Tapped="ThemeClicked"/>
-                            </Label.GestureRecognizers>
-                        </Label>
+                            </Frame.GestureRecognizers>
+                        </Frame>
                     </StackLayout>
                     <Frame Padding="0,10,0,10" CornerRadius="3" BorderColor="{DynamicResource Key=Primary}" HorizontalOptions="FillAndExpand"
                            Margin="0,20,0,0" BackgroundColor="{DynamicResource Key=Primary}" HasShadow="False" IsClippedToBounds="True">
@@ -37,7 +41,7 @@
                             <TapGestureRecognizer Tapped="CreateAccClicked"/>
                         </Frame.GestureRecognizers>
                     </Frame>
-                    <Label Text="Cancel" HorizontalOptions="Center" FontFamily="{DynamicResource Key=BoldFont}" Margin="0,30,0,0">
+                    <Label x:Name="lbl_cancel" Text="Cancel" HorizontalOptions="Center" FontFamily="{DynamicResource Key=BoldFont}" Margin="0,30,0,0">
                         <Label.GestureRecognizers>
                             <TapGestureRecognizer Tapped="CancelClicked"/>
                         </Label.GestureRecognizers>

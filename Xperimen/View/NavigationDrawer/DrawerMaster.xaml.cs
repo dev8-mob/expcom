@@ -3,6 +3,8 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using Xperimen.Model;
 using Xperimen.View.Dashboard;
+using SQLite;
+using System.Linq;
 
 namespace Xperimen.View.NavigationDrawer
 {
@@ -17,8 +19,20 @@ namespace Xperimen.View.NavigationDrawer
             InitializeComponent();
             listview = drawerMenu.listview_menu;
             listview.ItemSelected += MenuSelected;
+            var connection = new SQLiteConnection(App.DB_PATH);
 
             Detail = new NavigationPage(new MainPage());
+
+            var current = connection.Table<ClientCurrent>().ToList();
+            string query = "SELECT * FROM Clients WHERE Id = '" + current[0].UserId + "'";
+            var result = connection.Query<Clients>(query).ToList();
+            if (result.Count > 0)
+            {
+                var page = Application.Current.MainPage as NavigationPage;
+                if (result[0].AppTheme.Equals("dark")) page.BarBackgroundColor = Color.Black;
+                if (result[0].AppTheme.Equals("dim")) page.BarBackgroundColor = Color.FromHex(App.DimGray1);
+                if (result[0].AppTheme.Equals("light")) page.BarBackgroundColor = Color.White;
+            }
         }
 
         private void MenuSelected(object sender, SelectedItemChangedEventArgs e)

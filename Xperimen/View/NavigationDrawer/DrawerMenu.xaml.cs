@@ -37,8 +37,9 @@ namespace Xperimen.View.NavigationDrawer
             menulist.Add(new ItemMenu { ImageIcon = "black_user.png", Title = "Dashboard", Contentpage = typeof(MainPage) });
             menulist.Add(new ItemMenu { ImageIcon = "black_whatshot.png", Title = "Tabbed Page", Contentpage = typeof(TabbedDashboard) });
             menulist.Add(new ItemMenu { ImageIcon = "black_password.png", Title = "Page Two", Contentpage = typeof(MainPage) });
+            menulist.Add(new ItemMenu { ImageIcon = "black_money.png", Title = "Finance", Contentpage = typeof(MainPage) });
             menulist.Add(new ItemMenu { ImageIcon = "black_setting.png", Title = "Setting", Contentpage = typeof(MainSetting) });
-            menulist.Add(new ItemMenu { ImageIcon = "black_search.png", Title = "Logout", Contentpage = typeof(Logout) });
+            menulist.Add(new ItemMenu { ImageIcon = "black_logout.png", Title = "Logout", Contentpage = typeof(Logout) });
             listview.ItemsSource = menulist;
         }
 
