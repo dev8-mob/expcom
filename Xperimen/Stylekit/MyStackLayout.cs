@@ -1,7 +1,8 @@
 ﻿
 using SQLite;
+using System.Linq;
 using Xamarin.Forms;
-using Xperimen.View.Setting;
+using Xperimen.Model;
 
 namespace Xperimen.Stylekit
 {
@@ -13,10 +14,23 @@ namespace Xperimen.Stylekit
         {
             Connection = new SQLiteConnection(App.DB_PATH);
             BackgroundColor = Color.White;
-            MessagingCenter.Subscribe<MainSetting, string>(this, "SelectedTheme", (s, e) => {
-                if (e.Equals("dark")) BackgroundColor = Color.Black;
-                if (e.Equals("light")) BackgroundColor = Color.White;
-            });
+            SetupView();
+        }
+
+        public void SetupView()
+        {
+            var login = Connection.Table<ClientCurrent>().ToList();
+            if (login.Count > 0)
+            {
+                var query = "SELECT * FROM Clients WHERE Id = '" + login[0].UserId + "'";
+                var result = Connection.Query<Clients>(query).ToList();
+                if (result.Count > 0)
+                {
+                    if (result[0].AppTheme.Equals("dark")) BackgroundColor = Color.Black;
+                    if (result[0].AppTheme.Equals("dim")) BackgroundColor = Color.White;
+                    if (result[0].AppTheme.Equals("light")) BackgroundColor = Color.White;
+                }
+            }
         }
     }
 }

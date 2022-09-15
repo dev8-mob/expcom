@@ -4,12 +4,12 @@ using Xperimen.Droid.CustomRenderer;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
 
-[assembly: ExportRenderer(typeof(EditorFixedBorderless), typeof(EditorFixedBorderlessRenderer))]
+[assembly: ExportRenderer(typeof(EditorBorderless), typeof(EditorBorderlessRenderer))]
 namespace Xperimen.Droid.CustomRenderer
 {
-    public class EditorFixedBorderlessRenderer : EditorRenderer
+    public class EditorBorderlessRenderer : EditorRenderer
     {
-        public EditorFixedBorderlessRenderer(Context ctx) : base(ctx) { }
+        public EditorBorderlessRenderer(Context ctx) : base(ctx) { }
 
         protected override void OnElementChanged(ElementChangedEventArgs<Editor> e)
         {

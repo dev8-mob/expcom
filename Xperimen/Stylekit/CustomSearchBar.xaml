@@ -30,7 +30,7 @@
         </StackLayout>
 
     </Frame>
-    <StackLayout IsVisible="{Binding IsFound}" HorizontalOptions="FillAndExpand" Padding="10,5,10,5" Margin="45,0,0,0"
+    <StackLayout IsVisible="{Binding IsFound}" HorizontalOptions="FillAndExpand" Padding="10,5,10,5" Margin="45,0,15,0"
                  BackgroundColor="{DynamicResource Key=Primary}">
         <Label Text="{Binding ItemCount, StringFormat='{0} Record(s) found'}" TextColor="White" HorizontalOptions="StartAndExpand"/>
     </StackLayout>

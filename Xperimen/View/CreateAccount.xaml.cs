@@ -25,17 +25,22 @@ namespace Xperimen.View
             BindingContext = viewmodel;
 
             MessagingCenter.Subscribe<CustomDisplayAlert, string>(this, "DisplayAlertSelection", (sender, arg) =>
-            { viewmodel.IsLoading = false; });
+            { 
+                viewmodel.IsLoading = false;
+                if (arg.Equals("Okay")) Navigation.PopAsync();
+            });
         }
 
         public async void ThemeClicked(object sender, EventArgs e)
         {
-            var view = (Label)sender;
+            var view = (Frame)sender;
+            var lbl = (Label)view.Content;
             await view.ScaleTo(0.9, 50);
             view.Scale = 1;
 
-            if (view.Text.Equals("Dark Theme")) theme = "dark";
-            else if (view.Text.Equals("Light Theme")) theme = "light";
+            if (lbl.Text.Equals("Dark Theme")) theme = "dark";
+            else if (lbl.Text.Equals("Dim Theme")) theme = "dim";
+            else if (lbl.Text.Equals("Light Theme")) theme = "light";
         }
 
         public async void CreateAccClicked(object sender, EventArgs e)
@@ -48,33 +53,16 @@ namespace Xperimen.View
             var password = entry_password.GetText();
             var desc = editor_desc.GetText();
 
-            if (string.IsNullOrEmpty(username))
-            {
-                viewmodel.IsLoading = true;
-                SetDisplayAlert("Alert", "Username cannot be empty. Please choose a username.", "", "");
-                entry_username.Isfocus = true;
-            }
-            else if (string.IsNullOrEmpty(password))
-            {
-                viewmodel.IsLoading = true;
-                SetDisplayAlert("Alert", "Password cannot be empty. Please insert your password.", "", "");
-                entry_password.Isfocus = true;
-            }
-            else if (string.IsNullOrEmpty(desc))
-            {
-                viewmodel.IsLoading = true;
-                SetDisplayAlert("Alert", "Please provide any description about you.", "", "");
-                editor_desc.Isfocus = true;
-            }
+            viewmodel.IsLoading = true;
+            if (string.IsNullOrEmpty(username)) SetDisplayAlert("Alert", "Username cannot be empty. Please choose a username.", "", "");
+            else if (string.IsNullOrEmpty(password)) SetDisplayAlert("Alert", "Password cannot be empty. Please insert your password.", "", "");
+            else if (string.IsNullOrEmpty(desc)) SetDisplayAlert("Alert", "Please provide any description about you.", "", "");
+            else if (string.IsNullOrEmpty(theme)) SetDisplayAlert("Alert", "Please choose application theme.", "", "");
             else
             {
                 string query = "SELECT * FROM Clients WHERE Username = '" + username + "'";
                 var result = connection.Query<Clients>(query).ToList();
-                if (result.Count > 0)
-                {
-                    viewmodel.IsLoading = true;
-                    SetDisplayAlert("Alert", "The username is already exist. Please choose different username.", "", "");
-                }
+                if (result.Count > 0) SetDisplayAlert("Alert", "The username is already exist. Please choose different username.", "", "");
                 else
                 {
                     var data = new Clients
@@ -86,8 +74,8 @@ namespace Xperimen.View
                         AppTheme = theme
                     };
                     connection.Insert(data);
-                    await DisplayAlert("Success", "Successfully created your account.", "OK");
-                    await Navigation.PopAsync();
+                    SetDisplayAlert("Success", "Successfully created your account.", "", "Okay");
+                    lbl_cancel.Text = "Go To Login";
                 }
             }
         }

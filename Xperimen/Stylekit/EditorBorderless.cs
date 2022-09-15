@@ -2,14 +2,15 @@
 
 namespace Xperimen.Stylekit
 {
-    public class EditorFixedBorderless : Editor
+    public class EditorBorderless : Editor
     {
-        public EditorFixedBorderless()
+        public EditorBorderless()
         {
             FontSize = 14;
             TextColor = Color.Black;
             HorizontalOptions = LayoutOptions.FillAndExpand;
-            HeightRequest = 50;
+            HeightRequest = 85;
+            //TextChanged += (sender, e) => { InvalidateMeasure(); };
         }
     }
 }

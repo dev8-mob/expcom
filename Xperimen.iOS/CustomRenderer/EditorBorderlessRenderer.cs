@@ -4,10 +4,10 @@ using UIKit;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.iOS;
 
-[assembly: ExportRenderer(typeof(EditorFixedBorderless), typeof(EditorFixedBorderlessRenderer))]
+[assembly: ExportRenderer(typeof(EditorBorderless), typeof(EditorBorderlessRenderer))]
 namespace Xperimen.iOS.CustomRenderer
 {
-    public class EditorFixedBorderlessRenderer : EditorRenderer
+    public class EditorBorderlessRenderer : EditorRenderer
     {
         protected override void OnElementChanged(ElementChangedEventArgs<Editor> e)
         {

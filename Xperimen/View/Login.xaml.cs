@@ -36,21 +36,11 @@ namespace Xperimen.View
             var user = entry_username.GetText();
             var password = entry_password.GetText();
 
-            if (string.IsNullOrEmpty(user))
-            {
-                viewmodel.IsLoading = true;
-                SetDisplayAlert("Alert", "Please insert your username.", "", "");
-                entry_username.Isfocus = true;
-            }
-            else if (string.IsNullOrEmpty(password))
-            {
-                viewmodel.IsLoading = true;
-                SetDisplayAlert("Alert", "Please insert your password.", "", "");
-                entry_password.Isfocus = true;
-            }
+            viewmodel.IsLoading = true;
+            if (string.IsNullOrEmpty(user)) SetDisplayAlert("Alert", "Please insert your username.", "", "");
+            else if (string.IsNullOrEmpty(password)) SetDisplayAlert("Alert", "Please insert your password.", "", "");
             else
             {
-                viewmodel.IsLoading = true;
                 string query = "SELECT * FROM Clients WHERE Username = '" + user + "' AND Password = '" + password + "'";
                 var result = connection.Query<Clients>(query).ToList();
                 if (result.Count > 0)
@@ -63,6 +53,7 @@ namespace Xperimen.View
                     };
                     connection.DeleteAll<ClientCurrent>();
                     connection.Insert(login);
+
                     Application.Current.MainPage = new NavigationPage(new DrawerMaster());
                 }
                 else
@@ -73,13 +64,8 @@ namespace Xperimen.View
                     {
                         SetDisplayAlert("Alert", "Your password is incorrect. Please insert the correct password.", "", "");
                         entry_password.Text = string.Empty;
-                        entry_password.Isfocus = true;
                     }
-                    else
-                    {
-                        SetDisplayAlert("Alert", "The username is not found.", "", "");
-                        entry_username.Isfocus = true;
-                    }
+                    else SetDisplayAlert("Alert", "The username is not found.", "", "");
                 }
             }
         }
