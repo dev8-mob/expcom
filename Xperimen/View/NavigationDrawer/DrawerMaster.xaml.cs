@@ -21,7 +21,7 @@ namespace Xperimen.View.NavigationDrawer
             listview.ItemSelected += MenuSelected;
             var connection = new SQLiteConnection(App.DB_PATH);
 
-            Detail = new NavigationPage(new MainPage());
+            Detail = new NavigationPage(new TabbedDashboard());
 
             var current = connection.Table<ClientCurrent>().ToList();
             string query = "SELECT * FROM Clients WHERE Id = '" + current[0].UserId + "'";

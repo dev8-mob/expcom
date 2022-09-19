@@ -13,6 +13,7 @@
             <Color x:Key="CustomYellow">#DEAF14</Color>
             <Color x:Key="CustomBlue">#01A9DB</Color>
             <Color x:Key="LabelTextColor">#666666</Color>
+            <Color x:Key="SlateGray">#708090</Color>
             <OnPlatform x:TypeArguments="x:String" x:Key="NormalFont">
                 <On Platform="Android" Value="Ubuntu-Regular.ttf#Ubuntu Regular" />
                 <On Platform="iOS" Value="Ubuntu-Regular" />
