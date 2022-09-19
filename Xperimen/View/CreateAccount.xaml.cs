@@ -38,9 +38,36 @@ namespace Xperimen.View
             await view.ScaleTo(0.9, 50);
             view.Scale = 1;
 
-            if (lbl.Text.Equals("Dark Theme")) theme = "dark";
-            else if (lbl.Text.Equals("Dim Theme")) theme = "dim";
-            else if (lbl.Text.Equals("Light Theme")) theme = "light";
+            if (lbl.Text.Equals("Dark Theme"))
+            {
+                theme = "dark";
+                frame_dark.BackgroundColor = Color.White;
+                frame_dim.BackgroundColor = Color.FromHex(App.DimGray2);
+                frame_light.BackgroundColor = Color.FromHex(App.DimGray2);
+                frame_dark.BorderColor = Color.FromHex(App.Primary);
+                frame_dim.BorderColor = Color.Black;
+                frame_light.BorderColor = Color.Black;
+            }
+            else if (lbl.Text.Equals("Dim Theme"))
+            {
+                theme = "dim";
+                frame_dark.BackgroundColor = Color.FromHex(App.DimGray2);
+                frame_dim.BackgroundColor = Color.White;
+                frame_light.BackgroundColor = Color.FromHex(App.DimGray2);
+                frame_dark.BorderColor = Color.Black;
+                frame_dim.BorderColor = Color.FromHex(App.Primary);
+                frame_light.BorderColor = Color.Black;
+            }
+            else if (lbl.Text.Equals("Light Theme"))
+            {
+                theme = "light";
+                frame_dark.BackgroundColor = Color.FromHex(App.DimGray2);
+                frame_dim.BackgroundColor = Color.FromHex(App.DimGray2);
+                frame_light.BackgroundColor = Color.White;
+                frame_dark.BorderColor = Color.Black;
+                frame_dim.BorderColor = Color.Black;
+                frame_light.BorderColor = Color.FromHex(App.Primary);
+            }
         }
 
         public async void CreateAccClicked(object sender, EventArgs e)

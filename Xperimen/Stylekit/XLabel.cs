@@ -6,14 +6,15 @@ using Xperimen.Model;
 
 namespace Xperimen.Stylekit
 {
-    public class MyStackLayout : StackLayout
+    public class XLabel : Label
     {
         public SQLiteConnection Connection;
 
-        public MyStackLayout()
+        public XLabel()
         {
             Connection = new SQLiteConnection(App.DB_PATH);
-            BackgroundColor = Color.White;
+            FontFamily = "Ubuntu-Regular.ttf";
+            TextColor = (Color)Application.Current.Resources["LabelTextColor"];
             SetupView();
         }
 
@@ -26,9 +27,9 @@ namespace Xperimen.Stylekit
                 var result = Connection.Query<Clients>(query).ToList();
                 if (result.Count > 0)
                 {
-                    if (result[0].AppTheme.Equals("dark")) BackgroundColor = Color.Black;
-                    if (result[0].AppTheme.Equals("dim")) BackgroundColor = Color.White;
-                    if (result[0].AppTheme.Equals("light")) BackgroundColor = Color.White;
+                    if (result[0].AppTheme.Equals("dark")) TextColor = Color.White;
+                    if (result[0].AppTheme.Equals("dim")) TextColor = Color.Black;
+                    if (result[0].AppTheme.Equals("light")) TextColor = (Color)Application.Current.Resources["LabelTextColor"];
                 }
             }
         }
