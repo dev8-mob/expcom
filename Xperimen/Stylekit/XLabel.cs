@@ -1,5 +1,6 @@
 ﻿
 using SQLite;
+using System;
 using System.Linq;
 using Xamarin.Forms;
 using Xperimen.Model;
@@ -13,7 +14,10 @@ namespace Xperimen.Stylekit
         public XLabel()
         {
             Connection = new SQLiteConnection(App.DB_PATH);
-            FontFamily = "Ubuntu-Regular.ttf";
+            //if (Device.RuntimePlatform == Device.iOS) 
+            //    FontFamily = "Ubuntu-Regular";
+            //else if (Device.RuntimePlatform == Device.Android) 
+            //    FontFamily = "Ubuntu-Regular.ttf#Ubuntu Regular";
             TextColor = (Color)Application.Current.Resources["LabelTextColor"];
             SetupView();
         }
@@ -27,7 +31,7 @@ namespace Xperimen.Stylekit
                 var result = Connection.Query<Clients>(query).ToList();
                 if (result.Count > 0)
                 {
-                    if (result[0].AppTheme.Equals("dark")) TextColor = Color.White;
+                    if (result[0].AppTheme.Equals("dark")) TextColor = (Color)Application.Current.Resources["LabelTextColor"];
                     if (result[0].AppTheme.Equals("dim")) TextColor = Color.Black;
                     if (result[0].AppTheme.Equals("light")) TextColor = (Color)Application.Current.Resources["LabelTextColor"];
                 }
