@@ -1,6 +1,7 @@
 ﻿
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using Xperimen.View;
 
 namespace Xperimen.Stylekit
 {
@@ -49,6 +50,42 @@ namespace Xperimen.Stylekit
             InitializeComponent();
             editor.Focused += Editor_Focused;
             editor.Unfocused += Editor_Unfocused;
+            SetupView();
+
+            MessagingCenter.Subscribe<CreateAccount>(this, "AppThemeUpdated", (sender) =>
+            { SetupView(); });
+        }
+
+        public void SetupView()
+        {
+            if (Application.Current.Properties.ContainsKey("app_theme"))
+            {
+                var theme = Application.Current.Properties["app_theme"] as string;
+                if (theme.Equals("dark"))
+                {
+                    editor.TextColor = Color.White;
+                    BackgroundColor = Color.Black;
+                    editor.PlaceholderColor = Color.White;
+                }
+                if (theme.Equals("dim"))
+                {
+                    editor.TextColor = Color.Default;
+                    BackgroundColor = Color.SlateGray;
+                    editor.PlaceholderColor = Color.Default;
+                }
+                if (theme.Equals("light"))
+                {
+                    editor.TextColor = Color.Default;
+                    BackgroundColor = Color.FromHex(App.DimGray2);
+                    editor.PlaceholderColor = Color.Default;
+                }
+            }
+            else
+            {
+                editor.TextColor = Color.Default;
+                BackgroundColor = Color.FromHex(App.DimGray2);
+                editor.PlaceholderColor = Color.Default;
+            }
         }
 
         private void Editor_Focused(object sender, FocusEventArgs e)
@@ -56,7 +93,13 @@ namespace Xperimen.Stylekit
             if (e.IsFocused)
             {
                 line.BackgroundColor = Color.FromHex(App.Primary);
-                BackgroundColor = Color.White;
+                if (Application.Current.Properties.ContainsKey("app_theme"))
+                {
+                    var theme = Application.Current.Properties["app_theme"] as string;
+                    if (theme.Equals("dark")) BackgroundColor = Color.FromHex(App.SlateGray);
+                    else BackgroundColor = Color.White;
+                }
+                else BackgroundColor = Color.White;
             }
         }
 
@@ -65,7 +108,14 @@ namespace Xperimen.Stylekit
             if (!e.IsFocused)
             {
                 line.BackgroundColor = Color.DarkGray;
-                BackgroundColor = Color.FromHex(App.DimGray2);
+                if (Application.Current.Properties.ContainsKey("app_theme"))
+                {
+                    var theme = Application.Current.Properties["app_theme"] as string;
+                    if (theme.Equals("dark")) BackgroundColor = Color.Black;
+                    if (theme.Equals("dim")) BackgroundColor = Color.SlateGray;
+                    if (theme.Equals("light")) BackgroundColor = Color.FromHex(App.DimGray2);
+                }
+                else BackgroundColor = Color.FromHex(App.DimGray2);
             }
         }
     }

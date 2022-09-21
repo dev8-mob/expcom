@@ -27,7 +27,7 @@ namespace Xperimen.View
             { viewmodel.IsLoading = false; });
         }
 
-        public async void SubmitClicked(object sender, EventArgs e)
+        public async void LoginClicked(object sender, EventArgs e)
         {
             var view = (Frame)sender;
             await view.ScaleTo(0.9, 50);
@@ -45,15 +45,8 @@ namespace Xperimen.View
                 var result = connection.Query<Clients>(query).ToList();
                 if (result.Count > 0)
                 {
-                    var login = new ClientCurrent
-                    {
-                        UserId = result[0].Id,
-                        Username = result[0].Username,
-                        Description = result[0].Description
-                    };
-                    connection.DeleteAll<ClientCurrent>();
-                    connection.Insert(login);
-
+                    Application.Current.Properties["current_login"] = result[0].Id;
+                    await Application.Current.SavePropertiesAsync();
                     Application.Current.MainPage = new NavigationPage(new DrawerMaster());
                 }
                 else

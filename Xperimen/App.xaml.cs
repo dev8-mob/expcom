@@ -25,13 +25,9 @@ namespace Xperimen
             InitializeComponent();
             DB_PATH = sql_path;
             var connection = new SQLiteConnection(DB_PATH);
-
             connection.CreateTable<Clients>();
-            connection.CreateTable<ClientCurrent>();
 
-            connection.DeleteAll<Clients>();
-            var login = connection.Table<ClientCurrent>().ToList();
-            if (login.Count > 0) Current.MainPage = new NavigationPage(new DrawerMaster());
+            if (Current.Properties.ContainsKey("current_login")) Current.MainPage = new NavigationPage(new DrawerMaster());
             else MainPage = new NavigationPage(new Login());
         }
 

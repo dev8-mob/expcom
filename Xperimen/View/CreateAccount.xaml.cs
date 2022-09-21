@@ -38,34 +38,44 @@ namespace Xperimen.View
             await view.ScaleTo(0.9, 50);
             view.Scale = 1;
 
+            var apptheme = "light";
+            if (Application.Current.Properties.ContainsKey("app_theme"))
+                apptheme = Application.Current.Properties["app_theme"] as string;
+
             if (lbl.Text.Equals("Dark Theme"))
             {
                 theme = "dark";
-                frame_dark.BackgroundColor = Color.White;
-                frame_dim.BackgroundColor = Color.FromHex(App.DimGray2);
-                frame_light.BackgroundColor = Color.FromHex(App.DimGray2);
+                if (apptheme.Equals("dark")) frame_dark.BackgroundColor = Color.FromHex(App.SlateGray);
+                else if (apptheme.Equals("dim")) frame_dark.BackgroundColor = Color.White;
+                else if (apptheme.Equals("light")) frame_dark.BackgroundColor = Color.FromHex(App.DimGray2);
+                frame_dim.BackgroundColor = Color.Transparent;
+                frame_light.BackgroundColor = Color.Transparent;
                 frame_dark.BorderColor = Color.FromHex(App.Primary);
-                frame_dim.BorderColor = Color.Black;
-                frame_light.BorderColor = Color.Black;
+                frame_dim.BorderColor = Color.DarkGray;
+                frame_light.BorderColor = Color.DarkGray;
             }
             else if (lbl.Text.Equals("Dim Theme"))
             {
                 theme = "dim";
-                frame_dark.BackgroundColor = Color.FromHex(App.DimGray2);
-                frame_dim.BackgroundColor = Color.White;
-                frame_light.BackgroundColor = Color.FromHex(App.DimGray2);
-                frame_dark.BorderColor = Color.Black;
+                frame_dark.BackgroundColor = Color.Transparent;
+                if (apptheme.Equals("dark")) frame_dim.BackgroundColor = Color.FromHex(App.SlateGray);
+                else if (apptheme.Equals("dim")) frame_dim.BackgroundColor = Color.White;
+                else if (apptheme.Equals("light")) frame_dim.BackgroundColor = Color.FromHex(App.DimGray2);
+                frame_light.BackgroundColor = Color.Transparent;
+                frame_dark.BorderColor = Color.DarkGray;
                 frame_dim.BorderColor = Color.FromHex(App.Primary);
-                frame_light.BorderColor = Color.Black;
+                frame_light.BorderColor = Color.DarkGray;
             }
             else if (lbl.Text.Equals("Light Theme"))
             {
                 theme = "light";
-                frame_dark.BackgroundColor = Color.FromHex(App.DimGray2);
-                frame_dim.BackgroundColor = Color.FromHex(App.DimGray2);
-                frame_light.BackgroundColor = Color.White;
-                frame_dark.BorderColor = Color.Black;
-                frame_dim.BorderColor = Color.Black;
+                frame_dark.BackgroundColor = Color.Transparent;
+                frame_dim.BackgroundColor = Color.Transparent;
+                if (apptheme.Equals("dark")) frame_light.BackgroundColor = Color.FromHex(App.SlateGray);
+                else if (apptheme.Equals("dim")) frame_light.BackgroundColor = Color.White;
+                else if (apptheme.Equals("light")) frame_light.BackgroundColor = Color.FromHex(App.DimGray2);
+                frame_dark.BorderColor = Color.DarkGray;
+                frame_dim.BorderColor = Color.DarkGray;
                 frame_light.BorderColor = Color.FromHex(App.Primary);
             }
         }
@@ -97,11 +107,21 @@ namespace Xperimen.View
                         Id = Guid.NewGuid().ToString(),
                         Username = username,
                         Password = password,
-                        Description = desc,
-                        AppTheme = theme
+                        Description = desc
                     };
                     connection.Insert(data);
+                    Application.Current.Properties["app_theme"] = theme;
+                    await Application.Current.SavePropertiesAsync();
+                    MessagingCenter.Send(this, "AppThemeUpdated");
+
                     SetDisplayAlert("Success", "Successfully created your account.", "", "Okay");
+                    theme = string.Empty;
+                    frame_dark.BackgroundColor = Color.Transparent;
+                    frame_dim.BackgroundColor = Color.Transparent;
+                    frame_light.BackgroundColor = Color.Transparent;
+                    frame_dark.BorderColor = Color.DarkGray;
+                    frame_dim.BorderColor = Color.DarkGray;
+                    frame_light.BorderColor = Color.DarkGray;
                     lbl_cancel.Text = "Go To Login";
                 }
             }

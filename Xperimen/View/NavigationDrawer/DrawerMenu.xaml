@@ -2,18 +2,19 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Xperimen.View.NavigationDrawer.DrawerMenu"
-             BackgroundColor="White" Title="☰">
+             xmlns:stylekit="clr-namespace:Xperimen.Stylekit"
+             Title="☰">
     
     <ContentPage.Content>
 
-        <StackLayout Orientation="Vertical" Spacing="0">
+        <stylekit:XStacklayout Orientation="Vertical" Spacing="0">
 
-            <StackLayout BackgroundColor="White" HorizontalOptions="FillAndExpand" Orientation="Horizontal">
-                <Image x:Name="img_logo" Source="black_whatshot.png" WidthRequest="60" HeightRequest="60" Aspect="AspectFit"
-                       HorizontalOptions="Start" VerticalOptions="Center" Margin="20"/>
+            <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal">
+                <stylekit:XImage x:Name="img_logo" Source1="black_whatshot.png" Source2="white_whatshot.png" WidthRequest="60" HeightRequest="60" 
+                                 Aspect="AspectFit" HorizontalOptions="Start" VerticalOptions="Center" Margin="20"/>
                 <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
-                    <Label x:Name="lbl_name" Text="-" FontFamily="{DynamicResource Key=BoldFont}" TextColor="Black"/>
-                    <Label x:Name="lbl_desc" Text="-"/>
+                    <stylekit:XLabel x:Name="lbl_name" Text="-" FontFamily="{DynamicResource Key=BoldFont}"/>
+                    <stylekit:XLabel x:Name="lbl_desc" Text="-" />
                 </StackLayout>
                 <StackLayout.Padding>
                     <OnPlatform x:TypeArguments="Thickness" Android="0" iOS="0,25,0,0"/>
@@ -22,22 +23,22 @@
                     <TapGestureRecognizer Tapped="OnHeaderTapped"/>
                 </StackLayout.GestureRecognizers>
             </StackLayout>
-
             <BoxView HorizontalOptions="FillAndExpand" HeightRequest="2" BackgroundColor="DarkGray"/>
             <ListView x:Name="listview" HasUnevenRows="True" SeparatorVisibility="None" BackgroundColor="{DynamicResource DimGray}">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
-                            <StackLayout Orientation="Horizontal">
-                                <Image Source="{Binding ImageIcon}" HorizontalOptions="Start" HeightRequest="30" WidthRequest="30" Margin="20,15,20,15" VerticalOptions="Center"/>
-                                <Label Text="{Binding Title}" HorizontalOptions="StartAndExpand" VerticalOptions="Center"/>
-                            </StackLayout>
+                            <stylekit:XStacklayout Orientation="Horizontal">
+                                <stylekit:XImage Source1="{Binding ImageIcon1}" Source2="{Binding ImageIcon2}" HorizontalOptions="Start" 
+                                                 HeightRequest="30" WidthRequest="30" Margin="20,15,20,15" VerticalOptions="Center"/>
+                                <stylekit:XLabel Text="{Binding Title}" HorizontalOptions="StartAndExpand" VerticalOptions="Center"/>
+                            </stylekit:XStacklayout>
                         </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
 
-        </StackLayout>
+        </stylekit:XStacklayout>
 
     </ContentPage.Content>
     
