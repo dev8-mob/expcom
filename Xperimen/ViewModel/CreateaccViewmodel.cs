@@ -1,4 +1,7 @@
-﻿using System.Windows.Input;
+﻿using SQLite;
+using System;
+using System.Linq;
+using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xperimen.Model;
 
@@ -9,8 +12,8 @@ namespace Xperimen.ViewModel
         #region properties
         string _username;
         string _password;
-        string _datastring;
-        bool _success;
+        string _description;
+        string _theme;
 
         public string Username
         {
@@ -22,16 +25,44 @@ namespace Xperimen.ViewModel
             get { return _password; }
             set { _password = value; OnPropertyChanged(); }
         }
-        public string DataString
+        public string Description
         {
-            get { return _datastring; }
-            set { _datastring = value; OnPropertyChanged(); }
+            get { return _description; }
+            set { _description = value; OnPropertyChanged(); }
         }
-        public bool Success
+        public string Theme
         {
-            get { return _success; }
-            set { _success = value; OnPropertyChanged(); }
+            get { return _theme; }
+            set { _theme = value; OnPropertyChanged(); }
         }
         #endregion
+
+        public SQLiteConnection connection;
+
+        public CreateaccViewmodel()
+        {
+            connection = new SQLiteConnection(App.DB_PATH);
+        }
+
+        public async Task<int> CreateAccount()
+        {
+            string query = "SELECT * FROM Clients WHERE Username = '" + Username + "'";
+            var result = connection.Query<Clients>(query).ToList();
+            if (result.Count > 0) return 1;
+            else
+            {
+                var data = new Clients
+                {
+                    Id = Guid.NewGuid().ToString(),
+                    Username = Username,
+                    Password = Password,
+                    Description = Description
+                };
+                connection.Insert(data);
+                Application.Current.Properties["app_theme"] = Theme;
+                await Application.Current.SavePropertiesAsync();
+                return 2;
+            }
+        }
     }
 }

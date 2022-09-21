@@ -1,12 +1,9 @@
 ﻿
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-using Xperimen.Model;
 using Xperimen.Stylekit;
 using Xperimen.ViewModel;
-using SQLite;
 using System;
-using System.Linq;
 
 namespace Xperimen.View
 {
@@ -14,14 +11,11 @@ namespace Xperimen.View
     public partial class CreateAccount : ContentPage
     {
         public CreateaccViewmodel viewmodel;
-        public SQLiteConnection connection;
-        public string theme;
 
         public CreateAccount()
         {
             InitializeComponent();
             viewmodel = new CreateaccViewmodel();
-            connection = new SQLiteConnection(App.DB_PATH);
             BindingContext = viewmodel;
 
             MessagingCenter.Subscribe<CustomDisplayAlert, string>(this, "DisplayAlertSelection", (sender, arg) =>
@@ -44,7 +38,7 @@ namespace Xperimen.View
 
             if (lbl.Text.Equals("Dark Theme"))
             {
-                theme = "dark";
+                viewmodel.Theme = "dark";
                 if (apptheme.Equals("dark")) frame_dark.BackgroundColor = Color.FromHex(App.SlateGray);
                 else if (apptheme.Equals("dim")) frame_dark.BackgroundColor = Color.White;
                 else if (apptheme.Equals("light")) frame_dark.BackgroundColor = Color.FromHex(App.DimGray2);
@@ -56,7 +50,7 @@ namespace Xperimen.View
             }
             else if (lbl.Text.Equals("Dim Theme"))
             {
-                theme = "dim";
+                viewmodel.Theme = "dim";
                 frame_dark.BackgroundColor = Color.Transparent;
                 if (apptheme.Equals("dark")) frame_dim.BackgroundColor = Color.FromHex(App.SlateGray);
                 else if (apptheme.Equals("dim")) frame_dim.BackgroundColor = Color.White;
@@ -68,7 +62,7 @@ namespace Xperimen.View
             }
             else if (lbl.Text.Equals("Light Theme"))
             {
-                theme = "light";
+                viewmodel.Theme = "light";
                 frame_dark.BackgroundColor = Color.Transparent;
                 frame_dim.BackgroundColor = Color.Transparent;
                 if (apptheme.Equals("dark")) frame_light.BackgroundColor = Color.FromHex(App.SlateGray);
@@ -94,28 +88,16 @@ namespace Xperimen.View
             if (string.IsNullOrEmpty(username)) SetDisplayAlert("Alert", "Username cannot be empty. Please choose a username.", "", "");
             else if (string.IsNullOrEmpty(password)) SetDisplayAlert("Alert", "Password cannot be empty. Please insert your password.", "", "");
             else if (string.IsNullOrEmpty(desc)) SetDisplayAlert("Alert", "Please provide any description about you.", "", "");
-            else if (string.IsNullOrEmpty(theme)) SetDisplayAlert("Alert", "Please choose application theme.", "", "");
+            else if (string.IsNullOrEmpty(viewmodel.Theme)) SetDisplayAlert("Alert", "Please choose application theme.", "", "");
             else
             {
-                string query = "SELECT * FROM Clients WHERE Username = '" + username + "'";
-                var result = connection.Query<Clients>(query).ToList();
-                if (result.Count > 0) SetDisplayAlert("Alert", "The username is already exist. Please choose different username.", "", "");
-                else
+                var result = await viewmodel.CreateAccount();
+                if (result == 1) SetDisplayAlert("Alert", "The username is already exist. Please choose different username.", "", "");
+                else if (result == 2)
                 {
-                    var data = new Clients
-                    {
-                        Id = Guid.NewGuid().ToString(),
-                        Username = username,
-                        Password = password,
-                        Description = desc
-                    };
-                    connection.Insert(data);
-                    Application.Current.Properties["app_theme"] = theme;
-                    await Application.Current.SavePropertiesAsync();
                     MessagingCenter.Send(this, "AppThemeUpdated");
-
                     SetDisplayAlert("Success", "Successfully created your account.", "", "Okay");
-                    theme = string.Empty;
+                    viewmodel.Theme = string.Empty;
                     frame_dark.BackgroundColor = Color.Transparent;
                     frame_dim.BackgroundColor = Color.Transparent;
                     frame_light.BackgroundColor = Color.Transparent;

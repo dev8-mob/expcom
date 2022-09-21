@@ -1,10 +1,8 @@
 ﻿using System;
 using System.Collections.ObjectModel;
-using System.ComponentModel;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
-using Xperimen.Helper;
 using Xperimen.Model;
 
 namespace Xperimen.ViewModel.Dashboard
