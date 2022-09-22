@@ -73,6 +73,7 @@
             <stylekit:CustomDisplayAlert x:Name="alert" IsVisible="False"/>
 
         </AbsoluteLayout>
+        
     </ContentPage.Content>
     
 </ContentPage>

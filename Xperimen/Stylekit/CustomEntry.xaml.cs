@@ -2,7 +2,7 @@
 using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-using Xperimen.View;
+using Xperimen.ViewModel;
 
 namespace Xperimen.Stylekit
 {
@@ -184,7 +184,19 @@ namespace Xperimen.Stylekit
             entry.IsPassword = Ispassword;
             SetupView();
 
-            MessagingCenter.Subscribe<CreateAccount>(this, "AppThemeUpdated", (sender) =>
+            MessagingCenter.Subscribe<CreateaccViewmodel>(this, "AppThemeUpdated", (sender) =>
+            {
+                try
+                {
+                    UpdateImgLeft(ImgLeft);
+                    UpdateImgLeft_(ImgLeft_);
+                    UpdateImgRight(ImgRight);
+                    UpdateImgRight_(ImgRight_);
+                    SetupView();
+                }
+                catch (Exception ex) { var error = ex.Message; }
+            });
+            MessagingCenter.Subscribe<LoginViewmodel>(this, "AppThemeUpdated", (sender) =>
             {
                 try
                 {

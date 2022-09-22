@@ -59,11 +59,13 @@ namespace Xperimen.ViewModel
                     Id = Guid.NewGuid().ToString(),
                     Username = Username,
                     Password = Password,
-                    Description = Description
+                    Description = Description,
+                    AppTheme = Theme
                 };
                 connection.Insert(data);
                 Application.Current.Properties["app_theme"] = Theme;
                 await Application.Current.SavePropertiesAsync();
+                MessagingCenter.Send(this, "AppThemeUpdated");
                 Username = string.Empty;
                 Password = string.Empty;
                 Description = string.Empty;

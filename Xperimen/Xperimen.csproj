@@ -23,7 +23,6 @@
     <Folder Include="ViewModel\HumanResource\" />
     <Folder Include="ViewModel\Media\" />
     <Folder Include="ViewModel\NavigationDrawer\" />
-    <Folder Include="ViewModel\Setting\" />
     <Folder Include="ViewModel\Staff\" />
     <Folder Include="ViewModel\Sales\" />
     <Folder Include="View\Media\" />
