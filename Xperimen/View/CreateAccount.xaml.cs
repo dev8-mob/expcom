@@ -91,7 +91,6 @@ namespace Xperimen.View
                 if (result == 1) SetDisplayAlert("Alert", "The username is already exist. Please choose different username.", "", "");
                 else if (result == 2)
                 {
-                    MessagingCenter.Send(this, "AppThemeUpdated");
                     SetDisplayAlert("Success", "Successfully created your account.", "", "Okay");
                     frame_dark.BackgroundColor = Color.Transparent;
                     frame_dim.BackgroundColor = Color.Transparent;

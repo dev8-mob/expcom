@@ -1,7 +1,7 @@
 ﻿
 using SQLite;
 using Xamarin.Forms;
-using Xperimen.View;
+using Xperimen.ViewModel;
 
 namespace Xperimen.Stylekit
 {
@@ -17,8 +17,8 @@ namespace Xperimen.Stylekit
             else if (Device.RuntimePlatform == Device.iOS) FontFamily = "Ubuntu-Regular.ttf";
             SetupView();
 
-            MessagingCenter.Subscribe<CreateAccount>(this, "AppThemeUpdated", (sender) =>
-            { SetupView(); });
+            MessagingCenter.Subscribe<CreateaccViewmodel>(this, "AppThemeUpdated", (sender) => { SetupView(); });
+            MessagingCenter.Subscribe<LoginViewmodel>(this, "AppThemeUpdated", (sender) => { SetupView(); });
         }
 
         public void SetupView()

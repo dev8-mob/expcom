@@ -26,7 +26,6 @@ namespace Xperimen.ViewModel
         }
         #endregion
 
-        public ICommand DoLogin { get; set; }
         public SQLiteConnection connection;
 
         public LoginViewmodel()
@@ -43,7 +42,9 @@ namespace Xperimen.ViewModel
             if (result.Count > 0)
             {
                 Application.Current.Properties["current_login"] = result[0].Id;
+                Application.Current.Properties["app_theme"] = result[0].AppTheme;
                 await Application.Current.SavePropertiesAsync();
+                MessagingCenter.Send(this, "AppThemeUpdated");
                 return 1;
             }
             else

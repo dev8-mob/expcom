@@ -1,7 +1,7 @@
 ﻿
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-using Xperimen.View;
+using Xperimen.ViewModel;
 
 namespace Xperimen.Stylekit
 {
@@ -51,8 +51,8 @@ namespace Xperimen.Stylekit
             editor.Unfocused += Editor_Unfocused;
             SetupView();
 
-            MessagingCenter.Subscribe<CreateAccount>(this, "AppThemeUpdated", (sender) =>
-            { SetupView(); });
+            MessagingCenter.Subscribe<CreateaccViewmodel>(this, "AppThemeUpdated", (sender) => { SetupView(); });
+            MessagingCenter.Subscribe<LoginViewmodel>(this, "AppThemeUpdated", (sender) => { SetupView(); });
         }
 
         public void SetupView()
