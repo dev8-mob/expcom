@@ -21,32 +21,20 @@ namespace Xperimen.View.NavigationDrawer
             var connection = new SQLiteConnection(App.DB_PATH);
 
             Detail = new NavigationPage(new TabbedDashboard());
-
-            if (Application.Current.Properties.ContainsKey("app_theme"))
-            {
-                var theme = Application.Current.Properties["app_theme"];
-                var page = Application.Current.MainPage as NavigationPage;
-                try
-                {
-                    if (theme.Equals("dark")) page.BarBackgroundColor = Color.Black;
-                    if (theme.Equals("dim")) page.BarBackgroundColor = Color.SlateGray;
-                    if (theme.Equals("light")) page.BarBackgroundColor = Color.Transparent;
-                }
-                catch (Exception ex)
-                {
-                    var error = ex.Message;
-                }
-            }
         }
 
-        private void MenuSelected(object sender, SelectedItemChangedEventArgs e)
+        private async void MenuSelected(object sender, SelectedItemChangedEventArgs e)
         {
             if (e.SelectedItem != null)
             {
                 var item = (ItemMenu)e.SelectedItem;
                 Type page = item.Contentpage;
                 var openPage = (Page)Activator.CreateInstance(page);
-                Detail = new NavigationPage(openPage);
+
+                IsPresented = false;
+                if (item.Title.Equals("Setting")) await Navigation.PushAsync(openPage);
+                else Detail = new NavigationPage(openPage);
+                ((ListView)sender).SelectedItem = null;
 
                 #region old code
                 //Detail = new NavigationPage(openPage);
@@ -56,9 +44,6 @@ namespace Xperimen.View.NavigationDrawer
                 //if (item.PageTitle.Equals("Home")) Detail = new NavigationPage(openPage);
                 //else Navigation.PushAsync(openPage);
                 #endregion
-
-                IsPresented = false;
-                ((ListView)sender).SelectedItem = null;
             }
         }
     }

@@ -14,6 +14,7 @@
             <Color x:Key="CustomBlue">#01A9DB</Color>
             <Color x:Key="LabelTextColor">#666666</Color>
             <Color x:Key="SlateGray">#708090</Color>
+            <Color x:Key="ThemeBlack">#000000</Color>
             <OnPlatform x:TypeArguments="x:String" x:Key="NormalFont">
                 <On Platform="Android" Value="Ubuntu-Regular.ttf#Ubuntu Regular" />
                 <On Platform="iOS" Value="Ubuntu-Regular" />
