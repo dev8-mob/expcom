@@ -2,7 +2,6 @@
 <Frame xmlns="http://xamarin.com/schemas/2014/forms"
        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
        x:Class="Xperimen.Stylekit.CustomEntry"
-       xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
        xmlns:stylekit="clr-namespace:Xperimen.Stylekit" 
        HorizontalOptions="FillAndExpand" BorderColor="DarkGray" 
        HasShadow="False" CornerRadius="3" BackgroundColor="{DynamicResource Key=DimGray2}"
@@ -12,12 +11,7 @@
         <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal" Spacing="0" Padding="15,0,15,0">
             <Image x:Name="img_left" HeightRequest="30" WidthRequest="30" Aspect="AspectFit" IsVisible="False"
                    HorizontalOptions="Start" VerticalOptions="Center"/>
-            <stylekit:EntryBorderless x:Name="entry">
-                <Entry.Behaviors>
-                    <xct:UserStoppedTypingBehavior Command="{Binding FinishType}" StoppedTypingTimeThreshold="1000"
-                                                   MinimumLengthThreshold="2" />
-                </Entry.Behaviors>
-            </stylekit:EntryBorderless>
+            <stylekit:EntryBorderless x:Name="entry"/>
             <Image x:Name="img_right" HeightRequest="30" WidthRequest="30" Aspect="AspectFit" IsVisible="False"
                    HorizontalOptions="End" VerticalOptions="Center"/>
         </StackLayout>

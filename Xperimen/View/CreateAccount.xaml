@@ -13,13 +13,14 @@
                 <stylekit:XStacklayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Orientation="Vertical" Spacing="0" Padding="20" Margin="0,-20,0,0">
                     <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" Orientation="Vertical" Spacing="0">
                         <stylekit:XLabel Text="Create An Account" HorizontalOptions="Center" FontFamily="{DynamicResource Key=BoldFont}" FontSize="18"/>
-                        <stylekit:CustomEntry x:Name="entry_username" Placeholder="choose your username" ImgLeft="black_user.png" ImgLeft_="white_user.png"
-                                              Margin="0,20,0,0" Text="{Binding Username}"/>
-                        <stylekit:CustomEntry x:Name="entry_password" Ispassword="True" ImgLeft="black_password.png" ImgLeft_="white_password.png" 
+                        <stylekit:CustomEntry Placeholder="choose your username" ImgLeft="black_user.png" ImgLeft_="white_user.png"
+                                              Margin="0,20,0,0" Text="Username"/> <!-- Username is the field name in viewmodel for binding -->
+                        <stylekit:CustomEntry Ispassword="True" ImgLeft="black_password.png" ImgLeft_="white_password.png" 
                                               Placeholder="insert your password" Margin="0,10,0,0" ImgRight="black_visible.png" ImgRight_="white_visible.png" 
-                                              ImgRight2="black_invisible.png" ImgRight2_="white_invisible.png" Text="{Binding Password}"/>
+                                              ImgRight2="black_invisible.png" ImgRight2_="white_invisible.png" 
+                                              Text="Password"/> <!-- Password is the field name in viewmodel for binding -->
                         <stylekit:XLabel Text="Describe yourself" HorizontalOptions="Start" Margin="0,10,0,0"/>
-                        <stylekit:CustomEditor x:Name="editor_desc" Margin="0,5,0,0" Placeholder="Bio, tagline, quotes, etc..." Text="{Binding Description}"/>
+                        <stylekit:CustomEditor Margin="0,5,0,0" Placeholder="Bio, tagline, quotes, etc..." Text="Description"/>
                         <stylekit:XLabel Text="Choose your theme" HorizontalOptions="Start" Margin="0,10,0,0"/>
                         <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal" Margin="0,5,0,0" Spacing="0" BackgroundColor="Transparent">
                             <Frame x:Name="frame_dark" Padding="0,8,0,8" HorizontalOptions="FillAndExpand" HasShadow="False" CornerRadius="3"

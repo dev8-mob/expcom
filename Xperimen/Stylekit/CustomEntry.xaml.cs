@@ -1,6 +1,5 @@
 ﻿
 using System;
-using System.Windows.Input;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using Xperimen.View;
@@ -17,7 +16,6 @@ namespace Xperimen.Stylekit
             get { return (string)GetValue(TextProperty); }
             set { SetValue(TextProperty, value); }
         }
-        public string GetText() { return entry.Text; }
         public string Placeholder
         {
             get { return (string)GetValue(PlaceholderProperty); }
@@ -64,7 +62,7 @@ namespace Xperimen.Stylekit
             set { SetValue(IsFocusProperty, value); }
         }
         #endregion
-        #region custom properties binding
+        #region custom bindable properties
         public static BindableProperty TextProperty =
             BindableProperty.Create(nameof(Text), typeof(string), typeof(CustomEntry), defaultValue: "",
                 propertyChanged: (bindable, oldVal, newVal) => { ((CustomEntry)bindable).UpdateText((string)newVal); });
@@ -97,7 +95,7 @@ namespace Xperimen.Stylekit
                 propertyChanged: (bindable, oldVal, newVal) => { ((CustomEntry)bindable).UpdateIsfocus((bool)newVal); });
         #endregion
         #region binding implementation
-        public void UpdateText(string data) { }
+        public void UpdateText(string data) { entry.SetBinding(Entry.TextProperty, new Binding() { Path = data }); }
         public void UpdatePlaceholder(string data) { entry.Placeholder = data; }
         public void UpdateImgLeft(string data) 
         {
@@ -178,13 +176,9 @@ namespace Xperimen.Stylekit
         #endregion
         #endregion
 
-        public ICommand FinishType { get; }
-
         public CustomEntry()
         {
             InitializeComponent();
-            BindingContext = this;
-            FinishType = new Command(BindText);
             entry.Focused += Entry_Focused;
             entry.Unfocused += Entry_Unfocused;
             entry.IsPassword = Ispassword;
@@ -325,11 +319,6 @@ namespace Xperimen.Stylekit
                     entry.IsPassword = true;
                 }
             }
-        }
-
-        private void BindText()
-        { 
-            Text = entry.Text; 
         }
     }
 }

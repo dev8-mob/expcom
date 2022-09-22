@@ -41,6 +41,9 @@ namespace Xperimen.ViewModel
 
         public CreateaccViewmodel()
         {
+            Username = string.Empty;
+            Password = string.Empty;
+            Description = string.Empty;
             connection = new SQLiteConnection(App.DB_PATH);
         }
 
@@ -61,6 +64,10 @@ namespace Xperimen.ViewModel
                 connection.Insert(data);
                 Application.Current.Properties["app_theme"] = Theme;
                 await Application.Current.SavePropertiesAsync();
+                Username = string.Empty;
+                Password = string.Empty;
+                Description = string.Empty;
+                Theme = string.Empty;
                 return 2;
             }
         }

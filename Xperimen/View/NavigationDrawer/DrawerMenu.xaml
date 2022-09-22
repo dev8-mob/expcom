@@ -9,15 +9,15 @@
 
         <stylekit:XStacklayout Orientation="Vertical" Spacing="0">
 
-            <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal">
+            <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal" Spacing="0">
                 <stylekit:XImage x:Name="img_logo" Source1="black_whatshot.png" Source2="white_whatshot.png" WidthRequest="60" HeightRequest="60" 
-                                 Aspect="AspectFit" HorizontalOptions="Start" VerticalOptions="Center" Margin="20"/>
-                <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
+                                 Aspect="AspectFit" HorizontalOptions="Start" VerticalOptions="Center" Margin="15"/>
+                <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" Spacing="0">
                     <stylekit:XLabel x:Name="lbl_name" Text="-" FontFamily="{DynamicResource Key=BoldFont}"/>
                     <stylekit:XLabel x:Name="lbl_desc" Text="-" />
                 </StackLayout>
                 <StackLayout.Padding>
-                    <OnPlatform x:TypeArguments="Thickness" Android="0" iOS="0,25,0,0"/>
+                    <OnPlatform x:TypeArguments="Thickness" Android="0,0,15,0" iOS="0,25,15,0"/>
                 </StackLayout.Padding>
                 <StackLayout.GestureRecognizers>
                     <TapGestureRecognizer Tapped="OnHeaderTapped"/>

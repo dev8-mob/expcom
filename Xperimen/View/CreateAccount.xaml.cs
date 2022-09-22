@@ -80,14 +80,10 @@ namespace Xperimen.View
             await view.ScaleTo(0.9, 50);
             view.Scale = 1;
 
-            var username = entry_username.GetText();
-            var password = entry_password.GetText();
-            var desc = editor_desc.GetText();
-
             viewmodel.IsLoading = true;
-            if (string.IsNullOrEmpty(username)) SetDisplayAlert("Alert", "Username cannot be empty. Please choose a username.", "", "");
-            else if (string.IsNullOrEmpty(password)) SetDisplayAlert("Alert", "Password cannot be empty. Please insert your password.", "", "");
-            else if (string.IsNullOrEmpty(desc)) SetDisplayAlert("Alert", "Please provide any description about you.", "", "");
+            if (string.IsNullOrEmpty(viewmodel.Username)) SetDisplayAlert("Alert", "Username cannot be empty. Please choose a username.", "", "");
+            else if (string.IsNullOrEmpty(viewmodel.Password)) SetDisplayAlert("Alert", "Password cannot be empty. Please insert your password.", "", "");
+            else if (string.IsNullOrEmpty(viewmodel.Description)) SetDisplayAlert("Alert", "Please provide any description about you.", "", "");
             else if (string.IsNullOrEmpty(viewmodel.Theme)) SetDisplayAlert("Alert", "Please choose application theme.", "", "");
             else
             {
@@ -97,7 +93,6 @@ namespace Xperimen.View
                 {
                     MessagingCenter.Send(this, "AppThemeUpdated");
                     SetDisplayAlert("Success", "Successfully created your account.", "", "Okay");
-                    viewmodel.Theme = string.Empty;
                     frame_dark.BackgroundColor = Color.Transparent;
                     frame_dim.BackgroundColor = Color.Transparent;
                     frame_light.BackgroundColor = Color.Transparent;

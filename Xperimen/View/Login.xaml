@@ -16,9 +16,9 @@
                     <StackLayout Padding="25,0,25,0" Orientation="Vertical" VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand" Spacing="0">
                         <stylekit:XImage Source1="black_whatshot.png" Source2="white_whatshot.png" HeightRequest="130" WidthRequest="130" 
                                          HorizontalOptions="CenterAndExpand" VerticalOptions="Center" Aspect="AspectFit"/>
-                        <stylekit:CustomEntry x:Name="entry_username" Placeholder="username" ImgLeft="black_user.png" ImgLeft_="white_user.png"
+                        <stylekit:CustomEntry Text="Username" Placeholder="username" ImgLeft="black_user.png" ImgLeft_="white_user.png"
                                               Margin="0,20,0,0" />
-                        <stylekit:CustomEntry x:Name="entry_password" Ispassword="True" ImgLeft="black_password.png" ImgLeft_="white_password.png"
+                        <stylekit:CustomEntry Text="Password" Ispassword="True" ImgLeft="black_password.png" ImgLeft_="white_password.png"
                                               Placeholder="password" Margin="0,10,0,0" ImgRight="black_visible.png" ImgRight_="white_visible.png" 
                                               ImgRight2="black_invisible.png" ImgRight2_="white_invisible.png"/>
                         <Frame Padding="0,10,0,10" CornerRadius="3" BorderColor="{DynamicResource Key=Primary}" HorizontalOptions="FillAndExpand"

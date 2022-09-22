@@ -15,7 +15,6 @@ namespace Xperimen.Stylekit
             get { return (string)GetValue(TextProperty); }
             set { SetValue(TextProperty, value); }
         }
-        public string GetText() { return editor.Text; }
         public string Placeholder
         {
             get { return (string)GetValue(PlaceholderProperty); }
@@ -39,7 +38,7 @@ namespace Xperimen.Stylekit
                 propertyChanged: (bindable, oldVal, newVal) => { ((CustomEditor)bindable).UpdateIsfocus((bool)newVal); });
         #endregion
         #region binding implementation
-        public void UpdateText(string data) { editor.Text = data; }
+        public void UpdateText(string data) { editor.SetBinding(Editor.TextProperty, new Binding() { Path = data }); }
         public void UpdatePlaceholder(string data) { editor.Placeholder = data; }
         public void UpdateIsfocus(bool data) { if (data) editor.Focus(); else editor.Unfocus(); }
         #endregion

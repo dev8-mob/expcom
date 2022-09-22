@@ -4,9 +4,6 @@ using Xamarin.Forms.Xaml;
 using Xperimen.Stylekit;
 using Xperimen.View.NavigationDrawer;
 using Xperimen.ViewModel;
-using Xperimen.Model;
-using SQLite;
-using System.Linq;
 
 namespace Xperimen.View
 {
@@ -14,13 +11,11 @@ namespace Xperimen.View
     public partial class Login : ContentPage
     {
         public LoginViewmodel viewmodel;
-        public SQLiteConnection connection;
 
         public Login()
         {
             InitializeComponent();
             viewmodel = new LoginViewmodel();
-            connection = new SQLiteConnection(App.DB_PATH);
             BindingContext = viewmodel;
 
             MessagingCenter.Subscribe<CustomDisplayAlert, string>(this, "DisplayAlertSelection", (sender, arg) =>
@@ -33,33 +28,15 @@ namespace Xperimen.View
             await view.ScaleTo(0.9, 50);
             view.Scale = 1;
 
-            var user = entry_username.GetText();
-            var password = entry_password.GetText();
-
             viewmodel.IsLoading = true;
-            if (string.IsNullOrEmpty(user)) SetDisplayAlert("Alert", "Please insert your username.", "", "");
-            else if (string.IsNullOrEmpty(password)) SetDisplayAlert("Alert", "Please insert your password.", "", "");
+            if (string.IsNullOrEmpty(viewmodel.Username)) SetDisplayAlert("Alert", "Please insert your username.", "", "");
+            else if (string.IsNullOrEmpty(viewmodel.Password)) SetDisplayAlert("Alert", "Please insert your password.", "", "");
             else
             {
-                string query = "SELECT * FROM Clients WHERE Username = '" + user + "' AND Password = '" + password + "'";
-                var result = connection.Query<Clients>(query).ToList();
-                if (result.Count > 0)
-                {
-                    Application.Current.Properties["current_login"] = result[0].Id;
-                    await Application.Current.SavePropertiesAsync();
-                    Application.Current.MainPage = new NavigationPage(new DrawerMaster());
-                }
-                else
-                {
-                    query = "SELECT * FROM Clients WHERE Username = '" + user + "'";
-                    result = connection.Query<Clients>(query).ToList();
-                    if (result.Count > 0)
-                    {
-                        SetDisplayAlert("Alert", "Your password is incorrect. Please insert the correct password.", "", "");
-                        entry_password.Text = string.Empty;
-                    }
-                    else SetDisplayAlert("Alert", "The username is not found.", "", "");
-                }
+                var result = await viewmodel.Login();
+                if (result == 1) Application.Current.MainPage = new NavigationPage(new DrawerMaster());
+                else if (result == 2) SetDisplayAlert("Alert", "Your password is incorrect. Please insert the correct password.", "", "");
+                else if (result == 3) SetDisplayAlert("Alert", "The username is not found.", "", "");
             }
         }
 
