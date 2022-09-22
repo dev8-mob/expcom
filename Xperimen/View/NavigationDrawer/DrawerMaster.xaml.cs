@@ -4,7 +4,6 @@ using Xamarin.Forms.Xaml;
 using Xperimen.Model;
 using Xperimen.View.Dashboard;
 using SQLite;
-using System.Linq;
 
 namespace Xperimen.View.NavigationDrawer
 {
@@ -23,15 +22,20 @@ namespace Xperimen.View.NavigationDrawer
 
             Detail = new NavigationPage(new TabbedDashboard());
 
-            var current = connection.Table<ClientCurrent>().ToList();
-            string query = "SELECT * FROM Clients WHERE Id = '" + current[0].UserId + "'";
-            var result = connection.Query<Clients>(query).ToList();
-            if (result.Count > 0)
+            if (Application.Current.Properties.ContainsKey("app_theme"))
             {
+                var theme = Application.Current.Properties["app_theme"];
                 var page = Application.Current.MainPage as NavigationPage;
-                if (result[0].AppTheme.Equals("dark")) page.BarBackgroundColor = Color.Black;
-                if (result[0].AppTheme.Equals("dim")) page.BarBackgroundColor = Color.FromHex(App.DimGray1);
-                if (result[0].AppTheme.Equals("light")) page.BarBackgroundColor = Color.White;
+                try
+                {
+                    if (theme.Equals("dark")) page.BarBackgroundColor = Color.Black;
+                    if (theme.Equals("dim")) page.BarBackgroundColor = Color.SlateGray;
+                    if (theme.Equals("light")) page.BarBackgroundColor = Color.Transparent;
+                }
+                catch (Exception ex)
+                {
+                    var error = ex.Message;
+                }
             }
         }
 

@@ -6,6 +6,7 @@ using Xperimen.Model;
 using Xperimen.View.Dashboard;
 using Xperimen.View.Setting;
 using SQLite;
+using System.Linq;
 
 namespace Xperimen.View.NavigationDrawer
 {
@@ -25,21 +26,25 @@ namespace Xperimen.View.NavigationDrawer
 
         public void CreateMenuList()
         {
-            var login = connection.Table<ClientCurrent>().ToList();
-            if (login.Count > 0)
+            if (Application.Current.Properties.ContainsKey("current_login"))
             {
-                lbl_name.Text = login[0].Username;
-                lbl_desc.Text = login[0].Description;
+                var id = Application.Current.Properties["current_login"];
+                var login = connection.Query<Clients>("SELECT * FROM Clients WHERE Id = '" + id + "'").ToList();
+                if (login.Count > 0)
+                {
+                    lbl_name.Text = login[0].Username;
+                    lbl_desc.Text = login[0].Description;
+                }
             }
-            
+               
             List<ItemMenu> menulist = new List<ItemMenu>();
 
-            menulist.Add(new ItemMenu { ImageIcon = "black_user.png", Title = "Dashboard", Contentpage = typeof(MainPage) });
-            menulist.Add(new ItemMenu { ImageIcon = "black_whatshot.png", Title = "Tabbed Page", Contentpage = typeof(TabbedDashboard) });
-            menulist.Add(new ItemMenu { ImageIcon = "black_password.png", Title = "Page Two", Contentpage = typeof(MainPage) });
-            menulist.Add(new ItemMenu { ImageIcon = "black_money.png", Title = "Finance", Contentpage = typeof(MainPage) });
-            menulist.Add(new ItemMenu { ImageIcon = "black_setting.png", Title = "Setting", Contentpage = typeof(MainSetting) });
-            menulist.Add(new ItemMenu { ImageIcon = "black_logout.png", Title = "Logout", Contentpage = typeof(Logout) });
+            menulist.Add(new ItemMenu { ImageIcon1 = "black_user.png", ImageIcon2 = "white_user.png", Title = "Dashboard", Contentpage = typeof(MainPage) });
+            menulist.Add(new ItemMenu { ImageIcon1 = "black_whatshot.png", ImageIcon2 = "white_whatshot.png", Title = "Tabbed Page", Contentpage = typeof(TabbedDashboard) });
+            menulist.Add(new ItemMenu { ImageIcon1 = "black_password.png", ImageIcon2 = "white_password.png", Title = "Page Two", Contentpage = typeof(MainPage) });
+            menulist.Add(new ItemMenu { ImageIcon1 = "black_money.png", ImageIcon2 = "white_money.png", Title = "Finance", Contentpage = typeof(MainPage) });
+            menulist.Add(new ItemMenu { ImageIcon1 = "black_setting.png", ImageIcon2 = "white_setting.png", Title = "Setting", Contentpage = typeof(MainSetting) });
+            menulist.Add(new ItemMenu { ImageIcon1 = "black_logout.png", ImageIcon2 = "white_logout.png", Title = "Logout", Contentpage = typeof(Logout) });
             listview.ItemsSource = menulist;
         }
 

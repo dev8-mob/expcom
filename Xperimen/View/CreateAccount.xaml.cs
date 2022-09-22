@@ -1,12 +1,9 @@
 ﻿
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-using Xperimen.Model;
 using Xperimen.Stylekit;
 using Xperimen.ViewModel;
-using SQLite;
 using System;
-using System.Linq;
 
 namespace Xperimen.View
 {
@@ -14,14 +11,11 @@ namespace Xperimen.View
     public partial class CreateAccount : ContentPage
     {
         public CreateaccViewmodel viewmodel;
-        public SQLiteConnection connection;
-        public string theme;
 
         public CreateAccount()
         {
             InitializeComponent();
             viewmodel = new CreateaccViewmodel();
-            connection = new SQLiteConnection(App.DB_PATH);
             BindingContext = viewmodel;
 
             MessagingCenter.Subscribe<CustomDisplayAlert, string>(this, "DisplayAlertSelection", (sender, arg) =>
@@ -38,34 +32,44 @@ namespace Xperimen.View
             await view.ScaleTo(0.9, 50);
             view.Scale = 1;
 
+            var apptheme = "light";
+            if (Application.Current.Properties.ContainsKey("app_theme"))
+                apptheme = Application.Current.Properties["app_theme"] as string;
+
             if (lbl.Text.Equals("Dark Theme"))
             {
-                theme = "dark";
-                frame_dark.BackgroundColor = Color.White;
-                frame_dim.BackgroundColor = Color.FromHex(App.DimGray2);
-                frame_light.BackgroundColor = Color.FromHex(App.DimGray2);
+                viewmodel.Theme = "dark";
+                if (apptheme.Equals("dark")) frame_dark.BackgroundColor = Color.FromHex(App.SlateGray);
+                else if (apptheme.Equals("dim")) frame_dark.BackgroundColor = Color.White;
+                else if (apptheme.Equals("light")) frame_dark.BackgroundColor = Color.FromHex(App.DimGray2);
+                frame_dim.BackgroundColor = Color.Transparent;
+                frame_light.BackgroundColor = Color.Transparent;
                 frame_dark.BorderColor = Color.FromHex(App.Primary);
-                frame_dim.BorderColor = Color.Black;
-                frame_light.BorderColor = Color.Black;
+                frame_dim.BorderColor = Color.DarkGray;
+                frame_light.BorderColor = Color.DarkGray;
             }
             else if (lbl.Text.Equals("Dim Theme"))
             {
-                theme = "dim";
-                frame_dark.BackgroundColor = Color.FromHex(App.DimGray2);
-                frame_dim.BackgroundColor = Color.White;
-                frame_light.BackgroundColor = Color.FromHex(App.DimGray2);
-                frame_dark.BorderColor = Color.Black;
+                viewmodel.Theme = "dim";
+                frame_dark.BackgroundColor = Color.Transparent;
+                if (apptheme.Equals("dark")) frame_dim.BackgroundColor = Color.FromHex(App.SlateGray);
+                else if (apptheme.Equals("dim")) frame_dim.BackgroundColor = Color.White;
+                else if (apptheme.Equals("light")) frame_dim.BackgroundColor = Color.FromHex(App.DimGray2);
+                frame_light.BackgroundColor = Color.Transparent;
+                frame_dark.BorderColor = Color.DarkGray;
                 frame_dim.BorderColor = Color.FromHex(App.Primary);
-                frame_light.BorderColor = Color.Black;
+                frame_light.BorderColor = Color.DarkGray;
             }
             else if (lbl.Text.Equals("Light Theme"))
             {
-                theme = "light";
-                frame_dark.BackgroundColor = Color.FromHex(App.DimGray2);
-                frame_dim.BackgroundColor = Color.FromHex(App.DimGray2);
-                frame_light.BackgroundColor = Color.White;
-                frame_dark.BorderColor = Color.Black;
-                frame_dim.BorderColor = Color.Black;
+                viewmodel.Theme = "light";
+                frame_dark.BackgroundColor = Color.Transparent;
+                frame_dim.BackgroundColor = Color.Transparent;
+                if (apptheme.Equals("dark")) frame_light.BackgroundColor = Color.FromHex(App.SlateGray);
+                else if (apptheme.Equals("dim")) frame_light.BackgroundColor = Color.White;
+                else if (apptheme.Equals("light")) frame_light.BackgroundColor = Color.FromHex(App.DimGray2);
+                frame_dark.BorderColor = Color.DarkGray;
+                frame_dim.BorderColor = Color.DarkGray;
                 frame_light.BorderColor = Color.FromHex(App.Primary);
             }
         }
@@ -76,32 +80,25 @@ namespace Xperimen.View
             await view.ScaleTo(0.9, 50);
             view.Scale = 1;
 
-            var username = entry_username.GetText();
-            var password = entry_password.GetText();
-            var desc = editor_desc.GetText();
-
             viewmodel.IsLoading = true;
-            if (string.IsNullOrEmpty(username)) SetDisplayAlert("Alert", "Username cannot be empty. Please choose a username.", "", "");
-            else if (string.IsNullOrEmpty(password)) SetDisplayAlert("Alert", "Password cannot be empty. Please insert your password.", "", "");
-            else if (string.IsNullOrEmpty(desc)) SetDisplayAlert("Alert", "Please provide any description about you.", "", "");
-            else if (string.IsNullOrEmpty(theme)) SetDisplayAlert("Alert", "Please choose application theme.", "", "");
+            if (string.IsNullOrEmpty(viewmodel.Username)) SetDisplayAlert("Alert", "Username cannot be empty. Please choose a username.", "", "");
+            else if (string.IsNullOrEmpty(viewmodel.Password)) SetDisplayAlert("Alert", "Password cannot be empty. Please insert your password.", "", "");
+            else if (string.IsNullOrEmpty(viewmodel.Description)) SetDisplayAlert("Alert", "Please provide any description about you.", "", "");
+            else if (string.IsNullOrEmpty(viewmodel.Theme)) SetDisplayAlert("Alert", "Please choose application theme.", "", "");
             else
             {
-                string query = "SELECT * FROM Clients WHERE Username = '" + username + "'";
-                var result = connection.Query<Clients>(query).ToList();
-                if (result.Count > 0) SetDisplayAlert("Alert", "The username is already exist. Please choose different username.", "", "");
-                else
+                var result = await viewmodel.CreateAccount();
+                if (result == 1) SetDisplayAlert("Alert", "The username is already exist. Please choose different username.", "", "");
+                else if (result == 2)
                 {
-                    var data = new Clients
-                    {
-                        Id = Guid.NewGuid().ToString(),
-                        Username = username,
-                        Password = password,
-                        Description = desc,
-                        AppTheme = theme
-                    };
-                    connection.Insert(data);
+                    MessagingCenter.Send(this, "AppThemeUpdated");
                     SetDisplayAlert("Success", "Successfully created your account.", "", "Okay");
+                    frame_dark.BackgroundColor = Color.Transparent;
+                    frame_dim.BackgroundColor = Color.Transparent;
+                    frame_light.BackgroundColor = Color.Transparent;
+                    frame_dark.BorderColor = Color.DarkGray;
+                    frame_dim.BorderColor = Color.DarkGray;
+                    frame_light.BorderColor = Color.DarkGray;
                     lbl_cancel.Text = "Go To Login";
                 }
             }

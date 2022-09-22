@@ -11,38 +11,40 @@
 
             <ScrollView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,0,1,1">
 
-                <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                <stylekit:XStacklayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
 
                     <StackLayout Padding="25,0,25,0" Orientation="Vertical" VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand" Spacing="0">
-                        <Image Source="black_whatshot.png" HeightRequest="130" WidthRequest="130" HorizontalOptions="CenterAndExpand" 
-                               VerticalOptions="Center" Aspect="AspectFit"/>
-                        <stylekit:CustomEntry x:Name="entry_username" Placeholder="username" ImgLeft="black_user.png" Margin="0,20,0,0" />
-                        <stylekit:CustomEntry x:Name="entry_password" Ispassword="True" ImgLeft="black_password.png" Placeholder="password" Margin="0,10,0,0"
-                                              ImgRight="black_visible.png" ImgRight2="black_invisible.png" />
+                        <stylekit:XImage Source1="black_whatshot.png" Source2="white_whatshot.png" HeightRequest="130" WidthRequest="130" 
+                                         HorizontalOptions="CenterAndExpand" VerticalOptions="Center" Aspect="AspectFit"/>
+                        <stylekit:CustomEntry Text="Username" Placeholder="username" ImgLeft="black_user.png" ImgLeft_="white_user.png"
+                                              Margin="0,20,0,0" />
+                        <stylekit:CustomEntry Text="Password" Ispassword="True" ImgLeft="black_password.png" ImgLeft_="white_password.png"
+                                              Placeholder="password" Margin="0,10,0,0" ImgRight="black_visible.png" ImgRight_="white_visible.png" 
+                                              ImgRight2="black_invisible.png" ImgRight2_="white_invisible.png"/>
                         <Frame Padding="0,10,0,10" CornerRadius="3" BorderColor="{DynamicResource Key=Primary}" HorizontalOptions="FillAndExpand"
                                Margin="0,20,0,0" BackgroundColor="{DynamicResource Key=Primary}" HasShadow="False" IsClippedToBounds="True">
-                            <Label Text="Submit" FontFamily="{DynamicResource Key=BoldFont}" TextColor="White" HorizontalOptions="Center" VerticalOptions="Center"/>
+                            <Label Text="Login" FontFamily="{DynamicResource Key=BoldFont}" TextColor="White" HorizontalOptions="Center" VerticalOptions="Center"/>
                             <Frame.GestureRecognizers>
-                                <TapGestureRecognizer Tapped="SubmitClicked"/>
+                                <TapGestureRecognizer Tapped="LoginClicked" NumberOfTapsRequired="1"/>
                             </Frame.GestureRecognizers>
                         </Frame>
-                        <Label Text="Create An Account" HorizontalOptions="Center" FontFamily="{DynamicResource Key=BoldFont}" Margin="0,30,0,0">
+                        <stylekit:XLabel Text="Create An Account" HorizontalOptions="Center" FontFamily="{DynamicResource Key=BoldFont}" Margin="0,30,0,0">
                             <Label.GestureRecognizers>
-                                <TapGestureRecognizer Tapped="CreateAccClicked"/>
+                                <TapGestureRecognizer Tapped="CreateAccClicked" NumberOfTapsRequired="1"/>
                             </Label.GestureRecognizers>
-                        </Label>
+                        </stylekit:XLabel>
                     </StackLayout>
                     <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
-                    <Label Text="Version 1.0.0" HorizontalOptions="Center" VerticalOptions="End" FontSize="10" Margin="0,0,0,20">
+                    <stylekit:XLabel Text="Version 1.0.0" HorizontalOptions="Center" VerticalOptions="End" FontSize="10" Margin="0,0,0,20">
                         <!--<Label.Text>
                             <MultiBinding StringFormat="{}{0} {1}">
                                 <Binding Path="Currency" />
                                 <Binding Path="Amount" Converter="{StaticResource AmountConverter}" />
                             </MultiBinding>
                         </Label.Text>-->
-                    </Label>
+                    </stylekit:XLabel>
 
-                </StackLayout>
+                </stylekit:XStacklayout>
 
             </ScrollView>
 

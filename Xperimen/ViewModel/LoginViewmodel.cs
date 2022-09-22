@@ -2,6 +2,9 @@
 using System.Windows.Input;
 using Xperimen.Model;
 using SQLite;
+using System.Threading.Tasks;
+using System.Linq;
+using Xamarin.Forms;
 
 namespace Xperimen.ViewModel
 {
@@ -10,7 +13,6 @@ namespace Xperimen.ViewModel
         #region properties
         string _username;
         string _password;
-        bool _success;
 
         public string Username
         {
@@ -22,11 +24,6 @@ namespace Xperimen.ViewModel
             get { return _password; }
             set { _password = value; OnPropertyChanged(); }
         }
-        public bool Success
-        {
-            get { return _success; }
-            set { _success = value; OnPropertyChanged(); }
-        }
         #endregion
 
         public ICommand DoLogin { get; set; }
@@ -34,9 +31,32 @@ namespace Xperimen.ViewModel
 
         public LoginViewmodel()
         {
-            //DoLogin = new Command(Login);
+            Username = string.Empty;
+            Password = string.Empty;
             connection = new SQLiteConnection(App.DB_PATH);
-            Success = false;
+        }
+
+        public async Task<int> Login()
+        {
+            string query = "SELECT * FROM Clients WHERE Username = '" + Username + "' AND Password = '" + Password + "'";
+            var result = connection.Query<Clients>(query).ToList();
+            if (result.Count > 0)
+            {
+                Application.Current.Properties["current_login"] = result[0].Id;
+                await Application.Current.SavePropertiesAsync();
+                return 1;
+            }
+            else
+            {
+                query = "SELECT * FROM Clients WHERE Username = '" + Username + "'";
+                result = connection.Query<Clients>(query).ToList();
+                if (result.Count > 0)
+                {
+                    Password = string.Empty;
+                    return 2;
+                }
+                else return 3;
+            }
         }
     }
 }
