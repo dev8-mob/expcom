@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Xperimen.View.Setting.MainSetting"
              xmlns:stylekit="clr-namespace:Xperimen.Stylekit"
+             xmlns:viewcell="clr-namespace:Xperimen.View.Setting"
              NavigationPage.HasNavigationBar="False">
     
     <ContentPage.Content>

@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Frame xmlns="http://xamarin.com/schemas/2014/forms"
+       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+       x:Class="Xperimen.View.Setting.SettingInfo"
+       xmlns:stylekit="clr-namespace:Xperimen.Stylekit"
+       Padding="0" HasShadow="False">
+
+    <Frame.Content>
+
+        <stylekit:XStacklayout HorizontalOptions="FillAndExpand" Orientation="Vertical" Spacing="0">
+            <stylekit:XLabel FontSize="20" FontFamily="{DynamicResource Key=BoldFont}" HorizontalOptions="Start"/>
+            <stylekit:XLabel HorizontalOptions="Start"/>
+        </stylekit:XStacklayout>
+        
+    </Frame.Content>
+    
+</Frame>
