@@ -4,5 +4,6 @@
     <SelectedDevice>vivo 1920</SelectedDevice>
     <ActiveDebugProfile>vivo 1920</ActiveDebugProfile>
     <SelectedPlatformGroup>PhysicalDevice</SelectedPlatformGroup>
+    <AndroidDesignerPreferredTheme>MainTheme</AndroidDesignerPreferredTheme>
   </PropertyGroup>
 </Project>

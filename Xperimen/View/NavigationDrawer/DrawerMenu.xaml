@@ -9,21 +9,27 @@
 
         <stylekit:XStacklayout Orientation="Vertical" Spacing="0">
 
+            <!-- header -->
             <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal" Spacing="0">
-                <stylekit:XImage x:Name="img_logo" Source1="black_whatshot.png" Source2="white_whatshot.png" WidthRequest="60" HeightRequest="60" 
-                                 Aspect="AspectFit" HorizontalOptions="Start" VerticalOptions="Center" Margin="15"/>
+                <Frame x:Name="frame_profile" HorizontalOptions="Fill" VerticalOptions="Center" BorderColor="DarkGray" HasShadow="False" 
+                       BackgroundColor="Transparent" Padding="0" CornerRadius="20" IsClippedToBounds="True" Margin="15">
+                    <Image x:Name="img_pic" Aspect="AspectFill" HorizontalOptions="Fill" VerticalOptions="Fill" 
+                           HeightRequest="65" WidthRequest="65"/>
+                </Frame>
                 <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" Spacing="0">
-                    <stylekit:XLabel x:Name="lbl_name" Text="-" FontFamily="{DynamicResource Key=BoldFont}"/>
-                    <stylekit:XLabel x:Name="lbl_desc" Text="-" />
+                    <stylekit:XLabel x:Name="lbl_fullname" Text="-" FontFamily="{DynamicResource Key=BoldFont}" FontSize="18"/>
+                    <stylekit:XLabel x:Name="lbl_name" Text="-" FontFamily="{DynamicResource Key=ItalicFont}"/>
+                    <stylekit:XLabel x:Name="lbl_desc" Text="-" Margin="0,15,0,0"/>
                 </StackLayout>
                 <StackLayout.Padding>
-                    <OnPlatform x:TypeArguments="Thickness" Android="0,0,15,0" iOS="0,25,15,0"/>
+                    <OnPlatform x:TypeArguments="Thickness" Android="0,15,15,15" iOS="0,30,15,30"/>
                 </StackLayout.Padding>
                 <StackLayout.GestureRecognizers>
                     <TapGestureRecognizer Tapped="OnHeaderTapped"/>
                 </StackLayout.GestureRecognizers>
             </StackLayout>
             <BoxView HorizontalOptions="FillAndExpand" HeightRequest="2" BackgroundColor="DarkGray"/>
+            <!-- menu list -->
             <ListView x:Name="listview" HasUnevenRows="True" SeparatorVisibility="None" BackgroundColor="{DynamicResource DimGray}">
                 <ListView.ItemTemplate>
                     <DataTemplate>

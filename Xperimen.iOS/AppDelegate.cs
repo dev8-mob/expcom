@@ -20,7 +20,8 @@ namespace Xperimen.iOS
         //
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
-            global::Xamarin.Forms.Forms.Init();
+            Rg.Plugins.Popup.Popup.Init();
+            Xamarin.Forms.Forms.Init();
 
             string fileName = "Xperiment.sqlite";
             string fileLocation = Environment.GetFolderPath(Environment.SpecialFolder.Personal);

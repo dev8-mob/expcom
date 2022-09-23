@@ -4,6 +4,7 @@ using Xamarin.Forms.Xaml;
 using Xperimen.Stylekit;
 using Xperimen.ViewModel;
 using System;
+using Rg.Plugins.Popup.Extensions;
 
 namespace Xperimen.View
 {
@@ -18,11 +19,72 @@ namespace Xperimen.View
             viewmodel = new CreateaccViewmodel();
             BindingContext = viewmodel;
 
+            if (Application.Current.Properties.ContainsKey("app_theme"))
+            {
+                var theme = Application.Current.Properties["app_theme"];
+                if (theme.Equals("dark")) frame_profile.BackgroundColor = Color.Transparent;
+                if (theme.Equals("dim")) frame_profile.BackgroundColor = Color.Transparent;
+                if (theme.Equals("light")) frame_profile.BackgroundColor = Color.FromHex(App.DimGray2);
+            }
+
             MessagingCenter.Subscribe<CustomDisplayAlert, string>(this, "DisplayAlertSelection", (sender, arg) =>
             { 
                 viewmodel.IsLoading = false;
                 if (arg.Equals("Okay")) Navigation.PopAsync();
             });
+        }
+
+        public async void ProfilePicClicked(object sender, EventArgs e)
+        {
+            if (viewmodel.Picture != null)
+            {
+                var view = (Frame)sender;
+                await view.ScaleTo(0.9, 50);
+                view.Scale = 1;
+                await Navigation.PushPopupAsync(new ImageViewer(viewmodel.Picture.GetStream()));
+            }
+        }
+
+        public async void GalleryClicked(object sender, EventArgs e)
+        {
+            var view = (Image)sender;
+            await view.ScaleTo(0.9, 50);
+            view.Scale = 1;
+
+            viewmodel.IsLoading = true;
+            var result = await viewmodel.PickPhoto();
+            if (result == 3) SetDisplayAlert("Unavailable", "Photo gallery is not available to pick photo.", "", "");
+            else if (result == 2) SetDisplayAlert("Alert", "No photo selected.", "", "");
+            else if (result == 1)
+            {
+                img_profile.Source = ImageSource.FromStream(() =>
+                {
+                    var stream = viewmodel.Picture.GetStream();
+                    return stream;
+                });
+                viewmodel.IsLoading = false;
+            }
+        }
+
+        public async void CameraClicked(object sender, EventArgs e)
+        {
+            var view = (Image)sender;
+            await view.ScaleTo(0.9, 50);
+            view.Scale = 1;
+
+            viewmodel.IsLoading = true;
+            var result = await viewmodel.TakePhoto();
+            if (result == 3) SetDisplayAlert("Unavailable", "Camera is not available or take photo not supported.", "", "");
+            else if (result == 2) SetDisplayAlert("Alert", "Take photo cancelled.", "", "");
+            else if (result == 1)
+            {
+                img_profile.Source = ImageSource.FromStream(() =>
+                {
+                    var stream = viewmodel.Picture.GetStream();
+                    return stream;
+                });
+                viewmodel.IsLoading = false;
+            }
         }
 
         public async void ThemeClicked(object sender, EventArgs e)
@@ -81,7 +143,10 @@ namespace Xperimen.View
             view.Scale = 1;
 
             viewmodel.IsLoading = true;
-            if (string.IsNullOrEmpty(viewmodel.Username)) SetDisplayAlert("Alert", "Username cannot be empty. Please choose a username.", "", "");
+            if (viewmodel.Picture == null) SetDisplayAlert("Alert", "Profile picture is empty. Please take a photo or choose a picture.", "", "");
+            else if (string.IsNullOrEmpty(viewmodel.Firstname)) SetDisplayAlert("Alert", "First name is empty. Please insert your first name.", "", "");
+            else if (string.IsNullOrEmpty(viewmodel.Lastname)) SetDisplayAlert("Alert", "Last name is empty. Please insert your last name.", "", "");
+            else if (string.IsNullOrEmpty(viewmodel.Username)) SetDisplayAlert("Alert", "Username cannot be empty. Please choose a username.", "", "");
             else if (string.IsNullOrEmpty(viewmodel.Password)) SetDisplayAlert("Alert", "Password cannot be empty. Please insert your password.", "", "");
             else if (string.IsNullOrEmpty(viewmodel.Description)) SetDisplayAlert("Alert", "Please provide any description about you.", "", "");
             else if (string.IsNullOrEmpty(viewmodel.Theme)) SetDisplayAlert("Alert", "Please choose application theme.", "", "");

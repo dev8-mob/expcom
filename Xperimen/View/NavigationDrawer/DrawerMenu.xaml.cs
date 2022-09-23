@@ -7,6 +7,9 @@ using Xperimen.View.Dashboard;
 using Xperimen.View.Setting;
 using SQLite;
 using System.Linq;
+using System.IO;
+using Rg.Plugins.Popup.Extensions;
+using Xperimen.Stylekit;
 
 namespace Xperimen.View.NavigationDrawer
 {
@@ -15,6 +18,7 @@ namespace Xperimen.View.NavigationDrawer
     {
         public ListView listview_menu;
         public SQLiteConnection connection;
+        public Clients user_login;
 
         public DrawerMenu()
         {
@@ -32,7 +36,14 @@ namespace Xperimen.View.NavigationDrawer
                 var login = connection.Query<Clients>("SELECT * FROM Clients WHERE Id = '" + id + "'").ToList();
                 if (login.Count > 0)
                 {
-                    lbl_name.Text = login[0].Username;
+                    user_login = login[0];
+                    img_pic.Source = ImageSource.FromStream(() =>
+                    {
+                        var stream = BytesToStream(user_login.ProfileImage);
+                        return stream;
+                    });
+                    lbl_fullname.Text = login[0].Firstname + " " + login[0].Lastname;
+                    lbl_name.Text = "@" + login[0].Username;
                     lbl_desc.Text = login[0].Description;
                 }
             }
@@ -50,9 +61,15 @@ namespace Xperimen.View.NavigationDrawer
 
         public async void OnHeaderTapped(object sender, EventArgs e)
         {
-            await img_logo.ScaleTo(0.9, 50);
-            img_logo.Scale = 1;
-            //await Navigation.PushPopupAsync(new PopupViewImage(FileMedia, image_profile.Source.ToString()));
+            await frame_profile.ScaleTo(0.9, 50);
+            frame_profile.Scale = 1;
+            await Navigation.PushPopupAsync(new ImageViewer(BytesToStream(user_login.ProfileImage)));
+        }
+
+        public Stream BytesToStream(byte[] bytes)
+        {
+            Stream stream = new MemoryStream(bytes);
+            return stream;
         }
     }
 }

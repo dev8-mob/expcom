@@ -11,6 +11,8 @@ namespace Xperimen.ViewModel.Setting
     {
         #region properties
         string _username;
+        string _firstname;
+        string _lastname;
         string _password;
         string _repassword;
         string _description;
@@ -20,6 +22,16 @@ namespace Xperimen.ViewModel.Setting
         {
             get { return _username; }
             set { _username = value; OnPropertyChanged(); }
+        }
+        public string Firstname
+        {
+            get { return _firstname; }
+            set { _firstname = value; OnPropertyChanged(); }
+        }
+        public string Lastname
+        {
+            get { return _lastname; }
+            set { _lastname = value; OnPropertyChanged(); }
         }
         public string Password
         {
@@ -55,6 +67,8 @@ namespace Xperimen.ViewModel.Setting
             if (result.Count > 0)
             {
                 Username = result[0].Username;
+                Firstname = result[0].Firstname;
+                Lastname = result[0].Lastname;
                 Password = result[0].Password;
                 Description = result[0].Description;
                 Theme = result[0].AppTheme;

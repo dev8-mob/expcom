@@ -39,5 +39,13 @@
 		<string>Ubuntu-Italic.ttf</string>
 		<string>Ubuntu-Regular.ttf</string>
 	</array>
+	<key>NSCameraUsageDescription</key>
+	<string>App needs access to the camera to take photos.</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>App needs access to microphone.</string>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>App needs access to the photo gallery.</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>App needs access to photo.</string>
 </dict>
 </plist>

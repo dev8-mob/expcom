@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<pages:PopupPage xmlns="http://xamarin.com/schemas/2014/forms"
+                 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                 x:Class="Xperimen.Stylekit.ImageViewer"
+                 xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
+                 Padding="15">
+
+    <Grid HorizontalOptions="Center" VerticalOptions="Center">
+
+        <ActivityIndicator IsRunning="True" Color="White" HorizontalOptions="Center" VerticalOptions="Center"
+                           Grid.Row="0" Grid.Column="0" Margin="0,30,30,0"/>
+
+        <Image x:Name="img_data" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Aspect="AspectFit"
+               Grid.Row="0" Grid.Column="0" Margin="0,15,15,0"/>
+
+        <Frame Padding="0" HasShadow="False" CornerRadius="50" HorizontalOptions="End" VerticalOptions="Start"
+               Grid.Row="0" Grid.Column="0" BorderColor="{DynamicResource Primary}" IsClippedToBounds="True">
+            <Image Source="white_cancel.png" HeightRequest="50" WidthRequest="50" Aspect="AspectFit">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="CloseTapped"/>
+                </Image.GestureRecognizers>
+            </Image>
+        </Frame>
+
+    </Grid>
+    
+</pages:PopupPage>
