@@ -7,9 +7,9 @@ using Xperimen.View.Dashboard;
 using Xperimen.View.Setting;
 using SQLite;
 using System.Linq;
-using System.IO;
 using Rg.Plugins.Popup.Extensions;
 using Xperimen.Stylekit;
+using Xperimen.Helper;
 
 namespace Xperimen.View.NavigationDrawer
 {
@@ -36,10 +36,11 @@ namespace Xperimen.View.NavigationDrawer
                 var login = connection.Query<Clients>("SELECT * FROM Clients WHERE Id = '" + id + "'").ToList();
                 if (login.Count > 0)
                 {
+                    var convert = new StreamByteConverter();
                     user_login = login[0];
                     img_pic.Source = ImageSource.FromStream(() =>
                     {
-                        var stream = BytesToStream(user_login.ProfileImage);
+                        var stream = convert.BytesToStream(user_login.ProfileImage);
                         return stream;
                     });
                     lbl_fullname.Text = login[0].Firstname + " " + login[0].Lastname;
@@ -61,15 +62,10 @@ namespace Xperimen.View.NavigationDrawer
 
         public async void OnHeaderTapped(object sender, EventArgs e)
         {
-            await frame_profile.ScaleTo(0.9, 50);
+            await frame_profile.ScaleTo(0.9, 100);
             frame_profile.Scale = 1;
-            await Navigation.PushPopupAsync(new ImageViewer(BytesToStream(user_login.ProfileImage)));
-        }
-
-        public Stream BytesToStream(byte[] bytes)
-        {
-            Stream stream = new MemoryStream(bytes);
-            return stream;
+            var convert = new StreamByteConverter();
+            await Navigation.PushPopupAsync(new ImageViewer(convert.BytesToStream(user_login.ProfileImage)));
         }
     }
 }

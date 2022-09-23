@@ -39,7 +39,7 @@ namespace Xperimen.View
             if (viewmodel.Picture != null)
             {
                 var view = (Frame)sender;
-                await view.ScaleTo(0.9, 50);
+                await view.ScaleTo(0.9, 100);
                 view.Scale = 1;
                 await Navigation.PushPopupAsync(new ImageViewer(viewmodel.Picture.GetStream()));
             }
@@ -48,7 +48,7 @@ namespace Xperimen.View
         public async void GalleryClicked(object sender, EventArgs e)
         {
             var view = (Image)sender;
-            await view.ScaleTo(0.9, 50);
+            await view.ScaleTo(0.9, 100);
             view.Scale = 1;
 
             viewmodel.IsLoading = true;
@@ -69,7 +69,7 @@ namespace Xperimen.View
         public async void CameraClicked(object sender, EventArgs e)
         {
             var view = (Image)sender;
-            await view.ScaleTo(0.9, 50);
+            await view.ScaleTo(0.9, 100);
             view.Scale = 1;
 
             viewmodel.IsLoading = true;
@@ -91,7 +91,7 @@ namespace Xperimen.View
         {
             var view = (Frame)sender;
             var lbl = (Label)view.Content;
-            await view.ScaleTo(0.9, 50);
+            await view.ScaleTo(0.9, 100);
             view.Scale = 1;
 
             var apptheme = "light";
@@ -139,7 +139,7 @@ namespace Xperimen.View
         public async void CreateAccClicked(object sender, EventArgs e)
         {
             var view = (Frame)sender;
-            await view.ScaleTo(0.9, 50);
+            await view.ScaleTo(0.9, 100);
             view.Scale = 1;
 
             viewmodel.IsLoading = true;
@@ -171,7 +171,7 @@ namespace Xperimen.View
         public async void CancelClicked(object sender, EventArgs e)
         {
             var view = (Label)sender;
-            await view.ScaleTo(0.9, 50);
+            await view.ScaleTo(0.9, 100);
             view.Scale = 1;
             await Navigation.PopAsync();
         }

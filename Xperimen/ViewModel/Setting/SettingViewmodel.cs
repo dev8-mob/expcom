@@ -17,6 +17,8 @@ namespace Xperimen.ViewModel.Setting
         string _repassword;
         string _description;
         string _theme;
+        bool _isediting;
+        bool _isviewing;
 
         public string Username
         {
@@ -53,19 +55,33 @@ namespace Xperimen.ViewModel.Setting
             get { return _theme; }
             set { _theme = value; OnPropertyChanged(); }
         }
+        public bool IsEditing
+        {
+            get { return _isediting; }
+            set { _isediting = value; OnPropertyChanged(); }
+        }
+        public bool IsViewing
+        {
+            get { return _isviewing; }
+            set { _isviewing = value; OnPropertyChanged(); }
+        }
         #endregion
 
         public SQLiteConnection connection;
+        public Clients user_login;
 
         public SettingViewmodel()
         {
             connection = new SQLiteConnection(App.DB_PATH);
+            IsViewing = true;
+            IsEditing = true;
 
             var userid = Application.Current.Properties["current_login"] as string;
             string query = "SELECT * FROM Clients WHERE Id = '" + userid + "'";
             var result = connection.Query<Clients>(query).ToList();
             if (result.Count > 0)
             {
+                user_login = result[0];
                 Username = result[0].Username;
                 Firstname = result[0].Firstname;
                 Lastname = result[0].Lastname;

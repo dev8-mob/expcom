@@ -53,7 +53,7 @@ namespace Xperimen.View.Setting
         {
             var view = (Frame)sender;
             var lbl = (Label)view.Content;
-            await view.ScaleTo(0.9, 50);
+            await view.ScaleTo(0.9, 100);
             view.Scale = 1;
 
             var apptheme = "light";
@@ -98,10 +98,19 @@ namespace Xperimen.View.Setting
             }
         }
 
+        public async void SaveClicked(object sender, EventArgs e)
+        {
+            var view = (Frame)sender;
+            await view.ScaleTo(0.9, 100);
+            view.Scale = 1;
+            viewmodel.IsViewing = false;
+            viewmodel.IsEditing = false;
+        }
+
         public async void BackTapped(object sender, EventArgs e)
         {
             var view = (Image)sender;
-            await view.ScaleTo(0.9, 50);
+            await view.ScaleTo(0.9, 100);
             view.Scale = 1;
             await Navigation.PopAsync();
         }

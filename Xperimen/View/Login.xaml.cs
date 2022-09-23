@@ -25,7 +25,7 @@ namespace Xperimen.View
         public async void LoginClicked(object sender, EventArgs e)
         {
             var view = (Frame)sender;
-            await view.ScaleTo(0.9, 50);
+            await view.ScaleTo(0.9, 100);
             view.Scale = 1;
 
             viewmodel.IsLoading = true;
@@ -43,7 +43,7 @@ namespace Xperimen.View
         public async void CreateAccClicked(object sender, EventArgs e)
         {
             var view = (Label)sender;
-            await view.ScaleTo(0.9, 50);
+            await view.ScaleTo(0.9, 100);
             view.Scale = 1;
             await Navigation.PushAsync(new CreateAccount());
         }
