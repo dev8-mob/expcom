@@ -126,6 +126,7 @@ namespace Xperimen.ViewModel
                 Application.Current.Properties["app_theme"] = Theme;
                 await Application.Current.SavePropertiesAsync();
                 MessagingCenter.Send(this, "AppThemeUpdated");
+
                 Picture = null;
                 Username = string.Empty;
                 Firstname = string.Empty;

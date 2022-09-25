@@ -11,7 +11,8 @@
         <AbsoluteLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="Transparent">
 
             <ScrollView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,0,1,1">
-                <stylekit:XStacklayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Orientation="Vertical" Spacing="0" Padding="20">
+                <stylekit:XStacklayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Orientation="Vertical" Spacing="0" 
+                                       Padding="20,20,20,15">
                     <!-- top navigation bar -->
                     <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" BackgroundColor="Transparent">
                         <stylekit:XImage Source1="black_back.png" Source2="white_back.png" HeightRequest="35" WidthRequest="35" Aspect="AspectFit"

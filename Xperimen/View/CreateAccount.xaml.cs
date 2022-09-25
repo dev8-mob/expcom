@@ -164,6 +164,7 @@ namespace Xperimen.View
                     frame_dim.BorderColor = Color.DarkGray;
                     frame_light.BorderColor = Color.DarkGray;
                     lbl_cancel.Text = "Go To Login";
+                    img_profile.Source = "";
                 }
             }
         }

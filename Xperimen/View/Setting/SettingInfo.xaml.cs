@@ -17,9 +17,6 @@ namespace Xperimen.View.Setting
         public SettingInfo()
         {
             InitializeComponent();
-            viewmodel = new SettingViewmodel();
-            BindingContext = viewmodel;
-            SetupView();
         }
 
         public void SetupView()
@@ -32,6 +29,12 @@ namespace Xperimen.View.Setting
             });
             lbl_fullname.Text = viewmodel.Firstname + " " + viewmodel.Lastname;
             lbl_username.Text = "@" + viewmodel.Username;
+        }
+
+        public void SetParentBinding(SettingViewmodel parent)
+        { 
+            viewmodel = parent;
+            SetupView();
         }
 
         public async void ProfilePicClicked(object sender, EventArgs e)

@@ -74,7 +74,7 @@ namespace Xperimen.ViewModel.Setting
         {
             connection = new SQLiteConnection(App.DB_PATH);
             IsViewing = true;
-            IsEditing = true;
+            IsEditing = false;
 
             var userid = Application.Current.Properties["current_login"] as string;
             string query = "SELECT * FROM Clients WHERE Id = '" + userid + "'";
