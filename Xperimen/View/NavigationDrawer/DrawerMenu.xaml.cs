@@ -7,9 +7,10 @@ using Xperimen.View.Dashboard;
 using Xperimen.View.Setting;
 using SQLite;
 using System.Linq;
-using System.IO;
 using Rg.Plugins.Popup.Extensions;
 using Xperimen.Stylekit;
+using Xperimen.Helper;
+using Xperimen.ViewModel.Setting;
 
 namespace Xperimen.View.NavigationDrawer
 {
@@ -19,16 +20,21 @@ namespace Xperimen.View.NavigationDrawer
         public ListView listview_menu;
         public SQLiteConnection connection;
         public Clients user_login;
+        public StreamByteConverter converter;
 
         public DrawerMenu()
         {
             InitializeComponent();
             connection = new SQLiteConnection(App.DB_PATH);
+            converter = new StreamByteConverter();
             listview_menu = listview;
+            SetupData();
             CreateMenuList();
+
+            MessagingCenter.Subscribe<SettingViewmodel>(this, "AppThemeUpdated", (sender) => { SetupData(); });
         }
 
-        public void CreateMenuList()
+        public void SetupData()
         {
             if (Application.Current.Properties.ContainsKey("current_login"))
             {
@@ -39,7 +45,7 @@ namespace Xperimen.View.NavigationDrawer
                     user_login = login[0];
                     img_pic.Source = ImageSource.FromStream(() =>
                     {
-                        var stream = BytesToStream(user_login.ProfileImage);
+                        var stream = converter.BytesToStream(user_login.ProfileImage);
                         return stream;
                     });
                     lbl_fullname.Text = login[0].Firstname + " " + login[0].Lastname;
@@ -47,11 +53,14 @@ namespace Xperimen.View.NavigationDrawer
                     lbl_desc.Text = login[0].Description;
                 }
             }
-               
+        }
+
+        public void CreateMenuList()
+        {
             List<ItemMenu> menulist = new List<ItemMenu>();
 
             menulist.Add(new ItemMenu { ImageIcon1 = "black_user.png", ImageIcon2 = "white_user.png", Title = "Dashboard", Contentpage = typeof(MainPage) });
-            menulist.Add(new ItemMenu { ImageIcon1 = "black_whatshot.png", ImageIcon2 = "white_whatshot.png", Title = "Tabbed Page", Contentpage = typeof(TabbedDashboard) });
+            menulist.Add(new ItemMenu { ImageIcon1 = "black_whatshot.png", ImageIcon2 = "white_whatshot.png", Title = "Admin", Contentpage = typeof(AdminPage) });
             menulist.Add(new ItemMenu { ImageIcon1 = "black_password.png", ImageIcon2 = "white_password.png", Title = "Page Two", Contentpage = typeof(MainPage) });
             menulist.Add(new ItemMenu { ImageIcon1 = "black_money.png", ImageIcon2 = "white_money.png", Title = "Finance", Contentpage = typeof(MainPage) });
             menulist.Add(new ItemMenu { ImageIcon1 = "black_setting.png", ImageIcon2 = "white_setting.png", Title = "Setting", Contentpage = typeof(MainSetting) });
@@ -61,15 +70,9 @@ namespace Xperimen.View.NavigationDrawer
 
         public async void OnHeaderTapped(object sender, EventArgs e)
         {
-            await frame_profile.ScaleTo(0.9, 50);
+            await frame_profile.ScaleTo(0.9, 100);
             frame_profile.Scale = 1;
-            await Navigation.PushPopupAsync(new ImageViewer(BytesToStream(user_login.ProfileImage)));
-        }
-
-        public Stream BytesToStream(byte[] bytes)
-        {
-            Stream stream = new MemoryStream(bytes);
-            return stream;
+            await Navigation.PushPopupAsync(new ImageViewer(converter.BytesToStream(user_login.ProfileImage)));
         }
     }
 }

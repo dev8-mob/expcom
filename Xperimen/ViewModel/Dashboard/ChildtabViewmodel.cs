@@ -1,5 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using SQLite;
+using System;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows.Input;
@@ -14,8 +14,9 @@ namespace Xperimen.ViewModel.Dashboard
         private MaintabViewmodel ParentViewmodel;
         private readonly string TabType;
         private string SearchString;
-        public ObservableCollection<MobileApp> ListData { get; set; }
+        public ObservableCollection<Clients> ListClients { get; set; }
         public ICommand LoadDataCommand { get; }
+        public SQLiteConnection connection;
         #endregion
 
         #region bindable properties
@@ -30,7 +31,8 @@ namespace Xperimen.ViewModel.Dashboard
         public ChildtabViewmodel(string TabType)
         {
             this.TabType = TabType;
-            ListData = new ObservableCollection<MobileApp>();
+            ListClients = new ObservableCollection<Clients>();
+            connection = new SQLiteConnection(App.DB_PATH);
             LoadDataCommand = new Command(LoadData);
             LoadData();
         }
@@ -40,20 +42,18 @@ namespace Xperimen.ViewModel.Dashboard
             try
             {
                 IsLoading = true;
-                ListData.Clear();
+                ListClients.Clear();
                 if (TabType.Equals("tab_one"))
                 {
-                    ListData.Add(new MobileApp { Id = Guid.NewGuid().ToString(), AppName = "Donatello", AppSize = "25.6 MB", AppRating = "4.9", Description = "There's a gross fly on the ceiling.", CreatedDatetime = DateTime.Now.AddDays(1) });
-                    ListData.Add(new MobileApp { Id = Guid.NewGuid().ToString(), AppName = "Michelangelo", AppSize = "31.5 MB", AppRating = "4.8", Description = "I have an organic banana bread maker.", CreatedDatetime = DateTime.Now.AddDays(2) });
-                    ListData.Add(new MobileApp { Id = Guid.NewGuid().ToString(), AppName = "Raphaello", AppSize = "26.8 MB", AppRating = "4.7", Description = "I need to cook lunch.", CreatedDatetime = DateTime.Now.AddDays(3) });
-                    ListData.Add(new MobileApp { Id = Guid.NewGuid().ToString(), AppName = "Leonardo", AppSize = "56.1 MB", AppRating = "5.0", Description = "What a big house you have!", CreatedDatetime = DateTime.Now.AddDays(4) });
+                    var users = connection.Table<Clients>().ToList();
+                    ListClients = new ObservableCollection<Clients>(users);
                 }
                 else if (TabType.Equals("tab_two"))
                 {
-                    ListData.Add(new MobileApp { Id = Guid.NewGuid().ToString(), AppName = "Vein", AppSize = "25.6 MB", AppRating = "3.9", Description = "It took him a month to finish the meal.", CreatedDatetime = DateTime.Now.AddDays(1) });
-                    ListData.Add(new MobileApp { Id = Guid.NewGuid().ToString(), AppName = "Pierce", AppSize = "31.5 MB", AppRating = "3.8", Description = "I want more detailed information.", CreatedDatetime = DateTime.Now.AddDays(2) });
-                    ListData.Add(new MobileApp { Id = Guid.NewGuid().ToString(), AppName = "Adoption", AppSize = "26.8 MB", AppRating = "3.7", Description = "Combines are no longer just for farms.", CreatedDatetime = DateTime.Now.AddDays(3) });
-                    ListData.Add(new MobileApp { Id = Guid.NewGuid().ToString(), AppName = "Stain", AppSize = "56.1 MB", AppRating = "4.8", Description = "Nothing is as cautiously cuddly as a pet porcupine.", CreatedDatetime = DateTime.Now.AddDays(4) });
+                    //ListClients.Add(new MobileApp { Id = Guid.NewGuid().ToString(), AppName = "Vein", AppSize = "25.6 MB", AppRating = "3.9", Description = "It took him a month to finish the meal.", CreatedDatetime = DateTime.Now.AddDays(1) });
+                    //ListClients.Add(new MobileApp { Id = Guid.NewGuid().ToString(), AppName = "Pierce", AppSize = "31.5 MB", AppRating = "3.8", Description = "I want more detailed information.", CreatedDatetime = DateTime.Now.AddDays(2) });
+                    //ListClients.Add(new MobileApp { Id = Guid.NewGuid().ToString(), AppName = "Adoption", AppSize = "26.8 MB", AppRating = "3.7", Description = "Combines are no longer just for farms.", CreatedDatetime = DateTime.Now.AddDays(3) });
+                    //ListClients.Add(new MobileApp { Id = Guid.NewGuid().ToString(), AppName = "Stain", AppSize = "56.1 MB", AppRating = "4.8", Description = "Nothing is as cautiously cuddly as a pet porcupine.", CreatedDatetime = DateTime.Now.AddDays(4) });
                 }
 
                 #region sort in descending order (sample coding)
@@ -117,18 +117,20 @@ namespace Xperimen.ViewModel.Dashboard
                 {
                     if (!string.IsNullOrEmpty(SearchString))
                     {
-                        var search = ListData.Where(p => p.AppName.ToLower().Contains(SearchString.ToLower())).ToList();
-                        ListData.Clear();
+                        var search = ListClients.Where(p => p.Username.ToLower().Contains(SearchString.ToLower()) ||
+                                    p.Firstname.ToLower().Contains(SearchString.ToLower()) ||
+                                    p.Lastname.ToLower().Contains(SearchString.ToLower())).ToList();
+                        ListClients.Clear();
                         if (search.Count > 0)
                         {
                             foreach (var data in search)
-                                ListData.Add(data);
+                                ListClients.Add(data);
                         }
                     }
 
                     //var sorted = ListData.OrderByDescending(x => x.CreatedDatetime).ToList();
                     //ListData = new ObservableCollection<MobileApp>(sorted);
-                    ItemCount = ListData.Count;
+                    ItemCount = ListClients.Count;
                     ParentViewmodel.SetSearchResult();
                 }
                 catch (Exception ex)

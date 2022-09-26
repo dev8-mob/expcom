@@ -1,16 +1,17 @@
 ﻿using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using Xperimen.View.NavigationDrawer;
 using Xperimen.ViewModel.Dashboard;
 
 namespace Xperimen.View.Dashboard
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class TabbedDashboard : ContentPage
+    public partial class AdminPage : ContentPage
     {
         private readonly MaintabViewmodel viewmodel;
 
-        public TabbedDashboard()
+        public AdminPage()
         {
             InitializeComponent();
             BindingContext = viewmodel = new MaintabViewmodel();
@@ -27,8 +28,8 @@ namespace Xperimen.View.Dashboard
             var tab = view.ClassId;
             if (tab.Equals("tab_one"))
             {
-                frame_one.BackgroundColor = Color.White;
-                frame_two.BackgroundColor = Color.Transparent;
+                //frame_one.BackgroundColor = Color.White;
+                //frame_two.BackgroundColor = Color.Transparent;
                 line1.IsVisible = true;
                 line2.IsVisible = false;
                 tab_one.IsVisible = true;
@@ -36,14 +37,23 @@ namespace Xperimen.View.Dashboard
             }
             else if (tab.Equals("tab_two"))
             {
-                frame_one.BackgroundColor = Color.Transparent;
-                frame_two.BackgroundColor = Color.White;
+                //frame_one.BackgroundColor = Color.Transparent;
+                //frame_two.BackgroundColor = Color.White;
                 line1.IsVisible = false;
                 line2.IsVisible = true;
                 tab_one.IsVisible = false;
                 tab_two.IsVisible = true;
             }
             viewmodel.SetSelectedTab(tab);
+        }
+
+        public async void DrawerTapped(object sender, EventArgs e)
+        {
+            var view = (Image)sender;
+            await view.ScaleTo(0.9, 100);
+            view.Scale = 1;
+            var drawer = (DrawerMaster)view.Parent.Parent.Parent.Parent.Parent.Parent;
+            drawer.IsPresented = true;
         }
     }
 }

@@ -2,10 +2,10 @@
 using Plugin.Media.Abstractions;
 using SQLite;
 using System;
-using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Xamarin.Forms;
+using Xperimen.Helper;
 using Xperimen.Model;
 
 namespace Xperimen.ViewModel
@@ -110,6 +110,7 @@ namespace Xperimen.ViewModel
             if (result.Count > 0) return 1;
             else
             {
+                var convert = new StreamByteConverter();
                 var data = new Clients
                 {
                     Id = Guid.NewGuid().ToString(),
@@ -119,12 +120,13 @@ namespace Xperimen.ViewModel
                     Password = Password,
                     Description = Description,
                     AppTheme = Theme,
-                    ProfileImage = GetImageBytes()
+                    ProfileImage = convert.GetImageBytes(Picture.GetStream())
                 };
                 connection.Insert(data);
                 Application.Current.Properties["app_theme"] = Theme;
                 await Application.Current.SavePropertiesAsync();
                 MessagingCenter.Send(this, "AppThemeUpdated");
+
                 Picture = null;
                 Username = string.Empty;
                 Firstname = string.Empty;
@@ -134,23 +136,6 @@ namespace Xperimen.ViewModel
                 Theme = string.Empty;
                 return 2;
             }
-        }
-
-        private byte[] GetImageBytes()
-        {
-            byte[] ImageBytes;
-            using (var memoryStream = new MemoryStream())
-            {
-                Picture.GetStream().CopyTo(memoryStream);
-                ImageBytes = memoryStream.ToArray();
-            }
-            return ImageBytes;
-        }
-
-        public Stream BytesToStream(byte[] bytes)
-        {
-            Stream stream = new MemoryStream(bytes);
-            return stream;
         }
     }
 }

@@ -11,7 +11,8 @@
         <AbsoluteLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="Transparent">
 
             <ScrollView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,0,1,1">
-                <stylekit:XStacklayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Orientation="Vertical" Spacing="0" Padding="20">
+                <stylekit:XStacklayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Orientation="Vertical" Spacing="0" 
+                                       Padding="20,20,20,15">
                     <!-- top navigation bar -->
                     <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" BackgroundColor="Transparent">
                         <stylekit:XImage Source1="black_back.png" Source2="white_back.png" HeightRequest="35" WidthRequest="35" Aspect="AspectFit"
@@ -22,47 +23,94 @@
                         </stylekit:XImage>
                         <stylekit:XLabel Text="Setting" FontFamily="{DynamicResource Key=BoldFont}" FontSize="18" VerticalOptions="Center"/>
                     </StackLayout>
-                    <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Spacing="10" Margin="0,20,0,0">
-                        <stylekit:CustomEntry Placeholder="first name" Text="Firstname"/>
-                        <stylekit:CustomEntry Placeholder="last name" Text="Lastname"/>
-                    </StackLayout>
-                    <stylekit:CustomEntry Text="Username" Placeholder="choose your username" ImgLeft="black_user.png" ImgLeft_="white_user.png" Margin="0,10,0,0"/>
-                    <!-- Username is the field name in viewmodel for binding -->
-                    <stylekit:CustomEntry Ispassword="True" ImgLeft="black_password.png" ImgLeft_="white_password.png" 
-                                          Placeholder="insert your password" Margin="0,10,0,0" ImgRight="black_visible.png" ImgRight_="white_visible.png" 
-                                          ImgRight2="black_invisible.png" ImgRight2_="white_invisible.png" 
-                                          Text="Password"/>
-                    <stylekit:CustomEntry Ispassword="True" ImgLeft="black_password.png" ImgLeft_="white_password.png" 
-                                          Placeholder="re-type your password" Margin="0,10,0,0" ImgRight="black_visible.png" ImgRight_="white_visible.png" 
-                                          ImgRight2="black_invisible.png" ImgRight2_="white_invisible.png" 
-                                          Text="Repassword"/>
-                    <!-- Password is the field name in viewmodel for binding -->
-                    <stylekit:XLabel Text="Description" HorizontalOptions="Start" Margin="0,10,0,0"/>
-                    <stylekit:CustomEditor Margin="0,5,0,0" Placeholder="Bio, tagline, quotes, etc..." Text="Description"/>
-                    <stylekit:XLabel Text="Application Theme" HorizontalOptions="Start" Margin="0,10,0,0"/>
-                    <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal" Margin="0,5,0,0" Spacing="0" BackgroundColor="Transparent">
-                        <Frame x:Name="frame_dark" Padding="0,8,0,8" HorizontalOptions="FillAndExpand" HasShadow="False" CornerRadius="3"
-                               BackgroundColor="Transparent" BorderColor="DarkGray">
-                            <stylekit:XLabel Text="Dark Theme" HorizontalOptions="Center"/>
-                            <Frame.GestureRecognizers>
-                                <TapGestureRecognizer Tapped="ThemeClicked" NumberOfTapsRequired="1"/>
-                            </Frame.GestureRecognizers>
-                        </Frame>
-                        <Frame x:Name="frame_dim" Padding="0,8,0,8" HorizontalOptions="FillAndExpand" HasShadow="False" CornerRadius="3" Margin="5,0,0,0"
-                               BackgroundColor="Transparent" BorderColor="DarkGray">
-                            <stylekit:XLabel Text="Dim Theme" HorizontalOptions="Center"/>
-                            <Frame.GestureRecognizers>
-                                <TapGestureRecognizer Tapped="ThemeClicked" NumberOfTapsRequired="1"/>
-                            </Frame.GestureRecognizers>
-                        </Frame>
-                        <Frame x:Name="frame_light" Padding="0,8,0,8" HorizontalOptions="FillAndExpand" HasShadow="False" CornerRadius="3" Margin="5,0,0,0"
-                               BackgroundColor="Transparent" BorderColor="DarkGray">
-                            <stylekit:XLabel Text="Light Theme" HorizontalOptions="Center"/>
-                            <Frame.GestureRecognizers>
-                                <TapGestureRecognizer Tapped="ThemeClicked" NumberOfTapsRequired="1"/>
-                            </Frame.GestureRecognizers>
-                        </Frame>
-                    </StackLayout>
+                    <Grid HorizontalOptions="FillAndExpand" Margin="0,20,0,0">
+                        <!-- information view -->
+                        <viewcell:SettingInfo x:Name="view_setting" Grid.Row="0" Grid.Column="0"/>
+                        <!-- editing view -->
+                        <StackLayout HorizontalOptions="FillAndExpand" Spacing="0" Grid.Row="0" Grid.Column="0"
+                                     Orientation="Vertical" IsVisible="{Binding IsEditing}">
+                            <!-- profile picture -->
+                            <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Spacing="0">
+                                <Frame x:Name="frame_profile" HorizontalOptions="Fill" HeightRequest="60" WidthRequest="60" BorderColor="DarkGray" HasShadow="False"
+                                       BackgroundColor="{DynamicResource Key=DimGray2}" Padding="0" CornerRadius="20" IsClippedToBounds="True">
+                                    <Image x:Name="img_profile" Aspect="AspectFill"/>
+                                    <Frame.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="ProfilePicClicked" NumberOfTapsRequired="1"/>
+                                    </Frame.GestureRecognizers>
+                                </Frame>
+                                <StackLayout HorizontalOptions="FillAndExpand"/>
+                                <StackLayout Orientation="Vertical" HorizontalOptions="End" Spacing="0">
+                                    <stylekit:XLabel Text="Update your image" HorizontalOptions="Start"/>
+                                    <StackLayout Orientation="Horizontal" HorizontalOptions="End" Spacing="0" Margin="0,5,0,0">
+                                        <stylekit:XImage Source1="black_image.png" Source2="white_image.png" HeightRequest="30" WidthRequest="30"
+                                                     Aspect="AspectFit" VerticalOptions="Center" Margin="0,0,15,0">
+                                            <Image.GestureRecognizers>
+                                                <TapGestureRecognizer Tapped="GalleryClicked" NumberOfTapsRequired="1"/>
+                                            </Image.GestureRecognizers>
+                                        </stylekit:XImage>
+                                        <stylekit:XImage Source1="black_camera.png" Source2="white_camera.png" HeightRequest="30" WidthRequest="30"
+                                                     Aspect="AspectFit" VerticalOptions="Center">
+                                            <Image.GestureRecognizers>
+                                                <TapGestureRecognizer Tapped="CameraClicked" NumberOfTapsRequired="1"/>
+                                            </Image.GestureRecognizers>
+                                        </stylekit:XImage>
+                                    </StackLayout>
+                                </StackLayout>
+                            </StackLayout>
+                            <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Spacing="10" Margin="0,10,0,0">
+                                <stylekit:CustomEntry Placeholder="first name" Text="Firstname"/>
+                                <stylekit:CustomEntry Placeholder="last name" Text="Lastname"/>
+                            </StackLayout>
+                            <stylekit:CustomEntry Text="Username" Placeholder="choose your username" ImgLeft="black_user.png" ImgLeft_="white_user.png" Margin="0,10,0,0"/>
+                            <stylekit:CustomEntry Ispassword="True" ImgLeft="black_password.png" ImgLeft_="white_password.png" 
+                                                  Placeholder="insert your password" Margin="0,10,0,0" ImgRight="black_visible.png" ImgRight_="white_visible.png" 
+                                                  ImgRight2="black_invisible.png" ImgRight2_="white_invisible.png" 
+                                                  Text="Password"/>
+                            <stylekit:CustomEntry Ispassword="True" ImgLeft="black_password.png" ImgLeft_="white_password.png" 
+                                                  Placeholder="re-type your password" Margin="0,10,0,0" ImgRight="black_visible.png" ImgRight_="white_visible.png" 
+                                                  ImgRight2="black_invisible.png" ImgRight2_="white_invisible.png" 
+                                                  Text="Repassword"/>
+                            <stylekit:XLabel Text="Description" HorizontalOptions="Start" Margin="0,10,0,0"/>
+                            <stylekit:CustomEditor Margin="0,5,0,0" Placeholder="Bio, tagline, quotes, etc..." Text="Description"/>
+                            <stylekit:XLabel Text="Application Theme" HorizontalOptions="Start" Margin="0,10,0,0"/>
+                            <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal" Margin="0,5,0,0" Spacing="0" BackgroundColor="Transparent">
+                                <Frame x:Name="frame_dark" Padding="0,8,0,8" HorizontalOptions="FillAndExpand" HasShadow="False" CornerRadius="3"
+                                       BackgroundColor="Transparent" BorderColor="DarkGray">
+                                    <stylekit:XLabel Text="Dark Theme" HorizontalOptions="Center"/>
+                                    <Frame.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="ThemeClicked" NumberOfTapsRequired="1"/>
+                                    </Frame.GestureRecognizers>
+                                </Frame>
+                                <Frame x:Name="frame_dim" Padding="0,8,0,8" HorizontalOptions="FillAndExpand" HasShadow="False" CornerRadius="3" Margin="5,0,0,0"
+                                       BackgroundColor="Transparent" BorderColor="DarkGray">
+                                    <stylekit:XLabel Text="Dim Theme" HorizontalOptions="Center"/>
+                                    <Frame.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="ThemeClicked" NumberOfTapsRequired="1"/>
+                                    </Frame.GestureRecognizers>
+                                </Frame>
+                                <Frame x:Name="frame_light" Padding="0,8,0,8" HorizontalOptions="FillAndExpand" HasShadow="False" CornerRadius="3" Margin="5,0,0,0"
+                                       BackgroundColor="Transparent" BorderColor="DarkGray">
+                                    <stylekit:XLabel Text="Light Theme" HorizontalOptions="Center"/>
+                                    <Frame.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="ThemeClicked" NumberOfTapsRequired="1"/>
+                                    </Frame.GestureRecognizers>
+                                </Frame>
+                            </StackLayout>
+                            <Frame Padding="0,10,0,10" CornerRadius="3" BorderColor="{DynamicResource Key=Primary}" HorizontalOptions="FillAndExpand"
+                                   Margin="0,15,0,0" BackgroundColor="{DynamicResource Key=Primary}" HasShadow="False" IsClippedToBounds="True">
+                                <Label Text="Update" FontFamily="{DynamicResource Key=BoldFont}" TextColor="White" 
+                                       HorizontalOptions="Center" VerticalOptions="Center"/>
+                                <Frame.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="SaveClicked" NumberOfTapsRequired="1"/>
+                                </Frame.GestureRecognizers>
+                            </Frame>
+                            <stylekit:XLabel Text="Cancel" HorizontalOptions="Center" FontFamily="{DynamicResource Key=BoldFont}" Margin="0,30,0,0">
+                                <Label.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="CancelClicked" NumberOfTapsRequired="1"/>
+                                </Label.GestureRecognizers>
+                            </stylekit:XLabel>
+                        </StackLayout>
+                    </Grid>
                     <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="Transparent"/>
                     <stylekit:XLabel Text="Version 1.0.0" HorizontalOptions="Center" VerticalOptions="End" FontSize="10"/>
                 </stylekit:XStacklayout>
