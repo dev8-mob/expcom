@@ -19,6 +19,7 @@ namespace Xperimen
         public static string CustomBlue = "#01A9DB";
         public static string LabelTextColor = "#666666";
         public static string SlateGray = "#708090";
+        public static string CharcoalGray = "#8c99a6";
         public static string CharcoalBlack = "#363636";
 
         public App(string sql_path)

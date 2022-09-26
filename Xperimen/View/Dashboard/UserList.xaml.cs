@@ -6,11 +6,11 @@ using Xperimen.ViewModel.Dashboard;
 namespace Xperimen.View.Dashboard
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class TabOne : Frame
+    public partial class UserList : Frame
     {
         private readonly ChildtabViewmodel viewmodel;
 
-        public TabOne()
+        public UserList()
         {
             InitializeComponent();
             BindingContext = viewmodel = new ChildtabViewmodel("tab_one");

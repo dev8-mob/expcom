@@ -37,7 +37,7 @@ namespace Xperimen.Stylekit
                 if (theme.Equals("dim"))
                 {
                     entry.TextColor = Color.Default;
-                    stack_entry.BackgroundColor = Color.SlateGray;
+                    stack_entry.BackgroundColor = Color.FromHex(App.CharcoalGray);
                     entry.PlaceholderColor = Color.Default;
                 }
                 if (theme.Equals("light"))
@@ -79,7 +79,7 @@ namespace Xperimen.Stylekit
                 {
                     var theme = Application.Current.Properties["app_theme"] as string;
                     if (theme.Equals("dark")) stack_entry.BackgroundColor = Color.FromHex(App.CharcoalBlack);
-                    if (theme.Equals("dim")) stack_entry.BackgroundColor = Color.SlateGray;
+                    if (theme.Equals("dim")) stack_entry.BackgroundColor = Color.FromHex(App.CharcoalGray);
                     if (theme.Equals("light")) stack_entry.BackgroundColor = Color.FromHex(App.DimGray2);
                 }
                 else stack_entry.BackgroundColor = Color.FromHex(App.DimGray2);

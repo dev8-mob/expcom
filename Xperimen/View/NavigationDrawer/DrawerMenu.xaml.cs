@@ -60,7 +60,7 @@ namespace Xperimen.View.NavigationDrawer
             List<ItemMenu> menulist = new List<ItemMenu>();
 
             menulist.Add(new ItemMenu { ImageIcon1 = "black_user.png", ImageIcon2 = "white_user.png", Title = "Dashboard", Contentpage = typeof(MainPage) });
-            menulist.Add(new ItemMenu { ImageIcon1 = "black_whatshot.png", ImageIcon2 = "white_whatshot.png", Title = "Tabbed Page", Contentpage = typeof(TabbedDashboard) });
+            menulist.Add(new ItemMenu { ImageIcon1 = "black_whatshot.png", ImageIcon2 = "white_whatshot.png", Title = "Admin", Contentpage = typeof(AdminPage) });
             menulist.Add(new ItemMenu { ImageIcon1 = "black_password.png", ImageIcon2 = "white_password.png", Title = "Page Two", Contentpage = typeof(MainPage) });
             menulist.Add(new ItemMenu { ImageIcon1 = "black_money.png", ImageIcon2 = "white_money.png", Title = "Finance", Contentpage = typeof(MainPage) });
             menulist.Add(new ItemMenu { ImageIcon1 = "black_setting.png", ImageIcon2 = "white_setting.png", Title = "Setting", Contentpage = typeof(MainSetting) });

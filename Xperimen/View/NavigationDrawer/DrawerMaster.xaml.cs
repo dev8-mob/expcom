@@ -20,7 +20,7 @@ namespace Xperimen.View.NavigationDrawer
             listview.ItemSelected += MenuSelected;
             var connection = new SQLiteConnection(App.DB_PATH);
 
-            Detail = new NavigationPage(new TabbedDashboard());
+            Detail = new NavigationPage(new AdminPage());
         }
 
         private async void MenuSelected(object sender, SelectedItemChangedEventArgs e)

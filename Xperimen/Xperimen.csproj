@@ -38,6 +38,12 @@
     <Compile Update="Stylekit\CustomEditor.xaml.cs">
       <DependentUpon>CustomEditor.xaml</DependentUpon>
     </Compile>
+    <Compile Update="View\Dashboard\AdminPage.xaml.cs">
+      <DependentUpon>AdminPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="View\Dashboard\UserList.xaml.cs">
+      <DependentUpon>UserList.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
 
   <ItemGroup>
@@ -65,10 +71,10 @@
     <EmbeddedResource Update="View\Dashboard\MainPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="View\Dashboard\TabbedDashboard.xaml">
+    <EmbeddedResource Update="View\Dashboard\AdminPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="View\Dashboard\TabOne.xaml">
+    <EmbeddedResource Update="View\Dashboard\UserList.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="View\Dashboard\TabTwo.xaml">

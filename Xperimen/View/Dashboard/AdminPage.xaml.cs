@@ -7,11 +7,11 @@ using Xperimen.ViewModel.Dashboard;
 namespace Xperimen.View.Dashboard
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class TabbedDashboard : ContentPage
+    public partial class AdminPage : ContentPage
     {
         private readonly MaintabViewmodel viewmodel;
 
-        public TabbedDashboard()
+        public AdminPage()
         {
             InitializeComponent();
             BindingContext = viewmodel = new MaintabViewmodel();
