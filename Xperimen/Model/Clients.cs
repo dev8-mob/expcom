@@ -1,9 +1,12 @@
 ﻿
 
+using SQLite;
+
 namespace Xperimen.Model
 {
     public class Clients
     {
+        [PrimaryKey]
         public string Id { get; set; }
         public string Username { get; set; }
         public string Firstname { get; set; }

@@ -4,27 +4,28 @@
              x:Class="Xperimen.Stylekit.CustomSearchBar"
              xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
              xmlns:stylekit="clr-namespace:Xperimen.Stylekit"
-             BackgroundColor="Transparent" Spacing="0">
+             Spacing="0">
 
-    <Frame x:Name="frame_bg" HorizontalOptions="FillAndExpand" HasShadow="False" CornerRadius="3" BackgroundColor="{DynamicResource Key=DimGray2}"
+    <Frame x:Name="frame_bg" HorizontalOptions="FillAndExpand" HasShadow="False" CornerRadius="3"
            IsClippedToBounds="True" Padding="0">
 
         <StackLayout HorizontalOptions="FillAndExpand" Orientation="Vertical" Spacing="0">
-            <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal" Spacing="0" Padding="15,0,15,0">
-                <Image Source="black_search.png" HeightRequest="30" WidthRequest="30" Aspect="AspectFit"
-                       HorizontalOptions="Start" VerticalOptions="Center"/>
-                <stylekit:EntryBorderless x:Name="entry" Text="{Binding DataString}" Placeholder="search.." FontFamily="{DynamicResource Key=NormalFont}">
+            <StackLayout x:Name="stack_entry" HorizontalOptions="FillAndExpand" Orientation="Horizontal" Spacing="0" Padding="15,0,15,0">
+                <stylekit:XImage Source1="black_search.png" Source2="white_search.png" HeightRequest="30" WidthRequest="30" 
+                                 Aspect="AspectFit" HorizontalOptions="Start" VerticalOptions="Center"/>
+                <stylekit:EntryBorderless x:Name="entry" Text="{Binding DataString}" Placeholder="search.." BackgroundColor="Transparent"
+                                          FontFamily="{DynamicResource Key=NormalFont}">
                     <Entry.Behaviors>
                         <xct:UserStoppedTypingBehavior Command="{Binding LoadDataCommand}" StoppedTypingTimeThreshold="1000"
                                                        MinimumLengthThreshold="2" />
                     </Entry.Behaviors>
                 </stylekit:EntryBorderless>
-                <Image Source="black_close.png" HeightRequest="30" WidthRequest="30" Aspect="AspectFit"
-                       HorizontalOptions="End" VerticalOptions="Center">
+                <stylekit:XImage Source1="black_close.png" Source2="white_close.png" HeightRequest="30" WidthRequest="30" 
+                                 Aspect="AspectFit" HorizontalOptions="End" VerticalOptions="Center">
                     <Image.GestureRecognizers>
                         <TapGestureRecognizer Command="{Binding ClearSearch}"/>
                     </Image.GestureRecognizers>
-                </Image>
+                </stylekit:XImage>
             </StackLayout>
             <BoxView x:Name="line" HorizontalOptions="FillAndExpand" HeightRequest="2" BackgroundColor="DarkGray" Margin="0,0,0,0"/>
         </StackLayout>

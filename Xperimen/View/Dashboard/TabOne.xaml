@@ -8,7 +8,7 @@
 
     <AbsoluteLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
 
-        <stylekit:XStacklayout HorizontalOptions="FillAndExpand" AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,0,1,1">
+        <stylekit:XStacklayout HorizontalOptions="FillAndExpand" Padding="0,15,0,0" AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,0,1,1">
 
             <ListView x:Name="listview" HorizontalOptions="FillAndExpand" IsPullToRefreshEnabled="True" RefreshCommand="{Binding LoadDataCommand}"
                       ItemsSource="{Binding ListData}" IsRefreshing="{Binding IsLoading}" HasUnevenRows="True" SeparatorVisibility="None"

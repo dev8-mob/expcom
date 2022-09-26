@@ -152,19 +152,36 @@ namespace Xperimen.View
             else if (string.IsNullOrEmpty(viewmodel.Theme)) SetDisplayAlert("Alert", "Please choose application theme.", "", "");
             else
             {
-                var result = await viewmodel.CreateAccount();
-                if (result == 1) SetDisplayAlert("Alert", "The username is already exist. Please choose different username.", "", "");
-                else if (result == 2)
+                try
                 {
-                    SetDisplayAlert("Success", "Successfully created your account.", "", "Okay");
-                    frame_dark.BackgroundColor = Color.Transparent;
-                    frame_dim.BackgroundColor = Color.Transparent;
-                    frame_light.BackgroundColor = Color.Transparent;
-                    frame_dark.BorderColor = Color.DarkGray;
-                    frame_dim.BorderColor = Color.DarkGray;
-                    frame_light.BorderColor = Color.DarkGray;
-                    lbl_cancel.Text = "Go To Login";
-                    img_profile.Source = "";
+                    var result = await viewmodel.CreateAccount();
+                    if (result == 1) SetDisplayAlert("Alert", "The username is already exist. Please choose different username.", "", "");
+                    else if (result == 2)
+                    {
+                        SetDisplayAlert("Success", "Successfully created your account.", "", "Okay");
+                        if (Application.Current.Properties.ContainsKey("app_theme"))
+                        {
+                            var theme = Application.Current.Properties["app_theme"];
+                            if (theme.Equals("dark")) frame_profile.BackgroundColor = Color.Transparent;
+                            if (theme.Equals("dim")) frame_profile.BackgroundColor = Color.Transparent;
+                            if (theme.Equals("light")) frame_profile.BackgroundColor = Color.FromHex(App.DimGray2);
+                        }
+
+                        frame_dark.BackgroundColor = Color.Transparent;
+                        frame_dim.BackgroundColor = Color.Transparent;
+                        frame_light.BackgroundColor = Color.Transparent;
+                        frame_dark.BorderColor = Color.DarkGray;
+                        frame_dim.BorderColor = Color.DarkGray;
+                        frame_light.BorderColor = Color.DarkGray;
+                        lbl_cancel.Text = "Go To Login";
+                        img_profile.Source = "";
+                    }
+                }
+                catch (Exception ex)
+                {
+                    var error = ex.Message;
+                    var desc = ex.StackTrace;
+                    await DisplayAlert(error, desc, "OK!");
                 }
             }
         }

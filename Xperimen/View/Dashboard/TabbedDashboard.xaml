@@ -33,31 +33,38 @@
                     <stylekit:XLabel Text="Dashboard" HorizontalOptions="FillAndExpand" FontFamily="{DynamicResource Key=BoldFont}" 
                                      FontSize="18" VerticalOptions="Center"/>
                 </stylekit:XStacklayout>
+                <!-- search bar -->
                 <stylekit:CustomSearchBar Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Margin="15,0,15,0"/>
-                <frame:PancakeView x:Name="frame_one" HorizontalOptions="FillAndExpand" Grid.Row="2" Grid.Column="0" Margin="0,15,0,0" 
-                                   Padding="0" CornerRadius="8,8,0,0" IsClippedToBounds="True">
+                <!-- button tab 1 -->
+                <frame:PancakeView x:Name="frame_one" HorizontalOptions="FillAndExpand" Grid.Row="2" Grid.Column="0" Padding="0,15,0,0" 
+                                   CornerRadius="8,8,0,0" IsClippedToBounds="True">
                     <stylekit:XStacklayout Orientation="Vertical" HorizontalOptions="Center" ClassId="tab_one" Spacing="0">
-                        <stylekit:XLabel Text="Page One" HorizontalOptions="Center" VerticalOptions="FillAndExpand" FontAttributes="Bold" Margin="10"/>
-                        <BoxView x:Name="line1" HeightRequest="1" HorizontalOptions="FillAndExpand" VerticalOptions="End" 
+                        <stylekit:XLabel Text="Page One" HorizontalOptions="Center" VerticalOptions="FillAndExpand" 
+                                         FontFamily="{DynamicResource Key=BoldFont}" Margin="10"/>
+                        <BoxView x:Name="line1" HeightRequest="2" HorizontalOptions="FillAndExpand" VerticalOptions="End" 
                                  BackgroundColor="{DynamicResource Key=Primary}"/>
                         <StackLayout.GestureRecognizers>
                             <TapGestureRecognizer Tapped="OnTabTapped"/>
                         </StackLayout.GestureRecognizers>
                     </stylekit:XStacklayout>
                 </frame:PancakeView>
-                <frame:PancakeView x:Name="frame_two" HorizontalOptions="FillAndExpand" Grid.Row="2" Grid.Column="1" Margin="0,15,0,0" 
-                                   Padding="0" CornerRadius="8,8,0,0" IsClippedToBounds="True">
+                <!-- button tab 2 -->
+                <frame:PancakeView x:Name="frame_two" HorizontalOptions="FillAndExpand" Grid.Row="2" Grid.Column="1" Padding="0,15,0,0" 
+                                   CornerRadius="8,8,0,0" IsClippedToBounds="True">
                     <stylekit:XStacklayout Orientation="Vertical" HorizontalOptions="Center" ClassId="tab_two" Spacing="0">
-                        <stylekit:XLabel Text="Page Two" HorizontalOptions="Center" VerticalOptions="FillAndExpand" FontAttributes="Bold" Margin="10"/>
-                        <BoxView x:Name="line2" HeightRequest="1" HorizontalOptions="FillAndExpand" VerticalOptions="End" IsVisible="False"
+                        <stylekit:XLabel Text="Page Two" HorizontalOptions="Center" VerticalOptions="FillAndExpand" 
+                                         FontFamily="{DynamicResource Key=BoldFont}" Margin="10"/>
+                        <BoxView x:Name="line2" HeightRequest="2" HorizontalOptions="FillAndExpand" VerticalOptions="End" IsVisible="False"
                                  BackgroundColor="{DynamicResource Key=Primary}"/>
                         <StackLayout.GestureRecognizers>
                             <TapGestureRecognizer Tapped="OnTabTapped"/>
                         </StackLayout.GestureRecognizers>
                     </stylekit:XStacklayout>
                 </frame:PancakeView>
-                <tabpage:TabOne x:Name="tab_one" HorizontalOptions="FillAndExpand" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2"/>
-                <tabpage:TabTwo x:Name="tab_two" HorizontalOptions="FillAndExpand" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" IsVisible="False"/>
+                <tabpage:TabOne x:Name="tab_one" HorizontalOptions="FillAndExpand" Grid.Row="3" Grid.Column="0" 
+                                Grid.ColumnSpan="2"/>
+                <tabpage:TabTwo x:Name="tab_two" HorizontalOptions="FillAndExpand" Grid.Row="3" Grid.Column="0" 
+                                Grid.ColumnSpan="2" IsVisible="False"/>
             </Grid>
         </stylekit:XStacklayout>
         

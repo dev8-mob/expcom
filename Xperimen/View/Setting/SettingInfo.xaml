@@ -8,7 +8,7 @@
     <Frame.Content>
 
         <stylekit:XStacklayout HorizontalOptions="FillAndExpand" Orientation="Vertical" Spacing="0">
-            <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Spacing="0">
+            <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Spacing="0" BackgroundColor="Transparent">
                 <Frame x:Name="frame_profile" HorizontalOptions="Fill" VerticalOptions="Center" BorderColor="DarkGray" 
                        HasShadow="False" BackgroundColor="Transparent" Padding="0" CornerRadius="20" IsClippedToBounds="True">
                     <Image x:Name="img_profile" Aspect="AspectFill" HeightRequest="70" WidthRequest="70"/>

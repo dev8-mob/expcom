@@ -10,6 +10,7 @@ using System.Linq;
 using Rg.Plugins.Popup.Extensions;
 using Xperimen.Stylekit;
 using Xperimen.Helper;
+using Xperimen.ViewModel.Setting;
 
 namespace Xperimen.View.NavigationDrawer
 {
@@ -19,16 +20,21 @@ namespace Xperimen.View.NavigationDrawer
         public ListView listview_menu;
         public SQLiteConnection connection;
         public Clients user_login;
+        public StreamByteConverter converter;
 
         public DrawerMenu()
         {
             InitializeComponent();
             connection = new SQLiteConnection(App.DB_PATH);
+            converter = new StreamByteConverter();
             listview_menu = listview;
+            SetupData();
             CreateMenuList();
+
+            MessagingCenter.Subscribe<SettingViewmodel>(this, "AppThemeUpdated", (sender) => { SetupData(); });
         }
 
-        public void CreateMenuList()
+        public void SetupData()
         {
             if (Application.Current.Properties.ContainsKey("current_login"))
             {
@@ -36,11 +42,10 @@ namespace Xperimen.View.NavigationDrawer
                 var login = connection.Query<Clients>("SELECT * FROM Clients WHERE Id = '" + id + "'").ToList();
                 if (login.Count > 0)
                 {
-                    var convert = new StreamByteConverter();
                     user_login = login[0];
                     img_pic.Source = ImageSource.FromStream(() =>
                     {
-                        var stream = convert.BytesToStream(user_login.ProfileImage);
+                        var stream = converter.BytesToStream(user_login.ProfileImage);
                         return stream;
                     });
                     lbl_fullname.Text = login[0].Firstname + " " + login[0].Lastname;
@@ -48,7 +53,10 @@ namespace Xperimen.View.NavigationDrawer
                     lbl_desc.Text = login[0].Description;
                 }
             }
-               
+        }
+
+        public void CreateMenuList()
+        {
             List<ItemMenu> menulist = new List<ItemMenu>();
 
             menulist.Add(new ItemMenu { ImageIcon1 = "black_user.png", ImageIcon2 = "white_user.png", Title = "Dashboard", Contentpage = typeof(MainPage) });
@@ -64,8 +72,7 @@ namespace Xperimen.View.NavigationDrawer
         {
             await frame_profile.ScaleTo(0.9, 100);
             frame_profile.Scale = 1;
-            var convert = new StreamByteConverter();
-            await Navigation.PushPopupAsync(new ImageViewer(convert.BytesToStream(user_login.ProfileImage)));
+            await Navigation.PushPopupAsync(new ImageViewer(converter.BytesToStream(user_login.ProfileImage)));
         }
     }
 }

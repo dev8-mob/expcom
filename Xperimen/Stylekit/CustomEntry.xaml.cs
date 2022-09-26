@@ -3,6 +3,7 @@ using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using Xperimen.ViewModel;
+using Xperimen.ViewModel.Setting;
 
 namespace Xperimen.Stylekit
 {
@@ -184,6 +185,7 @@ namespace Xperimen.Stylekit
             entry.IsPassword = Ispassword;
             SetupView();
 
+            #region messaging center
             MessagingCenter.Subscribe<CreateaccViewmodel>(this, "AppThemeUpdated", (sender) =>
             {
                 try
@@ -208,6 +210,19 @@ namespace Xperimen.Stylekit
                 }
                 catch (Exception ex) { var error = ex.Message; }
             });
+            MessagingCenter.Subscribe<SettingViewmodel>(this, "AppThemeUpdated", (sender) => 
+            {
+                try
+                {
+                    UpdateImgLeft(ImgLeft);
+                    UpdateImgLeft_(ImgLeft_);
+                    UpdateImgRight(ImgRight);
+                    UpdateImgRight_(ImgRight_);
+                    SetupView();
+                }
+                catch (Exception ex) { var error = ex.Message; }
+            });
+            #endregion
         }
 
         public void SetupView()
@@ -218,7 +233,7 @@ namespace Xperimen.Stylekit
                 if (theme.Equals("dark"))
                 {
                     entry.TextColor = Color.White;
-                    BackgroundColor = Color.Black;
+                    BackgroundColor = Color.FromHex(App.CharcoalBlack);
                     entry.PlaceholderColor = Color.White;
                 }
                 if (theme.Equals("dim"))
@@ -265,7 +280,7 @@ namespace Xperimen.Stylekit
                 if (Application.Current.Properties.ContainsKey("app_theme"))
                 {
                     var theme = Application.Current.Properties["app_theme"] as string;
-                    if (theme.Equals("dark")) BackgroundColor = Color.Black;
+                    if (theme.Equals("dark")) BackgroundColor = Color.FromHex(App.CharcoalBlack);
                     if (theme.Equals("dim")) BackgroundColor = Color.SlateGray;
                     if (theme.Equals("light")) BackgroundColor = Color.FromHex(App.DimGray2);
                 }

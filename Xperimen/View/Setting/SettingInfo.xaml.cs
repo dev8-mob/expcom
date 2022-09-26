@@ -17,6 +17,7 @@ namespace Xperimen.View.Setting
         public SettingInfo()
         {
             InitializeComponent();
+            MessagingCenter.Subscribe<SettingViewmodel>(this, "AppThemeUpdated", (sender) => { SetupView(); });
         }
 
         public void SetupView()
@@ -24,7 +25,7 @@ namespace Xperimen.View.Setting
             var convert = new StreamByteConverter();
             img_profile.Source = ImageSource.FromStream(() =>
             {
-                var stream = convert.BytesToStream(viewmodel.user_login.ProfileImage);
+                var stream = convert.BytesToStream(viewmodel.Picture);
                 return stream;
             });
             lbl_fullname.Text = viewmodel.Firstname + " " + viewmodel.Lastname;
@@ -42,7 +43,7 @@ namespace Xperimen.View.Setting
             await frame_profile.ScaleTo(0.9, 100);
             frame_profile.Scale = 1;
             var convert = new StreamByteConverter();
-            await Navigation.PushPopupAsync(new ImageViewer(convert.BytesToStream(viewmodel.user_login.ProfileImage)));
+            await Navigation.PushPopupAsync(new ImageViewer(convert.BytesToStream(viewmodel.Picture)));
         }
 
         public async void EditClicked(object sender, EventArgs e)
@@ -52,6 +53,7 @@ namespace Xperimen.View.Setting
             view.Scale = 1;
             viewmodel.IsViewing = false;
             viewmodel.IsEditing = true;
+            MessagingCenter.Send(this, "SettingEditProfile");
         }
     }
 }

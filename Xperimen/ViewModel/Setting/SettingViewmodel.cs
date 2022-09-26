@@ -1,9 +1,12 @@
-﻿
+﻿using Plugin.Media;
+using Plugin.Media.Abstractions;
 using Xperimen.Model;
 using SQLite;
 using System.Linq;
 using Xamarin.Forms;
 using System.Threading.Tasks;
+using Xperimen.Helper;
+using System;
 
 namespace Xperimen.ViewModel.Setting
 {
@@ -17,6 +20,7 @@ namespace Xperimen.ViewModel.Setting
         string _repassword;
         string _description;
         string _theme;
+        byte[] _picture;
         bool _isediting;
         bool _isviewing;
 
@@ -55,6 +59,11 @@ namespace Xperimen.ViewModel.Setting
             get { return _theme; }
             set { _theme = value; OnPropertyChanged(); }
         }
+        public byte[] Picture
+        {
+            get { return _picture; }
+            set { _picture = value; OnPropertyChanged(); }
+        }
         public bool IsEditing
         {
             get { return _isediting; }
@@ -68,37 +77,117 @@ namespace Xperimen.ViewModel.Setting
         #endregion
 
         public SQLiteConnection connection;
-        public Clients user_login;
+        public StreamByteConverter converter;
 
         public SettingViewmodel()
         {
             connection = new SQLiteConnection(App.DB_PATH);
+            converter = new StreamByteConverter();
             IsViewing = true;
             IsEditing = false;
+            SetupData();
+        }
 
+        public void SetupData()
+        {
             var userid = Application.Current.Properties["current_login"] as string;
             string query = "SELECT * FROM Clients WHERE Id = '" + userid + "'";
             var result = connection.Query<Clients>(query).ToList();
             if (result.Count > 0)
             {
-                user_login = result[0];
                 Username = result[0].Username;
                 Firstname = result[0].Firstname;
                 Lastname = result[0].Lastname;
                 Password = result[0].Password;
                 Description = result[0].Description;
+                Picture = result[0].ProfileImage;
                 Theme = result[0].AppTheme;
+            }
+        }
+
+        public async Task<int> TakePhoto()
+        {
+            Picture = null;
+            await CrossMedia.Current.Initialize();
+            if (!CrossMedia.Current.IsCameraAvailable || !CrossMedia.Current.IsTakePhotoSupported) return 3;
+            var media = await CrossMedia.Current.TakePhotoAsync(new StoreCameraMediaOptions
+            {
+                Directory = "Xperimen",
+                PhotoSize = PhotoSize.Large, ////Resize to 75% of original
+                CompressionQuality = 100,
+                Name = Guid.NewGuid().ToString().Substring(0, 10) + ".jpg",
+                SaveToAlbum = true
+                //CustomPhotoSize = 90, //Resize to 90% of original
+            });
+
+            if (media == null) return 2;
+            else
+            {
+                Picture = converter.GetImageBytes(media.GetStream());
+                return 1;
+            }
+        }
+
+        public async Task<int> PickPhoto()
+        {
+            Picture = null;
+            await CrossMedia.Current.Initialize();
+            if (!CrossMedia.Current.IsPickPhotoSupported || !CrossMedia.Current.IsPickVideoSupported) return 3;
+            var media = await CrossMedia.Current.PickPhotoAsync(new PickMediaOptions
+            {
+                PhotoSize = PhotoSize.Large, ////Resize to 75% of original
+                CompressionQuality = 100,
+            });
+
+            if (media == null) return 2;
+            else
+            {
+                Picture = converter.GetImageBytes(media.GetStream());
+                return 1;
             }
         }
 
         public async Task<int> UpdateSetting()
         {
-            Application.Current.Properties["app_theme"] = Theme;
-            await Application.Current.SavePropertiesAsync();
-            MessagingCenter.Send(this, "AppThemeUpdated");
+            var fname = char.ToUpper(Firstname[0]) + Firstname.Substring(1).ToLower();
+            var lname = char.ToUpper(Lastname[0]) + Lastname.Substring(1).ToLower();
+            Firstname = fname;
+            Lastname = lname;
 
-            if (!Repassword.Equals(Password)) return 2;
-            else return 1;
+            var userid = Application.Current.Properties["current_login"] as string;
+            var model = new Clients
+            {
+                Id = userid,
+                Firstname = fname,
+                Lastname = lname,
+                Username = Username,
+                Password = Password,
+                Description = Description,
+                ProfileImage = Picture,
+                AppTheme = Theme
+            };
+
+            string query = "SELECT * FROM Clients WHERE Id = '" + userid + "'";
+            var result = connection.Query<Clients>(query).ToList();
+            if (result.Count > 0)
+            {
+                var search = "SELECT * FROM Clients WHERE Username = '" + Username + "' AND Id NOT IN ('" + result[0].Id + "')";
+                var exist = connection.Query<Clients>(search).ToList();
+                if (exist.Count > 0) return 4;
+                else
+                {
+                    var row = connection.Update(model);
+                    if (row == 1)
+                    {
+                        Application.Current.Properties["app_theme"] = Theme;
+                        await Application.Current.SavePropertiesAsync();
+                        MessagingCenter.Send(this, "AppThemeUpdated");
+                        return 1;
+                    }
+                    else return 3;
+                }
+            }
+            else return 2;
         }
     }
 }

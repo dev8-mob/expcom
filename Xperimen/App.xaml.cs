@@ -19,6 +19,7 @@ namespace Xperimen
         public static string CustomBlue = "#01A9DB";
         public static string LabelTextColor = "#666666";
         public static string SlateGray = "#708090";
+        public static string CharcoalBlack = "#363636";
 
         public App(string sql_path)
         {
@@ -26,7 +27,6 @@ namespace Xperimen
             DB_PATH = sql_path;
             var connection = new SQLiteConnection(DB_PATH);
             connection.CreateTable<Clients>();
-            var cek = connection.Table<Clients>().ToList();
 
             if (Current.Properties.ContainsKey("current_login")) Current.MainPage = new NavigationPage(new DrawerMaster());
             else MainPage = new NavigationPage(new Login());

@@ -2,6 +2,7 @@
 using SQLite;
 using Xamarin.Forms;
 using Xperimen.ViewModel;
+using Xperimen.ViewModel.Setting;
 
 namespace Xperimen.Stylekit
 {
@@ -40,6 +41,7 @@ namespace Xperimen.Stylekit
         {
             MessagingCenter.Subscribe<CreateaccViewmodel>(this, "AppThemeUpdated", (sender) => { SetupView(); });
             MessagingCenter.Subscribe<LoginViewmodel>(this, "AppThemeUpdated", (sender) => { SetupView(); });
+            MessagingCenter.Subscribe<SettingViewmodel>(this, "AppThemeUpdated", (sender) => { SetupView(); });
         }
 
         public void SetupView()
