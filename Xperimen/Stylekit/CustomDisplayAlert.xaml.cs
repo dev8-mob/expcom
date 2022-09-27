@@ -30,6 +30,11 @@ namespace Xperimen.Stylekit
             get { return (string)GetValue(TxtBtn2Property); }
             set { SetValue(TxtBtn2Property, value); }
         }
+        public string CodeObject
+        {
+            get { return (string)GetValue(CodeObjectProperty); }
+            set { SetValue(CodeObjectProperty, value); }
+        }
         #endregion
         #region properties binding
         public static BindableProperty TitleProperty =
@@ -44,6 +49,9 @@ namespace Xperimen.Stylekit
         public static BindableProperty TxtBtn2Property =
             BindableProperty.Create(nameof(TxtBtn2), typeof(string), typeof(CustomDisplayAlert), defaultValue: "",
                 propertyChanged: (bindable, oldVal, newVal) => { ((CustomDisplayAlert)bindable).UpdateTxtBtn2((string)newVal); });
+        public static BindableProperty CodeObjectProperty =
+            BindableProperty.Create(nameof(CodeObject), typeof(string), typeof(CustomDisplayAlert), defaultValue: "",
+                propertyChanged: (bindable, oldVal, newVal) => { ((CustomDisplayAlert)bindable).UpdateCodeObject((string)newVal); });
         #endregion
         #region binding implementation
         public void UpdateTitle(string data) { lbl_title.Text = data; }
@@ -66,6 +74,7 @@ namespace Xperimen.Stylekit
             if (string.IsNullOrEmpty(TxtBtn1) && string.IsNullOrEmpty(TxtBtn2)) stack_buttons.IsVisible = false;
             else stack_buttons.IsVisible = true;
         }
+        public void UpdateCodeObject(string data) { }
         #endregion
         #endregion
 

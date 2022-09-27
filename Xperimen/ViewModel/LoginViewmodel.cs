@@ -40,6 +40,8 @@ namespace Xperimen.ViewModel
             var result = connection.Query<Clients>(query).ToList();
             if (result.Count > 0)
             {
+                query = "UPDATE Clients SET IsLogin = true WHERE Id = '" + result[0].Id + "'";
+                connection.Query<Clients>(query);
                 Application.Current.Properties["current_login"] = result[0].Id;
                 Application.Current.Properties["app_theme"] = result[0].AppTheme;
                 await Application.Current.SavePropertiesAsync();

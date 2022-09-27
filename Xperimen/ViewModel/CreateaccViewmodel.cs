@@ -120,7 +120,8 @@ namespace Xperimen.ViewModel
                     Password = Password,
                     Description = Description,
                     AppTheme = Theme,
-                    ProfileImage = convert.GetImageBytes(Picture.GetStream())
+                    ProfileImage = convert.GetImageBytes(Picture.GetStream()),
+                    IsLogin = false
                 };
                 connection.Insert(data);
                 Application.Current.Properties["app_theme"] = Theme;

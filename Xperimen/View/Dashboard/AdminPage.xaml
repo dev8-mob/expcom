@@ -9,7 +9,8 @@
     
     <ContentPage.Content>
 
-        <stylekit:XStacklayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+        <stylekit:XStacklayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" AbsoluteLayout.LayoutFlags="All" 
+                               AbsoluteLayout.LayoutBounds="0,0,1,1">
             <Grid HorizontalOptions="FillAndExpand" RowSpacing="0">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
@@ -67,7 +68,7 @@
                                 Grid.ColumnSpan="2" IsVisible="False"/>
             </Grid>
         </stylekit:XStacklayout>
-        
+
     </ContentPage.Content>
     
 </ContentPage>

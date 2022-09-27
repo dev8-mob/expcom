@@ -164,7 +164,8 @@ namespace Xperimen.ViewModel.Setting
                 Password = Password,
                 Description = Description,
                 ProfileImage = Picture,
-                AppTheme = Theme
+                AppTheme = Theme,
+                IsLogin = true
             };
 
             string query = "SELECT * FROM Clients WHERE Id = '" + userid + "'";
