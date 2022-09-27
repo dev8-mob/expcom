@@ -14,7 +14,8 @@ namespace Xperimen.View.Dashboard
         public AdminPage()
         {
             InitializeComponent();
-            BindingContext = viewmodel = new MaintabViewmodel();
+            viewmodel = new MaintabViewmodel();
+            BindingContext = viewmodel;
             tab_one.BindContextToParent(viewmodel);
             tab_two.BindContextToParent(viewmodel);
         }

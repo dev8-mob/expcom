@@ -14,52 +14,52 @@ namespace Xperimen.Stylekit
         #region custom properties
         public string Text
         {
-            get { return (string)GetValue(TextProperty); }
+            get => (string)GetValue(TextProperty);
             set { SetValue(TextProperty, value); }
         }
         public string Placeholder
         {
-            get { return (string)GetValue(PlaceholderProperty); }
+            get => (string)GetValue(PlaceholderProperty);
             set { SetValue(PlaceholderProperty, value); }
         }
         public string ImgLeft
         {
-            get { return (string)GetValue(ImgLeftProperty); }
+            get => (string)GetValue(ImgLeftProperty);
             set { SetValue(ImgLeftProperty, value); }
         }
         public string ImgLeft_
         {
-            get { return (string)GetValue(ImgLeft_Property); }
+            get => (string)GetValue(ImgLeft_Property);
             set { SetValue(ImgLeft_Property, value); }
         }
         public string ImgRight
         {
-            get { return (string)GetValue(ImgRightProperty); }
+            get => (string)GetValue(ImgRightProperty);
             set { SetValue(ImgRightProperty, value); }
         }
         public string ImgRight_
         {
-            get { return (string)GetValue(ImgRight_Property); }
+            get => (string)GetValue(ImgRight_Property);
             set { SetValue(ImgRight_Property, value); }
         }
         public string ImgRight2
         {
-            get { return (string)GetValue(ImgRight2Property); }
+            get => (string)GetValue(ImgRight2Property);
             set { SetValue(ImgRight2Property, value); }
         }
         public string ImgRight2_
         {
-            get { return (string)GetValue(ImgRight2_Property); }
+            get => (string)GetValue(ImgRight2_Property);
             set { SetValue(ImgRight2_Property, value); }
         }
         public bool Ispassword
         {
-            get { return (bool)GetValue(IsPasswordProperty); }
+            get => (bool)GetValue(IsPasswordProperty);
             set { SetValue(IsPasswordProperty, value); }
         }
         public bool Isfocus
         {
-            get { return (bool)GetValue(IsFocusProperty); }
+            get => (bool)GetValue(IsFocusProperty);
             set { SetValue(IsFocusProperty, value); }
         }
         #endregion

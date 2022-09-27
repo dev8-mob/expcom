@@ -10,22 +10,27 @@ namespace Xperimen.ViewModel.Dashboard
 {
     public class ChildtabViewmodel : BaseViewModel
     {
+        #region bindable properties
+        int _itemcount;
+        ObservableCollection<Clients> _listclients;
+        public int ItemCount
+        {
+            get => _itemcount;
+            set { SetProperty(ref _itemcount, value); }
+        }
+        public ObservableCollection<Clients> ListClients
+        {
+            get => _listclients;
+            set { SetProperty(ref _listclients, value); }
+        }
+        #endregion
+
         #region class properties
+        public ICommand LoadDataCommand { get; }
+        public SQLiteConnection connection;
         private MaintabViewmodel ParentViewmodel;
         private readonly string TabType;
         private string SearchString;
-        public ObservableCollection<Clients> ListClients { get; set; }
-        public ICommand LoadDataCommand { get; }
-        public SQLiteConnection connection;
-        #endregion
-
-        #region bindable properties
-        int itemCount;
-        public int ItemCount
-        {
-            get => itemCount;
-            set { SetProperty(ref itemCount, value); }
-        }
         #endregion
 
         public ChildtabViewmodel(string TabType)
@@ -112,32 +117,24 @@ namespace Xperimen.ViewModel.Dashboard
             finally
             {
                 IsLoading = false;
-
-                try
+                if (!string.IsNullOrEmpty(SearchString))
                 {
-                    if (!string.IsNullOrEmpty(SearchString))
+                    var search = ListClients.Where(p => p.Username.ToLower().Contains(SearchString.ToLower()) ||
+                                p.Firstname.ToLower().Contains(SearchString.ToLower()) ||
+                                p.Lastname.ToLower().Contains(SearchString.ToLower())).ToList();
+                    ListClients.Clear();
+                    if (search.Count > 0)
                     {
-                        var search = ListClients.Where(p => p.Username.ToLower().Contains(SearchString.ToLower()) ||
-                                    p.Firstname.ToLower().Contains(SearchString.ToLower()) ||
-                                    p.Lastname.ToLower().Contains(SearchString.ToLower())).ToList();
-                        ListClients.Clear();
-                        if (search.Count > 0)
-                        {
-                            foreach (var data in search)
-                                ListClients.Add(data);
-                        }
+                        foreach (var data in search)
+                            ListClients.Add(data);
                     }
+                }
 
-                    //var sorted = ListData.OrderByDescending(x => x.CreatedDatetime).ToList();
-                    //ListData = new ObservableCollection<MobileApp>(sorted);
-                    ItemCount = ListClients.Count;
+                //var sorted = ListData.OrderByDescending(x => x.CreatedDatetime).ToList();
+                //ListData = new ObservableCollection<MobileApp>(sorted);
+                ItemCount = ListClients.Count;
+                if (ParentViewmodel != null)
                     ParentViewmodel.SetSearchResult();
-                }
-                catch (Exception ex)
-                {
-                    var error = ex.Message;
-                    var desc = ex.StackTrace;
-                }
             }
         }
 
