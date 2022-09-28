@@ -62,6 +62,11 @@ namespace Xperimen.Stylekit
             get => (bool)GetValue(IsFocusProperty);
             set { SetValue(IsFocusProperty, value); }
         }
+        public Keyboard KeyboardType
+        {
+            get => (Keyboard)GetValue(KeyboardTypeProperty);
+            set { SetValue(KeyboardTypeProperty, value); }
+        }
         #endregion
         #region custom bindable properties
         public static BindableProperty BindingTextProperty =
@@ -94,6 +99,9 @@ namespace Xperimen.Stylekit
         public static BindableProperty IsFocusProperty =
             BindableProperty.Create(nameof(Isfocus), typeof(bool), typeof(CustomEntry), defaultValue: false,
                 propertyChanged: (bindable, oldVal, newVal) => { ((CustomEntry)bindable).UpdateIsfocus((bool)newVal); });
+        public static BindableProperty KeyboardTypeProperty =
+            BindableProperty.Create(nameof(KeyboardType), typeof(Keyboard), typeof(CustomEntry), defaultValue: Keyboard.Default,
+                propertyChanged: (bindable, oldVal, newVal) => { ((CustomEntry)bindable).UpdateKeyboardType((Keyboard)newVal); });
         #endregion
         #region binding implementation
         public void UpdateBindingText(string data) { entry.SetBinding(Entry.TextProperty, new Binding() { Path = data }); }
@@ -174,6 +182,7 @@ namespace Xperimen.Stylekit
         public void UpdateImgRight2_(string data) { }
         public void UpdateIspassword(bool data) { entry.IsPassword = data; }
         public void UpdateIsfocus(bool data) { if (data) entry.Focus(); else entry.Unfocus(); }
+        public void UpdateKeyboardType(Keyboard data) { entry.Keyboard = data; }
         #endregion
         #endregion
 
@@ -269,6 +278,9 @@ namespace Xperimen.Stylekit
                     else BackgroundColor = Color.White;
                 }
                 else BackgroundColor = Color.White;
+
+                if (!string.IsNullOrEmpty(entry.Text))
+                    if (entry.Text.Equals("0")) entry.Text = "";
             }
         }
 

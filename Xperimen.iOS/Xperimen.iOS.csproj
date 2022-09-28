@@ -109,6 +109,24 @@
     <ImageAsset Include="Assets.xcassets\black_cancel.imageset\baseline_cancel_black_36pt_3x.png">
       <Visible>false</Visible>
     </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\black_checkbox_off.imageset\baseline_check_box_outline_blank_black_36pt_1x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\black_checkbox_off.imageset\baseline_check_box_outline_blank_black_36pt_2x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\black_checkbox_off.imageset\baseline_check_box_outline_blank_black_36pt_3x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\black_checkbox_on.imageset\baseline_check_box_black_36pt_1x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\black_checkbox_on.imageset\baseline_check_box_black_36pt_2x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\black_checkbox_on.imageset\baseline_check_box_black_36pt_3x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
     <ImageAsset Include="Assets.xcassets\black_close.imageset\baseline_highlight_off_black_36pt_1x.png">
       <Visible>false</Visible>
     </ImageAsset>
@@ -269,6 +287,36 @@
       <Visible>false</Visible>
     </ImageAsset>
     <ImageAsset Include="Assets.xcassets\black_delete.imageset\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\black_checkbox_off.imageset\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\black_checkbox_on.imageset\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\white_checkbox_on.imageset\baseline_check_box_white_36pt_1x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\white_checkbox_on.imageset\baseline_check_box_white_36pt_2x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\white_checkbox_on.imageset\baseline_check_box_white_36pt_3x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\white_checkbox_on.imageset\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\white_checkbox_off.imageset\baseline_check_box_outline_blank_white_36pt_1x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\white_checkbox_off.imageset\baseline_check_box_outline_blank_white_36pt_2x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\white_checkbox_off.imageset\baseline_check_box_outline_blank_white_36pt_3x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\white_checkbox_off.imageset\Contents.json">
       <Visible>false</Visible>
     </ImageAsset>
     <ImageAsset Include="Assets.xcassets\white_delete.imageset\baseline_delete_forever_white_36pt_1x.png">

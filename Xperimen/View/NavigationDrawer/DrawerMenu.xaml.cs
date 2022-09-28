@@ -11,6 +11,7 @@ using Rg.Plugins.Popup.Extensions;
 using Xperimen.Stylekit;
 using Xperimen.Helper;
 using Xperimen.ViewModel.Setting;
+using Xperimen.View.Commitment;
 
 namespace Xperimen.View.NavigationDrawer
 {
@@ -61,7 +62,7 @@ namespace Xperimen.View.NavigationDrawer
 
             menulist.Add(new ItemMenu { ImageIcon1 = "black_user.png", ImageIcon2 = "white_user.png", Title = "Dashboard", Contentpage = typeof(MainPage) });
             menulist.Add(new ItemMenu { ImageIcon1 = "black_whatshot.png", ImageIcon2 = "white_whatshot.png", Title = "Admin", Contentpage = typeof(AdminPage) });
-            menulist.Add(new ItemMenu { ImageIcon1 = "black_password.png", ImageIcon2 = "white_password.png", Title = "Page Two", Contentpage = typeof(MainPage) });
+            menulist.Add(new ItemMenu { ImageIcon1 = "black_whatshot.png", ImageIcon2 = "white_whatshot.png", Title = "Commitment", Contentpage = typeof(MainCommitment) });
             menulist.Add(new ItemMenu { ImageIcon1 = "black_money.png", ImageIcon2 = "white_money.png", Title = "Finance", Contentpage = typeof(MainPage) });
             menulist.Add(new ItemMenu { ImageIcon1 = "black_setting.png", ImageIcon2 = "white_setting.png", Title = "Setting", Contentpage = typeof(MainSetting) });
             menulist.Add(new ItemMenu { ImageIcon1 = "black_logout.png", ImageIcon2 = "white_logout.png", Title = "Logout", Contentpage = typeof(Logout) });

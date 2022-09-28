@@ -28,6 +28,7 @@ namespace Xperimen
             DB_PATH = sql_path;
             var connection = new SQLiteConnection(DB_PATH);
             connection.CreateTable<Clients>();
+            connection.CreateTable<SelfCommitment>();
 
             if (Current.Properties.ContainsKey("current_login")) Current.MainPage = new NavigationPage(new DrawerMaster());
             else MainPage = new NavigationPage(new Login());

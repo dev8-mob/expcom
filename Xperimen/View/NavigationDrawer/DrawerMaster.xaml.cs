@@ -32,8 +32,8 @@ namespace Xperimen.View.NavigationDrawer
                 var openPage = (Page)Activator.CreateInstance(page);
 
                 IsPresented = false;
-                if (item.Title.Equals("Setting")) await Navigation.PushAsync(openPage);
-                else Detail = new NavigationPage(openPage);
+                if (item.Title.Equals("Dashboard")) Detail = new NavigationPage(openPage);
+                else await Navigation.PushAsync(openPage);
                 ((ListView)sender).SelectedItem = null;
 
                 #region old code

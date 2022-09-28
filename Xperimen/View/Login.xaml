@@ -11,16 +11,23 @@
 
             <ScrollView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,0,1,1">
 
+                <!-- UI content -->
                 <stylekit:XStacklayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
 
                     <StackLayout Padding="25,0,25,0" Orientation="Vertical" VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand" Spacing="0">
                         <stylekit:XImage Source1="black_whatshot.png" Source2="white_whatshot.png" HeightRequest="130" WidthRequest="130" 
                                          HorizontalOptions="CenterAndExpand" VerticalOptions="Center" Aspect="AspectFit"/>
+
+                        <!-- username -->
                         <stylekit:CustomEntry BindingText="Username" Placeholder="username" ImgLeft="black_user.png" ImgLeft_="white_user.png"
                                               Margin="0,20,0,0" />
+
+                        <!-- password -->
                         <stylekit:CustomEntry BindingText="Password" Ispassword="True" ImgLeft="black_password.png" ImgLeft_="white_password.png"
                                               Placeholder="password" Margin="0,10,0,0" ImgRight="black_visible.png" ImgRight_="white_visible.png" 
                                               ImgRight2="black_invisible.png" ImgRight2_="white_invisible.png"/>
+
+                        <!-- login button -->
                         <Frame Padding="0,10,0,10" CornerRadius="3" BorderColor="{DynamicResource Key=Primary}" HorizontalOptions="FillAndExpand"
                                Margin="0,20,0,0" BackgroundColor="{DynamicResource Key=Primary}" HasShadow="False" IsClippedToBounds="True">
                             <Label Text="Login" FontFamily="{DynamicResource Key=BoldFont}" TextColor="White" HorizontalOptions="Center" VerticalOptions="Center"/>
@@ -28,12 +35,16 @@
                                 <TapGestureRecognizer Tapped="LoginClicked" NumberOfTapsRequired="1"/>
                             </Frame.GestureRecognizers>
                         </Frame>
+
+                        <!-- create account button -->
                         <stylekit:XLabel Text="Create An Account" HorizontalOptions="Center" FontFamily="{DynamicResource Key=BoldFont}" Margin="0,30,0,0">
                             <Label.GestureRecognizers>
                                 <TapGestureRecognizer Tapped="CreateAccClicked" NumberOfTapsRequired="1"/>
                             </Label.GestureRecognizers>
                         </stylekit:XLabel>
                     </StackLayout>
+
+                    <!-- app version info -->
                     <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
                     <stylekit:XLabel Text="Version 1.0.0" HorizontalOptions="Center" VerticalOptions="End" FontSize="10" Margin="0,0,0,20">
                         <!--<Label.Text>
@@ -48,15 +59,18 @@
 
             </ScrollView>
 
+            <!-- background overlay -->
             <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="Black" Opacity="0.7"
                          AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,0,1,1" IsVisible="{Binding IsLoading, Mode=TwoWay}"/>
 
+            <!-- loading overlay -->
             <StackLayout IsVisible="{Binding IsLoading, Mode=TwoWay}" BackgroundColor="Transparent" Orientation="Vertical" Spacing="0"
                          AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0.5,0.5,-1,-1" >
                 <ActivityIndicator IsRunning="{Binding IsLoading, Mode=TwoWay}" Color="White" HorizontalOptions="Center"/>
                 <Label Text="loading..." HorizontalOptions="Center" TextColor="White" FontFamily="{DynamicResource BoldFont}"/>
             </StackLayout>
 
+            <!-- custom display alert -->
             <stylekit:CustomDisplayAlert x:Name="alert" IsVisible="False"/>
 
         </AbsoluteLayout>

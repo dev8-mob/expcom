@@ -10,11 +10,15 @@
 
         <AbsoluteLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="Transparent">
 
-            <ScrollView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,0,1,1">
-                <stylekit:XStacklayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Orientation="Vertical" Spacing="0" 
-                                       Padding="20,20,20,15">
+            <ScrollView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" AbsoluteLayout.LayoutFlags="All" 
+                        AbsoluteLayout.LayoutBounds="0,0,1,1">
+
+                <!-- UI content -->
+                <stylekit:XStacklayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Orientation="Vertical" 
+                                       Spacing="0" Padding="20">
+                    
                     <!-- top navigation bar -->
-                    <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" BackgroundColor="Transparent">
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" BackgroundColor="Transparent" VerticalOptions="Start">
                         <stylekit:XImage Source1="black_back.png" Source2="white_back.png" HeightRequest="35" WidthRequest="35" Aspect="AspectFit"
                                          HorizontalOptions="Start" Margin="0,0,20,0">
                             <Image.GestureRecognizers>
@@ -23,12 +27,15 @@
                         </stylekit:XImage>
                         <stylekit:XLabel Text="Setting" FontFamily="{DynamicResource Key=BoldFont}" FontSize="18" VerticalOptions="Center"/>
                     </StackLayout>
-                    <Grid HorizontalOptions="FillAndExpand" Margin="0,20,0,0">
+                    
+                    <Grid HorizontalOptions="FillAndExpand" Margin="0,15,0,0">
+                        
                         <!-- information view -->
                         <viewcell:SettingInfo x:Name="view_setting" Grid.Row="0" Grid.Column="0"/>
+                        
                         <!-- editing view -->
-                        <StackLayout HorizontalOptions="FillAndExpand" Spacing="0" Grid.Row="0" Grid.Column="0"
-                                     Orientation="Vertical" IsVisible="{Binding IsEditing}">
+                        <StackLayout HorizontalOptions="FillAndExpand" Spacing="0" Grid.Row="0" Grid.Column="0" Orientation="Vertical" IsVisible="{Binding IsEditing}">
+                            
                             <!-- profile picture -->
                             <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Spacing="0">
                                 <Frame x:Name="frame_profile" HorizontalOptions="Fill" HeightRequest="60" WidthRequest="60" BorderColor="DarkGray" HasShadow="False"
@@ -57,21 +64,34 @@
                                     </StackLayout>
                                 </StackLayout>
                             </StackLayout>
-                            <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Spacing="10" Margin="0,10,0,0">
+
+                            <!-- first name and last name -->
+                            <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Spacing="20" Margin="0,10,0,0">
                                 <stylekit:CustomEntry Placeholder="first name" BindingText="Firstname"/>
                                 <stylekit:CustomEntry Placeholder="last name" BindingText="Lastname"/>
                             </StackLayout>
-                            <stylekit:CustomEntry BindingText="Username" Placeholder="choose your username" ImgLeft="black_user.png" ImgLeft_="white_user.png" Margin="0,10,0,0"/>
+
+                            <!-- username -->
+                            <stylekit:CustomEntry BindingText="Username" Placeholder="choose your username" ImgLeft="black_user.png" ImgLeft_="white_user.png" 
+                                                  Margin="0,10,0,0"/>
+
+                            <!-- password -->
                             <stylekit:CustomEntry Ispassword="True" ImgLeft="black_password.png" ImgLeft_="white_password.png" 
                                                   Placeholder="insert your password" Margin="0,10,0,0" ImgRight="black_visible.png" ImgRight_="white_visible.png" 
                                                   ImgRight2="black_invisible.png" ImgRight2_="white_invisible.png" 
                                                   BindingText="Password"/>
+
+                            <!-- retype password -->
                             <stylekit:CustomEntry Ispassword="True" ImgLeft="black_password.png" ImgLeft_="white_password.png" 
                                                   Placeholder="re-type your password" Margin="0,10,0,0" ImgRight="black_visible.png" ImgRight_="white_visible.png" 
                                                   ImgRight2="black_invisible.png" ImgRight2_="white_invisible.png" 
                                                   BindingText="Repassword"/>
+
+                            <!-- description -->
                             <stylekit:XLabel Text="Description" HorizontalOptions="Start" Margin="0,10,0,0"/>
-                            <stylekit:CustomEditor Margin="0,5,0,0" Placeholder="Bio, tagline, quotes, etc..." Text="Description"/>
+                            <stylekit:CustomEditor Margin="0,5,0,0" Placeholder="Bio, tagline, quotes, etc..." BindingText="Description"/>
+
+                            <!-- apps theme -->
                             <stylekit:XLabel Text="Application Theme" HorizontalOptions="Start" Margin="0,10,0,0"/>
                             <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal" Margin="0,5,0,0" Spacing="0" BackgroundColor="Transparent">
                                 <Frame x:Name="frame_dark" Padding="0,8,0,8" HorizontalOptions="FillAndExpand" HasShadow="False" CornerRadius="3"
@@ -96,6 +116,8 @@
                                     </Frame.GestureRecognizers>
                                 </Frame>
                             </StackLayout>
+
+                            <!-- update button -->
                             <Frame Padding="0,10,0,10" CornerRadius="3" BorderColor="{DynamicResource Key=Primary}" HorizontalOptions="FillAndExpand"
                                    Margin="0,15,0,0" BackgroundColor="{DynamicResource Key=Primary}" HasShadow="False" IsClippedToBounds="True">
                                 <Label Text="Update" FontFamily="{DynamicResource Key=BoldFont}" TextColor="White" 
@@ -104,6 +126,8 @@
                                     <TapGestureRecognizer Tapped="SaveClicked" NumberOfTapsRequired="1"/>
                                 </Frame.GestureRecognizers>
                             </Frame>
+
+                            <!-- cancel button -->
                             <stylekit:XLabel Text="Cancel" HorizontalOptions="Center" FontFamily="{DynamicResource Key=BoldFont}" Margin="0,30,0,0">
                                 <Label.GestureRecognizers>
                                     <TapGestureRecognizer Tapped="CancelClicked" NumberOfTapsRequired="1"/>
@@ -111,20 +135,26 @@
                             </stylekit:XLabel>
                         </StackLayout>
                     </Grid>
+
+                    <!-- app version info -->
                     <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="Transparent"/>
                     <stylekit:XLabel Text="Version 1.0.0" HorizontalOptions="Center" VerticalOptions="End" FontSize="10"/>
                 </stylekit:XStacklayout>
+                
             </ScrollView>
 
+            <!-- background overlay -->
             <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="Black" Opacity="0.7"
                          AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,0,1,1" IsVisible="{Binding IsLoading, Mode=TwoWay}"/>
 
+            <!-- loading overlay -->
             <StackLayout IsVisible="{Binding IsLoading, Mode=TwoWay}" BackgroundColor="Transparent" Orientation="Vertical" Spacing="0"
                          AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0.5,0.5,-1,-1" >
                 <ActivityIndicator IsRunning="{Binding IsLoading, Mode=TwoWay}" Color="White" HorizontalOptions="Center"/>
                 <Label Text="loading..." HorizontalOptions="Center" TextColor="White" FontFamily="{DynamicResource BoldFont}"/>
             </StackLayout>
 
+            <!-- custom display alert -->
             <stylekit:CustomDisplayAlert x:Name="alert" IsVisible="False"/>
 
         </AbsoluteLayout>
