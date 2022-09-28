@@ -43,13 +43,13 @@
                                     <stylekit:XLabel Text="Update your image" HorizontalOptions="Start"/>
                                     <StackLayout Orientation="Horizontal" HorizontalOptions="End" Spacing="0" Margin="0,5,0,0">
                                         <stylekit:XImage Source1="black_image.png" Source2="white_image.png" HeightRequest="30" WidthRequest="30"
-                                                     Aspect="AspectFit" VerticalOptions="Center" Margin="0,0,15,0">
+                                                         Aspect="AspectFit" VerticalOptions="Center" Margin="0,0,15,0">
                                             <Image.GestureRecognizers>
                                                 <TapGestureRecognizer Tapped="GalleryClicked" NumberOfTapsRequired="1"/>
                                             </Image.GestureRecognizers>
                                         </stylekit:XImage>
                                         <stylekit:XImage Source1="black_camera.png" Source2="white_camera.png" HeightRequest="30" WidthRequest="30"
-                                                     Aspect="AspectFit" VerticalOptions="Center">
+                                                         Aspect="AspectFit" VerticalOptions="Center">
                                             <Image.GestureRecognizers>
                                                 <TapGestureRecognizer Tapped="CameraClicked" NumberOfTapsRequired="1"/>
                                             </Image.GestureRecognizers>
@@ -58,18 +58,18 @@
                                 </StackLayout>
                             </StackLayout>
                             <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Spacing="10" Margin="0,10,0,0">
-                                <stylekit:CustomEntry Placeholder="first name" Text="Firstname"/>
-                                <stylekit:CustomEntry Placeholder="last name" Text="Lastname"/>
+                                <stylekit:CustomEntry Placeholder="first name" BindingText="Firstname"/>
+                                <stylekit:CustomEntry Placeholder="last name" BindingText="Lastname"/>
                             </StackLayout>
-                            <stylekit:CustomEntry Text="Username" Placeholder="choose your username" ImgLeft="black_user.png" ImgLeft_="white_user.png" Margin="0,10,0,0"/>
+                            <stylekit:CustomEntry BindingText="Username" Placeholder="choose your username" ImgLeft="black_user.png" ImgLeft_="white_user.png" Margin="0,10,0,0"/>
                             <stylekit:CustomEntry Ispassword="True" ImgLeft="black_password.png" ImgLeft_="white_password.png" 
                                                   Placeholder="insert your password" Margin="0,10,0,0" ImgRight="black_visible.png" ImgRight_="white_visible.png" 
                                                   ImgRight2="black_invisible.png" ImgRight2_="white_invisible.png" 
-                                                  Text="Password"/>
+                                                  BindingText="Password"/>
                             <stylekit:CustomEntry Ispassword="True" ImgLeft="black_password.png" ImgLeft_="white_password.png" 
                                                   Placeholder="re-type your password" Margin="0,10,0,0" ImgRight="black_visible.png" ImgRight_="white_visible.png" 
                                                   ImgRight2="black_invisible.png" ImgRight2_="white_invisible.png" 
-                                                  Text="Repassword"/>
+                                                  BindingText="Repassword"/>
                             <stylekit:XLabel Text="Description" HorizontalOptions="Start" Margin="0,10,0,0"/>
                             <stylekit:CustomEditor Margin="0,5,0,0" Placeholder="Bio, tagline, quotes, etc..." Text="Description"/>
                             <stylekit:XLabel Text="Application Theme" HorizontalOptions="Start" Margin="0,10,0,0"/>

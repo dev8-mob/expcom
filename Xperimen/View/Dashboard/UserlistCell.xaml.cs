@@ -60,37 +60,6 @@ namespace Xperimen.View.Dashboard
                 if (theme.Equals("light")) img_profile.BackgroundColor = Color.FromHex(App.DimGray2);
             }
             else img_profile.BackgroundColor = Color.FromHex(App.DimGray2);
-
-            //MessagingCenter.Subscribe<CustomDisplayAlert, string>(this, "DisplayAlertSelection", (sender, arg) =>
-            //{
-            //    //'DisplayAlertSelection' comes from CustomDisplayAlert in AdminPage(parent) to delete a user
-            //    if (arg.Equals("Okay")) 
-            //    {
-            //        if (lbl_login.IsVisible)
-            //        {
-            //            if (parent != null)
-            //            {
-            //                parent.viewmodel.IsLoading = true;
-            //                //parent.SetDisplayAlert("Failed", "Cannot delete currently login user.", "", "");
-            //            }
-            //        }
-            //        else
-            //        {
-            //            try
-            //            {
-            //                var query = "DELETE FROM Clients WHERE Id = '" + lbl_id.Text + "'";
-            //                connection.Query<Clients>(query);
-            //                var cek = connection.Table<Clients>().ToList();
-            //                MessagingCenter.Send(this, "UpdateList");
-            //            }
-            //            catch (Exception ex)
-            //            {
-            //                var error = ex.Message;
-            //                var desc = ex.StackTrace;
-            //            }
-            //        }
-            //    }
-            //});
         }
 
         public async void DeleteTapped(object sender, EventArgs arg)
@@ -104,7 +73,7 @@ namespace Xperimen.View.Dashboard
             parent.viewmodel.IsLoading = true;
             parent.viewmodel.IsBlocked = true;
             parent.SetDisplayAlert("Delete", "Are you sure to delete " + fullname + "?", "Okay", "Cancel", lbl_id.Text);
-            // rest of the delete process is in parent viewmodel
+            // send the rest of the delete process to parent viewmodel
         }
     }
 }

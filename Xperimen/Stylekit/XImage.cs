@@ -35,8 +35,6 @@ namespace Xperimen.Stylekit
         #endregion
         #endregion
 
-        public SQLiteConnection Connection;
-
         public XImage() 
         {
             MessagingCenter.Subscribe<CreateaccViewmodel>(this, "AppThemeUpdated", (sender) => { SetupView(); });

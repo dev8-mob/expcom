@@ -180,7 +180,7 @@ namespace Xperimen.View
                 catch (Exception ex)
                 {
                     viewmodel.IsLoading = false;
-                    await Navigation.PopAsync();
+                    //await Navigation.PopAsync();
                     var error = ex.Message;
                     var desc = ex.StackTrace;
                     //await DisplayAlert(error, desc, "OK!");

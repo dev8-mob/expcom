@@ -12,10 +12,10 @@ namespace Xperimen.Stylekit
     {
         #region bindables
         #region custom properties
-        public string Text
+        public string BindingText
         {
-            get => (string)GetValue(TextProperty);
-            set { SetValue(TextProperty, value); }
+            get => (string)GetValue(BindingTextProperty);
+            set { SetValue(BindingTextProperty, value); }
         }
         public string Placeholder
         {
@@ -64,9 +64,9 @@ namespace Xperimen.Stylekit
         }
         #endregion
         #region custom bindable properties
-        public static BindableProperty TextProperty =
-            BindableProperty.Create(nameof(Text), typeof(string), typeof(CustomEntry), defaultValue: "",
-                propertyChanged: (bindable, oldVal, newVal) => { ((CustomEntry)bindable).UpdateText((string)newVal); });
+        public static BindableProperty BindingTextProperty =
+            BindableProperty.Create(nameof(BindingText), typeof(string), typeof(CustomEntry), defaultValue: "",
+                propertyChanged: (bindable, oldVal, newVal) => { ((CustomEntry)bindable).UpdateBindingText((string)newVal); });
         public static BindableProperty PlaceholderProperty =
             BindableProperty.Create(nameof(Placeholder), typeof(string), typeof(CustomEntry), defaultValue: "",
                 propertyChanged: (bindable, oldVal, newVal) => { ((CustomEntry)bindable).UpdatePlaceholder((string)newVal); });
@@ -96,7 +96,7 @@ namespace Xperimen.Stylekit
                 propertyChanged: (bindable, oldVal, newVal) => { ((CustomEntry)bindable).UpdateIsfocus((bool)newVal); });
         #endregion
         #region binding implementation
-        public void UpdateText(string data) { entry.SetBinding(Entry.TextProperty, new Binding() { Path = data }); }
+        public void UpdateBindingText(string data) { entry.SetBinding(Entry.TextProperty, new Binding() { Path = data }); }
         public void UpdatePlaceholder(string data) { entry.Placeholder = data; }
         public void UpdateImgLeft(string data) 
         {
