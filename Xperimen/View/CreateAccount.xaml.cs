@@ -53,8 +53,8 @@ namespace Xperimen.View
 
             viewmodel.IsLoading = true;
             var result = await viewmodel.PickPhoto();
-            if (result == 3) SetDisplayAlert("Unavailable", "Photo gallery is not available to pick photo.", "", "");
-            else if (result == 2) SetDisplayAlert("Alert", "No photo selected.", "", "");
+            if (result == 3) SetDisplayAlert("Unavailable", "Photo gallery is not available to pick photo.", "", "", "");
+            else if (result == 2) SetDisplayAlert("Alert", "No photo selected.", "", "", "");
             else if (result == 1)
             {
                 img_profile.Source = ImageSource.FromStream(() =>
@@ -74,8 +74,8 @@ namespace Xperimen.View
 
             viewmodel.IsLoading = true;
             var result = await viewmodel.TakePhoto();
-            if (result == 3) SetDisplayAlert("Unavailable", "Camera is not available or take photo not supported.", "", "");
-            else if (result == 2) SetDisplayAlert("Alert", "Take photo cancelled.", "", "");
+            if (result == 3) SetDisplayAlert("Unavailable", "Camera is not available or take photo not supported.", "", "", "");
+            else if (result == 2) SetDisplayAlert("Alert", "Take photo cancelled.", "", "", "");
             else if (result == 1)
             {
                 img_profile.Source = ImageSource.FromStream(() =>
@@ -143,22 +143,22 @@ namespace Xperimen.View
             view.Scale = 1;
 
             viewmodel.IsLoading = true;
-            if (viewmodel.Picture == null) SetDisplayAlert("Alert", "Profile picture is empty. Please take a photo or choose a picture.", "", "");
-            else if (string.IsNullOrEmpty(viewmodel.Firstname)) SetDisplayAlert("Alert", "First name is empty. Please insert your first name.", "", "");
-            else if (string.IsNullOrEmpty(viewmodel.Lastname)) SetDisplayAlert("Alert", "Last name is empty. Please insert your last name.", "", "");
-            else if (string.IsNullOrEmpty(viewmodel.Username)) SetDisplayAlert("Alert", "Username cannot be empty. Please choose a username.", "", "");
-            else if (string.IsNullOrEmpty(viewmodel.Password)) SetDisplayAlert("Alert", "Password cannot be empty. Please insert your password.", "", "");
-            else if (string.IsNullOrEmpty(viewmodel.Description)) SetDisplayAlert("Alert", "Please provide any description about you.", "", "");
-            else if (string.IsNullOrEmpty(viewmodel.Theme)) SetDisplayAlert("Alert", "Please choose application theme.", "", "");
+            if (viewmodel.Picture == null) SetDisplayAlert("Alert", "Profile picture is empty. Please take a photo or choose a picture.", "", "", "");
+            else if (string.IsNullOrEmpty(viewmodel.Firstname)) SetDisplayAlert("Alert", "First name is empty. Please insert your first name.", "", "", "");
+            else if (string.IsNullOrEmpty(viewmodel.Lastname)) SetDisplayAlert("Alert", "Last name is empty. Please insert your last name.", "", "", "");
+            else if (string.IsNullOrEmpty(viewmodel.Username)) SetDisplayAlert("Alert", "Username cannot be empty. Please choose a username.", "", "", "");
+            else if (string.IsNullOrEmpty(viewmodel.Password)) SetDisplayAlert("Alert", "Password cannot be empty. Please insert your password.", "", "", "");
+            else if (string.IsNullOrEmpty(viewmodel.Description)) SetDisplayAlert("Alert", "Please provide any description about you.", "", "", "");
+            else if (string.IsNullOrEmpty(viewmodel.Theme)) SetDisplayAlert("Alert", "Please choose application theme.", "", "", "");
             else
             {
                 try
                 {
                     var result = await viewmodel.CreateAccount();
-                    if (result == 1) SetDisplayAlert("Alert", "The username is already exist. Please choose different username.", "", "");
+                    if (result == 1) SetDisplayAlert("Alert", "The username is already exist. Please choose different username.", "", "", "");
                     else if (result == 2)
                     {
-                        SetDisplayAlert("Success", "Successfully created your account.", "", "Okay");
+                        SetDisplayAlert("Success", "Successfully created your account.", "", "Okay", "");
                         if (Application.Current.Properties.ContainsKey("app_theme"))
                         {
                             var theme = Application.Current.Properties["app_theme"];
@@ -179,9 +179,11 @@ namespace Xperimen.View
                 }
                 catch (Exception ex)
                 {
+                    viewmodel.IsLoading = false;
+                    //await Navigation.PopAsync();
                     var error = ex.Message;
                     var desc = ex.StackTrace;
-                    await DisplayAlert(error, desc, "OK!");
+                    //await DisplayAlert(error, desc, "OK!");
                 }
             }
         }
@@ -194,7 +196,7 @@ namespace Xperimen.View
             await Navigation.PopAsync();
         }
 
-        public void SetDisplayAlert(string title, string description, string btn1, string btn2)
+        public void SetDisplayAlert(string title, string description, string btn1, string btn2, string obj)
         {
             //if string1 empty will not display btn1, if string2 empty will not display btn2
             //if both string1 & string2 empty will not display all buttons
@@ -205,6 +207,7 @@ namespace Xperimen.View
             alert.TxtBtn1 = btn1;
             alert.TxtBtn2 = btn2;
             alert.IsVisible = true;
+            alert.CodeObject = obj;
         }
     }
 }

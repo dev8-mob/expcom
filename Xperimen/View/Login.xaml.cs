@@ -29,14 +29,14 @@ namespace Xperimen.View
             view.Scale = 1;
 
             viewmodel.IsLoading = true;
-            if (string.IsNullOrEmpty(viewmodel.Username)) SetDisplayAlert("Alert", "Please insert your username.", "", "");
-            else if (string.IsNullOrEmpty(viewmodel.Password)) SetDisplayAlert("Alert", "Please insert your password.", "", "");
+            if (string.IsNullOrEmpty(viewmodel.Username)) SetDisplayAlert("Alert", "Please insert your username.", "", "", "");
+            else if (string.IsNullOrEmpty(viewmodel.Password)) SetDisplayAlert("Alert", "Please insert your password.", "", "", "");
             else
             {
                 var result = await viewmodel.Login();
                 if (result == 1) Application.Current.MainPage = new NavigationPage(new DrawerMaster());
-                else if (result == 2) SetDisplayAlert("Alert", "Your password is incorrect. Please insert the correct password.", "", "");
-                else if (result == 3) SetDisplayAlert("Alert", "The username is not found.", "", "");
+                else if (result == 2) SetDisplayAlert("Alert", "Your password is incorrect. Please insert the correct password.", "", "", "");
+                else if (result == 3) SetDisplayAlert("Alert", "The username is not found.", "", "", "");
             }
         }
 
@@ -48,7 +48,7 @@ namespace Xperimen.View
             await Navigation.PushAsync(new CreateAccount());
         }
 
-        public void SetDisplayAlert(string title, string description, string btn1, string btn2)
+        public void SetDisplayAlert(string title, string description, string btn1, string btn2, string obj)
         {
             //if string1 empty will not display btn1, if string2 empty will not display btn2
             //if both string1 & string2 empty will not display all buttons
@@ -59,6 +59,7 @@ namespace Xperimen.View
             alert.TxtBtn1 = btn1;
             alert.TxtBtn2 = btn2;
             alert.IsVisible = true;
+            alert.CodeObject = obj;
         }
     }
 }

@@ -1,5 +1,4 @@
 ﻿
-using SQLite;
 using Xamarin.Forms;
 using Xperimen.ViewModel;
 using Xperimen.ViewModel.Setting;
@@ -8,11 +7,8 @@ namespace Xperimen.Stylekit
 {
     public class XStacklayout : StackLayout
     {
-        public SQLiteConnection Connection;
-
         public XStacklayout()
         {
-            Connection = new SQLiteConnection(App.DB_PATH);
             BackgroundColor = Color.Transparent;
             SetupView();
 

@@ -22,16 +22,10 @@
 
   <ItemGroup>
     <Folder Include="ViewModel\Calendar\" />
-    <Folder Include="ViewModel\HumanResource\" />
     <Folder Include="ViewModel\Media\" />
     <Folder Include="ViewModel\NavigationDrawer\" />
-    <Folder Include="ViewModel\Staff\" />
-    <Folder Include="ViewModel\Sales\" />
     <Folder Include="View\Media\" />
-    <Folder Include="View\HumanResource\" />
     <Folder Include="View\Calendar\" />
-    <Folder Include="View\Sales\" />
-    <Folder Include="View\Staff\" />
   </ItemGroup>
 
   <ItemGroup>
@@ -47,6 +41,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Update="Stylekit\CustomCheckbox.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
     <EmbeddedResource Update="Stylekit\CustomDisplayAlert.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
@@ -59,13 +56,16 @@
     <EmbeddedResource Update="Stylekit\ImageViewer.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Update="View\Commitment\AddRecord.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="View\Commitment\MainCommitment.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
     <EmbeddedResource Update="View\CreateAccount.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="View\Dashboard\DetailsPage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="View\Dashboard\ItemCell.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="View\Dashboard\MainPage.xaml">

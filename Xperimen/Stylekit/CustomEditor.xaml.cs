@@ -11,7 +11,7 @@ namespace Xperimen.Stylekit
     {
         #region bindables
         #region custom properties
-        public string Text
+        public string BindingText
         {
             get { return (string)GetValue(TextProperty); }
             set { SetValue(TextProperty, value); }
@@ -29,7 +29,7 @@ namespace Xperimen.Stylekit
         #endregion
         #region custom properties binding
         public static BindableProperty TextProperty =
-            BindableProperty.Create(nameof(Text), typeof(string), typeof(CustomEditor), defaultValue: "",
+            BindableProperty.Create(nameof(BindingText), typeof(string), typeof(CustomEditor), defaultValue: "",
                 propertyChanged: (bindable, oldVal, newVal) => { ((CustomEditor)bindable).UpdateText((string)newVal); });
         public static BindableProperty PlaceholderProperty =
             BindableProperty.Create(nameof(Placeholder), typeof(string), typeof(CustomEditor), defaultValue: "",

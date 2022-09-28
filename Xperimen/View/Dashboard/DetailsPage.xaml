@@ -23,7 +23,7 @@
                         <StackLayout BindableLayout.ItemsSource="{Binding ListItems}">
                             <BindableLayout.ItemTemplate>
                                 <DataTemplate>
-                                    <cell:ItemCell/>
+                                    <!--<cell:ItemCell/>-->
                                 </DataTemplate>
                             </BindableLayout.ItemTemplate>
                             <!--<StackLayout.GestureRecognizers>

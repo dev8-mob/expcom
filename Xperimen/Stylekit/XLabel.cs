@@ -8,11 +8,8 @@ namespace Xperimen.Stylekit
 {
     public class XLabel : Label
     {
-        public SQLiteConnection Connection;
-
         public XLabel()
         {
-            Connection = new SQLiteConnection(App.DB_PATH);
             TextColor = (Color)Application.Current.Resources["LabelTextColor"];
             if (Device.RuntimePlatform == Device.Android) FontFamily = "Ubuntu-Regular.ttf#Ubuntu Regular";
             else if (Device.RuntimePlatform == Device.iOS) FontFamily = "Ubuntu-Regular.ttf";

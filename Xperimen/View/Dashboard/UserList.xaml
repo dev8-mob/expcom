@@ -16,7 +16,7 @@
                       ItemSelected="listview_ItemSelected">
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <viewcell:UserlistCell Picture="{Binding ProfileImage}"/>
+                        <viewcell:UserlistCell Picture="{Binding ProfileImage}" Login="{Binding IsLogin}"/>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
@@ -31,6 +31,8 @@
             <ActivityIndicator IsRunning="{Binding IsLoading, Mode=TwoWay}" Color="White" HorizontalOptions="Center"/>
             <Label Text="loading..." HorizontalOptions="Center" TextColor="White" FontFamily="{DynamicResource BoldFont}"/>
         </StackLayout>
+
+        <stylekit:CustomDisplayAlert x:Name="alert" IsVisible="False"/>
 
     </AbsoluteLayout>
 

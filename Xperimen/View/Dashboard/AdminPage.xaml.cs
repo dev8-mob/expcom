@@ -1,6 +1,7 @@
 ﻿using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using Xperimen.Stylekit;
 using Xperimen.View.NavigationDrawer;
 using Xperimen.ViewModel.Dashboard;
 
@@ -9,7 +10,7 @@ namespace Xperimen.View.Dashboard
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class AdminPage : ContentPage
     {
-        private readonly MaintabViewmodel viewmodel;
+        public readonly MaintabViewmodel viewmodel;
 
         public AdminPage()
         {

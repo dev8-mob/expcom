@@ -1,0 +1,118 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Xperimen.View.Commitment.AddRecord"
+             xmlns:stylekit="clr-namespace:Xperimen.Stylekit"
+             NavigationPage.HasNavigationBar="False">
+    
+    <ContentPage.Content>
+
+        <AbsoluteLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="Transparent">
+
+            <ScrollView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" AbsoluteLayout.LayoutFlags="All" 
+                        AbsoluteLayout.LayoutBounds="0,0,1,1">
+
+                <stylekit:XStacklayout Orientation="Vertical" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" 
+                                       Spacing="0" Padding="20">
+
+                    <!-- UI content -->
+                    <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" Orientation="Vertical" Spacing="0">
+
+                        <stylekit:XLabel Text="New Commitment" HorizontalOptions="Center" FontFamily="{DynamicResource Key=BoldFont}" FontSize="18"/>
+
+                        <!-- title -->
+                        <stylekit:CustomEntry Placeholder="name (bill, rent, charity, invest, etc...)" BindingText="Title" Margin="0,30,0,0"/>
+
+                        <!-- amount and account no checkbox -->
+                        <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="Fill" 
+                                     Spacing="10" Margin="0,10,0,0">
+                            <stylekit:XLabel Text="Amount" VerticalOptions="Center"/>
+                            <stylekit:CustomEntry BindingText="Amount" KeyboardType="Numeric" VerticalOptions="Center"/>
+                            <stylekit:XLabel Text="Account No" VerticalOptions="Center" Margin="10,0,0,0"/>
+                            <stylekit:CustomCheckbox BindingCheck="HasAccNo" CheckOff1="black_checkbox_off.png" CheckOn1="black_checkbox_on.png" 
+                                                     CheckOff2="white_checkbox_off.png" CheckOn2="white_checkbox_on.png"/>
+                        </StackLayout>
+
+                        <!-- account no -->
+                        <stylekit:CustomEntry IsVisible="{Binding HasAccNo}" Margin="0,10,0,0" BindingText="AccountNo" KeyboardType="Numeric"/>
+
+                        <!-- editor description -->
+                        <stylekit:XLabel Text="Description (optional)" HorizontalOptions="Start" Margin="0,10,0,0"/>
+                        <stylekit:CustomEditor Margin="0,5,0,0" Placeholder="details (account number, bank name, etc...)" BindingText="Description"/>
+
+                        <!-- pick gallery and take photo -->
+                        <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Spacing="0" Margin="0,10,0,0">
+                            <stylekit:XLabel Text="Attachment" HorizontalOptions="FillAndExpand" VerticalOptions="Center"/>
+                            <stylekit:XImage Source1="black_image.png" Source2="white_image.png" HeightRequest="30" WidthRequest="30"
+                                             Aspect="AspectFit" VerticalOptions="Center" Margin="0,0,15,0"
+                                             HorizontalOptions="End">
+                                <Image.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="GalleryClicked" NumberOfTapsRequired="1"/>
+                                </Image.GestureRecognizers>
+                            </stylekit:XImage>
+                            <stylekit:XImage Source1="black_camera.png" Source2="white_camera.png" HeightRequest="30" WidthRequest="30"
+                                             Aspect="AspectFit" VerticalOptions="Center" HorizontalOptions="End">
+                                <Image.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="CameraClicked" NumberOfTapsRequired="1"/>
+                                </Image.GestureRecognizers>
+                            </stylekit:XImage>
+                        </StackLayout>
+
+                        <!-- attachment picture -->
+                        <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Spacing="10" IsVisible="{Binding HasAttachment}"
+                                     Margin="0,10,0,0">
+                            <stylekit:XLabel x:Name="lbl_attach" HorizontalOptions="FillAndExpand" VerticalOptions="Center"
+                                             FontFamily="{DynamicResource Key=BoldFont}">
+                                <stylekit:XLabel.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="AttachmentClicked" NumberOfTapsRequired="1"/>
+                                </stylekit:XLabel.GestureRecognizers>
+                            </stylekit:XLabel>
+                            <stylekit:XImage Source1="black_cancel.png" Source2="white_cancel.png" HeightRequest="30" WidthRequest="30" 
+                                             HorizontalOptions="End" Aspect="AspectFit" VerticalOptions="Center">
+                                <stylekit:XImage.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="AttachmentDeleteClicked" NumberOfTapsRequired="1"/>
+                                </stylekit:XImage.GestureRecognizers>
+                            </stylekit:XImage>
+                        </StackLayout>
+
+                        <!-- save commitment button -->
+                        <Frame Padding="0,10,0,10" CornerRadius="3" BorderColor="{DynamicResource Key=Primary}" HorizontalOptions="FillAndExpand"
+                               Margin="0,30,0,0" BackgroundColor="{DynamicResource Key=Primary}" HasShadow="False" IsClippedToBounds="True">
+                            <Label Text="Save Commitment" FontFamily="{DynamicResource Key=BoldFont}" TextColor="White" HorizontalOptions="Center" VerticalOptions="Center"/>
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="SaveCommitmentClicked" NumberOfTapsRequired="1"/>
+                            </Frame.GestureRecognizers>
+                        </Frame>
+
+                        <!-- cancel button -->
+                        <stylekit:XLabel x:Name="lbl_cancel" Text="Cancel" HorizontalOptions="Center" FontFamily="{DynamicResource Key=BoldFont}" Margin="0,30,0,0">
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="CancelClicked" NumberOfTapsRequired="1"/>
+                            </Label.GestureRecognizers>
+                        </stylekit:XLabel>
+
+                    </StackLayout>
+
+                </stylekit:XStacklayout>
+
+            </ScrollView>
+
+            <!-- background overlay -->
+            <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="Black" Opacity="0.7"
+                         AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,0,1,1" IsVisible="{Binding IsLoading, Mode=TwoWay}"/>
+
+            <!-- loading overlay -->
+            <StackLayout IsVisible="{Binding IsLoading, Mode=TwoWay}" BackgroundColor="Transparent" Orientation="Vertical" Spacing="0"
+                         AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0.5,0.5,-1,-1">
+                <ActivityIndicator IsRunning="{Binding IsLoading, Mode=TwoWay}" Color="White" HorizontalOptions="Center"/>
+                <Label Text="loading..." HorizontalOptions="Center" TextColor="White" FontFamily="{DynamicResource BoldFont}"/>
+            </StackLayout>
+
+            <!-- custom display alert -->
+            <stylekit:CustomDisplayAlert x:Name="alert" IsVisible="False"/>
+
+        </AbsoluteLayout>
+
+    </ContentPage.Content>
+    
+</ContentPage>

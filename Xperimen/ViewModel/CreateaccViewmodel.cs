@@ -20,7 +20,6 @@ namespace Xperimen.ViewModel
         string _description;
         string _theme;
         MediaFile _picture;
-
         public string Username
         {
             get { return _username; }
@@ -62,6 +61,8 @@ namespace Xperimen.ViewModel
 
         public CreateaccViewmodel()
         {
+            Firstname = string.Empty;
+            Lastname = string.Empty;
             Username = string.Empty;
             Password = string.Empty;
             Description = string.Empty;
@@ -120,12 +121,21 @@ namespace Xperimen.ViewModel
                     Password = Password,
                     Description = Description,
                     AppTheme = Theme,
-                    ProfileImage = convert.GetImageBytes(Picture.GetStream())
+                    ProfileImage = convert.GetImageBytes(Picture.GetStream()),
+                    IsLogin = false
                 };
                 connection.Insert(data);
                 Application.Current.Properties["app_theme"] = Theme;
                 await Application.Current.SavePropertiesAsync();
-                MessagingCenter.Send(this, "AppThemeUpdated");
+
+                try { MessagingCenter.Send(this, "AppThemeUpdated"); }
+                catch (Exception ex)
+                {
+                    var error = ex.Message;
+                    var stack = ex.StackTrace;
+                    var page = Application.Current.MainPage;
+                    await page.DisplayAlert(error, stack, "OK");
+                }
 
                 Picture = null;
                 Username = string.Empty;
