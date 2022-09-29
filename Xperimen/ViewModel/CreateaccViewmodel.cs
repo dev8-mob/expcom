@@ -116,14 +116,17 @@ namespace Xperimen.ViewModel
                 {
                     Id = Guid.NewGuid().ToString(),
                     Username = Username,
-                    Firstname = char.ToUpper(Firstname[0]) + Firstname.Substring(1).ToLower(),
-                    Lastname = char.ToUpper(Lastname[0]) + Lastname.Substring(1).ToLower(),
+                    Firstname = string.Empty,
+                    Lastname = string.Empty,
                     Password = Password,
                     Description = Description,
                     AppTheme = Theme,
                     ProfileImage = convert.GetImageBytes(Picture.GetStream()),
                     IsLogin = false
                 };
+                var camelcase = new CamelCaseChecker();
+                data.Firstname = camelcase.CapitalizeWord(Firstname);
+                data.Lastname = camelcase.CapitalizeWord(Lastname);
                 connection.Insert(data);
                 Application.Current.Properties["app_theme"] = Theme;
                 await Application.Current.SavePropertiesAsync();

@@ -60,13 +60,17 @@ namespace Xperimen.Stylekit
         public void UpdateCheckOn2() { SetupView(); }
         public void UpdateCheckOff2() { SetupView(); }
         public void UpdateBindingCheck(string data) 
-        { checkbox.SetBinding(CheckBox.IsCheckedProperty, new Binding() { Path = data }); }
+        { 
+            checkbox.SetBinding(CheckBox.IsCheckedProperty, new Binding() { Path = data });
+            SetupView();
+        }
         #endregion
         #endregion
 
         public CustomCheckbox()
         {
             InitializeComponent();
+
             MessagingCenter.Subscribe<CreateaccViewmodel>(this, "AppThemeUpdated", (sender) => { SetupView(); });
             MessagingCenter.Subscribe<LoginViewmodel>(this, "AppThemeUpdated", (sender) => { SetupView(); });
             MessagingCenter.Subscribe<SettingViewmodel>(this, "AppThemeUpdated", (sender) => { SetupView(); });
@@ -111,10 +115,22 @@ namespace Xperimen.Stylekit
             if (Application.Current.Properties.ContainsKey("app_theme"))
             {
                 var theme = Application.Current.Properties["app_theme"] as string;
-                if (theme.Equals("dark")) img_check.Source = CheckOff2;
+                if (theme.Equals("dark"))
+                {
+                    if (checkbox.IsChecked) img_check.Source = CheckOn2;
+                    else img_check.Source = CheckOff2;
+                }
+                else
+                {
+                    if (checkbox.IsChecked) img_check.Source = CheckOn1;
+                    else img_check.Source = CheckOff1;
+                }
+            }
+            else
+            {
+                if (checkbox.IsChecked) img_check.Source = CheckOn1;
                 else img_check.Source = CheckOff1;
             }
-            else img_check.Source = CheckOff1;
         }
     }
 }

@@ -163,9 +163,13 @@ namespace Xperimen.ViewModel.Dashboard
         {
             try
             {
-                var query = "DELETE FROM Clients WHERE Id = '" + userid + "'";
-                connection.Query<Clients>(query);
-                var cek = connection.Table<Clients>().ToList();
+                var queryUser = "DELETE FROM Clients WHERE Id = '" + userid + "'";
+                var queryCommitment = "DELETE FROM SelfCommitment WHERE Userid = '" + userid + "'";
+
+                connection.Query<Clients>(queryUser);
+                connection.Query<SelfCommitment>(queryCommitment);
+                //var cek1 = connection.Table<Clients>().ToList();
+                //var cek2 = connection.Table<SelfCommitment>().ToList();
                 return 1;
             }
             catch (Exception ex)

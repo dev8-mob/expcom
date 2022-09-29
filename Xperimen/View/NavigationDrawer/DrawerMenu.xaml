@@ -17,7 +17,8 @@
                            HeightRequest="65" WidthRequest="65"/>
                 </Frame>
                 <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" Spacing="0">
-                    <stylekit:XLabel x:Name="lbl_fullname" Text="-" FontFamily="{DynamicResource Key=BoldFont}" FontSize="18"/>
+                    <stylekit:XLabel x:Name="lbl_fullname" Text="-" FontFamily="{DynamicResource Key=BoldFont}" FontSize="18"
+                                     LineBreakMode="TailTruncation" MaxLines="1"/>
                     <stylekit:XLabel x:Name="lbl_name" Text="-" FontFamily="{DynamicResource Key=ItalicFont}"/>
                     <stylekit:XLabel x:Name="lbl_desc" Text="-" Margin="0,15,0,0"/>
                 </StackLayout>

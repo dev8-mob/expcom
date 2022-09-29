@@ -3,6 +3,9 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Xperimen.View.Commitment.MainCommitment"
              xmlns:stylekit="clr-namespace:Xperimen.Stylekit"
+             xmlns:viewcell="clr-namespace:Xperimen.View.Commitment"
+             xmlns:vm="clr-namespace:Xperimen.ViewModel.Commitment"
+             x:DataType="vm:CommitmentViewmodel"
              NavigationPage.HasNavigationBar="False">
     
     <ContentPage.Content>
@@ -28,7 +31,89 @@
                                          FontSize="18" VerticalOptions="Center"/>
                     </StackLayout>
 
-                    <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="Start" Margin="0,15,0,0" Spacing="0">
+                        
+                        <!-- profile picture -->
+                        <Frame x:Name="frame_profile" HorizontalOptions="Start" VerticalOptions="End" HeightRequest="100" WidthRequest="100" 
+                               BorderColor="DarkGray" HasShadow="False" BackgroundColor="{DynamicResource Key=DimGray2}" Padding="0" 
+                               CornerRadius="20" IsClippedToBounds="True">
+                            <stylekit:XImage x:Name="img_profile" Aspect="AspectFill" ImageByte="{Binding ProfilePic}"/>
+                        </Frame>
+
+                        <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand" Spacing="0" Margin="20,0,0,0">
+                            <StackLayout x:Name="stack_income" Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                                
+                                <!-- edit income button -->
+                                <stylekit:XImage Source1="black_edit.png" Source2="white_edit.png" HorizontalOptions="Start"
+                                                 HeightRequest="30" WidthRequest="30" Aspect="AspectFit">
+                                    <Image.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="EditIncomeTapped"/>
+                                    </Image.GestureRecognizers>
+                                </stylekit:XImage>
+
+                                <!-- income amount -->
+                                <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand" Spacing="0">
+                                    <stylekit:XLabel Text="Income" VerticalOptions="End" HorizontalOptions="End" />
+                                    <StackLayout Orientation="Horizontal" HorizontalOptions="EndAndExpand" Spacing="5">
+                                        <stylekit:XLabel Text="RM" HorizontalOptions="EndAndExpand"/>
+                                        <stylekit:XLabel Text="{Binding Income, StringFormat='{0:0.00}'}" HorizontalOptions="End" 
+                                                         FontSize="20" FontFamily="{DynamicResource Key=BoldFont}"/>
+                                    </StackLayout>
+                                </StackLayout>
+
+                            </StackLayout>
+
+                            <!-- keyin income -->
+                            <StackLayout x:Name="stack_editincome" Orientation="Horizontal" HorizontalOptions="FillAndExpand" Spacing="0" IsVisible="False">
+                                <stylekit:CustomEntry BindingText="Income" KeyboardType="Numeric" ImgLeft="black_money.png"
+                                                      ImgLeft_="white_money.png"/>
+                                <stylekit:XImage Source1="black_checkbox_on.png" Source2="white_checkbox_on.png" HeightRequest="30" WidthRequest="30"
+                                                 HorizontalOptions="End" VerticalOptions="Center" Margin="10,0,0,0">
+                                    <Image.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="SaveIncomeTapped"/>
+                                    </Image.GestureRecognizers>
+                                </stylekit:XImage>
+                            </StackLayout>
+
+                            <!-- total commitment amount -->
+                            <stylekit:XLabel Text="Total Commitment" VerticalOptions="End" HorizontalOptions="End" Margin="0,10,0,0"/>
+                            <StackLayout Orientation="Horizontal" HorizontalOptions="EndAndExpand" Spacing="5">
+                                <stylekit:XLabel Text="RM"/>
+                                <stylekit:XLabel Text="{Binding TotalCommitment, StringFormat='{0:0.00}'}" FontSize="18"/>
+                            </StackLayout>
+
+                            <!-- balance amount -->
+                            <StackLayout Orientation="Horizontal" HorizontalOptions="EndAndExpand" Spacing="10">
+                                <stylekit:XLabel Text="Net :" VerticalOptions="End" HorizontalOptions="End" Margin="0,20,0,0"/>
+                                <StackLayout Orientation="Horizontal" VerticalOptions="End" Spacing="5">
+                                    <stylekit:XLabel Text="RM" VerticalOptions="End" Margin="0,0,0,-1"/>
+                                    <stylekit:XLabel Text="{Binding Balance, StringFormat='{0:0.00}'}" FontSize="20"
+                                                     FontFamily="{DynamicResource Key=BoldFont}" VerticalOptions="End"
+                                                     Margin="0,0,0,-3"/>
+                                </StackLayout>
+                            </StackLayout>
+
+                        </StackLayout>
+                    </StackLayout>
+
+                    <!-- no commitment yet -->
+                    <stylekit:XLabel Text="You does not have any commitment yet. Click button below to add new commitment." Margin="30,30,30,0"
+                                     VerticalOptions="Start" HorizontalOptions="Center" IsVisible="{Binding NoCommitment}"
+                                     HorizontalTextAlignment="Center"/>
+
+                    <!-- commitment list -->
+                    <StackLayout HorizontalOptions="FillAndExpand" BindableLayout.ItemsSource="{Binding ListCommitments}" Margin="0,30,0,0"
+                                 Spacing="0" VerticalOptions="Start" IsVisible="{Binding HasCommitment}">
+                        <BindableLayout.ItemTemplate>
+                            <DataTemplate>
+                                <viewcell:ListCell>
+                                    <StackLayout.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="ItemCommitmentTapped"/>
+                                    </StackLayout.GestureRecognizers>
+                                </viewcell:ListCell>
+                            </DataTemplate>
+                        </BindableLayout.ItemTemplate>
+                    </StackLayout>
 
                     <!-- create commitment button -->
                     <Frame Padding="0,10,0,10" CornerRadius="3" BorderColor="{DynamicResource Key=Primary}" HorizontalOptions="FillAndExpand"
