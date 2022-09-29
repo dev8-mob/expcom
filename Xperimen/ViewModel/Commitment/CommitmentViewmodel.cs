@@ -2,7 +2,10 @@
 using Plugin.Media.Abstractions;
 using SQLite;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
+using Xamarin.Forms;
 using Xperimen.Helper;
 using Xperimen.Model;
 
@@ -10,7 +13,9 @@ namespace Xperimen.ViewModel.Commitment
 {
     public class CommitmentViewmodel : BaseViewModel
     {
-        #region properties
+        #region bindable properties
+        bool _norecord;
+        bool _hasrecord;
         string _title;
         string _description;
         double _amount;
@@ -19,6 +24,21 @@ namespace Xperimen.ViewModel.Commitment
         bool _hasattachment;
         int _accountno;
         MediaFile _picture;
+        List<SelfCommitment> _listcommitments;
+        double _income;
+        double _totalcommitment;
+        double _balance;
+        byte[] _profilepic;
+        public bool NoCommitment
+        {
+            get { return _norecord; }
+            set { _norecord = value; OnPropertyChanged(); }
+        }
+        public bool HasCommitment
+        {
+            get { return _hasrecord; }
+            set { _hasrecord = value; OnPropertyChanged(); }
+        }
         public string Title
         {
             get { return _title; }
@@ -59,12 +79,39 @@ namespace Xperimen.ViewModel.Commitment
             get { return _picture; }
             set { _picture = value; OnPropertyChanged(); }
         }
+        public List<SelfCommitment> ListCommitments
+        {
+            get { return _listcommitments; }
+            set { _listcommitments = value; OnPropertyChanged(); }
+        }
+        public double Income
+        {
+            get { return _income; }
+            set { _income = value; OnPropertyChanged(); }
+        }
+        public double TotalCommitment
+        {
+            get { return _totalcommitment; }
+            set { _totalcommitment = value; OnPropertyChanged(); }
+        }
+        public double Balance
+        {
+            get { return _balance; }
+            set { _balance = value; OnPropertyChanged(); }
+        }
+        public byte[] ProfilePic
+        {
+            get { return _profilepic; }
+            set { _profilepic = value; OnPropertyChanged(); }
+        }
         #endregion
 
         public SQLiteConnection connection;
 
         public CommitmentViewmodel()
         {
+            NoCommitment = true;
+            HasCommitment = false;
             Title = string.Empty;
             Description = string.Empty;
             Amount = 0;
@@ -74,6 +121,14 @@ namespace Xperimen.ViewModel.Commitment
             AccountNo = 0;
             Picture = null;
             connection = new SQLiteConnection(App.DB_PATH);
+            Income = 0;
+            TotalCommitment = 0;
+            Balance = 0;
+
+            var userid = Application.Current.Properties["current_login"] as string;
+            string query = "SELECT * FROM Clients WHERE Id = '" + userid + "'";
+            var result = connection.Query<Clients>(query).ToList();
+            if (result.Count > 0) ProfilePic = result[0].ProfileImage;
         }
 
         public async Task<int> TakePhoto()
@@ -114,11 +169,18 @@ namespace Xperimen.ViewModel.Commitment
         {
             try
             {
+                var userid = string.Empty;
+                if (Application.Current.Properties.ContainsKey("current_login"))
+                    userid = Application.Current.Properties["current_login"] as string;
+
+                var camelcase = new CamelCaseChecker();
+                var title = camelcase.CapitalizeWord(Title);
                 var convert = new StreamByteConverter();
                 var data = new SelfCommitment
                 {
                     Id = Guid.NewGuid().ToString(),
-                    Title = Title,
+                    Userid = userid,
+                    Title = title,
                     Description = Description,
                     Amount = Amount,
                     IsDone = false,
@@ -129,6 +191,95 @@ namespace Xperimen.ViewModel.Commitment
                 };
                 if (Picture != null) data.Picture = convert.GetImageBytes(Picture.GetStream());
                 connection.Insert(data);
+                return 1;
+            }
+            catch (Exception ex)
+            {
+                var error = ex.Message;
+                var desc = ex.StackTrace;
+                return 2;
+            }
+        }
+
+        public int GetCommitment()
+        {
+            try
+            {
+                var userid = string.Empty;
+                if (Application.Current.Properties.ContainsKey("current_login"))
+                    userid = Application.Current.Properties["current_login"] as string;
+
+                string getuser = "SELECT * FROM Clients WHERE Id = '" + userid + "'";
+                var user = connection.Query<Clients>(getuser).ToList();
+                if (user.Count > 0) Income = user[0].Income;
+
+                TotalCommitment = 0;
+                ListCommitments = new List<SelfCommitment>();
+                string query = "SELECT * FROM SelfCommitment WHERE Userid = '" + userid + "'";
+                ListCommitments = connection.Query<SelfCommitment>(query).ToList();
+
+                if (ListCommitments.Count > 0)
+                {
+                    NoCommitment = false;
+                    HasCommitment = true;
+                    foreach (var data in ListCommitments)
+                        TotalCommitment += data.Amount;
+                }
+                else
+                {
+                    NoCommitment = true;
+                    HasCommitment = false;
+                }
+
+                Balance = Income - TotalCommitment;
+                return 1;
+            }
+            catch (Exception ex)
+            {
+                var error = ex.Message;
+                var desc = ex.StackTrace;
+                return 2;
+            }
+        }
+
+        public int SetDataCommitment(string data)
+        {
+            try
+            {
+                var query = "SELECT * FROM SelfCommitment WHERE Id = '" + data + "'";
+                var result = connection.Query<SelfCommitment>(query).ToList();
+                if (result.Count > 0)
+                {
+                    Title = result[0].Title;
+                    Description = result[0].Description;
+                    Amount = result[0].Amount;
+                    IsDone = result[0].IsDone;
+                    HasAccNo = result[0].HasAccNo;
+                    HasAttachment = result[0].HasAttachment;
+                    AccountNo = result[0].AccountNo;
+                    ProfilePic = result[0].Picture;
+                    return 1;
+                }
+                return 2;
+            }
+            catch (Exception ex)
+            {
+                var error = ex.Message;
+                var desc = ex.StackTrace;
+                return 3;
+            }
+        }
+
+        public int SaveIncome()
+        {
+            try
+            {
+                var userid = string.Empty;
+                if (Application.Current.Properties.ContainsKey("current_login"))
+                    userid = Application.Current.Properties["current_login"] as string;
+
+                string query = "UPDATE Clients SET Income = " + Income + " WHERE Id = '" + userid + "'";
+                connection.Query<Clients>(query);
                 return 1;
             }
             catch (Exception ex)

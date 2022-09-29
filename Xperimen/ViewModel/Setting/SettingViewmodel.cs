@@ -149,12 +149,18 @@ namespace Xperimen.ViewModel.Setting
 
         public async Task<int> UpdateSetting()
         {
-            var fname = char.ToUpper(Firstname[0]) + Firstname.Substring(1).ToLower();
-            var lname = char.ToUpper(Lastname[0]) + Lastname.Substring(1).ToLower();
+            var camelcase = new CamelCaseChecker();
+            var fname = camelcase.CapitalizeWord(Firstname);
+            var lname = camelcase.CapitalizeWord(Lastname);
             Firstname = fname;
             Lastname = lname;
 
+            double income = 0;
             var userid = Application.Current.Properties["current_login"] as string;
+            string getuser = "SELECT * FROM Clients WHERE Id = '" + userid + "'";
+            var user = connection.Query<Clients>(getuser).ToList();
+            if (user.Count > 0) income = user[0].Income;
+
             var model = new Clients
             {
                 Id = userid,
@@ -165,7 +171,8 @@ namespace Xperimen.ViewModel.Setting
                 Description = Description,
                 ProfileImage = Picture,
                 AppTheme = Theme,
-                IsLogin = true
+                IsLogin = true,
+                Income = income
             };
 
             string query = "SELECT * FROM Clients WHERE Id = '" + userid + "'";

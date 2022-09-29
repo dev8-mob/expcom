@@ -16,5 +16,6 @@ namespace Xperimen.Model
         public byte[] ProfileImage { get; set; }
         public string AppTheme { get; set; }
         public bool IsLogin { get; set; }
+        public double Income { get; set; }
     }
 }
