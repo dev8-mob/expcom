@@ -154,7 +154,7 @@ namespace Xperimen.ViewModel.Dashboard
         }
 
         public void SearchKeyword(string searchstring)
-        { 
+        {
             SearchString = searchstring;
             LoadData();
         }

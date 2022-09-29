@@ -1,9 +1,9 @@
-﻿using System;
+﻿using SQLite;
+using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using Xperimen.Model;
 using Xperimen.View.Dashboard;
-using SQLite;
 
 namespace Xperimen.View.NavigationDrawer
 {

@@ -1,12 +1,12 @@
 ﻿using Plugin.Media;
 using Plugin.Media.Abstractions;
-using Xperimen.Model;
 using SQLite;
-using System.Linq;
-using Xamarin.Forms;
-using System.Threading.Tasks;
-using Xperimen.Helper;
 using System;
+using System.Linq;
+using System.Threading.Tasks;
+using Xamarin.Forms;
+using Xperimen.Helper;
+using Xperimen.Model;
 
 namespace Xperimen.ViewModel.Setting
 {

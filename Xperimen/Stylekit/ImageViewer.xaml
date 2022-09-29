@@ -5,15 +5,15 @@
                  xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
                  Padding="15">
 
-    <Grid HorizontalOptions="Center" VerticalOptions="Center">
+    <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
 
         <ActivityIndicator IsRunning="True" Color="White" HorizontalOptions="Center" VerticalOptions="Center"
                            Grid.Row="0" Grid.Column="0" Margin="0,30,30,0"/>
 
         <Image x:Name="img_data" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Aspect="AspectFit"
-               Grid.Row="0" Grid.Column="0" Margin="0,15,15,0"/>
+               Grid.Row="0" Grid.Column="0"/>
 
-        <Frame Padding="0" HasShadow="False" CornerRadius="50" HorizontalOptions="End" VerticalOptions="Start"
+        <Frame Padding="0" HasShadow="False" CornerRadius="50" HorizontalOptions="Center" VerticalOptions="End"
                Grid.Row="0" Grid.Column="0" BorderColor="{DynamicResource Primary}" IsClippedToBounds="True">
             <Image Source="white_cancel.png" HeightRequest="50" WidthRequest="50" Aspect="AspectFit">
                 <Image.GestureRecognizers>

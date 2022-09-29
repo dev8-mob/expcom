@@ -1,15 +1,15 @@
 ﻿
 using Android.App;
 using Android.Content.PM;
-using Android.Runtime;
 using Android.OS;
-using Xamarin.Forms.PlatformConfiguration.AndroidSpecific;
+using Android.Runtime;
 using Android.Views;
 using System.IO;
+using Xamarin.Forms.PlatformConfiguration.AndroidSpecific;
 
 namespace Xperimen.Droid
 {
-    [Activity(Label = "Xperimen", Icon = "@mipmap/icon", Theme = "@style/MainTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | 
+    [Activity(Label = "Xperimen", Icon = "@mipmap/icon", Theme = "@style/MainTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize |
         ConfigChanges.Orientation | ConfigChanges.UiMode | ConfigChanges.ScreenLayout | ConfigChanges.SmallestScreenSize, WindowSoftInputMode = SoftInput.AdjustResize)]
     public class MainActivity : Xamarin.Forms.Platform.Android.FormsAppCompatActivity
     {

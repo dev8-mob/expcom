@@ -1,9 +1,9 @@
 ﻿using CoreGraphics;
-using Xperimen.Stylekit;
-using Xperimen.iOS.CustomRenderer;
 using UIKit;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.iOS;
+using Xperimen.iOS.CustomRenderer;
+using Xperimen.Stylekit;
 
 [assembly: ExportRenderer(typeof(EntryBorderless), typeof(EntryBorderlessRenderer))]
 namespace Xperimen.iOS.CustomRenderer

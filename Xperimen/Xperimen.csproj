@@ -11,6 +11,24 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="ViewModel\Calendar\**" />
+    <Compile Remove="ViewModel\Media\**" />
+    <Compile Remove="ViewModel\NavigationDrawer\**" />
+    <Compile Remove="View\Calendar\**" />
+    <Compile Remove="View\Media\**" />
+    <EmbeddedResource Remove="ViewModel\Calendar\**" />
+    <EmbeddedResource Remove="ViewModel\Media\**" />
+    <EmbeddedResource Remove="ViewModel\NavigationDrawer\**" />
+    <EmbeddedResource Remove="View\Calendar\**" />
+    <EmbeddedResource Remove="View\Media\**" />
+    <None Remove="ViewModel\Calendar\**" />
+    <None Remove="ViewModel\Media\**" />
+    <None Remove="ViewModel\NavigationDrawer\**" />
+    <None Remove="View\Calendar\**" />
+    <None Remove="View\Media\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Rg.Plugins.Popup" Version="2.1.0" />
     <PackageReference Include="sqlite-net-pcl" Version="1.8.116" />
     <PackageReference Include="Xam.Plugin.Media" Version="5.0.1" />
@@ -18,14 +36,6 @@
     <PackageReference Include="Xamarin.Forms" Version="5.0.0.2515" />
     <PackageReference Include="Xamarin.Essentials" Version="1.7.3" />
     <PackageReference Include="Xamarin.Forms.PancakeView" Version="2.3.0.759" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="ViewModel\Calendar\" />
-    <Folder Include="ViewModel\Media\" />
-    <Folder Include="ViewModel\NavigationDrawer\" />
-    <Folder Include="View\Media\" />
-    <Folder Include="View\Calendar\" />
   </ItemGroup>
 
   <ItemGroup>

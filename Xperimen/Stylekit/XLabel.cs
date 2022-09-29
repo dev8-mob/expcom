@@ -1,6 +1,4 @@
-﻿
-using SQLite;
-using Xamarin.Forms;
+﻿using Xamarin.Forms;
 using Xperimen.ViewModel;
 using Xperimen.ViewModel.Setting;
 

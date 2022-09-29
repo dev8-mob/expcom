@@ -32,7 +32,7 @@
 
                         <!-- UI content (view) -->
                         <Frame x:Name="frame_view" HasShadow="False" Padding="0" IsClippedToBounds="True" CornerRadius="10" 
-                               Grid.Row="0" Grid.Column="0" Margin="0,0,0,35">
+                               Grid.Row="0" Grid.Column="0" Margin="0,0,0,30">
                             <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand" Spacing="0" Padding="15,15,15,40">
 
                                 <!-- header -->
@@ -76,7 +76,7 @@
                         <!-- image attachment button -->
                         <Frame x:Name="frame_attachment" Padding="5" BorderColor="{DynamicResource Key=Primary}" HorizontalOptions="Center"
                                BackgroundColor="{DynamicResource Key=Primary}" HasShadow="False" IsClippedToBounds="True" CornerRadius="5"
-                               Grid.Row="0" Grid.Column="0" VerticalOptions="End" IsVisible="{Binding HasAttachment, Mode=TwoWay}">
+                               Grid.Row="0" Grid.Column="0" VerticalOptions="End" IsVisible="{Binding HasAttachment}">
                             <stylekit:XImage Source1="white_image.png" Source2="white_image.png" HeightRequest="35" WidthRequest="35"
                                              Aspect="AspectFit" HorizontalOptions="Center" VerticalOptions="End"/>
                             <Frame.GestureRecognizers>
@@ -99,8 +99,8 @@
                                 <stylekit:XLabel Text="Amount" VerticalOptions="Center"/>
                                 <stylekit:CustomEntry BindingText="Amount" KeyboardType="Numeric" VerticalOptions="Center"/>
                                 <stylekit:XLabel Text="Account No" VerticalOptions="Center" Margin="10,0,0,0"/>
-                                <stylekit:CustomCheckbox BindingCheck="HasAccNo" CheckOff1="black_checkbox_off.png" CheckOn1="black_checkbox_on.png" 
-                                                         CheckOff2="white_checkbox_off.png" CheckOn2="white_checkbox_on.png"/>
+                                <stylekit:CustomCheckbox x:Name="checkbox" CheckOff1="black_checkbox_off.png" CheckOn1="black_checkbox_on.png" 
+                                                         CheckOff2="white_checkbox_off.png" CheckOn2="white_checkbox_on.png" BindingCheck="HasAccNo"/>
                             </StackLayout>
 
                             <!-- account no -->
@@ -130,7 +130,7 @@
 
                             <!-- attachment picture -->
                             <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Spacing="10" Margin="0,10,0,0"
-                                         IsVisible="{Binding HasAttachment, Mode=TwoWay}">
+                                         IsVisible="{Binding HasAttachment}">
                                 <stylekit:XLabel x:Name="lbl_attach" HorizontalOptions="FillAndExpand" VerticalOptions="Center"
                                                  Text="image_attachment.jpg" FontFamily="{DynamicResource Key=BoldFont}">
                                     <stylekit:XLabel.GestureRecognizers>
@@ -148,7 +148,7 @@
                             <!-- save commitment button -->
                             <Frame Padding="0,10,0,10" CornerRadius="3" BorderColor="{DynamicResource Key=Primary}" HorizontalOptions="FillAndExpand"
                                    Margin="0,30,0,0" BackgroundColor="{DynamicResource Key=Primary}" HasShadow="False" IsClippedToBounds="True">
-                                <Label Text="Save Commitment" FontFamily="{DynamicResource Key=BoldFont}" TextColor="White" HorizontalOptions="Center" 
+                                <Label Text="Update" FontFamily="{DynamicResource Key=BoldFont}" TextColor="White" HorizontalOptions="Center" 
                                        VerticalOptions="Center"/>
                                 <!--<Frame.GestureRecognizers>
                                     <TapGestureRecognizer Tapped="SaveCommitmentClicked" NumberOfTapsRequired="1"/>

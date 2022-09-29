@@ -21,7 +21,7 @@ namespace Xperimen.View.Dashboard
                 if (arg.Equals("Okay"))
                 {
                     var result = viewmodel.DeleteUser(alert.CodeObject);
-                    if (result == 1) 
+                    if (result == 1)
                     {
                         SetDisplayAlert("Success", "User deleted.", "", "", "");
                         viewmodel.IsBlocked = false;

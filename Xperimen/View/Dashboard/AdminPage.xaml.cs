@@ -1,7 +1,6 @@
 ﻿using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-using Xperimen.Stylekit;
 using Xperimen.View.NavigationDrawer;
 using Xperimen.ViewModel.Dashboard;
 

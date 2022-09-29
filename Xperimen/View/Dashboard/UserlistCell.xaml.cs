@@ -1,6 +1,6 @@
 ﻿
-using System;
 using SQLite;
+using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using Xperimen.Helper;
@@ -27,7 +27,7 @@ namespace Xperimen.View.Dashboard
         public static BindableProperty LoginProperty =
             BindableProperty.Create(nameof(Login), typeof(bool), typeof(UserlistCell), defaultValue: false,
                 propertyChanged: (bindable, oldVal, newVal) => { ((UserlistCell)bindable).UpdateIsLogin((bool)newVal); });
-        public void UpdatePicture(byte[] data) 
+        public void UpdatePicture(byte[] data)
         {
             img_profile.Source = ImageSource.FromStream(() =>
             {

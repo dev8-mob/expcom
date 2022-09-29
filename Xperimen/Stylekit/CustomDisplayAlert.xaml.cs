@@ -56,7 +56,7 @@ namespace Xperimen.Stylekit
         #region binding implementation
         public void UpdateTitle(string data) { lbl_title.Text = data; }
         public void UpdateContent(string data) { lbl_desc.Text = data; }
-        public void UpdateTxtBtn1(string data) 
+        public void UpdateTxtBtn1(string data)
         {
             var isEmpty = string.IsNullOrEmpty(data);
             lbl_btn1.Text = data;
@@ -65,7 +65,7 @@ namespace Xperimen.Stylekit
             if (string.IsNullOrEmpty(TxtBtn1) && string.IsNullOrEmpty(TxtBtn2)) stack_buttons.IsVisible = false;
             else stack_buttons.IsVisible = true;
         }
-        public void UpdateTxtBtn2(string data) 
+        public void UpdateTxtBtn2(string data)
         {
             var isEmpty = string.IsNullOrEmpty(data);
             lbl_btn2.Text = data;

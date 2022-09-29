@@ -97,7 +97,7 @@
                     </StackLayout>
 
                     <!-- no commitment yet -->
-                    <stylekit:XLabel Text="You does not have any commitment yet. Click button below to add new commitment." Margin="30,30,30,0"
+                    <stylekit:XLabel Text="You do not have any commitment yet. Click button below to add new commitment." Margin="30,30,30,0"
                                      VerticalOptions="Start" HorizontalOptions="Center" IsVisible="{Binding NoCommitment}"
                                      HorizontalTextAlignment="Center"/>
 

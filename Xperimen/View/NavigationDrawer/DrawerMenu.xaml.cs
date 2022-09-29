@@ -1,17 +1,17 @@
-﻿using System;
+﻿using Rg.Plugins.Popup.Extensions;
+using SQLite;
+using System;
 using System.Collections.Generic;
+using System.Linq;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using Xperimen.Helper;
 using Xperimen.Model;
+using Xperimen.Stylekit;
+using Xperimen.View.Commitment;
 using Xperimen.View.Dashboard;
 using Xperimen.View.Setting;
-using SQLite;
-using System.Linq;
-using Rg.Plugins.Popup.Extensions;
-using Xperimen.Stylekit;
-using Xperimen.Helper;
 using Xperimen.ViewModel.Setting;
-using Xperimen.View.Commitment;
 
 namespace Xperimen.View.NavigationDrawer
 {
