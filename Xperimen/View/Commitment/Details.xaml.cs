@@ -31,8 +31,16 @@ namespace Xperimen.View.Commitment
             MessagingCenter.Subscribe<CustomDisplayAlert, string>(this, "DisplayAlertSelection", async (sender, arg) =>
             {
                 viewmodel.IsLoading = false;
-                if (alert.CodeObject.Equals("error"))
-                    await Navigation.PopAsync();
+                if (alert.CodeObject.Equals("error")) await Navigation.PopAsync();
+                else if (alert.CodeObject.Equals("success"))
+                {
+                    SetupView();
+                    await stack_edit.FadeTo(0, 200);
+                    stack_edit.IsVisible = false;
+                    frame_view.IsVisible = true;
+                    if (viewmodel.HasAttachment) frame_attachment.IsVisible = true;
+                    else if (!viewmodel.HasAttachment) frame_attachment.IsVisible = false;
+                }
             });
         }
 
@@ -173,6 +181,29 @@ namespace Xperimen.View.Commitment
             await view.ScaleTo(0.9, 100);
             view.Scale = 1;
             viewmodel.HasAttachment = false;
+            viewmodel.Picture = null;
+        }
+
+        public async void UpdateCommitmentClicked(object sender, EventArgs e)
+        {
+            var view = (Frame)sender;
+            await view.ScaleTo(0.9, 100);
+            view.Scale = 1;
+
+            viewmodel.IsLoading = true;
+            if (string.IsNullOrEmpty(viewmodel.Title)) SetDisplayAlert("Alert", "Commitment name is empty. Please insert any name (bill, rent, charity, investment, etc...)", "", "", "");
+            else if (viewmodel.Amount == 0) SetDisplayAlert("Alert", "Commitment amount is empty. Please insert commitment amount.", "", "", "");
+            else if (viewmodel.HasAccNo && viewmodel.AccountNo == 0) SetDisplayAlert("Alert", "Account number  is empty. Please insert account number.", "", "", "");
+            else
+            {
+                var result = viewmodel.UpdateCommitment(data);
+                if (result == 1)
+                {
+                    SetDisplayAlert("Success", "Commitment details updated.", "", "", "success");
+                    MessagingCenter.Send(this, "CommitmentUpdated");
+                }
+                else if (result == 2) SetDisplayAlert("Error", "Technical error when updating commitment.", "", "", "error");
+            }
         }
 
         public async void BackTapped(object sender, EventArgs e)

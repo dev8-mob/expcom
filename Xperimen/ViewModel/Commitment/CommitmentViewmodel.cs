@@ -62,7 +62,12 @@ namespace Xperimen.ViewModel.Commitment
         public bool HasAccNo
         {
             get { return _hasaccno; }
-            set { _hasaccno = value; OnPropertyChanged(); }
+            set 
+            { 
+                _hasaccno = value; 
+                OnPropertyChanged();
+                AccountNo = HasAccNo ? AccountNo : 0;
+            }
         }
         public bool HasAttachment
         {
@@ -201,7 +206,7 @@ namespace Xperimen.ViewModel.Commitment
             }
         }
 
-        public int GetCommitment()
+        public int GetCommitmentList()
         {
             try
             {
@@ -267,6 +272,57 @@ namespace Xperimen.ViewModel.Commitment
                 var error = ex.Message;
                 var desc = ex.StackTrace;
                 return 3;
+            }
+        }
+
+        public int UpdateCommitment(string data)
+        {
+            try
+            {
+                var camelcase = new CamelCaseChecker();
+                var title = camelcase.CapitalizeWord(Title);
+                Title = title;
+                var convert = new StreamByteConverter();
+
+                if (Picture != null)
+                {
+                    var userid = string.Empty;
+                    if (Application.Current.Properties.ContainsKey("current_login"))
+                        userid = Application.Current.Properties["current_login"] as string;
+
+                    var model = new SelfCommitment
+                    {
+                        Id = data,
+                        Userid = userid,
+                        Title = Title,
+                        Description = Description,
+                        Amount = Amount,
+                        IsDone = IsDone,
+                        HasAccNo = HasAccNo,
+                        HasAttachment = HasAttachment,
+                        AccountNo = AccountNo,
+                        Picture = convert.GetImageBytes(Picture.GetStream())
+                    };
+
+                    connection.Query<SelfCommitment>("DELETE FROM SelfCommitment WHERE Id = '" + data + "'");
+                    connection.Insert(model);
+                }
+                else
+                {
+                    var query = "UPDATE SelfCommitment SET Title = '" + title + "', Description = '" + Description + "', Amount = "
+                    + Amount + ", IsDone = " + IsDone + ", HasAccNo = " + HasAccNo + ", HasAttachment = " + HasAttachment
+                    + ", AccountNo = " + AccountNo + ", Picture = NULL WHERE Id = '" + data + "'";
+                    connection.Query<SelfCommitment>(query);
+                }
+
+                var cek = connection.Query<SelfCommitment>("SELECT * FROM SelfCommitment WHERE Id = '" + data + "'").ToList();
+                return 1;
+            }
+            catch (Exception ex)
+            {
+                var error = ex.Message;
+                var desc = ex.StackTrace;
+                return 2;
             }
         }
 

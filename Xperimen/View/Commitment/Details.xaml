@@ -38,7 +38,8 @@
                                 <!-- header -->
                                 <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="Center" Spacing="0">
                                     <!-- edit button -->
-                                    <stylekit:XImage Source1="black_edit.png" Source2="white_edit.png" HeightRequest="30" WidthRequest="30" Aspect="AspectFit">
+                                    <stylekit:XImage Source1="black_edit.png" Source2="white_edit.png" HeightRequest="30" WidthRequest="30" 
+                                                     Aspect="AspectFit" Margin="0,0,15,0" VerticalOptions="Center">
                                         <Image.GestureRecognizers>
                                             <TapGestureRecognizer Tapped="EditTapped" NumberOfTapsRequired="1"/>
                                         </Image.GestureRecognizers>
@@ -49,7 +50,8 @@
                                                      HorizontalTextAlignment="Center" FontSize="18" VerticalOptions="Center"/>
 
                                     <!-- delete button -->
-                                    <stylekit:XImage Source1="black_delete.png" Source2="white_delete.png" HeightRequest="30" WidthRequest="30" Aspect="AspectFit">
+                                    <stylekit:XImage Source1="black_delete.png" Source2="white_delete.png" HeightRequest="30" WidthRequest="30" 
+                                                     Aspect="AspectFit" Margin="15,0,0,0" VerticalOptions="Center">
                                         <Image.GestureRecognizers>
                                             <TapGestureRecognizer Tapped="DeleteTapped" NumberOfTapsRequired="1"/>
                                         </Image.GestureRecognizers>
@@ -150,9 +152,9 @@
                                    Margin="0,30,0,0" BackgroundColor="{DynamicResource Key=Primary}" HasShadow="False" IsClippedToBounds="True">
                                 <Label Text="Update" FontFamily="{DynamicResource Key=BoldFont}" TextColor="White" HorizontalOptions="Center" 
                                        VerticalOptions="Center"/>
-                                <!--<Frame.GestureRecognizers>
-                                    <TapGestureRecognizer Tapped="SaveCommitmentClicked" NumberOfTapsRequired="1"/>
-                                </Frame.GestureRecognizers>-->
+                                <Frame.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="UpdateCommitmentClicked" NumberOfTapsRequired="1"/>
+                                </Frame.GestureRecognizers>
                             </Frame>
 
                             <!-- cancel button -->

@@ -17,13 +17,13 @@ namespace Xperimen.View.Commitment
             BindingContext = viewmodel;
             SetupView();
 
-            MessagingCenter.Subscribe<AddRecord>(this, "CommitmentAdded", (sender) =>
-            { SetupView(); });
+            MessagingCenter.Subscribe<AddRecord>(this, "CommitmentAdded", (sender) => { SetupView(); });
+            MessagingCenter.Subscribe<Details>(this, "CommitmentUpdated", (sender) => { SetupView(); });
         }
 
         public void SetupView()
         {
-            var result = viewmodel.GetCommitment();
+            var result = viewmodel.GetCommitmentList();
             if (result == 2) SetDisplayAlert("Error", "Technical error retrieving commitment list.", "", "", "");
         }
 
@@ -44,7 +44,7 @@ namespace Xperimen.View.Commitment
 
             var result = viewmodel.SaveIncome();
             if (result == 2) SetDisplayAlert("Error", "Technical error saving income amount.", "", "", "");
-            viewmodel.GetCommitment();
+            viewmodel.GetCommitmentList();
             stack_income.IsVisible = true;
             stack_editincome.IsVisible = false;
         }
