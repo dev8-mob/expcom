@@ -145,6 +145,7 @@ namespace Xperimen.ViewModel.Commitment
 
         public CommitmentViewmodel()
         {
+            connection = new SQLiteConnection(App.DB_PATH);
             NoCommitment = true;
             HasCommitment = false;
             Title = string.Empty;
@@ -155,7 +156,6 @@ namespace Xperimen.ViewModel.Commitment
             HasAttachment = false;
             AccountNo = 0;
             Picture = null;
-            connection = new SQLiteConnection(App.DB_PATH);
             Income = 0;
             TotalCommitment = 0;
             Balance = 0;
@@ -296,6 +296,7 @@ namespace Xperimen.ViewModel.Commitment
                     userid = Application.Current.Properties["current_login"] as string;
 
                 var query = "UPDATE Clients SET NetIncome = " + Balance + " WHERE Id = '" + userid + "'";
+                var cek = connection.Query<Clients>("SELECT * FROM Clients WHERE Id = '" + userid + "'").ToList();
                 return 1;
             }
             catch (Exception ex)
