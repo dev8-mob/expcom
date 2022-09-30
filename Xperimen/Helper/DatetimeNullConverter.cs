@@ -17,7 +17,7 @@ namespace Xperimen.Helper
                     DateTime dt;
                     if (DateTime.TryParse(value.ToString(), out dt))
                     {
-                        if (dt.Day == 1 && dt.Month == 1 && dt.Year == 0001) 
+                        if (dt.Day == 1 && dt.Month == 1 && dt.Year == 0001)
                             final = "--";
                         else
                             final = dt.ToString("MMM d, yyyy");

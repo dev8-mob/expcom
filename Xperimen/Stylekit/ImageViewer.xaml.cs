@@ -23,7 +23,7 @@ namespace Xperimen.Stylekit
                 });
             }
         }
-        
+
         protected override bool OnBackButtonPressed()
         {
             // Invoked when a hardware back button is pressed

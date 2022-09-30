@@ -19,7 +19,7 @@ namespace Xperimen.View.Commitment
             BindingContext = viewmodel;
 
             MessagingCenter.Subscribe<CustomDisplayAlert, string>(this, "DisplayAlertSelection", async (sender, arg) =>
-            { 
+            {
                 viewmodel.IsLoading = false;
                 if (alert.CodeObject.Equals("success"))
                     await Navigation.PopAsync();

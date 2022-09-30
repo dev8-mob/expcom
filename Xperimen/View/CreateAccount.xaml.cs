@@ -1,10 +1,10 @@
 ﻿
+using Rg.Plugins.Popup.Extensions;
+using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using Xperimen.Stylekit;
 using Xperimen.ViewModel;
-using System;
-using Rg.Plugins.Popup.Extensions;
 
 namespace Xperimen.View
 {
@@ -28,7 +28,7 @@ namespace Xperimen.View
             }
 
             MessagingCenter.Subscribe<CustomDisplayAlert, string>(this, "DisplayAlertSelection", (sender, arg) =>
-            { 
+            {
                 viewmodel.IsLoading = false;
                 if (arg.Equals("Okay")) Navigation.PopAsync();
             });

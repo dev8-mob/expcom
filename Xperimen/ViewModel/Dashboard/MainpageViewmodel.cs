@@ -28,16 +28,18 @@ namespace Xperimen.ViewModel.Dashboard
         {
             IsLoading = true;
             AppsList = new ObservableCollection<MobileApp>();
-            AppsList.Add(new MobileApp {
+            AppsList.Add(new MobileApp
+            {
                 Id = Guid.NewGuid().ToString(),
                 AppName = "Dictate",
-                AppIcon = "", 
-                AppRating = "3.9", 
-                AppSize = "35.1 MB", 
+                AppIcon = "",
+                AppRating = "3.9",
+                AppSize = "35.1 MB",
                 Description = "The fox in the tophat whispered into the ear of the rabbit.",
-                CreatedDatetime = new DateTime(1993,8,4)
+                CreatedDatetime = new DateTime(1993, 8, 4)
             });
-            AppsList.Add(new MobileApp {
+            AppsList.Add(new MobileApp
+            {
                 Id = Guid.NewGuid().ToString(),
                 AppName = "Cabin",
                 AppIcon = "",
@@ -45,7 +47,8 @@ namespace Xperimen.ViewModel.Dashboard
                 AppSize = "24.6 MB",
                 Description = "Your girlfriend bought your favorite cookie crisp cereal but forgot to get milk.",
             });
-            AppsList.Add(new MobileApp {
+            AppsList.Add(new MobileApp
+            {
                 Id = Guid.NewGuid().ToString(),
                 AppName = "Eyebrow",
                 AppIcon = "",
@@ -54,7 +57,8 @@ namespace Xperimen.ViewModel.Dashboard
                 Description = "As time wore on, simple dog commands turned into full paragraphs explaining why the dog couldn’t do something.",
                 CreatedDatetime = new DateTime(1993, 8, 5)
             });
-            AppsList.Add(new MobileApp {
+            AppsList.Add(new MobileApp
+            {
                 Id = Guid.NewGuid().ToString(),
                 AppName = "Tease",
                 AppIcon = "",
@@ -62,7 +66,8 @@ namespace Xperimen.ViewModel.Dashboard
                 AppSize = "18.5 MB",
                 Description = "The clouds formed beautiful animals in the sky that eventually created a tornado to wreak havoc."
             });
-            AppsList.Add(new MobileApp {
+            AppsList.Add(new MobileApp
+            {
                 Id = Guid.NewGuid().ToString(),
                 AppName = "Depart",
                 AppIcon = "",
@@ -71,7 +76,8 @@ namespace Xperimen.ViewModel.Dashboard
                 Description = "Grape jelly was leaking out the hole in the roof.",
                 CreatedDatetime = new DateTime(1993, 8, 6)
             });
-            AppsList.Add(new MobileApp {
+            AppsList.Add(new MobileApp
+            {
                 Id = Guid.NewGuid().ToString(),
                 AppName = "Assignment",
                 AppIcon = "",

@@ -15,7 +15,7 @@
             <Color x:Key="LabelTextColor">#666666</Color>
             <Color x:Key="SlateGray">#708090</Color>
             <Color x:Key="CharcoalGray">#8c99a6</Color>
-            <Color x:Key="CharcoalBlack">#363636</Color>
+            <Color x:Key="CharcoalBlack">#2E2E2E</Color>
             <OnPlatform x:TypeArguments="x:String" x:Key="NormalFont">
                 <On Platform="Android" Value="Ubuntu-Regular.ttf#Ubuntu Regular" />
                 <On Platform="iOS" Value="Ubuntu-Regular" />

@@ -56,7 +56,7 @@ namespace Xperimen.Stylekit
 
         public StreamByteConverter converter;
 
-        public XImage() 
+        public XImage()
         {
             converter = new StreamByteConverter();
             MessagingCenter.Subscribe<CreateaccViewmodel>(this, "AppThemeUpdated", (sender) => { SetupView(); });

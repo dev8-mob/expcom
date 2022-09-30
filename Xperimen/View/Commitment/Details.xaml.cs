@@ -4,6 +4,7 @@ using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using Xperimen.Helper;
+using Xperimen.Model;
 using Xperimen.Stylekit;
 using Xperimen.ViewModel.Commitment;
 
@@ -15,7 +16,7 @@ namespace Xperimen.View.Commitment
         public CommitmentViewmodel viewmodel;
         public StreamByteConverter converter;
         public string data;
-        public bool storeattachment;
+        public SelfCommitment _temp;
 
         public Details(string data)
         {
@@ -23,14 +24,47 @@ namespace Xperimen.View.Commitment
             this.data = data;
             viewmodel = new CommitmentViewmodel();
             converter = new StreamByteConverter();
+            _temp = new SelfCommitment();
             BindingContext = viewmodel;
             SetupView();
 
             MessagingCenter.Subscribe<CustomDisplayAlert, string>(this, "DisplayAlertSelection", async (sender, arg) =>
             {
-                viewmodel.IsLoading = false;
                 if (alert.CodeObject.Equals("error"))
+                {
+                    viewmodel.IsLoading = false;
                     await Navigation.PopAsync();
+                }
+                else if (alert.CodeObject.Equals("success"))
+                {
+                    SetupView();
+                    stack_edit.IsVisible = false;
+                    frame_view.IsVisible = true;
+                    if (viewmodel.HasAttachment) frame_attachment.IsVisible = true;
+                    else if (!viewmodel.HasAttachment) frame_attachment.IsVisible = false;
+                    stack_donebtns.IsVisible = true;
+                    viewmodel.IsLoading = false;
+                }
+                else if (alert.CodeObject.Equals("delete"))
+                {
+                    if (arg.Equals("Yes"))
+                    {
+                        var result = viewmodel.DeleteCommitment(data);
+                        if (result == 1)
+                        {
+                            MessagingCenter.Send(this, "CommitmentDeleted");
+                            await Navigation.PopAsync();
+                        }
+                        if (result == 2) SetDisplayAlert("Error", "Technical error deleting the selected commitment.", "", "", "error");
+                    }
+                    else if (arg.Equals("Cancel")) viewmodel.IsLoading = false;
+                    else viewmodel.IsLoading = false;
+                }
+                else if (alert.CodeObject.Equals("markdone")) 
+                {
+                    viewmodel.IsLoading = false;
+                    SetupView(); 
+                }
             });
         }
 
@@ -47,6 +81,20 @@ namespace Xperimen.View.Commitment
             var result = viewmodel.SetDataCommitment(data);
             if (result == 2) SetDisplayAlert("Not Found", "The selected commitment is not found.", "", "", "error");
             else if (result == 3) SetDisplayAlert("Error", "Technical error retrieving the selected commitment.", "", "", "error");
+
+            // set done paid button visibility
+            if (viewmodel.IsDone) frame_donepaid.IsVisible = false;
+            else frame_donepaid.IsVisible = true;
+
+            // set default data, in case of cancelling edit
+            _temp.Title = viewmodel.Title;
+            _temp.Description = viewmodel.Description;
+            _temp.Amount = viewmodel.Amount;
+            _temp.IsDone = viewmodel.IsDone;
+            _temp.HasAccNo = viewmodel.HasAccNo;
+            _temp.HasAttachment = viewmodel.HasAttachment;
+            _temp.AccountNo = viewmodel.AccountNo;
+            _temp.Picture = null;
         }
 
         public async void EditTapped(object sender, EventArgs e)
@@ -56,9 +104,11 @@ namespace Xperimen.View.Commitment
             view.Scale = 1;
 
             stack_edit.IsVisible = true;
-            await stack_edit.FadeTo(1, 200);
             frame_view.IsVisible = false;
             frame_attachment.IsVisible = false;
+            stack_donebtns.IsVisible = false;
+            //update selected state in custom checkbox
+            checkbox.InitCheckbox(viewmodel.HasAccNo);
         }
 
         public async void DeleteTapped(object sender, EventArgs e)
@@ -68,7 +118,7 @@ namespace Xperimen.View.Commitment
             view.Scale = 1;
 
             viewmodel.IsLoading = true;
-            SetDisplayAlert("Confirmation", "Are you sure to delete this commitment", "Yes", "Cancel", "");
+            SetDisplayAlert("Confirmation", "Are you sure to delete this commitment", "Yes", "Cancel", "delete");
         }
 
         public async void CancelClicked(object sender, EventArgs e)
@@ -77,13 +127,20 @@ namespace Xperimen.View.Commitment
             await view.ScaleTo(0.9, 100);
             view.Scale = 1;
 
-            await stack_edit.FadeTo(0, 200);
+            viewmodel.Title = _temp.Title;
+            viewmodel.Description = _temp.Description;
+            viewmodel.Amount = _temp.Amount;
+            viewmodel.IsDone = _temp.IsDone;
+            viewmodel.HasAccNo = _temp.HasAccNo;
+            viewmodel.HasAttachment = _temp.HasAttachment;
+            viewmodel.AccountNo = _temp.AccountNo;
+            lbl_attach.Text = "image_attachment.jpg";
+
             stack_edit.IsVisible = false;
             frame_view.IsVisible = true;
-            frame_attachment.IsVisible = true;
-            //viewmodel.HasAttachment = storeattachment; //cancel edit, so revert back to previous state
-            eviewmodel.Picture = null;
-            lbl_attach.Text = "image_attachment.jpg";
+            if (viewmodel.HasAttachment) frame_attachment.IsVisible = true;
+            else if (!viewmodel.HasAttachment) frame_attachment.IsVisible = false;
+            stack_donebtns.IsVisible = true;
         }
 
         public async void GalleryClicked(object sender, EventArgs e)
@@ -93,7 +150,6 @@ namespace Xperimen.View.Commitment
             view.Scale = 1;
 
             viewmodel.IsLoading = true;
-            storeattachment = viewmodel.HasAttachment;
             var result = await viewmodel.PickPhoto();
             if (result == 3) SetDisplayAlert("Unavailable", "Photo gallery is not available to pick photo.", "", "", "");
             else if (result == 2) SetDisplayAlert("Alert", "No photo selected.", "", "", "");
@@ -114,7 +170,6 @@ namespace Xperimen.View.Commitment
             view.Scale = 1;
 
             viewmodel.IsLoading = true;
-            storeattachment = viewmodel.HasAttachment;
             var result = await viewmodel.TakePhoto();
             if (result == 3) SetDisplayAlert("Unavailable", "Camera is not available or take photo not supported.", "", "", "");
             else if (result == 2) SetDisplayAlert("Alert", "Take photo cancelled.", "", "", "");
@@ -142,9 +197,9 @@ namespace Xperimen.View.Commitment
             await view.ScaleTo(0.9, 100);
             view.Scale = 1;
 
-            if (viewmodel.Picture != null) 
+            if (viewmodel.Picture != null)
                 await Navigation.PushPopupAsync(new ImageViewer(viewmodel.Picture.GetStream()));
-            else if (viewmodel.Picture == null) 
+            else if (viewmodel.Picture == null)
                 await Navigation.PushPopupAsync(new ImageViewer(converter.BytesToStream(viewmodel.ProfilePic)));
         }
 
@@ -153,8 +208,60 @@ namespace Xperimen.View.Commitment
             var view = (Image)sender;
             await view.ScaleTo(0.9, 100);
             view.Scale = 1;
-            storeattachment = viewmodel.HasAttachment;
             viewmodel.HasAttachment = false;
+            viewmodel.Picture = null;
+        }
+
+        public async void UpdateCommitmentClicked(object sender, EventArgs e)
+        {
+            var view = (Frame)sender;
+            await view.ScaleTo(0.9, 100);
+            view.Scale = 1;
+
+            viewmodel.IsLoading = true;
+            if (string.IsNullOrEmpty(viewmodel.Title)) SetDisplayAlert("Alert", "Commitment name is empty. Please insert any name (bill, rent, charity, investment, etc...)", "", "", "");
+            else if (viewmodel.Amount == 0) SetDisplayAlert("Alert", "Commitment amount is empty. Please insert commitment amount.", "", "", "");
+            else if (viewmodel.HasAccNo && viewmodel.AccountNo == 0) SetDisplayAlert("Alert", "Account number  is empty. Please insert account number.", "", "", "");
+            else
+            {
+                var result = viewmodel.UpdateCommitment(data);
+                if (result == 1)
+                {
+                    SetDisplayAlert("Success", "Commitment details updated.", "", "", "success");
+                    MessagingCenter.Send(this, "CommitmentUpdated");
+                }
+                else if (result == 2) SetDisplayAlert("Error", "Technical error when updating commitment.", "", "", "error");
+            }
+        }
+
+        public async void DonePaidClicked(object sender, EventArgs e)
+        {
+            var view = (Frame)sender;
+            await view.ScaleTo(0.9, 100);
+            view.Scale = 1;
+
+            viewmodel.IsLoading = true;
+            var result = viewmodel.SetStatusDonePaid(data, true);
+            if (result == 1)
+            {
+                SetDisplayAlert("Done", "Commitment mark as paid.", "", "", "markdone");
+                MessagingCenter.Send(this, "CommitmentUpdated");
+            }
+        }
+
+        public async void NotDoneClicked(object sender, EventArgs e)
+        {
+            var view = (Frame)sender;
+            await view.ScaleTo(0.9, 100);
+            view.Scale = 1;
+
+            viewmodel.IsLoading = true;
+            var result = viewmodel.SetStatusDonePaid(data, false);
+            if (result == 1)
+            {
+                SetDisplayAlert("Undone", "Commitment mark as not done yet.", "", "", "markdone");
+                MessagingCenter.Send(this, "CommitmentUpdated");
+            }
         }
 
         public async void BackTapped(object sender, EventArgs e)

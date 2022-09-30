@@ -1,8 +1,8 @@
-﻿using Xperimen.Stylekit;
-using Xperimen.iOS.CustomRenderer;
-using UIKit;
+﻿using UIKit;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.iOS;
+using Xperimen.iOS.CustomRenderer;
+using Xperimen.Stylekit;
 
 [assembly: ExportRenderer(typeof(TimePickerBorderless), typeof(TimePickerBorderlessRenderer))]
 namespace Xperimen.iOS.CustomRenderer

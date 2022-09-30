@@ -1,8 +1,8 @@
 ﻿
 using SQLite;
 using Xamarin.Forms;
-using Xperimen.View;
 using Xperimen.Model;
+using Xperimen.View;
 using Xperimen.View.NavigationDrawer;
 
 namespace Xperimen
@@ -20,7 +20,7 @@ namespace Xperimen
         public static string LabelTextColor = "#666666";
         public static string SlateGray = "#708090";
         public static string CharcoalGray = "#8c99a6";
-        public static string CharcoalBlack = "#363636";
+        public static string CharcoalBlack = "#2E2E2E";
 
         public App(string sql_path)
         {

@@ -33,7 +33,7 @@ namespace Xperimen.View.Setting
         }
 
         public void SetParentBinding(SettingViewmodel parent)
-        { 
+        {
             viewmodel = parent;
             SetupView();
         }

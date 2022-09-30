@@ -106,7 +106,7 @@ namespace Xperimen.Stylekit
         #region binding implementation
         public void UpdateBindingText(string data) { entry.SetBinding(Entry.TextProperty, new Binding() { Path = data }); }
         public void UpdatePlaceholder(string data) { entry.Placeholder = data; }
-        public void UpdateImgLeft(string data) 
+        public void UpdateImgLeft(string data)
         {
             if (!string.IsNullOrEmpty(data))
             {
@@ -125,7 +125,7 @@ namespace Xperimen.Stylekit
             }
             else img_left.IsVisible = false;
         }
-        public void UpdateImgLeft_(string data) 
+        public void UpdateImgLeft_(string data)
         {
             if (!string.IsNullOrEmpty(data))
             {
@@ -139,8 +139,8 @@ namespace Xperimen.Stylekit
             }
             else img_left.IsVisible = false;
         }
-        public void UpdateImgRight(string data) 
-        { 
+        public void UpdateImgRight(string data)
+        {
             if (!string.IsNullOrEmpty(data))
             {
                 if (Application.Current.Properties.ContainsKey("app_theme"))
@@ -154,7 +154,7 @@ namespace Xperimen.Stylekit
             }
             else img_right.IsVisible = false;
         }
-        public void UpdateImgRight_(string data) 
+        public void UpdateImgRight_(string data)
         {
             if (!string.IsNullOrEmpty(data))
             {
@@ -169,7 +169,7 @@ namespace Xperimen.Stylekit
             }
             else img_right.IsVisible = false;
         }
-        public void UpdateImgRight2(string data) 
+        public void UpdateImgRight2(string data)
         {
             if (!string.IsNullOrEmpty(data))
             {
@@ -219,7 +219,7 @@ namespace Xperimen.Stylekit
                 }
                 catch (Exception ex) { var error = ex.Message; }
             });
-            MessagingCenter.Subscribe<SettingViewmodel>(this, "AppThemeUpdated", (sender) => 
+            MessagingCenter.Subscribe<SettingViewmodel>(this, "AppThemeUpdated", (sender) =>
             {
                 try
                 {

@@ -1,8 +1,8 @@
 ﻿using Android.Content;
-using Xperimen.Stylekit;
-using Xperimen.Droid.CustomRenderer;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
+using Xperimen.Droid.CustomRenderer;
+using Xperimen.Stylekit;
 
 [assembly: ExportRenderer(typeof(TimePickerBorderless), typeof(TimePickerBorderlessRenderer))]
 namespace Xperimen.Droid.CustomRenderer

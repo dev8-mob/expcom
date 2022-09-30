@@ -1,8 +1,8 @@
 ﻿
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-using Xperimen.ViewModel.Setting;
 using Xperimen.ViewModel;
+using Xperimen.ViewModel.Setting;
 
 namespace Xperimen.Stylekit
 {
@@ -59,11 +59,8 @@ namespace Xperimen.Stylekit
         public void UpdateCheckOff1() { SetupView(); }
         public void UpdateCheckOn2() { SetupView(); }
         public void UpdateCheckOff2() { SetupView(); }
-        public void UpdateBindingCheck(string data) 
-        { 
-            checkbox.SetBinding(CheckBox.IsCheckedProperty, new Binding() { Path = data });
-            SetupView();
-        }
+        public void UpdateBindingCheck(string data)
+        { checkbox.SetBinding(CheckBox.IsCheckedProperty, new Binding() { Path = data }); }
         #endregion
         #endregion
 
@@ -115,20 +112,31 @@ namespace Xperimen.Stylekit
             if (Application.Current.Properties.ContainsKey("app_theme"))
             {
                 var theme = Application.Current.Properties["app_theme"] as string;
+                if (theme.Equals("dark")) img_check.Source = CheckOff2;
+                else img_check.Source = CheckOff1;
+            }
+            else img_check.Source = CheckOff1;
+        }
+
+        public void InitCheckbox(bool ischecked)
+        {
+            if (Application.Current.Properties.ContainsKey("app_theme"))
+            {
+                var theme = Application.Current.Properties["app_theme"] as string;
                 if (theme.Equals("dark"))
                 {
-                    if (checkbox.IsChecked) img_check.Source = CheckOn2;
+                    if (ischecked) img_check.Source = CheckOn2;
                     else img_check.Source = CheckOff2;
                 }
                 else
                 {
-                    if (checkbox.IsChecked) img_check.Source = CheckOn1;
+                    if (ischecked) img_check.Source = CheckOn1;
                     else img_check.Source = CheckOff1;
                 }
             }
             else
             {
-                if (checkbox.IsChecked) img_check.Source = CheckOn1;
+                if (ischecked) img_check.Source = CheckOn1;
                 else img_check.Source = CheckOff1;
             }
         }

@@ -63,7 +63,7 @@ namespace Xperimen.ViewModel.Dashboard
         { ItemCount = ChildViewModels[SelectedTab].ItemCount; }
 
         public void ClearSearchResult()
-        { 
+        {
             DataString = string.Empty;
             LoadData();
         }
