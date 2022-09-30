@@ -30,16 +30,40 @@ namespace Xperimen.View.Commitment
 
             MessagingCenter.Subscribe<CustomDisplayAlert, string>(this, "DisplayAlertSelection", async (sender, arg) =>
             {
-                viewmodel.IsLoading = false;
-                if (alert.CodeObject.Equals("error")) await Navigation.PopAsync();
+                if (alert.CodeObject.Equals("error"))
+                {
+                    viewmodel.IsLoading = false;
+                    await Navigation.PopAsync();
+                }
                 else if (alert.CodeObject.Equals("success"))
                 {
                     SetupView();
-                    await stack_edit.FadeTo(0, 200);
                     stack_edit.IsVisible = false;
                     frame_view.IsVisible = true;
                     if (viewmodel.HasAttachment) frame_attachment.IsVisible = true;
                     else if (!viewmodel.HasAttachment) frame_attachment.IsVisible = false;
+                    stack_donebtns.IsVisible = true;
+                    viewmodel.IsLoading = false;
+                }
+                else if (alert.CodeObject.Equals("delete"))
+                {
+                    if (arg.Equals("Yes"))
+                    {
+                        var result = viewmodel.DeleteCommitment(data);
+                        if (result == 1)
+                        {
+                            MessagingCenter.Send(this, "CommitmentDeleted");
+                            await Navigation.PopAsync();
+                        }
+                        if (result == 2) SetDisplayAlert("Error", "Technical error deleting the selected commitment.", "", "", "error");
+                    }
+                    else if (arg.Equals("Cancel")) viewmodel.IsLoading = false;
+                    else viewmodel.IsLoading = false;
+                }
+                else if (alert.CodeObject.Equals("markdone")) 
+                {
+                    viewmodel.IsLoading = false;
+                    SetupView(); 
                 }
             });
         }
@@ -58,7 +82,11 @@ namespace Xperimen.View.Commitment
             if (result == 2) SetDisplayAlert("Not Found", "The selected commitment is not found.", "", "", "error");
             else if (result == 3) SetDisplayAlert("Error", "Technical error retrieving the selected commitment.", "", "", "error");
 
-            //default data, in case of cancelling edit
+            // set done paid button visibility
+            if (viewmodel.IsDone) frame_donepaid.IsVisible = false;
+            else frame_donepaid.IsVisible = true;
+
+            // set default data, in case of cancelling edit
             _temp.Title = viewmodel.Title;
             _temp.Description = viewmodel.Description;
             _temp.Amount = viewmodel.Amount;
@@ -76,9 +104,9 @@ namespace Xperimen.View.Commitment
             view.Scale = 1;
 
             stack_edit.IsVisible = true;
-            await stack_edit.FadeTo(1, 200);
             frame_view.IsVisible = false;
             frame_attachment.IsVisible = false;
+            stack_donebtns.IsVisible = false;
             //update selected state in custom checkbox
             checkbox.InitCheckbox(viewmodel.HasAccNo);
         }
@@ -90,7 +118,7 @@ namespace Xperimen.View.Commitment
             view.Scale = 1;
 
             viewmodel.IsLoading = true;
-            SetDisplayAlert("Confirmation", "Are you sure to delete this commitment", "Yes", "Cancel", "");
+            SetDisplayAlert("Confirmation", "Are you sure to delete this commitment", "Yes", "Cancel", "delete");
         }
 
         public async void CancelClicked(object sender, EventArgs e)
@@ -108,11 +136,11 @@ namespace Xperimen.View.Commitment
             viewmodel.AccountNo = _temp.AccountNo;
             lbl_attach.Text = "image_attachment.jpg";
 
-            await stack_edit.FadeTo(0, 200);
             stack_edit.IsVisible = false;
             frame_view.IsVisible = true;
             if (viewmodel.HasAttachment) frame_attachment.IsVisible = true;
             else if (!viewmodel.HasAttachment) frame_attachment.IsVisible = false;
+            stack_donebtns.IsVisible = true;
         }
 
         public async void GalleryClicked(object sender, EventArgs e)
@@ -203,6 +231,36 @@ namespace Xperimen.View.Commitment
                     MessagingCenter.Send(this, "CommitmentUpdated");
                 }
                 else if (result == 2) SetDisplayAlert("Error", "Technical error when updating commitment.", "", "", "error");
+            }
+        }
+
+        public async void DonePaidClicked(object sender, EventArgs e)
+        {
+            var view = (Frame)sender;
+            await view.ScaleTo(0.9, 100);
+            view.Scale = 1;
+
+            viewmodel.IsLoading = true;
+            var result = viewmodel.SetStatusDonePaid(data, true);
+            if (result == 1)
+            {
+                SetDisplayAlert("Done", "Commitment mark as paid.", "", "", "markdone");
+                MessagingCenter.Send(this, "CommitmentUpdated");
+            }
+        }
+
+        public async void NotDoneClicked(object sender, EventArgs e)
+        {
+            var view = (Frame)sender;
+            await view.ScaleTo(0.9, 100);
+            view.Scale = 1;
+
+            viewmodel.IsLoading = true;
+            var result = viewmodel.SetStatusDonePaid(data, false);
+            if (result == 1)
+            {
+                SetDisplayAlert("Undone", "Commitment mark as not done yet.", "", "", "markdone");
+                MessagingCenter.Send(this, "CommitmentUpdated");
             }
         }
 

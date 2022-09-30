@@ -25,14 +25,16 @@
                         </stylekit:XImage>
                     </StackLayout>
 
-                    <Grid HorizontalOptions="FillAndExpand" VerticalOptions="Start" Margin="0,15,0,0">
+                    <Grid HorizontalOptions="FillAndExpand" VerticalOptions="Start" Margin="0,15,0,0" RowSpacing="0">
                         <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
                             <RowDefinition Height="Auto"/>
                         </Grid.RowDefinitions>
 
                         <!-- UI content (view) -->
                         <Frame x:Name="frame_view" HasShadow="False" Padding="0" IsClippedToBounds="True" CornerRadius="10" 
-                               Grid.Row="0" Grid.Column="0" Margin="0,0,0,30">
+                               Grid.Row="0" Grid.Column="0">
                             <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand" Spacing="0" Padding="15,15,15,40">
 
                                 <!-- header -->
@@ -64,9 +66,12 @@
 
                                 <!-- amount -->
                                 <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" Spacing="5" Margin="0,10,0,0">
-                                    <stylekit:XLabel Text="RM" HorizontalOptions="Center"/>
+                                    <stylekit:XLabel Text="RM" HorizontalOptions="Center" FontFamily="{DynamicResource Key=BoldFont}"/>
                                     <stylekit:XLabel Text="{Binding Amount, StringFormat='{0:0.00}'}" HorizontalOptions="Center" FontSize="20"
-                                                     HorizontalTextAlignment="Start"/>
+                                                     HorizontalTextAlignment="Start" FontFamily="{DynamicResource Key=BoldFont}"/>
+                                    <stylekit:XImage Source1="black_done.png" Source2="white_done.png" HeightRequest="30" WidthRequest="30"
+                                                     Aspect="AspectFit" HorizontalOptions="Center" VerticalOptions="Center"
+                                                     Margin="5,0,0,0" IsVisible="{Binding IsDone}"/>
                                 </StackLayout>
 
                                 <!-- account no -->
@@ -78,7 +83,7 @@
                         <!-- image attachment button -->
                         <Frame x:Name="frame_attachment" Padding="5" BorderColor="{DynamicResource Key=Primary}" HorizontalOptions="Center"
                                BackgroundColor="{DynamicResource Key=Primary}" HasShadow="False" IsClippedToBounds="True" CornerRadius="5"
-                               Grid.Row="0" Grid.Column="0" VerticalOptions="End" IsVisible="{Binding HasAttachment}">
+                               Grid.Row="1" Grid.Column="0" VerticalOptions="Start" IsVisible="{Binding HasAttachment}" Margin="0,-20,0,0">
                             <stylekit:XImage Source1="white_image.png" Source2="white_image.png" HeightRequest="35" WidthRequest="35"
                                              Aspect="AspectFit" HorizontalOptions="Center" VerticalOptions="End"/>
                             <Frame.GestureRecognizers>
@@ -88,7 +93,7 @@
 
                         <!-- UI content (edit) -->
                         <StackLayout x:Name="stack_edit" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" 
-                                     Orientation="Vertical" Spacing="0" Grid.Row="0" Grid.Column="0"  IsVisible="False">
+                                     Orientation="Vertical" Spacing="0" Grid.Row="0" Grid.Column="0" IsVisible="False">
 
                             <stylekit:XLabel Text="Edit Commitment" HorizontalOptions="Center" FontFamily="{DynamicResource Key=BoldFont}" FontSize="18"/>
 
@@ -163,6 +168,37 @@
                                     <TapGestureRecognizer Tapped="CancelClicked" NumberOfTapsRequired="1"/>
                                 </Label.GestureRecognizers>
                             </stylekit:XLabel>
+
+                        </StackLayout>
+
+                        <!-- done and not done buttons -->
+                        <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand" Spacing="0" Grid.Row="2" Grid.Column="0"
+                                     Margin="0,30,0,0" x:Name="stack_donebtns">
+
+                            <!-- mark not paid button -->
+                            <Frame Padding="0,10,0,10" CornerRadius="3" BorderColor="{DynamicResource Key=Primary}" HorizontalOptions="FillAndExpand"
+                                   VerticalOptions="End" BackgroundColor="{DynamicResource Key=Primary}" HasShadow="False" 
+                                   IsClippedToBounds="True" IsVisible="{Binding IsDone}">
+                                <Label Text="Mark as not done" FontFamily="{DynamicResource Key=BoldFont}" TextColor="White" HorizontalOptions="Center" 
+                                   VerticalOptions="Center"/>
+                                <Frame.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="NotDoneClicked" NumberOfTapsRequired="1"/>
+                                </Frame.GestureRecognizers>
+                            </Frame>
+
+                            <!-- done paid button -->
+                            <Frame Padding="0,10,0,10" CornerRadius="3" BorderColor="{DynamicResource Key=CustomGreen}" HorizontalOptions="FillAndExpand"
+                                   VerticalOptions="End" BackgroundColor="{DynamicResource Key=CustomGreen}" HasShadow="False" 
+                                   IsClippedToBounds="True" x:Name="frame_donepaid">
+                                <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Spacing="10" VerticalOptions="Center">
+                                    <Label Text="Done Paid" FontFamily="{DynamicResource Key=BoldFont}" TextColor="White" HorizontalOptions="Center" 
+                                       VerticalOptions="Center"/>
+                                    <Image Source="white_done.png" Aspect="AspectFit" HeightRequest="20" WidthRequest="20" VerticalOptions="Center"/>
+                                </StackLayout>
+                                <Frame.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="DonePaidClicked" NumberOfTapsRequired="1"/>
+                                </Frame.GestureRecognizers>
+                            </Frame>
 
                         </StackLayout>
 

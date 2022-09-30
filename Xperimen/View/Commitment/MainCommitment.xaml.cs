@@ -1,6 +1,7 @@
 ﻿using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using Xperimen.Stylekit;
 using Xperimen.ViewModel.Commitment;
 
 namespace Xperimen.View.Commitment
@@ -17,8 +18,16 @@ namespace Xperimen.View.Commitment
             BindingContext = viewmodel;
             SetupView();
 
+            MessagingCenter.Subscribe<CustomDisplayAlert, string>(this, "DisplayAlertSelection", (sender, arg) => 
+            { viewmodel.IsLoading = false; });
             MessagingCenter.Subscribe<AddRecord>(this, "CommitmentAdded", (sender) => { SetupView(); });
             MessagingCenter.Subscribe<Details>(this, "CommitmentUpdated", (sender) => { SetupView(); });
+            MessagingCenter.Subscribe<Details>(this, "CommitmentDeleted", (sender) => 
+            {
+                SetupView();
+                viewmodel.IsLoading = true;
+                SetDisplayAlert("Success", "Commitment deleted.", "", "", ""); 
+            });
         }
 
         public void SetupView()

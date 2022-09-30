@@ -29,6 +29,11 @@ namespace Xperimen.ViewModel.Commitment
         double _totalcommitment;
         double _balance;
         byte[] _profilepic;
+        int _notyetpaid;
+        DateTime _currentdt;
+        DateTime _upcomingdt;
+        bool _alldone;
+        bool _allnotdone;
         public bool NoCommitment
         {
             get { return _norecord; }
@@ -109,6 +114,31 @@ namespace Xperimen.ViewModel.Commitment
             get { return _profilepic; }
             set { _profilepic = value; OnPropertyChanged(); }
         }
+        public int NotYetPaid
+        {
+            get { return _notyetpaid; }
+            set { _notyetpaid = value; OnPropertyChanged(); }
+        }
+        public DateTime CurrentDt
+        {
+            get { return _currentdt; }
+            set { _currentdt = value; OnPropertyChanged(); }
+        }
+        public DateTime UpcomingDt
+        {
+            get { return _upcomingdt; }
+            set { _upcomingdt = value; OnPropertyChanged(); }
+        }
+        public bool AllCommitmentDone
+        {
+            get { return _alldone; }
+            set { _alldone = value; OnPropertyChanged(); }
+        }
+        public bool AllCommitmentNotDone
+        {
+            get { return _allnotdone; }
+            set { _allnotdone = value; OnPropertyChanged(); }
+        }
         #endregion
 
         public SQLiteConnection connection;
@@ -129,6 +159,11 @@ namespace Xperimen.ViewModel.Commitment
             Income = 0;
             TotalCommitment = 0;
             Balance = 0;
+            NotYetPaid = 0;
+            CurrentDt = DateTime.Now;
+            UpcomingDt = DateTime.Now.AddMonths(1);
+            AllCommitmentDone = false;
+            AllCommitmentNotDone = true;
 
             var userid = Application.Current.Properties["current_login"] as string;
             string query = "SELECT * FROM Clients WHERE Id = '" + userid + "'";
@@ -218,7 +253,7 @@ namespace Xperimen.ViewModel.Commitment
                 var user = connection.Query<Clients>(getuser).ToList();
                 if (user.Count > 0) Income = user[0].Income;
 
-                TotalCommitment = 0;
+                TotalCommitment = 0; NotYetPaid = 0;
                 ListCommitments = new List<SelfCommitment>();
                 string query = "SELECT * FROM SelfCommitment WHERE Userid = '" + userid + "'";
                 ListCommitments = connection.Query<SelfCommitment>(query).ToList();
@@ -228,13 +263,18 @@ namespace Xperimen.ViewModel.Commitment
                     NoCommitment = false;
                     HasCommitment = true;
                     foreach (var data in ListCommitments)
+                    {
                         TotalCommitment += data.Amount;
+                        if (!data.IsDone) NotYetPaid++;
+                    }
+
+                    if (NotYetPaid == 0)
+                    { AllCommitmentDone = true; AllCommitmentNotDone = false; }
+                    else if (NotYetPaid > 0)
+                    { AllCommitmentDone = false; AllCommitmentNotDone = true; }
                 }
                 else
-                {
-                    NoCommitment = true;
-                    HasCommitment = false;
-                }
+                { NoCommitment = true; HasCommitment = false; }
 
                 Balance = Income - TotalCommitment;
                 return 1;
@@ -316,6 +356,37 @@ namespace Xperimen.ViewModel.Commitment
                 }
 
                 var cek = connection.Query<SelfCommitment>("SELECT * FROM SelfCommitment WHERE Id = '" + data + "'").ToList();
+                return 1;
+            }
+            catch (Exception ex)
+            {
+                var error = ex.Message;
+                var desc = ex.StackTrace;
+                return 2;
+            }
+        }
+
+        public int DeleteCommitment(string data)
+        {
+            try
+            {
+                connection.Query<SelfCommitment>("DELETE FROM SelfCommitment WHERE Id = '" + data + "'");
+                return 1;
+            }
+            catch (Exception ex)
+            {
+                var error = ex.Message;
+                var desc = ex.StackTrace;
+                return 2;
+            }
+        }
+
+        public int SetStatusDonePaid(string data, bool status)
+        {
+            try
+            {
+                string query = "UPDATE SelfCommitment SET IsDone = " + status + " WHERE Id = '" + data + "'";
+                connection.Query<SelfCommitment>(query);
                 return 1;
             }
             catch (Exception ex)

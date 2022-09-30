@@ -54,10 +54,11 @@
                                 <!-- income amount -->
                                 <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand" Spacing="0">
                                     <stylekit:XLabel Text="Income" VerticalOptions="End" HorizontalOptions="End" />
-                                    <StackLayout Orientation="Horizontal" HorizontalOptions="EndAndExpand" Spacing="5">
-                                        <stylekit:XLabel Text="RM" HorizontalOptions="EndAndExpand"/>
+                                    <StackLayout Orientation="Horizontal" HorizontalOptions="EndAndExpand" Spacing="0">
+                                        <stylekit:XLabel Text="RM" HorizontalOptions="EndAndExpand" VerticalOptions="Start" Margin="0,2,0,0"/>
                                         <stylekit:XLabel Text="{Binding Income, StringFormat='{0:0.00}'}" HorizontalOptions="End" 
-                                                         FontSize="20" FontFamily="{DynamicResource Key=BoldFont}"/>
+                                                         FontSize="20" FontFamily="{DynamicResource Key=BoldFont}"
+                                                         VerticalOptions="Start"/>
                                     </StackLayout>
                                 </StackLayout>
 
@@ -77,19 +78,21 @@
 
                             <!-- total commitment amount -->
                             <stylekit:XLabel Text="Total Commitment" VerticalOptions="End" HorizontalOptions="End" Margin="0,10,0,0"/>
-                            <StackLayout Orientation="Horizontal" HorizontalOptions="EndAndExpand" Spacing="5">
-                                <stylekit:XLabel Text="RM"/>
-                                <stylekit:XLabel Text="{Binding TotalCommitment, StringFormat='{0:0.00}'}" FontSize="18"/>
+                            <StackLayout Orientation="Horizontal" HorizontalOptions="EndAndExpand" VerticalOptions="Start" Spacing="0">
+                                <stylekit:XLabel Text="RM" HorizontalOptions="EndAndExpand" VerticalOptions="Start" Margin="0,2,0,0"/>
+                                <stylekit:XLabel Text="{Binding TotalCommitment, StringFormat='{0:0.00}'}" FontSize="20"
+                                                 FontFamily="{DynamicResource Key=BoldFont}" VerticalOptions="Start"/>
                             </StackLayout>
 
                             <!-- balance amount -->
-                            <StackLayout Orientation="Horizontal" HorizontalOptions="EndAndExpand" Spacing="10">
-                                <stylekit:XLabel Text="Net :" VerticalOptions="End" HorizontalOptions="End" Margin="0,20,0,0"/>
-                                <StackLayout Orientation="Horizontal" VerticalOptions="End" Spacing="5">
-                                    <stylekit:XLabel Text="RM" VerticalOptions="End" Margin="0,0,0,-1"/>
+                            <StackLayout Orientation="Horizontal" HorizontalOptions="EndAndExpand" VerticalOptions="End"
+                                         Spacing="10" Margin="0,20,0,0">
+                                <stylekit:XLabel Text="Net :" VerticalOptions="End" HorizontalOptions="End" Margin="0,0,5,0"/>
+                                <StackLayout Orientation="Horizontal" VerticalOptions="End" Spacing="0">
+                                    <stylekit:XLabel Text="RM" VerticalOptions="End" Margin="0,0,0,0"/>
                                     <stylekit:XLabel Text="{Binding Balance, StringFormat='{0:0.00}'}" FontSize="20"
                                                      FontFamily="{DynamicResource Key=BoldFont}" VerticalOptions="End"
-                                                     Margin="0,0,0,-3"/>
+                                                     Margin="0,0,0,-2"/>
                                 </StackLayout>
                             </StackLayout>
 
@@ -97,22 +100,59 @@
                     </StackLayout>
 
                     <!-- no commitment yet -->
-                    <stylekit:XLabel Text="You do not have any commitment yet. Click button below to add new commitment." Margin="30,30,30,0"
+                    <stylekit:XLabel Text="You do not have any commitment(s) yet. Click button below to add new commitment." Margin="30,30,30,0"
                                      VerticalOptions="Start" HorizontalOptions="Center" IsVisible="{Binding NoCommitment}"
                                      HorizontalTextAlignment="Center"/>
 
-                    <!-- commitment list -->
-                    <StackLayout HorizontalOptions="FillAndExpand" BindableLayout.ItemsSource="{Binding ListCommitments}" Margin="0,30,0,0"
-                                 Spacing="0" VerticalOptions="Start" IsVisible="{Binding HasCommitment}">
-                        <BindableLayout.ItemTemplate>
-                            <DataTemplate>
-                                <viewcell:ListCell>
-                                    <StackLayout.GestureRecognizers>
-                                        <TapGestureRecognizer Tapped="ItemCommitmentTapped"/>
-                                    </StackLayout.GestureRecognizers>
-                                </viewcell:ListCell>
-                            </DataTemplate>
-                        </BindableLayout.ItemTemplate>
+                    <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand" Spacing="0" IsVisible="{Binding HasCommitment}"
+                                 VerticalOptions="Start" Margin="0,30,0,0">
+
+                        <!-- commitment not yet done -->
+                        <StackLayout Orientation="Vertical" HorizontalOptions="CenterAndExpand" Spacing="0" VerticalOptions="Start"
+                                     IsVisible="{Binding AllCommitmentNotDone}">
+                            <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" Spacing="0" VerticalOptions="Start">
+                                <stylekit:XLabel Text="You have " HorizontalOptions="Center" VerticalOptions="End"/>
+                                <stylekit:XLabel Text="{Binding NotYetPaid}" FontSize="18" FontFamily="{DynamicResource Key=BoldFont}" 
+                                                 VerticalOptions="End" HorizontalOptions="Center" Margin="0,0,0,0"/>
+                                <stylekit:XLabel Text=" commitment(s) not yet done" HorizontalOptions="Center" 
+                                                 HorizontalTextAlignment="Center" VerticalOptions="End"/>
+                            </StackLayout>
+                            <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" Spacing="0" VerticalOptions="Start">
+                                <stylekit:XLabel Text="for this month " HorizontalOptions="Center" VerticalOptions="End" Margin="0,0,5,0"/>
+                                <stylekit:XLabel Text="{Binding CurrentDt, StringFormat='({0:MMM yyyy})'}" HorizontalOptions="Center" 
+                                                 VerticalOptions="End" FontFamily="{DynamicResource Key=BoldFont}"/>
+                            </StackLayout>
+                        </StackLayout>
+
+                        <!-- all commitment done -->
+                        <StackLayout Orientation="Vertical" HorizontalOptions="Center" Spacing="0" VerticalOptions="Start"
+                                     IsVisible="{Binding AllCommitmentDone}">
+                            <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Spacing="0" VerticalOptions="Start" Margin="20,0,20,0">
+                                <stylekit:XImage Source1="black_done.png" Source2="white_done.png" HeightRequest="35" WidthRequest="35"
+                                                 Aspect="AspectFit" HorizontalOptions="Center" VerticalOptions="Center"/>
+                                <stylekit:XLabel Text="Congrats ! You have completed all commitments for this month" HorizontalOptions="Center" 
+                                                 HorizontalTextAlignment="Center" VerticalOptions="Center" Margin="5,0,0,0"/>
+                            </StackLayout>
+                            <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" Spacing="0" VerticalOptions="Start" Margin="0,30,0,0">
+                                <stylekit:XLabel Text="Upcoming commitment is" HorizontalOptions="Center" VerticalOptions="End" Margin="0,0,5,0"/>
+                                <stylekit:XLabel Text="{Binding UpcomingDt, StringFormat='({0:MMM yyyy})'}" HorizontalOptions="Center" 
+                                                     VerticalOptions="End" FontFamily="{DynamicResource Key=BoldFont}"/>
+                            </StackLayout>
+                        </StackLayout>
+
+                        <!-- commitment list -->
+                        <StackLayout HorizontalOptions="FillAndExpand" BindableLayout.ItemsSource="{Binding ListCommitments}" 
+                                     Margin="0,30,0,0" Spacing="0" VerticalOptions="Start">
+                            <BindableLayout.ItemTemplate>
+                                <DataTemplate>
+                                    <viewcell:ListCell>
+                                        <StackLayout.GestureRecognizers>
+                                            <TapGestureRecognizer Tapped="ItemCommitmentTapped" NumberOfTapsRequired="1"/>
+                                        </StackLayout.GestureRecognizers>
+                                    </viewcell:ListCell>
+                                </DataTemplate>
+                            </BindableLayout.ItemTemplate>
+                        </StackLayout>
                     </StackLayout>
 
                     <!-- create commitment button -->
