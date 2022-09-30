@@ -17,5 +17,6 @@ namespace Xperimen.Model
         public string AppTheme { get; set; }
         public bool IsLogin { get; set; }
         public double Income { get; set; }
+        public double NetIncome { get; set; }
     }
 }

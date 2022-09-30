@@ -35,8 +35,7 @@
                         
                         <!-- profile picture -->
                         <Frame x:Name="frame_profile" HorizontalOptions="Start" VerticalOptions="End" HeightRequest="100" WidthRequest="100" 
-                               BorderColor="DarkGray" HasShadow="False" BackgroundColor="{DynamicResource Key=DimGray2}" Padding="0" 
-                               CornerRadius="20" IsClippedToBounds="True">
+                               BorderColor="DarkGray" HasShadow="False" Padding="0" CornerRadius="20" IsClippedToBounds="True">
                             <stylekit:XImage x:Name="img_profile" Aspect="AspectFill" ImageByte="{Binding ProfilePic}"/>
                         </Frame>
 
@@ -54,7 +53,7 @@
                                 <!-- income amount -->
                                 <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand" Spacing="0">
                                     <stylekit:XLabel Text="Income" VerticalOptions="End" HorizontalOptions="End" />
-                                    <StackLayout Orientation="Horizontal" HorizontalOptions="EndAndExpand" Spacing="0">
+                                    <StackLayout Orientation="Horizontal" HorizontalOptions="EndAndExpand" Spacing="3">
                                         <stylekit:XLabel Text="RM" HorizontalOptions="EndAndExpand" VerticalOptions="Start" Margin="0,2,0,0"/>
                                         <stylekit:XLabel Text="{Binding Income, StringFormat='{0:0.00}'}" HorizontalOptions="End" 
                                                          FontSize="20" FontFamily="{DynamicResource Key=BoldFont}"
@@ -78,7 +77,7 @@
 
                             <!-- total commitment amount -->
                             <stylekit:XLabel Text="Total Commitment" VerticalOptions="End" HorizontalOptions="End" Margin="0,10,0,0"/>
-                            <StackLayout Orientation="Horizontal" HorizontalOptions="EndAndExpand" VerticalOptions="Start" Spacing="0">
+                            <StackLayout Orientation="Horizontal" HorizontalOptions="EndAndExpand" VerticalOptions="Start" Spacing="3">
                                 <stylekit:XLabel Text="RM" HorizontalOptions="EndAndExpand" VerticalOptions="Start" Margin="0,2,0,0"/>
                                 <stylekit:XLabel Text="{Binding TotalCommitment, StringFormat='{0:0.00}'}" FontSize="20"
                                                  FontFamily="{DynamicResource Key=BoldFont}" VerticalOptions="Start"/>
@@ -88,7 +87,7 @@
                             <StackLayout Orientation="Horizontal" HorizontalOptions="EndAndExpand" VerticalOptions="End"
                                          Spacing="10" Margin="0,20,0,0">
                                 <stylekit:XLabel Text="Net :" VerticalOptions="End" HorizontalOptions="End" Margin="0,0,5,0"/>
-                                <StackLayout Orientation="Horizontal" VerticalOptions="End" Spacing="0">
+                                <StackLayout Orientation="Horizontal" VerticalOptions="End" Spacing="3">
                                     <stylekit:XLabel Text="RM" VerticalOptions="End" Margin="0,0,0,0"/>
                                     <stylekit:XLabel Text="{Binding Balance, StringFormat='{0:0.00}'}" FontSize="20"
                                                      FontFamily="{DynamicResource Key=BoldFont}" VerticalOptions="End"

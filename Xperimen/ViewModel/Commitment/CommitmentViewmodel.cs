@@ -277,6 +277,25 @@ namespace Xperimen.ViewModel.Commitment
                 { NoCommitment = true; HasCommitment = false; }
 
                 Balance = Income - TotalCommitment;
+                return SaveNetBalance();
+            }
+            catch (Exception ex)
+            {
+                var error = ex.Message;
+                var desc = ex.StackTrace;
+                return 3;
+            }
+        }
+
+        public int SaveNetBalance()
+        {
+            try
+            {
+                var userid = string.Empty;
+                if (Application.Current.Properties.ContainsKey("current_login"))
+                    userid = Application.Current.Properties["current_login"] as string;
+
+                var query = "UPDATE Clients SET NetIncome = " + Balance + " WHERE Id = '" + userid + "'";
                 return 1;
             }
             catch (Exception ex)

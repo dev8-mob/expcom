@@ -51,7 +51,7 @@ namespace Xperimen.View.Dashboard
         public async void DrawerTapped(object sender, EventArgs e)
         {
             var view = (Image)sender;
-            await view.ScaleTo(0.9, 100);
+            await view.ScaleTo(0.8, 100);
             view.Scale = 1;
             var drawer = (DrawerMaster)view.Parent.Parent.Parent.Parent.Parent.Parent;
             drawer.IsPresented = true;

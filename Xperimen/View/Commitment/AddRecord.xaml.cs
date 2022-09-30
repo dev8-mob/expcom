@@ -81,10 +81,10 @@ namespace Xperimen.View.Commitment
                 var result = viewmodel.AddCommitment();
                 if (result == 1)
                 {
-                    SetDisplayAlert("Success", "New commitment successfully created.", "", "", "success");
+                    SetDisplayAlert("Success", "New commitment added.", "", "", "success");
                     MessagingCenter.Send(this, "CommitmentAdded");
                 }
-                else if (result == 2) SetDisplayAlert("Error", "Technical error when saving commitment.", "", "", "");
+                else if (result == 2) SetDisplayAlert("Error", "Technical error adding new commitment.", "", "", "");
             }
         }
 

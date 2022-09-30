@@ -32,8 +32,17 @@ namespace Xperimen.View.Commitment
 
         public void SetupView()
         {
+            if (Application.Current.Properties.ContainsKey("app_theme"))
+            {
+                var theme = Application.Current.Properties["app_theme"] as string;
+                if (theme.Equals("dark")) frame_profile.BackgroundColor = Color.FromHex(App.CharcoalBlack);
+                if (theme.Equals("dim")) frame_profile.BackgroundColor = Color.FromHex(App.CharcoalGray);
+                if (theme.Equals("light")) frame_profile.BackgroundColor = Color.FromHex(App.DimGray2);
+            }
+
             var result = viewmodel.GetCommitmentList();
-            if (result == 2) SetDisplayAlert("Error", "Technical error retrieving commitment list.", "", "", "");
+            if (result == 2) SetDisplayAlert("Error", "Technical error updating net balance.", "", "", "");
+            else if (result == 3) SetDisplayAlert("Error", "Technical error retrieving commitment list.", "", "", "");
         }
 
         public async void EditIncomeTapped(object sender, EventArgs e)
