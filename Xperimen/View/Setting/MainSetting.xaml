@@ -120,8 +120,11 @@
                             <!-- update button -->
                             <Frame Padding="0,10,0,10" CornerRadius="3" BorderColor="{DynamicResource Key=Primary}" HorizontalOptions="FillAndExpand"
                                    Margin="0,15,0,0" BackgroundColor="{DynamicResource Key=Primary}" HasShadow="False" IsClippedToBounds="True">
-                                <Label Text="Update" FontFamily="{DynamicResource Key=BoldFont}" TextColor="White" 
-                                       HorizontalOptions="Center" VerticalOptions="Center"/>
+                                <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Spacing="10" VerticalOptions="Center">
+                                    <Label Text="Update" FontFamily="{DynamicResource Key=BoldFont}" TextColor="White" 
+                                           HorizontalOptions="Center" VerticalOptions="Center"/>
+                                    <Image Source="white_save.png" Aspect="AspectFit" HeightRequest="20" WidthRequest="20" VerticalOptions="Center"/>
+                                </StackLayout>
                                 <Frame.GestureRecognizers>
                                     <TapGestureRecognizer Tapped="SaveClicked" NumberOfTapsRequired="1"/>
                                 </Frame.GestureRecognizers>

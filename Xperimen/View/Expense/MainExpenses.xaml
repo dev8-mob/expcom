@@ -1,0 +1,69 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Xperimen.View.Expense.MainExpenses"
+             xmlns:stylekit="clr-namespace:Xperimen.Stylekit"
+             NavigationPage.HasNavigationBar="False">
+    
+    <ContentPage.Content>
+
+        <AbsoluteLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="Transparent">
+
+            <ScrollView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" AbsoluteLayout.LayoutFlags="All" 
+                        AbsoluteLayout.LayoutBounds="0,0,1,1">
+
+                <!-- UI content -->
+                <stylekit:XStacklayout Orientation="Vertical" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" 
+                                       Spacing="0">
+
+                    <!-- top navigation bar -->
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="Start" Margin="20,20,20,0">
+                        <stylekit:XImage Source1="black_back.png" Source2="white_back.png" HeightRequest="35" WidthRequest="35" Aspect="AspectFit"
+                                         HorizontalOptions="Start" Margin="0,0,20,0">
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="BackTapped" NumberOfTapsRequired="1"/>
+                            </Image.GestureRecognizers>
+                        </stylekit:XImage>
+                        <stylekit:XLabel Text="Expenses" HorizontalOptions="FillAndExpand" FontFamily="{DynamicResource Key=BoldFont}" 
+                                         FontSize="18" VerticalOptions="Center"/>
+                    </StackLayout>
+
+                    <stylekit:CustomCalendar x:Name="customcalendar"/>
+
+                    <!-- add expenses button -->
+                    <Frame Padding="0,10,0,10" CornerRadius="3" BorderColor="{DynamicResource Key=Primary}" HorizontalOptions="FillAndExpand"
+                           VerticalOptions="End" BackgroundColor="{DynamicResource Key=Primary}" HasShadow="False" 
+                           IsClippedToBounds="True" Margin="20,30,20,20">
+                        <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Spacing="10" VerticalOptions="Center">
+                            <Label Text="Add Expenses" FontFamily="{DynamicResource Key=BoldFont}" TextColor="White" 
+                                   HorizontalOptions="Center" VerticalOptions="Center"/>
+                            <Image Source="white_add1.png" Aspect="AspectFit" HeightRequest="20" WidthRequest="20" VerticalOptions="Center"/>
+                        </StackLayout>
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="AddExpensesClicked" NumberOfTapsRequired="1"/>
+                        </Frame.GestureRecognizers>
+                    </Frame>
+
+                </stylekit:XStacklayout>
+
+            </ScrollView>
+
+            <!-- background overlay -->
+            <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="Black" Opacity="0.7"
+                         AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,0,1,1" IsVisible="{Binding IsLoading, Mode=TwoWay}"/>
+
+            <!-- loading overlay -->
+            <StackLayout IsVisible="{Binding IsLoading, Mode=TwoWay}" BackgroundColor="Transparent" Orientation="Vertical" Spacing="0"
+                         AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0.5,0.5,-1,-1">
+                <ActivityIndicator IsRunning="{Binding IsLoading, Mode=TwoWay}" Color="White" HorizontalOptions="Center"/>
+                <Label Text="loading..." HorizontalOptions="Center" TextColor="White" FontFamily="{DynamicResource BoldFont}"/>
+            </StackLayout>
+
+            <!-- custom display alert -->
+            <stylekit:CustomDisplayAlert x:Name="alert" IsVisible="False"/>
+
+        </AbsoluteLayout>
+
+    </ContentPage.Content>
+    
+</ContentPage>

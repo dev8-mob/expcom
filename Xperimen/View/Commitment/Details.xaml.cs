@@ -30,7 +30,8 @@ namespace Xperimen.View.Commitment
 
             MessagingCenter.Subscribe<CustomDisplayAlert, string>(this, "DisplayAlertSelection", async (sender, arg) =>
             {
-                if (alert.CodeObject.Equals("error"))
+                if (alert.CodeObject.Equals("nomedia")) viewmodel.IsLoading = false;
+                else if (alert.CodeObject.Equals("error"))
                 {
                     viewmodel.IsLoading = false;
                     await Navigation.PopAsync();
@@ -152,7 +153,7 @@ namespace Xperimen.View.Commitment
             viewmodel.IsLoading = true;
             var result = await viewmodel.PickPhoto();
             if (result == 3) SetDisplayAlert("Unavailable", "Photo gallery is not available to pick photo.", "", "", "");
-            else if (result == 2) SetDisplayAlert("Alert", "No photo selected.", "", "", "");
+            else if (result == 2) SetDisplayAlert("Alert", "No photo selected.", "", "", "nomedia");
             else if (result == 1)
             {
                 var picpath = viewmodel.Picture.Path.Split('/');
@@ -172,7 +173,7 @@ namespace Xperimen.View.Commitment
             viewmodel.IsLoading = true;
             var result = await viewmodel.TakePhoto();
             if (result == 3) SetDisplayAlert("Unavailable", "Camera is not available or take photo not supported.", "", "", "");
-            else if (result == 2) SetDisplayAlert("Alert", "Take photo cancelled.", "", "", "");
+            else if (result == 2) SetDisplayAlert("Alert", "Take photo cancelled.", "", "", "nomedia");
             else if (result == 1)
             {
                 var picpath = viewmodel.Picture.Path.Split('/');
@@ -188,7 +189,17 @@ namespace Xperimen.View.Commitment
             var view = (Frame)sender;
             await view.ScaleTo(0.9, 100);
             view.Scale = 1;
-            await Navigation.PushPopupAsync(new ImageViewer(converter.BytesToStream(viewmodel.ProfilePic)));
+
+            try
+            {
+                var bytes = converter.BytesToStream(viewmodel.ProfilePic);
+                await Navigation.PushPopupAsync(new ImageViewer(bytes));
+            }
+            catch (Exception ex)
+            {
+                var error = ex.Message;
+                var desc = ex.StackTrace;
+            }
         }
 
         public async void LabelAttachmentClicked(object sender, EventArgs e)
@@ -219,7 +230,7 @@ namespace Xperimen.View.Commitment
             view.Scale = 1;
 
             viewmodel.IsLoading = true;
-            if (string.IsNullOrEmpty(viewmodel.Title)) SetDisplayAlert("Alert", "Commitment name is empty. Please insert any name (bill, rent, charity, investment, etc...)", "", "", "");
+            if (string.IsNullOrEmpty(viewmodel.Title)) SetDisplayAlert("Alert", "Title is empty. Please insert any title (bill, rent, investment, etc...)", "", "", "");
             else if (viewmodel.Amount == 0) SetDisplayAlert("Alert", "Commitment amount is empty. Please insert commitment amount.", "", "", "");
             else if (viewmodel.HasAccNo && viewmodel.AccountNo == 0) SetDisplayAlert("Alert", "Account number  is empty. Please insert account number.", "", "", "");
             else
@@ -244,7 +255,7 @@ namespace Xperimen.View.Commitment
             var result = viewmodel.SetStatusDonePaid(data, true);
             if (result == 1)
             {
-                SetDisplayAlert("Done", "Commitment mark as paid.", "", "", "markdone");
+                SetDisplayAlert("Done", "Commitment marked as paid.", "", "", "markdone");
                 MessagingCenter.Send(this, "CommitmentUpdated");
             }
         }
@@ -259,7 +270,7 @@ namespace Xperimen.View.Commitment
             var result = viewmodel.SetStatusDonePaid(data, false);
             if (result == 1)
             {
-                SetDisplayAlert("Undone", "Commitment mark as not done yet.", "", "", "markdone");
+                SetDisplayAlert("Undone", "Commitment marked as not done yet.", "", "", "markdone");
                 MessagingCenter.Send(this, "CommitmentUpdated");
             }
         }

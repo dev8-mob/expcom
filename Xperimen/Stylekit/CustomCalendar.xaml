@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<AbsoluteLayout xmlns="http://xamarin.com/schemas/2014/forms"
+                xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                x:Class="Xperimen.Stylekit.CustomCalendar"
+                xmlns:stylekit="clr-namespace:Xperimen.Stylekit"
+                HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+
+    <Grid x:Name="grid_calendar" HorizontalOptions="FillAndExpand" VerticalOptions="Start" Padding="15" 
+          AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,0,1,1"
+          RowSpacing="15" ColumnSpacing="10" Margin="20,15,20,15">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <stylekit:XLabel x:Name="lbl_month" Grid.Row="0" Grid.Column="0" HorizontalOptions="CenterAndExpand" FontSize="18"
+                         Margin="15,0,15,5" FontFamily="{DynamicResource Key=BoldFont}" Grid.ColumnSpan="7"/>
+        <stylekit:XLabel Text="Mon" HorizontalOptions="CenterAndExpand" Grid.Row="1" Grid.Column="0" TextColor="{DynamicResource Key=Primary}"/>
+        <stylekit:XLabel Text="Tue" HorizontalOptions="CenterAndExpand" Grid.Row="1" Grid.Column="1" TextColor="{DynamicResource Key=Primary}"/>
+        <stylekit:XLabel Text="Wed" HorizontalOptions="CenterAndExpand" Grid.Row="1" Grid.Column="2" TextColor="{DynamicResource Key=Primary}"/>
+        <stylekit:XLabel Text="Thu" HorizontalOptions="CenterAndExpand" Grid.Row="1" Grid.Column="3" TextColor="{DynamicResource Key=Primary}"/>
+        <stylekit:XLabel Text="Fri" HorizontalOptions="CenterAndExpand" Grid.Row="1" Grid.Column="4" TextColor="{DynamicResource Key=Primary}"/>
+        <stylekit:XLabel Text="Sat" HorizontalOptions="CenterAndExpand" Grid.Row="1" Grid.Column="5" TextColor="{DynamicResource Key=Primary}"/>
+        <stylekit:XLabel Text="Sun" HorizontalOptions="CenterAndExpand" Grid.Row="1" Grid.Column="6" TextColor="{DynamicResource Key=Primary}"/>
+
+    </Grid>
+
+    <!-- background overlay -->
+    <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="Black" Opacity="0.7"
+                 AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,0,1,1" IsVisible="{Binding IsLoading, Mode=TwoWay}"/>
+
+    <!-- loading overlay -->
+    <StackLayout IsVisible="{Binding IsLoading, Mode=TwoWay}" BackgroundColor="Transparent" Orientation="Vertical" Spacing="0"
+                 AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0.5,0.5,-1,-1">
+        <ActivityIndicator IsRunning="{Binding IsLoading, Mode=TwoWay}" Color="White" HorizontalOptions="Center"/>
+        <Label Text="loading..." HorizontalOptions="Center" TextColor="White" FontFamily="{DynamicResource BoldFont}"/>
+    </StackLayout>
+
+    <!-- custom display alert -->
+    <stylekit:CustomDisplayAlert x:Name="alert" IsVisible="False"/>
+
+</AbsoluteLayout>

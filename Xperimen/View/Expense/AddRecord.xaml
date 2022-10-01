@@ -1,0 +1,152 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Xperimen.View.Expense.AddRecord"
+             xmlns:stylekit="clr-namespace:Xperimen.Stylekit"
+             Padding="0" BackgroundColor="Transparent"
+             NavigationPage.HasNavigationBar="False">
+
+    <AbsoluteLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="Transparent">
+
+        <ScrollView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" AbsoluteLayout.LayoutFlags="All" 
+                    AbsoluteLayout.LayoutBounds="0,0,1,1">
+
+            <stylekit:XStacklayout Orientation="Vertical" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" 
+                                   Spacing="0" Padding="15">
+
+                <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" BackgroundColor="Transparent">
+                    
+                    <!-- UI content -->
+                    <Grid HorizontalOptions="FillAndExpand" VerticalOptions="Center" BackgroundColor="Transparent">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+
+                        <!-- added wallet-like UI -->
+                        <Frame Padding="0" HasShadow="False" CornerRadius="10" VerticalOptions="Start" Margin="20,0,20,0"
+                               Grid.Row="0" Grid.Column="0" HorizontalOptions="FillAndExpand" BorderColor="DarkGray">
+                            <StackLayout HorizontalOptions="FillAndExpand" HeightRequest="100" BackgroundColor="{DynamicResource Key=Primary}"/>
+                        </Frame>
+
+                        <Frame Padding="0" HasShadow="False" CornerRadius="10" BorderColor="DarkGray" Grid.Row="0" Grid.Column="0" 
+                               HorizontalOptions="FillAndExpand" VerticalOptions="Start" Margin="0,20,0,0">
+
+                            <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand" VerticalOptions="Center" Spacing="0" 
+                                         Padding="20" x:Name="stack_bg">
+
+                                <!-- UI content -->
+                                <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="Center" Orientation="Vertical" Spacing="0">
+
+                                    <stylekit:XLabel Text="How much money I spent ?" HorizontalOptions="Center" FontFamily="{DynamicResource Key=BoldFont}" FontSize="18"/>
+
+                                    <!-- amount and attachment-->
+                                    <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Spacing="15" Margin="0,30,0,0">
+
+                                        <!-- money amount -->
+                                        <stylekit:CustomEntry ImgLeft="black_money.png" ImgLeft_="white_money.png" BindingText="Amount" 
+                                                              HorizontalOptions="FillAndExpand" KeyboardType="Numeric"/>
+
+                                        <!-- pick gallery and take photo -->
+                                        <stylekit:XImage Source1="black_image.png" Source2="white_image.png" HeightRequest="30" WidthRequest="30"
+                                                         Aspect="AspectFit" VerticalOptions="Center" HorizontalOptions="End">
+                                            <Image.GestureRecognizers>
+                                                <TapGestureRecognizer Tapped="GalleryClicked" NumberOfTapsRequired="1"/>
+                                            </Image.GestureRecognizers>
+                                        </stylekit:XImage>
+                                        <stylekit:XImage Source1="black_camera.png" Source2="white_camera.png" HeightRequest="30" WidthRequest="30"
+                                                         Aspect="AspectFit" VerticalOptions="Center" HorizontalOptions="End">
+                                            <Image.GestureRecognizers>
+                                                <TapGestureRecognizer Tapped="CameraClicked" NumberOfTapsRequired="1"/>
+                                            </Image.GestureRecognizers>
+                                        </stylekit:XImage>
+
+                                    </StackLayout>
+
+                                    <!-- expenses title -->
+                                    <stylekit:CustomEntry Placeholder="the money spend on ?" ImgLeft="black_whatshot.png" ImgLeft_="white_whatshot.png"
+                                                          Margin="0,10,0,0" BindingText="Title"/>
+
+                                    <!-- attachment picture -->
+                                    <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Spacing="10" IsVisible="{Binding HasAttachment}"
+                                                 Margin="0,10,0,0">
+                                        <stylekit:XLabel x:Name="lbl_attach" HorizontalOptions="FillAndExpand" VerticalOptions="Center"
+                                                         FontFamily="{DynamicResource Key=BoldFont}">
+                                            <stylekit:XLabel.GestureRecognizers>
+                                                <TapGestureRecognizer Tapped="AttachmentClicked" NumberOfTapsRequired="1"/>
+                                            </stylekit:XLabel.GestureRecognizers>
+                                        </stylekit:XLabel>
+                                        <stylekit:XImage Source1="black_cancel.png" Source2="white_cancel.png" HeightRequest="30" WidthRequest="30" 
+                                                         HorizontalOptions="End" Aspect="AspectFit" VerticalOptions="Center">
+                                            <stylekit:XImage.GestureRecognizers>
+                                                <TapGestureRecognizer Tapped="AttachmentDeleteClicked" NumberOfTapsRequired="1"/>
+                                            </stylekit:XImage.GestureRecognizers>
+                                        </stylekit:XImage>
+                                    </StackLayout>
+
+                                    <!-- change date button -->
+                                    <Frame Padding="0,10,0,10" CornerRadius="3" BorderColor="{DynamicResource Key=Primary}" HorizontalOptions="FillAndExpand"
+                                           VerticalOptions="End" BackgroundColor="{DynamicResource Key=Primary}" HasShadow="False" Margin="0,30,0,0"
+                                           IsClippedToBounds="True" IsVisible="{Binding IsDone}">
+                                        <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Spacing="10" VerticalOptions="Center">
+                                            <Label Text="Change Date" FontFamily="{DynamicResource Key=BoldFont}" TextColor="White" 
+                                           HorizontalOptions="Center" VerticalOptions="Center"/>
+                                            <Image Source="white_undo.png" Aspect="AspectFit" HeightRequest="20" WidthRequest="20" VerticalOptions="Center"/>
+                                        </StackLayout>
+                                        <Frame.GestureRecognizers>
+                                            <TapGestureRecognizer Tapped="ChangeDateClicked" NumberOfTapsRequired="1"/>
+                                        </Frame.GestureRecognizers>
+                                    </Frame>
+
+                                    <!-- save expenses button -->
+                                    <Frame Padding="0,10,0,10" CornerRadius="3" BorderColor="{DynamicResource Key=CustomGreen}" HorizontalOptions="FillAndExpand"
+                                           VerticalOptions="End" Margin="0,10,0,0" BackgroundColor="{DynamicResource Key=CustomGreen}" HasShadow="False" 
+                                           IsClippedToBounds="True">
+                                        <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Spacing="10" VerticalOptions="Center">
+                                            <Label Text="Save" FontFamily="{DynamicResource Key=BoldFont}" TextColor="White" HorizontalOptions="Center" 
+                                                   VerticalOptions="Center"/>
+                                            <Image Source="white_wallet.png" Aspect="AspectFit" HeightRequest="20" WidthRequest="20" VerticalOptions="Center"/>
+                                        </StackLayout>
+                                        <Frame.GestureRecognizers>
+                                            <TapGestureRecognizer Tapped="SaveClicked" NumberOfTapsRequired="1"/>
+                                        </Frame.GestureRecognizers>
+                                    </Frame>
+
+                                    <!-- cancel button -->
+                                    <stylekit:XLabel Text="Cancel" HorizontalOptions="Center" FontFamily="{DynamicResource Key=BoldFont}" Margin="0,30,0,0">
+                                        <Label.GestureRecognizers>
+                                            <TapGestureRecognizer Tapped="CancelClicked" NumberOfTapsRequired="1"/>
+                                        </Label.GestureRecognizers>
+                                    </stylekit:XLabel>
+
+                                </StackLayout>
+
+                            </StackLayout>
+
+                        </Frame>
+
+                    </Grid>
+                    
+                </StackLayout>
+
+            </stylekit:XStacklayout>
+            
+        </ScrollView>
+
+        <!-- background overlay -->
+        <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="Black" Opacity="0.7"
+                     AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,0,1,1" IsVisible="{Binding IsLoading, Mode=TwoWay}"/>
+
+        <!-- loading overlay -->
+        <StackLayout IsVisible="{Binding IsLoading, Mode=TwoWay}" BackgroundColor="Transparent" Orientation="Vertical" Spacing="0"
+                     AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0.5,0.5,-1,-1">
+            <ActivityIndicator IsRunning="{Binding IsLoading, Mode=TwoWay}" Color="White" HorizontalOptions="Center"/>
+            <Label Text="loading..." HorizontalOptions="Center" TextColor="White" FontFamily="{DynamicResource BoldFont}"/>
+        </StackLayout>
+
+        <!-- custom display alert -->
+        <stylekit:CustomDisplayAlert x:Name="alert" IsVisible="False"/>
+
+    </AbsoluteLayout>
+
+</ContentPage>
