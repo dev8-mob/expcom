@@ -50,7 +50,7 @@
                                     <stylekit:XLabel Text="Update your image" HorizontalOptions="Start"/>
                                     <StackLayout Orientation="Horizontal" HorizontalOptions="End" Spacing="0" Margin="0,5,0,0">
                                         <stylekit:XImage Source1="black_image.png" Source2="white_image.png" HeightRequest="30" WidthRequest="30"
-                                                         Aspect="AspectFit" VerticalOptions="Center" Margin="0,0,15,0">
+                                                         Aspect="AspectFit" VerticalOptions="Center" Margin="0,0,10,0">
                                             <Image.GestureRecognizers>
                                                 <TapGestureRecognizer Tapped="GalleryClicked" NumberOfTapsRequired="1"/>
                                             </Image.GestureRecognizers>
@@ -118,7 +118,7 @@
                             </StackLayout>
 
                             <!-- update button -->
-                            <Frame Padding="0,10,0,10" CornerRadius="3" BorderColor="{DynamicResource Key=Primary}" HorizontalOptions="FillAndExpand"
+                            <Frame Padding="0,10,0,10" CornerRadius="8" BorderColor="{DynamicResource Key=Primary}" HorizontalOptions="FillAndExpand"
                                    Margin="0,15,0,0" BackgroundColor="{DynamicResource Key=Primary}" HasShadow="False" IsClippedToBounds="True">
                                 <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Spacing="10" VerticalOptions="Center">
                                     <Label Text="Update" FontFamily="{DynamicResource Key=BoldFont}" TextColor="White" 

@@ -28,7 +28,7 @@
                                               ImgRight2="black_invisible.png" ImgRight2_="white_invisible.png"/>
 
                         <!-- login button -->
-                        <Frame Padding="0,10,0,10" CornerRadius="3" BorderColor="{DynamicResource Key=Primary}" HorizontalOptions="FillAndExpand"
+                        <Frame Padding="0,10,0,10" CornerRadius="8" BorderColor="{DynamicResource Key=Primary}" HorizontalOptions="FillAndExpand"
                                Margin="0,20,0,0" BackgroundColor="{DynamicResource Key=Primary}" HasShadow="False" IsClippedToBounds="True">
                             <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Spacing="10" VerticalOptions="Center">
                                 <Label Text="Login" FontFamily="{DynamicResource Key=BoldFont}" TextColor="White" HorizontalOptions="Center" 

@@ -163,6 +163,15 @@
     <ImageAsset Include="Assets.xcassets\black_done.imageset\black_done@3x.png">
       <Visible>false</Visible>
     </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\black_down.imageset\outline_keyboard_arrow_down_black_36pt_1x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\black_down.imageset\outline_keyboard_arrow_down_black_36pt_2x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\black_down.imageset\outline_keyboard_arrow_down_black_36pt_3x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
     <ImageAsset Include="Assets.xcassets\black_edit.imageset\outline_edit_black_36pt_1x.png">
       <Visible>false</Visible>
     </ImageAsset>
@@ -260,6 +269,15 @@
       <Visible>false</Visible>
     </ImageAsset>
     <ImageAsset Include="Assets.xcassets\black_undo.imageset\baseline_replay_black_36pt_3x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\black_up.imageset\outline_keyboard_arrow_up_black_36pt_1x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\black_up.imageset\outline_keyboard_arrow_up_black_36pt_2x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\black_up.imageset\outline_keyboard_arrow_up_black_36pt_3x.png">
       <Visible>false</Visible>
     </ImageAsset>
     <ImageAsset Include="Assets.xcassets\black_user.imageset\Contents.json">
@@ -367,6 +385,27 @@
     <ImageAsset Include="Assets.xcassets\black_undo.imageset\Contents.json">
       <Visible>false</Visible>
     </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\black_down.imageset\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\black_up.imageset\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\white_up.imageset\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\white_down.imageset\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\white_down.imageset\outline_keyboard_arrow_down_white_36pt_1x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\white_down.imageset\outline_keyboard_arrow_down_white_36pt_2x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\white_down.imageset\outline_keyboard_arrow_down_white_36pt_3x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
     <ImageAsset Include="Assets.xcassets\white_undo.imageset\baseline_replay_white_36pt_1x.png">
       <Visible>false</Visible>
     </ImageAsset>
@@ -401,6 +440,15 @@
       <Visible>false</Visible>
     </ImageAsset>
     <ImageAsset Include="Assets.xcassets\white_save.imageset\outline_save_alt_white_36pt_3x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\white_up.imageset\outline_keyboard_arrow_up_white_36pt_1x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\white_up.imageset\outline_keyboard_arrow_up_white_36pt_2x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\white_up.imageset\outline_keyboard_arrow_up_white_36pt_3x.png">
       <Visible>false</Visible>
     </ImageAsset>
     <ImageAsset Include="Assets.xcassets\white_wallet.imageset\baseline_account_balance_wallet_white_36pt_1x.png">

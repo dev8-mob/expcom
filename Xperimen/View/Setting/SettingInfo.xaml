@@ -29,7 +29,7 @@
             </StackLayout>
 
             <!-- edit profile button -->
-            <Frame Padding="0,10,0,10" CornerRadius="3" BorderColor="{DynamicResource Key=Primary}" HorizontalOptions="FillAndExpand"
+            <Frame Padding="0,10,0,10" CornerRadius="8" BorderColor="{DynamicResource Key=Primary}" HorizontalOptions="FillAndExpand"
                    Margin="0,15,0,0" BackgroundColor="{DynamicResource Key=Primary}" HasShadow="False" IsClippedToBounds="True">
                 <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Spacing="10" VerticalOptions="Center">
                     <Label Text="Edit Profile" FontFamily="{DynamicResource Key=BoldFont}" TextColor="White" 

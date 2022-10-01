@@ -67,9 +67,9 @@ namespace Xperimen.ViewModel.Commitment
         public bool HasAccNo
         {
             get { return _hasaccno; }
-            set 
-            { 
-                _hasaccno = value; 
+            set
+            {
+                _hasaccno = value;
                 OnPropertyChanged();
                 AccountNo = HasAccNo ? AccountNo : 0;
             }

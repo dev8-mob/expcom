@@ -14,6 +14,8 @@ namespace Xperimen.ViewModel.Expense
     public class ExpensesViewmodel : BaseViewModel
     {
         #region bindable properties
+        double _netincome;
+        double _balance;
         double _amount;
         string _title;
         bool _hasattachment;
@@ -22,6 +24,16 @@ namespace Xperimen.ViewModel.Expense
         double _total;
         bool _noexpenses;
         bool _hasexpenses;
+        public double NetIncome
+        {
+            get { return _netincome; }
+            set { _netincome = value; OnPropertyChanged(); }
+        }
+        public double Balance
+        {
+            get { return _balance; }
+            set { _balance = value; OnPropertyChanged(); }
+        }
         public double Amount
         {
             get { return _amount; }
@@ -71,6 +83,8 @@ namespace Xperimen.ViewModel.Expense
         {
             connection = new SQLiteConnection(App.DB_PATH);
             SelectedDate = string.Empty;
+            NetIncome = 0;
+            Balance = 0;
             Amount = 0;
             Title = string.Empty;
             HasAttachment = false;
@@ -129,7 +143,7 @@ namespace Xperimen.ViewModel.Expense
                 if (!string.IsNullOrEmpty(SelectedDate))
                 {
                     var split = SelectedDate.Split('.');
-                    if (split.Count() > 0) 
+                    if (split.Count() > 0)
                         modeldate = new DateTime(Convert.ToInt32(split[2]), Convert.ToInt32(split[1]), Convert.ToInt32(split[0]));
                 }
                 else modeldate = DateTime.Now;
@@ -158,7 +172,7 @@ namespace Xperimen.ViewModel.Expense
             }
         }
 
-        public int GetExpensesList()
+        public int GetExpensesList(string datecode)
         {
             try
             {
@@ -168,21 +182,21 @@ namespace Xperimen.ViewModel.Expense
 
                 string getuser = "SELECT * FROM Clients WHERE Id = '" + userid + "'";
                 var user = connection.Query<Clients>(getuser).ToList();
-                //if (user.Count > 0) Income = user[0].Income;
+                if (user.Count > 0) NetIncome = user[0].NetIncome;
 
                 TotalExpenses = 0;
                 ListExpenses = new List<Expenses>();
-                string query = "SELECT * FROM Expenses WHERE Userid = '" + userid + "'";
+                string query = "SELECT * FROM Expenses WHERE Userid = '" + userid + "' AND ExpenseDateTime = '" + datecode + "'";
                 ListExpenses = connection.Query<Expenses>(query).ToList();
+                //var sorted = ListExpenses.OrderByDescending(d => d.ExpensesDt);
+                //ListExpenses = sorted.ToList();
 
                 if (ListExpenses.Count > 0)
                 {
                     NoExpenses = false;
                     HasExpenses = true;
-                    foreach (var data in ListExpenses)
-                    {
-                        TotalExpenses += data.Amount;
-                    }
+                    foreach (var data in ListExpenses) TotalExpenses += data.Amount;
+                    Balance = NetIncome - TotalExpenses;
                 }
                 else
                 { NoExpenses = true; HasExpenses = false; }
@@ -192,7 +206,7 @@ namespace Xperimen.ViewModel.Expense
             {
                 var error = ex.Message;
                 var desc = ex.StackTrace;
-                return 3;
+                return 2;
             }
         }
     }

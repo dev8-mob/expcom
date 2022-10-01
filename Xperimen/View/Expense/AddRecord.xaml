@@ -85,7 +85,7 @@
                                     </StackLayout>
 
                                     <!-- change date button -->
-                                    <Frame Padding="0,10,0,10" CornerRadius="3" BorderColor="{DynamicResource Key=Primary}" HorizontalOptions="FillAndExpand"
+                                    <Frame Padding="0,10,0,10" CornerRadius="8" BorderColor="{DynamicResource Key=Primary}" HorizontalOptions="FillAndExpand"
                                            VerticalOptions="End" BackgroundColor="{DynamicResource Key=Primary}" HasShadow="False" Margin="0,30,0,0"
                                            IsClippedToBounds="True" IsVisible="{Binding IsDone}">
                                         <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Spacing="10" VerticalOptions="Center">
@@ -99,7 +99,7 @@
                                     </Frame>
 
                                     <!-- save expenses button -->
-                                    <Frame Padding="0,10,0,10" CornerRadius="3" BorderColor="{DynamicResource Key=CustomGreen}" HorizontalOptions="FillAndExpand"
+                                    <Frame Padding="0,10,0,10" CornerRadius="8" BorderColor="{DynamicResource Key=CustomGreen}" HorizontalOptions="FillAndExpand"
                                            VerticalOptions="End" Margin="0,10,0,0" BackgroundColor="{DynamicResource Key=CustomGreen}" HasShadow="False" 
                                            IsClippedToBounds="True">
                                         <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Spacing="10" VerticalOptions="Center">

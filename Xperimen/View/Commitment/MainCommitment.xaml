@@ -96,13 +96,15 @@
                             </StackLayout>
 
                         </StackLayout>
+                        
                     </StackLayout>
 
                     <!-- no commitment yet -->
-                    <stylekit:XLabel Text="You do not have any commitment(s) yet. Click button below to add new commitment." Margin="30,30,30,0"
+                    <stylekit:XLabel Text="You do not have any commitment yet. Click button below to add new commitment." Margin="30,30,30,0"
                                      VerticalOptions="Start" HorizontalOptions="Center" IsVisible="{Binding NoCommitment}"
                                      HorizontalTextAlignment="Center"/>
 
+                    <!-- commitment list, button done and undone -->
                     <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand" Spacing="0" IsVisible="{Binding HasCommitment}"
                                  VerticalOptions="Start" Margin="0,30,0,0">
 
@@ -129,7 +131,7 @@
                             <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Spacing="0" VerticalOptions="Start" Margin="20,0,20,0">
                                 <stylekit:XImage Source1="black_done.png" Source2="white_done.png" HeightRequest="35" WidthRequest="35"
                                                  Aspect="AspectFit" HorizontalOptions="Center" VerticalOptions="Center"/>
-                                <stylekit:XLabel Text="Congrats ! You have completed all commitments for this month" HorizontalOptions="Center" 
+                                <stylekit:XLabel Text="Congrats ! All commitment(s) are completed for this month" HorizontalOptions="Center" 
                                                  HorizontalTextAlignment="Center" VerticalOptions="Center" Margin="5,0,0,0"/>
                             </StackLayout>
                             <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" Spacing="0" VerticalOptions="Start" Margin="0,30,0,0">
@@ -152,10 +154,11 @@
                                 </DataTemplate>
                             </BindableLayout.ItemTemplate>
                         </StackLayout>
+                        
                     </StackLayout>
 
                     <!-- create commitment button -->
-                    <Frame Padding="0,10,0,10" CornerRadius="3" BorderColor="{DynamicResource Key=Primary}" HorizontalOptions="FillAndExpand"
+                    <Frame Padding="0,10,0,10" CornerRadius="8" BorderColor="{DynamicResource Key=Primary}" HorizontalOptions="FillAndExpand"
                            VerticalOptions="End" Margin="0,30,0,0" BackgroundColor="{DynamicResource Key=Primary}" HasShadow="False" 
                            IsClippedToBounds="True">
                         <StackLayout Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="Center" Spacing="10">
