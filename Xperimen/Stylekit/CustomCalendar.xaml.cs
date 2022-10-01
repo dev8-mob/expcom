@@ -1,9 +1,6 @@
 ﻿using SQLite;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -30,9 +27,21 @@ namespace Xperimen.Stylekit
             if (Application.Current.Properties.ContainsKey("app_theme"))
             {
                 var theme = Application.Current.Properties["app_theme"] as string;
-                if (theme.Equals("dark")) grid_calendar.BackgroundColor = Color.FromHex(App.CharcoalBlack);
-                if (theme.Equals("dim")) grid_calendar.BackgroundColor = Color.FromHex(App.CharcoalGray);
-                if (theme.Equals("light")) grid_calendar.BackgroundColor = Color.FromHex(App.DimGray2);
+                if (theme.Equals("dark"))
+                {
+                    grid_header.BackgroundColor = Color.FromHex(App.CharcoalBlack);
+                    grid_calendar.BackgroundColor = Color.FromHex(App.CharcoalBlack);
+                }
+                if (theme.Equals("dim"))
+                {
+                    grid_header.BackgroundColor = Color.FromHex(App.CharcoalGray);
+                    grid_calendar.BackgroundColor = Color.FromHex(App.CharcoalGray);
+                }
+                if (theme.Equals("light"))
+                {
+                    grid_header.BackgroundColor = Color.FromHex(App.DimGray2);
+                    grid_calendar.BackgroundColor = Color.FromHex(App.DimGray2);
+                }
             }
 
             lbl_month.Text = string.Format("{0:MMM, yyyy}", CurrentDt);
@@ -47,7 +56,9 @@ namespace Xperimen.Stylekit
             if (firstday.DayOfWeek.ToString().Equals("Saturday")) startcol = 5;
             if (firstday.DayOfWeek.ToString().Equals("Sunday")) startcol = 6;
 
-            int daysno = 1, row = 2, col = startcol;
+            int daysno = 1, row = 0, col = startcol;
+            grid_calendar.Children.Clear();
+            grid_calendar.RowDefinitions.Clear();
             var newrow = new RowDefinition { Height = GridLength.Auto };
             grid_calendar.RowDefinitions.Add(newrow);
             for (int i = 0; i < totalDays; i++)
@@ -59,40 +70,40 @@ namespace Xperimen.Stylekit
                 else if (Device.RuntimePlatform == Device.iOS) fontfamily = "Ubuntu-Regular.ttf";
 
                 var count = GetTotalExpenses(day.ToString("dd.MM.yyyy"));
-                var stack = new StackLayout 
-                { 
+                var stack = new StackLayout
+                {
+                    Orientation = StackOrientation.Vertical,
                     HorizontalOptions = LayoutOptions.FillAndExpand,
                     VerticalOptions = LayoutOptions.FillAndExpand,
                     Spacing = 0
                 };
-                var frame = new Frame 
-                { 
-                    Padding = 0, 
-                    HasShadow = false, 
-                    CornerRadius = 25, 
+                var stackbadge = new StackLayout
+                {
+                    Orientation = StackOrientation.Vertical,
+                    HorizontalOptions = LayoutOptions.Center,
+                    VerticalOptions = LayoutOptions.Center,
+                    Spacing = 0
+                };
+                var frame = new Frame
+                {
+                    Padding = 0,
+                    HasShadow = false,
+                    CornerRadius = 25,
                     HeightRequest = 25,
                     WidthRequest = 25,
-                    HorizontalOptions = LayoutOptions.End, 
+                    HorizontalOptions = LayoutOptions.End,
                     VerticalOptions = LayoutOptions.Start,
                     BackgroundColor = Color.FromHex(App.CustomRed)
                 };
-                var lblday = new XLabel 
-                { 
-                    Text = daysno.ToString(), 
-                    HorizontalOptions = LayoutOptions.Center, 
+                var lblday = new XLabel
+                {
+                    Text = daysno.ToString(),
+                    HorizontalOptions = LayoutOptions.Center,
                     VerticalOptions = LayoutOptions.Center,
-                    Margin = new Thickness(0,8,0,8),
+                    Margin = new Thickness(0, 8, 0, 8),
                     FontFamily = fontfamily
                 };
-
-                var tap = new TapGestureRecognizer();
-                tap.Tapped += DayTapped;
-                tap.NumberOfTapsRequired = 1;
-                stack.GestureRecognizers.Add(tap);
-                var tapframe = new TapGestureRecognizer();
-                tapframe.Tapped += DayBadgeTapped;
-                tapframe.NumberOfTapsRequired = 1;
-                frame.GestureRecognizers.Add(tapframe);
+                var lblcode = new Label { Text = day.ToString("dd.MM.yyyy"), IsVisible = false };
                 #endregion
 
                 if (col < 7)
@@ -101,12 +112,16 @@ namespace Xperimen.Stylekit
                     {
                         if (Device.RuntimePlatform == Device.Android) fontfamily = "Ubuntu-Bold.ttf#Ubuntu Bold";
                         else if (Device.RuntimePlatform == Device.iOS) fontfamily = "Ubuntu-Bold.ttf";
+
                         lblday.FontFamily = fontfamily; lblday.Margin = 0;
                         lblday.HorizontalOptions = LayoutOptions.Start;
                         lblday.VerticalOptions = LayoutOptions.End;
                         lblday.VerticalTextAlignment = TextAlignment.End;
+
                         stack.HorizontalOptions = LayoutOptions.StartAndExpand;
                         stack.VerticalOptions = LayoutOptions.EndAndExpand;
+                        stack.Children.Add(lblday);
+                        stack.Children.Add(lblcode);
 
                         var lblbadge = new Label
                         {
@@ -116,14 +131,28 @@ namespace Xperimen.Stylekit
                             VerticalOptions = LayoutOptions.Center,
                             FontFamily = fontfamily
                         };
-                        frame.Content = lblbadge;
-                        stack.Children.Add(lblday);
+                        stackbadge.Children.Add(lblbadge);
+                        stackbadge.Children.Add(lblcode);
+                        frame.Content = stackbadge;
+
+                        var tapframe = new TapGestureRecognizer();
+                        tapframe.Tapped += DayBadgeTapped;
+                        tapframe.NumberOfTapsRequired = 1;
+                        frame.GestureRecognizers.Add(tapframe);
+
                         grid_calendar.Children.Add(stack, col, row);
                         grid_calendar.Children.Add(frame, col, row);
                     }
                     else
                     {
                         stack.Children.Add(lblday);
+                        stack.Children.Add(lblcode);
+
+                        var tap = new TapGestureRecognizer();
+                        tap.Tapped += DayTapped;
+                        tap.NumberOfTapsRequired = 1;
+                        stack.GestureRecognizers.Add(tap);
+
                         grid_calendar.Children.Add(stack, col, row);
                     }
                     col++;
@@ -133,7 +162,7 @@ namespace Xperimen.Stylekit
                     row++; col = 0;
                     newrow = new RowDefinition { Height = GridLength.Auto };
                     grid_calendar.RowDefinitions.Add(newrow);
-                    
+
                     if (count > 0)
                     {
                         if (Device.RuntimePlatform == Device.Android) fontfamily = "Ubuntu-Bold.ttf#Ubuntu Bold";
@@ -142,8 +171,11 @@ namespace Xperimen.Stylekit
                         lblday.HorizontalOptions = LayoutOptions.Start;
                         lblday.VerticalOptions = LayoutOptions.End;
                         lblday.VerticalTextAlignment = TextAlignment.End;
+
                         stack.HorizontalOptions = LayoutOptions.StartAndExpand;
                         stack.VerticalOptions = LayoutOptions.EndAndExpand;
+                        stack.Children.Add(lblday);
+                        stack.Children.Add(lblcode);
 
                         var lblbadge = new Label
                         {
@@ -153,14 +185,27 @@ namespace Xperimen.Stylekit
                             VerticalOptions = LayoutOptions.Center,
                             FontFamily = fontfamily
                         };
-                        frame.Content = lblbadge;
-                        stack.Children.Add(lblday);
+                        stackbadge.Children.Add(lblbadge);
+                        stackbadge.Children.Add(lblcode);
+
+                        var tapframe = new TapGestureRecognizer();
+                        tapframe.Tapped += DayBadgeTapped;
+                        tapframe.NumberOfTapsRequired = 1;
+                        frame.Content = stackbadge;
+                        frame.GestureRecognizers.Add(tapframe);
                         grid_calendar.Children.Add(stack, col, row);
                         grid_calendar.Children.Add(frame, col, row);
                     }
                     else
                     {
                         stack.Children.Add(lblday);
+                        stack.Children.Add(lblcode);
+
+                        var tap = new TapGestureRecognizer();
+                        tap.Tapped += DayTapped;
+                        tap.NumberOfTapsRequired = 1;
+                        stack.GestureRecognizers.Add(tap);
+
                         grid_calendar.Children.Add(stack, col, row);
                     }
                     col++;
@@ -171,18 +216,37 @@ namespace Xperimen.Stylekit
 
         public async void DayTapped(object sender, EventArgs arg)
         {
-            var view = (StackLayout)sender;
-            await view.ScaleTo(0.8, 100);
-            view.Scale = 1;
-            MessagingCenter.Send(this, "TestCalendarTap");
+            try
+            {
+                var view = (StackLayout)sender;
+                await view.ScaleTo(0.8, 100);
+                view.Scale = 1;
+                var lblcode = (Label)view.Children[1];
+                MessagingCenter.Send(this, "CalendarDateTap", lblcode.Text);
+            }
+            catch (Exception ex)
+            {
+                var error = ex.Message;
+                var desc = ex.StackTrace;
+            }
         }
 
         public async void DayBadgeTapped(object sender, EventArgs arg)
         {
-            var view = (Frame)sender;
-            await view.ScaleTo(0.8, 100);
-            view.Scale = 1;
-            MessagingCenter.Send(this, "TestCalendarTap");
+            try
+            {
+                var view = (Frame)sender;
+                await view.ScaleTo(0.8, 100);
+                view.Scale = 1;
+                var stack = (StackLayout)view.Content;
+                var lblcode = (Label)stack.Children[1];
+                MessagingCenter.Send(this, "CalendarDateTap", lblcode.Text);
+            }
+            catch (Exception ex)
+            {
+                var error = ex.Message;
+                var desc = ex.StackTrace;
+            }
         }
 
         public int GetTotalExpenses(string day)

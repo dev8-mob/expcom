@@ -6,7 +6,7 @@
              xmlns:stylekit="clr-namespace:Xperimen.Stylekit"
              Spacing="0">
 
-    <Frame x:Name="frame_bg" HorizontalOptions="FillAndExpand" HasShadow="False" CornerRadius="3"
+    <Frame x:Name="frame_bg" HorizontalOptions="FillAndExpand" HasShadow="False" CornerRadius="8"
            IsClippedToBounds="True" Padding="0">
 
         <StackLayout HorizontalOptions="FillAndExpand" Orientation="Vertical" Spacing="0">

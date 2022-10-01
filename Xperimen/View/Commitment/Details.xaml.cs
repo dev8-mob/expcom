@@ -40,6 +40,7 @@ namespace Xperimen.View.Commitment
                 {
                     SetupView();
                     stack_edit.IsVisible = false;
+                    frame_walletlike.IsVisible = false;
                     frame_view.IsVisible = true;
                     if (viewmodel.HasAttachment) frame_attachment.IsVisible = true;
                     else if (!viewmodel.HasAttachment) frame_attachment.IsVisible = false;
@@ -61,10 +62,10 @@ namespace Xperimen.View.Commitment
                     else if (arg.Equals("Cancel")) viewmodel.IsLoading = false;
                     else viewmodel.IsLoading = false;
                 }
-                else if (alert.CodeObject.Equals("markdone")) 
+                else if (alert.CodeObject.Equals("markdone"))
                 {
                     viewmodel.IsLoading = false;
-                    SetupView(); 
+                    SetupView();
                 }
             });
         }
@@ -74,9 +75,21 @@ namespace Xperimen.View.Commitment
             if (Application.Current.Properties.ContainsKey("app_theme"))
             {
                 var theme = Application.Current.Properties["app_theme"] as string;
-                if (theme.Equals("dark")) frame_view.BackgroundColor = Color.FromHex(App.CharcoalBlack);
-                if (theme.Equals("dim")) frame_view.BackgroundColor = Color.FromHex(App.CharcoalGray);
-                if (theme.Equals("light")) frame_view.BackgroundColor = Color.FromHex(App.DimGray2);
+                if (theme.Equals("dark"))
+                {
+                    frame_view.BackgroundColor = Color.FromHex(App.CharcoalBlack);
+                    stack_bg.BackgroundColor = Color.FromHex(App.CharcoalBlack);
+                }
+                if (theme.Equals("dim"))
+                {
+                    frame_view.BackgroundColor = Color.FromHex(App.CharcoalGray);
+                    stack_bg.BackgroundColor = Color.FromHex(App.CharcoalGray);
+                }
+                if (theme.Equals("light"))
+                {
+                    frame_view.BackgroundColor = Color.FromHex(App.DimGray2);
+                    stack_bg.BackgroundColor = Color.FromHex(App.DimGray2);
+                }
             }
 
             var result = viewmodel.SetDataCommitment(data);
@@ -105,6 +118,7 @@ namespace Xperimen.View.Commitment
             view.Scale = 1;
 
             stack_edit.IsVisible = true;
+            frame_walletlike.IsVisible = true;
             frame_view.IsVisible = false;
             frame_attachment.IsVisible = false;
             stack_donebtns.IsVisible = false;
@@ -138,6 +152,7 @@ namespace Xperimen.View.Commitment
             lbl_attach.Text = "image_attachment.jpg";
 
             stack_edit.IsVisible = false;
+            frame_walletlike.IsVisible = false;
             frame_view.IsVisible = true;
             if (viewmodel.HasAttachment) frame_attachment.IsVisible = true;
             else if (!viewmodel.HasAttachment) frame_attachment.IsVisible = false;

@@ -189,10 +189,10 @@ namespace Xperimen.View.Setting
             else if (string.IsNullOrEmpty(viewmodel.Lastname)) SetDisplayAlert("Alert", "Last name cannot be empty. Please insert your last name.", "", "", "");
             else if (string.IsNullOrEmpty(viewmodel.Username)) SetDisplayAlert("Alert", "Username cannot be empty. Please insert your username.", "", "", "");
             else if (string.IsNullOrEmpty(viewmodel.Password)) SetDisplayAlert("Alert", "Password cannot be empty. Please insert your password.", "", "", "");
-            else if (string.IsNullOrEmpty(viewmodel.Repassword)) SetDisplayAlert("Alert", "Confirmation password cannot be empty. Please re-type your password.", "", "", "");
+            else if (string.IsNullOrEmpty(viewmodel.Repassword)) SetDisplayAlert("Confirmation Password", "Please re-type your password.", "", "", "");
             else if (!viewmodel.Repassword.Equals(viewmodel.Password))
             {
-                SetDisplayAlert("Alert", "Confirmation password is not match with current password.", "", "", "");
+                SetDisplayAlert("Not Match", "Confirmation password is not match with current password.", "", "", "");
                 viewmodel.Repassword = string.Empty;
             }
             else if (string.IsNullOrEmpty(viewmodel.Description)) SetDisplayAlert("Alert", "Description cannot be empty. Please provide any description about you.", "", "", "");

@@ -110,7 +110,6 @@ namespace Xperimen.Stylekit
             var view = (Image)sender;
             await view.ScaleTo(0.9, 100);
             view.Scale = 1;
-            await this.FadeTo(0, 500);
             IsVisible = false;
             MessagingCenter.Send(this, "DisplayAlertSelection", "");
             Opacity = 1;

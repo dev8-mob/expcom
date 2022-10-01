@@ -4,7 +4,7 @@
        x:Class="Xperimen.Stylekit.CustomEntry"
        xmlns:stylekit="clr-namespace:Xperimen.Stylekit" 
        HorizontalOptions="FillAndExpand" BorderColor="DarkGray" 
-       HasShadow="False" CornerRadius="3" BackgroundColor="{DynamicResource Key=DimGray2}"
+       HasShadow="False" CornerRadius="8" BackgroundColor="{DynamicResource Key=DimGray2}"
        IsClippedToBounds="True" Padding="0">
 
     <StackLayout HorizontalOptions="FillAndExpand" Orientation="Vertical" Spacing="0">

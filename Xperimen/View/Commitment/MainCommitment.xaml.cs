@@ -18,15 +18,15 @@ namespace Xperimen.View.Commitment
             BindingContext = viewmodel;
             SetupView();
 
-            MessagingCenter.Subscribe<CustomDisplayAlert, string>(this, "DisplayAlertSelection", (sender, arg) => 
+            MessagingCenter.Subscribe<CustomDisplayAlert, string>(this, "DisplayAlertSelection", (sender, arg) =>
             { viewmodel.IsLoading = false; });
             MessagingCenter.Subscribe<AddRecord>(this, "CommitmentAdded", (sender) => { SetupView(); });
             MessagingCenter.Subscribe<Details>(this, "CommitmentUpdated", (sender) => { SetupView(); });
-            MessagingCenter.Subscribe<Details>(this, "CommitmentDeleted", (sender) => 
+            MessagingCenter.Subscribe<Details>(this, "CommitmentDeleted", (sender) =>
             {
                 SetupView();
                 viewmodel.IsLoading = true;
-                SetDisplayAlert("Success", "Commitment deleted.", "", "", ""); 
+                SetDisplayAlert("Success", "Commitment deleted.", "", "", "");
             });
         }
 
