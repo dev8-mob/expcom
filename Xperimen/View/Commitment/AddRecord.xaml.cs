@@ -18,6 +18,14 @@ namespace Xperimen.View.Commitment
             viewmodel = new CommitmentViewmodel();
             BindingContext = viewmodel;
 
+            if (Application.Current.Properties.ContainsKey("app_theme"))
+            {
+                var theme = Application.Current.Properties["app_theme"] as string;
+                if (theme.Equals("dark")) stack_bg.BackgroundColor = Color.FromHex(App.CharcoalBlack);
+                if (theme.Equals("dim")) stack_bg.BackgroundColor = Color.FromHex(App.CharcoalGray);
+                if (theme.Equals("light")) stack_bg.BackgroundColor = Color.FromHex(App.DimGray2);
+            }
+
             MessagingCenter.Subscribe<CustomDisplayAlert, string>(this, "DisplayAlertSelection", async (sender, arg) =>
             {
                 viewmodel.IsLoading = false;
@@ -73,7 +81,7 @@ namespace Xperimen.View.Commitment
             view.Scale = 1;
 
             viewmodel.IsLoading = true;
-            if (string.IsNullOrEmpty(viewmodel.Title)) SetDisplayAlert("Alert", "Commitment name is empty. Please insert any name (bill, rent, charity, investment, etc...)", "", "", "");
+            if (string.IsNullOrEmpty(viewmodel.Title)) SetDisplayAlert("Alert", "Title is empty. Please insert any title (bill, rent, investment, etc...)", "", "", "");
             else if (viewmodel.Amount == 0) SetDisplayAlert("Alert", "Commitment amount is empty. Please insert commitment amount.", "", "", "");
             else if (viewmodel.HasAccNo && viewmodel.AccountNo == 0) SetDisplayAlert("Alert", "Account number  is empty. Please insert account number.", "", "", "");
             else

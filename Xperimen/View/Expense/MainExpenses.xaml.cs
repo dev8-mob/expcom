@@ -25,12 +25,20 @@ namespace Xperimen.View.Expense
             });
         }
 
+        public async void BackTapped(object sender, EventArgs e)
+        {
+            var view = (Image)sender;
+            await view.ScaleTo(0.9, 100);
+            view.Scale = 1;
+            await Navigation.PopAsync();
+        }
+
         public async void AddExpensesClicked(object sender, EventArgs e)
         {
             var view = (Frame)sender;
             await view.ScaleTo(0.9, 100);
             view.Scale = 1;
-            await Navigation.PushPopupAsync(new AddRecord());
+            await Navigation.PushAsync(new AddRecord());
         }
     }
 }

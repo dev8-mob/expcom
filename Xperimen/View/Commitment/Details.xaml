@@ -97,14 +97,33 @@
 
                             <stylekit:XLabel Text="Edit Commitment" HorizontalOptions="Center" FontFamily="{DynamicResource Key=BoldFont}" FontSize="18"/>
 
-                            <!-- title -->
-                            <stylekit:CustomEntry Placeholder="name (bill, rent, charity, invest, etc...)" BindingText="Title" Margin="0,30,0,0"/>
+                            <!-- title and attachment -->
+                            <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Spacing="15" Margin="0,30,0,0">
+
+                                <!-- title -->
+                                <stylekit:CustomEntry Placeholder="title (bill, rent, charity, etc...)" BindingText="Title"/>
+
+                                <!-- pick gallery and take photo -->
+                                <stylekit:XImage Source1="black_image.png" Source2="white_image.png" HeightRequest="30" WidthRequest="30"
+                                                 Aspect="AspectFit" VerticalOptions="Center" HorizontalOptions="End">
+                                    <Image.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="GalleryClicked" NumberOfTapsRequired="1"/>
+                                    </Image.GestureRecognizers>
+                                </stylekit:XImage>
+                                <stylekit:XImage Source1="black_camera.png" Source2="white_camera.png" HeightRequest="30" WidthRequest="30"
+                                                 Aspect="AspectFit" VerticalOptions="Center" HorizontalOptions="End">
+                                    <Image.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="CameraClicked" NumberOfTapsRequired="1"/>
+                                    </Image.GestureRecognizers>
+                                </stylekit:XImage>
+
+                            </StackLayout>
 
                             <!-- amount and account no checkbox -->
                             <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="Fill" 
                                          Spacing="10" Margin="0,10,0,0">
-                                <stylekit:XLabel Text="Amount" VerticalOptions="Center"/>
-                                <stylekit:CustomEntry BindingText="Amount" KeyboardType="Numeric" VerticalOptions="Center"/>
+                                <stylekit:CustomEntry ImgLeft="black_money.png" ImgLeft_="white_money.png" BindingText="Amount" KeyboardType="Numeric" 
+                                                      VerticalOptions="Center"/>
                                 <stylekit:XLabel Text="Account No" VerticalOptions="Center" Margin="10,0,0,0"/>
                                 <stylekit:CustomCheckbox x:Name="checkbox" CheckOff1="black_checkbox_off.png" CheckOn1="black_checkbox_on.png" 
                                                          CheckOff2="white_checkbox_off.png" CheckOn2="white_checkbox_on.png" BindingCheck="HasAccNo"/>
@@ -114,29 +133,11 @@
                             <stylekit:CustomEntry IsVisible="{Binding HasAccNo}" Margin="0,10,0,0" BindingText="AccountNo" KeyboardType="Numeric"/>
 
                             <!-- editor description -->
-                            <stylekit:XLabel Text="Description (optional)" HorizontalOptions="Start" Margin="0,10,0,0"/>
+                            <stylekit:XLabel Text="Description (optional)" HorizontalOptions="Start" Margin="0,30,0,0"/>
                             <stylekit:CustomEditor Margin="0,5,0,0" Placeholder="details (account number, bank name, etc...)" BindingText="Description"/>
 
-                            <!-- pick gallery and take photo -->
-                            <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Spacing="0" Margin="0,10,0,0">
-                                <stylekit:XLabel Text="Attachment" HorizontalOptions="FillAndExpand" VerticalOptions="Center"/>
-                                <stylekit:XImage Source1="black_image.png" Source2="white_image.png" HeightRequest="30" WidthRequest="30"
-                                                 Aspect="AspectFit" VerticalOptions="Center" Margin="0,0,15,0"
-                                                 HorizontalOptions="End">
-                                    <Image.GestureRecognizers>
-                                        <TapGestureRecognizer Tapped="GalleryClicked" NumberOfTapsRequired="1"/>
-                                    </Image.GestureRecognizers>
-                                </stylekit:XImage>
-                                <stylekit:XImage Source1="black_camera.png" Source2="white_camera.png" HeightRequest="30" WidthRequest="30"
-                                             Aspect="AspectFit" VerticalOptions="Center" HorizontalOptions="End">
-                                    <Image.GestureRecognizers>
-                                        <TapGestureRecognizer Tapped="CameraClicked" NumberOfTapsRequired="1"/>
-                                    </Image.GestureRecognizers>
-                                </stylekit:XImage>
-                            </StackLayout>
-
                             <!-- attachment picture -->
-                            <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Spacing="10" Margin="0,10,0,0"
+                            <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Spacing="10" Margin="0,30,0,0"
                                          IsVisible="{Binding HasAttachment}">
                                 <stylekit:XLabel x:Name="lbl_attach" HorizontalOptions="FillAndExpand" VerticalOptions="Center"
                                                  Text="image_attachment.jpg" FontFamily="{DynamicResource Key=BoldFont}">
@@ -152,11 +153,14 @@
                                 </stylekit:XImage>
                             </StackLayout>
 
-                            <!-- save commitment button -->
+                            <!-- update commitment button -->
                             <Frame Padding="0,10,0,10" CornerRadius="3" BorderColor="{DynamicResource Key=Primary}" HorizontalOptions="FillAndExpand"
                                    Margin="0,30,0,0" BackgroundColor="{DynamicResource Key=Primary}" HasShadow="False" IsClippedToBounds="True">
-                                <Label Text="Update" FontFamily="{DynamicResource Key=BoldFont}" TextColor="White" HorizontalOptions="Center" 
-                                       VerticalOptions="Center"/>
+                                <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Spacing="10" VerticalOptions="Center">
+                                    <Label Text="Update" FontFamily="{DynamicResource Key=BoldFont}" TextColor="White" 
+                                           HorizontalOptions="Center" VerticalOptions="Center"/>
+                                    <Image Source="white_save.png" Aspect="AspectFit" HeightRequest="20" WidthRequest="20" VerticalOptions="Center"/>
+                                </StackLayout>
                                 <Frame.GestureRecognizers>
                                     <TapGestureRecognizer Tapped="UpdateCommitmentClicked" NumberOfTapsRequired="1"/>
                                 </Frame.GestureRecognizers>
@@ -179,8 +183,11 @@
                             <Frame Padding="0,10,0,10" CornerRadius="3" BorderColor="{DynamicResource Key=Primary}" HorizontalOptions="FillAndExpand"
                                    VerticalOptions="End" BackgroundColor="{DynamicResource Key=Primary}" HasShadow="False" 
                                    IsClippedToBounds="True" IsVisible="{Binding IsDone}">
-                                <Label Text="Mark as not done" FontFamily="{DynamicResource Key=BoldFont}" TextColor="White" HorizontalOptions="Center" 
-                                   VerticalOptions="Center"/>
+                                <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Spacing="10" VerticalOptions="Center">
+                                    <Label Text="Mark as not done" FontFamily="{DynamicResource Key=BoldFont}" TextColor="White" 
+                                           HorizontalOptions="Center" VerticalOptions="Center"/>
+                                    <Image Source="white_undo.png" Aspect="AspectFit" HeightRequest="20" WidthRequest="20" VerticalOptions="Center"/>
+                                </StackLayout>
                                 <Frame.GestureRecognizers>
                                     <TapGestureRecognizer Tapped="NotDoneClicked" NumberOfTapsRequired="1"/>
                                 </Frame.GestureRecognizers>
@@ -191,8 +198,8 @@
                                    VerticalOptions="End" BackgroundColor="{DynamicResource Key=CustomGreen}" HasShadow="False" 
                                    IsClippedToBounds="True" x:Name="frame_donepaid">
                                 <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Spacing="10" VerticalOptions="Center">
-                                    <Label Text="Done Paid" FontFamily="{DynamicResource Key=BoldFont}" TextColor="White" HorizontalOptions="Center" 
-                                       VerticalOptions="Center"/>
+                                    <Label Text="Done Paid" FontFamily="{DynamicResource Key=BoldFont}" TextColor="White" 
+                                           HorizontalOptions="Center" VerticalOptions="Center"/>
                                     <Image Source="white_done.png" Aspect="AspectFit" HeightRequest="20" WidthRequest="20" VerticalOptions="Center"/>
                                 </StackLayout>
                                 <Frame.GestureRecognizers>

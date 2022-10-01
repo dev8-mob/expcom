@@ -342,7 +342,6 @@ namespace Xperimen.ViewModel.Commitment
                 var camelcase = new CamelCaseChecker();
                 var title = camelcase.CapitalizeWord(Title);
                 Title = title;
-                var convert = new StreamByteConverter();
 
                 if (Picture != null)
                 {
@@ -361,9 +360,11 @@ namespace Xperimen.ViewModel.Commitment
                         HasAccNo = HasAccNo,
                         HasAttachment = HasAttachment,
                         AccountNo = AccountNo,
-                        Picture = convert.GetImageBytes(Picture.GetStream())
+                        Picture = null
                     };
 
+                    var convert = new StreamByteConverter();
+                    model.Picture = convert.GetImageBytes(Picture.GetStream());
                     connection.Query<SelfCommitment>("DELETE FROM SelfCommitment WHERE Id = '" + data + "'");
                     connection.Insert(model);
                 }

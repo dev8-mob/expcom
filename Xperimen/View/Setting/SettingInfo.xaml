@@ -8,7 +8,10 @@
     <Frame.Content>
 
         <stylekit:XStacklayout HorizontalOptions="FillAndExpand" Orientation="Vertical" Spacing="0">
+            
             <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Spacing="0" BackgroundColor="Transparent">
+
+                <!-- profile info -->
                 <Frame x:Name="frame_profile" HorizontalOptions="Fill" VerticalOptions="Center" BorderColor="DarkGray" 
                        HasShadow="False" BackgroundColor="Transparent" Padding="0" CornerRadius="20" IsClippedToBounds="True">
                     <Image x:Name="img_profile" Aspect="AspectFill" HeightRequest="70" WidthRequest="70"/>
@@ -22,14 +25,22 @@
                     <stylekit:XLabel x:Name="lbl_username" FontFamily="{DynamicResource Key=ItalicFont}"/>
                     <stylekit:XLabel Text="{Binding Description}" Margin="0,15,0,0"/>
                 </StackLayout>
+                
             </StackLayout>
+
+            <!-- edit profile button -->
             <Frame Padding="0,10,0,10" CornerRadius="3" BorderColor="{DynamicResource Key=Primary}" HorizontalOptions="FillAndExpand"
                    Margin="0,15,0,0" BackgroundColor="{DynamicResource Key=Primary}" HasShadow="False" IsClippedToBounds="True">
-                <Label Text="Edit Profile" FontFamily="{DynamicResource Key=BoldFont}" TextColor="White" HorizontalOptions="Center" VerticalOptions="Center"/>
+                <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Spacing="10" VerticalOptions="Center">
+                    <Label Text="Edit Profile" FontFamily="{DynamicResource Key=BoldFont}" TextColor="White" 
+                           HorizontalOptions="Center" VerticalOptions="Center"/>
+                    <Image Source="white_edit.png" Aspect="AspectFit" HeightRequest="20" WidthRequest="20" VerticalOptions="Center"/>
+                </StackLayout>
                 <Frame.GestureRecognizers>
                     <TapGestureRecognizer Tapped="EditClicked" NumberOfTapsRequired="1"/>
                 </Frame.GestureRecognizers>
             </Frame>
+            
         </stylekit:XStacklayout>
         
     </Frame.Content>

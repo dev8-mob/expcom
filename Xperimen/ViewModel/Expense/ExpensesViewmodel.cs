@@ -16,6 +16,7 @@ namespace Xperimen.ViewModel.Expense
         #region bindable properties
         double _amount;
         string _title;
+        bool _hasattachment;
         MediaFile _picture;
         List<Expenses> _listexpenses;
         double _total;
@@ -30,6 +31,11 @@ namespace Xperimen.ViewModel.Expense
         {
             get { return _title; }
             set { _title = value; OnPropertyChanged(); }
+        }
+        public bool HasAttachment
+        {
+            get { return _hasattachment; }
+            set { _hasattachment = value; OnPropertyChanged(); }
         }
         public MediaFile Picture
         {
@@ -65,6 +71,7 @@ namespace Xperimen.ViewModel.Expense
             connection = new SQLiteConnection(App.DB_PATH);
             Amount = 0;
             Title = string.Empty;
+            HasAttachment = false;
             Picture = null;
             ListExpenses = new List<Expenses>();
             TotalExpenses = 0;
@@ -102,6 +109,40 @@ namespace Xperimen.ViewModel.Expense
 
             if (Picture == null) return 2;
             else return 1;
+        }
+
+        public int AddExpenses()
+        {
+            try
+            {
+                var userid = string.Empty;
+                if (Application.Current.Properties.ContainsKey("current_login"))
+                    userid = Application.Current.Properties["current_login"] as string;
+
+                var camelcase = new CamelCaseChecker();
+                var title = camelcase.CapitalizeWord(Title);
+                var convert = new StreamByteConverter();
+                var data = new Expenses
+                {
+                    Id = Guid.NewGuid().ToString(),
+                    Userid = userid,
+                    Amount = Amount,
+                    Title = title,
+                    HasAttachment = HasAttachment,
+                    ExpensesDt = DateTime.Now,
+                    Picture = null
+                };
+                if (Picture != null) data.Picture = convert.GetImageBytes(Picture.GetStream());
+                connection.Insert(data);
+                var cek = connection.Table<Expenses>().ToList();
+                return 1;
+            }
+            catch (Exception ex)
+            {
+                var error = ex.Message;
+                var desc = ex.StackTrace;
+                return 2;
+            }
         }
 
         public int GetExpensesList()

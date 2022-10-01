@@ -27,6 +27,6 @@
                              IsVisible="{Binding IsDone}"/>
         </StackLayout>
     </Grid>
-    <BoxView HeightRequest="1" HorizontalOptions="FillAndExpand" BackgroundColor="LightGray"/>
+    <BoxView HeightRequest="1" HorizontalOptions="FillAndExpand" BackgroundColor="DarkGray"/>
 
 </StackLayout>
