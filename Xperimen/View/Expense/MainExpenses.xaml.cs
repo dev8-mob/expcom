@@ -1,6 +1,7 @@
 ﻿
 using Rg.Plugins.Popup.Extensions;
 using System;
+using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using Xperimen.Stylekit;
@@ -12,15 +13,23 @@ namespace Xperimen.View.Expense
     public partial class MainExpenses : ContentPage
     {
         public ExpensesViewmodel viewmodel;
+        public CustomCalendar calendar;
 
         public MainExpenses()
         {
             InitializeComponent();
             viewmodel = new ExpensesViewmodel();
             BindingContext = viewmodel;
+            calendar = customcalendar;
 
-            MessagingCenter.Subscribe<CustomDisplayAlert, string>(this, "DisplayAlertSelection", async (sender, arg) =>
+            MessagingCenter.Subscribe<CustomDisplayAlert, string>(this, "DisplayAlertSelection", (sender, arg) => 
+            { viewmodel.IsLoading = false; });
+            MessagingCenter.Subscribe<AddRecord>(this, "ExpensesAdded", (sender) =>
+            { calendar.SetupView(); });
+            MessagingCenter.Subscribe<CustomCalendar>(this, "TestCalendarTap", async (sender) =>
             {
+                viewmodel.IsLoading = true;
+                await Task.Delay(1500);
                 viewmodel.IsLoading = false;
             });
         }

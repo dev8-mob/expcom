@@ -33,6 +33,8 @@ namespace Xperimen.View.Expense
                 if (alert.CodeObject.Equals("success"))
                     await Navigation.PopAsync();
             });
+            MessagingCenter.Subscribe<CustomDatePicker, string>(this, "SelectedDate", (sender, arg) =>
+            { viewmodel.SelectedDate = arg; });
         }
 
         public async void GalleryClicked(object sender, EventArgs e)
@@ -73,6 +75,14 @@ namespace Xperimen.View.Expense
                 viewmodel.HasAttachment = true;
                 viewmodel.IsLoading = false;
             }
+        }
+
+        public async void ChangeDateClicked(object sender, EventArgs e)
+        {
+            var view = (Frame)sender;
+            await view.ScaleTo(0.9, 100);
+            view.Scale = 1;
+            await Navigation.PushPopupAsync(new CustomDatePicker());
         }
 
         public async void SaveClicked(object sender, EventArgs e)

@@ -84,9 +84,23 @@
                                         </stylekit:XImage>
                                     </StackLayout>
 
+                                    <!-- change date button -->
+                                    <Frame Padding="0,10,0,10" CornerRadius="3" BorderColor="{DynamicResource Key=Primary}" HorizontalOptions="FillAndExpand"
+                                           VerticalOptions="End" BackgroundColor="{DynamicResource Key=Primary}" HasShadow="False" Margin="0,30,0,0"
+                                           IsClippedToBounds="True" IsVisible="{Binding IsDone}">
+                                        <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Spacing="10" VerticalOptions="Center">
+                                            <Label Text="Change Date" FontFamily="{DynamicResource Key=BoldFont}" TextColor="White" 
+                                           HorizontalOptions="Center" VerticalOptions="Center"/>
+                                            <Image Source="white_undo.png" Aspect="AspectFit" HeightRequest="20" WidthRequest="20" VerticalOptions="Center"/>
+                                        </StackLayout>
+                                        <Frame.GestureRecognizers>
+                                            <TapGestureRecognizer Tapped="ChangeDateClicked" NumberOfTapsRequired="1"/>
+                                        </Frame.GestureRecognizers>
+                                    </Frame>
+
                                     <!-- save expenses button -->
                                     <Frame Padding="0,10,0,10" CornerRadius="3" BorderColor="{DynamicResource Key=CustomGreen}" HorizontalOptions="FillAndExpand"
-                                           VerticalOptions="End" Margin="0,30,0,0" BackgroundColor="{DynamicResource Key=CustomGreen}" HasShadow="False" 
+                                           VerticalOptions="End" Margin="0,10,0,0" BackgroundColor="{DynamicResource Key=CustomGreen}" HasShadow="False" 
                                            IsClippedToBounds="True">
                                         <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Spacing="10" VerticalOptions="Center">
                                             <Label Text="Save" FontFamily="{DynamicResource Key=BoldFont}" TextColor="White" HorizontalOptions="Center" 

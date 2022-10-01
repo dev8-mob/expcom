@@ -65,10 +65,12 @@ namespace Xperimen.ViewModel.Expense
         #endregion
 
         public SQLiteConnection connection;
+        public string SelectedDate;
 
         public ExpensesViewmodel()
         {
             connection = new SQLiteConnection(App.DB_PATH);
+            SelectedDate = string.Empty;
             Amount = 0;
             Title = string.Empty;
             HasAttachment = false;
@@ -122,6 +124,16 @@ namespace Xperimen.ViewModel.Expense
                 var camelcase = new CamelCaseChecker();
                 var title = camelcase.CapitalizeWord(Title);
                 var convert = new StreamByteConverter();
+
+                var modeldate = new DateTime();
+                if (!string.IsNullOrEmpty(SelectedDate))
+                {
+                    var split = SelectedDate.Split('.');
+                    if (split.Count() > 0) 
+                        modeldate = new DateTime(Convert.ToInt32(split[2]), Convert.ToInt32(split[1]), Convert.ToInt32(split[0]));
+                }
+                else modeldate = DateTime.Now;
+
                 var data = new Expenses
                 {
                     Id = Guid.NewGuid().ToString(),
@@ -129,7 +141,8 @@ namespace Xperimen.ViewModel.Expense
                     Amount = Amount,
                     Title = title,
                     HasAttachment = HasAttachment,
-                    ExpensesDt = DateTime.Now,
+                    ExpensesDt = modeldate,
+                    ExpenseDateTime = modeldate.ToString("dd.MM.yyyy"),
                     Picture = null
                 };
                 if (Picture != null) data.Picture = convert.GetImageBytes(Picture.GetStream());

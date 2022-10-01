@@ -14,6 +14,7 @@ namespace Xperimen.Model
         public string Title { get; set; }
         public bool HasAttachment { get; set; }
         public DateTime ExpensesDt { get; set; }
+        public string ExpenseDateTime { get; set; }
         public byte[] Picture { get; set; }
     }
 }

@@ -184,7 +184,7 @@
                                    VerticalOptions="End" BackgroundColor="{DynamicResource Key=Primary}" HasShadow="False" 
                                    IsClippedToBounds="True" IsVisible="{Binding IsDone}">
                                 <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Spacing="10" VerticalOptions="Center">
-                                    <Label Text="Mark as not done" FontFamily="{DynamicResource Key=BoldFont}" TextColor="White" 
+                                    <Label Text="Mark as Not Done" FontFamily="{DynamicResource Key=BoldFont}" TextColor="White" 
                                            HorizontalOptions="Center" VerticalOptions="Center"/>
                                     <Image Source="white_undo.png" Aspect="AspectFit" HeightRequest="20" WidthRequest="20" VerticalOptions="Center"/>
                                 </StackLayout>

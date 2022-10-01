@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<pages:PopupPage xmlns="http://xamarin.com/schemas/2014/forms" 
+                 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                 x:Class="Xperimen.Stylekit.CustomDatePicker"
+                 xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
+                 xmlns:stylekit="clr-namespace:Xperimen.Stylekit"
+                 xmlns:cell="clr-namespace:Xperimen.Stylekit">
+
+    <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+
+        <!-- background overlay -->
+        <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="Black" Opacity="0.7"/>
+
+        <Frame HasShadow="False" Padding="0" IsClippedToBounds="True" CornerRadius="10" VerticalOptions="Center"
+               Grid.Row="0" Grid.Column="0" Margin="50">
+
+            <!-- UI content (view) -->
+            <StackLayout x:Name="stack_bg" Orientation="Vertical" HorizontalOptions="FillAndExpand" Spacing="0" Padding="15">
+
+                <!-- title header -->
+                <stylekit:XLabel Text="Select Date" HorizontalOptions="Center" FontFamily="{DynamicResource Key=BoldFont}" FontSize="18"/>
+                <stylekit:XLabel Text="{Binding CurrentDate, StringFormat='for {0:MMM, yyyy}'}" HorizontalOptions="Center" HorizontalTextAlignment="Center"
+                                 FontFamily="{DynamicResource Key=BoldFont}" FontSize="16"/>
+
+                <!-- date list -->
+                <ScrollView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Margin="0,30,0,0">
+                    <StackLayout x:Name="stack_date" HorizontalOptions="FillAndExpand" VerticalOptions="Center" Spacing="0"
+                                 BindableLayout.ItemsSource="{Binding ListDateView}" >
+                        <BindableLayout.ItemTemplate>
+                            <DataTemplate>
+                                <cell:CustomDatePickerCell>
+                                    <StackLayout.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="DateTapped" NumberOfTapsRequired="1"/>
+                                    </StackLayout.GestureRecognizers>
+                                </cell:CustomDatePickerCell>
+                            </DataTemplate>
+                        </BindableLayout.ItemTemplate>
+                    </StackLayout>
+                </ScrollView>
+
+                <!-- cancel button -->
+                <stylekit:XLabel Text="Cancel" HorizontalOptions="Center" FontFamily="{DynamicResource Key=BoldFont}" Margin="0,30,0,0">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="CancelClicked" NumberOfTapsRequired="1"/>
+                    </Label.GestureRecognizers>
+                </stylekit:XLabel>
+
+            </StackLayout>
+
+        </Frame>
+
+    </Grid>
+
+</pages:PopupPage>
