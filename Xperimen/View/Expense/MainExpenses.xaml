@@ -26,6 +26,12 @@
                     </stylekit:XImage>
                     <stylekit:XLabel Text="Expenses" HorizontalOptions="FillAndExpand" FontFamily="{DynamicResource Key=BoldFont}" 
                                      FontSize="18" VerticalOptions="Center"/>
+                    <stylekit:XImage Source1="black_menu.png" Source2="white_menu.png" HeightRequest="35" WidthRequest="35" Aspect="AspectFit"
+                                     HorizontalOptions="End" Margin="20,0,0,0">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="MenuSummaryTapped" NumberOfTapsRequired="1"/>
+                        </Image.GestureRecognizers>
+                    </stylekit:XImage>
                 </StackLayout>
 
                 <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" RowSpacing="0" ColumnSpacing="0"
@@ -54,6 +60,14 @@
                             <TapGestureRecognizer Tapped="AddExpensesClicked" NumberOfTapsRequired="1"/>
                         </Frame.GestureRecognizers>
                     </Frame>
+
+                    <!-- no expenses -->
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" Spacing="5" VerticalOptions="Start" Padding="15,5,15,5"
+                                 BackgroundColor="{DynamicResource Key=CustomRed}" Margin="0,10,0,0" IsVisible="{Binding NoExpenses}"
+                                 Grid.Row="1" Grid.Column="0">
+                        <stylekit:XLabel Text="No expenses on " VerticalOptions="Center" TextColor="White" HorizontalOptions="Center"/>
+                        <stylekit:XLabel x:Name="lbl_ondateselect_zero" VerticalOptions="Center" TextColor="White" HorizontalOptions="Center"/>
+                    </StackLayout>
 
                     <!-- list and total -->
                     <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand" Spacing="0" Grid.Row="1" Grid.Column="0"

@@ -101,7 +101,7 @@ namespace Xperimen.View.Expense
                 if (result == 1)
                 {
                     SetDisplayAlert("Success", "New expenses added.", "", "", "success");
-                    MessagingCenter.Send(this, "ExpensesAdded");
+                    MessagingCenter.Send(this, "ExpensesAdded", viewmodel.SelectedDate);
                 }
                 else if (result == 2) SetDisplayAlert("Error", "Technical error adding new expenses.", "", "", "");
             }

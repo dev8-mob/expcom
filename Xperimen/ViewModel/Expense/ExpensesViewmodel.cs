@@ -20,6 +20,7 @@ namespace Xperimen.ViewModel.Expense
         string _title;
         bool _hasattachment;
         MediaFile _picture;
+        byte[] _attachment;
         List<Expenses> _listexpenses;
         double _total;
         bool _noexpenses;
@@ -53,6 +54,11 @@ namespace Xperimen.ViewModel.Expense
         {
             get { return _picture; }
             set { _picture = value; OnPropertyChanged(); }
+        }
+        public byte[] Attachment
+        {
+            get { return _attachment; }
+            set { _attachment = value; OnPropertyChanged(); }
         }
         public List<Expenses> ListExpenses
         {
@@ -89,6 +95,7 @@ namespace Xperimen.ViewModel.Expense
             Title = string.Empty;
             HasAttachment = false;
             Picture = null;
+            Attachment = null;
             ListExpenses = new List<Expenses>();
             TotalExpenses = 0;
         }
@@ -200,6 +207,47 @@ namespace Xperimen.ViewModel.Expense
                 }
                 else
                 { NoExpenses = true; HasExpenses = false; }
+                return 1;
+            }
+            catch (Exception ex)
+            {
+                var error = ex.Message;
+                var desc = ex.StackTrace;
+                return 2;
+            }
+        }
+
+        public int SetAttachmentPicture(string data)
+        {
+            try
+            {
+                Attachment = null;
+                string query = "SELECT * FROM Expenses WHERE Id = '" + data + "'";
+                var result = connection.Query<Expenses>(query).ToList();
+                if (result.Count > 0)
+                {
+                    Attachment = result[0].Picture;
+                    return 1;
+                }
+                else return 2;
+            }
+            catch (Exception ex)
+            {
+                var error = ex.Message;
+                var desc = ex.StackTrace;
+                return 3;
+            }
+        }
+
+        public int DeleteExpense(string data)
+        {
+            try
+            {
+                string getdata = "SELECT * FROM Expenses WHERE Id = '" + data + "'";
+                var expense = connection.Query<Expenses>(getdata).ToList();
+                if (expense.Count > 0) SelectedDate = expense[0].ExpenseDateTime;
+                string query = "DELETE FROM Expenses WHERE Id = '" + data + "'";
+                connection.Query<Expenses>(query);
                 return 1;
             }
             catch (Exception ex)

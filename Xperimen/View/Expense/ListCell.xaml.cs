@@ -48,11 +48,20 @@ namespace Xperimen.View.Expense
             }
         }
 
+        public async void DeleteTapped(object sender, EventArgs e)
+        {
+            var view = (Image)sender;
+            await view.ScaleTo(0.8, 100);
+            view.Scale = 1;
+            MessagingCenter.Send(this, "DeleteImageTap", lbl_id.Text);
+        }
+
         public async void PicAttachmentClicked(object sender, EventArgs e)
         {
             var view = (Frame)sender;
             await view.ScaleTo(0.9, 100);
             view.Scale = 1;
+            MessagingCenter.Send(this, "ExpenseImageTap", lbl_id.Text);
         }
     }
 }
