@@ -74,7 +74,9 @@ namespace Xperimen.View.Setting
                 var view = (Frame)sender;
                 await view.ScaleTo(0.9, 100);
                 view.Scale = 1;
+                view.IsEnabled = false;
                 await Navigation.PushPopupAsync(new ImageViewer(converter.BytesToStream(viewmodel.Picture)));
+                view.IsEnabled = true;
             }
         }
 
@@ -83,6 +85,7 @@ namespace Xperimen.View.Setting
             var view = (Image)sender;
             await view.ScaleTo(0.9, 100);
             view.Scale = 1;
+            view.IsEnabled = false;
 
             viewmodel.IsLoading = true;
             var result = await viewmodel.PickPhoto();
@@ -101,6 +104,7 @@ namespace Xperimen.View.Setting
                 });
                 viewmodel.IsLoading = false;
             }
+            view.IsEnabled = true;
         }
 
         public async void CameraClicked(object sender, EventArgs e)
@@ -108,6 +112,7 @@ namespace Xperimen.View.Setting
             var view = (Image)sender;
             await view.ScaleTo(0.9, 100);
             view.Scale = 1;
+            view.IsEnabled = false;
 
             viewmodel.IsLoading = true;
             var result = await viewmodel.TakePhoto();
@@ -126,6 +131,7 @@ namespace Xperimen.View.Setting
                 });
                 viewmodel.IsLoading = false;
             }
+            view.IsEnabled = true;
         }
 
         public async void ThemeClicked(object sender, EventArgs e)
@@ -134,6 +140,7 @@ namespace Xperimen.View.Setting
             var lbl = (Label)view.Content;
             await view.ScaleTo(0.9, 100);
             view.Scale = 1;
+            view.IsEnabled = false;
 
             var apptheme = "light";
             if (Application.Current.Properties.ContainsKey("app_theme"))
@@ -175,6 +182,7 @@ namespace Xperimen.View.Setting
                 frame_dim.BorderColor = Color.DarkGray;
                 frame_light.BorderColor = Color.FromHex(App.Primary);
             }
+            view.IsEnabled = true;
         }
 
         public async void SaveClicked(object sender, EventArgs e)
@@ -182,6 +190,7 @@ namespace Xperimen.View.Setting
             var view = (Frame)sender;
             await view.ScaleTo(0.9, 100);
             view.Scale = 1;
+            view.IsEnabled = false;
 
             viewmodel.IsLoading = true;
             if (viewmodel.Picture == null) SetDisplayAlert("Alert", "Profile picture is empty. Please take a photo or choose a picture.", "", "", "");
@@ -209,6 +218,7 @@ namespace Xperimen.View.Setting
                 else if (result == 3) SetDisplayAlert("Error", "Update information failed.", "", "", "");
                 else if (result == 4) SetDisplayAlert("Exist", "A user with that username already exist. Please choose a different username.", "", "", "");
             }
+            view.IsEnabled = true;
         }
 
         public async void CancelClicked(object sender, EventArgs e)
@@ -216,9 +226,11 @@ namespace Xperimen.View.Setting
             var view = (Label)sender;
             await view.ScaleTo(0.9, 100);
             view.Scale = 1;
+            view.IsEnabled = false;
             viewmodel.SetupData();
             viewmodel.IsViewing = true;
             viewmodel.IsEditing = false;
+            view.IsEnabled = true;
         }
 
         public async void BackTapped(object sender, EventArgs e)
@@ -226,7 +238,9 @@ namespace Xperimen.View.Setting
             var view = (Image)sender;
             await view.ScaleTo(0.9, 100);
             view.Scale = 1;
+            view.IsEnabled = false;
             await Navigation.PopAsync();
+            view.IsEnabled = true;
         }
 
         public void SetDisplayAlert(string title, string description, string btn1, string btn2, string obj)

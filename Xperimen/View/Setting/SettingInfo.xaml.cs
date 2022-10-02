@@ -42,8 +42,10 @@ namespace Xperimen.View.Setting
         {
             await frame_profile.ScaleTo(0.9, 100);
             frame_profile.Scale = 1;
+            frame_profile.IsEnabled = false;
             var convert = new StreamByteConverter();
             await Navigation.PushPopupAsync(new ImageViewer(convert.BytesToStream(viewmodel.Picture)));
+            frame_profile.IsEnabled = true;
         }
 
         public async void EditClicked(object sender, EventArgs e)

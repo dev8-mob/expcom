@@ -123,7 +123,9 @@ namespace Xperimen.View.Expense
             var view = (Image)sender;
             await view.ScaleTo(0.9, 100);
             view.Scale = 1;
+            view.IsEnabled = false;
             await Navigation.PopAsync();
+            view.IsEnabled = true;
         }
 
         public async void MenuSummaryTapped(object sender, EventArgs e)
@@ -131,6 +133,8 @@ namespace Xperimen.View.Expense
             var view = (Image)sender;
             await view.ScaleTo(0.8, 100);
             view.Scale = 1;
+            view.IsEnabled = false;
+            view.IsEnabled = true;
             //await Navigation.PopAsync();
         }
 
@@ -139,7 +143,9 @@ namespace Xperimen.View.Expense
             var view = (Frame)sender;
             await view.ScaleTo(0.9, 100);
             view.Scale = 1;
+            view.IsEnabled = false;
             await Navigation.PushAsync(new AddRecord());
+            view.IsEnabled = true;
         }
 
         public async void ItemExpenseTapped(object sender, EventArgs e)
@@ -147,6 +153,8 @@ namespace Xperimen.View.Expense
             var view = (StackLayout)sender;
             await view.ScaleTo(0.9, 100);
             view.Scale = 1;
+            view.IsEnabled = false;
+            view.IsEnabled = true;
         }
 
         public void SetDisplayAlert(string title, string description, string btn1, string btn2, string obj)

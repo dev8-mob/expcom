@@ -41,11 +41,13 @@ namespace Xperimen.View.Dashboard
         private async void listview_ItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
             var view = (ListView)sender;
+            view.IsEnabled = false;
             if (view.SelectedItem != null)
             {
                 await Navigation.PushAsync(new DetailsPage());
                 view.SelectedItem = null;
             }
+            view.IsEnabled = true;
         }
 
         public void SetDisplayAlert(string title, string description, string btn1, string btn2, string obj)

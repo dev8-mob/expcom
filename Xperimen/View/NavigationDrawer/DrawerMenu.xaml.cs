@@ -72,9 +72,13 @@ namespace Xperimen.View.NavigationDrawer
 
         public async void OnHeaderTapped(object sender, EventArgs e)
         {
+            var view = (StackLayout)sender;
             await frame_profile.ScaleTo(0.9, 100);
             frame_profile.Scale = 1;
+            view.IsEnabled = false;
+
             await Navigation.PushPopupAsync(new ImageViewer(converter.BytesToStream(user_login.ProfileImage)));
+            view.IsEnabled = true;
         }
     }
 }

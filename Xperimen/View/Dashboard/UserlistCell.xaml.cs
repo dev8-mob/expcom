@@ -67,6 +67,7 @@ namespace Xperimen.View.Dashboard
             var view = (Image)sender;
             await view.ScaleTo(0.9, 100);
             view.Scale = 1;
+            view.IsEnabled = false;
             parent = (UserList)view.Parent.Parent.Parent.Parent.Parent.Parent.Parent;
 
             var fullname = lbl_fname.Text + " " + lbl_lname.Text;
@@ -74,6 +75,7 @@ namespace Xperimen.View.Dashboard
             parent.viewmodel.IsBlocked = true;
             parent.SetDisplayAlert("Delete", "Are you sure to delete " + fullname + "?", "Okay", "Cancel", lbl_id.Text);
             // send the rest of the delete process to parent viewmodel
+            view.IsEnabled = true;
         }
     }
 }

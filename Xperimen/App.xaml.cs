@@ -11,10 +11,13 @@ namespace Xperimen
     {
         public static string DB_PATH = string.Empty;
         public static string Primary = "#db5e0a";
+        public static string PrimaryLight = "#f79655";
         public static string DimGray1 = "#F2F2F2";
         public static string DimGray2 = "#e7e7e7";
-        public static string CustomGreen = "#04B404";
-        public static string CustomRed = "#DF0101";
+        public static string CustomGreen = "#039603";
+        public static string CustomGreenLight = "#05fa05";
+        public static string CustomRed = "#cb0101";
+        public static string CustomRedLight = "#fe3434";
         public static string CustomYellow = "#DEAF14";
         public static string CustomBlue = "#01A9DB";
         public static string LabelTextColor = "#666666";

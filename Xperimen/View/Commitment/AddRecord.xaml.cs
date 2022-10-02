@@ -39,6 +39,7 @@ namespace Xperimen.View.Commitment
             var view = (Image)sender;
             await view.ScaleTo(0.9, 100);
             view.Scale = 1;
+            view.IsEnabled = false;
 
             viewmodel.IsLoading = true;
             var result = await viewmodel.PickPhoto();
@@ -52,6 +53,7 @@ namespace Xperimen.View.Commitment
                 viewmodel.HasAttachment = true;
                 viewmodel.IsLoading = false;
             }
+            view.IsEnabled = true;
         }
 
         public async void CameraClicked(object sender, EventArgs e)
@@ -59,6 +61,7 @@ namespace Xperimen.View.Commitment
             var view = (Image)sender;
             await view.ScaleTo(0.9, 100);
             view.Scale = 1;
+            view.IsEnabled = false;
 
             viewmodel.IsLoading = true;
             var result = await viewmodel.TakePhoto();
@@ -72,6 +75,7 @@ namespace Xperimen.View.Commitment
                 viewmodel.HasAttachment = true;
                 viewmodel.IsLoading = false;
             }
+            view.IsEnabled = true;
         }
 
         public async void SaveCommitmentClicked(object sender, EventArgs e)
@@ -79,6 +83,7 @@ namespace Xperimen.View.Commitment
             var view = (Frame)sender;
             await view.ScaleTo(0.9, 100);
             view.Scale = 1;
+            view.IsEnabled = false;
 
             viewmodel.IsLoading = true;
             if (string.IsNullOrEmpty(viewmodel.Title)) SetDisplayAlert("Alert", "Title is empty. Please insert any title (bill, rent, investment, etc...)", "", "", "");
@@ -94,6 +99,7 @@ namespace Xperimen.View.Commitment
                 }
                 else if (result == 2) SetDisplayAlert("Error", "Technical error adding new commitment.", "", "", "");
             }
+            view.IsEnabled = true;
         }
 
         public async void CancelClicked(object sender, EventArgs e)
@@ -101,7 +107,9 @@ namespace Xperimen.View.Commitment
             var view = (Label)sender;
             await view.ScaleTo(0.9, 100);
             view.Scale = 1;
+            view.IsEnabled = false;
             await Navigation.PopAsync();
+            view.IsEnabled = true;
         }
 
         public async void AttachmentClicked(object sender, EventArgs e)
@@ -111,7 +119,9 @@ namespace Xperimen.View.Commitment
                 var view = (Label)sender;
                 await view.ScaleTo(0.9, 100);
                 view.Scale = 1;
+                view.IsEnabled = false;
                 await Navigation.PushPopupAsync(new ImageViewer(viewmodel.Picture.GetStream()));
+                view.IsEnabled = true;
             }
         }
 
@@ -120,8 +130,10 @@ namespace Xperimen.View.Commitment
             var view = (Image)sender;
             await view.ScaleTo(0.9, 100);
             view.Scale = 1;
+            view.IsEnabled = false;
             viewmodel.Picture = null;
             viewmodel.HasAttachment = false;
+            view.IsEnabled = true;
         }
 
         public void SetDisplayAlert(string title, string description, string btn1, string btn2, string obj)

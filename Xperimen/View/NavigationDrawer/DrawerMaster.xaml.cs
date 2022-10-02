@@ -25,6 +25,8 @@ namespace Xperimen.View.NavigationDrawer
 
         private async void MenuSelected(object sender, SelectedItemChangedEventArgs e)
         {
+            var view = (ListView)sender;
+            view.IsEnabled = false;
             if (e.SelectedItem != null)
             {
                 var item = (ItemMenu)e.SelectedItem;
@@ -45,6 +47,7 @@ namespace Xperimen.View.NavigationDrawer
                 //else Navigation.PushAsync(openPage);
                 #endregion
             }
+            view.IsEnabled = true;
         }
     }
 }

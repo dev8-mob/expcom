@@ -6,10 +6,13 @@
     <Application.Resources>
         <ResourceDictionary>
             <Color x:Key="Primary">#db5e0a</Color>
+            <Color x:Key="PrimaryLight">#f79655</Color>
             <Color x:Key="DimGray1">#F2F2F2</Color>
             <Color x:Key="DimGray2">#e7e7e7</Color>
-            <Color x:Key="CustomGreen">#04B404</Color>
-            <Color x:Key="CustomRed">#DF0101</Color>
+            <Color x:Key="CustomGreen">#039603</Color>
+            <Color x:Key="CustomGreenLight">#05fa05</Color>
+            <Color x:Key="CustomRed">#cb0101</Color>
+            <Color x:Key="CustomRedLight">#fe3434</Color>
             <Color x:Key="CustomYellow">#DEAF14</Color>
             <Color x:Key="CustomBlue">#01A9DB</Color>
             <Color x:Key="LabelTextColor">#666666</Color>
