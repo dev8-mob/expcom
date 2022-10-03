@@ -305,7 +305,9 @@ namespace Xperimen.Stylekit
             var view = (Image)sender;
             await view.ScaleTo(0.9, 100);
             view.Scale = 1;
+            view.IsEnabled = false;
             entry.Focus();
+            view.IsEnabled = true;
         }
 
         private async void OnShowHideTap(object sender, EventArgs e)

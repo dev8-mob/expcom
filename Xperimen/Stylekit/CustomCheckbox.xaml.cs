@@ -78,6 +78,7 @@ namespace Xperimen.Stylekit
             var view = (Image)sender;
             await view.ScaleTo(0.8, 100);
             view.Scale = 1;
+            view.IsEnabled = false;
             var file = view.Source.ToString();
 
             if (Application.Current.Properties.ContainsKey("app_theme"))
@@ -105,6 +106,7 @@ namespace Xperimen.Stylekit
                 else if (file.Equals("File: " + CheckOn1))
                 { img_check.Source = CheckOff1; checkbox.IsChecked = false; }
             }
+            view.IsEnabled = true;
         }
 
         public void SetupView()

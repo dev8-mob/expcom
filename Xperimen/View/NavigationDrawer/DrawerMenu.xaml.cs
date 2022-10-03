@@ -1,17 +1,13 @@
 ﻿using Rg.Plugins.Popup.Extensions;
 using SQLite;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using Xperimen.Helper;
 using Xperimen.Model;
 using Xperimen.Stylekit;
-using Xperimen.View.Commitment;
-using Xperimen.View.Dashboard;
-using Xperimen.View.Expense;
-using Xperimen.View.Setting;
+using Xperimen.ViewModel.NavigationDrawer;
 using Xperimen.ViewModel.Setting;
 
 namespace Xperimen.View.NavigationDrawer
@@ -19,7 +15,7 @@ namespace Xperimen.View.NavigationDrawer
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class DrawerMenu : ContentPage
     {
-        public ListView listview_menu;
+        public DrawerViewmodel viewmodel;
         public SQLiteConnection connection;
         public Clients user_login;
         public StreamByteConverter converter;
@@ -27,16 +23,19 @@ namespace Xperimen.View.NavigationDrawer
         public DrawerMenu()
         {
             InitializeComponent();
+            viewmodel = new DrawerViewmodel();
+            BindingContext = viewmodel;
             connection = new SQLiteConnection(App.DB_PATH);
             converter = new StreamByteConverter();
-            listview_menu = listview;
-            SetupData();
-            CreateMenuList();
+            UpdateProfilePic();
 
-            MessagingCenter.Subscribe<SettingViewmodel>(this, "AppThemeUpdated", (sender) => { SetupData(); });
+            MessagingCenter.Subscribe<SettingViewmodel>(this, "AppThemeUpdated", (sender) => 
+            { UpdateProfilePic(); });
+            MessagingCenter.Subscribe<DrawerMenuCell>(this, "DrawerMenuSelected", (sender) => 
+            { listview.ItemsSource = viewmodel.MenuList; });
         }
 
-        public void SetupData()
+        public void UpdateProfilePic()
         {
             if (Application.Current.Properties.ContainsKey("current_login"))
             {
@@ -57,19 +56,6 @@ namespace Xperimen.View.NavigationDrawer
             }
         }
 
-        public void CreateMenuList()
-        {
-            List<ItemMenu> menulist = new List<ItemMenu>();
-
-            menulist.Add(new ItemMenu { ImageIcon1 = "black_user.png", ImageIcon2 = "white_user.png", Title = "Dashboard", Contentpage = typeof(MainPage) });
-            menulist.Add(new ItemMenu { ImageIcon1 = "black_whatshot.png", ImageIcon2 = "white_whatshot.png", Title = "Admin", Contentpage = typeof(AdminPage) });
-            menulist.Add(new ItemMenu { ImageIcon1 = "black_whatshot.png", ImageIcon2 = "white_whatshot.png", Title = "Commitment", Contentpage = typeof(MainCommitment) });
-            menulist.Add(new ItemMenu { ImageIcon1 = "black_money.png", ImageIcon2 = "white_money.png", Title = "Expenses", Contentpage = typeof(MainExpenses) });
-            menulist.Add(new ItemMenu { ImageIcon1 = "black_setting.png", ImageIcon2 = "white_setting.png", Title = "Setting", Contentpage = typeof(MainSetting) });
-            menulist.Add(new ItemMenu { ImageIcon1 = "black_logout.png", ImageIcon2 = "white_logout.png", Title = "Logout", Contentpage = typeof(Logout) });
-            listview.ItemsSource = menulist;
-        }
-
         public async void OnHeaderTapped(object sender, EventArgs e)
         {
             var view = (StackLayout)sender;
@@ -78,6 +64,47 @@ namespace Xperimen.View.NavigationDrawer
             view.IsEnabled = false;
 
             await Navigation.PushPopupAsync(new ImageViewer(converter.BytesToStream(user_login.ProfileImage)));
+            view.IsEnabled = true;
+        }
+
+        public async void CellTapped(object sender, EventArgs e)
+        {
+            var view = (Grid)sender;
+            await view.ScaleTo(0.9, 100);
+            view.Scale = 1;
+
+            var stack = (StackLayout)view.Children[1];
+            var lbltitle = (Label)stack.Children[1];
+            var title = lbltitle.Text;
+
+            var parent = (DrawerMaster)Parent;
+            var item = viewmodel.MenuList.Where(x => x.Title.Equals(title)).ToList();
+            if (item.Count > 0)
+            {
+                Type page = item[0].Contentpage;
+                var openPage = (Page)Activator.CreateInstance(page);
+                viewmodel.SetupData(title);
+                parent.IsPresented = false;
+                parent.Detail = new NavigationPage(openPage);
+            }
+        }
+
+        private void listview_ItemSelected(object sender, SelectedItemChangedEventArgs e)
+        {
+            var view = (ListView)sender;
+            view.IsEnabled = false;
+
+            var parent = (DrawerMaster)view.Parent.Parent.Parent;
+            if (e.SelectedItem != null)
+            {
+                var item = (ItemMenu)e.SelectedItem;
+                Type page = item.Contentpage;
+                var openPage = (Page)Activator.CreateInstance(page);
+
+                parent.IsPresented = false;
+                parent.Detail = new NavigationPage(openPage);
+                ((ListView)sender).SelectedItem = null;
+            }
             view.IsEnabled = true;
         }
     }

@@ -53,9 +53,11 @@ namespace Xperimen.View.Setting
             var view = (Frame)sender;
             await view.ScaleTo(0.9, 100);
             view.Scale = 1;
+            view.IsEnabled = false;
             viewmodel.IsViewing = false;
             viewmodel.IsEditing = true;
             MessagingCenter.Send(this, "SettingEditProfile");
+            view.IsEnabled = true;
         }
     }
 }

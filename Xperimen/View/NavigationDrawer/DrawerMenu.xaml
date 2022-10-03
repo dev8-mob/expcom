@@ -3,8 +3,10 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Xperimen.View.NavigationDrawer.DrawerMenu"
              xmlns:stylekit="clr-namespace:Xperimen.Stylekit"
-             Title="☰">
-    
+             xmlns:cell="clr-namespace:Xperimen.View.NavigationDrawer" 
+             xmlns:navigationdrawer="clr-namespace:Xperimen.ViewModel.NavigationDrawer" 
+             x:DataType="navigationdrawer:DrawerViewmodel">
+
     <ContentPage.Content>
 
         <stylekit:XStacklayout Orientation="Vertical" Spacing="0">
@@ -30,20 +32,60 @@
                 </StackLayout.GestureRecognizers>
             </StackLayout>
             <BoxView HorizontalOptions="FillAndExpand" HeightRequest="2" BackgroundColor="DarkGray"/>
+
+            <!--<StackLayout HorizontalOptions="FillAndExpand" BindableLayout.ItemsSource="{Binding MenuList}" 
+                         Margin="0,15,0,0" Spacing="0" VerticalOptions="Start">
+                <BindableLayout.ItemTemplate>
+                    <DataTemplate>
+                        <cell:DrawerMenuCell/>
+                    </DataTemplate>
+                </BindableLayout.ItemTemplate>
+            </StackLayout>-->
+
+            <!--x:FieldModifier="public"-->
             <!-- menu list -->
-            <ListView x:Name="listview" HasUnevenRows="True" SeparatorVisibility="None" BackgroundColor="{DynamicResource DimGray}">
+            <ListView x:Name="listview" HasUnevenRows="True" SeparatorVisibility="None" ItemsSource="{Binding MenuList}">
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <ViewCell>
-                            <stylekit:XStacklayout Orientation="Horizontal">
-                                <stylekit:XImage Source1="{Binding ImageIcon1}" Source2="{Binding ImageIcon2}" HorizontalOptions="Start" 
-                                                 HeightRequest="30" WidthRequest="30" Margin="20,15,20,15" VerticalOptions="Center"/>
-                                <stylekit:XLabel Text="{Binding Title}" HorizontalOptions="StartAndExpand" VerticalOptions="Center"/>
-                            </stylekit:XStacklayout>
-                        </ViewCell>
+                        <cell:DrawerMenuCell/>
+                        <!--<ViewCell>
+                            <Grid HorizontalOptions="FillAndExpand" Margin="15,0,15,0">
+                                <Frame Padding="0" CornerRadius="8" BorderColor="{DynamicResource Key=Primary}" HorizontalOptions="FillAndExpand"
+                                       BackgroundColor="{DynamicResource Key=Primary}" HasShadow="False" IsClippedToBounds="True"
+                                       IsVisible="{Binding IsSelected}" Grid.Row="0" Grid.Column="0"/>
+                                <StackLayout Orientation="Horizontal" Grid.Row="0" Grid.Column="0">
+                                    <stylekit:XImage Source1="{Binding ImageIcon1}" Source2="{Binding ImageIcon2}" HorizontalOptions="Start" 
+                                                     HeightRequest="30" WidthRequest="30" Margin="20,8,20,8" VerticalOptions="Center"/>
+                                    <stylekit:XLabel Text="{Binding Title}" HorizontalOptions="StartAndExpand" VerticalOptions="Center" 
+                                                     TextColor="{Binding TextMenuColor}"/>
+                                </StackLayout>
+                                <Grid.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="CellTapped"/>
+                                </Grid.GestureRecognizers>
+                            </Grid>
+                        </ViewCell>-->
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
+            <!--#region notes -->
+            <!-- alternate way to create list in XAML -->
+            <!--<ListView.ItemsSource>
+                    <x:Array Type="{x:Type menu:ItemMenu}">
+                        <menu:ItemMenu ImageIcon1="black_user.png" ImageIcon2="white_user.png" Title="Dashboard" 
+                                       IsSelected="False" Contentpage="{x:Type dashboard:MainPage}" />
+                        <menu:ItemMenu ImageIcon1="black_whatshot.png" ImageIcon2="white_whatshot.png" Title="Admin" 
+                                       IsSelected="True" Contentpage="{x:Type dashboard:AdminPage}" />
+                        <menu:ItemMenu ImageIcon1="black_whatshot.png" ImageIcon2="white_whatshot.png" Title="Commitment" 
+                                       IsSelected="False" Contentpage="{x:Type commitment:MainCommitment}" />
+                        <menu:ItemMenu ImageIcon1="black_money.png" ImageIcon2="white_money.png" Title="Expenses" 
+                                       IsSelected="False" Contentpage="{x:Type expense:MainExpenses}" />
+                        <menu:ItemMenu ImageIcon1="black_setting.png" ImageIcon2="white_setting.png" Title="Setting" 
+                                       IsSelected="False" Contentpage="{x:Type setting:MainSetting}" />
+                        <menu:ItemMenu ImageIcon1="black_logout.png" ImageIcon2="white_logout.png" Title="Logout" 
+                                       IsSelected="False" Contentpage="{x:Type logout:Logout}" />
+                    </x:Array>
+                </ListView.ItemsSource>-->
+            <!--#endregion-->
 
         </stylekit:XStacklayout>
 

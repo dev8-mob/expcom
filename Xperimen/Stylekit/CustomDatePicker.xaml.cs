@@ -47,9 +47,11 @@ namespace Xperimen.Stylekit
             var view = (StackLayout)sender;
             await view.ScaleTo(0.9, 100);
             view.Scale = 1;
+            view.IsEnabled = false;
             var stack = (StackLayout)view.Children[0];
             var lblcode = (Label)stack.Children[1];
             MessagingCenter.Send(this, "SelectedDate", lblcode.Text);
+            view.IsEnabled = true;
             var navigation = Application.Current.MainPage.Navigation;
             await navigation.PopPopupAsync();
         }

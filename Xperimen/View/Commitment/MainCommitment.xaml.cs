@@ -2,6 +2,7 @@
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using Xperimen.Stylekit;
+using Xperimen.View.NavigationDrawer;
 using Xperimen.ViewModel.Commitment;
 
 namespace Xperimen.View.Commitment
@@ -91,7 +92,8 @@ namespace Xperimen.View.Commitment
             await view.ScaleTo(0.9, 100);
             view.Scale = 1;
             view.IsEnabled = false;
-            await Navigation.PopAsync();
+            var drawer = (DrawerMaster)view.Parent.Parent.Parent.Parent.Parent.Parent.Parent;
+            drawer.IsPresented = true;
             view.IsEnabled = true;
         }
 

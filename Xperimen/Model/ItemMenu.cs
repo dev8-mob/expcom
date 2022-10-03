@@ -1,6 +1,7 @@
 ﻿
 
 using System;
+using System.Drawing;
 
 namespace Xperimen.Model
 {
@@ -10,5 +11,7 @@ namespace Xperimen.Model
         public string ImageIcon2 { get; set; }
         public string Title { get; set; }
         public Type Contentpage { get; set; }
+        public bool IsSelected { get; set; }
+        public Color TextMenuColor { get; set; }
     }
 }

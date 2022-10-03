@@ -147,7 +147,7 @@ namespace Xperimen.ViewModel.Setting
             }
         }
 
-        public async Task<int> UpdateSetting()
+        public int UpdateSetting()
         {
             var camelcase = new CamelCaseChecker();
             var fname = camelcase.CapitalizeWord(Firstname);
@@ -185,25 +185,44 @@ namespace Xperimen.ViewModel.Setting
                 else
                 {
                     var row = connection.Update(model);
-                    if (row == 1)
-                    {
-                        Application.Current.Properties["app_theme"] = Theme;
-                        await Application.Current.SavePropertiesAsync();
-
-                        try { MessagingCenter.Send(this, "AppThemeUpdated"); }
-                        catch (Exception ex)
-                        {
-                            var error = ex.Message;
-                            var stack = ex.StackTrace;
-                            var page = Application.Current.MainPage;
-                            await page.DisplayAlert(error, stack, "OK");
-                        }
-                        return 1;
-                    }
+                    if (row == 1) return 1;
                     else return 3;
                 }
             }
             else return 2;
+        }
+
+        public async Task<int> UpdateAppTheme()
+        {
+            try
+            {
+                var userid = Application.Current.Properties["current_login"] as string;
+                string query = "UPDATE Clients SET AppTheme = '" + Theme + "' WHERE Id = '" + userid + "'";
+                connection.Query<Clients>(query);
+                var check = connection.Table<Clients>().ToList();
+
+                Application.Current.Properties["app_theme"] = Theme;
+                await Application.Current.SavePropertiesAsync();
+
+                try { MessagingCenter.Send(this, "AppThemeUpdated"); }
+                catch (Exception ex)
+                {
+                    var error = ex.Message;
+                    var stack = ex.StackTrace;
+                    var page = Application.Current.MainPage;
+                    await page.DisplayAlert(error, stack, "OK");
+                    return 2;
+                }
+                return 1;
+            }
+            catch (Exception ex)
+            {
+                var error = ex.Message;
+                var stack = ex.StackTrace;
+                var page = Application.Current.MainPage;
+                await page.DisplayAlert(error, stack, "OK");
+                return 2;
+            }
         }
     }
 }

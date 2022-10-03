@@ -37,11 +37,10 @@
 
     <Frame Padding="0" HasShadow="False" CornerRadius="50" HorizontalOptions="End" VerticalOptions="Start" Grid.Row="0" Grid.Column="0"
            Margin="0,-15,35,0" BorderColor="{DynamicResource Primary}" IsClippedToBounds="True">
-        <Image Source="white_cancel.png" HeightRequest="35" WidthRequest="35" Aspect="AspectFit">
-            <Image.GestureRecognizers>
-                <TapGestureRecognizer Tapped="CloseTapped"/>
-            </Image.GestureRecognizers>
-        </Image>
+        <Image Source="white_cancel.png" HeightRequest="35" WidthRequest="35" Aspect="AspectFit"/>
+        <Frame.GestureRecognizers>
+            <TapGestureRecognizer Tapped="CloseTapped"/>
+        </Frame.GestureRecognizers>
     </Frame>
 
 </Grid>

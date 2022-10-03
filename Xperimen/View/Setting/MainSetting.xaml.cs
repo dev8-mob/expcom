@@ -4,6 +4,7 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using Xperimen.Helper;
 using Xperimen.Stylekit;
+using Xperimen.View.NavigationDrawer;
 using Xperimen.ViewModel.Setting;
 
 namespace Xperimen.View.Setting
@@ -146,6 +147,7 @@ namespace Xperimen.View.Setting
             if (Application.Current.Properties.ContainsKey("app_theme"))
                 apptheme = Application.Current.Properties["app_theme"] as string;
 
+            #region update UI
             if (lbl.Text.Equals("Dark Theme"))
             {
                 viewmodel.Theme = "dark";
@@ -182,6 +184,12 @@ namespace Xperimen.View.Setting
                 frame_dim.BorderColor = Color.DarkGray;
                 frame_light.BorderColor = Color.FromHex(App.Primary);
             }
+            #endregion
+
+            viewmodel.IsLoading = true;
+            var result = await viewmodel.UpdateAppTheme();
+            if (result == 1) viewmodel.IsLoading = false;
+            if (result == 2) SetDisplayAlert("Error", "Update application theme failed.", "", "", "");
             view.IsEnabled = true;
         }
 
@@ -204,10 +212,11 @@ namespace Xperimen.View.Setting
                 SetDisplayAlert("Not Match", "Confirmation password is not match with current password.", "", "", "");
                 viewmodel.Repassword = string.Empty;
             }
-            else if (string.IsNullOrEmpty(viewmodel.Description)) SetDisplayAlert("Alert", "Description cannot be empty. Please provide any description about you.", "", "", "");
+            else if (string.IsNullOrEmpty(viewmodel.Description)) 
+                SetDisplayAlert("Alert", "Description cannot be empty. Please provide any description about you.", "", "", "");
             else
             {
-                var result = await viewmodel.UpdateSetting();
+                var result = viewmodel.UpdateSetting();
                 if (result == 1)
                 {
                     SetDisplayAlert("Success", "Profile updated.", "", "", "");
@@ -239,7 +248,8 @@ namespace Xperimen.View.Setting
             await view.ScaleTo(0.9, 100);
             view.Scale = 1;
             view.IsEnabled = false;
-            await Navigation.PopAsync();
+            var drawer = (DrawerMaster)view.Parent.Parent.Parent.Parent.Parent.Parent.Parent;
+            drawer.IsPresented = true;
             view.IsEnabled = true;
         }
 
