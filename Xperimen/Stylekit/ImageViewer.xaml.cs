@@ -40,7 +40,7 @@ namespace Xperimen.Stylekit
 
         public async void CloseTapped(object sender, EventArgs e)
         {
-            var view = (Image)sender;
+            var view = (Frame)sender;
             await view.ScaleTo(0.9, 100);
             view.Scale = 1;
             var navigation = Application.Current.MainPage.Navigation;

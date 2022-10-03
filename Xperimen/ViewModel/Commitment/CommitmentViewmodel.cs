@@ -296,6 +296,7 @@ namespace Xperimen.ViewModel.Commitment
                     userid = Application.Current.Properties["current_login"] as string;
 
                 var query = "UPDATE Clients SET NetIncome = " + Balance + " WHERE Id = '" + userid + "'";
+                connection.Query<Clients>(query);
                 var cek = connection.Query<Clients>("SELECT * FROM Clients WHERE Id = '" + userid + "'").ToList();
                 return 1;
             }

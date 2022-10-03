@@ -5,7 +5,7 @@
       HorizontalOptions="FillAndExpand" BackgroundColor="Transparent" VerticalOptions="Center"
       AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,0,1,1">
 
-    <Frame HorizontalOptions="FillAndExpand" VerticalOptions="Center" Grid.Row="0" Grid.Column="0" Margin="35,0,50,0"
+    <Frame HorizontalOptions="FillAndExpand" VerticalOptions="Center" Grid.Row="0" Grid.Column="0" Margin="35,15,50,0"
            BackgroundColor="{DynamicResource Key=DimGray1}" BorderColor="{DynamicResource Primary}" 
            CornerRadius="10" Padding="0" IsClippedToBounds="True">
 
@@ -36,7 +36,7 @@
     </Frame>
 
     <Frame Padding="0" HasShadow="False" CornerRadius="50" HorizontalOptions="End" VerticalOptions="Start" Grid.Row="0" Grid.Column="0"
-           Margin="0,-15,35,0" BorderColor="{DynamicResource Primary}" IsClippedToBounds="True">
+           Margin="0,0,35,0" BorderColor="{DynamicResource Primary}" IsClippedToBounds="True">
         <Image Source="white_cancel.png" HeightRequest="35" WidthRequest="35" Aspect="AspectFit"/>
         <Frame.GestureRecognizers>
             <TapGestureRecognizer Tapped="CloseTapped"/>

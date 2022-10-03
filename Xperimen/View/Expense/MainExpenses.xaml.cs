@@ -23,6 +23,7 @@ namespace Xperimen.View.Expense
             viewmodel = new ExpensesViewmodel();
             BindingContext = viewmodel;
             calendar = customcalendar;
+            SetupView();
 
             #region messagingcenter
             MessagingCenter.Subscribe<CustomDisplayAlert, string>(this, "DisplayAlertSelection", (sender, arg) =>
@@ -35,7 +36,7 @@ namespace Xperimen.View.Expense
                         if (result == 1)
                         {
                             calendar.SetupView();
-                            var getlist = viewmodel.GetExpensesList(viewmodel.SelectedDate);
+                            var getlist = viewmodel.GetExpensesOnDate(viewmodel.SelectedDate);
                             if (getlist == 1)
                             {
                                 if (!string.IsNullOrEmpty(viewmodel.SelectedDate))
@@ -60,7 +61,7 @@ namespace Xperimen.View.Expense
             { 
                 calendar.SetupView();
                 viewmodel.IsLoading = true;
-                var result = viewmodel.GetExpensesList(arg);
+                var result = viewmodel.GetExpensesOnDate(arg);
                 if (result == 1)
                 {
                     if (!string.IsNullOrEmpty(arg))
@@ -71,6 +72,7 @@ namespace Xperimen.View.Expense
                             sampledate = new DateTime(Convert.ToInt32(split[2]), Convert.ToInt32(split[1]), Convert.ToInt32(split[0]));
                         lbl_ondateselect.Text = "on " + sampledate.ToString("MMM d");
                         lbl_ondateselect_zero.Text = sampledate.ToString("MMM d");
+                        lbl_intro.Text = "Expenses Summary";
                     }
                     viewmodel.IsLoading = false;
                 }
@@ -79,7 +81,7 @@ namespace Xperimen.View.Expense
             MessagingCenter.Subscribe<CustomCalendar, string>(this, "CalendarDateTap", (sender, arg) =>
             {
                 viewmodel.IsLoading = true;
-                var result = viewmodel.GetExpensesList(arg);
+                var result = viewmodel.GetExpensesOnDate(arg);
                 if (result == 1)
                 {
                     if (!string.IsNullOrEmpty(arg))
@@ -90,6 +92,11 @@ namespace Xperimen.View.Expense
                             sampledate = new DateTime(Convert.ToInt32(split[2]), Convert.ToInt32(split[1]), Convert.ToInt32(split[0]));
                         lbl_ondateselect.Text = "on " + sampledate.ToString("MMM d");
                         lbl_ondateselect_zero.Text = sampledate.ToString("MMM d");
+                        if (viewmodel.NoExpenses)
+                        {
+                            viewmodel.GetUserTotalExpense();
+                            lbl_intro.Text = "No expenses yet for";
+                        }
                     }
                     viewmodel.IsLoading = false;
                 }
@@ -119,6 +126,17 @@ namespace Xperimen.View.Expense
             #endregion
         }
 
+        public void SetupView()
+        {
+            viewmodel.IsLoading = true;
+            lbl_intro.Text = "Expenses Summary";
+            lbl_ondateselect_zero.Text = string.Empty;
+            var result = viewmodel.GetUserTotalExpense();
+            if (result == 1) viewmodel.IsLoading = false;
+            else if (result == 2) SetDisplayAlert("No Data", "User do not have any expenses yet for this month.", "", "", "");
+            else if (result == 3) SetDisplayAlert("Error", "Technical error retrieving all user expenses.", "", "", "");
+        }
+
         public async void DrawerTapped(object sender, EventArgs e)
         {
             var view = (Image)sender;
@@ -130,14 +148,14 @@ namespace Xperimen.View.Expense
             view.IsEnabled = true;
         }
 
-        public async void MenuSummaryTapped(object sender, EventArgs e)
+        public async void RefreshClicked(object sender, EventArgs e)
         {
-            var view = (Image)sender;
-            await view.ScaleTo(0.8, 100);
+            var view = (Frame)sender;
+            await view.ScaleTo(0.9, 100);
             view.Scale = 1;
             view.IsEnabled = false;
+            SetupView();
             view.IsEnabled = true;
-            //await Navigation.PopAsync();
         }
 
         public async void AddExpensesClicked(object sender, EventArgs e)
@@ -150,9 +168,9 @@ namespace Xperimen.View.Expense
             view.IsEnabled = true;
         }
 
-        public async void ItemExpenseTapped(object sender, EventArgs e)
+        public async void SaveIncomeClicked(object sender, EventArgs e)
         {
-            var view = (StackLayout)sender;
+            var view = (Frame)sender;
             await view.ScaleTo(0.9, 100);
             view.Scale = 1;
             view.IsEnabled = false;

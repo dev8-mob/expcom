@@ -48,12 +48,11 @@ namespace Xperimen.Stylekit
             await view.ScaleTo(0.9, 100);
             view.Scale = 1;
             view.IsEnabled = false;
-            var stack = (StackLayout)view.Children[0];
-            var lblcode = (Label)stack.Children[1];
+            var lblcode = (Label)view.Children[0];
             MessagingCenter.Send(this, "SelectedDate", lblcode.Text);
-            view.IsEnabled = true;
             var navigation = Application.Current.MainPage.Navigation;
             await navigation.PopPopupAsync();
+            view.IsEnabled = true;
         }
 
         public async void CancelClicked(object sender, EventArgs e)
@@ -61,8 +60,10 @@ namespace Xperimen.Stylekit
             var view = (Label)sender;
             await view.ScaleTo(0.9, 100);
             view.Scale = 1;
+            view.IsEnabled = false;
             var navigation = Application.Current.MainPage.Navigation;
             await navigation.PopPopupAsync();
+            view.IsEnabled = true;
         }
     }
 
@@ -70,6 +71,7 @@ namespace Xperimen.Stylekit
     {
         public string code { get; set; }
         public string view { get; set; }
+        public bool istoday { get; set; }
     }
 
     public class SimpleDateViewer : BaseViewModel
@@ -97,10 +99,12 @@ namespace Xperimen.Stylekit
             var totalDays = DateTime.DaysInMonth(CurrentDate.Year, CurrentDate.Month);
             for (int a = 0; a < totalDays; a++)
             {
+                var istoday = false;
                 var create = new DateTime(CurrentDate.Year, CurrentDate.Month, a + 1);
+                if (create.Day == CurrentDate.Day) istoday = true;
                 var datecode = create.ToString("dd.MM.yyyy");
                 var viewstring = create.ToString("dddd, dd MMM");
-                var model = new DateView { code = datecode, view = viewstring };
+                var model = new DateView { code = datecode, view = viewstring, istoday = istoday };
                 ListDateView.Add(model);
             }
         }

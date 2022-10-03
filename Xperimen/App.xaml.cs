@@ -15,9 +15,9 @@ namespace Xperimen
         public static string DimGray1 = "#F2F2F2";
         public static string DimGray2 = "#e7e7e7";
         public static string CustomGreen = "#039603";
-        public static string CustomGreenLight = "#05fa05";
+        public static string CustomGreenLight = "#9cfc9c";
         public static string CustomRed = "#cb0101";
-        public static string CustomRedLight = "#fe3434";
+        public static string CustomRedLight = "#fe8080";
         public static string CustomYellow = "#DEAF14";
         public static string CustomBlue = "#01A9DB";
         public static string LabelTextColor = "#666666";

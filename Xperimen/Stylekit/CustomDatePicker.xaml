@@ -12,10 +12,10 @@
         <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="Black" Opacity="0.7"/>
 
         <Frame HasShadow="False" Padding="0" IsClippedToBounds="True" CornerRadius="10" VerticalOptions="Center"
-               Grid.Row="0" Grid.Column="0" Margin="50">
+               Grid.Row="0" Grid.Column="0" Margin="50,70,50,70">
 
             <!-- UI content (view) -->
-            <StackLayout x:Name="stack_bg" Orientation="Vertical" HorizontalOptions="FillAndExpand" Spacing="0" Padding="15">
+            <StackLayout x:Name="stack_bg" Orientation="Vertical" HorizontalOptions="FillAndExpand" Spacing="0" Padding="15,20,15,20">
 
                 <!-- title header -->
                 <stylekit:XLabel Text="Select Date" HorizontalOptions="Center" FontFamily="{DynamicResource Key=BoldFont}" FontSize="18"/>
@@ -39,7 +39,8 @@
                 </ScrollView>
 
                 <!-- cancel button -->
-                <stylekit:XLabel Text="Cancel" HorizontalOptions="Center" FontFamily="{DynamicResource Key=BoldFont}" Margin="0,30,0,0">
+                <stylekit:XLabel Text="Cancel" HorizontalOptions="Center" FontFamily="{DynamicResource Key=BoldFont}" Margin="0,10,0,0"
+                                 Padding="20,15,20,15">
                     <Label.GestureRecognizers>
                         <TapGestureRecognizer Tapped="CancelClicked" NumberOfTapsRequired="1"/>
                     </Label.GestureRecognizers>

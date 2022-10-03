@@ -14,6 +14,8 @@ namespace Xperimen.ViewModel.Expense
     public class ExpensesViewmodel : BaseViewModel
     {
         #region bindable properties
+        double _income;
+        double _usertotalexp;
         double _netincome;
         double _balance;
         double _amount;
@@ -25,6 +27,17 @@ namespace Xperimen.ViewModel.Expense
         double _total;
         bool _noexpenses;
         bool _hasexpenses;
+        bool _isnotsetincome;
+        public double Income
+        {
+            get { return _income; }
+            set { _income = value; OnPropertyChanged(); }
+        }
+        public double UserTotalExp
+        {
+            get { return _usertotalexp; }
+            set { _usertotalexp = value; OnPropertyChanged(); }
+        }
         public double NetIncome
         {
             get { return _netincome; }
@@ -80,6 +93,11 @@ namespace Xperimen.ViewModel.Expense
             get { return _hasexpenses; }
             set { _hasexpenses = value; OnPropertyChanged(); }
         }
+        public bool IsNotSetIncome
+        {
+            get { return _isnotsetincome; }
+            set { _isnotsetincome = value; OnPropertyChanged(); }
+        }
         #endregion
 
         public SQLiteConnection connection;
@@ -88,7 +106,8 @@ namespace Xperimen.ViewModel.Expense
         public ExpensesViewmodel()
         {
             connection = new SQLiteConnection(App.DB_PATH);
-            SelectedDate = string.Empty;
+            SelectedDate = DateTime.Now.ToString("dd.MM.yyyy");
+            UserTotalExp = 0;
             NetIncome = 0;
             Balance = 0;
             Amount = 0;
@@ -98,6 +117,9 @@ namespace Xperimen.ViewModel.Expense
             Attachment = null;
             ListExpenses = new List<Expenses>();
             TotalExpenses = 0;
+            NoExpenses = true;
+            HasExpenses = false;
+            IsNotSetIncome = false;
         }
 
         public async Task<int> TakePhoto()
@@ -179,7 +201,7 @@ namespace Xperimen.ViewModel.Expense
             }
         }
 
-        public int GetExpensesList(string datecode)
+        public int GetExpensesOnDate(string datecode)
         {
             try
             {
@@ -214,6 +236,49 @@ namespace Xperimen.ViewModel.Expense
                 var error = ex.Message;
                 var desc = ex.StackTrace;
                 return 2;
+            }
+        }
+
+        public int GetUserTotalExpense()
+        {
+            try
+            {
+                NoExpenses = true;
+                HasExpenses = false;
+                UserTotalExp = 0;
+                var userid = string.Empty;
+                if (Application.Current.Properties.ContainsKey("current_login"))
+                    userid = Application.Current.Properties["current_login"] as string;
+
+                string getuser = "SELECT * FROM Clients WHERE Id = '" + userid + "'";
+                var user = connection.Query<Clients>(getuser).ToList();
+                if (user.Count > 0)
+                {
+                    Income = user[0].Income;
+                    NetIncome = user[0].NetIncome;
+                }
+
+                if (Income == 0) IsNotSetIncome = true;
+                else IsNotSetIncome = false;
+
+                string query = "SELECT * FROM Expenses WHERE Userid = '" + userid + "'";
+                var result = connection.Query<Expenses>(query).ToList();
+                if (result.Count > 0)
+                {
+                    foreach (var data in result)
+                    {
+                        UserTotalExp += data.Amount;
+                        Balance = NetIncome - UserTotalExp;
+                    }
+                    return 1;
+                }
+                else return 2;
+            }
+            catch (Exception ex)
+            {
+                var error = ex.Message;
+                var desc = ex.StackTrace;
+                return 3;
             }
         }
 
