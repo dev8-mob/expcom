@@ -27,6 +27,7 @@ namespace Xperimen.View
             var view = (Frame)sender;
             await view.ScaleTo(0.9, 100);
             view.Scale = 1;
+            view.IsEnabled = false;
 
             viewmodel.IsLoading = true;
             if (string.IsNullOrEmpty(viewmodel.Username)) SetDisplayAlert("Alert", "Please insert your username.", "", "", "");
@@ -34,10 +35,11 @@ namespace Xperimen.View
             else
             {
                 var result = await viewmodel.Login();
-                if (result == 1) Application.Current.MainPage = new NavigationPage(new DrawerMaster());
+                if (result == 1) Application.Current.MainPage = new DrawerMaster();
                 else if (result == 2) SetDisplayAlert("Alert", "Your password is incorrect. Please insert the correct password.", "", "", "");
                 else if (result == 3) SetDisplayAlert("Alert", "The username is not found.", "", "", "");
             }
+            view.IsEnabled = true;
         }
 
         public async void CreateAccClicked(object sender, EventArgs e)
@@ -45,7 +47,9 @@ namespace Xperimen.View
             var view = (Label)sender;
             await view.ScaleTo(0.9, 100);
             view.Scale = 1;
+            view.IsEnabled = false;
             await Navigation.PushAsync(new CreateAccount());
+            view.IsEnabled = true;
         }
 
         public void SetDisplayAlert(string title, string description, string btn1, string btn2, string obj)

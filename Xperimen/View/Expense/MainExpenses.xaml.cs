@@ -1,9 +1,12 @@
 ﻿
+using Rg.Plugins.Popup.Extensions;
 using System;
 using System.Linq;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using Xperimen.Helper;
 using Xperimen.Stylekit;
+using Xperimen.View.NavigationDrawer;
 using Xperimen.ViewModel.Expense;
 
 namespace Xperimen.View.Expense
@@ -21,10 +24,58 @@ namespace Xperimen.View.Expense
             BindingContext = viewmodel;
             calendar = customcalendar;
 
+            #region messagingcenter
             MessagingCenter.Subscribe<CustomDisplayAlert, string>(this, "DisplayAlertSelection", (sender, arg) =>
-            { viewmodel.IsLoading = false; });
-            MessagingCenter.Subscribe<AddRecord>(this, "ExpensesAdded", (sender) =>
-            { calendar.SetupView(); });
+            { 
+                if (arg.Equals("Yes"))
+                {
+                    if (!string.IsNullOrEmpty(alert.CodeObject))
+                    {
+                        var result = viewmodel.DeleteExpense(alert.CodeObject);
+                        if (result == 1)
+                        {
+                            calendar.SetupView();
+                            var getlist = viewmodel.GetExpensesList(viewmodel.SelectedDate);
+                            if (getlist == 1)
+                            {
+                                if (!string.IsNullOrEmpty(viewmodel.SelectedDate))
+                                {
+                                    var sampledate = new DateTime();
+                                    var split = viewmodel.SelectedDate.Split('.');
+                                    if (split.Count() > 0)
+                                        sampledate = new DateTime(Convert.ToInt32(split[2]), Convert.ToInt32(split[1]), Convert.ToInt32(split[0]));
+                                    lbl_ondateselect.Text = "on " + sampledate.ToString("MMM d");
+                                    lbl_ondateselect_zero.Text = sampledate.ToString("MMM d");
+                                }
+                                SetDisplayAlert("Success", "Selected expenses deleted.", "", "", "");
+                            }
+                            if (getlist == 2) SetDisplayAlert("Error", "Technical error retrieving expenses for selected date.", "", "", "");
+                        }
+                        else if (result == 2) SetDisplayAlert("Error", "Technical error deleting selected expenses.", "", "", "");
+                    }
+                }
+                else viewmodel.IsLoading = false; 
+            });
+            MessagingCenter.Subscribe<AddRecord, string>(this, "ExpensesAdded", (sender, arg) =>
+            { 
+                calendar.SetupView();
+                viewmodel.IsLoading = true;
+                var result = viewmodel.GetExpensesList(arg);
+                if (result == 1)
+                {
+                    if (!string.IsNullOrEmpty(arg))
+                    {
+                        var sampledate = new DateTime();
+                        var split = arg.Split('.');
+                        if (split.Count() > 0)
+                            sampledate = new DateTime(Convert.ToInt32(split[2]), Convert.ToInt32(split[1]), Convert.ToInt32(split[0]));
+                        lbl_ondateselect.Text = "on " + sampledate.ToString("MMM d");
+                        lbl_ondateselect_zero.Text = sampledate.ToString("MMM d");
+                    }
+                    viewmodel.IsLoading = false;
+                }
+                if (result == 2) SetDisplayAlert("Error", "Technical error retrieving expenses for selected date.", "", "", "");
+            });
             MessagingCenter.Subscribe<CustomCalendar, string>(this, "CalendarDateTap", (sender, arg) =>
             {
                 viewmodel.IsLoading = true;
@@ -38,19 +89,55 @@ namespace Xperimen.View.Expense
                         if (split.Count() > 0)
                             sampledate = new DateTime(Convert.ToInt32(split[2]), Convert.ToInt32(split[1]), Convert.ToInt32(split[0]));
                         lbl_ondateselect.Text = "on " + sampledate.ToString("MMM d");
+                        lbl_ondateselect_zero.Text = sampledate.ToString("MMM d");
                     }
                     viewmodel.IsLoading = false;
                 }
                 if (result == 2) SetDisplayAlert("Error", "Technical error retrieving expenses for selected date.", "", "", "");
             });
+            MessagingCenter.Subscribe<ListCell, string>(this, "ExpenseImageTap", (sender, arg) =>
+            {
+                var convert = new StreamByteConverter();
+                var result = viewmodel.SetAttachmentPicture(arg);
+                if (result == 1) Navigation.PushPopupAsync(new ImageViewer(convert.BytesToStream(viewmodel.Attachment)));
+                else if (result == 2)
+                {
+                    viewmodel.IsLoading = true;
+                    SetDisplayAlert("Not Found", "The attachment picture is not found.", "", "", "");
+                }
+                else if (result == 2)
+                {
+                    viewmodel.IsLoading = true;
+                    SetDisplayAlert("Error", "Technical error retrieving selected attachment file.", "", "", "");
+                }
+            });
+            MessagingCenter.Subscribe<ListCell, string>(this, "DeleteImageTap", (sender, arg) =>
+            {
+                viewmodel.IsLoading = true;
+                SetDisplayAlert("Confirmation", "Are you sure to delete the expenses ?", "Yes", "Cancel", arg);
+            });
+            #endregion
         }
 
-        public async void BackTapped(object sender, EventArgs e)
+        public async void DrawerTapped(object sender, EventArgs e)
         {
             var view = (Image)sender;
             await view.ScaleTo(0.9, 100);
             view.Scale = 1;
-            await Navigation.PopAsync();
+            view.IsEnabled = false;
+            var drawer = (DrawerMaster)view.Parent.Parent.Parent.Parent.Parent.Parent;
+            drawer.IsPresented = true;
+            view.IsEnabled = true;
+        }
+
+        public async void MenuSummaryTapped(object sender, EventArgs e)
+        {
+            var view = (Image)sender;
+            await view.ScaleTo(0.8, 100);
+            view.Scale = 1;
+            view.IsEnabled = false;
+            view.IsEnabled = true;
+            //await Navigation.PopAsync();
         }
 
         public async void AddExpensesClicked(object sender, EventArgs e)
@@ -58,7 +145,9 @@ namespace Xperimen.View.Expense
             var view = (Frame)sender;
             await view.ScaleTo(0.9, 100);
             view.Scale = 1;
+            view.IsEnabled = false;
             await Navigation.PushAsync(new AddRecord());
+            view.IsEnabled = true;
         }
 
         public async void ItemExpenseTapped(object sender, EventArgs e)
@@ -66,6 +155,8 @@ namespace Xperimen.View.Expense
             var view = (StackLayout)sender;
             await view.ScaleTo(0.9, 100);
             view.Scale = 1;
+            view.IsEnabled = false;
+            view.IsEnabled = true;
         }
 
         public void SetDisplayAlert(string title, string description, string btn1, string btn2, string obj)

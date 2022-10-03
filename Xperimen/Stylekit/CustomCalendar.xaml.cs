@@ -221,8 +221,10 @@ namespace Xperimen.Stylekit
                 var view = (StackLayout)sender;
                 await view.ScaleTo(0.8, 100);
                 view.Scale = 1;
+                view.IsEnabled = false;
                 var lblcode = (Label)view.Children[1];
                 MessagingCenter.Send(this, "CalendarDateTap", lblcode.Text);
+                view.IsEnabled = true;
             }
             catch (Exception ex)
             {
@@ -238,9 +240,11 @@ namespace Xperimen.Stylekit
                 var view = (Frame)sender;
                 await view.ScaleTo(0.8, 100);
                 view.Scale = 1;
+                view.IsEnabled = false;
                 var stack = (StackLayout)view.Content;
                 var lblcode = (Label)stack.Children[1];
                 MessagingCenter.Send(this, "CalendarDateTap", lblcode.Text);
+                view.IsEnabled = true;
             }
             catch (Exception ex)
             {

@@ -25,6 +25,7 @@ namespace Xperimen.View.Expense
             var view = (StackLayout)sender;
             await view.ScaleTo(0.9, 100);
             view.Scale = 1;
+            view.IsEnabled = false;
 
             if (!stack_details.IsVisible)
             {
@@ -46,6 +47,17 @@ namespace Xperimen.View.Expense
                 }
                 stack_details.IsVisible = false;
             }
+            view.IsEnabled = true;
+        }
+
+        public async void DeleteTapped(object sender, EventArgs e)
+        {
+            var view = (Image)sender;
+            await view.ScaleTo(0.8, 100);
+            view.Scale = 1;
+            view.IsEnabled = false;
+            MessagingCenter.Send(this, "DeleteImageTap", lbl_id.Text);
+            view.IsEnabled = true;
         }
 
         public async void PicAttachmentClicked(object sender, EventArgs e)
@@ -53,6 +65,9 @@ namespace Xperimen.View.Expense
             var view = (Frame)sender;
             await view.ScaleTo(0.9, 100);
             view.Scale = 1;
+            view.IsEnabled = false;
+            MessagingCenter.Send(this, "ExpenseImageTap", lbl_id.Text);
+            view.IsEnabled = true;
         }
     }
 }

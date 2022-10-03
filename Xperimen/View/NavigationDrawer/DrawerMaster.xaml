@@ -1,22 +1,22 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<MasterDetailPage xmlns="http://xamarin.com/schemas/2014/forms"
-                  xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-                  x:Class="Xperimen.View.NavigationDrawer.DrawerMaster"
-                  xmlns:DrawerMenu="clr-namespace:Xperimen.View.NavigationDrawer"
-                  NavigationPage.HasNavigationBar="False" BackgroundColor="White">
+<FlyoutPage xmlns="http://xamarin.com/schemas/2014/forms"
+            xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+            x:Class="Xperimen.View.NavigationDrawer.DrawerMaster"
+            xmlns:DrawerMenu="clr-namespace:Xperimen.View.NavigationDrawer"
+            FlyoutLayoutBehavior="Popover"
+            NavigationPage.HasNavigationBar="False" 
+            BackgroundColor="White">
 
-    <MasterDetailPage.Master>
-        <DrawerMenu:DrawerMenu x:Name="drawerMenu"/>
-    </MasterDetailPage.Master>
+    <FlyoutPage.Flyout>
+        <DrawerMenu:DrawerMenu x:Name="drawermenu" Title="Drawer Menu"/>
+    </FlyoutPage.Flyout>
 
-    <!--xmlns:DrawerDetail="clr-namespace:HasilKarya.Views.Dashboard"-->
-    <!--<MasterDetailPage.Detail>
+    <!--<FlyoutPage.Detail>
         <NavigationPage>
             <x:Arguments>
-                <DrawerDetail:DashboardSales/>
-                <DrawerDetail:DashboardService/>
+                <dashboard:AdminPage />
             </x:Arguments>
         </NavigationPage>
-    </MasterDetailPage.Detail>-->
-
-</MasterDetailPage>
+    </FlyoutPage.Detail>-->
+    
+</FlyoutPage>

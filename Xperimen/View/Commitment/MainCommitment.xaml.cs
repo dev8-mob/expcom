@@ -2,6 +2,7 @@
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using Xperimen.Stylekit;
+using Xperimen.View.NavigationDrawer;
 using Xperimen.ViewModel.Commitment;
 
 namespace Xperimen.View.Commitment
@@ -50,8 +51,10 @@ namespace Xperimen.View.Commitment
             var view = (Image)sender;
             await view.ScaleTo(0.9, 100);
             view.Scale = 1;
+            view.IsEnabled = false;
             stack_income.IsVisible = false;
             stack_editincome.IsVisible = true;
+            view.IsEnabled = true;
         }
 
         public async void SaveIncomeTapped(object sender, EventArgs e)
@@ -59,12 +62,14 @@ namespace Xperimen.View.Commitment
             var view = (Image)sender;
             await view.ScaleTo(0.9, 100);
             view.Scale = 1;
+            view.IsEnabled = false;
 
             var result = viewmodel.SaveIncome();
             if (result == 2) SetDisplayAlert("Error", "Technical error saving income amount.", "", "", "");
             viewmodel.GetCommitmentList();
             stack_income.IsVisible = true;
             stack_editincome.IsVisible = false;
+            view.IsEnabled = true;
         }
 
         public async void ItemCommitmentTapped(object sender, EventArgs e)
@@ -72,18 +77,24 @@ namespace Xperimen.View.Commitment
             var view = (StackLayout)sender;
             await view.ScaleTo(0.9, 100);
             view.Scale = 1;
+            view.IsEnabled = false;
+
             var grid = (Grid)view.Children[0];
             var stack = (StackLayout)grid.Children[0];
             var lbl_id = (Label)stack.Children[2];
             await Navigation.PushAsync(new Details(lbl_id.Text));
+            view.IsEnabled = true;
         }
 
-        public async void BackTapped(object sender, EventArgs e)
+        public async void DrawerTapped(object sender, EventArgs e)
         {
             var view = (Image)sender;
             await view.ScaleTo(0.9, 100);
             view.Scale = 1;
-            await Navigation.PopAsync();
+            view.IsEnabled = false;
+            var drawer = (DrawerMaster)view.Parent.Parent.Parent.Parent.Parent.Parent.Parent;
+            drawer.IsPresented = true;
+            view.IsEnabled = true;
         }
 
         public async void AddCommitmentClicked(object sender, EventArgs e)
@@ -91,7 +102,9 @@ namespace Xperimen.View.Commitment
             var view = (Frame)sender;
             await view.ScaleTo(0.9, 100);
             view.Scale = 1;
+            view.IsEnabled = false;
             await Navigation.PushAsync(new AddRecord());
+            view.IsEnabled = true;
         }
 
         public void SetDisplayAlert(string title, string description, string btn1, string btn2, string obj)

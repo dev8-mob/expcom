@@ -116,6 +116,7 @@ namespace Xperimen.View.Commitment
             var view = (Image)sender;
             await view.ScaleTo(0.9, 100);
             view.Scale = 1;
+            view.IsEnabled = false;
 
             stack_edit.IsVisible = true;
             frame_walletlike.IsVisible = true;
@@ -124,6 +125,7 @@ namespace Xperimen.View.Commitment
             stack_donebtns.IsVisible = false;
             //update selected state in custom checkbox
             checkbox.InitCheckbox(viewmodel.HasAccNo);
+            view.IsEnabled = true;
         }
 
         public async void DeleteTapped(object sender, EventArgs e)
@@ -131,9 +133,11 @@ namespace Xperimen.View.Commitment
             var view = (Image)sender;
             await view.ScaleTo(0.9, 100);
             view.Scale = 1;
+            view.IsEnabled = false;
 
             viewmodel.IsLoading = true;
             SetDisplayAlert("Confirmation", "Are you sure to delete this commitment", "Yes", "Cancel", "delete");
+            view.IsEnabled = true;
         }
 
         public async void CancelClicked(object sender, EventArgs e)
@@ -141,6 +145,7 @@ namespace Xperimen.View.Commitment
             var view = (Label)sender;
             await view.ScaleTo(0.9, 100);
             view.Scale = 1;
+            view.IsEnabled = false;
 
             viewmodel.Title = _temp.Title;
             viewmodel.Description = _temp.Description;
@@ -157,6 +162,7 @@ namespace Xperimen.View.Commitment
             if (viewmodel.HasAttachment) frame_attachment.IsVisible = true;
             else if (!viewmodel.HasAttachment) frame_attachment.IsVisible = false;
             stack_donebtns.IsVisible = true;
+            view.IsEnabled = true;
         }
 
         public async void GalleryClicked(object sender, EventArgs e)
@@ -164,6 +170,7 @@ namespace Xperimen.View.Commitment
             var view = (Image)sender;
             await view.ScaleTo(0.9, 100);
             view.Scale = 1;
+            view.IsEnabled = false;
 
             viewmodel.IsLoading = true;
             var result = await viewmodel.PickPhoto();
@@ -177,6 +184,7 @@ namespace Xperimen.View.Commitment
                 viewmodel.HasAttachment = true;
                 viewmodel.IsLoading = false;
             }
+            view.IsEnabled = true;
         }
 
         public async void CameraClicked(object sender, EventArgs e)
@@ -184,6 +192,7 @@ namespace Xperimen.View.Commitment
             var view = (Image)sender;
             await view.ScaleTo(0.9, 100);
             view.Scale = 1;
+            view.IsEnabled = false;
 
             viewmodel.IsLoading = true;
             var result = await viewmodel.TakePhoto();
@@ -197,6 +206,7 @@ namespace Xperimen.View.Commitment
                 viewmodel.HasAttachment = true;
                 viewmodel.IsLoading = false;
             }
+            view.IsEnabled = true;
         }
 
         public async void PicAttachmentClicked(object sender, EventArgs e)
@@ -204,6 +214,7 @@ namespace Xperimen.View.Commitment
             var view = (Frame)sender;
             await view.ScaleTo(0.9, 100);
             view.Scale = 1;
+            view.IsEnabled = false;
 
             try
             {
@@ -215,6 +226,7 @@ namespace Xperimen.View.Commitment
                 var error = ex.Message;
                 var desc = ex.StackTrace;
             }
+            view.IsEnabled = true;
         }
 
         public async void LabelAttachmentClicked(object sender, EventArgs e)
@@ -222,11 +234,13 @@ namespace Xperimen.View.Commitment
             var view = (Label)sender;
             await view.ScaleTo(0.9, 100);
             view.Scale = 1;
+            view.IsEnabled = false;
 
             if (viewmodel.Picture != null)
                 await Navigation.PushPopupAsync(new ImageViewer(viewmodel.Picture.GetStream()));
             else if (viewmodel.Picture == null)
                 await Navigation.PushPopupAsync(new ImageViewer(converter.BytesToStream(viewmodel.ProfilePic)));
+            view.IsEnabled = true;
         }
 
         public async void AttachmentDeleteClicked(object sender, EventArgs e)
@@ -234,8 +248,10 @@ namespace Xperimen.View.Commitment
             var view = (Image)sender;
             await view.ScaleTo(0.9, 100);
             view.Scale = 1;
+            view.IsEnabled = false;
             viewmodel.HasAttachment = false;
             viewmodel.Picture = null;
+            view.IsEnabled = true;
         }
 
         public async void UpdateCommitmentClicked(object sender, EventArgs e)
@@ -243,6 +259,7 @@ namespace Xperimen.View.Commitment
             var view = (Frame)sender;
             await view.ScaleTo(0.9, 100);
             view.Scale = 1;
+            view.IsEnabled = false;
 
             viewmodel.IsLoading = true;
             if (string.IsNullOrEmpty(viewmodel.Title)) SetDisplayAlert("Alert", "Title is empty. Please insert any title (bill, rent, investment, etc...)", "", "", "");
@@ -258,6 +275,7 @@ namespace Xperimen.View.Commitment
                 }
                 else if (result == 2) SetDisplayAlert("Error", "Technical error when updating commitment.", "", "", "error");
             }
+            view.IsEnabled = true;
         }
 
         public async void DonePaidClicked(object sender, EventArgs e)
@@ -265,6 +283,7 @@ namespace Xperimen.View.Commitment
             var view = (Frame)sender;
             await view.ScaleTo(0.9, 100);
             view.Scale = 1;
+            view.IsEnabled = false;
 
             viewmodel.IsLoading = true;
             var result = viewmodel.SetStatusDonePaid(data, true);
@@ -273,6 +292,7 @@ namespace Xperimen.View.Commitment
                 SetDisplayAlert("Done", "Commitment marked as paid.", "", "", "markdone");
                 MessagingCenter.Send(this, "CommitmentUpdated");
             }
+            view.IsEnabled = true;
         }
 
         public async void NotDoneClicked(object sender, EventArgs e)
@@ -280,6 +300,7 @@ namespace Xperimen.View.Commitment
             var view = (Frame)sender;
             await view.ScaleTo(0.9, 100);
             view.Scale = 1;
+            view.IsEnabled = false;
 
             viewmodel.IsLoading = true;
             var result = viewmodel.SetStatusDonePaid(data, false);
@@ -288,6 +309,7 @@ namespace Xperimen.View.Commitment
                 SetDisplayAlert("Undone", "Commitment marked as not done yet.", "", "", "markdone");
                 MessagingCenter.Send(this, "CommitmentUpdated");
             }
+            view.IsEnabled = true;
         }
 
         public async void BackTapped(object sender, EventArgs e)
@@ -295,7 +317,9 @@ namespace Xperimen.View.Commitment
             var view = (Image)sender;
             await view.ScaleTo(0.9, 100);
             view.Scale = 1;
+            view.IsEnabled = false;
             await Navigation.PopAsync();
+            view.IsEnabled = true;
         }
 
         public void SetDisplayAlert(string title, string description, string btn1, string btn2, string obj)

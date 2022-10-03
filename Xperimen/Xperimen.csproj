@@ -12,20 +12,11 @@
 
   <ItemGroup>
     <Compile Remove="ViewModel\Calendar\**" />
-    <Compile Remove="ViewModel\Media\**" />
-    <Compile Remove="ViewModel\NavigationDrawer\**" />
     <Compile Remove="View\Calendar\**" />
-    <Compile Remove="View\Media\**" />
     <EmbeddedResource Remove="ViewModel\Calendar\**" />
-    <EmbeddedResource Remove="ViewModel\Media\**" />
-    <EmbeddedResource Remove="ViewModel\NavigationDrawer\**" />
     <EmbeddedResource Remove="View\Calendar\**" />
-    <EmbeddedResource Remove="View\Media\**" />
     <None Remove="ViewModel\Calendar\**" />
-    <None Remove="ViewModel\Media\**" />
-    <None Remove="ViewModel\NavigationDrawer\**" />
     <None Remove="View\Calendar\**" />
-    <None Remove="View\Media\**" />
   </ItemGroup>
 
   <ItemGroup>
@@ -126,11 +117,19 @@
     <EmbeddedResource Update="View\NavigationDrawer\DrawerMenu.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Update="View\NavigationDrawer\DrawerMenuCell.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
     <EmbeddedResource Update="View\Setting\MainSetting.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="View\Setting\SettingInfo.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="ViewModel\Media\" />
+    <Folder Include="View\Media\" />
   </ItemGroup>
 </Project>

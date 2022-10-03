@@ -9,8 +9,8 @@ using Xamarin.Forms.PlatformConfiguration.AndroidSpecific;
 
 namespace Xperimen.Droid
 {
-    [Activity(Label = "Xperimen", Icon = "@mipmap/icon", Theme = "@style/MainTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize |
-        ConfigChanges.Orientation | ConfigChanges.UiMode | ConfigChanges.ScreenLayout | ConfigChanges.SmallestScreenSize, WindowSoftInputMode = SoftInput.AdjustResize)]
+    [Activity(Label = "Xperimen", Icon = "@mipmap/icon", Theme = "@style/MainTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | 
+        ConfigChanges.ScreenLayout | ConfigChanges.SmallestScreenSize, WindowSoftInputMode = SoftInput.AdjustResize)]
     public class MainActivity : Xamarin.Forms.Platform.Android.FormsAppCompatActivity
     {
         protected override void OnCreate(Bundle savedInstanceState)
@@ -19,6 +19,7 @@ namespace Xperimen.Droid
             string fileLocation = System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal);
             string sql_path = Path.Combine(fileLocation, fileName);
             base.OnCreate(savedInstanceState);
+            RequestedOrientation = ScreenOrientation.Portrait;
 
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             Xamarin.Forms.Forms.Init(this, savedInstanceState);

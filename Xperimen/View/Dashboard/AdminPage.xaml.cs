@@ -25,6 +25,7 @@ namespace Xperimen.View.Dashboard
             var view = (StackLayout)sender;
             await view.ScaleTo(0.9, 100);
             view.Scale = 1;
+            view.IsEnabled = false;
 
             var tab = view.ClassId;
             if (tab.Equals("tab_one"))
@@ -46,6 +47,7 @@ namespace Xperimen.View.Dashboard
                 tab_two.IsVisible = true;
             }
             viewmodel.SetSelectedTab(tab);
+            view.IsEnabled = true;
         }
 
         public async void DrawerTapped(object sender, EventArgs e)
@@ -53,8 +55,10 @@ namespace Xperimen.View.Dashboard
             var view = (Image)sender;
             await view.ScaleTo(0.8, 100);
             view.Scale = 1;
+            view.IsEnabled = false;
             var drawer = (DrawerMaster)view.Parent.Parent.Parent.Parent.Parent.Parent;
             drawer.IsPresented = true;
+            view.IsEnabled = true;
         }
     }
 }

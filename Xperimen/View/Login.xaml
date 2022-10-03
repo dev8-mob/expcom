@@ -41,7 +41,8 @@
                         </Frame>
 
                         <!-- create account button -->
-                        <stylekit:XLabel Text="Create An Account" HorizontalOptions="Center" FontFamily="{DynamicResource Key=BoldFont}" Margin="0,30,0,0">
+                        <stylekit:XLabel Text="Create An Account" HorizontalOptions="Center" FontFamily="{DynamicResource Key=BoldFont}" Margin="0,15,0,0"
+                                         Padding="20,15,20,15">
                             <Label.GestureRecognizers>
                                 <TapGestureRecognizer Tapped="CreateAccClicked" NumberOfTapsRequired="1"/>
                             </Label.GestureRecognizers>

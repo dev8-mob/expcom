@@ -42,6 +42,7 @@ namespace Xperimen.View.Expense
             var view = (Image)sender;
             await view.ScaleTo(0.9, 100);
             view.Scale = 1;
+            view.IsEnabled = false;
 
             viewmodel.IsLoading = true;
             var result = await viewmodel.PickPhoto();
@@ -55,6 +56,7 @@ namespace Xperimen.View.Expense
                 viewmodel.HasAttachment = true;
                 viewmodel.IsLoading = false;
             }
+            view.IsEnabled = true;
         }
 
         public async void CameraClicked(object sender, EventArgs e)
@@ -62,6 +64,7 @@ namespace Xperimen.View.Expense
             var view = (Image)sender;
             await view.ScaleTo(0.9, 100);
             view.Scale = 1;
+            view.IsEnabled = false;
 
             viewmodel.IsLoading = true;
             var result = await viewmodel.TakePhoto();
@@ -75,6 +78,7 @@ namespace Xperimen.View.Expense
                 viewmodel.HasAttachment = true;
                 viewmodel.IsLoading = false;
             }
+            view.IsEnabled = true;
         }
 
         public async void ChangeDateClicked(object sender, EventArgs e)
@@ -82,7 +86,9 @@ namespace Xperimen.View.Expense
             var view = (Frame)sender;
             await view.ScaleTo(0.9, 100);
             view.Scale = 1;
+            view.IsEnabled = false;
             await Navigation.PushPopupAsync(new CustomDatePicker());
+            view.IsEnabled = true;
         }
 
         public async void SaveClicked(object sender, EventArgs e)
@@ -90,6 +96,7 @@ namespace Xperimen.View.Expense
             var view = (Frame)sender;
             await view.ScaleTo(0.9, 100);
             view.Scale = 1;
+            view.IsEnabled = false;
 
             viewmodel.IsLoading = true;
             if (viewmodel.Amount == 0) SetDisplayAlert("Alert", "Expenses amount is empty. Please insert expenses amount.", "", "", "");
@@ -101,10 +108,11 @@ namespace Xperimen.View.Expense
                 if (result == 1)
                 {
                     SetDisplayAlert("Success", "New expenses added.", "", "", "success");
-                    MessagingCenter.Send(this, "ExpensesAdded");
+                    MessagingCenter.Send(this, "ExpensesAdded", viewmodel.SelectedDate);
                 }
                 else if (result == 2) SetDisplayAlert("Error", "Technical error adding new expenses.", "", "", "");
             }
+            view.IsEnabled = true;
         }
 
         public async void CancelClicked(object sender, EventArgs e)
@@ -112,7 +120,9 @@ namespace Xperimen.View.Expense
             var view = (Label)sender;
             await view.ScaleTo(0.9, 100);
             view.Scale = 1;
+            view.IsEnabled = false;
             await Navigation.PopAsync();
+            view.IsEnabled = true;
         }
 
         public async void AttachmentClicked(object sender, EventArgs e)
@@ -122,7 +132,9 @@ namespace Xperimen.View.Expense
                 var view = (Label)sender;
                 await view.ScaleTo(0.9, 100);
                 view.Scale = 1;
+                view.IsEnabled = false;
                 await Navigation.PushPopupAsync(new ImageViewer(viewmodel.Picture.GetStream()));
+                view.IsEnabled = true;
             }
         }
 
@@ -131,8 +143,10 @@ namespace Xperimen.View.Expense
             var view = (Image)sender;
             await view.ScaleTo(0.9, 100);
             view.Scale = 1;
+            view.IsEnabled = false;
             viewmodel.Picture = null;
             viewmodel.HasAttachment = false;
+            view.IsEnabled = false;
         }
 
         public void SetDisplayAlert(string title, string description, string btn1, string btn2, string obj)
