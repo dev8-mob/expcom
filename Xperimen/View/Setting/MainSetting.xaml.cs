@@ -188,7 +188,11 @@ namespace Xperimen.View.Setting
 
             viewmodel.IsLoading = true;
             var result = await viewmodel.UpdateAppTheme();
-            if (result == 1) viewmodel.IsLoading = false;
+            if (result == 1)
+            {
+                viewmodel.IsLoading = false;
+                SetupView();
+            }
             if (result == 2) SetDisplayAlert("Error", "Update application theme failed.", "", "", "");
             view.IsEnabled = true;
         }
@@ -242,7 +246,7 @@ namespace Xperimen.View.Setting
             view.IsEnabled = true;
         }
 
-        public async void BackTapped(object sender, EventArgs e)
+        public async void DrawerTapped(object sender, EventArgs e)
         {
             var view = (Image)sender;
             await view.ScaleTo(0.9, 100);

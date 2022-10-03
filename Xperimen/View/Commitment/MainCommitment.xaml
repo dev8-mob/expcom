@@ -24,7 +24,7 @@
                         <stylekit:XImage Source1="black_menu.png" Source2="white_menu.png" HeightRequest="35" WidthRequest="35" Aspect="AspectFit"
                                          HorizontalOptions="Start" Margin="0,0,20,0">
                             <Image.GestureRecognizers>
-                                <TapGestureRecognizer Tapped="BackTapped" NumberOfTapsRequired="1"/>
+                                <TapGestureRecognizer Tapped="DrawerTapped" NumberOfTapsRequired="1"/>
                             </Image.GestureRecognizers>
                         </stylekit:XImage>
                         <stylekit:XLabel Text="Commitment List" HorizontalOptions="FillAndExpand" FontFamily="{DynamicResource Key=BoldFont}" 

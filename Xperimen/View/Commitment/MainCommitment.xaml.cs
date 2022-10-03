@@ -86,7 +86,7 @@ namespace Xperimen.View.Commitment
             view.IsEnabled = true;
         }
 
-        public async void BackTapped(object sender, EventArgs e)
+        public async void DrawerTapped(object sender, EventArgs e)
         {
             var view = (Image)sender;
             await view.ScaleTo(0.9, 100);

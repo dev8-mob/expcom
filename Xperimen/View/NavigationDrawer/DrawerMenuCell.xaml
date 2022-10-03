@@ -10,7 +10,7 @@
     <Grid HorizontalOptions="FillAndExpand" Margin="15,0,15,0">
         <Frame Padding="0" CornerRadius="8" BorderColor="{DynamicResource Key=Primary}" HorizontalOptions="FillAndExpand"
                BackgroundColor="{DynamicResource Key=Primary}" HasShadow="False" IsClippedToBounds="True"
-               IsVisible="{Binding IsSelected}" Grid.Row="0" Grid.Column="0"/>
+               IsVisible="{Binding IsSelected}" Grid.Row="0" Grid.Column="0" x:Name="frame_bg"/>
         <StackLayout Orientation="Horizontal" Grid.Row="0" Grid.Column="0">
             <stylekit:XImage Source1="{Binding ImageIcon1}" Source2="{Binding ImageIcon2}" HorizontalOptions="Start" 
                              HeightRequest="30" WidthRequest="30" Margin="20,8,20,8" VerticalOptions="Center"/>

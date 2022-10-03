@@ -22,7 +22,7 @@
                         <stylekit:XImage Source1="black_menu.png" Source2="white_menu.png" HeightRequest="35" WidthRequest="35" Aspect="AspectFit"
                                          HorizontalOptions="Start" Margin="0,0,20,0">
                             <Image.GestureRecognizers>
-                                <TapGestureRecognizer Tapped="BackTapped" NumberOfTapsRequired="1"/>
+                                <TapGestureRecognizer Tapped="DrawerTapped" NumberOfTapsRequired="1"/>
                             </Image.GestureRecognizers>
                         </stylekit:XImage>
                         <stylekit:XLabel Text="Setting" FontFamily="{DynamicResource Key=BoldFont}" FontSize="18" VerticalOptions="Center"/>
@@ -139,7 +139,8 @@
                             </Frame>
 
                             <!-- cancel button -->
-                            <stylekit:XLabel Text="Cancel" HorizontalOptions="Center" FontFamily="{DynamicResource Key=BoldFont}" Margin="0,30,0,0">
+                            <stylekit:XLabel Text="Cancel" HorizontalOptions="Center" FontFamily="{DynamicResource Key=BoldFont}" Margin="0,15,0,0"
+                                             Padding="20,15,20,15">
                                 <Label.GestureRecognizers>
                                     <TapGestureRecognizer Tapped="CancelClicked" NumberOfTapsRequired="1"/>
                                 </Label.GestureRecognizers>

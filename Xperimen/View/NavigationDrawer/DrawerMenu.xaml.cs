@@ -31,8 +31,6 @@ namespace Xperimen.View.NavigationDrawer
 
             MessagingCenter.Subscribe<SettingViewmodel>(this, "AppThemeUpdated", (sender) => 
             { UpdateProfilePic(); });
-            MessagingCenter.Subscribe<DrawerMenuCell>(this, "DrawerMenuSelected", (sender) => 
-            { listview.ItemsSource = viewmodel.MenuList; });
         }
 
         public void UpdateProfilePic()
@@ -83,7 +81,7 @@ namespace Xperimen.View.NavigationDrawer
             {
                 Type page = item[0].Contentpage;
                 var openPage = (Page)Activator.CreateInstance(page);
-                viewmodel.SetupData(title);
+                viewmodel.SetSelectedMenu(title);
                 parent.IsPresented = false;
                 parent.Detail = new NavigationPage(openPage);
             }
@@ -93,18 +91,8 @@ namespace Xperimen.View.NavigationDrawer
         {
             var view = (ListView)sender;
             view.IsEnabled = false;
-
-            var parent = (DrawerMaster)view.Parent.Parent.Parent;
-            if (e.SelectedItem != null)
-            {
-                var item = (ItemMenu)e.SelectedItem;
-                Type page = item.Contentpage;
-                var openPage = (Page)Activator.CreateInstance(page);
-
-                parent.IsPresented = false;
-                parent.Detail = new NavigationPage(openPage);
-                ((ListView)sender).SelectedItem = null;
-            }
+            if (e.SelectedItem != null) 
+                view.SelectedItem = null;
             view.IsEnabled = true;
         }
     }

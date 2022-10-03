@@ -31,39 +31,15 @@
                     <TapGestureRecognizer Tapped="OnHeaderTapped"/>
                 </StackLayout.GestureRecognizers>
             </StackLayout>
-            <BoxView HorizontalOptions="FillAndExpand" HeightRequest="2" BackgroundColor="DarkGray"/>
-
-            <!--<StackLayout HorizontalOptions="FillAndExpand" BindableLayout.ItemsSource="{Binding MenuList}" 
-                         Margin="0,15,0,0" Spacing="0" VerticalOptions="Start">
-                <BindableLayout.ItemTemplate>
-                    <DataTemplate>
-                        <cell:DrawerMenuCell/>
-                    </DataTemplate>
-                </BindableLayout.ItemTemplate>
-            </StackLayout>-->
+            <BoxView HorizontalOptions="FillAndExpand" HeightRequest="2" BackgroundColor="DarkGray" Margin="0,0,0,15"/>
 
             <!--x:FieldModifier="public"-->
             <!-- menu list -->
-            <ListView x:Name="listview" HasUnevenRows="True" SeparatorVisibility="None" ItemsSource="{Binding MenuList}">
+            <ListView x:Name="listview" HasUnevenRows="True" SeparatorVisibility="None" ItemsSource="{Binding MenuList}"
+                      ItemSelected="listview_ItemSelected">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <cell:DrawerMenuCell/>
-                        <!--<ViewCell>
-                            <Grid HorizontalOptions="FillAndExpand" Margin="15,0,15,0">
-                                <Frame Padding="0" CornerRadius="8" BorderColor="{DynamicResource Key=Primary}" HorizontalOptions="FillAndExpand"
-                                       BackgroundColor="{DynamicResource Key=Primary}" HasShadow="False" IsClippedToBounds="True"
-                                       IsVisible="{Binding IsSelected}" Grid.Row="0" Grid.Column="0"/>
-                                <StackLayout Orientation="Horizontal" Grid.Row="0" Grid.Column="0">
-                                    <stylekit:XImage Source1="{Binding ImageIcon1}" Source2="{Binding ImageIcon2}" HorizontalOptions="Start" 
-                                                     HeightRequest="30" WidthRequest="30" Margin="20,8,20,8" VerticalOptions="Center"/>
-                                    <stylekit:XLabel Text="{Binding Title}" HorizontalOptions="StartAndExpand" VerticalOptions="Center" 
-                                                     TextColor="{Binding TextMenuColor}"/>
-                                </StackLayout>
-                                <Grid.GestureRecognizers>
-                                    <TapGestureRecognizer Tapped="CellTapped"/>
-                                </Grid.GestureRecognizers>
-                            </Grid>
-                        </ViewCell>-->
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>

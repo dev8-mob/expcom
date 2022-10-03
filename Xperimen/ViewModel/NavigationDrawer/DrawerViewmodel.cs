@@ -20,15 +20,17 @@ namespace Xperimen.ViewModel.NavigationDrawer
         }
 
         public DrawerViewmodel()
-        { SetupData("Admin"); }
+        { 
+            SetupData();
+            SetSelectedMenu("Admin");
+        }
 
-        public void SetupData(string title)
+        public void SetupData()
         {
             var textcolor = (Color)Application.Current.Resources["LabelTextColor"];
-            var theme = string.Empty;
             if (Application.Current.Properties.ContainsKey("app_theme"))
             {
-                theme = Application.Current.Properties["app_theme"] as string;
+                var theme = Application.Current.Properties["app_theme"] as string;
                 if (theme.Equals("dark")) textcolor = Color.White;
                 if (theme.Equals("dim")) textcolor = Color.Black;
                 if (theme.Equals("light")) textcolor = (Color)Application.Current.Resources["LabelTextColor"];
@@ -90,23 +92,30 @@ namespace Xperimen.ViewModel.NavigationDrawer
                 IsSelected = false,
                 TextMenuColor = textcolor
             });
+            #endregion
+        }
 
-            foreach (var data in MenuList)
+        public void SetSelectedMenu(string title)
+        {
+            string theme = string.Empty;
+            if (Application.Current.Properties.ContainsKey("app_theme"))
+                theme = Application.Current.Properties["app_theme"] as string;
+
+            if (MenuList.Count > 0)
             {
-                if (data.Title.Equals(title))
+                foreach (var data in MenuList)
                 {
-                    data.IsSelected = true;
-                    if (!string.IsNullOrEmpty(theme))
+                    if (data.Title.Equals(title))
                     {
-                        if (theme.Equals("light"))
+                        data.IsSelected = true;
+                        if (!string.IsNullOrEmpty(theme))
                         {
-                            if (data.IsSelected)
-                                data.TextMenuColor = Color.White;
+                            //set here and DrawerMenuCell messagingcenter
+                            data.TextMenuColor = Color.White;
                         }
                     }
                 }
             }
-            #endregion
         }
     }
 }
