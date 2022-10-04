@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<StackLayout xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Xperimen.View.Setting.UserlistCell"
+             xmlns:stylekit="clr-namespace:Xperimen.Stylekit"
+             Orientation="Vertical" VerticalOptions="Center" Spacing="0">
+
+    <StackLayout Orientation="Horizontal" VerticalOptions="Center" Spacing="15" Padding="15,10,15,10">
+
+        <!-- profile image -->
+        <Frame x:Name="frame_profile" HorizontalOptions="Start" VerticalOptions="Center" BorderColor="DarkGray" 
+                   HasShadow="False" Padding="0" CornerRadius="20" IsClippedToBounds="True">
+            <Image x:Name="img_profile" HeightRequest="50" WidthRequest="50" Aspect="AspectFill" VerticalOptions="Center"/>
+        </Frame>
+
+        <!-- client info -->
+        <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand" VerticalOptions="Center" Spacing="0">
+            <Label x:Name="lbl_id" Text="{Binding Id}" HorizontalOptions="Start" IsVisible="False" FontSize="Small"/>
+            <stylekit:XLabel x:Name="lbl_login" Text="Currently login" HorizontalOptions="Start" IsVisible="{Binding IsLogin}"
+                             TextColor="{DynamicResource Key=CustomGreen}" FontFamily="{DynamicResource Key=BoldFont}"/>
+            <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                <stylekit:XLabel x:Name="lbl_fname" Text="{Binding Firstname}" HorizontalOptions="Start"/>
+                <stylekit:XLabel x:Name="lbl_lname" Text="{Binding Lastname}" HorizontalOptions="Start"/>
+            </StackLayout>
+            <stylekit:XLabel Text="{Binding Username, StringFormat='@{0}'}" HorizontalOptions="Start" 
+                                 FontFamily="{DynamicResource Key=ItalicFont}"/>
+        </StackLayout>
+
+        <!-- delete button -->
+        <stylekit:XImage Source1="black_delete.png" Source2="white_delete.png" HeightRequest="30" WidthRequest="30" 
+                         Aspect="AspectFit" HorizontalOptions="End" VerticalOptions="Center" x:Name="img_delete">
+            <Image.GestureRecognizers>
+                <TapGestureRecognizer Tapped="DeleteTapped" NumberOfTapsRequired="1"/>
+            </Image.GestureRecognizers>
+        </stylekit:XImage>
+    </StackLayout>
+    <BoxView HeightRequest="1" HorizontalOptions="FillAndExpand" BackgroundColor="LightGray"/>
+
+</StackLayout>

@@ -190,7 +190,21 @@ namespace Xperimen.ViewModel.Setting
                 else
                 {
                     var row = connection.Update(model);
-                    if (row == 1) return 1;
+                    if (row == 1)
+                    {
+                        var updated = connection.Query<Clients>("SELECT * FROM Clients WHERE Id = '" + userid + "'").ToList();
+                        if (updated.Count > 0)
+                        {
+                            Username = updated[0].Username;
+                            Firstname = updated[0].Firstname;
+                            Lastname = updated[0].Lastname;
+                            Password = updated[0].Password;
+                            Description = updated[0].Description;
+                            Theme = updated[0].AppTheme;
+                            Picture = updated[0].ProfileImage;
+                        }
+                        return 1;
+                    }
                     else return 3;
                 }
             }

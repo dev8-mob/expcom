@@ -32,6 +32,7 @@
             <Label Text="loading..." HorizontalOptions="Center" TextColor="White" FontFamily="{DynamicResource BoldFont}"/>
         </StackLayout>
 
+        <!-- custom display alert -->
         <stylekit:CustomDisplayAlert x:Name="alert" IsVisible="False"/>
 
     </AbsoluteLayout>

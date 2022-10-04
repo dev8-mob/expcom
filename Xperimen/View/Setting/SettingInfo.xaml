@@ -2,7 +2,9 @@
 <Frame xmlns="http://xamarin.com/schemas/2014/forms"
        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
        x:Class="Xperimen.View.Setting.SettingInfo"
-       xmlns:stylekit="clr-namespace:Xperimen.Stylekit"
+       xmlns:stylekit="clr-namespace:Xperimen.Stylekit" 
+       xmlns:setting="clr-namespace:Xperimen.ViewModel.Setting" 
+       x:DataType="setting:SettingViewmodel"
        Padding="0" HasShadow="False" IsVisible="{Binding IsViewing}">
 
     <Frame.Content>
@@ -21,8 +23,11 @@
                 </Frame>
                 <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" 
                              Spacing="0" Margin="15,0,0,0">
-                    <stylekit:XLabel x:Name="lbl_fullname" FontFamily="{DynamicResource Key=BoldFont}" FontSize="18"/>
-                    <stylekit:XLabel x:Name="lbl_username" FontFamily="{DynamicResource Key=ItalicFont}"/>
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Spacing="5">
+                        <stylekit:XLabel Text="{Binding Firstname}" FontFamily="{DynamicResource Key=BoldFont}" FontSize="18"/>
+                        <stylekit:XLabel Text="{Binding Lastname}" FontFamily="{DynamicResource Key=BoldFont}" FontSize="18"/>
+                    </StackLayout>
+                    <stylekit:XLabel Text="{Binding Username, StringFormat='@{0}'}" FontFamily="{DynamicResource Key=ItalicFont}"/>
                     <stylekit:XLabel Text="{Binding Description}" Margin="0,15,0,0"/>
                 </StackLayout>
                 

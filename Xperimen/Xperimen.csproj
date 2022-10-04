@@ -45,6 +45,9 @@
     <Compile Update="View\Dashboard\UserList.xaml.cs">
       <DependentUpon>UserList.xaml</DependentUpon>
     </Compile>
+    <Compile Update="View\Setting\UserlistCell.xaml.cs">
+      <DependentUpon>%(Filename)</DependentUpon>
+    </Compile>
   </ItemGroup>
 
   <ItemGroup>
@@ -130,6 +133,9 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="View\NavigationDrawer\DrawerMenuCell.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="View\Setting\AccountList.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="View\Setting\MainSetting.xaml">

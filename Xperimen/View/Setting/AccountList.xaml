@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<pages:PopupPage xmlns="http://xamarin.com/schemas/2014/forms"
+                 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                 x:Class="Xperimen.View.Setting.AccountList"
+                 xmlns:viewcell="clr-namespace:Xperimen.View.Setting"
+                 xmlns:stylekit="clr-namespace:Xperimen.Stylekit"
+                 xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
+                 xmlns:vm="clr-namespace:Xperimen.ViewModel.Setting"
+                 x:DataType="vm:AccountViewmodel">
+
+    <Grid HorizontalOptions="FillAndExpand" VerticalOptions="Center">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- background overlay -->
+        <!--<StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="Black" Opacity="0.7"
+                     Grid.Row="0" Grid.Column="0" Grid.RowSpan="3"/>-->
+
+        <!-- UI content -->
+        <StackLayout HorizontalOptions="FillAndExpand" Padding="0,15,0,0" Grid.Row="1" Grid.Column="0" Margin="20,0,20,0"
+                     VerticalOptions="Start" x:Name="stack_bg">
+
+            <stylekit:XLabel Text="Account(s) on this device" HorizontalOptions="CenterAndExpand" FontFamily="{DynamicResource Key=BoldFont}"/>
+
+            <!-- commitment list -->
+            <StackLayout HorizontalOptions="FillAndExpand" BindableLayout.ItemsSource="{Binding ListClients}" 
+                         Margin="0,15,0,0" Spacing="0" VerticalOptions="Start">
+                <BindableLayout.ItemTemplate>
+                    <DataTemplate>
+                        <!--<viewcell:UserlistCell Picture="{Binding ProfileImage}" Login="{Binding IsLogin}"/>-->
+                        <viewcell:UserlistCell />
+                    </DataTemplate>
+                </BindableLayout.ItemTemplate>
+            </StackLayout>
+
+            <!--<ListView x:Name="listview" HorizontalOptions="FillAndExpand" IsPullToRefreshEnabled="True" RefreshCommand="{Binding LoadDataCommand}"
+                      ItemsSource="{Binding ListClients}" IsRefreshing="{Binding IsLoading}" HasUnevenRows="True" SeparatorVisibility="None"
+                      ItemSelected="listview_ItemSelected" Margin="0,15,0,0" VerticalOptions="Start">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <viewcell:UserlistCell />
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>-->
+
+            <!-- cancel button -->
+            <stylekit:XLabel Text="Cancel" HorizontalOptions="Center" FontFamily="{DynamicResource Key=BoldFont}" Margin="0,15,0,0"
+                             Padding="20,15,20,15">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="CancelClicked" NumberOfTapsRequired="1"/>
+                </Label.GestureRecognizers>
+            </stylekit:XLabel>
+
+        </StackLayout>
+        
+        <!-- custom display alert -->
+        <stylekit:CustomDisplayAlert x:Name="alert" IsVisible="False" Grid.Row="1" Grid.Column="0"/>
+
+    </Grid>
+
+</pages:PopupPage>

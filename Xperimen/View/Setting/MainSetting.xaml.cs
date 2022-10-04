@@ -265,7 +265,7 @@ namespace Xperimen.View.Setting
             await view.ScaleTo(0.9, 100);
             view.Scale = 1;
             view.IsEnabled = false;
-            
+            await Navigation.PushPopupAsync(new AccountList());
             view.IsEnabled = true;
         }
 

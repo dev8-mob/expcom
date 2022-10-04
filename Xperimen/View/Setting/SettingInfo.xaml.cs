@@ -28,8 +28,6 @@ namespace Xperimen.View.Setting
                 var stream = convert.BytesToStream(viewmodel.Picture);
                 return stream;
             });
-            lbl_fullname.Text = viewmodel.Firstname + " " + viewmodel.Lastname;
-            lbl_username.Text = "@" + viewmodel.Username;
         }
 
         public void SetParentBinding(SettingViewmodel parent)
