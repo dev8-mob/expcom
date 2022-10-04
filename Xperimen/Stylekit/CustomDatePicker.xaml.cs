@@ -13,11 +13,12 @@ namespace Xperimen.Stylekit
     {
         SimpleDateViewer viewmodel;
 
-        public CustomDatePicker()
+        public CustomDatePicker(DateTime setdate)
         {
             InitializeComponent();
-            viewmodel = new SimpleDateViewer();
+            viewmodel = new SimpleDateViewer(setdate);
             BindingContext = viewmodel;
+            lbl_selecteddate.Text = setdate.ToString("dd MMM yyyy");
 
             if (Application.Current.Properties.ContainsKey("app_theme"))
             {
@@ -48,7 +49,8 @@ namespace Xperimen.Stylekit
             await view.ScaleTo(0.9, 100);
             view.Scale = 1;
             view.IsEnabled = false;
-            var lblcode = (Label)view.Children[0];
+            var grid = (Grid)view.Children[0];
+            var lblcode = (Label)grid.Children[0];
             MessagingCenter.Send(this, "SelectedDate", lblcode.Text);
             var navigation = Application.Current.MainPage.Navigation;
             await navigation.PopPopupAsync();
@@ -91,7 +93,7 @@ namespace Xperimen.Stylekit
         }
         #endregion
 
-        public SimpleDateViewer()
+        public SimpleDateViewer(DateTime setdate)
         {
             ListDateView = new List<DateView>();
             CurrentDate = DateTime.Now;
@@ -99,12 +101,12 @@ namespace Xperimen.Stylekit
             var totalDays = DateTime.DaysInMonth(CurrentDate.Year, CurrentDate.Month);
             for (int a = 0; a < totalDays; a++)
             {
-                var istoday = false;
+                var isselected = false;
                 var create = new DateTime(CurrentDate.Year, CurrentDate.Month, a + 1);
-                if (create.Day == CurrentDate.Day) istoday = true;
+                if (create.Day == setdate.Day) isselected = true;
                 var datecode = create.ToString("dd.MM.yyyy");
                 var viewstring = create.ToString("dddd, dd MMM");
-                var model = new DateView { code = datecode, view = viewstring, istoday = istoday };
+                var model = new DateView { code = datecode, view = viewstring, istoday = isselected };
                 ListDateView.Add(model);
             }
         }

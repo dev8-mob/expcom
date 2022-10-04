@@ -286,8 +286,15 @@ namespace Xperimen.Stylekit
 
         private void Entry_Unfocused(object sender, FocusEventArgs e)
         {
+            var view = (Entry)sender;
             if (!e.IsFocused)
             {
+                if (string.IsNullOrEmpty(view.Text))
+                {
+                    if (view.Keyboard == Keyboard.Numeric) view.Text = "0";
+                    else view.Text = string.Empty;
+                }
+                    
                 line.BackgroundColor = Color.DarkGray;
                 if (Application.Current.Properties.ContainsKey("app_theme"))
                 {

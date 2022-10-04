@@ -254,7 +254,11 @@ namespace Xperimen.Stylekit
 
         public int GetTotalExpenses(string day)
         {
-            var query = "SELECT * FROM Expenses WHERE ExpenseDateTime = '" + day + "'";
+            var userid = string.Empty;
+            if (Application.Current.Properties.ContainsKey("current_login"))
+                userid = Application.Current.Properties["current_login"] as string;
+
+            var query = "SELECT * FROM Expenses WHERE ExpenseDateTime = '" + day + "' AND Userid = '" + userid + "'";
             var result = connection.Query<Expenses>(query).ToList();
             return result.Count;
         }

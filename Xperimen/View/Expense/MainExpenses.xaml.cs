@@ -36,21 +36,26 @@ namespace Xperimen.View.Expense
                         if (result == 1)
                         {
                             calendar.SetupView();
-                            var getlist = viewmodel.GetExpensesOnDate(viewmodel.SelectedDate);
-                            if (getlist == 1)
+                            SetDisplayAlert("Success", "Selected expenses deleted.", "", "", "");
+                            var success = viewmodel.GetExpensesOnDate(viewmodel.SelectedDate);
+                            if (success == 1)
                             {
-                                if (!string.IsNullOrEmpty(viewmodel.SelectedDate))
+                                if (viewmodel.NoExpenses) SetupView();
+                                else
                                 {
-                                    var sampledate = new DateTime();
-                                    var split = viewmodel.SelectedDate.Split('.');
-                                    if (split.Count() > 0)
-                                        sampledate = new DateTime(Convert.ToInt32(split[2]), Convert.ToInt32(split[1]), Convert.ToInt32(split[0]));
-                                    lbl_ondateselect.Text = "on " + sampledate.ToString("MMM d");
-                                    lbl_ondateselect_zero.Text = sampledate.ToString("MMM d");
+                                    lbl_intro.Text = "No expenses yet for";
+                                    if (!string.IsNullOrEmpty(viewmodel.SelectedDate))
+                                    {
+                                        var sampledate = new DateTime();
+                                        var split = viewmodel.SelectedDate.Split('.');
+                                        if (split.Count() > 0)
+                                            sampledate = new DateTime(Convert.ToInt32(split[2]), Convert.ToInt32(split[1]), Convert.ToInt32(split[0]));
+                                        lbl_ondateselect.Text = "on " + sampledate.ToString("MMM d");
+                                        lbl_ondateselect_zero.Text = sampledate.ToString("MMM d");
+                                    }
                                 }
-                                SetDisplayAlert("Success", "Selected expenses deleted.", "", "", "");
                             }
-                            if (getlist == 2) SetDisplayAlert("Error", "Technical error retrieving expenses for selected date.", "", "", "");
+                            if (success == 2) SetDisplayAlert("Error", "Technical error retrieving expenses for selected date.", "", "", "");
                         }
                         else if (result == 2) SetDisplayAlert("Error", "Technical error deleting selected expenses.", "", "", "");
                     }
@@ -90,13 +95,15 @@ namespace Xperimen.View.Expense
                         var split = arg.Split('.');
                         if (split.Count() > 0)
                             sampledate = new DateTime(Convert.ToInt32(split[2]), Convert.ToInt32(split[1]), Convert.ToInt32(split[0]));
-                        lbl_ondateselect.Text = "on " + sampledate.ToString("MMM d");
-                        lbl_ondateselect_zero.Text = sampledate.ToString("MMM d");
+                        
                         if (viewmodel.NoExpenses)
                         {
-                            viewmodel.GetUserTotalExpense();
+                            SetupView();
                             lbl_intro.Text = "No expenses yet for";
+                            lbl_ondateselect_zero.Text = sampledate.ToString("MMM d");
                         }
+                        if (viewmodel.HasExpenses)
+                            lbl_ondateselect.Text = "on " + sampledate.ToString("MMM d");
                     }
                     viewmodel.IsLoading = false;
                 }
@@ -123,18 +130,43 @@ namespace Xperimen.View.Expense
                 viewmodel.IsLoading = true;
                 SetDisplayAlert("Confirmation", "Are you sure to delete the expenses ?", "Yes", "Cancel", arg);
             });
+            MessagingCenter.Subscribe<AddIncome>(this, "IncomeUpdated", (sender) => { SetupView(); });
             #endregion
         }
 
         public void SetupView()
         {
             viewmodel.IsLoading = true;
+            if (Application.Current.Properties.ContainsKey("app_theme"))
+            {
+                var theme = Application.Current.Properties["app_theme"] as string;
+                if (theme.Equals("dark"))
+                {
+                    stack_bgnoincome.BackgroundColor = Color.FromHex(App.CharcoalBlack);
+                    stack_bgpercentage.BackgroundColor = Color.FromHex(App.CharcoalBlack);
+                    frame_netincome.BackgroundColor = Color.FromHex(App.CharcoalBlack);
+                }
+                if (theme.Equals("dim"))
+                {
+                    stack_bgnoincome.BackgroundColor = Color.FromHex(App.CharcoalGray);
+                    stack_bgpercentage.BackgroundColor = Color.FromHex(App.CharcoalGray);
+                    frame_netincome.BackgroundColor = Color.FromHex(App.CharcoalGray);
+                }
+                if (theme.Equals("light"))
+                {
+                    stack_bgnoincome.BackgroundColor = Color.FromHex(App.DimGray2);
+                    stack_bgpercentage.BackgroundColor = Color.FromHex(App.DimGray2);
+                    frame_netincome.BackgroundColor = Color.FromHex(App.DimGray2);
+                }
+            }
+
             lbl_intro.Text = "Expenses Summary";
             lbl_ondateselect_zero.Text = string.Empty;
             var result = viewmodel.GetUserTotalExpense();
             if (result == 1) viewmodel.IsLoading = false;
-            else if (result == 2) SetDisplayAlert("No Data", "User do not have any expenses yet for this month.", "", "", "");
-            else if (result == 3) SetDisplayAlert("Error", "Technical error retrieving all user expenses.", "", "", "");
+            else if (result == 2) SetDisplayAlert("No Data", "You do not have any expenses yet for this month.", "", "", "");
+            else if (result == 3) SetDisplayAlert("Error", "Technical error retrieving all expenses.", "", "", "");
+            BuildProgressbarUI();
         }
 
         public async void DrawerTapped(object sender, EventArgs e)
@@ -168,13 +200,59 @@ namespace Xperimen.View.Expense
             view.IsEnabled = true;
         }
 
-        public async void SaveIncomeClicked(object sender, EventArgs e)
+        public async void SetIncomeClicked(object sender, EventArgs e)
         {
             var view = (Frame)sender;
             await view.ScaleTo(0.9, 100);
             view.Scale = 1;
             view.IsEnabled = false;
+            await Navigation.PushPopupAsync(new AddIncome());
             view.IsEnabled = true;
+        }
+
+        public void BuildProgressbarUI()
+        {
+            var usedsize = Math.Round(viewmodel.PercentageUsed, 2);
+            var availsize = Math.Round(viewmodel.PercentageAvailable, 2);
+            if (usedsize != 0 || availsize != 0)
+            {
+                var colused = new ColumnDefinition();
+                var colavail = new ColumnDefinition();
+                if (usedsize >= 100)
+                {
+                    colused = new ColumnDefinition() { Width = new GridLength(1, GridUnitType.Star) };
+                    colavail = new ColumnDefinition() { Width = new GridLength(0, GridUnitType.Star) };
+                }
+                else if (availsize >= 100)
+                {
+                    colused = new ColumnDefinition() { Width = new GridLength(0, GridUnitType.Star) };
+                    colavail = new ColumnDefinition() { Width = new GridLength(1, GridUnitType.Star) };
+                }
+                else if (usedsize <= 100 || availsize <= 100)
+                {
+                    colused = new ColumnDefinition() { Width = new GridLength(Math.Round(usedsize/100, 2), GridUnitType.Star) };
+                    colavail = new ColumnDefinition() { Width = new GridLength(Math.Round(availsize/100, 2), GridUnitType.Star) };
+                }
+
+                var grid = new Grid { ColumnSpacing = 0 };
+                grid.ColumnDefinitions.Add(colused);
+                grid.ColumnDefinitions.Add(colavail);
+                var stackused = new StackLayout 
+                { 
+                    BackgroundColor = Color.FromHex(App.CustomRedLight), 
+                    VerticalOptions = LayoutOptions.FillAndExpand ,
+                    HorizontalOptions = LayoutOptions.FillAndExpand
+                };
+                var stackavail = new StackLayout 
+                { 
+                    BackgroundColor = Color.FromHex(App.CustomGreenLight), 
+                    VerticalOptions = LayoutOptions.FillAndExpand,
+                    HorizontalOptions = LayoutOptions.FillAndExpand
+                };
+                grid.Children.Add(stackused, 0, 0);
+                grid.Children.Add(stackavail, 1, 0);
+                frame_progressbar.Content = grid;
+            }
         }
 
         public void SetDisplayAlert(string title, string description, string btn1, string btn2, string obj)

@@ -35,8 +35,8 @@
                      VerticalOptions="Start">
             <stylekit:XLabel Text="{Binding Title}" HorizontalOptions="FillAndExpand" VerticalOptions="Start"
                              HorizontalTextAlignment="Start" MaxLines="1" LineBreakMode="TailTruncation"/>
-            <stylekit:XLabel Text="{Binding ExpensesDt, StringFormat='{0:d.MM.yyyy, hh:mm tt}'}"
-                             FontFamily="{DynamicResource Key=ItalicFont}"/>
+            <stylekit:XLabel Text="{Binding ExpensesDt, StringFormat='{0:d.MM.yyyy - hh:mm tt}'}" MaxLines="1"
+                             FontFamily="{DynamicResource Key=ItalicFont}" LineBreakMode="TailTruncation"/>
         </StackLayout>
 
         <!-- image attachment button -->

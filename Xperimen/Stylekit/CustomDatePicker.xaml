@@ -18,9 +18,9 @@
             <StackLayout x:Name="stack_bg" Orientation="Vertical" HorizontalOptions="FillAndExpand" Spacing="0" Padding="15,20,15,20">
 
                 <!-- title header -->
-                <stylekit:XLabel Text="Select Date" HorizontalOptions="Center" FontFamily="{DynamicResource Key=BoldFont}" FontSize="18"/>
-                <stylekit:XLabel Text="{Binding CurrentDate, StringFormat='for {0:MMM, yyyy}'}" HorizontalOptions="Center" HorizontalTextAlignment="Center"
-                                 FontFamily="{DynamicResource Key=BoldFont}" FontSize="16"/>
+                <stylekit:XLabel Text="Selected Date" HorizontalOptions="Center" FontFamily="{DynamicResource Key=BoldFont}" FontSize="18"/>
+                <stylekit:XLabel x:Name="lbl_selecteddate" HorizontalOptions="Center" HorizontalTextAlignment="Center"
+                                 FontFamily="{DynamicResource Key=BoldFont}"/>
 
                 <!-- date list -->
                 <ScrollView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Margin="0,30,0,0">

@@ -28,6 +28,9 @@ namespace Xperimen.ViewModel.Expense
         bool _noexpenses;
         bool _hasexpenses;
         bool _isnotsetincome;
+        bool _ishaveincome;
+        double _percentageused;
+        double _percentageavailable;
         public double Income
         {
             get { return _income; }
@@ -98,6 +101,21 @@ namespace Xperimen.ViewModel.Expense
             get { return _isnotsetincome; }
             set { _isnotsetincome = value; OnPropertyChanged(); }
         }
+        public bool IsHaveIncome
+        {
+            get { return _ishaveincome; }
+            set { _ishaveincome = value; OnPropertyChanged(); }
+        }
+        public double PercentageUsed
+        {
+            get { return _percentageused; }
+            set { _percentageused = value; OnPropertyChanged(); }
+        }
+        public double PercentageAvailable
+        {
+            get { return _percentageavailable; }
+            set { _percentageavailable = value; OnPropertyChanged(); }
+        }
         #endregion
 
         public SQLiteConnection connection;
@@ -120,6 +138,9 @@ namespace Xperimen.ViewModel.Expense
             NoExpenses = true;
             HasExpenses = false;
             IsNotSetIncome = false;
+            IsHaveIncome = false;
+            PercentageUsed = 0;
+            PercentageAvailable = 0;
         }
 
         public async Task<int> TakePhoto()
@@ -173,7 +194,8 @@ namespace Xperimen.ViewModel.Expense
                 {
                     var split = SelectedDate.Split('.');
                     if (split.Count() > 0)
-                        modeldate = new DateTime(Convert.ToInt32(split[2]), Convert.ToInt32(split[1]), Convert.ToInt32(split[0]));
+                        modeldate = new DateTime(Convert.ToInt32(split[2]), Convert.ToInt32(split[1]), 
+                            Convert.ToInt32(split[0]), DateTime.Now.Hour, DateTime.Now.Minute, DateTime.Now.Second);
                 }
                 else modeldate = DateTime.Now;
 
@@ -245,34 +267,44 @@ namespace Xperimen.ViewModel.Expense
             {
                 NoExpenses = true;
                 HasExpenses = false;
-                UserTotalExp = 0;
+                UserTotalExp = 0; Balance = 0;
+                PercentageUsed = 0; PercentageAvailable = 0;
+
                 var userid = string.Empty;
                 if (Application.Current.Properties.ContainsKey("current_login"))
                     userid = Application.Current.Properties["current_login"] as string;
 
                 string getuser = "SELECT * FROM Clients WHERE Id = '" + userid + "'";
                 var user = connection.Query<Clients>(getuser).ToList();
-                if (user.Count > 0)
-                {
-                    Income = user[0].Income;
-                    NetIncome = user[0].NetIncome;
-                }
+                if (user.Count > 0) { Income = user[0].Income; NetIncome = user[0].NetIncome; }
 
-                if (Income == 0) IsNotSetIncome = true;
-                else IsNotSetIncome = false;
+                if (Income == 0) { IsNotSetIncome = true; IsHaveIncome = false; }
+                else { IsNotSetIncome = false; IsHaveIncome = true; }
 
                 string query = "SELECT * FROM Expenses WHERE Userid = '" + userid + "'";
                 var result = connection.Query<Expenses>(query).ToList();
                 if (result.Count > 0)
                 {
-                    foreach (var data in result)
-                    {
+                    foreach (var data in result) 
                         UserTotalExp += data.Amount;
-                        Balance = NetIncome - UserTotalExp;
+                    Balance = NetIncome - UserTotalExp;
+
+                    if (IsHaveIncome)
+                    {
+                        PercentageUsed = UserTotalExp / NetIncome * 100;
+                        PercentageAvailable = Balance / NetIncome * 100;
                     }
+                    else { PercentageUsed = 0; PercentageAvailable = 0; }
+                    
                     return 1;
                 }
-                else return 2;
+                else
+                {
+                    PercentageUsed = 0;
+                    if (IsHaveIncome) { PercentageAvailable = 100; Balance = NetIncome; }
+                    else { PercentageAvailable = 0; Balance = 0; }
+                    return 2;
+                }
             }
             catch (Exception ex)
             {
@@ -313,6 +345,34 @@ namespace Xperimen.ViewModel.Expense
                 if (expense.Count > 0) SelectedDate = expense[0].ExpenseDateTime;
                 string query = "DELETE FROM Expenses WHERE Id = '" + data + "'";
                 connection.Query<Expenses>(query);
+                return 1;
+            }
+            catch (Exception ex)
+            {
+                var error = ex.Message;
+                var desc = ex.StackTrace;
+                return 2;
+            }
+        }
+
+        public int UpdateIncome()
+        {
+            try
+            {
+                var userid = string.Empty;
+                if (Application.Current.Properties.ContainsKey("current_login"))
+                    userid = Application.Current.Properties["current_login"] as string;
+
+                double commitment = 0, netincome = 0;
+                var user = connection.Query<Clients>("SELECT * FROM Clients WHERE Id = '" + userid + "'");
+                if (user.Count > 0) commitment = user[0].TotalCommitment;
+
+                netincome = Income - commitment;
+                string query = "UPDATE Clients SET Income = " + Income + ", TotalCommitment = " + commitment 
+                    + ", NetIncome = " + netincome + " WHERE Id = '" + userid + "'";
+                connection.Query<Clients>(query);
+                var cek = connection.Query<Clients>("SELECT * FROM Clients WHERE Id = '" + userid + "'").ToList();
+                
                 return 1;
             }
             catch (Exception ex)

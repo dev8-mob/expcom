@@ -44,8 +44,8 @@
                     <StackLayout Orientation="Horizontal" HorizontalOptions="End" Spacing="0" Margin="20,15,35,0" Grid.Row="0" Grid.Column="0"
                                  VerticalOptions="Start">
                         <!--refresh summary button-->
-                        <Frame Padding="15,10,15,10" CornerRadius="8" BorderColor="{DynamicResource Key=CustomGreen}" HorizontalOptions="End"
-                               VerticalOptions="Start" BackgroundColor="{DynamicResource Key=CustomGreen}" HasShadow="False" 
+                        <Frame Padding="15,10,15,10" CornerRadius="8" BorderColor="{DynamicResource Key=Primary}" HorizontalOptions="End"
+                               VerticalOptions="Start" BackgroundColor="{DynamicResource Key=Primary}" HasShadow="False" 
                                IsClippedToBounds="True" Margin="0,0,10,0">
                             <Image Source="white_undo.png" Aspect="AspectFit" HeightRequest="20" WidthRequest="20" VerticalOptions="Center"
                                    HorizontalOptions="Center"/>
@@ -79,10 +79,13 @@
                             <Label x:Name="lbl_ondateselect_zero" VerticalOptions="Center" HorizontalOptions="Center"
                                    FontFamily="{DynamicResource Key=BoldFont}"/>
                         </StackLayout>
+
+                        <!-- selected date expenses list -->
                         <viewcell:SummaryCell Margin="20,0,20,0"/>
+                        
                         <!-- no income yet -->
                         <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Spacing="0" Margin="20,2,20,0" Padding="15"
-                                     BackgroundColor="{DynamicResource Key=CharcoalGray}" IsVisible="{Binding IsNotSetIncome}">
+                                     x:Name="stack_bgnoincome" IsVisible="{Binding IsNotSetIncome}">
                             <Label Text="You do not set any income yet. Please set your income" VerticalOptions="Center" HorizontalOptions="Center"
                                    FontFamily="{DynamicResource Key=BoldFont}" HorizontalTextAlignment="Start" />
                             <!-- save income button -->
@@ -92,10 +95,39 @@
                                 <Image Source="white_wallet.png" Aspect="AspectFit" HeightRequest="20" WidthRequest="20" VerticalOptions="Center"
                                        Margin="15,0,15,0"/>
                                 <Frame.GestureRecognizers>
-                                    <TapGestureRecognizer Tapped="SaveIncomeClicked" NumberOfTapsRequired="1"/>
+                                    <TapGestureRecognizer Tapped="SetIncomeClicked" NumberOfTapsRequired="1"/>
                                 </Frame.GestureRecognizers>
                             </Frame>
                         </StackLayout>
+                        
+                        <!-- expense percentage -->
+                        <ScrollView HorizontalOptions="FillAndExpand" VerticalOptions="Fill" IsVisible="{Binding IsHaveIncome}" Margin="20,2,20,0">
+                            <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Spacing="0" Padding="15" x:Name="stack_bgpercentage">
+                                <Grid HorizontalOptions="FillAndExpand" RowSpacing="5">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                    </Grid.RowDefinitions>
+                                    <!-- progress bar -->
+                                    <Frame HasShadow="False" HorizontalOptions="FillAndExpand" Padding="0" Grid.Row="0" Grid.Column="0" 
+                                           BorderColor="DarkGray" HeightRequest="20" CornerRadius="20" Margin="0,20,0,0" 
+                                           IsClippedToBounds="True" x:Name="frame_progressbar"/>
+                                    <!-- net income -->
+                                    <Frame HasShadow="False" Padding="15,5,15,5" CornerRadius="8" HorizontalOptions="Center" BorderColor="DarkGray"
+                                           Grid.Row="0" Grid.Column="0" BackgroundColor="Transparent" VerticalOptions="Start" x:Name="frame_netincome">
+                                        <stylekit:XLabel Text="{Binding NetIncome, StringFormat='RM {0:0.00}'}" VerticalOptions="Start" FontSize="18"
+                                                         FontFamily="{DynamicResource Key=BoldFont}" HorizontalOptions="CenterAndExpand"/>
+                                    </Frame>
+                                    <!-- percentage numbers -->
+                                    <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Spacing="0" Grid.Row="1" Grid.Column="0">
+                                        <stylekit:XLabel Text="{Binding PercentageUsed, StringFormat='{0:0.00}% used'}" HorizontalOptions="StartAndExpand"
+                                                         FontFamily="{DynamicResource Key=BoldFont}" TextColor="{DynamicResource Key=CustomRed}"/>
+                                        <stylekit:XLabel Text="{Binding PercentageAvailable, StringFormat='{0:0.00}% available'}" 
+                                                         FontFamily="{DynamicResource Key=BoldFont}" HorizontalOptions="End"/>
+                                    </StackLayout>
+                                </Grid>
+                            </StackLayout>
+                        </ScrollView>
                     </StackLayout>
 
                     <!-- list and total -->
