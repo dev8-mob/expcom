@@ -64,11 +64,17 @@ namespace Xperimen.View.Commitment
             view.Scale = 1;
             view.IsEnabled = false;
 
-            var result = viewmodel.SaveIncome();
-            if (result == 2) SetDisplayAlert("Error", "Technical error saving income amount.", "", "", "");
-            viewmodel.GetCommitmentList();
-            stack_income.IsVisible = true;
-            stack_editincome.IsVisible = false;
+            viewmodel.IsLoading = true;
+            if (viewmodel.Income == 0) SetDisplayAlert("Empty", "Please insert income amount.", "", "", "");
+            else
+            {
+                var result = viewmodel.SaveIncome();
+                if (result == 1) viewmodel.IsLoading = false;
+                if (result == 2) SetDisplayAlert("Error", "Technical error saving income amount.", "", "", "");
+                viewmodel.GetCommitmentList();
+                stack_income.IsVisible = true;
+                stack_editincome.IsVisible = false;
+            }
             view.IsEnabled = true;
         }
 

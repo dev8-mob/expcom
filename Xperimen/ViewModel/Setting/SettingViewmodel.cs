@@ -155,11 +155,15 @@ namespace Xperimen.ViewModel.Setting
             Firstname = fname;
             Lastname = lname;
 
-            double income = 0;
+            double income = 0, netincome = 0;
             var userid = Application.Current.Properties["current_login"] as string;
             string getuser = "SELECT * FROM Clients WHERE Id = '" + userid + "'";
             var user = connection.Query<Clients>(getuser).ToList();
-            if (user.Count > 0) income = user[0].Income;
+            if (user.Count > 0)
+            {
+                income = user[0].Income;
+                netincome = user[0].NetIncome;
+            }
 
             var model = new Clients
             {
@@ -172,7 +176,8 @@ namespace Xperimen.ViewModel.Setting
                 ProfileImage = Picture,
                 AppTheme = Theme,
                 IsLogin = true,
-                Income = income
+                Income = income,
+                NetIncome = netincome
             };
 
             string query = "SELECT * FROM Clients WHERE Id = '" + userid + "'";

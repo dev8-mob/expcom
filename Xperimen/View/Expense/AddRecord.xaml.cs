@@ -1,6 +1,7 @@
 ﻿
 using Rg.Plugins.Popup.Extensions;
 using System;
+using System.Linq;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using Xperimen.Stylekit;
@@ -12,11 +13,13 @@ namespace Xperimen.View.Expense
     public partial class AddRecord : ContentPage
     {
         public ExpensesViewmodel viewmodel;
+        public DateTime DatetimeViewer;
 
         public AddRecord()
         {
             InitializeComponent();
             viewmodel = new ExpensesViewmodel();
+            DatetimeViewer = DateTime.Now;
             BindingContext = viewmodel;
 
             if (Application.Current.Properties.ContainsKey("app_theme"))
@@ -34,7 +37,19 @@ namespace Xperimen.View.Expense
                     await Navigation.PopAsync();
             });
             MessagingCenter.Subscribe<CustomDatePicker, string>(this, "SelectedDate", (sender, arg) =>
-            { viewmodel.SelectedDate = arg; });
+            { 
+                if (!string.IsNullOrEmpty(arg))
+                {
+                    viewmodel.SelectedDate = arg;
+                    var newdate = new DateTime();
+                    var split = arg.Split('.');
+                    if (split.Count() > 0)
+                    {
+                        newdate = new DateTime(Convert.ToInt32(split[2]), Convert.ToInt32(split[1]), Convert.ToInt32(split[0]));
+                        DatetimeViewer = newdate;
+                    }
+                } 
+            });
         }
 
         public async void GalleryClicked(object sender, EventArgs e)
@@ -87,7 +102,7 @@ namespace Xperimen.View.Expense
             await view.ScaleTo(0.9, 100);
             view.Scale = 1;
             view.IsEnabled = false;
-            await Navigation.PushPopupAsync(new CustomDatePicker());
+            await Navigation.PushPopupAsync(new CustomDatePicker(DatetimeViewer));
             view.IsEnabled = true;
         }
 

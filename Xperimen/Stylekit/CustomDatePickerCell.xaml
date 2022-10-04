@@ -6,10 +6,22 @@
              HorizontalOptions="FillAndExpand" Spacing="0"
              Orientation="Vertical">
 
-    <StackLayout HorizontalOptions="FillAndExpand" Padding="20,15,20,15">
-        <stylekit:XLabel Text="{Binding view}" HorizontalOptions="CenterAndExpand"/>
-        <Label Text="{Binding code}" FontSize="Small" IsVisible="False"/>
-    </StackLayout>
-    <BoxView HeightRequest="1" HorizontalOptions="FillAndExpand" BackgroundColor="DarkGray"/>
+    <Grid HorizontalOptions="FillAndExpand">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Label x:Name="lbl_code" Text="{Binding code}" FontSize="Small" IsVisible="False" Grid.Row="0" Grid.Column="0"/>
+        <Frame Padding="0" HasShadow="False" HorizontalOptions="FillAndExpand" CornerRadius="8" IsVisible="{Binding istoday}"
+               Grid.Row="0" Grid.Column="0" BackgroundColor="{DynamicResource Key=PrimaryLight}"/>
+        <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Padding="25,0,25,0" 
+                     Grid.Row="0" Grid.Column="0">
+            <stylekit:XLabel Text="{Binding view}" HorizontalOptions="StartAndExpand" VerticalOptions="Center"
+                             Margin="0,10,0,10"/>
+            <stylekit:XImage Source1="black_done.png" Source2="white_done.png" IsVisible="{Binding istoday}"
+                             HeightRequest="20" WidthRequest="20" Aspect="AspectFit" HorizontalOptions="End" 
+                             VerticalOptions="Center"/>
+        </StackLayout>
+    </Grid>
+    <!--<BoxView HeightRequest="1" HorizontalOptions="FillAndExpand" BackgroundColor="DarkGray"/>-->
 
 </StackLayout>
