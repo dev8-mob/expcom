@@ -209,7 +209,9 @@ namespace Xperimen.View.Setting
             else if (string.IsNullOrEmpty(viewmodel.Firstname)) SetDisplayAlert("Alert", "First name cannot be empty. Please insert your first name.", "", "", "");
             else if (string.IsNullOrEmpty(viewmodel.Lastname)) SetDisplayAlert("Alert", "Last name cannot be empty. Please insert your last name.", "", "", "");
             else if (string.IsNullOrEmpty(viewmodel.Username)) SetDisplayAlert("Alert", "Username cannot be empty. Please insert your username.", "", "", "");
+            else if (viewmodel.Username.Length < 6) SetDisplayAlert("Alert", "Username must be more than 6 characters.", "", "", "");
             else if (string.IsNullOrEmpty(viewmodel.Password)) SetDisplayAlert("Alert", "Password cannot be empty. Please insert your password.", "", "", "");
+            else if (viewmodel.Password.Length < 6) SetDisplayAlert("Alert", "Password must be more than 6 characters.", "", "", "");
             else if (string.IsNullOrEmpty(viewmodel.Repassword)) SetDisplayAlert("Confirmation Password", "Please re-type your password.", "", "", "");
             else if (!viewmodel.Repassword.Equals(viewmodel.Password))
             {
@@ -254,6 +256,16 @@ namespace Xperimen.View.Setting
             view.IsEnabled = false;
             var drawer = (DrawerMaster)view.Parent.Parent.Parent.Parent.Parent.Parent.Parent;
             drawer.IsPresented = true;
+            view.IsEnabled = true;
+        }
+
+        public async void TopSettingTapped(object sender, EventArgs e)
+        {
+            var view = (Image)sender;
+            await view.ScaleTo(0.9, 100);
+            view.Scale = 1;
+            view.IsEnabled = false;
+            
             view.IsEnabled = true;
         }
 

@@ -25,7 +25,14 @@
                                 <TapGestureRecognizer Tapped="DrawerTapped" NumberOfTapsRequired="1"/>
                             </Image.GestureRecognizers>
                         </stylekit:XImage>
-                        <stylekit:XLabel Text="Setting" FontFamily="{DynamicResource Key=BoldFont}" FontSize="18" VerticalOptions="Center"/>
+                        <stylekit:XLabel Text="Setting" FontFamily="{DynamicResource Key=BoldFont}" FontSize="18" VerticalOptions="Center"
+                                         HorizontalOptions="StartAndExpand"/>
+                        <stylekit:XImage Source1="black_setting.png" Source2="white_setting.png" HeightRequest="35" WidthRequest="35" Aspect="AspectFit"
+                                         HorizontalOptions="End" Margin="20,0,0,0">
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="TopSettingTapped" NumberOfTapsRequired="1"/>
+                            </Image.GestureRecognizers>
+                        </stylekit:XImage>
                     </StackLayout>
                     
                     <Grid HorizontalOptions="FillAndExpand" Margin="0,15,0,0" RowSpacing="0">

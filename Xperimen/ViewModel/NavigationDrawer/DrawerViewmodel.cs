@@ -58,8 +58,8 @@ namespace Xperimen.ViewModel.NavigationDrawer
             });
             MenuList.Add(new ItemMenu 
             { 
-                ImageIcon1 = "black_whatshot.png", 
-                ImageIcon2 = "white_whatshot.png", 
+                ImageIcon1 = "black_wallet.png", 
+                ImageIcon2 = "white_wallet.png", 
                 Title = "Commitment", 
                 Contentpage = typeof(MainCommitment), 
                 IsSelected = false,
