@@ -38,6 +38,7 @@ namespace Xperimen.View
                 if (result == 1) Application.Current.MainPage = new DrawerMaster();
                 else if (result == 2) SetDisplayAlert("Alert", "Your password is incorrect. Please insert the correct password.", "", "", "");
                 else if (result == 3) SetDisplayAlert("Alert", "The username is not found.", "", "", "");
+                else if (result == 4) SetDisplayAlert("Error", "Technical error updating login information.", "", "", "");
             }
             view.IsEnabled = true;
         }

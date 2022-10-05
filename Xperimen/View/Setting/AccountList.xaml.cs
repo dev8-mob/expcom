@@ -32,10 +32,7 @@ namespace Xperimen.View.Setting
                 if (arg.Equals("Okay"))
                 {
                     var result = viewmodel.DeleteUser(alert.CodeObject);
-                    if (result == 1)
-                    {
-                        SetDisplayAlert("Success", "User deleted.", "", "", "");
-                    }
+                    if (result == 1) SetDisplayAlert("Success", "User deleted.", "", "", "");
                     else if (result == 2) SetDisplayAlert("Failed", "Technical error. Failed to delete the user.", "", "", "");
                 }
                 viewmodel.IsLoading = false;
@@ -63,7 +60,7 @@ namespace Xperimen.View.Setting
                 view.SelectedItem = null;
         }
 
-        public async void CancelClicked(object sender, EventArgs e)
+        public async void OkayClicked(object sender, EventArgs e)
         {
             var view = (Label)sender;
             await view.ScaleTo(0.9, 100);

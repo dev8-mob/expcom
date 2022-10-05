@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xperimen.Helper;
 using Xperimen.Model;
+using Xperimen.View;
 
 namespace Xperimen.ViewModel
 {
@@ -121,6 +122,9 @@ namespace Xperimen.ViewModel
                     Password = Password,
                     Description = Description,
                     AppTheme = Theme,
+                    AccountCreated = DateTime.Now,
+                    AccountUpdated = DateTime.Now,
+                    Logout = new DateTime(1,1,1),
                     ProfileImage = convert.GetImageBytes(Picture.GetStream()),
                     IsLogin = false
                 };

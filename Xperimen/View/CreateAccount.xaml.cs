@@ -161,6 +161,7 @@ namespace Xperimen.View
             else if (viewmodel.Password.Length < 6) SetDisplayAlert("Alert", "Password must be more than 6 characters.", "", "", "");
             else if (string.IsNullOrEmpty(viewmodel.Description)) SetDisplayAlert("Alert", "Please provide any description about you.", "", "", "");
             else if (string.IsNullOrEmpty(viewmodel.Theme)) SetDisplayAlert("Alert", "Please choose application theme.", "", "", "");
+            else
             {
                 try
                 {

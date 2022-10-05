@@ -39,6 +39,7 @@ namespace Xperimen.View.Setting
         {
             lbl_login.IsVisible = data;
             img_delete.IsVisible = !data;
+            stack_lastlogin.IsVisible = !data;
         }
         #endregion
 
@@ -50,6 +51,16 @@ namespace Xperimen.View.Setting
             InitializeComponent();
             connection = new SQLiteConnection(App.DB_PATH);
             converter = new StreamByteConverter();
+        }
+
+        public async void HeaderTapped(object sender, EventArgs arg)
+        {
+            var view = (StackLayout)sender;
+            await view.ScaleTo(0.9, 100);
+            view.Scale = 1;
+
+            if (stack_detail.IsVisible) stack_detail.IsVisible = false;
+            else if (!stack_detail.IsVisible) stack_detail.IsVisible = true;
         }
 
         public async void DeleteTapped(object sender, EventArgs arg)

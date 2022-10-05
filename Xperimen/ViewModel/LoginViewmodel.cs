@@ -41,21 +41,43 @@ namespace Xperimen.ViewModel
             var result = connection.Query<Clients>(query).ToList();
             if (result.Count > 0)
             {
-                query = "UPDATE Clients SET IsLogin = true WHERE Id = '" + result[0].Id + "'";
-                connection.Query<Clients>(query);
-                Application.Current.Properties["current_login"] = result[0].Id;
-                Application.Current.Properties["app_theme"] = result[0].AppTheme;
-                await Application.Current.SavePropertiesAsync();
-
-                try { MessagingCenter.Send(this, "AppThemeUpdated"); }
-                catch (Exception ex)
+                var model = new Clients
                 {
-                    var error = ex.Message;
-                    var stack = ex.StackTrace;
-                    var page = Application.Current.MainPage;
-                    await page.DisplayAlert(error, stack, "OK");
+                    Id = result[0].Id,
+                    Username = result[0].Username,
+                    Firstname = result[0].Firstname,
+                    Lastname = result[0].Lastname,
+                    Password = result[0].Password,
+                    Description = result[0].Description,
+                    ProfileImage = result[0].ProfileImage,
+                    AppTheme = result[0].AppTheme,
+                    AccountCreated = result[0].AccountCreated,
+                    AccountUpdated = result[0].AccountUpdated,
+                    Logout = DateTime.Now,
+                    IsLogin = true,
+                    Income = result[0].Income,
+                    TotalCommitment = result[0].TotalCommitment,
+                    NetIncome = result[0].NetIncome
+                };
+                var success = connection.Update(model);
+                if (success == 1)
+                {
+                    var cek = connection.Table<Clients>().ToList();
+                    Application.Current.Properties["current_login"] = result[0].Id;
+                    Application.Current.Properties["app_theme"] = result[0].AppTheme;
+                    await Application.Current.SavePropertiesAsync();
+
+                    try { MessagingCenter.Send(this, "AppThemeUpdated"); }
+                    catch (Exception ex)
+                    {
+                        var error = ex.Message;
+                        var stack = ex.StackTrace;
+                        var page = Application.Current.MainPage;
+                        await page.DisplayAlert(error, stack, "OK");
+                    }
+                    return 1;
                 }
-                return 1;
+                else return 4;
             }
             else
             {

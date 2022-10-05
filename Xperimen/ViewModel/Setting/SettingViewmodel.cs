@@ -177,7 +177,8 @@ namespace Xperimen.ViewModel.Setting
                 AppTheme = Theme,
                 IsLogin = true,
                 Income = income,
-                NetIncome = netincome
+                NetIncome = netincome,
+                AccountUpdated = DateTime.Now
             };
 
             string query = "SELECT * FROM Clients WHERE Id = '" + userid + "'";
@@ -202,6 +203,7 @@ namespace Xperimen.ViewModel.Setting
                             Description = updated[0].Description;
                             Theme = updated[0].AppTheme;
                             Picture = updated[0].ProfileImage;
+                            MessagingCenter.Send(this, "AppThemeUpdated");
                         }
                         return 1;
                     }
