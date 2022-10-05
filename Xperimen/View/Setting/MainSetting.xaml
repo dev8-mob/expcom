@@ -25,7 +25,14 @@
                                 <TapGestureRecognizer Tapped="DrawerTapped" NumberOfTapsRequired="1"/>
                             </Image.GestureRecognizers>
                         </stylekit:XImage>
-                        <stylekit:XLabel Text="Setting" FontFamily="{DynamicResource Key=BoldFont}" FontSize="18" VerticalOptions="Center"/>
+                        <stylekit:XLabel Text="Setting" FontFamily="{DynamicResource Key=BoldFont}" FontSize="18" VerticalOptions="Center"
+                                         HorizontalOptions="StartAndExpand"/>
+                        <stylekit:XImage Source1="black_setting.png" Source2="white_setting.png" HeightRequest="35" WidthRequest="35" Aspect="AspectFit"
+                                         HorizontalOptions="End" Margin="20,0,0,0">
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="TopSettingTapped" NumberOfTapsRequired="1"/>
+                            </Image.GestureRecognizers>
+                        </stylekit:XImage>
                     </StackLayout>
                     
                     <Grid HorizontalOptions="FillAndExpand" Margin="0,15,0,0" RowSpacing="0">
@@ -41,29 +48,38 @@
                         <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand" Spacing="0" Margin="0,30,0,0"
                                      Grid.Row="1" Grid.Column="0" IsVisible="{Binding IsViewing}">
                             <stylekit:XLabel Text="Application Theme" HorizontalOptions="Start"/>
-                            <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal" Margin="0,5,0,0" Spacing="0" BackgroundColor="Transparent">
-                            <Frame x:Name="frame_dark" Padding="0,8,0,8" HorizontalOptions="FillAndExpand" HasShadow="False" CornerRadius="3"
-                                       BackgroundColor="Transparent" BorderColor="DarkGray">
-                                <stylekit:XLabel Text="Dark Theme" HorizontalOptions="Center"/>
-                                <Frame.GestureRecognizers>
-                                    <TapGestureRecognizer Tapped="ThemeClicked" NumberOfTapsRequired="1"/>
-                                </Frame.GestureRecognizers>
-                            </Frame>
-                            <Frame x:Name="frame_dim" Padding="0,8,0,8" HorizontalOptions="FillAndExpand" HasShadow="False" CornerRadius="3" Margin="5,0,0,0"
-                                       BackgroundColor="Transparent" BorderColor="DarkGray">
-                                <stylekit:XLabel Text="Dim Theme" HorizontalOptions="Center"/>
-                                <Frame.GestureRecognizers>
-                                    <TapGestureRecognizer Tapped="ThemeClicked" NumberOfTapsRequired="1"/>
-                                </Frame.GestureRecognizers>
-                            </Frame>
-                            <Frame x:Name="frame_light" Padding="0,8,0,8" HorizontalOptions="FillAndExpand" HasShadow="False" CornerRadius="3" Margin="5,0,0,0"
-                                       BackgroundColor="Transparent" BorderColor="DarkGray">
-                                <stylekit:XLabel Text="Light Theme" HorizontalOptions="Center"/>
-                                <Frame.GestureRecognizers>
-                                    <TapGestureRecognizer Tapped="ThemeClicked" NumberOfTapsRequired="1"/>
-                                </Frame.GestureRecognizers>
-                            </Frame>
-                        </StackLayout>
+                            <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal" Margin="0,5,0,0" Spacing="5">
+                                <!-- dark theme -->
+                                <stylekit:XFrameButton Padding="0,5,0,5">
+                                    <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" Spacing="0" BackgroundColor="Transparent">
+                                        <Image Source="theme_dark.png" HeightRequest="25" WidthRequest="25" Aspect="AspectFit" VerticalOptions="Center"/>
+                                        <stylekit:XLabel Text="Dark" HorizontalOptions="Center" VerticalOptions="Center" Margin="5,0,0,0"/>
+                                    </StackLayout>
+                                    <Frame.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="AppThemeClicked" NumberOfTapsRequired="1"/>
+                                    </Frame.GestureRecognizers>
+                                </stylekit:XFrameButton>
+                                <!-- dim theme -->
+                                <stylekit:XFrameButton>
+                                    <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" Spacing="0" BackgroundColor="Transparent">
+                                        <Image Source="theme_dim.png" HeightRequest="25" WidthRequest="25" Aspect="AspectFit" VerticalOptions="Center"/>
+                                        <stylekit:XLabel Text="Dim" HorizontalOptions="Center" VerticalOptions="Center" Margin="5,0,0,0"/>
+                                    </StackLayout>
+                                    <Frame.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="AppThemeClicked" NumberOfTapsRequired="1"/>
+                                    </Frame.GestureRecognizers>
+                                </stylekit:XFrameButton>
+                                <!-- light theme -->
+                                <stylekit:XFrameButton>
+                                    <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" Spacing="0" BackgroundColor="Transparent">
+                                        <Image Source="theme_light.png" HeightRequest="25" WidthRequest="25" Aspect="AspectFit" VerticalOptions="Center"/>
+                                        <stylekit:XLabel Text="Light" HorizontalOptions="Center" VerticalOptions="Center" Margin="5,0,0,0"/>
+                                    </StackLayout>
+                                    <Frame.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="AppThemeClicked" NumberOfTapsRequired="1"/>
+                                    </Frame.GestureRecognizers>
+                                </stylekit:XFrameButton>
+                            </StackLayout>
                         </StackLayout>
 
                         <!-- editing view -->
@@ -156,7 +172,7 @@
             </ScrollView>
 
             <!-- background overlay -->
-            <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="Black" Opacity="0.7"
+            <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="Black" Opacity="0.5"
                          AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,0,1,1" IsVisible="{Binding IsLoading, Mode=TwoWay}"/>
 
             <!-- loading overlay -->

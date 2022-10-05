@@ -64,7 +64,8 @@ namespace Xperimen.Stylekit
                 {
                     var theme = Application.Current.Properties["app_theme"] as string;
                     if (theme.Equals("dark")) stack_entry.BackgroundColor = Color.FromHex(App.SlateGray);
-                    else stack_entry.BackgroundColor = Color.White;
+                    else if (theme.Equals("dim")) stack_entry.BackgroundColor = Color.FromHex(App.DimGray2);
+                    else if (theme.Equals("light")) stack_entry.BackgroundColor = Color.White;
                 }
                 else stack_entry.BackgroundColor = Color.White;
             }

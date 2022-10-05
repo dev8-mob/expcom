@@ -1,12 +1,12 @@
 ﻿
+using System.Collections.ObjectModel;
+using Xamarin.Forms;
 using Xperimen.Model;
+using Xperimen.View;
 using Xperimen.View.Commitment;
 using Xperimen.View.Dashboard;
 using Xperimen.View.Expense;
 using Xperimen.View.Setting;
-using Xperimen.View;
-using Xamarin.Forms;
-using System.Collections.ObjectModel;
 
 namespace Xperimen.ViewModel.NavigationDrawer
 {
@@ -20,7 +20,7 @@ namespace Xperimen.ViewModel.NavigationDrawer
         }
 
         public DrawerViewmodel()
-        { 
+        {
             SetupData();
             SetSelectedMenu("Admin");
         }
@@ -38,57 +38,48 @@ namespace Xperimen.ViewModel.NavigationDrawer
 
             #region set menu list
             MenuList = new ObservableCollection<ItemMenu>();
-            MenuList.Add(new ItemMenu 
-            { 
-                ImageIcon1 = "black_user.png", 
-                ImageIcon2 = "white_user.png", 
-                Title = "Dashboard", 
-                Contentpage = typeof(MainPage), 
+            MenuList.Add(new ItemMenu
+            {
+                ImageIcon1 = "black_user.png",
+                ImageIcon2 = "white_user.png",
+                Title = "Dashboard",
+                Contentpage = typeof(AdminPage),
                 IsSelected = false,
                 TextMenuColor = textcolor
             });
-            MenuList.Add(new ItemMenu 
-            { 
-                ImageIcon1 = "black_whatshot.png", 
-                ImageIcon2 = "white_whatshot.png", 
-                Title = "Admin", 
-                Contentpage = typeof(AdminPage), 
+            MenuList.Add(new ItemMenu
+            {
+                ImageIcon1 = "black_wallet.png",
+                ImageIcon2 = "white_wallet.png",
+                Title = "Commitment",
+                Contentpage = typeof(MainCommitment),
                 IsSelected = false,
                 TextMenuColor = textcolor
             });
-            MenuList.Add(new ItemMenu 
-            { 
-                ImageIcon1 = "black_whatshot.png", 
-                ImageIcon2 = "white_whatshot.png", 
-                Title = "Commitment", 
-                Contentpage = typeof(MainCommitment), 
+            MenuList.Add(new ItemMenu
+            {
+                ImageIcon1 = "black_money.png",
+                ImageIcon2 = "white_money.png",
+                Title = "Expenses",
+                Contentpage = typeof(MainExpenses),
                 IsSelected = false,
                 TextMenuColor = textcolor
             });
-            MenuList.Add(new ItemMenu 
-            { 
-                ImageIcon1 = "black_money.png", 
-                ImageIcon2 = "white_money.png", 
-                Title = "Expenses", 
-                Contentpage = typeof(MainExpenses), 
+            MenuList.Add(new ItemMenu
+            {
+                ImageIcon1 = "black_setting.png",
+                ImageIcon2 = "white_setting.png",
+                Title = "Setting",
+                Contentpage = typeof(MainSetting),
                 IsSelected = false,
                 TextMenuColor = textcolor
             });
-            MenuList.Add(new ItemMenu 
-            { 
-                ImageIcon1 = "black_setting.png", 
-                ImageIcon2 = "white_setting.png", 
-                Title = "Setting", 
-                Contentpage = typeof(MainSetting), 
-                IsSelected = false,
-                TextMenuColor = textcolor
-            });
-            MenuList.Add(new ItemMenu 
-            { 
-                ImageIcon1 = "black_logout.png", 
-                ImageIcon2 = "white_logout.png", 
+            MenuList.Add(new ItemMenu
+            {
+                ImageIcon1 = "black_logout.png",
+                ImageIcon2 = "white_logout.png",
                 Title = "Logout",
-                Contentpage = typeof(Logout), 
+                Contentpage = typeof(Logout),
                 IsSelected = false,
                 TextMenuColor = textcolor
             });

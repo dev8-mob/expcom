@@ -1,6 +1,7 @@
 ﻿
 
 using SQLite;
+using System;
 
 namespace Xperimen.Model
 {
@@ -15,7 +16,12 @@ namespace Xperimen.Model
         public string Description { get; set; }
         public byte[] ProfileImage { get; set; }
         public string AppTheme { get; set; }
+        public DateTime AccountCreated { get; set; }
+        public DateTime AccountUpdated { get; set; }
+        public DateTime Logout { get; set; }
         public bool IsLogin { get; set; }
+        public bool HaveOnetimeLogin { get; set; }
+        public bool HaveUpdated { get; set; }
         public double Income { get; set; }
         public double TotalCommitment { get; set; }
         public double NetIncome { get; set; }

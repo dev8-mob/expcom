@@ -29,7 +29,7 @@ namespace Xperimen.View.NavigationDrawer
             converter = new StreamByteConverter();
             UpdateProfilePic();
 
-            MessagingCenter.Subscribe<SettingViewmodel>(this, "AppThemeUpdated", (sender) => 
+            MessagingCenter.Subscribe<SettingViewmodel>(this, "AppThemeUpdated", (sender) =>
             { UpdateProfilePic(); });
         }
 
@@ -91,7 +91,7 @@ namespace Xperimen.View.NavigationDrawer
         {
             var view = (ListView)sender;
             view.IsEnabled = false;
-            if (e.SelectedItem != null) 
+            if (e.SelectedItem != null)
                 view.SelectedItem = null;
             view.IsEnabled = true;
         }

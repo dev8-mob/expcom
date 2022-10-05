@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<pages:PopupPage xmlns="http://xamarin.com/schemas/2014/forms"
+                 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                 x:Class="Xperimen.View.Setting.AccountList"
+                 xmlns:viewcell="clr-namespace:Xperimen.View.Setting"
+                 xmlns:stylekit="clr-namespace:Xperimen.Stylekit"
+                 xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
+                 Padding="0">
+
+    <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Margin="0">
+
+        <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" Grid.Row="0" Grid.Column="0">
+
+            <!-- UI content -->
+            <Frame Padding="0" HasShadow="False" CornerRadius="8" IsClippedToBounds="True" Margin="35,70,35,70"
+                   VerticalOptions="Center">
+
+                <StackLayout HorizontalOptions="FillAndExpand" Padding="0,15,0,0" VerticalOptions="Fill" x:Name="stack_bg">
+
+                    <stylekit:XLabel Text="Account(s) on this device" HorizontalOptions="CenterAndExpand" 
+                                     FontFamily="{DynamicResource Key=BoldFont}"/>
+
+                    <!-- clients list -->
+                    <ScrollView HorizontalOptions="FillAndExpand" VerticalOptions="Fill" Margin="0,15,0,0" >
+                        <StackLayout HorizontalOptions="FillAndExpand" BindableLayout.ItemsSource="{Binding ListClients}" 
+                                     Spacing="0" VerticalOptions="Fill">
+                            <BindableLayout.ItemTemplate>
+                                <DataTemplate>
+                                    <viewcell:UserlistCell Picture="{Binding ProfileImage}" Login="{Binding IsLogin}" 
+                                                           OnetimeLogin="{Binding HaveOnetimeLogin}"/>
+                                </DataTemplate>
+                            </BindableLayout.ItemTemplate>
+                        </StackLayout>
+                    </ScrollView>
+
+                    <!-- cancel button -->
+                    <stylekit:XLabel Text="Okay" HorizontalOptions="Center" FontFamily="{DynamicResource Key=BoldFont}" Margin="0,15,0,0"
+                                     Padding="20,15,20,15">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OkayClicked" NumberOfTapsRequired="1"/>
+                        </Label.GestureRecognizers>
+                    </stylekit:XLabel>
+
+                </StackLayout>
+
+            </Frame>
+
+        </StackLayout>
+
+        <!-- background overlay -->
+        <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="Black" Opacity="0.5"
+                     IsVisible="{Binding IsLoading, Mode=TwoWay}" Grid.Row="0" Grid.Column="0"/>
+
+        <!-- loading overlay -->
+        <StackLayout IsVisible="{Binding IsLoading, Mode=TwoWay}" BackgroundColor="Transparent" Orientation="Vertical" Spacing="0"
+                     Grid.Row="0" Grid.Column="0" HorizontalOptions="Center" VerticalOptions="Center">
+            <ActivityIndicator IsRunning="{Binding IsLoading, Mode=TwoWay}" Color="White" HorizontalOptions="Center"/>
+            <Label Text="loading..." HorizontalOptions="Center" TextColor="White" FontFamily="{DynamicResource BoldFont}"/>
+        </StackLayout>
+
+        <!-- custom display alert -->
+        <stylekit:CustomDisplayAlert x:Name="alert" IsVisible="False" Grid.Row="0" Grid.Column="0"/>
+
+    </Grid>
+
+</pages:PopupPage>

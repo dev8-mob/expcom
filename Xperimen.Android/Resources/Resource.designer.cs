@@ -28767,88 +28767,97 @@ namespace Xperimen.Droid
 			public const int test_custom_background = 2131165351;
 			
 			// aapt resource value: 0x7F0700A8
-			public const int tooltip_frame_dark = 2131165352;
+			public const int theme_dark = 2131165352;
 			
 			// aapt resource value: 0x7F0700A9
-			public const int tooltip_frame_light = 2131165353;
+			public const int theme_dim = 2131165353;
 			
 			// aapt resource value: 0x7F0700AA
-			public const int white_add1 = 2131165354;
+			public const int theme_light = 2131165354;
 			
 			// aapt resource value: 0x7F0700AB
-			public const int white_back = 2131165355;
+			public const int tooltip_frame_dark = 2131165355;
 			
 			// aapt resource value: 0x7F0700AC
-			public const int white_camera = 2131165356;
+			public const int tooltip_frame_light = 2131165356;
 			
 			// aapt resource value: 0x7F0700AD
-			public const int white_cancel = 2131165357;
+			public const int white_add1 = 2131165357;
 			
 			// aapt resource value: 0x7F0700AE
-			public const int white_checkbox_off = 2131165358;
+			public const int white_back = 2131165358;
 			
 			// aapt resource value: 0x7F0700AF
-			public const int white_checkbox_on = 2131165359;
+			public const int white_camera = 2131165359;
 			
 			// aapt resource value: 0x7F0700B0
-			public const int white_close = 2131165360;
+			public const int white_cancel = 2131165360;
 			
 			// aapt resource value: 0x7F0700B1
-			public const int white_delete = 2131165361;
+			public const int white_checkbox_off = 2131165361;
 			
 			// aapt resource value: 0x7F0700B2
-			public const int white_done = 2131165362;
+			public const int white_checkbox_on = 2131165362;
 			
 			// aapt resource value: 0x7F0700B3
-			public const int white_down = 2131165363;
+			public const int white_close = 2131165363;
 			
 			// aapt resource value: 0x7F0700B4
-			public const int white_edit = 2131165364;
+			public const int white_delete = 2131165364;
 			
 			// aapt resource value: 0x7F0700B5
-			public const int white_image = 2131165365;
+			public const int white_done = 2131165365;
 			
 			// aapt resource value: 0x7F0700B6
-			public const int white_invisible = 2131165366;
+			public const int white_down = 2131165366;
 			
 			// aapt resource value: 0x7F0700B7
-			public const int white_logout = 2131165367;
+			public const int white_edit = 2131165367;
 			
 			// aapt resource value: 0x7F0700B8
-			public const int white_menu = 2131165368;
+			public const int white_image = 2131165368;
 			
 			// aapt resource value: 0x7F0700B9
-			public const int white_money = 2131165369;
+			public const int white_invisible = 2131165369;
 			
 			// aapt resource value: 0x7F0700BA
-			public const int white_password = 2131165370;
+			public const int white_logout = 2131165370;
 			
 			// aapt resource value: 0x7F0700BB
-			public const int white_save = 2131165371;
+			public const int white_menu = 2131165371;
 			
 			// aapt resource value: 0x7F0700BC
-			public const int white_search = 2131165372;
+			public const int white_money = 2131165372;
 			
 			// aapt resource value: 0x7F0700BD
-			public const int white_setting = 2131165373;
+			public const int white_password = 2131165373;
 			
 			// aapt resource value: 0x7F0700BE
-			public const int white_undo = 2131165374;
+			public const int white_save = 2131165374;
 			
 			// aapt resource value: 0x7F0700BF
-			public const int white_up = 2131165375;
+			public const int white_search = 2131165375;
 			
 			// aapt resource value: 0x7F0700C0
-			public const int white_user = 2131165376;
+			public const int white_setting = 2131165376;
 			
 			// aapt resource value: 0x7F0700C1
-			public const int white_visible = 2131165377;
+			public const int white_undo = 2131165377;
 			
 			// aapt resource value: 0x7F0700C2
-			public const int white_wallet = 2131165378;
+			public const int white_up = 2131165378;
 			
 			// aapt resource value: 0x7F0700C3
-			public const int white_whatshot = 2131165379;
+			public const int white_user = 2131165379;
+			
+			// aapt resource value: 0x7F0700C4
+			public const int white_visible = 2131165380;
+			
+			// aapt resource value: 0x7F0700C5
+			public const int white_wallet = 2131165381;
+			
+			// aapt resource value: 0x7F0700C6
+			public const int white_whatshot = 2131165382;
 			
 			static Drawable()
 			{

@@ -27,7 +27,7 @@ namespace Xperimen.View.Expense
 
             #region messagingcenter
             MessagingCenter.Subscribe<CustomDisplayAlert, string>(this, "DisplayAlertSelection", (sender, arg) =>
-            { 
+            {
                 if (arg.Equals("Yes"))
                 {
                     if (!string.IsNullOrEmpty(alert.CodeObject))
@@ -60,10 +60,10 @@ namespace Xperimen.View.Expense
                         else if (result == 2) SetDisplayAlert("Error", "Technical error deleting selected expenses.", "", "", "");
                     }
                 }
-                else viewmodel.IsLoading = false; 
+                else viewmodel.IsLoading = false;
             });
             MessagingCenter.Subscribe<AddRecord, string>(this, "ExpensesAdded", (sender, arg) =>
-            { 
+            {
                 calendar.SetupView();
                 viewmodel.IsLoading = true;
                 var result = viewmodel.GetExpensesOnDate(arg);
@@ -95,7 +95,7 @@ namespace Xperimen.View.Expense
                         var split = arg.Split('.');
                         if (split.Count() > 0)
                             sampledate = new DateTime(Convert.ToInt32(split[2]), Convert.ToInt32(split[1]), Convert.ToInt32(split[0]));
-                        
+
                         if (viewmodel.NoExpenses)
                         {
                             SetupView();
@@ -230,22 +230,22 @@ namespace Xperimen.View.Expense
                 }
                 else if (usedsize <= 100 || availsize <= 100)
                 {
-                    colused = new ColumnDefinition() { Width = new GridLength(Math.Round(usedsize/100, 2), GridUnitType.Star) };
-                    colavail = new ColumnDefinition() { Width = new GridLength(Math.Round(availsize/100, 2), GridUnitType.Star) };
+                    colused = new ColumnDefinition() { Width = new GridLength(Math.Round(usedsize / 100, 2), GridUnitType.Star) };
+                    colavail = new ColumnDefinition() { Width = new GridLength(Math.Round(availsize / 100, 2), GridUnitType.Star) };
                 }
 
                 var grid = new Grid { ColumnSpacing = 0 };
                 grid.ColumnDefinitions.Add(colused);
                 grid.ColumnDefinitions.Add(colavail);
-                var stackused = new StackLayout 
-                { 
-                    BackgroundColor = Color.FromHex(App.CustomRedLight), 
-                    VerticalOptions = LayoutOptions.FillAndExpand ,
+                var stackused = new StackLayout
+                {
+                    BackgroundColor = Color.FromHex(App.CustomRedLight),
+                    VerticalOptions = LayoutOptions.FillAndExpand,
                     HorizontalOptions = LayoutOptions.FillAndExpand
                 };
-                var stackavail = new StackLayout 
-                { 
-                    BackgroundColor = Color.FromHex(App.CustomGreenLight), 
+                var stackavail = new StackLayout
+                {
+                    BackgroundColor = Color.FromHex(App.CustomGreenLight),
                     VerticalOptions = LayoutOptions.FillAndExpand,
                     HorizontalOptions = LayoutOptions.FillAndExpand
                 };

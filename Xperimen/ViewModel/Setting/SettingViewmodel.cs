@@ -155,16 +155,7 @@ namespace Xperimen.ViewModel.Setting
             Firstname = fname;
             Lastname = lname;
 
-            double income = 0, netincome = 0;
             var userid = Application.Current.Properties["current_login"] as string;
-            string getuser = "SELECT * FROM Clients WHERE Id = '" + userid + "'";
-            var user = connection.Query<Clients>(getuser).ToList();
-            if (user.Count > 0)
-            {
-                income = user[0].Income;
-                netincome = user[0].NetIncome;
-            }
-
             var model = new Clients
             {
                 Id = userid,
@@ -175,10 +166,28 @@ namespace Xperimen.ViewModel.Setting
                 Description = Description,
                 ProfileImage = Picture,
                 AppTheme = Theme,
+                AccountCreated = new DateTime(),
+                AccountUpdated = DateTime.Now,
+                Logout = new DateTime(),
                 IsLogin = true,
-                Income = income,
-                NetIncome = netincome
+                HaveOnetimeLogin = true,
+                HaveUpdated = true,
+                Income = 0,
+                TotalCommitment = 0,
+                NetIncome = 0
             };
+
+            string getuser = "SELECT * FROM Clients WHERE Id = '" + userid + "'";
+            var user = connection.Query<Clients>(getuser).ToList();
+            if (user.Count > 0)
+            {
+                model.Logout = user[0].Logout;
+                model.HaveOnetimeLogin = user[0].HaveOnetimeLogin;
+                model.AccountCreated = user[0].AccountCreated;
+                model.Income = user[0].Income;
+                model.NetIncome = user[0].NetIncome;
+                model.TotalCommitment = user[0].TotalCommitment;
+            }
 
             string query = "SELECT * FROM Clients WHERE Id = '" + userid + "'";
             var result = connection.Query<Clients>(query).ToList();
@@ -190,7 +199,22 @@ namespace Xperimen.ViewModel.Setting
                 else
                 {
                     var row = connection.Update(model);
-                    if (row == 1) return 1;
+                    if (row == 1)
+                    {
+                        var updated = connection.Query<Clients>("SELECT * FROM Clients WHERE Id = '" + userid + "'").ToList();
+                        if (updated.Count > 0)
+                        {
+                            Username = updated[0].Username;
+                            Firstname = updated[0].Firstname;
+                            Lastname = updated[0].Lastname;
+                            Password = updated[0].Password;
+                            Description = updated[0].Description;
+                            Theme = updated[0].AppTheme;
+                            Picture = updated[0].ProfileImage;
+                            MessagingCenter.Send(this, "AppThemeUpdated");
+                        }
+                        return 1;
+                    }
                     else return 3;
                 }
             }
@@ -204,7 +228,6 @@ namespace Xperimen.ViewModel.Setting
                 var userid = Application.Current.Properties["current_login"] as string;
                 string query = "UPDATE Clients SET AppTheme = '" + Theme + "' WHERE Id = '" + userid + "'";
                 connection.Query<Clients>(query);
-                var check = connection.Table<Clients>().ToList();
 
                 Application.Current.Properties["app_theme"] = Theme;
                 await Application.Current.SavePropertiesAsync();

@@ -13,17 +13,17 @@
         </Grid.RowDefinitions>
 
         <!-- background overlay -->
-        <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="Black" Opacity="0.7"
+        <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="Black" Opacity="0.5"
                      Grid.Row="0" Grid.Column="0" Grid.RowSpan="3"/>
 
         <!-- added wallet-like UI -->
-        <Frame Padding="0" HasShadow="False" CornerRadius="10" VerticalOptions="Start" Margin="35,0,35,0"
+        <Frame Padding="0" HasShadow="False" CornerRadius="10" VerticalOptions="Start" Margin="50,0,50,0"
                Grid.Row="1" Grid.Column="0" HorizontalOptions="FillAndExpand" BorderColor="DarkGray">
             <StackLayout HorizontalOptions="FillAndExpand" HeightRequest="100" BackgroundColor="{DynamicResource Key=Primary}"/>
         </Frame>
 
         <Frame HasShadow="False" Padding="0" IsClippedToBounds="True" CornerRadius="10" VerticalOptions="Center"
-               Grid.Row="1" Grid.Column="0" Margin="20">
+               Grid.Row="1" Grid.Column="0" Margin="35,20,35,20">
 
             <!-- UI content (view) -->
             <StackLayout x:Name="stack_bg" Orientation="Vertical" HorizontalOptions="FillAndExpand" Spacing="0" Padding="15,20,15,20">
