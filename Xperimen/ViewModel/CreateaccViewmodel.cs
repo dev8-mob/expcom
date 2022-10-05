@@ -7,7 +7,6 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xperimen.Helper;
 using Xperimen.Model;
-using Xperimen.View;
 
 namespace Xperimen.ViewModel
 {
@@ -125,8 +124,9 @@ namespace Xperimen.ViewModel
                     AppTheme = Theme,
                     AccountCreated = DateTime.Now,
                     AccountUpdated = DateTime.Now,
-                    Logout = new DateTime(1,1,1),
+                    Logout = new DateTime(1, 1, 1),
                     IsLogin = false,
+                    HaveOnetimeLogin = false,
                     HaveUpdated = false,
                     Income = 0,
                     TotalCommitment = 0,

@@ -16,6 +16,11 @@ namespace Xperimen.View.Setting
             get => (bool)GetValue(LoginProperty);
             set { SetValue(LoginProperty, value); }
         }
+        public bool OnetimeLogin
+        {
+            get => (bool)GetValue(OnetimeLoginProperty);
+            set { SetValue(OnetimeLoginProperty, value); }
+        }
         public byte[] Picture
         {
             get => (byte[])GetValue(PictureProperty);
@@ -24,6 +29,9 @@ namespace Xperimen.View.Setting
         public static BindableProperty LoginProperty =
             BindableProperty.Create(nameof(Login), typeof(bool), typeof(UserlistCell), defaultValue: false,
                 propertyChanged: (bindable, oldVal, newVal) => { ((UserlistCell)bindable).UpdateIsLogin((bool)newVal); });
+        public static BindableProperty OnetimeLoginProperty =
+            BindableProperty.Create(nameof(OnetimeLogin), typeof(bool), typeof(UserlistCell), defaultValue: false,
+                propertyChanged: (bindable, oldVal, newVal) => { ((UserlistCell)bindable).UpdateOnetimeLogin((bool)newVal); });
         public static BindableProperty PictureProperty =
             BindableProperty.Create(nameof(Picture), typeof(byte[]), typeof(UserlistCell), defaultValue: null,
                 propertyChanged: (bindable, oldVal, newVal) => { ((UserlistCell)bindable).UpdatePicture((byte[])newVal); });
@@ -31,7 +39,11 @@ namespace Xperimen.View.Setting
         {
             lbl_login.IsVisible = data;
             img_delete.IsVisible = !data;
-            stack_lastlogin.IsVisible = !data;
+        }
+        public void UpdateOnetimeLogin(bool data)
+        {
+            if (OnetimeLogin && !Login) stack_lastlogin.IsVisible = true;
+            else stack_lastlogin.IsVisible = false;
         }
         public void UpdatePicture(byte[] data)
         {

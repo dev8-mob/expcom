@@ -37,6 +37,7 @@ namespace Xperimen.View
                         Logout = user[0].Logout,
                         HaveUpdated = user[0].HaveUpdated,
                         IsLogin = false,
+                        HaveOnetimeLogin = user[0].HaveOnetimeLogin,
                         Income = user[0].Income,
                         TotalCommitment = user[0].TotalCommitment,
                         NetIncome = user[0].NetIncome

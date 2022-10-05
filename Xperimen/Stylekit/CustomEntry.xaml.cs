@@ -295,7 +295,7 @@ namespace Xperimen.Stylekit
                     if (view.Keyboard == Keyboard.Numeric) view.Text = "0";
                     else view.Text = string.Empty;
                 }
-                    
+
                 line.BackgroundColor = Color.DarkGray;
                 if (Application.Current.Properties.ContainsKey("app_theme"))
                 {

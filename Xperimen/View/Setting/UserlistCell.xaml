@@ -53,7 +53,7 @@
                              HorizontalOptions="FillAndExpand" LineBreakMode="TailTruncation"/>
         </StackLayout>
         <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="Start" Spacing="0"
-                     x:Name="stack_lastlogin">
+                     x:Name="stack_lastlogin" IsVisible="{Binding HaveOnetimeLogin}">
             <stylekit:XLabel Text="Last login : " HorizontalOptions="Start"/>
             <stylekit:XLabel Text="{Binding Logout, StringFormat='{0:d MMM, ddd - h:mm tt}'}" MaxLines="1"
                              HorizontalOptions="FillAndExpand" LineBreakMode="TailTruncation"/>

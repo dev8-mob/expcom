@@ -9,7 +9,7 @@ using Xamarin.Forms.PlatformConfiguration.AndroidSpecific;
 
 namespace Xperimen.Droid
 {
-    [Activity(Label = "Xperimen", Icon = "@mipmap/icon", Theme = "@style/MainTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | 
+    [Activity(Label = "Xperimen", Icon = "@mipmap/icon", Theme = "@style/MainTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize |
         ConfigChanges.ScreenLayout | ConfigChanges.SmallestScreenSize, WindowSoftInputMode = SoftInput.AdjustResize)]
     public class MainActivity : Xamarin.Forms.Platform.Android.FormsAppCompatActivity
     {

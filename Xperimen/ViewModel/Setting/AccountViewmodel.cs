@@ -52,8 +52,6 @@ namespace Xperimen.ViewModel.Setting
                 connection.Query<Clients>(queryUser);
                 connection.Query<SelfCommitment>(queryCommitment);
                 connection.Query<Expenses>(queryCommitment);
-                //var cek1 = connection.Table<Clients>().ToList();
-                //var cek2 = connection.Table<SelfCommitment>().ToList();
                 return 1;
             }
             catch (Exception ex)

@@ -61,7 +61,7 @@ namespace Xperimen.View.Setting
         private void listview_ItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
             var view = (ListView)sender;
-            if (view.SelectedItem != null) 
+            if (view.SelectedItem != null)
                 view.SelectedItem = null;
         }
 

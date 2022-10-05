@@ -194,7 +194,7 @@ namespace Xperimen.ViewModel.Expense
                 {
                     var split = SelectedDate.Split('.');
                     if (split.Count() > 0)
-                        modeldate = new DateTime(Convert.ToInt32(split[2]), Convert.ToInt32(split[1]), 
+                        modeldate = new DateTime(Convert.ToInt32(split[2]), Convert.ToInt32(split[1]),
                             Convert.ToInt32(split[0]), DateTime.Now.Hour, DateTime.Now.Minute, DateTime.Now.Second);
                 }
                 else modeldate = DateTime.Now;
@@ -212,7 +212,6 @@ namespace Xperimen.ViewModel.Expense
                 };
                 if (Picture != null) data.Picture = convert.GetImageBytes(Picture.GetStream());
                 connection.Insert(data);
-                var cek = connection.Table<Expenses>().ToList();
                 return 1;
             }
             catch (Exception ex)
@@ -285,7 +284,7 @@ namespace Xperimen.ViewModel.Expense
                 var result = connection.Query<Expenses>(query).ToList();
                 if (result.Count > 0)
                 {
-                    foreach (var data in result) 
+                    foreach (var data in result)
                         UserTotalExp += data.Amount;
                     Balance = NetIncome - UserTotalExp;
 
@@ -295,7 +294,7 @@ namespace Xperimen.ViewModel.Expense
                         PercentageAvailable = Balance / NetIncome * 100;
                     }
                     else { PercentageUsed = 0; PercentageAvailable = 0; }
-                    
+
                     return 1;
                 }
                 else
@@ -368,11 +367,9 @@ namespace Xperimen.ViewModel.Expense
                 if (user.Count > 0) commitment = user[0].TotalCommitment;
 
                 netincome = Income - commitment;
-                string query = "UPDATE Clients SET Income = " + Income + ", TotalCommitment = " + commitment 
+                string query = "UPDATE Clients SET Income = " + Income + ", TotalCommitment = " + commitment
                     + ", NetIncome = " + netincome + " WHERE Id = '" + userid + "'";
                 connection.Query<Clients>(query);
-                var cek = connection.Query<Clients>("SELECT * FROM Clients WHERE Id = '" + userid + "'").ToList();
-                
                 return 1;
             }
             catch (Exception ex)

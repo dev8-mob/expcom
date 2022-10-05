@@ -55,6 +55,7 @@ namespace Xperimen.ViewModel
                     AccountUpdated = result[0].AccountUpdated,
                     Logout = DateTime.Now,
                     IsLogin = true,
+                    HaveOnetimeLogin = true,
                     HaveUpdated = result[0].HaveUpdated,
                     Income = result[0].Income,
                     TotalCommitment = result[0].TotalCommitment,
@@ -63,7 +64,6 @@ namespace Xperimen.ViewModel
                 var success = connection.Update(model);
                 if (success == 1)
                 {
-                    var cek = connection.Table<Clients>().ToList();
                     Application.Current.Properties["current_login"] = result[0].Id;
                     Application.Current.Properties["app_theme"] = result[0].AppTheme;
                     await Application.Current.SavePropertiesAsync();

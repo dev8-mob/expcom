@@ -20,6 +20,7 @@ namespace Xperimen.Model
         public DateTime AccountUpdated { get; set; }
         public DateTime Logout { get; set; }
         public bool IsLogin { get; set; }
+        public bool HaveOnetimeLogin { get; set; }
         public bool HaveUpdated { get; set; }
         public double Income { get; set; }
         public double TotalCommitment { get; set; }

@@ -37,7 +37,7 @@ namespace Xperimen.View.Expense
                     await Navigation.PopAsync();
             });
             MessagingCenter.Subscribe<CustomDatePicker, string>(this, "SelectedDate", (sender, arg) =>
-            { 
+            {
                 if (!string.IsNullOrEmpty(arg))
                 {
                     viewmodel.SelectedDate = arg;
@@ -48,7 +48,7 @@ namespace Xperimen.View.Expense
                         newdate = new DateTime(Convert.ToInt32(split[2]), Convert.ToInt32(split[1]), Convert.ToInt32(split[0]));
                         DatetimeViewer = newdate;
                     }
-                } 
+                }
             });
         }
 

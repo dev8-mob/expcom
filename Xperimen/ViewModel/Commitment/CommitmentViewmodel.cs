@@ -297,7 +297,6 @@ namespace Xperimen.ViewModel.Commitment
 
                 var query = "UPDATE Clients SET NetIncome = " + Balance + ", TotalCommitment = " + TotalCommitment + " WHERE Id = '" + userid + "'";
                 connection.Query<Clients>(query);
-                var cek = connection.Query<Clients>("SELECT * FROM Clients WHERE Id = '" + userid + "'").ToList();
                 return 1;
             }
             catch (Exception ex)
@@ -376,8 +375,6 @@ namespace Xperimen.ViewModel.Commitment
                     + ", AccountNo = " + AccountNo + ", Picture = NULL WHERE Id = '" + data + "'";
                     connection.Query<SelfCommitment>(query);
                 }
-
-                var cek = connection.Query<SelfCommitment>("SELECT * FROM SelfCommitment WHERE Id = '" + data + "'").ToList();
                 return 1;
             }
             catch (Exception ex)
