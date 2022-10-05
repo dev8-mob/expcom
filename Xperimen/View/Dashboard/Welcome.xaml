@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Xperimen.View.Dashboard.Welcome"
+             xmlns:stylekit="clr-namespace:Xperimen.Stylekit"
+             NavigationPage.HasNavigationBar="False">
+    
+    <ContentPage.Content>
+
+        <AbsoluteLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="Transparent">
+
+            <!-- UI content -->
+            <stylekit:XStacklayout Orientation="Vertical" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Spacing="0" 
+                                   Padding="20" AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,0,1,1">
+
+                <!-- top navigation bar -->
+                <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="Start">
+                    <stylekit:XImage Source1="black_menudot.png" Source2="white_menudot.png" HeightRequest="35" WidthRequest="35" Aspect="AspectFit"
+                                     HorizontalOptions="Start" Margin="0,0,20,0">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="DrawerTapped" NumberOfTapsRequired="1"/>
+                        </Image.GestureRecognizers>
+                    </stylekit:XImage>
+                    <stylekit:XLabel Text="Hi, " HorizontalOptions="Fill" FontSize="18" VerticalOptions="Center"/>
+                    <stylekit:XLabel Text="{Binding Firstname}" HorizontalOptions="Fill" FontFamily="{DynamicResource Key=BoldFont}" 
+                                     FontSize="18" VerticalOptions="Center" MaxLines="1" LineBreakMode="TailTruncation"/>
+                    <stylekit:XLabel Text="{Binding Lastname}" HorizontalOptions="FillAndExpand" FontFamily="{DynamicResource Key=BoldFont}" 
+                                     FontSize="18" VerticalOptions="Center" MaxLines="1" LineBreakMode="TailTruncation"/>
+                </StackLayout>
+
+                <!-- UI content -->
+                <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" RowSpacing="10" ColumnSpacing="10" Margin="0,15,0,0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <!-- profile picture -->
+                    <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand" Spacing="0" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2">
+                        <Frame Padding="0" HasShadow="False" CornerRadius="8" HorizontalOptions="Center" VerticalOptions="Start"
+                               IsClippedToBounds="True" BackgroundColor="Transparent">
+                            <Image x:Name="img_profile" HeightRequest="100" WidthRequest="100" Aspect="AspectFill"/>
+                        </Frame>
+                        <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Spacing="0" Margin="0,15,0,0">
+                            <stylekit:XLabel Text="Today is " HorizontalOptions="Fill" VerticalOptions="Center"/>
+                            <stylekit:XLabel Text="{Binding CurrentDt, StringFormat='{0:ddd, d MMM}'}" HorizontalOptions="Fill" 
+                                         FontFamily="{DynamicResource Key=BoldFont}" VerticalOptions="Center" MaxLines="1" 
+                                         LineBreakMode="TailTruncation"/>
+                        </StackLayout>
+                    </StackLayout>
+                    
+                    <Frame HasShadow="False" Padding="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"
+                           Grid.Row="1" Grid.Column="0" IsClippedToBounds="True" CornerRadius="8"/>
+                    <Frame HasShadow="False" Padding="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"
+                           Grid.Row="1" Grid.Column="1" IsClippedToBounds="True" CornerRadius="8"/>
+                </Grid>
+
+            </stylekit:XStacklayout>
+
+                <!-- background overlay -->
+            <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="Black" Opacity="0.5"
+                         AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,0,1,1" IsVisible="{Binding IsLoading, Mode=TwoWay}"/>
+
+            <!-- loading overlay -->
+            <StackLayout IsVisible="{Binding IsLoading, Mode=TwoWay}" BackgroundColor="Transparent" Orientation="Vertical" Spacing="0"
+                         AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0.5,0.5,-1,-1">
+                <ActivityIndicator IsRunning="{Binding IsLoading, Mode=TwoWay}" Color="White" HorizontalOptions="Center"/>
+                <Label Text="loading..." HorizontalOptions="Center" TextColor="White" FontFamily="{DynamicResource BoldFont}"/>
+            </StackLayout>
+
+            <!-- custom display alert -->
+            <stylekit:CustomDisplayAlert x:Name="alert" IsVisible="False"/>
+
+        </AbsoluteLayout>
+
+    </ContentPage.Content>
+    
+</ContentPage>
