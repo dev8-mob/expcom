@@ -155,14 +155,19 @@ namespace Xperimen.ViewModel.Setting
             Firstname = fname;
             Lastname = lname;
 
-            double income = 0, netincome = 0;
+            double income = 0, netincome = 0, totalcommitment = 0;
+            var logout = new DateTime();
+            var acccreated = new DateTime();
             var userid = Application.Current.Properties["current_login"] as string;
             string getuser = "SELECT * FROM Clients WHERE Id = '" + userid + "'";
             var user = connection.Query<Clients>(getuser).ToList();
             if (user.Count > 0)
             {
+                logout = user[0].Logout;
+                acccreated = user[0].AccountCreated;
                 income = user[0].Income;
                 netincome = user[0].NetIncome;
+                totalcommitment = user[0].TotalCommitment;
             }
 
             var model = new Clients
@@ -175,10 +180,14 @@ namespace Xperimen.ViewModel.Setting
                 Description = Description,
                 ProfileImage = Picture,
                 AppTheme = Theme,
+                AccountCreated = acccreated,
+                AccountUpdated = DateTime.Now,
+                Logout = logout,
                 IsLogin = true,
+                HaveUpdated = true,
                 Income = income,
-                NetIncome = netincome,
-                AccountUpdated = DateTime.Now
+                TotalCommitment = totalcommitment,
+                NetIncome = netincome
             };
 
             string query = "SELECT * FROM Clients WHERE Id = '" + userid + "'";
@@ -193,6 +202,7 @@ namespace Xperimen.ViewModel.Setting
                     var row = connection.Update(model);
                     if (row == 1)
                     {
+                        var cek = connection.Table<Clients>().ToList();
                         var updated = connection.Query<Clients>("SELECT * FROM Clients WHERE Id = '" + userid + "'").ToList();
                         if (updated.Count > 0)
                         {

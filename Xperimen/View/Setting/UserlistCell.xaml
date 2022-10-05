@@ -21,8 +21,8 @@
                 <stylekit:XLabel x:Name="lbl_fname" Text="{Binding Firstname}" HorizontalOptions="Start"/>
                 <stylekit:XLabel x:Name="lbl_lname" Text="{Binding Lastname}" HorizontalOptions="Start"/>
             </StackLayout>
-            <stylekit:XLabel Text="{Binding Username, StringFormat='@{0}'}" HorizontalOptions="Start" 
-                                 FontFamily="{DynamicResource Key=ItalicFont}"/>
+            <stylekit:XLabel Text="{Binding Username, StringFormat='@{0}'}" HorizontalOptions="FillAndExpand" 
+                             FontFamily="{DynamicResource Key=ItalicFont}"/>
         </StackLayout>
 
         <!-- delete button -->
@@ -38,7 +38,7 @@
         </StackLayout.GestureRecognizers>
     </StackLayout>
 
-    <!-- date time info -->
+    <!-- created update datetime info -->
     <StackLayout x:Name="stack_detail" Orientation="Vertical" HorizontalOptions="FillAndExpand" Spacing="0" 
                  Padding="15" IsVisible="False">
         <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="Start" Spacing="0">
@@ -46,7 +46,8 @@
             <stylekit:XLabel Text="{Binding AccountCreated, StringFormat='{0:d MMM, ddd - h:mm tt}'}" MaxLines="1"
                              HorizontalOptions="FillAndExpand" LineBreakMode="TailTruncation"/>
         </StackLayout>
-        <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="Start" Spacing="0">
+        <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="Start" Spacing="0"
+                     IsVisible="{Binding HaveUpdated}">
             <stylekit:XLabel Text="Updated : " HorizontalOptions="Start"/>
             <stylekit:XLabel Text="{Binding AccountUpdated, StringFormat='{0:d MMM, ddd - h:mm tt}'}" MaxLines="1"
                              HorizontalOptions="FillAndExpand" LineBreakMode="TailTruncation"/>

@@ -121,12 +121,16 @@ namespace Xperimen.ViewModel
                     Lastname = string.Empty,
                     Password = Password,
                     Description = Description,
+                    ProfileImage = convert.GetImageBytes(Picture.GetStream()),
                     AppTheme = Theme,
                     AccountCreated = DateTime.Now,
                     AccountUpdated = DateTime.Now,
                     Logout = new DateTime(1,1,1),
-                    ProfileImage = convert.GetImageBytes(Picture.GetStream()),
-                    IsLogin = false
+                    IsLogin = false,
+                    HaveUpdated = false,
+                    Income = 0,
+                    TotalCommitment = 0,
+                    NetIncome = 0
                 };
                 var camelcase = new CamelCaseChecker();
                 data.Firstname = camelcase.CapitalizeWord(Firstname);

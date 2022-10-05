@@ -55,6 +55,7 @@ namespace Xperimen.ViewModel
                     AccountUpdated = result[0].AccountUpdated,
                     Logout = DateTime.Now,
                     IsLogin = true,
+                    HaveUpdated = result[0].HaveUpdated,
                     Income = result[0].Income,
                     TotalCommitment = result[0].TotalCommitment,
                     NetIncome = result[0].NetIncome

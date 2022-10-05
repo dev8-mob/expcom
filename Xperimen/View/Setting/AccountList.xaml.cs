@@ -32,10 +32,15 @@ namespace Xperimen.View.Setting
                 if (arg.Equals("Okay"))
                 {
                     var result = viewmodel.DeleteUser(alert.CodeObject);
-                    if (result == 1) SetDisplayAlert("Success", "User deleted.", "", "", "");
+                    if (result == 1)
+                    {
+                        SetDisplayAlert("Success", "User deleted.", "", "", "");
+                        viewmodel.GetClientsList();
+                        viewmodel.IsLoading = false;
+                    }
                     else if (result == 2) SetDisplayAlert("Failed", "Technical error. Failed to delete the user.", "", "", "");
                 }
-                viewmodel.IsLoading = false;
+                else viewmodel.IsLoading = false;
             });
         }
 

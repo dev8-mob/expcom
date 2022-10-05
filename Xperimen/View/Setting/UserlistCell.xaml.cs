@@ -21,12 +21,18 @@ namespace Xperimen.View.Setting
             get => (byte[])GetValue(PictureProperty);
             set { SetValue(PictureProperty, value); }
         }
-        public static BindableProperty PictureProperty =
-            BindableProperty.Create(nameof(Picture), typeof(byte[]), typeof(UserlistCell), defaultValue: null,
-                propertyChanged: (bindable, oldVal, newVal) => { ((UserlistCell)bindable).UpdatePicture((byte[])newVal); });
         public static BindableProperty LoginProperty =
             BindableProperty.Create(nameof(Login), typeof(bool), typeof(UserlistCell), defaultValue: false,
                 propertyChanged: (bindable, oldVal, newVal) => { ((UserlistCell)bindable).UpdateIsLogin((bool)newVal); });
+        public static BindableProperty PictureProperty =
+            BindableProperty.Create(nameof(Picture), typeof(byte[]), typeof(UserlistCell), defaultValue: null,
+                propertyChanged: (bindable, oldVal, newVal) => { ((UserlistCell)bindable).UpdatePicture((byte[])newVal); });
+        public void UpdateIsLogin(bool data)
+        {
+            lbl_login.IsVisible = data;
+            img_delete.IsVisible = !data;
+            stack_lastlogin.IsVisible = !data;
+        }
         public void UpdatePicture(byte[] data)
         {
             img_profile.Source = ImageSource.FromStream(() =>
@@ -34,12 +40,6 @@ namespace Xperimen.View.Setting
                 var stream = converter.BytesToStream(data);
                 return stream;
             });
-        }
-        public void UpdateIsLogin(bool data)
-        {
-            lbl_login.IsVisible = data;
-            img_delete.IsVisible = !data;
-            stack_lastlogin.IsVisible = !data;
         }
         #endregion
 
@@ -69,7 +69,7 @@ namespace Xperimen.View.Setting
             await view.ScaleTo(0.9, 100);
             view.Scale = 1;
             view.IsEnabled = false;
-            var parent = (AccountList)view.Parent.Parent.Parent.Parent.Parent.Parent;
+            var parent = (AccountList)view.Parent.Parent.Parent.Parent.Parent.Parent.Parent.Parent.Parent;
 
             var fullname = lbl_fname.Text + " " + lbl_lname.Text;
             parent.viewmodel.IsLoading = true;

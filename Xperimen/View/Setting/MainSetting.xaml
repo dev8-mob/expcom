@@ -49,10 +49,10 @@
                                      Grid.Row="1" Grid.Column="0" IsVisible="{Binding IsViewing}">
                             <stylekit:XLabel Text="Application Theme" HorizontalOptions="Start"/>
                             <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal" Margin="0,5,0,0" Spacing="0" BackgroundColor="Transparent">
-                            <Frame x:Name="frame_dark" Padding="0,8,0,8" HorizontalOptions="FillAndExpand" HasShadow="False" CornerRadius="3"
+                                <Frame x:Name="frame_dark" Padding="0,8,0,8" HorizontalOptions="FillAndExpand" HasShadow="False" CornerRadius="3"
                                        BackgroundColor="Transparent" BorderColor="DarkGray">
-                                <stylekit:XLabel Text="Dark Theme" HorizontalOptions="Center"/>
-                                <Frame.GestureRecognizers>
+                                    <stylekit:XLabel Text="Dark Theme" HorizontalOptions="Center"/>
+                                    <Frame.GestureRecognizers>
                                     <TapGestureRecognizer Tapped="ThemeClicked" NumberOfTapsRequired="1"/>
                                 </Frame.GestureRecognizers>
                             </Frame>
@@ -163,7 +163,7 @@
             </ScrollView>
 
             <!-- background overlay -->
-            <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="Black" Opacity="0.7"
+            <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="Black" Opacity="0.5"
                          AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,0,1,1" IsVisible="{Binding IsLoading, Mode=TwoWay}"/>
 
             <!-- loading overlay -->

@@ -35,6 +35,7 @@ namespace Xperimen.View
                         AccountCreated = user[0].AccountCreated,
                         AccountUpdated = user[0].AccountUpdated,
                         Logout = user[0].Logout,
+                        HaveUpdated = user[0].HaveUpdated,
                         IsLogin = false,
                         Income = user[0].Income,
                         TotalCommitment = user[0].TotalCommitment,
