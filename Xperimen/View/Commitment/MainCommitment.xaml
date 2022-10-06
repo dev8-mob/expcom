@@ -100,9 +100,12 @@
                     </StackLayout>
 
                     <!-- no commitment yet -->
-                    <stylekit:XLabel Text="You do not have any commitment yet. Click button below to add new commitment." Margin="30,30,30,0"
-                                     VerticalOptions="Start" HorizontalOptions="Center" IsVisible="{Binding NoCommitment}"
-                                     HorizontalTextAlignment="Center"/>
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" Spacing="15" Margin="30,30,30,0"
+                                 IsVisible="{Binding NoCommitment}">
+                        <stylekit:XImageNoRecord HeightRequest="40" WidthRequest="40" VerticalOptions="Center" HorizontalOptions="Start"/>
+                        <stylekit:XLabel Text="You do not have any commitment yet. Click button below to add new commitment." 
+                                         VerticalOptions="Start" HorizontalOptions="Center" HorizontalTextAlignment="Start"/>
+                    </StackLayout>
 
                     <!-- commitment list, button done and undone -->
                     <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand" Spacing="0" IsVisible="{Binding HasCommitment}"
@@ -132,7 +135,7 @@
                                 <stylekit:XImage Source1="black_done.png" Source2="white_done.png" HeightRequest="35" WidthRequest="35"
                                                  Aspect="AspectFit" HorizontalOptions="Center" VerticalOptions="Center"/>
                                 <stylekit:XLabel Text="Congrats ! All commitment(s) are completed for this month" HorizontalOptions="Center" 
-                                                 HorizontalTextAlignment="Center" VerticalOptions="Center" Margin="5,0,0,0"/>
+                                                 HorizontalTextAlignment="Start" VerticalOptions="Center" Margin="5,0,0,0"/>
                             </StackLayout>
                             <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" Spacing="0" VerticalOptions="Start" Margin="0,30,0,0">
                                 <stylekit:XLabel Text="Upcoming commitment is" HorizontalOptions="Center" VerticalOptions="End" Margin="0,0,5,0"/>

@@ -172,7 +172,7 @@ namespace Xperimen.View.Expense
         public async void DrawerTapped(object sender, EventArgs e)
         {
             var view = (Image)sender;
-            await view.ScaleTo(0.9, 100);
+            await view.ScaleTo(0.9, 250);
             view.Scale = 1;
             view.IsEnabled = false;
             var drawer = (DrawerMaster)view.Parent.Parent.Parent.Parent.Parent.Parent;

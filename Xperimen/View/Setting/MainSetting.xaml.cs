@@ -193,7 +193,7 @@ namespace Xperimen.View.Setting
         public async void TopSettingTapped(object sender, EventArgs e)
         {
             var view = (Image)sender;
-            await view.ScaleTo(0.9, 100);
+            await view.ScaleTo(0.9, 250);
             view.Scale = 1;
             view.IsEnabled = false;
             await Navigation.PushPopupAsync(new AccountList());

@@ -1,27 +1,39 @@
-﻿
-using Rg.Plugins.Popup.Extensions;
+﻿using Rg.Plugins.Popup.Extensions;
+using Rg.Plugins.Popup.Pages;
 using System;
-using System.Linq;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using Xperimen.Stylekit;
 using Xperimen.ViewModel.Expense;
 
-namespace Xperimen.View.Expense
+namespace Xperimen.View.Dashboard
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class AddRecord : ContentPage
+    public partial class AddExpenses : PopupPage
     {
         public ExpensesViewmodel viewmodel;
-        public DateTime DatetimeViewer;
 
-        public AddRecord()
+        public AddExpenses()
         {
             InitializeComponent();
             viewmodel = new ExpensesViewmodel();
-            DatetimeViewer = DateTime.Now;
             BindingContext = viewmodel;
+            SetupView();
 
+            MessagingCenter.Subscribe<CustomDisplayAlert, string>(this, "DisplayAlertSelection", async (sender, arg) =>
+            {
+                viewmodel.IsLoading = false;
+                if (alert.CodeObject.Equals("success"))
+                {
+                    var navigation = Application.Current.MainPage.Navigation;
+                    await navigation.PopPopupAsync();
+                }
+            });
+        }
+
+        public void SetupView()
+        {
+            lbl_currentdt.Text = DateTime.Now.ToString("ddd, d MMM - h:mm tt");
             if (Application.Current.Properties.ContainsKey("app_theme"))
             {
                 var theme = Application.Current.Properties["app_theme"] as string;
@@ -29,29 +41,6 @@ namespace Xperimen.View.Expense
                 if (theme.Equals("dim")) stack_bg.BackgroundColor = Color.FromHex(App.CharcoalGray);
                 if (theme.Equals("light")) stack_bg.BackgroundColor = Color.FromHex(App.DimGray2);
             }
-
-            #region messagingcenter
-            MessagingCenter.Subscribe<CustomDisplayAlert, string>(this, "DisplayAlertSelection", async (sender, arg) =>
-            {
-                viewmodel.IsLoading = false;
-                if (alert.CodeObject.Equals("success"))
-                    await Navigation.PopAsync();
-            });
-            MessagingCenter.Subscribe<CustomDatePicker, string>(this, "SelectedDate", (sender, arg) =>
-            {
-                if (!string.IsNullOrEmpty(arg))
-                {
-                    viewmodel.SelectedDate = arg;
-                    var newdate = new DateTime();
-                    var split = arg.Split('.');
-                    if (split.Count() > 0)
-                    {
-                        newdate = new DateTime(Convert.ToInt32(split[2]), Convert.ToInt32(split[1]), Convert.ToInt32(split[0]));
-                        DatetimeViewer = newdate;
-                    }
-                }
-            });
-            #endregion
         }
 
         public async void GalleryClicked(object sender, EventArgs e)
@@ -98,14 +87,42 @@ namespace Xperimen.View.Expense
             view.IsEnabled = true;
         }
 
-        public async void ChangeDateClicked(object sender, EventArgs e)
+        protected override bool OnBackButtonPressed()
         {
-            var view = (Frame)sender;
+            // Invoked when a hardware back button is pressed
+            // Return true if don't want to close this popup when back button is pressed
+            return true;
+        }
+
+        protected override bool OnBackgroundClicked()
+        {
+            // Invoked when background is clicked
+            // Return false if don't want to close this popup when background of popup is clicked
+            return false;
+        }
+
+        public async void AttachmentClicked(object sender, EventArgs e)
+        {
+            if (viewmodel.Picture != null)
+            {
+                var view = (Label)sender;
+                await view.ScaleTo(0.9, 100);
+                view.Scale = 1;
+                view.IsEnabled = false;
+                await Navigation.PushPopupAsync(new ImageViewer(viewmodel.Picture.GetStream()));
+                view.IsEnabled = true;
+            }
+        }
+
+        public async void AttachmentDeleteClicked(object sender, EventArgs e)
+        {
+            var view = (Image)sender;
             await view.ScaleTo(0.9, 100);
             view.Scale = 1;
             view.IsEnabled = false;
-            await Navigation.PushPopupAsync(new CustomDatePicker(DatetimeViewer));
-            view.IsEnabled = true;
+            viewmodel.Picture = null;
+            viewmodel.HasAttachment = false;
+            view.IsEnabled = false;
         }
 
         public async void SaveClicked(object sender, EventArgs e)
@@ -138,32 +155,9 @@ namespace Xperimen.View.Expense
             await view.ScaleTo(0.9, 100);
             view.Scale = 1;
             view.IsEnabled = false;
-            await Navigation.PopAsync();
+            var navigation = Application.Current.MainPage.Navigation;
+            await navigation.PopPopupAsync();
             view.IsEnabled = true;
-        }
-
-        public async void AttachmentClicked(object sender, EventArgs e)
-        {
-            if (viewmodel.Picture != null)
-            {
-                var view = (Label)sender;
-                await view.ScaleTo(0.9, 100);
-                view.Scale = 1;
-                view.IsEnabled = false;
-                await Navigation.PushPopupAsync(new ImageViewer(viewmodel.Picture.GetStream()));
-                view.IsEnabled = true;
-            }
-        }
-
-        public async void AttachmentDeleteClicked(object sender, EventArgs e)
-        {
-            var view = (Image)sender;
-            await view.ScaleTo(0.9, 100);
-            view.Scale = 1;
-            view.IsEnabled = false;
-            viewmodel.Picture = null;
-            viewmodel.HasAttachment = false;
-            view.IsEnabled = false;
         }
 
         public void SetDisplayAlert(string title, string description, string btn1, string btn2, string obj)

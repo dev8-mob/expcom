@@ -20,10 +20,12 @@ namespace Xperimen.ViewModel.Dashboard
         List<Expenses> _listexpenses;
         bool _nocommitment;
         bool _hascommitment;
+        bool _hascommitmentdonenohide;
         int _commitmentnotdone;
         bool _allcommitmentdone;
         bool _noexpenses;
         bool _hasexpenses;
+        int _expensescount;
         double _todayexpenses;
         bool _isnotsetincome;
         bool _ishaveincome;
@@ -72,6 +74,11 @@ namespace Xperimen.ViewModel.Dashboard
             get { return _hascommitment; }
             set { _hascommitment = value; OnPropertyChanged(); }
         }
+        public bool HasCommitmentDoneNoHide
+        {
+            get { return _hascommitmentdonenohide; }
+            set { _hascommitmentdonenohide = value; OnPropertyChanged(); }
+        }
         public int CommitmentNotDone
         {
             get { return _commitmentnotdone; }
@@ -91,6 +98,11 @@ namespace Xperimen.ViewModel.Dashboard
         {
             get { return _hasexpenses; }
             set { _hasexpenses = value; OnPropertyChanged(); }
+        }
+        public int ExpensesCount
+        {
+            get { return _expensescount; }
+            set { _expensescount = value; OnPropertyChanged(); }
         }
         public double TodayTotalExpenses
         {
@@ -123,10 +135,12 @@ namespace Xperimen.ViewModel.Dashboard
             ListExpenses = new List<Expenses>();
             NoCommitment = false;
             HasCommitment = false;
+            HasCommitmentDoneNoHide = false;
             CommitmentNotDone = 0;
             AllCommitmentDone = false;
             NoExpenses = false;
             HasExpenses = false;
+            ExpensesCount = 0;
             TodayTotalExpenses = 0;
             IsNotSetIncome = false;
             IsHaveIncome = false;
@@ -149,6 +163,8 @@ namespace Xperimen.ViewModel.Dashboard
                     Picture = user[0].ProfileImage;
                 }
             }
+            GetCommitmentList();
+            GetTodayExpenses();
         }
 
         public int SetupIncome()
@@ -176,6 +192,7 @@ namespace Xperimen.ViewModel.Dashboard
         {
             try
             {
+                NoCommitment = false; HasCommitment = false; HasCommitmentDoneNoHide = false;
                 CommitmentNotDone = 0; AllCommitmentDone = false;
                 ListCommitments = new List<SelfCommitment>();
                 string query = "SELECT * FROM SelfCommitment WHERE Userid = '" + userid + "'";
@@ -184,16 +201,18 @@ namespace Xperimen.ViewModel.Dashboard
                 if (ListCommitments.Count > 0)
                 {
                     var checkdone = 0;
-                    NoCommitment = false; HasCommitment = true;
                     foreach (var data in ListCommitments)
                     {
                         if (!data.IsDone) CommitmentNotDone++;
                         if (data.IsDone) checkdone++;
                     }
-                    if (checkdone == ListCommitments.Count) AllCommitmentDone = true;
+                    if (CommitmentNotDone > 0) 
+                    { NoCommitment = false; HasCommitment = true; HasCommitmentDoneNoHide = true; }
+                    if (checkdone == ListCommitments.Count)
+                    { AllCommitmentDone = true; HasCommitment = true; HasCommitmentDoneNoHide = false; }
                 }
                 else
-                { NoCommitment = true; HasCommitment = false; }
+                { NoCommitment = true; HasCommitment = false; HasCommitmentDoneNoHide = false; }
                 return 1;
             }
             catch (Exception ex)
@@ -208,13 +227,14 @@ namespace Xperimen.ViewModel.Dashboard
         {
             try
             {
-                TodayTotalExpenses = 0;
+                TodayTotalExpenses = 0; ExpensesCount = 0;
                 string query = "SELECT * FROM Expenses WHERE Userid = '" + userid + "' AND ExpenseDateTime = '" + CurrentDt.ToString("dd.MM.yyyy") + "'";
-                var result = connection.Query<Expenses>(query).ToList();
-                if (result.Count > 0)
+                ListExpenses = connection.Query<Expenses>(query).ToList();
+                if (ListExpenses.Count > 0)
                 {
                     NoExpenses = false; HasExpenses = true;
-                    foreach (var data in result) TodayTotalExpenses += data.Amount;
+                    ExpensesCount = ListExpenses.Count;
+                    foreach (var data in ListExpenses) TodayTotalExpenses += data.Amount;
                     return 1;
                 }
                 else
