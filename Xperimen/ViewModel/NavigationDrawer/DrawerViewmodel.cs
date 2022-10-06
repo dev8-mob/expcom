@@ -43,7 +43,7 @@ namespace Xperimen.ViewModel.NavigationDrawer
                 ImageIcon1 = "black_user.png",
                 ImageIcon2 = "white_user.png",
                 Title = "Dashboard",
-                Contentpage = typeof(AdminPage),
+                Contentpage = typeof(Welcome),
                 IsSelected = false,
                 TextMenuColor = textcolor
             });

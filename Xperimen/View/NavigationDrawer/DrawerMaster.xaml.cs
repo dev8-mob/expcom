@@ -11,7 +11,7 @@ namespace Xperimen.View.NavigationDrawer
         public DrawerMaster()
         {
             InitializeComponent();
-            Detail = new NavigationPage(new AdminPage());
+            Detail = new NavigationPage(new Welcome());
         }
     }
 }

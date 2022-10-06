@@ -30,6 +30,7 @@ namespace Xperimen.View.Expense
                 if (theme.Equals("light")) stack_bg.BackgroundColor = Color.FromHex(App.DimGray2);
             }
 
+            #region messagingcenter
             MessagingCenter.Subscribe<CustomDisplayAlert, string>(this, "DisplayAlertSelection", async (sender, arg) =>
             {
                 viewmodel.IsLoading = false;
@@ -50,6 +51,7 @@ namespace Xperimen.View.Expense
                     }
                 }
             });
+            #endregion
         }
 
         public async void GalleryClicked(object sender, EventArgs e)

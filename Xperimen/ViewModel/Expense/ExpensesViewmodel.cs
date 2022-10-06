@@ -284,8 +284,7 @@ namespace Xperimen.ViewModel.Expense
                 var result = connection.Query<Expenses>(query).ToList();
                 if (result.Count > 0)
                 {
-                    foreach (var data in result)
-                        UserTotalExp += data.Amount;
+                    foreach (var data in result) UserTotalExp += data.Amount;
                     Balance = NetIncome - UserTotalExp;
 
                     if (IsHaveIncome)

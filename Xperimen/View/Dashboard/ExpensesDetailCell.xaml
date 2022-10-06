@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Grid xmlns="http://xamarin.com/schemas/2014/forms"
+      xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+      x:Class="Xperimen.View.Dashboard.ExpensesDetailCell"
+      xmlns:stylekit="clr-namespace:Xperimen.Stylekit">
+
+    <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Spacing="0" x:Name="stack_bg"
+                 Grid.Row="0" Grid.Column="0" Padding="15,8,15,8" Margin="0,0,0,1">
+        <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand" Spacing="0"
+                     VerticalOptions="Start">
+            <stylekit:XLabel Text="{Binding Amount, StringFormat='RM {0:0.00}'}" FontSize="16"
+                             FontFamily="{DynamicResource Key=BoldFont}"/>
+            <stylekit:XLabel Text="{Binding Title}" LineBreakMode="TailTruncation"/>
+            <stylekit:XLabel Text="{Binding ExpensesDt, StringFormat='{0:h:mm tt}'}"/>
+        </StackLayout>
+        <Frame x:Name="frame_img" Padding="0" HasShadow="False" CornerRadius="8" IsClippedToBounds="True"
+               HorizontalOptions="End" VerticalOptions="Start" IsVisible="False">
+            <Image x:Name="img_attach" HorizontalOptions="End" VerticalOptions="Start"
+                   HeightRequest="70" WidthRequest="70" Aspect="AspectFill"/>
+            <Frame.GestureRecognizers>
+                <TapGestureRecognizer Tapped="ImageTapped" NumberOfTapsRequired="1"/>
+            </Frame.GestureRecognizers>
+        </Frame>
+    </StackLayout>
+</Grid>

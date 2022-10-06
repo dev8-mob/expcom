@@ -18,7 +18,7 @@
 
                 <!-- top navigation bar -->
                 <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="Start" Margin="20,20,20,0">
-                    <stylekit:XImage Source1="black_menu.png" Source2="white_menu.png" HeightRequest="35" WidthRequest="35" 
+                    <stylekit:XImage Source1="black_menudot.png" Source2="white_menudot.png" HeightRequest="35" WidthRequest="35" 
                                      Aspect="AspectFit" HorizontalOptions="Start" Margin="0,0,20,0">
                         <Image.GestureRecognizers>
                             <TapGestureRecognizer Tapped="DrawerTapped" NumberOfTapsRequired="1"/>
