@@ -29,6 +29,8 @@
                                          VerticalOptions="Center" FontFamily="{DynamicResource Key=BoldFont}"/>
                     </StackLayout>
 
+                    <Label Text="You can edit expenses in the side menu" HorizontalOptions="Center" VerticalOptions="Center" Margin="0,15,0,0"/>
+                    
                     <!-- expenses list -->
                     <ScrollView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Margin="0,15,0,0" IsVisible="{Binding HasExpenses}">
                         <StackLayout HorizontalOptions="FillAndExpand" BindableLayout.ItemsSource="{Binding ListExpenses}" 

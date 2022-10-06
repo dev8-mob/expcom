@@ -30,7 +30,8 @@ namespace Xperimen.View
             MessagingCenter.Subscribe<CustomDisplayAlert, string>(this, "DisplayAlertSelection", (sender, arg) =>
             {
                 viewmodel.IsLoading = false;
-                if (arg.Equals("Okay")) Navigation.PopAsync();
+                if (alert.CodeObject.Equals("success")) 
+                    Navigation.PopAsync();
             });
         }
 
@@ -133,7 +134,7 @@ namespace Xperimen.View
                     if (result == 1) SetDisplayAlert("Alert", "The username is already exist. Please choose different username.", "", "", "");
                     else if (result == 2)
                     {
-                        SetDisplayAlert("Success", "Successfully created your account.", "", "Okay", "");
+                        SetDisplayAlert("Success", "Successfully created your account.", "", "", "success");
                         lbl_cancel.Text = "Go To Login";
                         img_profile.Source = "";
                     }

@@ -22,6 +22,15 @@ namespace Xperimen.View.Setting
 
         public void SetupView()
         {
+            if (Application.Current.Properties.ContainsKey("app_theme"))
+            {
+                var theme = Application.Current.Properties["app_theme"] as string;
+                if (theme.Equals("dark")) img_profile.BackgroundColor = Color.FromHex(App.CharcoalBlack);
+                if (theme.Equals("dim")) img_profile.BackgroundColor = Color.FromHex(App.CharcoalGray);
+                if (theme.Equals("light")) img_profile.BackgroundColor = Color.FromHex(App.DimGray2);
+            }
+            else img_profile.BackgroundColor = Color.FromHex(App.DimGray2);
+
             var convert = new StreamByteConverter();
             img_profile.Source = ImageSource.FromStream(() =>
             {

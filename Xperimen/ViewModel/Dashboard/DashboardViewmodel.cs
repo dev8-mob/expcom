@@ -250,5 +250,21 @@ namespace Xperimen.ViewModel.Dashboard
                 return 3;
             }
         }
+
+        public int DeleteTodayExpenses(string data)
+        {
+            try
+            {
+                string query = "DELETE FROM Expenses WHERE Id = '" + data + "'";
+                connection.Query<Expenses>(query);
+                return 1;
+            }
+            catch (Exception ex)
+            {
+                var error = ex.Message;
+                var desc = ex.StackTrace;
+                return 2;
+            }
+        }
     }
 }
