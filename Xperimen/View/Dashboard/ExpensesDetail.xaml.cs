@@ -27,10 +27,10 @@ namespace Xperimen.View.Dashboard
                     var result = viewmodel.DeleteTodayExpenses(alert.CodeObject);
                     if (result == 1)
                     {
-                        SetDisplayAlert("Success", "Expenses delete.", "", "", "");
-                        MessagingCenter.Send(this, "ExpensesDeleted");
-                        viewmodel.GetTodayExpenses();
-                        if (viewmodel.ListExpenses.Count == 0) Navigation.PopAsync();
+                        var success = viewmodel.GetTodayExpenses();
+                        if (success == 1) SetDisplayAlert("Success", "Expenses delete.", "", "", "");
+                        else if (success == 2) Navigation.PopAsync();
+                        else if (success == 3) SetDisplayAlert("Error", "Technical error deleting selected expenses.", "", "", "");
                     }
                     else if (result == 2) SetDisplayAlert("Error", "Technical error deleting selected expenses.", "", "", "");
                 }

@@ -30,7 +30,7 @@ namespace Xperimen.View.Dashboard
             { viewmodel.SetupData(); });
             MessagingCenter.Subscribe<AddExpenses, string>(this, "ExpensesAdded", (sender, arg) =>
             { viewmodel.SetupData(); });
-            MessagingCenter.Subscribe<ExpensesDetail>(this, "ExpensesDeleted", (sender) =>
+            MessagingCenter.Subscribe<DashboardViewmodel>(this, "ExpensesDeleted", (sender) =>
             { viewmodel.SetupData(); });
             #endregion
         }
@@ -117,6 +117,10 @@ namespace Xperimen.View.Dashboard
             await view.ScaleTo(0.9, 250);
             view.Scale = 1;
             view.IsEnabled = false;
+
+            viewmodel.IsLoading = true;
+            if (viewmodel.NoCommitment) SetDisplayAlert("No Commitment", "You have no commitment for this month.", "", "", "");
+            else if (viewmodel.HasCommitment) { }
             view.IsEnabled = true;
         }
 

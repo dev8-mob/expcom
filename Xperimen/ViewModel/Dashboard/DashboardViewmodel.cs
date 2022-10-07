@@ -2,7 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using Xamarin.Forms;
 using Xperimen.Model;
 
@@ -257,6 +256,7 @@ namespace Xperimen.ViewModel.Dashboard
             {
                 string query = "DELETE FROM Expenses WHERE Id = '" + data + "'";
                 connection.Query<Expenses>(query);
+                MessagingCenter.Send(this, "ExpensesDeleted");
                 return 1;
             }
             catch (Exception ex)

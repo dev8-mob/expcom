@@ -23,9 +23,10 @@
             </Frame.GestureRecognizers>
         </Frame>
     </StackLayout>
-    <Frame Padding="0" HasShadow="False" HeightRequest="35" WidthRequest="35" HorizontalOptions="End"
-           VerticalOptions="Center" CornerRadius="30" BackgroundColor="{DynamicResource Key=CustomRed}">
-        <Image Source="white_delete.png" Aspect="AspectFit" HorizontalOptions="Center" VerticalOptions="Center" Margin="5"/>
+    <Frame Padding="0" HasShadow="False" HeightRequest="40" WidthRequest="40" HorizontalOptions="End"
+           VerticalOptions="Center" CornerRadius="8" BackgroundColor="{DynamicResource Key=CustomRed}">
+        <Image Source="white_delete.png" Aspect="AspectFit" HorizontalOptions="CenterAndExpand" 
+               VerticalOptions="CenterAndExpand" Margin="5"/>
         <Frame.GestureRecognizers>
             <TapGestureRecognizer Tapped="DeleteTapped" NumberOfTapsRequired="1"/>
         </Frame.GestureRecognizers>
