@@ -14,7 +14,7 @@
                                    Padding="20" AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,0,1,1">
 
                 <!-- top navigation bar -->
-                <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="Start">
+                <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="Start" Spacing="0">
                     <stylekit:XImage Source1="black_menudot.png" Source2="white_menudot.png" HeightRequest="35" WidthRequest="35" Aspect="AspectFit"
                                      HorizontalOptions="Start" Margin="0,0,20,0">
                         <Image.GestureRecognizers>
@@ -23,9 +23,19 @@
                     </stylekit:XImage>
                     <stylekit:XLabel Text="Hi, " HorizontalOptions="Fill" FontSize="18" VerticalOptions="Center"/>
                     <stylekit:XLabel Text="{Binding Firstname}" HorizontalOptions="Fill" FontFamily="{DynamicResource Key=BoldFont}" 
-                                     FontSize="18" VerticalOptions="Center" MaxLines="1" LineBreakMode="TailTruncation"/>
+                                     FontSize="18" VerticalOptions="Center" MaxLines="1" LineBreakMode="TailTruncation" Margin="0,0,5,0"/>
                     <stylekit:XLabel Text="{Binding Lastname}" HorizontalOptions="FillAndExpand" FontFamily="{DynamicResource Key=BoldFont}" 
-                                     FontSize="18" VerticalOptions="Center" MaxLines="1" LineBreakMode="TailTruncation"/>
+                                     FontSize="18" VerticalOptions="Center" MaxLines="1" LineBreakMode="TailTruncation" Margin="0,0,20,0"/>
+                    <!-- save income button -->
+                    <Frame Padding="0,5,0,5" CornerRadius="8" BorderColor="{DynamicResource Key=Primary}" HorizontalOptions="End"
+                           VerticalOptions="Center" BackgroundColor="{DynamicResource Key=Primary}" HasShadow="False" 
+                           IsClippedToBounds="True">
+                        <Image Source="white_wallet.png" Aspect="AspectFit" HeightRequest="25" WidthRequest="25" VerticalOptions="Center"
+                                       Margin="15,0,15,0"/>
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="SetIncomeClicked" NumberOfTapsRequired="1"/>
+                        </Frame.GestureRecognizers>
+                    </Frame>
                 </StackLayout>
 
                 <!-- UI content -->
@@ -65,7 +75,7 @@
                         </StackLayout>
                     </StackLayout>
 
-                    <!-- #region COMMITMENT-->
+                    <!-- #region COMMITMENT -->
                     <!-- commitment frame background -->
                     <Frame HasShadow="False" Padding="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" IsClippedToBounds="True"
                            Grid.Row="1" Grid.Column="1" CornerRadius="8" x:Name="frame_commit"/>
@@ -110,7 +120,7 @@
                         <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand" Spacing="0" IsVisible="{Binding NoCommitment}" 
                                      VerticalOptions="CenterAndExpand" Margin="0,15,0,0">
                             <stylekit:XImageNoRecord HeightRequest="40" WidthRequest="40" VerticalOptions="Center" HorizontalOptions="Center"/>
-                            <stylekit:XLabel Text="no record" HorizontalOptions="CenterAndExpand"/>
+                            <Label Text="no record" HorizontalOptions="CenterAndExpand"/>
                             <StackLayout.GestureRecognizers>
                                 <TapGestureRecognizer Tapped="CommitmentColumnClicked"/>
                             </StackLayout.GestureRecognizers>
@@ -138,10 +148,13 @@
                            HorizontalOptions="End" VerticalOptions="Start" IsVisible="{Binding HasCommitmentDoneNoHide}">
                         <Label Text="{Binding CommitmentNotDone}" TextColor="White" FontFamily="{DynamicResource Key=BoldFont}" 
                                HorizontalOptions="Center" VerticalOptions="Center"/>
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="CommitmentBadgeClicked" NumberOfTapsRequired="1"/>
+                        </Frame.GestureRecognizers>
                     </Frame>
                     <!--#endregion-->
 
-                    <!-- #region EXPENSES-->
+                    <!-- #region EXPENSES -->
                     <!-- expenses column -->
                     <Frame HasShadow="False" Padding="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" IsClippedToBounds="True"
                            Grid.Row="1" Grid.Column="0" CornerRadius="8" x:Name="frame_expense">
@@ -160,7 +173,7 @@
                             <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" Spacing="0"
                                          IsVisible="{Binding NoExpenses}" Margin="0,15,0,0">
                                 <stylekit:XImageNoRecord HeightRequest="40" WidthRequest="40" VerticalOptions="Center" HorizontalOptions="Center"/>
-                                <stylekit:XLabel Text="no record" HorizontalOptions="CenterAndExpand" IsVisible="{Binding NoExpenses}"/>
+                                <Label Text="no record" HorizontalOptions="CenterAndExpand" IsVisible="{Binding NoExpenses}"/>
                                 <StackLayout.GestureRecognizers>
                                     <TapGestureRecognizer Tapped="ExpensesColumnClicked"/>
                                 </StackLayout.GestureRecognizers>
@@ -209,8 +222,19 @@
                            HorizontalOptions="End" VerticalOptions="Start" IsVisible="{Binding HasExpenses}">
                         <Label Text="{Binding ExpensesCount}" TextColor="White" FontFamily="{DynamicResource Key=BoldFont}" 
                                HorizontalOptions="Center" VerticalOptions="Center"/>
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="ExpensesBadgeClicked" NumberOfTapsRequired="1"/>
+                        </Frame.GestureRecognizers>
                     </Frame>
                     <!--#endregion-->
+
+                    <!-- not set income yet -->
+                    <Frame HasShadow="False" Padding="15,10,15,10" HorizontalOptions="FillAndExpand" VerticalOptions="Start" IsClippedToBounds="True"
+                           Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" CornerRadius="8" x:Name="frame_income" IsVisible="{Binding IsNotSetIncome}">
+                        <stylekit:XLabel Text="You do not set any income yet. Please set your income, click top right button" VerticalOptions="Start" 
+                                         HorizontalOptions="Center" FontFamily="{DynamicResource Key=BoldFont}" HorizontalTextAlignment="Center" />
+                    </Frame>
+
                 </Grid>
 
             </stylekit:XStacklayout>

@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using Xperimen.Helper;
@@ -8,12 +9,12 @@ using Xperimen.ViewModel.Dashboard;
 namespace Xperimen.View.Dashboard
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class ExpensesDetail : ContentPage
+    public partial class CommitmentDetails : ContentPage
     {
         public DashboardViewmodel viewmodel;
         public StreamByteConverter converter;
 
-        public ExpensesDetail()
+        public CommitmentDetails()
         {
             InitializeComponent();
             viewmodel = new DashboardViewmodel();
@@ -22,17 +23,21 @@ namespace Xperimen.View.Dashboard
 
             MessagingCenter.Subscribe<CustomDisplayAlert, string>(this, "DisplayAlertSelection", async (sender, arg) =>
             { 
-                if (arg.Equals("Yes")) 
+                if (arg.Equals("Yes"))
                 {
-                    var result = viewmodel.DeleteTodayExpenses(alert.CodeObject);
-                    if (result == 1)
+                    if (alert.CodeObject.Equals("alldone"))
                     {
-                        var success = viewmodel.GetTodayExpenses();
-                        if (success == 1) SetDisplayAlert("Success", "Expenses delete.", "", "", "");
-                        else if (success == 2) await Navigation.PopAsync();
-                        else if (success == 3) SetDisplayAlert("Error", "Technical error deleting selected expenses.", "", "", "");
+                        var result = viewmodel.SetAllCommitmentDonePaid();
+                        if (result == 1) { viewmodel.IsLoading = false; await Navigation.PopAsync(); }
+                        else if (result == 2) SetDisplayAlert("No Data", "User commitment list not found.", "", "", "");
+                        else if (result == 3) SetDisplayAlert("Error", "Technical error retrieving users commitment list.", "", "", "");
                     }
-                    else if (result == 2) SetDisplayAlert("Error", "Technical error deleting selected expenses.", "", "", "");
+                    else
+                    {
+                        var result = viewmodel.SetCommitmentDonePaid(alert.CodeObject, true);
+                        if (result == 1) { viewmodel.IsLoading = false; await Navigation.PopAsync(); }
+                        else if (result == 2) SetDisplayAlert("Error", "Technical error set the commitment to done.", "", "", "");
+                    }
                 }
                 else viewmodel.IsLoading = false; 
             });
@@ -45,6 +50,17 @@ namespace Xperimen.View.Dashboard
             view.Scale = 1;
             view.IsEnabled = false;
             await Navigation.PopAsync();
+            view.IsEnabled = true;
+        }
+
+        public async void AllDonePaidClicked(object sender, EventArgs e)
+        {
+            var view = (Frame)sender;
+            await view.ScaleTo(0.9, 250);
+            view.Scale = 1;
+            view.IsEnabled = false;
+            viewmodel.IsLoading = true;
+            SetDisplayAlert("Confirmation", "Mark all commitment as done ?", "Yes", "Cancel", "alldone");
             view.IsEnabled = true;
         }
 

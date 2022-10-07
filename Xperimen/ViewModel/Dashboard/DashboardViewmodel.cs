@@ -16,6 +16,7 @@ namespace Xperimen.ViewModel.Dashboard
         DateTime _currentdt;
         double _income;
         List<SelfCommitment> _listcommitments;
+        List<SelfCommitment> _listcommitmentsnotdone;
         List<Expenses> _listexpenses;
         bool _nocommitment;
         bool _hascommitment;
@@ -57,6 +58,11 @@ namespace Xperimen.ViewModel.Dashboard
         {
             get { return _listcommitments; }
             set { _listcommitments = value; OnPropertyChanged(); }
+        }
+        public List<SelfCommitment> ListCommitmentsNotDone
+        {
+            get { return _listcommitmentsnotdone; }
+            set { _listcommitmentsnotdone = value; OnPropertyChanged(); }
         }
         public List<Expenses> ListExpenses
         {
@@ -131,6 +137,7 @@ namespace Xperimen.ViewModel.Dashboard
             CurrentDt = DateTime.Now;
             Income = 0;
             ListCommitments = new List<SelfCommitment>();
+            ListCommitmentsNotDone = new List<SelfCommitment>();
             ListExpenses = new List<Expenses>();
             NoCommitment = false;
             HasCommitment = false;
@@ -162,6 +169,7 @@ namespace Xperimen.ViewModel.Dashboard
                     Picture = user[0].ProfileImage;
                 }
             }
+            SetupIncome();
             GetCommitmentList();
             GetTodayExpenses();
         }
@@ -193,7 +201,7 @@ namespace Xperimen.ViewModel.Dashboard
             {
                 NoCommitment = false; HasCommitment = false; HasCommitmentDoneNoHide = false;
                 CommitmentNotDone = 0; AllCommitmentDone = false;
-                ListCommitments = new List<SelfCommitment>();
+                ListCommitments = new List<SelfCommitment>(); ListCommitmentsNotDone = new List<SelfCommitment>();
                 string query = "SELECT * FROM SelfCommitment WHERE Userid = '" + userid + "'";
                 ListCommitments = connection.Query<SelfCommitment>(query).ToList();
 
@@ -202,7 +210,8 @@ namespace Xperimen.ViewModel.Dashboard
                     var checkdone = 0;
                     foreach (var data in ListCommitments)
                     {
-                        if (!data.IsDone) CommitmentNotDone++;
+                        if (!data.IsDone)
+                        { ListCommitmentsNotDone.Add(data); CommitmentNotDone++; }
                         if (data.IsDone) checkdone++;
                     }
                     if (CommitmentNotDone > 0) 
@@ -219,6 +228,49 @@ namespace Xperimen.ViewModel.Dashboard
                 var error = ex.Message;
                 var desc = ex.StackTrace;
                 return 2;
+            }
+        }
+
+        public int SetCommitmentDonePaid(string data, bool status)
+        {
+            try
+            {
+                string query = "UPDATE SelfCommitment SET IsDone = " + status + " WHERE Id = '" + data + "'";
+                connection.Query<SelfCommitment>(query);
+                MessagingCenter.Send(this, "CommitmentSetDone");
+                return 1;
+            }
+            catch (Exception ex)
+            {
+                var error = ex.Message;
+                var desc = ex.StackTrace;
+                return 2;
+            }
+        }
+
+        public int SetAllCommitmentDonePaid()
+        {
+            try
+            {
+                string query = "SELECT * FROM SelfCommitment WHERE Userid = '" + userid + "'";
+                var result = connection.Query<SelfCommitment>(query).ToList();
+                if (result.Count > 0)
+                {
+                    foreach (var data in result)
+                    {
+                        query = "UPDATE SelfCommitment SET IsDone = " + true + " WHERE Id = '" + data.Id + "'";
+                        connection.Query<SelfCommitment>(query);
+                    }
+                    MessagingCenter.Send(this, "CommitmentSetDone");
+                    return 1;
+                }
+                else return 2;
+            }
+            catch (Exception ex)
+            {
+                var error = ex.Message;
+                var desc = ex.StackTrace;
+                return 3;
             }
         }
 
