@@ -8,7 +8,7 @@ using Xperimen.Stylekit;
 namespace Xperimen.View.Dashboard
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class ExpensesDetailCell : Grid
+    public partial class CommitmentDetailCell : Grid
     {
         #region bindables
         public byte[] Picture
@@ -17,8 +17,8 @@ namespace Xperimen.View.Dashboard
             set { SetValue(PictureProperty, value); }
         }
         public static BindableProperty PictureProperty =
-            BindableProperty.Create(nameof(Picture), typeof(byte[]), typeof(ExpensesDetailCell), defaultValue: null,
-                propertyChanged: (bindable, oldVal, newVal) => { ((ExpensesDetailCell)bindable).UpdatePicture((byte[])newVal); });
+            BindableProperty.Create(nameof(Picture), typeof(byte[]), typeof(CommitmentDetailCell), defaultValue: null,
+                propertyChanged: (bindable, oldVal, newVal) => { ((CommitmentDetailCell)bindable).UpdatePicture((byte[])newVal); });
         public void UpdatePicture(byte[] data)
         {
             if (data != null)
@@ -35,7 +35,7 @@ namespace Xperimen.View.Dashboard
 
         public StreamByteConverter converter;
 
-        public ExpensesDetailCell()
+        public CommitmentDetailCell()
         {
             InitializeComponent();
             converter = new StreamByteConverter();
@@ -80,15 +80,15 @@ namespace Xperimen.View.Dashboard
             view.IsEnabled = true;
         }
 
-        public async void DeleteTapped(object sender, EventArgs e)
+        public async void SelectTapped(object sender, EventArgs e)
         {
             var view = (Frame)sender;
             await view.ScaleTo(0.9, 250);
             view.Scale = 1;
             view.IsEnabled = false;
-            var parent = (ExpensesDetail)view.Parent.Parent.Parent.Parent.Parent.Parent.Parent;
+            var parent = (CommitmentDetails)view.Parent.Parent.Parent.Parent.Parent.Parent.Parent;
             parent.viewmodel.IsLoading = true;
-            parent.SetDisplayAlert("Confirmation", "Are you sure to delete " + lbl_amount.Text + " ?", "Yes", "Cancel", lbl_id.Text);
+            parent.SetDisplayAlert("Mark As Done", "Are you sure to mark " + lbl_title.Text + " as done ?", "Yes", "Cancel", lbl_id.Text);
             view.IsEnabled = true;
         }
     }

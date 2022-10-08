@@ -1,0 +1,90 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Xperimen.View.Dashboard.CommitmentDetails"
+             xmlns:stylekit="clr-namespace:Xperimen.Stylekit"
+             xmlns:cell="clr-namespace:Xperimen.View.Dashboard"
+             NavigationPage.HasNavigationBar="False">
+    
+    <ContentPage.Content>
+
+        <AbsoluteLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="Transparent">
+
+            <!-- UI content -->
+            <ScrollView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" AbsoluteLayout.LayoutFlags="All" 
+                        AbsoluteLayout.LayoutBounds="0,0,1,1">
+                <stylekit:XStacklayout Orientation="Vertical" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" 
+                                       Spacing="0" Padding="20">
+
+                    <!-- top navigation bar -->
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="Start" Spacing="0">
+                        <stylekit:XImage Source1="black_back.png" Source2="white_back.png" HeightRequest="35" WidthRequest="35" Aspect="AspectFit"
+                                         HorizontalOptions="Start" Margin="0,0,20,0">
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="BackTapped" NumberOfTapsRequired="1"/>
+                            </Image.GestureRecognizers>
+                        </stylekit:XImage>
+                        <!-- commitment badge number -->
+                        <Frame Padding="0" HasShadow="False" IsClippedToBounds="True" HeightRequest="30" BackgroundColor="{DynamicResource Key=CustomRed}" 
+                               WidthRequest="30" CornerRadius="30" Margin="0,0,10,0" HorizontalOptions="Start" VerticalOptions="Center">
+                            <Label Text="{Binding CommitmentNotDone}" TextColor="White" FontFamily="{DynamicResource Key=BoldFont}" 
+                                   HorizontalOptions="Center" VerticalOptions="Center"/>
+                        </Frame>
+                        <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand" VerticalOptions="Start" Spacing="0">
+                            <stylekit:XLabel Text="commitment(s)" HorizontalOptions="Fill" VerticalOptions="Center" FontFamily="{DynamicResource Key=BoldFont}"/>
+                            <stylekit:XLabel Text="not done" HorizontalOptions="Fill" VerticalOptions="Center" FontFamily="{DynamicResource Key=BoldFont}"/>
+                        </StackLayout>
+                    </StackLayout>
+
+                    <!-- mark all done button -->
+                    <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand" Spacing="0" Margin="0,15,0,0">
+                        <stylekit:XLabel Text="Edit commitment in the side menu" HorizontalOptions="Center" VerticalOptions="Center"
+                                         HorizontalTextAlignment="Center"/>
+                        <Frame Padding="20,10,20,10" CornerRadius="8" BorderColor="{DynamicResource Key=CustomGreen}" HorizontalOptions="FillAndExpand"
+                               VerticalOptions="Center" BackgroundColor="{DynamicResource Key=CustomGreen}" HasShadow="False" 
+                               IsClippedToBounds="True" Margin="30,5,30,0">
+                            <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Spacing="10" VerticalOptions="Center">
+                                <Label Text="Mark All Done" FontFamily="{DynamicResource Key=BoldFont}" TextColor="White" 
+                                       HorizontalOptions="Center" VerticalOptions="Center"/>
+                                <Image Source="white_done.png" Aspect="AspectFit" HeightRequest="20" WidthRequest="20" VerticalOptions="Center"/>
+                            </StackLayout>
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="AllDonePaidClicked" NumberOfTapsRequired="1"/>
+                            </Frame.GestureRecognizers>
+                        </Frame>
+                    </StackLayout>
+
+                    <!-- commitment list -->
+                    <ScrollView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Margin="0,30,0,0" IsVisible="{Binding HasCommitment}">
+                        <StackLayout HorizontalOptions="FillAndExpand" BindableLayout.ItemsSource="{Binding ListCommitmentsNotDone}" 
+                                     Spacing="0" VerticalOptions="Start">
+                            <BindableLayout.ItemTemplate>
+                                <DataTemplate>
+                                    <cell:CommitmentDetailCell Picture="{Binding Picture}"/>
+                                </DataTemplate>
+                            </BindableLayout.ItemTemplate>
+                        </StackLayout>
+                    </ScrollView>
+
+                </stylekit:XStacklayout>
+            </ScrollView>
+
+            <!-- background overlay -->
+            <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="Black" Opacity="0.5"
+                         AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,0,1,1" IsVisible="{Binding IsLoading, Mode=TwoWay}"/>
+
+            <!-- loading overlay -->
+            <StackLayout IsVisible="{Binding IsLoading, Mode=TwoWay}" BackgroundColor="Transparent" Orientation="Vertical" Spacing="0"
+                         AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0.5,0.5,-1,-1">
+                <ActivityIndicator IsRunning="{Binding IsLoading, Mode=TwoWay}" Color="White" HorizontalOptions="Center"/>
+                <Label Text="loading..." HorizontalOptions="Center" TextColor="White" FontFamily="{DynamicResource BoldFont}"/>
+            </StackLayout>
+
+            <!-- custom display alert -->
+            <stylekit:CustomDisplayAlert x:Name="alert" IsVisible="False"/>
+
+        </AbsoluteLayout>
+        
+    </ContentPage.Content>
+    
+</ContentPage>

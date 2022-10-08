@@ -15,8 +15,8 @@
                 <stylekit:XStacklayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
 
                     <StackLayout Padding="25,0,25,0" Orientation="Vertical" VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand" Spacing="0">
-                        <stylekit:XImage Source1="black_whatshot.png" Source2="white_whatshot.png" HeightRequest="130" WidthRequest="130" 
-                                         HorizontalOptions="CenterAndExpand" VerticalOptions="Center" Aspect="AspectFit"/>
+                        <Image Source="logo.png" HeightRequest="130" WidthRequest="130" HorizontalOptions="CenterAndExpand" VerticalOptions="Center" 
+                               Aspect="AspectFit"/>
 
                         <!-- username -->
                         <stylekit:CustomEntry BindingText="Username" Placeholder="username" ImgLeft="black_user.png" ImgLeft_="white_user.png"
@@ -65,13 +65,13 @@
             </ScrollView>
 
             <!-- background overlay -->
-            <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="Black" Opacity="0.5"
-                         AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,0,1,1" IsVisible="{Binding IsLoading, Mode=TwoWay}"/>
+            <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="Black" 
+                         Opacity="0.5" AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,0,1,1" IsVisible="{Binding IsLoading}"/>
 
             <!-- loading overlay -->
-            <StackLayout IsVisible="{Binding IsLoading, Mode=TwoWay}" BackgroundColor="Transparent" Orientation="Vertical" Spacing="0"
+            <StackLayout IsVisible="{Binding IsLoading}" BackgroundColor="Transparent" Orientation="Vertical" Spacing="0"
                          AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0.5,0.5,-1,-1" >
-                <ActivityIndicator IsRunning="{Binding IsLoading, Mode=TwoWay}" Color="White" HorizontalOptions="Center"/>
+                <ActivityIndicator IsRunning="{Binding IsLoading}" Color="White" HorizontalOptions="Center"/>
                 <Label Text="loading..." HorizontalOptions="Center" TextColor="White" FontFamily="{DynamicResource BoldFont}"/>
             </StackLayout>
 

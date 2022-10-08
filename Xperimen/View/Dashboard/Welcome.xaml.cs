@@ -1,9 +1,11 @@
 ﻿using Rg.Plugins.Popup.Extensions;
 using System;
+using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using Xperimen.Helper;
 using Xperimen.Stylekit;
+using Xperimen.View.Expense;
 using Xperimen.View.NavigationDrawer;
 using Xperimen.ViewModel.Dashboard;
 
@@ -24,9 +26,17 @@ namespace Xperimen.View.Dashboard
             SetupView();
 
             #region messagingcenter
+            MessagingCenter.Subscribe<CustomDisplayAlert, string>(this, "DisplayAlertSelection", (sender, arg) =>
+            { viewmodel.IsLoading = false; });
             MessagingCenter.Subscribe<Commitment.AddRecord>(this, "CommitmentAdded", (sender) => 
             { viewmodel.SetupData(); });
             MessagingCenter.Subscribe<AddExpenses, string>(this, "ExpensesAdded", (sender, arg) =>
+            { viewmodel.SetupData(); });
+            MessagingCenter.Subscribe<DashboardViewmodel>(this, "ExpensesDeleted", (sender) =>
+            { viewmodel.SetupData(); });
+            MessagingCenter.Subscribe<DashboardViewmodel>(this, "CommitmentSetDone", (sender) =>
+            { viewmodel.SetupData(); });
+            MessagingCenter.Subscribe<AddIncome>(this, "IncomeUpdated", (sender) =>
             { viewmodel.SetupData(); });
             #endregion
         }
@@ -41,18 +51,24 @@ namespace Xperimen.View.Dashboard
                     img_profile.BackgroundColor = Color.FromHex(App.CharcoalBlack);
                     frame_commit.BackgroundColor = Color.FromHex(App.CharcoalBlack);
                     frame_expense.BackgroundColor = Color.FromHex(App.CharcoalBlack);
+                    frame_noincome.BackgroundColor = Color.FromHex(App.CharcoalBlack);
+                    frame_income.BackgroundColor = Color.FromHex(App.CharcoalBlack);
                 }
                 if (theme.Equals("dim"))
                 {
                     img_profile.BackgroundColor = Color.FromHex(App.CharcoalGray);
                     frame_commit.BackgroundColor = Color.FromHex(App.CharcoalGray);
                     frame_expense.BackgroundColor = Color.FromHex(App.CharcoalGray);
+                    frame_noincome.BackgroundColor = Color.FromHex(App.CharcoalGray);
+                    frame_income.BackgroundColor = Color.FromHex(App.CharcoalGray);
                 }
                 if (theme.Equals("light"))
                 {
                     img_profile.BackgroundColor = Color.FromHex(App.DimGray2);
                     frame_commit.BackgroundColor = Color.FromHex(App.DimGray2);
                     frame_expense.BackgroundColor = Color.FromHex(App.DimGray2);
+                    frame_noincome.BackgroundColor = Color.FromHex(App.DimGray2);
+                    frame_income.BackgroundColor = Color.FromHex(App.DimGray2);
                 }
             }
             else
@@ -60,6 +76,8 @@ namespace Xperimen.View.Dashboard
                 img_profile.BackgroundColor = Color.FromHex(App.DimGray2);
                 frame_commit.BackgroundColor = Color.FromHex(App.DimGray2);
                 frame_expense.BackgroundColor = Color.FromHex(App.DimGray2);
+                frame_noincome.BackgroundColor = Color.FromHex(App.DimGray2);
+                frame_income.BackgroundColor = Color.FromHex(App.DimGray2);
             }
 
             img_profile.Source = ImageSource.FromStream(() =>
@@ -77,6 +95,16 @@ namespace Xperimen.View.Dashboard
             view.IsEnabled = false;
             var drawer = (DrawerMaster)view.Parent.Parent.Parent.Parent.Parent.Parent;
             drawer.IsPresented = true;
+            view.IsEnabled = true;
+        }
+
+        public async void SetIncomeClicked(object sender, EventArgs e)
+        {
+            var view = (Frame)sender;
+            await view.ScaleTo(0.9, 100);
+            view.Scale = 1;
+            view.IsEnabled = false;
+            await Navigation.PushPopupAsync(new AddIncome());
             view.IsEnabled = true;
         }
 
@@ -99,7 +127,25 @@ namespace Xperimen.View.Dashboard
             await view.ScaleTo(0.9, 250);
             view.Scale = 1;
             view.IsEnabled = false;
-            await Navigation.PushAsync(new ExpensesDetail());
+
+            viewmodel.IsLoading = true;
+            if (viewmodel.NoExpenses) SetDisplayAlert("No Expenses", "You have no expenses for today.", "", "", "");
+            else if (viewmodel.HasExpenses)
+            { await Navigation.PushAsync(new ExpensesDetail()); viewmodel.IsLoading = false; }
+            view.IsEnabled = true;
+        }
+
+        public async void ExpensesBadgeClicked(object sender, EventArgs e)
+        {
+            var view = (Frame)sender;
+            await view.ScaleTo(0.9, 250);
+            view.Scale = 1;
+            view.IsEnabled = false;
+
+            viewmodel.IsLoading = true;
+            if (viewmodel.NoExpenses) SetDisplayAlert("No Expenses", "You have no expenses for today.", "", "", "");
+            else if (viewmodel.HasExpenses)
+            { await Navigation.PushAsync(new ExpensesDetail()); viewmodel.IsLoading = false; }
             view.IsEnabled = true;
         }
 
@@ -109,6 +155,39 @@ namespace Xperimen.View.Dashboard
             await view.ScaleTo(0.9, 250);
             view.Scale = 1;
             view.IsEnabled = false;
+
+            viewmodel.IsLoading = true;
+            if (viewmodel.NoCommitment) SetDisplayAlert("No Commitment", "You have no commitment for this month.", "", "", "");
+            else if (viewmodel.HasCommitment) 
+            {
+                if (viewmodel.AllCommitmentDone) SetDisplayAlert("Completed", "All commitments for this month are completed.", "", "", "");
+                else
+                {
+                    await Navigation.PushAsync(new CommitmentDetails());
+                    viewmodel.IsLoading = false;
+                }
+            }
+            view.IsEnabled = true;
+        }
+
+        public async void CommitmentBadgeClicked(object sender, EventArgs e)
+        {
+            var view = (Frame)sender;
+            await view.ScaleTo(0.9, 250);
+            view.Scale = 1;
+            view.IsEnabled = false;
+
+            viewmodel.IsLoading = true;
+            if (viewmodel.NoCommitment) SetDisplayAlert("No Commitment", "You have no commitment for this month.", "", "", "");
+            else if (viewmodel.HasCommitment)
+            {
+                if (viewmodel.AllCommitmentDone) SetDisplayAlert("Completed", "All commitments for this month are completed.", "", "", "");
+                else
+                {
+                    await Navigation.PushAsync(new CommitmentDetails());
+                    viewmodel.IsLoading = false;
+                }
+            }
             view.IsEnabled = true;
         }
 
@@ -130,6 +209,20 @@ namespace Xperimen.View.Dashboard
             view.IsEnabled = false;
             await Navigation.PushPopupAsync(new AddExpenses());
             view.IsEnabled = true;
+        }
+
+        public void SetDisplayAlert(string title, string description, string btn1, string btn2, string obj)
+        {
+            //if string1 empty will not display btn1, if string2 empty will not display btn2
+            //if both string1 & string2 empty will not display all buttons
+            //all buttons tapped will send 'DisplayAlertSelection' with text of the button
+            //close button tapped will send 'DisplayAlertSelection' with empty text
+            alert.Title = title;
+            alert.Description = description;
+            alert.TxtBtn1 = btn1;
+            alert.TxtBtn2 = btn2;
+            alert.IsVisible = true;
+            alert.CodeObject = obj;
         }
     }
 }
