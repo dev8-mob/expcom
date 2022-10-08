@@ -260,8 +260,7 @@ namespace Xperimen.ViewModel.Commitment
 
                 if (ListCommitments.Count > 0)
                 {
-                    NoCommitment = false;
-                    HasCommitment = true;
+                    NoCommitment = false; HasCommitment = true;
                     foreach (var data in ListCommitments)
                     {
                         TotalCommitment += data.Amount;

@@ -29,8 +29,43 @@
                                          VerticalOptions="Center" FontFamily="{DynamicResource Key=BoldFont}"/>
                     </StackLayout>
 
-                    <stylekit:XLabel Text="Edit expenses in the side menu" HorizontalOptions="Center" VerticalOptions="Center" Margin="0,15,0,0"/>
+                    <!-- data information -->
+                    <stylekit:XLabel Text="Edit expenses in the side menu" HorizontalOptions="Center" VerticalOptions="Start" Margin="0,15,0,0"/>
                     
+                    <!-- expense more UI -->
+                    <StackLayout x:Name="stack_more" Orientation="Vertical" HorizontalOptions="Center" Spacing="0" IsVisible="False">
+                        <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Spacing="0">
+                            <stylekit:XLabel Text="Today is " HorizontalOptions="Center" VerticalOptions="Start" HorizontalTextAlignment="Center"/>
+                            <stylekit:XLabel Text="{Binding PercentageYtdToday, StringFormat='{0:0.00}% more'}" HorizontalOptions="Center" VerticalOptions="Start"
+                                             FontFamily="{DynamicResource Key=BoldFont}" FontSize="16" HorizontalTextAlignment="Center"
+                                             TextColor="{DynamicResource Key=CustomRed}" x:Name="lbl_percentmore"/>
+                            <stylekit:XLabel Text=" than yesterday" HorizontalOptions="Center" VerticalOptions="Start" HorizontalTextAlignment="Center"/>
+                        </StackLayout>
+                        <stylekit:XLabel Text="{Binding DiffYtdToday, StringFormat='more RM {0:0.00}'}" HorizontalOptions="CenterAndExpand" VerticalOptions="Start" 
+                                         HorizontalTextAlignment="Center" FontFamily="{DynamicResource Key=ItalicFont}" x:Name="lbl_percentmorevalue"
+                                         TextColor="{DynamicResource Key=CustomRed}"/>
+                    </StackLayout>
+                    <!-- expense less UI -->
+                    <StackLayout x:Name="stack_less" Orientation="Vertical" HorizontalOptions="Center" Spacing="0" IsVisible="False">
+                        <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Spacing="0">
+                            <stylekit:XLabel Text="Today is " HorizontalOptions="Center" VerticalOptions="Start" HorizontalTextAlignment="Center"/>
+                            <stylekit:XLabel Text="{Binding PercentageYtdToday, StringFormat='{0:0.00}% less'}" HorizontalOptions="Center" VerticalOptions="Start"
+                                             FontFamily="{DynamicResource Key=BoldFont}" FontSize="16" HorizontalTextAlignment="Center"
+                                             TextColor="{DynamicResource Key=CustomGreen}" x:Name="lbl_percentless"/>
+                            <stylekit:XLabel Text=" than yesterday" HorizontalOptions="Center" VerticalOptions="Start" HorizontalTextAlignment="Center"/>
+                        </StackLayout>
+                        <stylekit:XLabel Text="{Binding DiffYtdToday, StringFormat='less RM {0:0.00}'}" HorizontalOptions="CenterAndExpand" VerticalOptions="Start" 
+                                         HorizontalTextAlignment="Center" FontFamily="{DynamicResource Key=ItalicFont}" x:Name="lbl_percentlessvalue"
+                                         TextColor="{DynamicResource Key=CustomGreen}"/>
+                    </StackLayout>
+                    <!-- expense same UI -->
+                    <StackLayout x:Name="stack_same" Orientation="Horizontal" HorizontalOptions="Center" Spacing="0" Margin="0,0,0,0" IsVisible="False">
+                        <stylekit:XLabel Text="Expenses today is " HorizontalOptions="Center" VerticalOptions="Start" HorizontalTextAlignment="Center"/>
+                        <stylekit:XLabel Text="same as" HorizontalOptions="Center" VerticalOptions="Start" FontFamily="{DynamicResource Key=BoldFont}"
+                                         HorizontalTextAlignment="Center" FontSize="16"/>
+                        <stylekit:XLabel Text=" yesterday" HorizontalOptions="Center" VerticalOptions="Start" HorizontalTextAlignment="Center"/>
+                    </StackLayout>
+
                     <!-- expenses list -->
                     <ScrollView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Margin="0,15,0,0" IsVisible="{Binding HasExpenses}">
                         <StackLayout HorizontalOptions="FillAndExpand" BindableLayout.ItemsSource="{Binding ListExpenses}" 

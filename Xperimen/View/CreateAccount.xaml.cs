@@ -22,10 +22,11 @@ namespace Xperimen.View
             if (Application.Current.Properties.ContainsKey("app_theme"))
             {
                 var theme = Application.Current.Properties["app_theme"];
-                if (theme.Equals("dark")) frame_profile.BackgroundColor = Color.Transparent;
-                if (theme.Equals("dim")) frame_profile.BackgroundColor = Color.Transparent;
-                if (theme.Equals("light")) frame_profile.BackgroundColor = Color.FromHex(App.DimGray2);
+                if (theme.Equals("dark")) img_profile.BackgroundColor = Color.FromHex(App.CharcoalBlack);
+                if (theme.Equals("dim")) img_profile.BackgroundColor = Color.FromHex(App.CharcoalGray);
+                if (theme.Equals("light")) img_profile.BackgroundColor = Color.FromHex(App.DimGray2);
             }
+            else img_profile.BackgroundColor = Color.FromHex(App.DimGray2);
 
             MessagingCenter.Subscribe<CustomDisplayAlert, string>(this, "DisplayAlertSelection", (sender, arg) =>
             {

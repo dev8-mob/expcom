@@ -19,6 +19,7 @@ namespace Xperimen.View.Dashboard
             viewmodel = new DashboardViewmodel();
             converter = new StreamByteConverter();
             BindingContext = viewmodel;
+            SetupView();
 
             MessagingCenter.Subscribe<CustomDisplayAlert, string>(this, "DisplayAlertSelection", async (sender, arg) =>
             { 
@@ -28,7 +29,8 @@ namespace Xperimen.View.Dashboard
                     if (result == 1)
                     {
                         var success = viewmodel.GetTodayExpenses();
-                        if (success == 1) SetDisplayAlert("Success", "Expenses delete.", "", "", "");
+                        if (success == 1)
+                        { SetDisplayAlert("Success", "Expenses delete.", "", "", ""); SetupView(); }
                         else if (success == 2) await Navigation.PopAsync();
                         else if (success == 3) SetDisplayAlert("Error", "Technical error deleting selected expenses.", "", "", "");
                     }
@@ -36,6 +38,37 @@ namespace Xperimen.View.Dashboard
                 }
                 else viewmodel.IsLoading = false; 
             });
+        }
+
+        public void SetupView()
+        {
+            var theme = string.Empty;
+            if (Application.Current.Properties.ContainsKey("app_theme"))
+                theme = Application.Current.Properties["app_theme"] as string;
+            if (theme.Equals("dim"))
+            { 
+                lbl_percentmore.TextColor = Color.Black; lbl_percentless.TextColor = Color.Black;
+                lbl_percentmorevalue.TextColor = Color.Black; lbl_percentlessvalue.TextColor = Color.Black;
+            }
+
+            if (viewmodel.DiffYtdToday > 0)
+            {
+                stack_more.IsVisible = true;
+                stack_less.IsVisible = false;
+                stack_same.IsVisible = false;
+            }
+            else if (viewmodel.DiffYtdToday < 0)
+            {
+                stack_more.IsVisible = false;
+                stack_less.IsVisible = true;
+                stack_same.IsVisible = false;
+            }
+            else if (viewmodel.DiffYtdToday == 0)
+            {
+                stack_more.IsVisible = false;
+                stack_less.IsVisible = false;
+                stack_same.IsVisible = true;
+            }
         }
 
         public async void BackTapped(object sender, EventArgs e)

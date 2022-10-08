@@ -34,7 +34,7 @@ namespace Xperimen.View.Dashboard
             { viewmodel.SetupData(); });
             MessagingCenter.Subscribe<DashboardViewmodel>(this, "ExpensesDeleted", (sender) =>
             { viewmodel.SetupData(); });
-            MessagingCenter.Subscribe<DashboardViewmodel>(this, "CommitmentSetDone", async (sender) =>
+            MessagingCenter.Subscribe<DashboardViewmodel>(this, "CommitmentSetDone", (sender) =>
             { viewmodel.SetupData(); });
             MessagingCenter.Subscribe<AddIncome>(this, "IncomeUpdated", (sender) =>
             { viewmodel.SetupData(); });
@@ -51,6 +51,7 @@ namespace Xperimen.View.Dashboard
                     img_profile.BackgroundColor = Color.FromHex(App.CharcoalBlack);
                     frame_commit.BackgroundColor = Color.FromHex(App.CharcoalBlack);
                     frame_expense.BackgroundColor = Color.FromHex(App.CharcoalBlack);
+                    frame_noincome.BackgroundColor = Color.FromHex(App.CharcoalBlack);
                     frame_income.BackgroundColor = Color.FromHex(App.CharcoalBlack);
                 }
                 if (theme.Equals("dim"))
@@ -58,6 +59,7 @@ namespace Xperimen.View.Dashboard
                     img_profile.BackgroundColor = Color.FromHex(App.CharcoalGray);
                     frame_commit.BackgroundColor = Color.FromHex(App.CharcoalGray);
                     frame_expense.BackgroundColor = Color.FromHex(App.CharcoalGray);
+                    frame_noincome.BackgroundColor = Color.FromHex(App.CharcoalGray);
                     frame_income.BackgroundColor = Color.FromHex(App.CharcoalGray);
                 }
                 if (theme.Equals("light"))
@@ -65,6 +67,7 @@ namespace Xperimen.View.Dashboard
                     img_profile.BackgroundColor = Color.FromHex(App.DimGray2);
                     frame_commit.BackgroundColor = Color.FromHex(App.DimGray2);
                     frame_expense.BackgroundColor = Color.FromHex(App.DimGray2);
+                    frame_noincome.BackgroundColor = Color.FromHex(App.DimGray2);
                     frame_income.BackgroundColor = Color.FromHex(App.DimGray2);
                 }
             }
@@ -73,6 +76,7 @@ namespace Xperimen.View.Dashboard
                 img_profile.BackgroundColor = Color.FromHex(App.DimGray2);
                 frame_commit.BackgroundColor = Color.FromHex(App.DimGray2);
                 frame_expense.BackgroundColor = Color.FromHex(App.DimGray2);
+                frame_noincome.BackgroundColor = Color.FromHex(App.DimGray2);
                 frame_income.BackgroundColor = Color.FromHex(App.DimGray2);
             }
 
