@@ -120,7 +120,7 @@ namespace Xperimen.ViewModel
                     Lastname = string.Empty,
                     Password = Password,
                     Description = Description,
-                    ProfileImage = convert.GetImageBytes(Picture.GetStream()),
+                    ProfileImage = null,
                     AppTheme = Theme,
                     AccountCreated = DateTime.Now,
                     AccountUpdated = DateTime.Now,
@@ -135,6 +135,7 @@ namespace Xperimen.ViewModel
                 var camelcase = new CamelCaseChecker();
                 data.Firstname = camelcase.CapitalizeWord(Firstname);
                 data.Lastname = camelcase.CapitalizeWord(Lastname);
+                if (Picture != null) data.ProfileImage = convert.GetImageBytes(Picture.GetStream());
                 connection.Insert(data);
                 Application.Current.Properties["app_theme"] = Theme;
                 await Application.Current.SavePropertiesAsync();

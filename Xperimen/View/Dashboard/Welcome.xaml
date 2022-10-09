@@ -54,7 +54,8 @@
                     <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand" Spacing="0" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2">
                         <Frame Padding="0" HasShadow="False" CornerRadius="8" HorizontalOptions="Center" VerticalOptions="Start"
                                IsClippedToBounds="True" BackgroundColor="Transparent">
-                            <Image x:Name="img_profile" HeightRequest="100" WidthRequest="100" Aspect="AspectFill"/>
+                            <stylekit:XImage x:Name="img_profile" HeightRequest="100" WidthRequest="100" Aspect="AspectFill"
+                                             Source1="black_logo.png" Source2="white_logo.png"/>
                             <Frame.GestureRecognizers>
                                 <TapGestureRecognizer Tapped="ProfilePicClicked"/>
                             </Frame.GestureRecognizers>

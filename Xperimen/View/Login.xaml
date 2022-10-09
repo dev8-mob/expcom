@@ -15,8 +15,11 @@
                 <stylekit:XStacklayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
 
                     <StackLayout Padding="25,0,25,0" Orientation="Vertical" VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand" Spacing="0">
-                        <Image Source="logo.png" HeightRequest="130" WidthRequest="130" HorizontalOptions="CenterAndExpand" VerticalOptions="Center" 
-                               Aspect="AspectFit"/>
+                        <Frame x:Name="frame_bg" HorizontalOptions="Center" VerticalOptions="Start" HasShadow="False" CornerRadius="130" 
+                               BorderColor="DarkGray" Padding="20,15,20,25">
+                            <stylekit:XImage HeightRequest="130" WidthRequest="130" HorizontalOptions="CenterAndExpand" VerticalOptions="Center" 
+                                             Aspect="AspectFit" Source1="black_logo.png" Source2="white_logo.png"/>
+                        </Frame>
 
                         <!-- username -->
                         <stylekit:CustomEntry BindingText="Username" Placeholder="username" ImgLeft="black_user.png" ImgLeft_="white_user.png"

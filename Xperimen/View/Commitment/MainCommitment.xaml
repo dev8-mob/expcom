@@ -36,7 +36,8 @@
                         <!-- profile picture -->
                         <Frame x:Name="frame_profile" HorizontalOptions="Start" VerticalOptions="End" HeightRequest="100" WidthRequest="100" 
                                BorderColor="DarkGray" HasShadow="False" Padding="0" CornerRadius="20" IsClippedToBounds="True">
-                            <stylekit:XImage x:Name="img_profile" Aspect="AspectFill" ImageByte="{Binding ProfilePic}"/>
+                            <stylekit:XImage x:Name="img_profile" Aspect="AspectFill" ImageByte="{Binding ProfilePic}"
+                                             Source1="black_logo.png" Source2="white_logo.png"/>
                         </Frame>
 
                         <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand" Spacing="0" Margin="20,0,0,0">
@@ -65,8 +66,7 @@
 
                             <!-- keyin income -->
                             <StackLayout x:Name="stack_editincome" Orientation="Horizontal" HorizontalOptions="FillAndExpand" Spacing="0" IsVisible="False">
-                                <stylekit:CustomEntry BindingText="Income" KeyboardType="Numeric" ImgLeft="black_money.png"
-                                                      ImgLeft_="white_money.png"/>
+                                <stylekit:CustomEntry BindingText="Income" KeyboardType="Numeric" ImgLeft="black_money.png" ImgLeft_="white_money.png"/>
                                 <stylekit:XImage Source1="black_checkbox_on.png" Source2="white_checkbox_on.png" HeightRequest="30" WidthRequest="30"
                                                  HorizontalOptions="End" VerticalOptions="Center" Margin="10,0,0,0">
                                     <Image.GestureRecognizers>

@@ -9,7 +9,8 @@
         <!-- profile image -->
         <Frame x:Name="frame_profile" HorizontalOptions="Start" VerticalOptions="Center" BorderColor="DarkGray" HasShadow="False" 
                Padding="0" CornerRadius="20" IsClippedToBounds="True" BackgroundColor="Transparent">
-            <Image x:Name="img_profile" HeightRequest="50" WidthRequest="50" Aspect="AspectFill" VerticalOptions="Center"/>
+            <stylekit:XImage x:Name="img_profile" HeightRequest="50" WidthRequest="50" Aspect="AspectFill" VerticalOptions="Center"
+                             Source1="black_logo.png" Source2="white_logo.png"/>
         </Frame>
 
         <!-- client info -->

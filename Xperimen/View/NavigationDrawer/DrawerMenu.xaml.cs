@@ -42,11 +42,14 @@ namespace Xperimen.View.NavigationDrawer
                 if (login.Count > 0)
                 {
                     user_login = login[0];
-                    img_pic.Source = ImageSource.FromStream(() =>
+                    if (user_login.ProfileImage != null)
                     {
-                        var stream = converter.BytesToStream(user_login.ProfileImage);
-                        return stream;
-                    });
+                        img_pic.Source = ImageSource.FromStream(() =>
+                        {
+                            var stream = converter.BytesToStream(user_login.ProfileImage);
+                            return stream;
+                        });
+                    }
                     lbl_fullname.Text = login[0].Firstname + " " + login[0].Lastname;
                     lbl_name.Text = "@" + login[0].Username;
                     lbl_desc.Text = login[0].Description;
@@ -61,7 +64,8 @@ namespace Xperimen.View.NavigationDrawer
             frame_profile.Scale = 1;
             view.IsEnabled = false;
 
-            await Navigation.PushPopupAsync(new ImageViewer(converter.BytesToStream(user_login.ProfileImage)));
+            if (user_login.ProfileImage != null)
+                await Navigation.PushPopupAsync(new ImageViewer(converter.BytesToStream(user_login.ProfileImage)));
             view.IsEnabled = true;
         }
 

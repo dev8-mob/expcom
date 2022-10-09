@@ -47,11 +47,14 @@ namespace Xperimen.View.Setting
         }
         public void UpdatePicture(byte[] data)
         {
-            img_profile.Source = ImageSource.FromStream(() =>
+            if (data != null)
             {
-                var stream = converter.BytesToStream(data);
-                return stream;
-            });
+                img_profile.Source = ImageSource.FromStream(() =>
+                {
+                    var stream = converter.BytesToStream(data);
+                    return stream;
+                });
+            }
         }
         #endregion
 

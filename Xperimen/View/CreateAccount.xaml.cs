@@ -18,7 +18,19 @@ namespace Xperimen.View
             InitializeComponent();
             viewmodel = new CreateaccViewmodel();
             BindingContext = viewmodel;
+            SetupView();
 
+            MessagingCenter.Subscribe<CustomDisplayAlert, string>(this, "DisplayAlertSelection", (sender, arg) =>
+            {
+                viewmodel.IsLoading = false;
+                if (alert.CodeObject.Equals("success")) 
+                    Navigation.PopAsync();
+            });
+            MessagingCenter.Subscribe<CreateaccViewmodel>(this, "AppThemeUpdated", (sender) => { SetupView(); });
+        }
+
+        public void SetupView()
+        {
             if (Application.Current.Properties.ContainsKey("app_theme"))
             {
                 var theme = Application.Current.Properties["app_theme"];
@@ -27,13 +39,6 @@ namespace Xperimen.View
                 if (theme.Equals("light")) img_profile.BackgroundColor = Color.FromHex(App.DimGray2);
             }
             else img_profile.BackgroundColor = Color.FromHex(App.DimGray2);
-
-            MessagingCenter.Subscribe<CustomDisplayAlert, string>(this, "DisplayAlertSelection", (sender, arg) =>
-            {
-                viewmodel.IsLoading = false;
-                if (alert.CodeObject.Equals("success")) 
-                    Navigation.PopAsync();
-            });
         }
 
         public async void ProfilePicClicked(object sender, EventArgs e)
@@ -118,8 +123,8 @@ namespace Xperimen.View
             view.IsEnabled = false;
 
             viewmodel.IsLoading = true;
-            if (viewmodel.Picture == null) SetDisplayAlert("Alert", "Profile picture is empty. Please take a photo or choose a picture.", "", "", "");
-            else if (string.IsNullOrEmpty(viewmodel.Firstname)) SetDisplayAlert("Alert", "First name is empty. Please insert your first name.", "", "", "");
+            //if (viewmodel.Picture == null) SetDisplayAlert("Alert", "Profile picture is empty. Please take a photo or choose a picture.", "", "", "");
+            if (string.IsNullOrEmpty(viewmodel.Firstname)) SetDisplayAlert("Alert", "First name is empty. Please insert your first name.", "", "", "");
             else if (string.IsNullOrEmpty(viewmodel.Lastname)) SetDisplayAlert("Alert", "Last name is empty. Please insert your last name.", "", "", "");
             else if (string.IsNullOrEmpty(viewmodel.Username)) SetDisplayAlert("Alert", "Username cannot be empty. Please choose a username.", "", "", "");
             else if (viewmodel.Username.Length < 6) SetDisplayAlert("Alert", "Username must be more than 6 characters.", "", "", "");

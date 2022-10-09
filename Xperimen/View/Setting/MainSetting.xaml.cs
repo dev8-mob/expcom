@@ -30,20 +30,32 @@ namespace Xperimen.View.Setting
 
         public void SetupView()
         {
-            img_profile.Source = ImageSource.FromStream(() =>
+            if (Application.Current.Properties.ContainsKey("app_theme"))
             {
-                var stream = converter.BytesToStream(viewmodel.Picture);
-                return stream;
-            });
+                var theme = Application.Current.Properties["app_theme"] as string;
+                if (theme.Equals("dark")) img_profile.BackgroundColor = Color.FromHex(App.CharcoalBlack);
+                if (theme.Equals("dim")) img_profile.BackgroundColor = Color.FromHex(App.CharcoalGray);
+                if (theme.Equals("light")) img_profile.BackgroundColor = Color.FromHex(App.DimGray2);
+            }
+            else img_profile.BackgroundColor = Color.FromHex(App.DimGray2);
+
+            if (viewmodel.Picture != null)
+            {
+                img_profile.Source = ImageSource.FromStream(() =>
+                {
+                    var stream = converter.BytesToStream(viewmodel.Picture);
+                    return stream;
+                });
+            }
         }
 
         public async void ProfilePicClicked(object sender, EventArgs e)
         {
+            var view = (Frame)sender;
+            await view.ScaleTo(0.9, 100);
+            view.Scale = 1;
             if (viewmodel.Picture != null)
             {
-                var view = (Frame)sender;
-                await view.ScaleTo(0.9, 100);
-                view.Scale = 1;
                 view.IsEnabled = false;
                 await Navigation.PushPopupAsync(new ImageViewer(converter.BytesToStream(viewmodel.Picture)));
                 view.IsEnabled = true;
@@ -173,7 +185,9 @@ namespace Xperimen.View.Setting
             await view.ScaleTo(0.9, 100);
             view.Scale = 1;
             view.IsEnabled = false;
+            viewmodel.Picture = null;
             viewmodel.SetupData();
+            img_profile.SetupView();
             viewmodel.IsViewing = true;
             viewmodel.IsEditing = false;
             view.IsEnabled = true;

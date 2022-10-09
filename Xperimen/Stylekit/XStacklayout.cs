@@ -26,7 +26,7 @@ namespace Xperimen.Stylekit
                 if (theme.Equals("dim")) BackgroundColor = Color.FromHex(App.SlateGray);
                 if (theme.Equals("light")) BackgroundColor = Color.FromHex(App.DimGray1);
             }
-            else BackgroundColor = Color.Transparent;
+            else BackgroundColor = Color.FromHex(App.DimGray1);
         }
     }
 }

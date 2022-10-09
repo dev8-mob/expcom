@@ -15,8 +15,8 @@
             <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal" Spacing="0">
                 <Frame x:Name="frame_profile" HorizontalOptions="Fill" VerticalOptions="Center" BorderColor="DarkGray" HasShadow="False" 
                        BackgroundColor="Transparent" Padding="0" CornerRadius="20" IsClippedToBounds="True" Margin="15">
-                    <Image x:Name="img_pic" Aspect="AspectFill" HorizontalOptions="Fill" VerticalOptions="Fill" 
-                           HeightRequest="65" WidthRequest="65"/>
+                    <stylekit:XImage x:Name="img_pic" Aspect="AspectFill" HorizontalOptions="Fill" VerticalOptions="Fill" 
+                                     HeightRequest="65" WidthRequest="65" Source1="black_logo.png" Source2="white_logo.png"/>
                 </Frame>
                 <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" Spacing="0">
                     <stylekit:XLabel x:Name="lbl_fullname" Text="-" FontFamily="{DynamicResource Key=BoldFont}" FontSize="18"

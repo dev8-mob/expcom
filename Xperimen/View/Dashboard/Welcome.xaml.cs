@@ -80,11 +80,14 @@ namespace Xperimen.View.Dashboard
                 frame_income.BackgroundColor = Color.FromHex(App.DimGray2);
             }
 
-            img_profile.Source = ImageSource.FromStream(() =>
+            if (viewmodel.Picture != null)
             {
-                var stream = converter.BytesToStream(viewmodel.Picture);
-                return stream;
-            });
+                img_profile.Source = ImageSource.FromStream(() =>
+                {
+                    var stream = converter.BytesToStream(viewmodel.Picture);
+                    return stream;
+                });
+            }
         }
 
         public async void DrawerTapped(object sender, EventArgs e)
@@ -110,11 +113,11 @@ namespace Xperimen.View.Dashboard
 
         public async void ProfilePicClicked(object sender, EventArgs e)
         {
+            var view = (Frame)sender;
+            await view.ScaleTo(0.9, 100);
+            view.Scale = 1;
             if (viewmodel.Picture != null)
             {
-                var view = (Frame)sender;
-                await view.ScaleTo(0.9, 100);
-                view.Scale = 1;
                 view.IsEnabled = false;
                 await Navigation.PushPopupAsync(new ImageViewer(converter.BytesToStream(viewmodel.Picture)));
                 view.IsEnabled = true;

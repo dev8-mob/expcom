@@ -17,9 +17,23 @@ namespace Xperimen.View
             InitializeComponent();
             viewmodel = new LoginViewmodel();
             BindingContext = viewmodel;
+            SetupView();
 
             MessagingCenter.Subscribe<CustomDisplayAlert, string>(this, "DisplayAlertSelection", (sender, arg) =>
             { viewmodel.IsLoading = false; });
+            MessagingCenter.Subscribe<CreateaccViewmodel>(this, "AppThemeUpdated", (sender) => { SetupView(); });
+        }
+
+        public void SetupView()
+        {
+            if (Application.Current.Properties.ContainsKey("app_theme"))
+            {
+                var theme = Application.Current.Properties["app_theme"];
+                if (theme.Equals("dark")) frame_bg.BackgroundColor = Color.FromHex(App.CharcoalBlack);
+                if (theme.Equals("dim")) frame_bg.BackgroundColor = Color.FromHex(App.CharcoalGray);
+                if (theme.Equals("light")) frame_bg.BackgroundColor = Color.FromHex(App.DimGray2);
+            }
+            else frame_bg.BackgroundColor = Color.FromHex(App.DimGray2);
         }
 
         public async void LoginClicked(object sender, EventArgs e)

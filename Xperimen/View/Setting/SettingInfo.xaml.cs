@@ -32,11 +32,14 @@ namespace Xperimen.View.Setting
             else img_profile.BackgroundColor = Color.FromHex(App.DimGray2);
 
             var convert = new StreamByteConverter();
-            img_profile.Source = ImageSource.FromStream(() =>
+            if (viewmodel.Picture != null)
             {
-                var stream = convert.BytesToStream(viewmodel.Picture);
-                return stream;
-            });
+                img_profile.Source = ImageSource.FromStream(() =>
+                {
+                    var stream = convert.BytesToStream(viewmodel.Picture);
+                    return stream;
+                });
+            }
         }
 
         public void SetParentBinding(SettingViewmodel parent)
@@ -50,8 +53,11 @@ namespace Xperimen.View.Setting
             await frame_profile.ScaleTo(0.9, 100);
             frame_profile.Scale = 1;
             frame_profile.IsEnabled = false;
-            var convert = new StreamByteConverter();
-            await Navigation.PushPopupAsync(new ImageViewer(convert.BytesToStream(viewmodel.Picture)));
+            if (viewmodel.Picture != null)
+            {
+                var convert = new StreamByteConverter();
+                await Navigation.PushPopupAsync(new ImageViewer(convert.BytesToStream(viewmodel.Picture)));
+            }
             frame_profile.IsEnabled = true;
         }
 
