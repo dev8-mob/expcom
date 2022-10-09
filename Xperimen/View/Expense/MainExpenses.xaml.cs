@@ -1,6 +1,7 @@
 ﻿
 using Rg.Plugins.Popup.Extensions;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -83,6 +84,27 @@ namespace Xperimen.View.Expense
                 }
                 if (result == 2) SetDisplayAlert("Error", "Technical error retrieving expenses for selected date.", "", "", "");
             });
+            MessagingCenter.Subscribe<EditExpenses, string>(this, "ExpensesUpdated", (sender, arg) =>
+            {
+                calendar.SetupView();
+                viewmodel.IsLoading = true;
+                var result = viewmodel.GetExpensesOnDate(arg);
+                if (result == 1)
+                {
+                    if (!string.IsNullOrEmpty(arg))
+                    {
+                        var sampledate = new DateTime();
+                        var split = arg.Split('.');
+                        if (split.Count() > 0)
+                            sampledate = new DateTime(Convert.ToInt32(split[2]), Convert.ToInt32(split[1]), Convert.ToInt32(split[0]));
+                        lbl_ondateselect.Text = "on " + sampledate.ToString("MMM d");
+                        lbl_ondateselect_zero.Text = sampledate.ToString("MMM d");
+                        lbl_intro.Text = "Expenses Summary";
+                    }
+                    viewmodel.IsLoading = false;
+                }
+                if (result == 2) SetDisplayAlert("Error", "Technical error retrieving expenses for selected date.", "", "", "");
+            });
             MessagingCenter.Subscribe<CustomCalendar, string>(this, "CalendarDateTap", (sender, arg) =>
             {
                 viewmodel.IsLoading = true;
@@ -125,10 +147,15 @@ namespace Xperimen.View.Expense
                     SetDisplayAlert("Error", "Technical error retrieving selected attachment file.", "", "", "");
                 }
             });
-            MessagingCenter.Subscribe<ListCell, string>(this, "DeleteImageTap", (sender, arg) =>
+            MessagingCenter.Subscribe<ListCell, Dictionary<string, string>>(this, "DeleteImageTap", (sender, arg) =>
             {
                 viewmodel.IsLoading = true;
-                SetDisplayAlert("Confirmation", "Are you sure to delete the expenses ?", "Yes", "Cancel", arg);
+                if (arg.Count > 0)
+                { 
+                    var id = arg.Where(x => x.Key == "id").FirstOrDefault().Value;
+                    var amount = arg.Where(x => x.Key == "amount").FirstOrDefault().Value;
+                    SetDisplayAlert("Confirmation", "Are you sure to delete " + amount + " from expenses ?", "Yes", "Cancel", id); 
+                }
             });
             MessagingCenter.Subscribe<AddIncome>(this, "IncomeUpdated", (sender) => { SetupView(); });
             #endregion

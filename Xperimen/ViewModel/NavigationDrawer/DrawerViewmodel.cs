@@ -69,7 +69,7 @@ namespace Xperimen.ViewModel.NavigationDrawer
             {
                 ImageIcon1 = "black_setting.png",
                 ImageIcon2 = "white_setting.png",
-                Title = "Setting",
+                Title = "Settings",
                 Contentpage = typeof(MainSetting),
                 IsSelected = false,
                 TextMenuColor = textcolor

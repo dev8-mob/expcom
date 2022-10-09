@@ -99,7 +99,7 @@ namespace Xperimen.Stylekit
                     Text = daysno.ToString(),
                     HorizontalOptions = LayoutOptions.Center,
                     VerticalOptions = LayoutOptions.Center,
-                    Margin = new Thickness(0, 8, 0, 8),
+                    Margin = new Thickness(5, 15, 5, 15),
                     FontFamily = fontfamily
                 };
                 var lblcode = new Label { Text = day.ToString("dd.MM.yyyy"), IsVisible = false };
@@ -112,13 +112,7 @@ namespace Xperimen.Stylekit
                         if (Device.RuntimePlatform == Device.Android) fontfamily = "Ubuntu-Bold.ttf#Ubuntu Bold";
                         else if (Device.RuntimePlatform == Device.iOS) fontfamily = "Ubuntu-Bold.ttf";
 
-                        lblday.FontFamily = fontfamily; lblday.Margin = 0;
-                        lblday.HorizontalOptions = LayoutOptions.Start;
-                        lblday.VerticalOptions = LayoutOptions.End;
-                        lblday.VerticalTextAlignment = TextAlignment.End;
-
-                        stack.HorizontalOptions = LayoutOptions.StartAndExpand;
-                        stack.VerticalOptions = LayoutOptions.EndAndExpand;
+                        lblday.FontFamily = fontfamily;
                         stack.Children.Add(lblday);
                         stack.Children.Add(lblcode);
 
@@ -166,13 +160,8 @@ namespace Xperimen.Stylekit
                     {
                         if (Device.RuntimePlatform == Device.Android) fontfamily = "Ubuntu-Bold.ttf#Ubuntu Bold";
                         else if (Device.RuntimePlatform == Device.iOS) fontfamily = "Ubuntu-Bold.ttf";
-                        lblday.FontFamily = fontfamily; lblday.Margin = 0;
-                        lblday.HorizontalOptions = LayoutOptions.Start;
-                        lblday.VerticalOptions = LayoutOptions.End;
-                        lblday.VerticalTextAlignment = TextAlignment.End;
 
-                        stack.HorizontalOptions = LayoutOptions.StartAndExpand;
-                        stack.VerticalOptions = LayoutOptions.EndAndExpand;
+                        lblday.FontFamily = fontfamily; 
                         stack.Children.Add(lblday);
                         stack.Children.Add(lblcode);
 

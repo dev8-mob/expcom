@@ -1,6 +1,9 @@
-﻿using System;
+﻿using Rg.Plugins.Popup.Extensions;
+using System;
+using System.Collections.Generic;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using Xperimen.View.Dashboard;
 
 namespace Xperimen.View.Expense
 {
@@ -50,13 +53,26 @@ namespace Xperimen.View.Expense
             view.IsEnabled = true;
         }
 
+        public async void EditTapped(object sender, EventArgs e)
+        {
+            var view = (Image)sender;
+            await view.ScaleTo(0.8, 100);
+            view.Scale = 1;
+            view.IsEnabled = false;
+            await Navigation.PushPopupAsync(new EditExpenses(lbl_id.Text));
+            view.IsEnabled = true;
+        }
+
         public async void DeleteTapped(object sender, EventArgs e)
         {
             var view = (Image)sender;
             await view.ScaleTo(0.8, 100);
             view.Scale = 1;
             view.IsEnabled = false;
-            MessagingCenter.Send(this, "DeleteImageTap", lbl_id.Text);
+            var codes = new Dictionary<string, string>();
+            codes.Add("id", lbl_id.Text);
+            codes.Add("amount", lbl_amount.Text);
+            MessagingCenter.Send(this, "DeleteImageTap", codes);
             view.IsEnabled = true;
         }
 

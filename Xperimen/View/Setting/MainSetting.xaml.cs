@@ -39,6 +39,7 @@ namespace Xperimen.View.Setting
             }
             else img_profile.BackgroundColor = Color.FromHex(App.DimGray2);
 
+            img_profile.Source = string.Empty;
             if (viewmodel.Picture != null)
             {
                 img_profile.Source = ImageSource.FromStream(() =>
@@ -60,6 +61,17 @@ namespace Xperimen.View.Setting
                 await Navigation.PushPopupAsync(new ImageViewer(converter.BytesToStream(viewmodel.Picture)));
                 view.IsEnabled = true;
             }
+        }
+
+        public async void PicClearClicked(object sender, EventArgs e)
+        {
+            var view = (Image)sender;
+            await view.ScaleTo(0.9, 100);
+            view.Scale = 1;
+            view.IsEnabled = false;
+            viewmodel.Picture = null;
+            SetupView();
+            view.IsEnabled = true;
         }
 
         public async void GalleryClicked(object sender, EventArgs e)
@@ -148,8 +160,8 @@ namespace Xperimen.View.Setting
             view.IsEnabled = false;
 
             viewmodel.IsLoading = true;
-            if (viewmodel.Picture == null) SetDisplayAlert("Alert", "Profile picture is empty. Please take a photo or choose a picture.", "", "", "");
-            else if (string.IsNullOrEmpty(viewmodel.Firstname)) SetDisplayAlert("Alert", "First name cannot be empty. Please insert your first name.", "", "", "");
+            //if (viewmodel.Picture == null) SetDisplayAlert("Alert", "Profile picture is empty. Please take a photo or choose a picture.", "", "", "");
+            if (string.IsNullOrEmpty(viewmodel.Firstname)) SetDisplayAlert("Alert", "First name cannot be empty. Please insert your first name.", "", "", "");
             else if (string.IsNullOrEmpty(viewmodel.Lastname)) SetDisplayAlert("Alert", "Last name cannot be empty. Please insert your last name.", "", "", "");
             else if (string.IsNullOrEmpty(viewmodel.Username)) SetDisplayAlert("Alert", "Username cannot be empty. Please insert your username.", "", "", "");
             else if (viewmodel.Username.Length < 6) SetDisplayAlert("Alert", "Username must be more than 6 characters.", "", "", "");

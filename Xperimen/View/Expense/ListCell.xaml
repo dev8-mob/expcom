@@ -10,7 +10,13 @@
     <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand"  VerticalOptions="Start"
                  Spacing="0" Padding="15,8,15,8">
         <stylekit:XLabel Text="{Binding Amount, StringFormat='RM {0:0.00}'}" HorizontalOptions="FillAndExpand"
-                         FontFamily="{DynamicResource Key=BoldFont}" VerticalOptions="Center"/>
+                         FontFamily="{DynamicResource Key=BoldFont}" VerticalOptions="Center" x:Name="lbl_amount"/>
+        <stylekit:XImage Source1="black_edit.png" Source2="white_edit.png" Aspect="AspectFit" Margin="0,0,15,0"
+                         HeightRequest="25" WidthRequest="25" HorizontalOptions="End" VerticalOptions="Center">
+            <Image.GestureRecognizers>
+                <TapGestureRecognizer Tapped="EditTapped" NumberOfTapsRequired="1"/>
+            </Image.GestureRecognizers>
+        </stylekit:XImage>
         <stylekit:XImage Source1="black_delete.png" Source2="white_delete.png" Aspect="AspectFit" Margin="0,0,15,0"
                          HeightRequest="25" WidthRequest="25" HorizontalOptions="End" VerticalOptions="Center">
             <Image.GestureRecognizers>

@@ -10,7 +10,7 @@
 
         <!-- header title -->
         <Grid x:Name="grid_header" HorizontalOptions="FillAndExpand" VerticalOptions="Start" Padding="15" 
-              RowSpacing="15" ColumnSpacing="10" Margin="20,35,20,0">
+              RowSpacing="15" ColumnSpacing="0" Margin="20,35,20,0">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
@@ -36,7 +36,7 @@
         </Grid>
 
         <Grid x:Name="grid_calendar" HorizontalOptions="FillAndExpand" VerticalOptions="Start" Padding="15,0,15,15"
-              RowSpacing="15" ColumnSpacing="10" Margin="20,0,20,0">
+              RowSpacing="0" ColumnSpacing="0" Margin="20,0,20,0">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
