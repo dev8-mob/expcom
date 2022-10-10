@@ -51,6 +51,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Update="Stylekit\CalendarMonthView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
     <EmbeddedResource Update="Stylekit\CustomCalendar.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>

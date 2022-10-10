@@ -83,6 +83,18 @@ namespace Xperimen.Stylekit
                     VerticalOptions = LayoutOptions.Center,
                     Spacing = 0
                 };
+                var frametoday = new Frame
+                {
+                    Padding = 0,
+                    HasShadow = false,
+                    CornerRadius = 8,
+                    HeightRequest = 8,
+                    HorizontalOptions = LayoutOptions.FillAndExpand,
+                    VerticalOptions = LayoutOptions.FillAndExpand,
+                    BackgroundColor = Color.FromHex(App.PrimaryLight),
+                    Margin = new Thickness(5,8,5,8),
+                    Opacity = 0.5
+                };
                 var frame = new Frame
                 {
                     Padding = 0,
@@ -133,6 +145,7 @@ namespace Xperimen.Stylekit
                         tapframe.NumberOfTapsRequired = 1;
                         frame.GestureRecognizers.Add(tapframe);
 
+                        if ((i+1) == CurrentDt.Day) grid_calendar.Children.Add(frametoday, col, row);
                         grid_calendar.Children.Add(stack, col, row);
                         grid_calendar.Children.Add(frame, col, row);
                     }
@@ -146,6 +159,7 @@ namespace Xperimen.Stylekit
                         tap.NumberOfTapsRequired = 1;
                         stack.GestureRecognizers.Add(tap);
 
+                        if ((i+1) == CurrentDt.Day) grid_calendar.Children.Add(frametoday, col, row);
                         grid_calendar.Children.Add(stack, col, row);
                     }
                     col++;
@@ -181,6 +195,8 @@ namespace Xperimen.Stylekit
                         tapframe.NumberOfTapsRequired = 1;
                         frame.Content = stackbadge;
                         frame.GestureRecognizers.Add(tapframe);
+
+                        if ((i+1) == CurrentDt.Day) grid_calendar.Children.Add(frametoday, col, row);
                         grid_calendar.Children.Add(stack, col, row);
                         grid_calendar.Children.Add(frame, col, row);
                     }
@@ -194,12 +210,21 @@ namespace Xperimen.Stylekit
                         tap.NumberOfTapsRequired = 1;
                         stack.GestureRecognizers.Add(tap);
 
+                        if ((i+1) == CurrentDt.Day) grid_calendar.Children.Add(frametoday);
                         grid_calendar.Children.Add(stack, col, row);
                     }
                     col++;
                 }
                 daysno++;
             }
+        }
+
+        public async void MonthTapped(object sender, EventArgs arg)
+        {
+            var view = (Image)sender;
+            await view.ScaleTo(0.8, 100);
+            view.Scale = 1;
+            //view.IsEnabled = false;
         }
 
         public async void DayTapped(object sender, EventArgs arg)

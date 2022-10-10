@@ -24,8 +24,16 @@
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <stylekit:XLabel x:Name="lbl_month" Grid.Row="0" Grid.Column="0" HorizontalOptions="Start" FontSize="18"
-                             Margin="0,0,15,5" FontFamily="{DynamicResource Key=BoldFont}" Grid.ColumnSpan="7"/>
+            <StackLayout Orientation="Horizontal" HorizontalOptions="Fill" Spacing="0" Margin="0,0,0,5" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="7">
+                <!--<stylekit:XImage Source1="black_menu.png" Source2="white_menu.png" VerticalOptions="Center" Margin="0,0,10,0" HeightRequest="30" 
+                                 WidthRequest="30" Aspect="AspectFit">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="MonthTapped"/>
+                    </Image.GestureRecognizers>
+                </stylekit:XImage>-->
+                <stylekit:XLabel x:Name="lbl_month" HorizontalOptions="Start" FontSize="18" FontFamily="{DynamicResource Key=BoldFont}" Grid.ColumnSpan="7"
+                                 VerticalOptions="Center"/>
+            </StackLayout>
             <stylekit:XLabel Text="Mon" HorizontalOptions="CenterAndExpand" Grid.Row="1" Grid.Column="0" TextColor="{DynamicResource Key=Primary}"/>
             <stylekit:XLabel Text="Tue" HorizontalOptions="CenterAndExpand" Grid.Row="1" Grid.Column="1" TextColor="{DynamicResource Key=Primary}"/>
             <stylekit:XLabel Text="Wed" HorizontalOptions="CenterAndExpand" Grid.Row="1" Grid.Column="2" TextColor="{DynamicResource Key=Primary}"/>
