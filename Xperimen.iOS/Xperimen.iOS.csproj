@@ -909,5 +909,7 @@
       <Name>Xperimen</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <BundleResource Include="Resources\black_logo.png" />
+  </ItemGroup>
 </Project>
