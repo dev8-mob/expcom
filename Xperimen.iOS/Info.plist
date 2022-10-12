@@ -20,9 +20,9 @@
 	<key>MinimumOSVersion</key>
 	<string>8.0</string>
 	<key>CFBundleDisplayName</key>
-	<string>Xperimen</string>
+	<string>Expcom</string>
 	<key>CFBundleIdentifier</key>
-	<string>com.applab.hasilkarya</string>
+	<string>com.mobile.expcom</string>
 	<key>CFBundleVersion</key>
 	<string>1.0</string>
 	<key>UILaunchStoryboardName</key>
@@ -45,5 +45,7 @@
 	<string>App needs access to the photo gallery.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>App needs access to photo.</string>
+	<key>CFBundleShortVersionString</key>
+	<string>1</string>
 </dict>
 </plist>

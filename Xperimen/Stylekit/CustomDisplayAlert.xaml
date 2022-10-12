@@ -35,9 +35,15 @@
 
     </Frame>
 
-    <Frame Padding="0" HasShadow="False" CornerRadius="50" HorizontalOptions="End" VerticalOptions="Start" Grid.Row="0" Grid.Column="0"
+    <Frame Padding="0" HasShadow="False" HorizontalOptions="End" VerticalOptions="Start" Grid.Row="0" Grid.Column="0"
            Margin="0,0,35,0" BorderColor="{DynamicResource Primary}" IsClippedToBounds="True">
         <Image Source="white_cancel.png" HeightRequest="35" WidthRequest="35" Aspect="AspectFit"/>
+        <Frame.CornerRadius>
+            <OnPlatform x:TypeArguments="x:Single">
+                <On Platform="iOS">17</On>
+                <On Platform="Android">50</On>
+            </OnPlatform>
+        </Frame.CornerRadius>
         <Frame.GestureRecognizers>
             <TapGestureRecognizer Tapped="CloseTapped"/>
         </Frame.GestureRecognizers>

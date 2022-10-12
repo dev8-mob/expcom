@@ -10,6 +10,12 @@
     <ContentPage.Content>
 
         <stylekit:XStacklayout Orientation="Vertical" Spacing="0">
+            <StackLayout.Padding>
+                <OnPlatform x:TypeArguments="Thickness">
+                    <On Platform="Android">0</On>
+                    <On Platform="iOS">0,40,0,0</On>
+                </OnPlatform>
+            </StackLayout.Padding>
 
             <!-- header -->
             <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal" Spacing="0">
@@ -36,7 +42,7 @@
             <!--x:FieldModifier="public"-->
             <!-- menu list -->
             <ListView x:Name="listview" HasUnevenRows="True" SeparatorVisibility="None" ItemsSource="{Binding MenuList}"
-                      ItemSelected="listview_ItemSelected">
+                      ItemSelected="listview_ItemSelected" BackgroundColor="Transparent">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <cell:DrawerMenuCell/>

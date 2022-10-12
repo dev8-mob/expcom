@@ -14,14 +14,14 @@
         </Grid.RowDefinitions>
 
         <!-- added wallet-like UI -->
-        <Frame Padding="0" HasShadow="False" CornerRadius="10" VerticalOptions="Start" Margin="45,0,45,0"
+        <Frame Padding="0" HasShadow="False" CornerRadius="10" VerticalOptions="Start" Margin="45,0,45,0" IsClippedToBounds="True"
                Grid.Row="1" Grid.Column="0" HorizontalOptions="FillAndExpand" BorderColor="DarkGray">
             <StackLayout HorizontalOptions="FillAndExpand" HeightRequest="100" BackgroundColor="{DynamicResource Key=Primary}"/>
         </Frame>
 
         <!-- UI content -->
         <Frame Padding="0" HasShadow="False" CornerRadius="10" BorderColor="DarkGray" HorizontalOptions="FillAndExpand" 
-               VerticalOptions="Start"  Margin="20,20,20,0" Grid.Row="1" Grid.Column="0">
+               VerticalOptions="Start"  Margin="20,20,20,0" Grid.Row="1" Grid.Column="0" IsClippedToBounds="True">
             <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand" VerticalOptions="Center" Spacing="0" 
                          Padding="20" x:Name="stack_bg">
                 <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="Center" Orientation="Vertical" Spacing="0">

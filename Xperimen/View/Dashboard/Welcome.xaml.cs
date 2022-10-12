@@ -1,7 +1,7 @@
 ﻿using Rg.Plugins.Popup.Extensions;
 using System;
-using System.Threading.Tasks;
 using Xamarin.Forms;
+using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
 using Xperimen.Helper;
 using Xperimen.Stylekit;
@@ -43,9 +43,9 @@ namespace Xperimen.View.Dashboard
 
         public void SetupView()
         {
-            if (Application.Current.Properties.ContainsKey("app_theme"))
+            if (Xamarin.Forms.Application.Current.Properties.ContainsKey("app_theme"))
             {
-                var theme = Application.Current.Properties["app_theme"] as string;
+                var theme = Xamarin.Forms.Application.Current.Properties["app_theme"] as string;
                 if (theme.Equals("dark"))
                 {
                     img_profile.BackgroundColor = Color.FromHex(App.CharcoalBlack);
@@ -88,6 +88,15 @@ namespace Xperimen.View.Dashboard
                     return stream;
                 });
             }
+
+            // setup for different iphone screen sizes
+            var isDeviceIphone = DependencyService.Get<IDeviceInfo>().IsLowerIphoneDevice();
+            if (isDeviceIphone)
+            {
+                var safeInsets = On<Xamarin.Forms.PlatformConfiguration.iOS>().SafeAreaInsets();
+                safeInsets.Top = -20;
+                Padding = safeInsets;
+            }
         }
 
         public async void DrawerTapped(object sender, EventArgs e)
@@ -96,7 +105,7 @@ namespace Xperimen.View.Dashboard
             await view.ScaleTo(0.9, 250);
             view.Scale = 1;
             view.IsEnabled = false;
-            var drawer = (DrawerMaster)view.Parent.Parent.Parent.Parent.Parent.Parent;
+            var drawer = (DrawerMaster)view.Parent.Parent.Parent.Parent.Parent;
             drawer.IsPresented = true;
             view.IsEnabled = true;
         }

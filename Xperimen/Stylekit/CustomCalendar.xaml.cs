@@ -66,7 +66,7 @@ namespace Xperimen.Stylekit
                 var day = new DateTime(CurrentDt.Year, CurrentDt.Month, daysno);
                 var fontfamily = string.Empty;
                 if (Device.RuntimePlatform == Device.Android) fontfamily = "Ubuntu-Regular.ttf#Ubuntu Regular";
-                else if (Device.RuntimePlatform == Device.iOS) fontfamily = "Ubuntu-Regular.ttf";
+                else if (Device.RuntimePlatform == Device.iOS) fontfamily = "Ubuntu-Regular";
 
                 var count = GetTotalExpenses(day.ToString("dd.MM.yyyy"));
                 var stack = new StackLayout
@@ -99,13 +99,14 @@ namespace Xperimen.Stylekit
                 {
                     Padding = 0,
                     HasShadow = false,
-                    CornerRadius = 25,
                     HeightRequest = 25,
                     WidthRequest = 25,
                     HorizontalOptions = LayoutOptions.End,
                     VerticalOptions = LayoutOptions.Start,
                     BackgroundColor = Color.FromHex(App.CustomRed)
                 };
+                if (Device.RuntimePlatform == Device.Android) frame.CornerRadius = 25;
+                else if (Device.RuntimePlatform == Device.iOS) frame.CornerRadius = 12;
                 var lblday = new XLabel
                 {
                     Text = daysno.ToString(),
@@ -122,7 +123,7 @@ namespace Xperimen.Stylekit
                     if (count > 0)
                     {
                         if (Device.RuntimePlatform == Device.Android) fontfamily = "Ubuntu-Bold.ttf#Ubuntu Bold";
-                        else if (Device.RuntimePlatform == Device.iOS) fontfamily = "Ubuntu-Bold.ttf";
+                        else if (Device.RuntimePlatform == Device.iOS) fontfamily = "Ubuntu-Bold";
 
                         lblday.FontFamily = fontfamily;
                         stack.Children.Add(lblday);
@@ -173,7 +174,7 @@ namespace Xperimen.Stylekit
                     if (count > 0)
                     {
                         if (Device.RuntimePlatform == Device.Android) fontfamily = "Ubuntu-Bold.ttf#Ubuntu Bold";
-                        else if (Device.RuntimePlatform == Device.iOS) fontfamily = "Ubuntu-Bold.ttf";
+                        else if (Device.RuntimePlatform == Device.iOS) fontfamily = "Ubuntu-Bold";
 
                         lblday.FontFamily = fontfamily; 
                         stack.Children.Add(lblday);

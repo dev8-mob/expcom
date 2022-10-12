@@ -10,8 +10,14 @@
         <AbsoluteLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="Transparent">
 
             <!-- UI content -->
-            <stylekit:XStacklayout Orientation="Vertical" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Spacing="0" 
-                                   Padding="20" AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,0,1,1">
+            <stylekit:XStacklayout Orientation="Vertical" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" 
+                                   Spacing="0" AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,0,1,1">
+                <StackLayout.Padding>
+                    <OnPlatform x:TypeArguments="Thickness">
+                        <On Platform="Android">20</On>
+                        <On Platform="iOS">20,60,20,20</On>
+                    </OnPlatform>
+                </StackLayout.Padding>
 
                 <!-- top navigation bar -->
                 <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="Start" Spacing="0">
@@ -145,10 +151,16 @@
 
                     <!-- commitment badge number -->
                     <Frame Grid.Row="1" Grid.Column="1" Padding="0" HasShadow="False" IsClippedToBounds="True" HeightRequest="30"
-                           BackgroundColor="{DynamicResource Key=CustomRed}" WidthRequest="30" CornerRadius="30" Margin="0,0,15,0"
+                           BackgroundColor="{DynamicResource Key=CustomRed}" WidthRequest="30" Margin="0,0,15,0"
                            HorizontalOptions="End" VerticalOptions="Start" IsVisible="{Binding HasCommitmentDoneNoHide}">
                         <Label Text="{Binding CommitmentNotDone}" TextColor="White" FontFamily="{DynamicResource Key=BoldFont}" 
                                HorizontalOptions="Center" VerticalOptions="Center"/>
+                        <Frame.CornerRadius>
+                            <OnPlatform x:TypeArguments="x:Single">
+                                <On Platform="iOS">15</On>
+                                <On Platform="Android">30</On>
+                            </OnPlatform>
+                        </Frame.CornerRadius>
                         <Frame.GestureRecognizers>
                             <TapGestureRecognizer Tapped="CommitmentBadgeClicked" NumberOfTapsRequired="1"/>
                         </Frame.GestureRecognizers>
@@ -162,7 +174,8 @@
                         <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Spacing="0" 
                                      Padding="15,20,15,20">
 
-                            <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand" VerticalOptions="Start" Spacing="0">
+                            <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand" VerticalOptions="Start" Spacing="0"
+                                         Margin="0,0,0,15">
                                 <stylekit:XLabel Text="Expenses" HorizontalOptions="CenterAndExpand" FontFamily="{DynamicResource Key=BoldFont}"/>
                                 <stylekit:XLabel Text="for today" HorizontalOptions="CenterAndExpand" FontFamily="{DynamicResource Key=BoldFont}"/>
                                 <StackLayout.GestureRecognizers>
@@ -172,7 +185,7 @@
 
                             <!-- no expenses yet -->
                             <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" Spacing="0"
-                                         IsVisible="{Binding NoExpenses}" Margin="0,15,0,0">
+                                         IsVisible="{Binding NoExpenses}">
                                 <stylekit:XImageNoRecord HeightRequest="40" WidthRequest="40" VerticalOptions="Center" HorizontalOptions="Center"/>
                                 <Label Text="no record" HorizontalOptions="CenterAndExpand" IsVisible="{Binding NoExpenses}"/>
                                 <StackLayout.GestureRecognizers>
@@ -181,8 +194,7 @@
                             </StackLayout>
 
                             <!-- expenses list -->
-                            <ScrollView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" IsVisible="{Binding HasExpenses}"
-                                        Margin="0,15,0,0">
+                            <ScrollView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" IsVisible="{Binding HasExpenses}">
                                 <StackLayout HorizontalOptions="FillAndExpand" BindableLayout.ItemsSource="{Binding ListExpenses}" 
                                              Spacing="0" VerticalOptions="Start">
                                     <BindableLayout.ItemTemplate>
@@ -219,8 +231,14 @@
 
                     <!-- expenses badge number -->
                     <Frame Grid.Row="1" Grid.Column="0" Padding="0" HasShadow="False" IsClippedToBounds="True" HeightRequest="30"
-                           BackgroundColor="{DynamicResource Key=CustomRed}" WidthRequest="30" CornerRadius="40" Margin="0,0,15,0"
+                           BackgroundColor="{DynamicResource Key=CustomRed}" WidthRequest="30" Margin="0,0,15,0"
                            HorizontalOptions="End" VerticalOptions="Start" IsVisible="{Binding HasExpenses}">
+                        <Frame.CornerRadius>
+                            <OnPlatform x:TypeArguments="x:Single">
+                                <On Platform="iOS">15</On>
+                                <On Platform="Android">30</On>
+                            </OnPlatform>
+                        </Frame.CornerRadius>
                         <Label Text="{Binding ExpensesCount}" TextColor="White" FontFamily="{DynamicResource Key=BoldFont}" 
                                HorizontalOptions="Center" VerticalOptions="Center"/>
                         <Frame.GestureRecognizers>

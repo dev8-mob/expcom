@@ -3,6 +3,7 @@ using SQLite;
 using System;
 using System.Linq;
 using Xamarin.Forms;
+using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
 using Xperimen.Helper;
 using Xperimen.Model;
@@ -27,17 +28,30 @@ namespace Xperimen.View.NavigationDrawer
             BindingContext = viewmodel;
             connection = new SQLiteConnection(App.DB_PATH);
             converter = new StreamByteConverter();
-            UpdateProfilePic();
+            SetupView();
 
             MessagingCenter.Subscribe<SettingViewmodel>(this, "AppThemeUpdated", (sender) =>
             { UpdateProfilePic(); });
         }
 
+        public void SetupView()
+        {
+            // setup for different iphone screen sizes
+            var isDeviceIphone = DependencyService.Get<IDeviceInfo>().IsLowerIphoneDevice();
+            if (isDeviceIphone)
+            {
+                var safeInsets = On<Xamarin.Forms.PlatformConfiguration.iOS>().SafeAreaInsets();
+                safeInsets.Top = -20;
+                Padding = safeInsets;
+            }
+            UpdateProfilePic();
+        }
+
         public void UpdateProfilePic()
         {
-            if (Application.Current.Properties.ContainsKey("current_login"))
+            if (Xamarin.Forms.Application.Current.Properties.ContainsKey("current_login"))
             {
-                var id = Application.Current.Properties["current_login"];
+                var id = Xamarin.Forms.Application.Current.Properties["current_login"];
                 var login = connection.Query<Clients>("SELECT * FROM Clients WHERE Id = '" + id + "'").ToList();
                 if (login.Count > 0)
                 {
@@ -84,16 +98,16 @@ namespace Xperimen.View.NavigationDrawer
             if (item.Count > 0)
             {
                 Type page = item[0].Contentpage;
-                var openPage = (Page)Activator.CreateInstance(page);
+                var openPage = (Xamarin.Forms.Page)Activator.CreateInstance(page);
                 viewmodel.SetSelectedMenu(title);
                 parent.IsPresented = false;
-                parent.Detail = new NavigationPage(openPage);
+                parent.Detail = new Xamarin.Forms.NavigationPage(openPage);
             }
         }
 
         private void listview_ItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
-            var view = (ListView)sender;
+            var view = (Xamarin.Forms.ListView)sender;
             view.IsEnabled = false;
             if (e.SelectedItem != null)
                 view.SelectedItem = null;

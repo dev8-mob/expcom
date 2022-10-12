@@ -51,7 +51,7 @@ namespace Xperimen.View.NavigationDrawer
             {
                 Type page = item[0].Contentpage;
                 var openPage = (Page)Activator.CreateInstance(page);
-                drawer.Detail = new NavigationPage(openPage);
+                drawer.Detail = openPage;
                 await Task.Delay(250);
                 drawer.IsPresented = false;
             }

@@ -18,10 +18,16 @@
                Grid.Row="0" Grid.Column="0" Margin="15"/>
 
         <!-- close button -->
-        <Frame Padding="0" HasShadow="False" CornerRadius="50" HorizontalOptions="Center" VerticalOptions="End"
-               Grid.Row="0" Grid.Column="0" BorderColor="{DynamicResource Primary}" IsClippedToBounds="True"
+        <Frame Padding="0" HasShadow="False" HorizontalOptions="Center" VerticalOptions="End" Grid.Row="0" Grid.Column="0" 
+               BorderColor="{DynamicResource Primary}" IsClippedToBounds="True"
                Margin="0,0,0,10">
             <Image Source="white_cancel.png" HeightRequest="50" WidthRequest="50" Aspect="AspectFit"/>
+            <Frame.CornerRadius>
+                <OnPlatform x:TypeArguments="x:Single">
+                    <On Platform="iOS">25</On>
+                    <On Platform="Android">50</On>
+                </OnPlatform>
+            </Frame.CornerRadius>
             <Frame.GestureRecognizers>
                 <TapGestureRecognizer Tapped="CloseTapped"/>
             </Frame.GestureRecognizers>

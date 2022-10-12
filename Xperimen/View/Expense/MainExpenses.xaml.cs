@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Xamarin.Forms;
+using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
 using Xperimen.Helper;
 using Xperimen.Stylekit;
@@ -164,9 +165,9 @@ namespace Xperimen.View.Expense
         public void SetupView()
         {
             viewmodel.IsLoading = true;
-            if (Application.Current.Properties.ContainsKey("app_theme"))
+            if (Xamarin.Forms.Application.Current.Properties.ContainsKey("app_theme"))
             {
-                var theme = Application.Current.Properties["app_theme"] as string;
+                var theme = Xamarin.Forms.Application.Current.Properties["app_theme"] as string;
                 if (theme.Equals("dark"))
                 {
                     stack_bgnoincome.BackgroundColor = Color.FromHex(App.CharcoalBlack);
@@ -187,6 +188,15 @@ namespace Xperimen.View.Expense
                 }
             }
 
+            // setup for different iphone screen sizes
+            var isDeviceIphone = DependencyService.Get<IDeviceInfo>().IsLowerIphoneDevice();
+            if (isDeviceIphone)
+            {
+                var safeInsets = On<Xamarin.Forms.PlatformConfiguration.iOS>().SafeAreaInsets();
+                safeInsets.Top = -20;
+                Padding = safeInsets;
+            }
+
             lbl_intro.Text = "Expenses Summary";
             lbl_ondateselect_zero.Text = string.Empty;
             var result = viewmodel.GetUserTotalExpense();
@@ -202,7 +212,7 @@ namespace Xperimen.View.Expense
             await view.ScaleTo(0.9, 250);
             view.Scale = 1;
             view.IsEnabled = false;
-            var drawer = (DrawerMaster)view.Parent.Parent.Parent.Parent.Parent.Parent;
+            var drawer = (DrawerMaster)view.Parent.Parent.Parent.Parent.Parent;
             drawer.IsPresented = true;
             view.IsEnabled = true;
         }

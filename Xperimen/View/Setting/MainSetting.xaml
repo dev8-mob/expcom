@@ -14,8 +14,13 @@
                         AbsoluteLayout.LayoutBounds="0,0,1,1">
 
                 <!-- UI content -->
-                <stylekit:XStacklayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Orientation="Vertical" 
-                                       Spacing="0" Padding="20">
+                <stylekit:XStacklayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Orientation="Vertical" Spacing="0">
+                    <StackLayout.Padding>
+                        <OnPlatform x:TypeArguments="Thickness">
+                            <On Platform="Android">20</On>
+                            <On Platform="iOS">20,60,20,20</On>
+                        </OnPlatform>
+                    </StackLayout.Padding>
                     
                     <!-- top navigation bar -->
                     <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" BackgroundColor="Transparent" VerticalOptions="Start">

@@ -19,6 +19,7 @@ namespace Xperimen.iOS.CustomRenderer
                 int bottom = 15;
                 int right = 15;
                 Control.Layer.BorderWidth = 0;
+                Control.BackgroundColor = null;
                 //Control.BorderStyle = UITextBorderStyle.None;
                 Control.TextContainerInset = new UIEdgeInsets(top, left, bottom, right);
             }

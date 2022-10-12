@@ -1,6 +1,7 @@
 ﻿using Rg.Plugins.Popup.Extensions;
 using System;
 using Xamarin.Forms;
+using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
 using Xperimen.Helper;
 using Xperimen.Stylekit;
@@ -30,9 +31,9 @@ namespace Xperimen.View.Setting
 
         public void SetupView()
         {
-            if (Application.Current.Properties.ContainsKey("app_theme"))
+            if (Xamarin.Forms.Application.Current.Properties.ContainsKey("app_theme"))
             {
-                var theme = Application.Current.Properties["app_theme"] as string;
+                var theme = Xamarin.Forms.Application.Current.Properties["app_theme"] as string;
                 if (theme.Equals("dark")) img_profile.BackgroundColor = Color.FromHex(App.CharcoalBlack);
                 if (theme.Equals("dim")) img_profile.BackgroundColor = Color.FromHex(App.CharcoalGray);
                 if (theme.Equals("light")) img_profile.BackgroundColor = Color.FromHex(App.DimGray2);
@@ -47,6 +48,15 @@ namespace Xperimen.View.Setting
                     var stream = converter.BytesToStream(viewmodel.Picture);
                     return stream;
                 });
+            }
+
+            // setup for different iphone screen sizes
+            var isDeviceIphone = DependencyService.Get<IDeviceInfo>().IsLowerIphoneDevice();
+            if (isDeviceIphone)
+            {
+                var safeInsets = On<Xamarin.Forms.PlatformConfiguration.iOS>().SafeAreaInsets();
+                safeInsets.Top = -20;
+                Padding = safeInsets;
             }
         }
 
@@ -211,7 +221,7 @@ namespace Xperimen.View.Setting
             await view.ScaleTo(0.9, 100);
             view.Scale = 1;
             view.IsEnabled = false;
-            var drawer = (DrawerMaster)view.Parent.Parent.Parent.Parent.Parent.Parent.Parent;
+            var drawer = (DrawerMaster)view.Parent.Parent.Parent.Parent.Parent.Parent;
             drawer.IsPresented = true;
             view.IsEnabled = true;
         }

@@ -15,8 +15,14 @@
                 <stylekit:XStacklayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
 
                     <StackLayout Padding="25,0,25,0" Orientation="Vertical" VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand" Spacing="0">
-                        <Frame x:Name="frame_bg" HorizontalOptions="Center" VerticalOptions="Start" HasShadow="False" CornerRadius="130" 
+                        <Frame x:Name="frame_bg" HorizontalOptions="Center" VerticalOptions="Start" HasShadow="False"
                                BorderColor="DarkGray" Padding="20,15,20,25">
+                            <Frame.CornerRadius>
+                                <OnPlatform x:TypeArguments="x:Single">
+                                    <On Platform="iOS">65</On>
+                                    <On Platform="Android">130</On>
+                                </OnPlatform>
+                            </Frame.CornerRadius>
                             <stylekit:XImage HeightRequest="130" WidthRequest="130" HorizontalOptions="CenterAndExpand" VerticalOptions="Center" 
                                              Aspect="AspectFit" Source1="black_logo.png" Source2="white_logo.png"/>
                         </Frame>

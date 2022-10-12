@@ -13,7 +13,7 @@ namespace Xperimen.Stylekit
             VerticalTextAlignment = TextAlignment.Center;
             HorizontalOptions = LayoutOptions.FillAndExpand;
             if (Device.RuntimePlatform == Device.Android) FontFamily = "Ubuntu-Regular.ttf#Ubuntu Regular";
-            else if (Device.RuntimePlatform == Device.iOS) FontFamily = "Ubuntu-Regular.ttf";
+            else if (Device.RuntimePlatform == Device.iOS) FontFamily = "Ubuntu-Regular";
         }
     }
 }

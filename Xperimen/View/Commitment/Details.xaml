@@ -93,12 +93,14 @@
 
                         <!-- added wallet-like UI -->
                         <Frame Padding="0" HasShadow="False" CornerRadius="10" VerticalOptions="Start" Margin="20,0,20,0" IsVisible="False"
-                               Grid.Row="0" Grid.Column="0" HorizontalOptions="FillAndExpand" BorderColor="DarkGray" x:Name="frame_walletlike">
+                               Grid.Row="0" Grid.Column="0" HorizontalOptions="FillAndExpand" BorderColor="DarkGray" x:Name="frame_walletlike"
+                               IsClippedToBounds="True">
                             <StackLayout HorizontalOptions="FillAndExpand" HeightRequest="100" BackgroundColor="{DynamicResource Key=Primary}"/>
                         </Frame>
 
                         <Frame x:Name="stack_edit" Padding="0" HasShadow="False" CornerRadius="10" BorderColor="DarkGray" Grid.Row="0" 
-                               Grid.Column="0" HorizontalOptions="FillAndExpand" VerticalOptions="Start" Margin="0,20,0,0" IsVisible="False">
+                               Grid.Column="0" HorizontalOptions="FillAndExpand" VerticalOptions="Start" Margin="0,20,0,0" IsVisible="False"
+                               IsClippedToBounds="True">
 
                             <!-- UI content (edit) -->
                             <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" Orientation="Vertical" Spacing="0"
