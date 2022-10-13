@@ -2,6 +2,7 @@
 using Rg.Plugins.Popup.Extensions;
 using System;
 using Xamarin.Forms;
+using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
 using Xperimen.Helper;
 using Xperimen.Model;
@@ -90,6 +91,15 @@ namespace Xperimen.View.Commitment
                     frame_view.BackgroundColor = Color.FromHex(App.DimGray2);
                     stack_bg.BackgroundColor = Color.FromHex(App.DimGray2);
                 }
+            }
+
+            // setup for different iphone screen sizes
+            var isDeviceIphone = DependencyService.Get<IDeviceInfo>().IsLowerIphoneDevice();
+            if (isDeviceIphone)
+            {
+                var safeInsets = On<Xamarin.Forms.PlatformConfiguration.iOS>().SafeAreaInsets();
+                safeInsets.Top = -20;
+                Padding = safeInsets;
             }
 
             var result = viewmodel.SetDataCommitment(data);
