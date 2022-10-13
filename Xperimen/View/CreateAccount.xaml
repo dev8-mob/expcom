@@ -9,8 +9,8 @@
 
         <AbsoluteLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="Transparent">
 
-            <ScrollView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" AbsoluteLayout.LayoutFlags="All" 
-                        AbsoluteLayout.LayoutBounds="0,0,1,1">
+            <stylekit:XScrollview HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" AbsoluteLayout.LayoutFlags="All" 
+                                  AbsoluteLayout.LayoutBounds="0,0,1,1">
 
                 <stylekit:XStacklayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Orientation="Vertical" 
                                        Spacing="0" Padding="20">
@@ -129,7 +129,7 @@
                     
                 </stylekit:XStacklayout>
                 
-            </ScrollView>
+            </stylekit:XScrollview>
 
             <!-- background overlay -->
             <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="Black" Opacity="0.5"

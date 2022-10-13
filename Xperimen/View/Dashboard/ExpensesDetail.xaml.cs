@@ -1,5 +1,6 @@
 ﻿using System;
 using Xamarin.Forms;
+using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
 using Xperimen.Helper;
 using Xperimen.Stylekit;
@@ -43,8 +44,8 @@ namespace Xperimen.View.Dashboard
         public void SetupView()
         {
             var theme = string.Empty;
-            if (Application.Current.Properties.ContainsKey("app_theme"))
-                theme = Application.Current.Properties["app_theme"] as string;
+            if (Xamarin.Forms.Application.Current.Properties.ContainsKey("app_theme"))
+                theme = Xamarin.Forms.Application.Current.Properties["app_theme"] as string;
             if (theme.Equals("dim"))
             { 
                 lbl_percentmore.TextColor = Color.Black; lbl_percentless.TextColor = Color.Black;
@@ -68,6 +69,15 @@ namespace Xperimen.View.Dashboard
                 stack_more.IsVisible = false;
                 stack_less.IsVisible = false;
                 stack_same.IsVisible = true;
+            }
+
+            // setup for different iphone screen sizes
+            var isDeviceIphone = DependencyService.Get<IDeviceInfo>().IsLowerIphoneDevice();
+            if (isDeviceIphone)
+            {
+                var safeInsets = On<Xamarin.Forms.PlatformConfiguration.iOS>().SafeAreaInsets();
+                safeInsets.Top = -20;
+                Padding = safeInsets;
             }
         }
 

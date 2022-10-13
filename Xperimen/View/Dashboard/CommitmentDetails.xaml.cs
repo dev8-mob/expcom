@@ -1,6 +1,7 @@
 ﻿
 using System;
 using Xamarin.Forms;
+using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
 using Xperimen.Helper;
 using Xperimen.Stylekit;
@@ -20,6 +21,7 @@ namespace Xperimen.View.Dashboard
             viewmodel = new DashboardViewmodel();
             converter = new StreamByteConverter();
             BindingContext = viewmodel;
+            SetupView();
 
             MessagingCenter.Subscribe<CustomDisplayAlert, string>(this, "DisplayAlertSelection", async (sender, arg) =>
             { 
@@ -41,6 +43,18 @@ namespace Xperimen.View.Dashboard
                 }
                 else viewmodel.IsLoading = false; 
             });
+        }
+
+        public void SetupView()
+        {
+            // setup for different iphone screen sizes
+            var isDeviceIphone = DependencyService.Get<IDeviceInfo>().IsLowerIphoneDevice();
+            if (isDeviceIphone)
+            {
+                var safeInsets = On<Xamarin.Forms.PlatformConfiguration.iOS>().SafeAreaInsets();
+                safeInsets.Top = -20;
+                Padding = safeInsets;
+            }
         }
 
         public async void BackTapped(object sender, EventArgs e)

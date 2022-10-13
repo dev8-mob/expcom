@@ -88,7 +88,7 @@ namespace Xperimen.View.Dashboard
             view.IsEnabled = false;
             var parent = (ExpensesDetail)view.Parent.Parent.Parent.Parent.Parent.Parent.Parent;
             parent.viewmodel.IsLoading = true;
-            parent.SetDisplayAlert("Confirmation", "Are you sure to delete " + lbl_amount.Text + " ?", "Yes", "Cancel", lbl_id.Text);
+            parent.SetDisplayAlert("Confirmation", "Are you sure to delete " + lbl_amount.Text + " from today expenses ?", "Yes", "Cancel", lbl_id.Text);
             view.IsEnabled = true;
         }
     }

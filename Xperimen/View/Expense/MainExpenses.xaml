@@ -87,7 +87,7 @@
                                    FontFamily="{DynamicResource Key=BoldFont}"/>
                         </StackLayout>
 
-                        <ScrollView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                        <stylekit:XScrollview>
                             <StackLayout Orientation="Vertical" Spacing="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                                 
                                 <!-- selected date expenses list -->
@@ -146,7 +146,7 @@
                                 </StackLayout>
 
                             </StackLayout>
-                        </ScrollView>
+                        </stylekit:XScrollview>
                     
                     </StackLayout>
 
@@ -165,7 +165,7 @@
                         </StackLayout>
 
                         <!-- expenses list -->
-                        <ScrollView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                        <stylekit:XScrollview>
                             <StackLayout HorizontalOptions="FillAndExpand" BindableLayout.ItemsSource="{Binding ListExpenses}"
                                          Spacing="0" VerticalOptions="Fill">
                                 <BindableLayout.ItemTemplate>
@@ -174,7 +174,7 @@
                                     </DataTemplate>
                                 </BindableLayout.ItemTemplate>
                             </StackLayout>
-                        </ScrollView>
+                        </stylekit:XScrollview>
 
                     </StackLayout>
 
