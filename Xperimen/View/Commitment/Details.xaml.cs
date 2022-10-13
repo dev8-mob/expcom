@@ -73,9 +73,9 @@ namespace Xperimen.View.Commitment
 
         public void SetupView()
         {
-            if (Application.Current.Properties.ContainsKey("app_theme"))
+            if (Xamarin.Forms.Application.Current.Properties.ContainsKey("app_theme"))
             {
-                var theme = Application.Current.Properties["app_theme"] as string;
+                var theme = Xamarin.Forms.Application.Current.Properties["app_theme"] as string;
                 if (theme.Equals("dark"))
                 {
                     frame_view.BackgroundColor = Color.FromHex(App.CharcoalBlack);
