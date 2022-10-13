@@ -14,7 +14,7 @@
     <AssemblyName>Expcom</AssemblyName>
     <MtouchEnableSGenConc>true</MtouchEnableSGenConc>
     <MtouchHttpClientHandler>NSUrlSessionHandler</MtouchHttpClientHandler>
-    <ProvisioningType>automatic</ProvisioningType>
+    <ProvisioningType>manual</ProvisioningType>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhoneSimulator' ">
     <DebugSymbols>true</DebugSymbols>
@@ -49,7 +49,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <MtouchArch>ARM64</MtouchArch>
-    <CodesignKey>Apple Development: Muhd Rashid (BF5JF93A5A)</CodesignKey>
+    <CodesignKey>iPhone Developer</CodesignKey>
     <MtouchDebug>true</MtouchDebug>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
     <MtouchLink>SdkOnly</MtouchLink>
@@ -65,8 +65,12 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <MtouchArch>ARM64</MtouchArch>
-    <CodesignKey>iPhone Developer</CodesignKey>
+    <CodesignKey>Apple Development: Muhd Rashid (BF5JF93A5A)</CodesignKey>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
+    <BuildIpa>true</BuildIpa>
+    <MtouchLink>None</MtouchLink>
+    <OptimizePNGs>true</OptimizePNGs>
+    <CodesignProvision>VS: com.mobile.expcom Development</CodesignProvision>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(RunConfiguration)' == 'Default' ">
     <AppExtensionDebugBundleId />
@@ -76,6 +80,7 @@
     <Compile Include="CustomRenderer\EntryBorderlessRenderer.cs" />
     <Compile Include="CustomRenderer\PickerBorderlessRenderer.cs" />
     <Compile Include="CustomRenderer\TimePickerBorderlessRenderer.cs" />
+    <Compile Include="CustomRenderer\XScrollviewRenderer.cs" />
     <Compile Include="DependencyService\DeviceInfoService.cs" />
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />

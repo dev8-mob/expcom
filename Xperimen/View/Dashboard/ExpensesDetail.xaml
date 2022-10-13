@@ -11,10 +11,14 @@
         <AbsoluteLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="Transparent">
 
             <!-- UI content -->
-            <ScrollView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" AbsoluteLayout.LayoutFlags="All" 
-                        AbsoluteLayout.LayoutBounds="0,0,1,1">
-                <stylekit:XStacklayout Orientation="Vertical" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" 
-                                       Spacing="0" Padding="20">
+            <stylekit:XScrollview AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,0,1,1">
+                <stylekit:XStacklayout Orientation="Vertical" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Spacing="0">
+                    <StackLayout.Padding>
+                        <OnPlatform x:TypeArguments="Thickness">
+                            <On Platform="Android">20</On>
+                            <On Platform="iOS">20,60,20,20</On>
+                        </OnPlatform>
+                    </StackLayout.Padding>
 
                     <!-- top navigation bar -->
                     <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="Start" Spacing="0">
@@ -79,7 +83,7 @@
                     </ScrollView>
 
                 </stylekit:XStacklayout>
-            </ScrollView>
+            </stylekit:XScrollview>
 
             <!-- background overlay -->
             <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="Black" Opacity="0.5"
