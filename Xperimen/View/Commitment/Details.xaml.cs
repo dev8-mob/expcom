@@ -94,12 +94,15 @@ namespace Xperimen.View.Commitment
             }
 
             // setup for different iphone screen sizes
-            var isDeviceIphone = DependencyService.Get<IDeviceInfo>().IsLowerIphoneDevice();
-            if (isDeviceIphone)
+            if (Device.RuntimePlatform == Device.iOS)
             {
-                var safeInsets = On<Xamarin.Forms.PlatformConfiguration.iOS>().SafeAreaInsets();
-                safeInsets.Top = -20;
-                Padding = safeInsets;
+                var lowerscreen = DependencyService.Get<IDeviceInfo>().IsLowerIphoneDevice();
+                if (lowerscreen)
+                {
+                    var safeInsets = On<Xamarin.Forms.PlatformConfiguration.iOS>().SafeAreaInsets();
+                    safeInsets.Top = -20;
+                    Padding = safeInsets;
+                }
             }
 
             var result = viewmodel.SetDataCommitment(data);
