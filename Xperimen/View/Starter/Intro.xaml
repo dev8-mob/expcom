@@ -1,0 +1,93 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Xperimen.View.Intro"
+             xmlns:stylekit="clr-namespace:Xperimen.Stylekit"
+             NavigationPage.HasNavigationBar="False">
+    
+    <ContentPage.Content>
+
+        <AbsoluteLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="Transparent">
+
+            <stylekit:XScrollview HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,0,1,1">
+
+                <!-- UI content -->
+                <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                    <StackLayout.Background>
+                        <LinearGradientBrush>
+                            <GradientStop Color="{DynamicResource Key=DimGray1}" Offset="0.3" />
+                            <GradientStop Color="{DynamicResource Key=Primary}" Offset="1.3" />
+                        </LinearGradientBrush>
+                    </StackLayout.Background>
+
+                    <StackLayout Padding="25,0,25,0" Orientation="Vertical" VerticalOptions="StartAndExpand" HorizontalOptions="FillAndExpand" Spacing="0">
+
+                        <stylekit:XLabel x:Name="lbl_welcome" Text="Welcome" HorizontalOptions="Start" FontSize="20" FontFamily="{DynamicResource Key=BoldFont}"/>
+                        <StackLayout x:Name="stack_welcome" Orientation="Vertical" HorizontalOptions="FillAndExpand" Spacing="0" Margin="0,20,0,0">
+                            <stylekit:XLabel Text="No account created yet" HorizontalOptions="Start"/>
+                            <stylekit:XLabel Text="Please create your username and password" HorizontalOptions="Start"/>
+                        </StackLayout>
+
+                        <StackLayout x:Name="stack_info" Spacing="0" Orientation="Vertical" HorizontalOptions="FillAndExpand" Margin="0,80,0,0">
+                            <!-- first last names -->
+                            <StackLayout Orientation="Horizontal" Spacing="5" HorizontalOptions="FillAndExpand" Margin="0,20,0,0">
+                                <stylekit:CustomEntry BindingText="Firstname" Placeholder="first name"/>
+                                <stylekit:CustomEntry BindingText="Lastname" Placeholder="last name"/>
+                            </StackLayout>
+                            
+                            <!-- password -->
+                            <stylekit:CustomEntry BindingText="Password" Ispassword="True" ImgLeft="black_password.png" ImgLeft_="white_password.png"
+                                                  Placeholder="create your password" Margin="0,10,0,0" ImgRight="black_visible.png" 
+                                                  ImgRight_="white_visible.png" ImgRight2="black_invisible.png" 
+                                                  ImgRight2_="white_invisible.png"/>
+                            <!-- next button -->
+                            <Frame Padding="0,10,0,10" CornerRadius="8" BorderColor="{DynamicResource Key=Primary}" HorizontalOptions="FillAndExpand"
+                                   Margin="0,20,0,0" BackgroundColor="{DynamicResource Key=Primary}" HasShadow="False" IsClippedToBounds="True">
+                                <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Spacing="10" VerticalOptions="Center">
+                                    <Label Text="Okay" FontFamily="{DynamicResource Key=BoldFont}" TextColor="White" HorizontalOptions="Center" 
+                                           VerticalOptions="Center"/>
+                                    <Image Source="white_logout.png" Aspect="AspectFit" HeightRequest="20" WidthRequest="20" VerticalOptions="Center"/>
+                                </StackLayout>
+                                <Frame.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="NextClicked" NumberOfTapsRequired="1"/>
+                                </Frame.GestureRecognizers>
+                            </Frame>
+                        </StackLayout>
+
+                    </StackLayout>
+
+                    <!-- app version info -->
+                    <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
+                    <Label Text="Version 1.0.0" HorizontalOptions="Center" VerticalOptions="End" FontSize="10" Margin="0,0,0,20"
+                           TextColor="White">
+                        <!--<Label.Text>
+                            <MultiBinding StringFormat="{}{0} {1}">
+                                <Binding Path="Currency" />
+                                <Binding Path="Amount" Converter="{StaticResource AmountConverter}" />
+                            </MultiBinding>
+                        </Label.Text>-->
+                    </Label>
+
+                </StackLayout>
+
+            </stylekit:XScrollview>
+
+            <!-- background overlay -->
+            <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="Black" 
+                         Opacity="0.5" AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,0,1,1" IsVisible="{Binding IsLoading}"/>
+
+            <!-- loading overlay -->
+            <StackLayout IsVisible="{Binding IsLoading}" BackgroundColor="Transparent" Orientation="Vertical" Spacing="0"
+                         AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0.5,0.5,-1,-1" >
+                <ActivityIndicator IsRunning="{Binding IsLoading}" Color="White" HorizontalOptions="Center"/>
+                <Label Text="loading..." HorizontalOptions="Center" TextColor="White" FontFamily="{DynamicResource BoldFont}"/>
+            </StackLayout>
+
+            <!-- custom display alert -->
+            <stylekit:CustomDisplayAlert x:Name="alert" IsVisible="False"/>
+
+        </AbsoluteLayout>
+
+    </ContentPage.Content>
+    
+</ContentPage>

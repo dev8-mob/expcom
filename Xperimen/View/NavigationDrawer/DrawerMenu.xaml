@@ -4,9 +4,16 @@
              x:Class="Xperimen.View.NavigationDrawer.DrawerMenu"
              xmlns:stylekit="clr-namespace:Xperimen.Stylekit"
              xmlns:cell="clr-namespace:Xperimen.View.NavigationDrawer" 
+             xmlns:helper="clr-namespace:Xperimen.Helper"
              xmlns:navigationdrawer="clr-namespace:Xperimen.ViewModel.NavigationDrawer" 
              x:DataType="navigationdrawer:DrawerViewmodel">
 
+    <ContentPage.Resources >
+        <ResourceDictionary>
+            <helper:StringNullConverter x:Key="NullConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    
     <ContentPage.Content>
 
         <stylekit:XStacklayout Orientation="Vertical" Spacing="0">
@@ -25,10 +32,15 @@
                                      HeightRequest="65" WidthRequest="65" Source1="black_logo.png" Source2="white_logo.png"/>
                 </Frame>
                 <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" Spacing="0">
-                    <stylekit:XLabel x:Name="lbl_fullname" Text="-" FontFamily="{DynamicResource Key=BoldFont}" FontSize="18"
-                                     LineBreakMode="TailTruncation" MaxLines="1"/>
-                    <stylekit:XLabel x:Name="lbl_name" Text="-" FontFamily="{DynamicResource Key=ItalicFont}"/>
-                    <stylekit:XLabel x:Name="lbl_desc" Text="-" Margin="0,15,0,0"/>
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Spacing="0">
+                        <stylekit:XLabel Text="{Binding Firstname}" FontFamily="{DynamicResource Key=BoldFont}" FontSize="18"
+                                         HorizontalOptions="Fill" Margin="0,0,5,0"/>
+                        <stylekit:XLabel Text="{Binding Lastname}" FontFamily="{DynamicResource Key=BoldFont}" FontSize="18"
+                                         HorizontalOptions="FillAndExpand" LineBreakMode="TailTruncation" MaxLines="1"/>
+                    </StackLayout>
+                    <stylekit:XLabel Text="{Binding Username, Converter={StaticResource NullConverter}, StringFormat='@{0}'}" 
+                                     FontFamily="{DynamicResource Key=ItalicFont}"/>
+                    <stylekit:XLabel Text="{Binding Description, Converter={StaticResource NullConverter}}" Margin="0,15,0,0"/>
                 </StackLayout>
                 <StackLayout.Padding>
                     <OnPlatform x:TypeArguments="Thickness" Android="0,15,15,15" iOS="0,30,15,30"/>

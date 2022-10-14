@@ -25,8 +25,18 @@ namespace Xperimen.View.Setting
             BindingContext = viewmodel;
             SetupView();
 
-            MessagingCenter.Subscribe<CustomDisplayAlert, string>(this, "DisplayAlertSelection", (sender, arg) => { viewmodel.IsLoading = false; });
+            MessagingCenter.Subscribe<CustomDisplayAlert, string>(this, "DisplayAlertSelection", (sender, arg) => 
+            { 
+                viewmodel.IsLoading = false;
+                if (alert.CodeObject.Equals("reset"))
+                    Xamarin.Forms.Application.Current.MainPage = new Xamarin.Forms.NavigationPage(new Login());
+            });
             MessagingCenter.Subscribe<SettingInfo>(this, "SettingEditProfile", (sender) => { SetupView(); });
+            MessagingCenter.Subscribe<AccountList>(this, "deleteme", (sender) => 
+            {
+                viewmodel.IsLoading = true;
+                SetDisplayAlert("Success", "Account and all the data successfully deleted.", "", "", "reset"); 
+            });
         }
 
         public void SetupView()
@@ -51,12 +61,15 @@ namespace Xperimen.View.Setting
             }
 
             // setup for different iphone screen sizes
-            var isDeviceIphone = DependencyService.Get<IDeviceInfo>().IsLowerIphoneDevice();
-            if (isDeviceIphone)
+            if (Device.RuntimePlatform == Device.iOS)
             {
-                var safeInsets = On<Xamarin.Forms.PlatformConfiguration.iOS>().SafeAreaInsets();
-                safeInsets.Top = -20;
-                Padding = safeInsets;
+                var lowerscreen = DependencyService.Get<IDeviceInfo>().IsLowerIphoneDevice();
+                if (lowerscreen)
+                {
+                    var safeInsets = On<Xamarin.Forms.PlatformConfiguration.iOS>().SafeAreaInsets();
+                    safeInsets.Top = -20;
+                    Padding = safeInsets;
+                }
             }
         }
 
@@ -183,8 +196,6 @@ namespace Xperimen.View.Setting
                 SetDisplayAlert("Not Match", "Confirmation password is not match with current password.", "", "", "");
                 viewmodel.Repassword = string.Empty;
             }
-            else if (string.IsNullOrEmpty(viewmodel.Description))
-                SetDisplayAlert("Alert", "Description cannot be empty. Please provide any description about you.", "", "", "");
             else
             {
                 var result = viewmodel.UpdateSetting();
@@ -221,7 +232,7 @@ namespace Xperimen.View.Setting
             await view.ScaleTo(0.9, 100);
             view.Scale = 1;
             view.IsEnabled = false;
-            var drawer = (DrawerMaster)view.Parent.Parent.Parent.Parent.Parent.Parent;
+            var drawer = (DrawerMaster)view.Parent.Parent.Parent.Parent.Parent.Parent.Parent;
             drawer.IsPresented = true;
             view.IsEnabled = true;
         }

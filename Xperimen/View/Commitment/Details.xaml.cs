@@ -2,6 +2,7 @@
 using Rg.Plugins.Popup.Extensions;
 using System;
 using Xamarin.Forms;
+using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
 using Xperimen.Helper;
 using Xperimen.Model;
@@ -72,9 +73,9 @@ namespace Xperimen.View.Commitment
 
         public void SetupView()
         {
-            if (Application.Current.Properties.ContainsKey("app_theme"))
+            if (Xamarin.Forms.Application.Current.Properties.ContainsKey("app_theme"))
             {
-                var theme = Application.Current.Properties["app_theme"] as string;
+                var theme = Xamarin.Forms.Application.Current.Properties["app_theme"] as string;
                 if (theme.Equals("dark"))
                 {
                     frame_view.BackgroundColor = Color.FromHex(App.CharcoalBlack);
@@ -89,6 +90,18 @@ namespace Xperimen.View.Commitment
                 {
                     frame_view.BackgroundColor = Color.FromHex(App.DimGray2);
                     stack_bg.BackgroundColor = Color.FromHex(App.DimGray2);
+                }
+            }
+
+            // setup for different iphone screen sizes
+            if (Device.RuntimePlatform == Device.iOS)
+            {
+                var lowerscreen = DependencyService.Get<IDeviceInfo>().IsLowerIphoneDevice();
+                if (lowerscreen)
+                {
+                    var safeInsets = On<Xamarin.Forms.PlatformConfiguration.iOS>().SafeAreaInsets();
+                    safeInsets.Top = -20;
+                    Padding = safeInsets;
                 }
             }
 

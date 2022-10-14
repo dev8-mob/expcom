@@ -1,5 +1,7 @@
 ﻿
+using SQLite;
 using System.Collections.ObjectModel;
+using System.Linq;
 using Xamarin.Forms;
 using Xperimen.Model;
 using Xperimen.View;
@@ -12,16 +14,57 @@ namespace Xperimen.ViewModel.NavigationDrawer
 {
     public class DrawerViewmodel : BaseViewModel
     {
+        #region properties
+        string _username;
+        string _firstname;
+        string _lastname;
+        string _description;
+        byte[] _picture;
         ObservableCollection<ItemMenu> _menulist;
+        public string Username
+        {
+            get { return _username; }
+            set { _username = value; OnPropertyChanged(); }
+        }
+        public string Firstname
+        {
+            get { return _firstname; }
+            set { _firstname = value; OnPropertyChanged(); }
+        }
+        public string Lastname
+        {
+            get { return _lastname; }
+            set { _lastname = value; OnPropertyChanged(); }
+        }
+        public string Description
+        {
+            get { return _description; }
+            set { _description = value; OnPropertyChanged(); }
+        }
+        public byte[] Picture
+        {
+            get { return _picture; }
+            set { _picture = value; OnPropertyChanged(); }
+        }
         public ObservableCollection<ItemMenu> MenuList
         {
             get { return _menulist; }
             set { _menulist = value; OnPropertyChanged(); }
         }
+        #endregion
+
+        public SQLiteConnection connection;
 
         public DrawerViewmodel()
         {
+            Username = string.Empty;
+            Firstname = string.Empty;
+            Lastname = string.Empty;
+            Description = string.Empty;
+            Picture = null;
+            connection = new SQLiteConnection(App.DB_PATH);
             SetupData();
+            SetupDataProfile();
             SetSelectedMenu("Admin");
         }
 
@@ -84,6 +127,23 @@ namespace Xperimen.ViewModel.NavigationDrawer
                 TextMenuColor = textcolor
             });
             #endregion
+        }
+
+        public void SetupDataProfile()
+        {
+            if (Application.Current.Properties.ContainsKey("current_login"))
+            {
+                var id = Application.Current.Properties["current_login"];
+                var login = connection.Query<Clients>("SELECT * FROM Clients WHERE Id = '" + id + "'").ToList();
+                if (login.Count > 0)
+                {
+                    Username = login[0].Username;
+                    Firstname = login[0].Firstname;
+                    Lastname = login[0].Lastname;
+                    Description = login[0].Description;
+                    Picture = login[0].ProfileImage;
+                }
+            }
         }
 
         public void SetSelectedMenu(string title)

@@ -90,12 +90,15 @@ namespace Xperimen.View.Dashboard
             }
 
             // setup for different iphone screen sizes
-            var isDeviceIphone = DependencyService.Get<IDeviceInfo>().IsLowerIphoneDevice();
-            if (isDeviceIphone)
+            if (Device.RuntimePlatform == Device.iOS)
             {
-                var safeInsets = On<Xamarin.Forms.PlatformConfiguration.iOS>().SafeAreaInsets();
-                safeInsets.Top = -20;
-                Padding = safeInsets;
+                var lowerscreen = DependencyService.Get<IDeviceInfo>().IsLowerIphoneDevice();
+                if (lowerscreen)
+                {
+                    var safeInsets = On<Xamarin.Forms.PlatformConfiguration.iOS>().SafeAreaInsets();
+                    safeInsets.Top = -20;
+                    Padding = safeInsets;
+                }
             }
         }
 
@@ -105,7 +108,7 @@ namespace Xperimen.View.Dashboard
             await view.ScaleTo(0.9, 250);
             view.Scale = 1;
             view.IsEnabled = false;
-            var drawer = (DrawerMaster)view.Parent.Parent.Parent.Parent.Parent;
+            var drawer = (DrawerMaster)view.Parent.Parent.Parent.Parent.Parent.Parent;
             drawer.IsPresented = true;
             view.IsEnabled = true;
         }

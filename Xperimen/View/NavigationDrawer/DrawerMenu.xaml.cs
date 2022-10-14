@@ -1,5 +1,4 @@
 ﻿using Rg.Plugins.Popup.Extensions;
-using SQLite;
 using System;
 using System.Linq;
 using Xamarin.Forms;
@@ -17,7 +16,6 @@ namespace Xperimen.View.NavigationDrawer
     public partial class DrawerMenu : ContentPage
     {
         public DrawerViewmodel viewmodel;
-        public SQLiteConnection connection;
         public Clients user_login;
         public StreamByteConverter converter;
 
@@ -26,48 +24,39 @@ namespace Xperimen.View.NavigationDrawer
             InitializeComponent();
             viewmodel = new DrawerViewmodel();
             BindingContext = viewmodel;
-            connection = new SQLiteConnection(App.DB_PATH);
             converter = new StreamByteConverter();
             SetupView();
 
             MessagingCenter.Subscribe<SettingViewmodel>(this, "AppThemeUpdated", (sender) =>
-            { UpdateProfilePic(); });
+            { UpdateDataProfile(); });
         }
 
         public void SetupView()
         {
             // setup for different iphone screen sizes
-            var isDeviceIphone = DependencyService.Get<IDeviceInfo>().IsLowerIphoneDevice();
-            if (isDeviceIphone)
+            if (Device.RuntimePlatform == Device.iOS)
             {
-                var safeInsets = On<Xamarin.Forms.PlatformConfiguration.iOS>().SafeAreaInsets();
-                safeInsets.Top = -20;
-                Padding = safeInsets;
+                var lowerscreen = DependencyService.Get<IDeviceInfo>().IsLowerIphoneDevice();
+                if (lowerscreen)
+                {
+                    var safeInsets = On<Xamarin.Forms.PlatformConfiguration.iOS>().SafeAreaInsets();
+                    safeInsets.Top = -20;
+                    Padding = safeInsets;
+                }
             }
-            UpdateProfilePic();
+            UpdateDataProfile();
         }
 
-        public void UpdateProfilePic()
+        public void UpdateDataProfile()
         {
-            if (Xamarin.Forms.Application.Current.Properties.ContainsKey("current_login"))
+            viewmodel.SetupDataProfile();
+            if (viewmodel.Picture != null)
             {
-                var id = Xamarin.Forms.Application.Current.Properties["current_login"];
-                var login = connection.Query<Clients>("SELECT * FROM Clients WHERE Id = '" + id + "'").ToList();
-                if (login.Count > 0)
+                img_pic.Source = ImageSource.FromStream(() =>
                 {
-                    user_login = login[0];
-                    if (user_login.ProfileImage != null)
-                    {
-                        img_pic.Source = ImageSource.FromStream(() =>
-                        {
-                            var stream = converter.BytesToStream(user_login.ProfileImage);
-                            return stream;
-                        });
-                    }
-                    lbl_fullname.Text = login[0].Firstname + " " + login[0].Lastname;
-                    lbl_name.Text = "@" + login[0].Username;
-                    lbl_desc.Text = login[0].Description;
-                }
+                    var stream = converter.BytesToStream(viewmodel.Picture);
+                    return stream;
+                });
             }
         }
 
@@ -78,8 +67,8 @@ namespace Xperimen.View.NavigationDrawer
             frame_profile.Scale = 1;
             view.IsEnabled = false;
 
-            if (user_login.ProfileImage != null)
-                await Navigation.PushPopupAsync(new ImageViewer(converter.BytesToStream(user_login.ProfileImage)));
+            if (viewmodel.Picture != null)
+                await Navigation.PushPopupAsync(new ImageViewer(converter.BytesToStream(viewmodel.Picture)));
             view.IsEnabled = true;
         }
 
@@ -109,8 +98,7 @@ namespace Xperimen.View.NavigationDrawer
         {
             var view = (Xamarin.Forms.ListView)sender;
             view.IsEnabled = false;
-            if (e.SelectedItem != null)
-                view.SelectedItem = null;
+            if (e.SelectedItem != null) view.SelectedItem = null;
             view.IsEnabled = true;
         }
     }
