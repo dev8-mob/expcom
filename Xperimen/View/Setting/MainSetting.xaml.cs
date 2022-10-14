@@ -196,8 +196,6 @@ namespace Xperimen.View.Setting
                 SetDisplayAlert("Not Match", "Confirmation password is not match with current password.", "", "", "");
                 viewmodel.Repassword = string.Empty;
             }
-            else if (string.IsNullOrEmpty(viewmodel.Description))
-                SetDisplayAlert("Alert", "Description cannot be empty. Please provide any description about you.", "", "", "");
             else
             {
                 var result = viewmodel.UpdateSetting();
@@ -234,7 +232,7 @@ namespace Xperimen.View.Setting
             await view.ScaleTo(0.9, 100);
             view.Scale = 1;
             view.IsEnabled = false;
-            var drawer = (DrawerMaster)view.Parent.Parent.Parent.Parent.Parent.Parent;
+            var drawer = (DrawerMaster)view.Parent.Parent.Parent.Parent.Parent.Parent.Parent;
             drawer.IsPresented = true;
             view.IsEnabled = true;
         }

@@ -112,7 +112,7 @@ namespace Xperimen.View.Commitment
             await view.ScaleTo(0.9, 250);
             view.Scale = 1;
             view.IsEnabled = false;
-            var drawer = (DrawerMaster)view.Parent.Parent.Parent.Parent.Parent.Parent;
+            var drawer = (DrawerMaster)view.Parent.Parent.Parent.Parent.Parent.Parent.Parent;
             drawer.IsPresented = true;
             view.IsEnabled = true;
         }

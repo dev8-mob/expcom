@@ -73,7 +73,6 @@
             <Style TargetType="ContentPage">
                 <Setter Property="BackgroundColor" Value="{StaticResource DimGray1}"/>
             </Style>
-
         </ResourceDictionary>
     </Application.Resources>
     

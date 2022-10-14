@@ -34,12 +34,17 @@ namespace Xperimen
             connection.CreateTable<SelfCommitment>();
             connection.CreateTable<Expenses>();
 
-            var cek1 = connection.Table<Clients>().ToList();
+            var clients = connection.Table<Clients>().ToList();
             var cek2 = connection.Table<SelfCommitment>().ToList();
             var cek3 = connection.Table<Expenses>().ToList();
 
-            if (Current.Properties.ContainsKey("current_login")) Current.MainPage = new NavigationPage(new DrawerMaster());
-            else MainPage = new NavigationPage(new Login());
+            if (clients.Count > 0) 
+            {
+                if (Current.Properties.ContainsKey("current_login")) 
+                    Current.MainPage = new NavigationPage(new DrawerMaster());
+                else MainPage = new NavigationPage(new Login());
+            }
+            else MainPage = new NavigationPage(new Intro());
         }
 
         protected override void OnStart()
