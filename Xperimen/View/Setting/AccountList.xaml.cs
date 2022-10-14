@@ -1,8 +1,10 @@
 ﻿using Rg.Plugins.Popup.Extensions;
 using Rg.Plugins.Popup.Pages;
+using SQLite;
 using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using Xperimen.Model;
 using Xperimen.Stylekit;
 using Xperimen.ViewModel.Setting;
 
@@ -27,18 +29,34 @@ namespace Xperimen.View.Setting
                 if (theme.Equals("light")) stack_bg.BackgroundColor = Color.FromHex(App.DimGray2);
             }
 
-            MessagingCenter.Subscribe<CustomDisplayAlert, string>(this, "DisplayAlertSelection", (sender, arg) =>
+            MessagingCenter.Subscribe<CustomDisplayAlert, string>(this, "DisplayAlertSelection", async (sender, arg) =>
             {
                 if (arg.Equals("Okay"))
                 {
-                    var result = viewmodel.DeleteUser(alert.CodeObject);
-                    if (result == 1)
+                    if (alert.CodeObject.Equals("deleteme"))
                     {
-                        SetDisplayAlert("Success", "User deleted.", "", "", "");
-                        viewmodel.GetClientsList();
+                        var result = await viewmodel.DeleteMyAccount();
+                        if (result == 1)
+                        {
+                            MessagingCenter.Send(this, "deleteme");
+                            var navigation = Application.Current.MainPage.Navigation;
+                            await navigation.PopPopupAsync();
+                        }
+                        else if (result == 2) SetDisplayAlert("Failed", "Technical error. Current login ID not found.", "", "", "");
+                        else if (result == 3) SetDisplayAlert("Failed", "Technical error. Failed to delete this account.", "", "", "");
                         viewmodel.IsLoading = false;
                     }
-                    else if (result == 2) SetDisplayAlert("Failed", "Technical error. Failed to delete the user.", "", "", "");
+                    else
+                    {
+                        var result = viewmodel.DeleteUser(alert.CodeObject);
+                        if (result == 1)
+                        {
+                            SetDisplayAlert("Success", "User deleted.", "", "", "");
+                            viewmodel.GetClientsList();
+                            viewmodel.IsLoading = false;
+                        }
+                        else if (result == 2) SetDisplayAlert("Failed", "Technical error. Failed to delete the user.", "", "", "");
+                    }
                 }
                 else viewmodel.IsLoading = false;
             });

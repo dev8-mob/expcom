@@ -25,8 +25,18 @@ namespace Xperimen.View.Setting
             BindingContext = viewmodel;
             SetupView();
 
-            MessagingCenter.Subscribe<CustomDisplayAlert, string>(this, "DisplayAlertSelection", (sender, arg) => { viewmodel.IsLoading = false; });
+            MessagingCenter.Subscribe<CustomDisplayAlert, string>(this, "DisplayAlertSelection", (sender, arg) => 
+            { 
+                viewmodel.IsLoading = false;
+                if (alert.CodeObject.Equals("reset"))
+                    Xamarin.Forms.Application.Current.MainPage = new Xamarin.Forms.NavigationPage(new Login());
+            });
             MessagingCenter.Subscribe<SettingInfo>(this, "SettingEditProfile", (sender) => { SetupView(); });
+            MessagingCenter.Subscribe<AccountList>(this, "deleteme", (sender) => 
+            {
+                viewmodel.IsLoading = true;
+                SetDisplayAlert("Success", "Account and all the data successfully deleted.", "", "", "reset"); 
+            });
         }
 
         public void SetupView()

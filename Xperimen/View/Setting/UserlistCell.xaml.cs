@@ -92,5 +92,20 @@ namespace Xperimen.View.Setting
             // send the rest of the delete process to parent viewmodel
             view.IsEnabled = true;
         }
+
+        public async void DeleteMeClicked(object sender, EventArgs arg)
+        {
+            var view = (Frame)sender;
+            await view.ScaleTo(0.9, 100);
+            view.Scale = 1;
+            view.IsEnabled = false;
+            var parent = (AccountList)view.Parent.Parent.Parent.Parent.Parent.Parent.Parent.Parent.Parent;
+
+            parent.viewmodel.IsLoading = true;
+            parent.SetDisplayAlert("Delete", "Are you confirm to delete your account ? All data such as commitments and expenses will be deleted.",
+                "Okay", "Cancel", "deleteme");
+            // send the rest of the delete process to parent viewmodel
+            view.IsEnabled = true;
+        }
     }
 }
