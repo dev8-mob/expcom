@@ -20,8 +20,20 @@ namespace Xperimen.View
             BindingContext = viewmodel;
             StartAnimation();
 
-            MessagingCenter.Subscribe<CustomDisplayAlert, string>(this, "DisplayAlertSelection", (sender, arg) =>
-            { viewmodel.IsLoading = false; });
+            MessagingCenter.Subscribe<CustomDisplayAlert, string>(this, "DisplayAlertSelection", async (sender, arg) =>
+            {
+                if (arg.Equals("Okay"))
+                {
+                    if (alert.CodeObject.Equals("skip"))
+                    {
+                        var result = await viewmodel.SkipIntroProfile();
+                        if (result == 1) Application.Current.MainPage = new NavigationPage(new DrawerMaster());
+                        else if (result == 2) SetDisplayAlert("Error", "Technical error creating test account.", "", "", "");
+                    }
+                    else viewmodel.IsLoading = false;
+                }
+                else viewmodel.IsLoading = false;
+            });
         }
 
         public async void StartAnimation()
@@ -53,6 +65,17 @@ namespace Xperimen.View
                 else if (result == 2) SetDisplayAlert("Exist", "Account with the username already exist in this device.", "", "", "");
                 else if (result == 3) SetDisplayAlert("Error", "Technical error creating new account.", "", "", "");
             }
+            view.IsEnabled = true;
+        }
+
+        public async void SkipClicked(object sender, EventArgs e)
+        {
+            var view = (Frame)sender;
+            await view.ScaleTo(0.9, 100);
+            view.Scale = 1;
+            view.IsEnabled = false;
+            viewmodel.IsLoading = true;
+            SetDisplayAlert("Skip", "You can edit your info later in 'Settings' in the side menu.", "Okay", "", "skip");
             view.IsEnabled = true;
         }
 

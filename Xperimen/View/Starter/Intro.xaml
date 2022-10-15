@@ -30,28 +30,41 @@
 
                         <StackLayout x:Name="stack_info" Spacing="0" Orientation="Vertical" HorizontalOptions="FillAndExpand" Margin="0,80,0,0">
                             <!-- first last names -->
-                            <StackLayout Orientation="Horizontal" Spacing="5" HorizontalOptions="FillAndExpand" Margin="0,20,0,0">
+                            <StackLayout Orientation="Horizontal" Spacing="10" HorizontalOptions="FillAndExpand" Margin="0,20,0,0">
                                 <stylekit:CustomEntry BindingText="Firstname" Placeholder="first name"/>
                                 <stylekit:CustomEntry BindingText="Lastname" Placeholder="last name"/>
                             </StackLayout>
-                            
                             <!-- password -->
                             <stylekit:CustomEntry BindingText="Password" Ispassword="True" ImgLeft="black_password.png" ImgLeft_="white_password.png"
                                                   Placeholder="create your password" Margin="0,10,0,0" ImgRight="black_visible.png" 
                                                   ImgRight_="white_visible.png" ImgRight2="black_invisible.png" 
                                                   ImgRight2_="white_invisible.png"/>
-                            <!-- next button -->
-                            <Frame Padding="0,10,0,10" CornerRadius="8" BorderColor="{DynamicResource Key=Primary}" HorizontalOptions="FillAndExpand"
-                                   Margin="0,20,0,0" BackgroundColor="{DynamicResource Key=Primary}" HasShadow="False" IsClippedToBounds="True">
-                                <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Spacing="10" VerticalOptions="Center">
-                                    <Label Text="Okay" FontFamily="{DynamicResource Key=BoldFont}" TextColor="White" HorizontalOptions="Center" 
-                                           VerticalOptions="Center"/>
-                                    <Image Source="white_logout.png" Aspect="AspectFit" HeightRequest="20" WidthRequest="20" VerticalOptions="Center"/>
-                                </StackLayout>
-                                <Frame.GestureRecognizers>
-                                    <TapGestureRecognizer Tapped="NextClicked" NumberOfTapsRequired="1"/>
-                                </Frame.GestureRecognizers>
-                            </Frame>
+                            <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Spacing="10" Margin="0,20,0,0">
+                                <!-- okay button -->
+                                <Frame Padding="0,10,0,10" CornerRadius="8" BorderColor="{DynamicResource Key=Primary}" HorizontalOptions="FillAndExpand"
+                                       BackgroundColor="{DynamicResource Key=Primary}" HasShadow="False" IsClippedToBounds="True">
+                                    <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Spacing="10" VerticalOptions="Center">
+                                        <Label Text="Okay" FontFamily="{DynamicResource Key=BoldFont}" TextColor="White" HorizontalOptions="Center" 
+                                               VerticalOptions="Center"/>
+                                        <Image Source="white_save.png" Aspect="AspectFit" HeightRequest="20" WidthRequest="20" VerticalOptions="Center"/>
+                                    </StackLayout>
+                                    <Frame.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="NextClicked" NumberOfTapsRequired="1"/>
+                                    </Frame.GestureRecognizers>
+                                </Frame>
+                                <!-- skip button -->
+                                <Frame Padding="0,10,0,10" CornerRadius="8" BorderColor="{DynamicResource Key=CustomGreen}" HorizontalOptions="FillAndExpand"
+                                       BackgroundColor="{DynamicResource Key=CustomGreen}" HasShadow="False" IsClippedToBounds="True">
+                                    <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Spacing="10" VerticalOptions="Center">
+                                        <Label Text="Skip for now" FontFamily="{DynamicResource Key=BoldFont}" TextColor="White" HorizontalOptions="Center" 
+                                               VerticalOptions="Center"/>
+                                        <Image Source="white_logout.png" Aspect="AspectFit" HeightRequest="20" WidthRequest="20" VerticalOptions="Center"/>
+                                    </StackLayout>
+                                    <Frame.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="SkipClicked" NumberOfTapsRequired="1"/>
+                                    </Frame.GestureRecognizers>
+                                </Frame>
+                            </StackLayout>
                         </StackLayout>
 
                     </StackLayout>

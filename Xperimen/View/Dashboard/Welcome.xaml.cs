@@ -172,15 +172,23 @@ namespace Xperimen.View.Dashboard
             view.IsEnabled = false;
 
             viewmodel.IsLoading = true;
-            if (viewmodel.NoCommitment) SetDisplayAlert("No Commitment", "You have no commitment for this month.", "", "", "");
-            else if (viewmodel.HasCommitment) 
+            try
             {
-                if (viewmodel.AllCommitmentDone) SetDisplayAlert("Completed", "All commitments for this month are completed.", "", "", "");
-                else
+                if (viewmodel.NoCommitment) SetDisplayAlert("No Commitment", "You have no commitment for this month.", "", "", "");
+                else if (viewmodel.HasCommitment)
                 {
-                    await Navigation.PushAsync(new CommitmentDetails());
-                    viewmodel.IsLoading = false;
+                    if (viewmodel.AllCommitmentDone) SetDisplayAlert("Completed", "All commitments for this month are completed.", "", "", "");
+                    else
+                    {
+                        await Navigation.PushAsync(new CommitmentDetails());
+                        viewmodel.IsLoading = false;
+                    }
                 }
+            }
+            catch (Exception ex)
+            {
+                var error = ex.Message;
+                var desc = ex.StackTrace;
             }
             view.IsEnabled = true;
         }

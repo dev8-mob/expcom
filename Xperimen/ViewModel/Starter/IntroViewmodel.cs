@@ -98,5 +98,54 @@ namespace Xperimen.ViewModel.Starter
                 return 3;
             }
         }
+
+        public async Task<int> SkipIntroProfile()
+        {
+            try
+            {
+                var guid = Guid.NewGuid().ToString();
+                Firstname = guid.Substring(0, 3);
+                Lastname = guid.Substring(3, 3);
+                Password = guid.Substring(0, 6);
+                var convert = new StreamByteConverter();
+                var data = new Clients
+                {
+                    Id = Guid.NewGuid().ToString(),
+                    Username = string.Empty,
+                    Firstname = string.Empty,
+                    Lastname = string.Empty,
+                    Password = Password,
+                    Description = string.Empty,
+                    ProfileImage = null,
+                    AppTheme = "light",
+                    AccountCreated = DateTime.Now,
+                    AccountUpdated = DateTime.Now,
+                    Logout = new DateTime(1, 1, 1),
+                    IsLogin = true,
+                    HaveOnetimeLogin = true,
+                    HaveUpdated = false,
+                    Income = 0,
+                    TotalCommitment = 0,
+                    NetIncome = 0
+                };
+                var camelcase = new CamelCaseChecker();
+                Username = Firstname.Trim().ToLower() + Lastname.Trim().ToLower();
+                data.Username = Username;
+                data.Firstname = camelcase.CapitalizeWord(Firstname);
+                data.Lastname = camelcase.CapitalizeWord(Lastname);
+
+                connection.Insert(data);
+                Application.Current.Properties["current_login"] = data.Id;
+                Application.Current.Properties["app_theme"] = data.AppTheme;
+                await Application.Current.SavePropertiesAsync();
+                return 1;
+            }
+            catch (Exception ex)
+            {
+                var error = ex.Message;
+                var desc = ex.StackTrace;
+                return 2;
+            }
+        }
     }
 }

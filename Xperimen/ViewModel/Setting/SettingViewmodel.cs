@@ -4,6 +4,7 @@ using SQLite;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xperimen.Helper;
 using Xperimen.Model;
@@ -110,22 +111,38 @@ namespace Xperimen.ViewModel.Setting
             Picture = null;
             await CrossMedia.Current.Initialize();
             if (!CrossMedia.Current.IsCameraAvailable || !CrossMedia.Current.IsTakePhotoSupported) return 3;
-            var media = await CrossMedia.Current.TakePhotoAsync(new StoreCameraMediaOptions
-            {
-                Directory = "Xperimen",
-                PhotoSize = PhotoSize.Large, ////Resize to 75% of original
-                CompressionQuality = 100,
-                Name = Guid.NewGuid().ToString().Substring(0, 10) + ".jpg",
-                SaveToAlbum = true
-                //CustomPhotoSize = 90, //Resize to 90% of original
-            });
 
-            if (media == null) return 2;
-            else
+            var statusphoto = await Permissions.CheckStatusAsync<Permissions.Photos>();
+            var statusmedia = await Permissions.CheckStatusAsync<Permissions.Media>();
+            var statusread = await Permissions.CheckStatusAsync<Permissions.StorageRead>();
+            var statuswrite = await Permissions.CheckStatusAsync<Permissions.StorageWrite>();
+
+            if (statusphoto != PermissionStatus.Granted) statusphoto = await Permissions.RequestAsync<Permissions.Photos>();
+            else if (statusmedia != PermissionStatus.Granted) statusmedia = await Permissions.RequestAsync<Permissions.Media>();
+            else if (statusread != PermissionStatus.Granted) statusread = await Permissions.RequestAsync<Permissions.StorageRead>();
+            else if (statuswrite != PermissionStatus.Granted) statuswrite = await Permissions.RequestAsync<Permissions.StorageWrite>();
+
+            if (statusphoto == PermissionStatus.Granted && statusmedia == PermissionStatus.Granted
+                && statusread == PermissionStatus.Granted && statuswrite == PermissionStatus.Granted)
             {
-                Picture = converter.GetImageBytes(media.GetStream());
-                return 1;
+                var media = await CrossMedia.Current.TakePhotoAsync(new StoreCameraMediaOptions
+                {
+                    Directory = "Xperimen",
+                    PhotoSize = PhotoSize.Large, ////Resize to 75% of original
+                    CompressionQuality = 100,
+                    Name = Guid.NewGuid().ToString().Substring(0, 10) + ".jpg",
+                    SaveToAlbum = true
+                    //CustomPhotoSize = 90, //Resize to 90% of original
+                });
+
+                if (media == null) return 2;
+                else
+                {
+                    Picture = converter.GetImageBytes(media.GetStream());
+                    return 1;
+                }
             }
+            else return 4;
         }
 
         public async Task<int> PickPhoto()
@@ -133,18 +150,34 @@ namespace Xperimen.ViewModel.Setting
             Picture = null;
             await CrossMedia.Current.Initialize();
             if (!CrossMedia.Current.IsPickPhotoSupported || !CrossMedia.Current.IsPickVideoSupported) return 3;
-            var media = await CrossMedia.Current.PickPhotoAsync(new PickMediaOptions
-            {
-                PhotoSize = PhotoSize.Large, ////Resize to 75% of original
-                CompressionQuality = 100,
-            });
 
-            if (media == null) return 2;
-            else
+            var statusphoto = await Permissions.CheckStatusAsync<Permissions.Photos>();
+            var statusmedia = await Permissions.CheckStatusAsync<Permissions.Media>();
+            var statusread = await Permissions.CheckStatusAsync<Permissions.StorageRead>();
+            var statuswrite = await Permissions.CheckStatusAsync<Permissions.StorageWrite>();
+
+            if (statusphoto != PermissionStatus.Granted) statusphoto = await Permissions.RequestAsync<Permissions.Photos>();
+            else if (statusmedia != PermissionStatus.Granted) statusmedia = await Permissions.RequestAsync<Permissions.Media>();
+            else if (statusread != PermissionStatus.Granted) statusread = await Permissions.RequestAsync<Permissions.StorageRead>();
+            else if (statuswrite != PermissionStatus.Granted) statuswrite = await Permissions.RequestAsync<Permissions.StorageWrite>();
+
+            if (statusphoto == PermissionStatus.Granted && statusmedia == PermissionStatus.Granted
+                && statusread == PermissionStatus.Granted && statuswrite == PermissionStatus.Granted)
             {
-                Picture = converter.GetImageBytes(media.GetStream());
-                return 1;
+                var media = await CrossMedia.Current.PickPhotoAsync(new PickMediaOptions
+                {
+                    PhotoSize = PhotoSize.Large, ////Resize to 75% of original
+                    CompressionQuality = 100,
+                });
+
+                if (media == null) return 2;
+                else
+                {
+                    Picture = converter.GetImageBytes(media.GetStream());
+                    return 1;
+                }
             }
+            else return 4;
         }
 
         public int UpdateSetting()

@@ -4,7 +4,6 @@ using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xperimen.Model;
-using Xperimen.View;
 
 namespace Xperimen.ViewModel.Setting
 {
