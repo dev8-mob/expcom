@@ -1,5 +1,5 @@
-﻿using Rg.Plugins.Popup.Extensions;
-using Rg.Plugins.Popup.Pages;
+﻿
+using Rg.Plugins.Popup.Extensions;
 using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -9,7 +9,7 @@ using Xperimen.ViewModel.Expense;
 namespace Xperimen.View.Dashboard
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class AddExpenses : PopupPage
+    public partial class AddExpenses : ContentPage
     {
         public ExpensesViewmodel viewmodel;
 
@@ -24,10 +24,7 @@ namespace Xperimen.View.Dashboard
             {
                 viewmodel.IsLoading = false;
                 if (alert.CodeObject.Equals("success"))
-                {
-                    var navigation = Application.Current.MainPage.Navigation;
-                    await navigation.PopPopupAsync();
-                }
+                    await Navigation.PopAsync();
             });
         }
 
@@ -89,20 +86,6 @@ namespace Xperimen.View.Dashboard
             view.IsEnabled = true;
         }
 
-        protected override bool OnBackButtonPressed()
-        {
-            // Invoked when a hardware back button is pressed
-            // Return true if don't want to close this popup when back button is pressed
-            return true;
-        }
-
-        protected override bool OnBackgroundClicked()
-        {
-            // Invoked when background is clicked
-            // Return false if don't want to close this popup when background of popup is clicked
-            return false;
-        }
-
         public async void AttachmentClicked(object sender, EventArgs e)
         {
             if (viewmodel.Picture != null)
@@ -157,8 +140,7 @@ namespace Xperimen.View.Dashboard
             await view.ScaleTo(0.9, 100);
             view.Scale = 1;
             view.IsEnabled = false;
-            var navigation = Application.Current.MainPage.Navigation;
-            await navigation.PopPopupAsync();
+            await Navigation.PopAsync();
             view.IsEnabled = true;
         }
 

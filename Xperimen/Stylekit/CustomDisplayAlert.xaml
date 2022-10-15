@@ -7,7 +7,7 @@
 
     <Frame HorizontalOptions="FillAndExpand" VerticalOptions="Center" Grid.Row="0" Grid.Column="0" Margin="35,15,50,0"
            BackgroundColor="{DynamicResource Key=DimGray1}" BorderColor="{DynamicResource Primary}" 
-           CornerRadius="10" Padding="0" IsClippedToBounds="True">
+           CornerRadius="10" Padding="0" IsClippedToBounds="True" HasShadow="False">
 
         <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand" VerticalOptions="Center" Padding="20">
             <Label x:Name="lbl_title" HorizontalOptions="CenterAndExpand" HorizontalTextAlignment="Center" FontFamily="{DynamicResource Key=BoldFont}"/>

@@ -230,7 +230,7 @@ namespace Xperimen.View.Dashboard
             await view.ScaleTo(0.9, 100);
             view.Scale = 1;
             view.IsEnabled = false;
-            await Navigation.PushPopupAsync(new AddExpenses());
+            await Navigation.PushAsync(new AddExpenses());
             view.IsEnabled = true;
         }
 
