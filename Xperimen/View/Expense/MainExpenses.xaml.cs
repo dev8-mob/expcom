@@ -252,46 +252,54 @@ namespace Xperimen.View.Expense
 
         public void BuildProgressbarUI()
         {
-            var usedsize = Math.Round(viewmodel.PercentageUsed, 2);
-            var availsize = Math.Round(viewmodel.PercentageAvailable, 2);
-            if (usedsize != 0 || availsize != 0)
+            try // for error: auto-logout to login screen, if no total expenses for the month
             {
-                var colused = new ColumnDefinition();
-                var colavail = new ColumnDefinition();
-                if (usedsize >= 100)
+                var usedsize = Math.Round(viewmodel.PercentageUsed, 2);
+                var availsize = Math.Round(viewmodel.PercentageAvailable, 2);
+                if (usedsize != 0 || availsize != 0)
                 {
-                    colused = new ColumnDefinition() { Width = new GridLength(1, GridUnitType.Star) };
-                    colavail = new ColumnDefinition() { Width = new GridLength(0, GridUnitType.Star) };
-                }
-                else if (availsize >= 100)
-                {
-                    colused = new ColumnDefinition() { Width = new GridLength(0, GridUnitType.Star) };
-                    colavail = new ColumnDefinition() { Width = new GridLength(1, GridUnitType.Star) };
-                }
-                else if (usedsize <= 100 || availsize <= 100)
-                {
-                    colused = new ColumnDefinition() { Width = new GridLength(Math.Round(usedsize / 100, 2), GridUnitType.Star) };
-                    colavail = new ColumnDefinition() { Width = new GridLength(Math.Round(availsize / 100, 2), GridUnitType.Star) };
-                }
+                    var colused = new ColumnDefinition();
+                    var colavail = new ColumnDefinition();
+                    if (usedsize >= 100)
+                    {
+                        colused = new ColumnDefinition() { Width = new GridLength(1, GridUnitType.Star) };
+                        colavail = new ColumnDefinition() { Width = new GridLength(0, GridUnitType.Star) };
+                    }
+                    else if (availsize >= 100)
+                    {
+                        colused = new ColumnDefinition() { Width = new GridLength(0, GridUnitType.Star) };
+                        colavail = new ColumnDefinition() { Width = new GridLength(1, GridUnitType.Star) };
+                    }
+                    else if (usedsize <= 100 || availsize <= 100)
+                    {
+                        colused = new ColumnDefinition() { Width = new GridLength(Math.Round(usedsize / 100, 2), GridUnitType.Star) };
+                        colavail = new ColumnDefinition() { Width = new GridLength(Math.Round(availsize / 100, 2), GridUnitType.Star) };
+                    }
 
-                var grid = new Grid { ColumnSpacing = 0 };
-                grid.ColumnDefinitions.Add(colused);
-                grid.ColumnDefinitions.Add(colavail);
-                var stackused = new StackLayout
-                {
-                    BackgroundColor = Color.FromHex(App.CustomRedLight),
-                    VerticalOptions = LayoutOptions.FillAndExpand,
-                    HorizontalOptions = LayoutOptions.FillAndExpand
-                };
-                var stackavail = new StackLayout
-                {
-                    BackgroundColor = Color.FromHex(App.CustomGreenLight),
-                    VerticalOptions = LayoutOptions.FillAndExpand,
-                    HorizontalOptions = LayoutOptions.FillAndExpand
-                };
-                grid.Children.Add(stackused, 0, 0);
-                grid.Children.Add(stackavail, 1, 0);
-                frame_progressbar.Content = grid;
+                    var grid = new Grid { ColumnSpacing = 0 };
+                    grid.ColumnDefinitions.Add(colused);
+                    grid.ColumnDefinitions.Add(colavail);
+                    var stackused = new StackLayout
+                    {
+                        BackgroundColor = Color.FromHex(App.CustomRedLight),
+                        VerticalOptions = LayoutOptions.FillAndExpand,
+                        HorizontalOptions = LayoutOptions.FillAndExpand
+                    };
+                    var stackavail = new StackLayout
+                    {
+                        BackgroundColor = Color.FromHex(App.CustomGreenLight),
+                        VerticalOptions = LayoutOptions.FillAndExpand,
+                        HorizontalOptions = LayoutOptions.FillAndExpand
+                    };
+                    grid.Children.Add(stackused, 0, 0);
+                    grid.Children.Add(stackavail, 1, 0);
+                    frame_progressbar.Content = grid;
+                }
+            }
+            catch (Exception ex)
+            {
+                var error = ex.Message;
+                var desc = ex.StackTrace;
             }
         }
 
