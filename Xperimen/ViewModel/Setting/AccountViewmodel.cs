@@ -53,7 +53,7 @@ namespace Xperimen.ViewModel.Setting
 
                 connection.Query<Clients>(queryUser);
                 connection.Query<SelfCommitment>(queryCommitment);
-                connection.Query<Expenses>(queryCommitment);
+                connection.Query<Expenses>(queryExpense);
                 return 1;
             }
             catch (Exception ex)

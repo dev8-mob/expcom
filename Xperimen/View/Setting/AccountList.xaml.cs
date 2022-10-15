@@ -1,10 +1,8 @@
 ﻿using Rg.Plugins.Popup.Extensions;
 using Rg.Plugins.Popup.Pages;
-using SQLite;
 using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-using Xperimen.Model;
 using Xperimen.Stylekit;
 using Xperimen.ViewModel.Setting;
 
