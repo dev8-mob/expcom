@@ -152,7 +152,7 @@
                     <!-- commitment badge number -->
                     <Frame Grid.Row="1" Grid.Column="1" Padding="0" HasShadow="False" IsClippedToBounds="True" HeightRequest="30"
                            BackgroundColor="{DynamicResource Key=CustomRed}" WidthRequest="30" Margin="0,0,15,0"
-                           HorizontalOptions="End" VerticalOptions="Start" IsVisible="{Binding HasCommitmentDoneNoHide}">
+                           HorizontalOptions="End" VerticalOptions="Start" IsVisible="{Binding HasCommitmentDoneShowBadge}">
                         <Label Text="{Binding CommitmentNotDone}" TextColor="White" FontFamily="{DynamicResource Key=BoldFont}" 
                                HorizontalOptions="Center" VerticalOptions="Center"/>
                         <Frame.CornerRadius>
