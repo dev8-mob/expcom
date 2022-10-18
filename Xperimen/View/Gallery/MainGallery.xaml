@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Xperimen.View.Gallery.MainGallery"
+             xmlns:stylekit="clr-namespace:Xperimen.Stylekit"
+             NavigationPage.HasNavigationBar="False">
+    
+    <ContentPage.Content>
+
+        <AbsoluteLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="Transparent">
+
+            <stylekit:XScrollview AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,0,1,1">
+
+                <!-- UI content -->
+                <stylekit:XStacklayout Orientation="Vertical" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Spacing="0">
+                    <StackLayout.Padding>
+                        <OnPlatform x:TypeArguments="Thickness">
+                            <On Platform="Android">20</On>
+                            <On Platform="iOS">20,60,20,20</On>
+                        </OnPlatform>
+                    </StackLayout.Padding>
+
+                    <!-- top navigation bar -->
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="Start">
+                        <stylekit:XImage Source1="black_menudot.png" Source2="white_menudot.png" HeightRequest="35" WidthRequest="35" Aspect="AspectFit"
+                                         HorizontalOptions="Start" Margin="0,0,20,0">
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="DrawerTapped" NumberOfTapsRequired="1"/>
+                            </Image.GestureRecognizers>
+                        </stylekit:XImage>
+                        <stylekit:XLabel Text="Media Gallery" HorizontalOptions="FillAndExpand" FontFamily="{DynamicResource Key=BoldFont}" 
+                                         FontSize="18" VerticalOptions="Center"/>
+                    </StackLayout>
+
+                    <!-- no commitment yet -->
+                    <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand" Spacing="0" IsVisible="{Binding NoMedia}" 
+                                 VerticalOptions="Start" Margin="0,15,0,0">
+                        <stylekit:XImageNoRecord HeightRequest="40" WidthRequest="40" VerticalOptions="Center" HorizontalOptions="Center"/>
+                        <Label Text="no pictures" HorizontalOptions="CenterAndExpand"/>
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="NoPicturesClicked"/>
+                        </StackLayout.GestureRecognizers>
+                    </StackLayout>
+
+                    <!-- media gallery list -->
+                    <Grid x:Name="grid_media" HorizontalOptions="Start" VerticalOptions="Start" Margin="55,15,0,0" RowSpacing="0" ColumnSpacing="10"
+                          IsVisible="{Binding HasMedia}">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                    </Grid>
+
+                </stylekit:XStacklayout>
+
+            </stylekit:XScrollview>
+
+            <!-- background overlay -->
+            <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="Black" Opacity="0.5"
+                         AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,0,1,1" IsVisible="{Binding IsLoading, Mode=TwoWay}"/>
+
+            <!-- loading overlay -->
+            <StackLayout IsVisible="{Binding IsLoading, Mode=TwoWay}" BackgroundColor="Transparent" Orientation="Vertical" Spacing="0"
+                         AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0.5,0.5,-1,-1">
+                <ActivityIndicator IsRunning="{Binding IsLoading, Mode=TwoWay}" Color="White" HorizontalOptions="Center"/>
+                <Label Text="loading..." HorizontalOptions="Center" TextColor="White" FontFamily="{DynamicResource BoldFont}"/>
+            </StackLayout>
+
+            <!-- custom display alert -->
+            <stylekit:CustomDisplayAlert x:Name="alert" IsVisible="False"/>
+
+        </AbsoluteLayout>
+
+    </ContentPage.Content>
+    
+</ContentPage>

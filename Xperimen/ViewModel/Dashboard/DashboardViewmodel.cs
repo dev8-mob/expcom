@@ -20,7 +20,7 @@ namespace Xperimen.ViewModel.Dashboard
         List<Expenses> _listexpenses;
         bool _nocommitment;
         bool _hascommitment;
-        bool _hascommitmentdonenohide;
+        bool _hascommitmentdoneshowbadge;
         int _commitmentnotdone;
         bool _allcommitmentdone;
         double _totalcommitment;
@@ -85,10 +85,10 @@ namespace Xperimen.ViewModel.Dashboard
             get { return _hascommitment; }
             set { _hascommitment = value; OnPropertyChanged(); }
         }
-        public bool HasCommitmentDoneNoHide
+        public bool HasCommitmentDoneShowBadge
         {
-            get { return _hascommitmentdonenohide; }
-            set { _hascommitmentdonenohide = value; OnPropertyChanged(); }
+            get { return _hascommitmentdoneshowbadge; }
+            set { _hascommitmentdoneshowbadge = value; OnPropertyChanged(); }
         }
         public int CommitmentNotDone
         {
@@ -177,7 +177,7 @@ namespace Xperimen.ViewModel.Dashboard
             ListExpenses = new List<Expenses>();
             NoCommitment = false;
             HasCommitment = false;
-            HasCommitmentDoneNoHide = false;
+            HasCommitmentDoneShowBadge = false;
             CommitmentNotDone = 0;
             AllCommitmentDone = false;
             TotalCommitment = 0;
@@ -211,6 +211,7 @@ namespace Xperimen.ViewModel.Dashboard
                     Picture = user[0].ProfileImage;
                 }
             }
+            ResetAllCommitment();
             SetupIncome();
             GetCommitmentList();
             GetTodayExpenses();
@@ -238,12 +239,42 @@ namespace Xperimen.ViewModel.Dashboard
             }
         }
 
+        public int ResetAllCommitment()
+        {
+            try
+            {
+                if (CurrentDt.Day == 1)
+                {
+                    var query = "SELECT * FROM SelfCommitment WHERE Userid = '" + userid + "'";
+                    var result = connection.Query<SelfCommitment>(query).ToList();
+                    if (result.Count > 0)
+                    {
+                        var update = string.Empty;
+                        foreach (var data in result)
+                        {
+                            update = "UPDATE SelfCommitment SET IsDone = FALSE WHERE Id = '" + data.Id + "'";
+                            connection.Query<SelfCommitment>(update);
+                        }
+                        result = connection.Query<SelfCommitment>(query).ToList();
+                    }
+                    return 1;
+                }
+                return 2;
+            }
+            catch (Exception ex)
+            {
+                var error = ex.Message;
+                var desc = ex.StackTrace;
+                return 3;
+            }
+        }
+
         public int GetCommitmentList()
         {
             try
             {
                 TotalCommitment = 0;
-                NoCommitment = false; HasCommitment = false; HasCommitmentDoneNoHide = false;
+                NoCommitment = false; HasCommitment = false; HasCommitmentDoneShowBadge = false;
                 CommitmentNotDone = 0; AllCommitmentDone = false;
                 ListCommitments = new List<SelfCommitment>(); ListCommitmentsNotDone = new List<SelfCommitment>();
                 string query = "SELECT * FROM SelfCommitment WHERE Userid = '" + userid + "'";
@@ -260,12 +291,12 @@ namespace Xperimen.ViewModel.Dashboard
                         if (data.IsDone) checkdone++;
                     }
                     if (CommitmentNotDone > 0) 
-                    { NoCommitment = false; HasCommitment = true; HasCommitmentDoneNoHide = true; }
+                    { NoCommitment = false; HasCommitment = true; HasCommitmentDoneShowBadge = true; }
                     if (checkdone == ListCommitments.Count)
-                    { AllCommitmentDone = true; HasCommitment = true; HasCommitmentDoneNoHide = false; }
+                    { AllCommitmentDone = true; HasCommitment = true; HasCommitmentDoneShowBadge = false; }
                 }
                 else
-                { NoCommitment = true; HasCommitment = false; HasCommitmentDoneNoHide = false; }
+                { NoCommitment = true; HasCommitment = false; HasCommitmentDoneShowBadge = false; }
 
                 var success = SaveNetBalance();
                 if (success == 1) return 1;

@@ -43,7 +43,8 @@ namespace Xperimen.View.Commitment
 
             viewmodel.IsLoading = true;
             var result = await viewmodel.PickPhoto();
-            if (result == 4) SetDisplayAlert("Permission", "App required permission to access media gallery to pick photos.", "", "", "");
+            if (result == 5) SetDisplayAlert("Permission", "App required permission to access media gallery to pick photos.", "", "", "");
+            if (result == 4) SetDisplayAlert("Permission", "App required permission to access photos to pick photos.", "", "", "");
             if (result == 3) SetDisplayAlert("Unavailable", "Photo gallery is not available to pick photo.", "", "", "");
             else if (result == 2) SetDisplayAlert("Alert", "No photo selected.", "", "", "");
             else if (result == 1)
@@ -66,7 +67,8 @@ namespace Xperimen.View.Commitment
 
             viewmodel.IsLoading = true;
             var result = await viewmodel.TakePhoto();
-            if (result == 4) SetDisplayAlert("Permission", "App required permission to access camera to take photos.", "", "", "");
+            if (result == 5) SetDisplayAlert("Permission", "App required permission to access media gallery to pick photos.", "", "", "");
+            if (result == 4) SetDisplayAlert("Permission", "App required permission to access photos to pick photos.", "", "", "");
             if (result == 3) SetDisplayAlert("Unavailable", "Camera is not available or take photo not supported.", "", "", "");
             else if (result == 2) SetDisplayAlert("Alert", "Take photo cancelled.", "", "", "");
             else if (result == 1)

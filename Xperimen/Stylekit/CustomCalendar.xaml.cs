@@ -211,7 +211,7 @@ namespace Xperimen.Stylekit
                         tap.NumberOfTapsRequired = 1;
                         stack.GestureRecognizers.Add(tap);
 
-                        if ((i+1) == CurrentDt.Day) grid_calendar.Children.Add(frametoday);
+                        if ((i+1) == CurrentDt.Day) grid_calendar.Children.Add(frametoday, col, row);
                         grid_calendar.Children.Add(stack, col, row);
                     }
                     col++;

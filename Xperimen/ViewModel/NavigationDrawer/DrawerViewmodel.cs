@@ -8,6 +8,7 @@ using Xperimen.View;
 using Xperimen.View.Commitment;
 using Xperimen.View.Dashboard;
 using Xperimen.View.Expense;
+using Xperimen.View.Gallery;
 using Xperimen.View.Setting;
 
 namespace Xperimen.ViewModel.NavigationDrawer
@@ -105,6 +106,15 @@ namespace Xperimen.ViewModel.NavigationDrawer
                 ImageIcon2 = "white_money.png",
                 Title = "Expenses",
                 Contentpage = typeof(MainExpenses),
+                IsSelected = false,
+                TextMenuColor = textcolor
+            });
+            MenuList.Add(new ItemMenu
+            {
+                ImageIcon1 = "black_image.png",
+                ImageIcon2 = "white_image.png",
+                Title = "Gallery",
+                Contentpage = typeof(MainGallery),
                 IsSelected = false,
                 TextMenuColor = textcolor
             });
