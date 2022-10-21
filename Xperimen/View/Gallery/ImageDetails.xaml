@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<pages:PopupPage xmlns="http://xamarin.com/schemas/2014/forms"
+                 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                 x:Class="Xperimen.View.Gallery.ImageDetails"
+                 xmlns:stylekit="clr-namespace:Xperimen.Stylekit"
+                 xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup">
+
+    <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+
+        <!-- background overlay -->
+        <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="Black" Opacity="0.5"/>
+
+        <!-- loading UI -->
+        <ActivityIndicator IsRunning="True" Color="White" HorizontalOptions="Center" VerticalOptions="Center"
+                           Grid.Row="0" Grid.Column="0" Margin="0,30,30,0"/>
+
+        <!-- image viewer -->
+        <Image x:Name="img_data" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Aspect="AspectFit"
+               Grid.Row="0" Grid.Column="0" Margin="15"/>
+
+        <!-- info expenses -->
+        <Frame x:Name="frame_exp" HasShadow="False" CornerRadius="8" IsClippedToBounds="True" IsVisible="False" Padding="0"
+               Margin="0,0,0,35" HorizontalOptions="Center" VerticalOptions="End" Grid.Row="0" Grid.Column="0" Opacity="0.7">
+            <stylekit:XStacklayout HorizontalOptions="Center" VerticalOptions="End" Spacing="0" Orientation="Vertical" 
+                                   Padding="20,20,20,40" BackgroundColor="Transparent">
+                <stylekit:XLabel x:Name="lbl_exptitle" HorizontalOptions="Start" FontFamily="{DynamicResource Key=BoldFont}"/>
+                <stylekit:XLabel x:Name="lbl_expamount" HorizontalOptions="Start" Margin="0,10,0,0"/>
+                <stylekit:XLabel x:Name="lbl_expdt" HorizontalOptions="Start"/>
+            </stylekit:XStacklayout>
+        </Frame>
+
+        <!-- info commitment -->
+        <Frame x:Name="frame_comm" HasShadow="False" CornerRadius="8" IsClippedToBounds="True" IsVisible="False" Padding="0"
+               Margin="0,0,0,35" HorizontalOptions="Center" VerticalOptions="End" Grid.Row="0" Grid.Column="0" Opacity="0.7">
+            <stylekit:XStacklayout HorizontalOptions="Center" VerticalOptions="End" Spacing="20" Orientation="Horizontal" 
+                                   Padding="20,20,20,40" BackgroundColor="Transparent">
+                <StackLayout Orientation="Vertical" Spacing="0">
+                    <stylekit:XLabel x:Name="lbl_commtitle" HorizontalOptions="Start" FontFamily="{DynamicResource Key=BoldFont}"/>
+                    <stylekit:XLabel x:Name="lbl_commdesc" HorizontalOptions="Start"/>
+                    <stylekit:XLabel x:Name="lbl_commamount" HorizontalOptions="Start" Margin="0,10,0,0"/>
+                    <stylekit:XLabel x:Name="lbl_commaccno" HorizontalOptions="Start" IsVisible="False"/>
+                </StackLayout>
+                <StackLayout x:Name="stack_isdone" HorizontalOptions="Center" Orientation="Vertical" VerticalOptions="Center"
+                             Spacing="0" IsVisible="False">
+                    <stylekit:XImage Source1="black_done.png" Source2="white_done.png" HeightRequest="40" WidthRequest="40"/>
+                    <stylekit:XLabel Text="Done" HorizontalOptions="Center"/>
+                </StackLayout>
+            </stylekit:XStacklayout>
+        </Frame>
+
+        <!-- close button -->
+        <Frame Padding="0" HasShadow="False" HorizontalOptions="Center" VerticalOptions="End" Grid.Row="0" Grid.Column="0" 
+               BorderColor="{DynamicResource Primary}" IsClippedToBounds="True" Margin="0,0,0,10">
+            <Image Source="white_cancel.png" HeightRequest="50" WidthRequest="50" Aspect="AspectFit"/>
+            <Frame.CornerRadius>
+                <OnPlatform x:TypeArguments="x:Single">
+                    <On Platform="iOS">25</On>
+                    <On Platform="Android">50</On>
+                </OnPlatform>
+            </Frame.CornerRadius>
+            <Frame.GestureRecognizers>
+                <TapGestureRecognizer Tapped="CloseTapped"/>
+            </Frame.GestureRecognizers>
+        </Frame>
+
+    </Grid>
+
+</pages:PopupPage>

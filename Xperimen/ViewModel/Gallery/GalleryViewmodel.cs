@@ -12,8 +12,11 @@ namespace Xperimen.ViewModel.Gallery
         #region properties
         bool _hasmedia;
         bool _nomedia;
-        ObservableCollection<byte[]> _imagecommlist;
-        ObservableCollection<byte[]> _imageexplist;
+        DateTime _mindt;
+        DateTime _maxdt;
+        bool _haveDateRange;
+        ObservableCollection<SelfCommitment> _imagecommlist;
+        ObservableCollection<Expenses> _imageexplist;
         public bool HasMedia
         {
             get { return _hasmedia; }
@@ -24,15 +27,30 @@ namespace Xperimen.ViewModel.Gallery
             get { return _nomedia; }
             set { _nomedia = value; OnPropertyChanged(); }
         }
-        public ObservableCollection<byte[]> ImageCommList
+        public bool HaveDateRange
+        {
+            get { return _haveDateRange; }
+            set { _haveDateRange = value; OnPropertyChanged(); }
+        }
+        public ObservableCollection<SelfCommitment> ImageCommList
         {
             get { return _imagecommlist; }
             set { _imagecommlist = value; OnPropertyChanged(); }
         }
-        public ObservableCollection<byte[]> ImageExpList
+        public ObservableCollection<Expenses> ImageExpList
         {
             get { return _imageexplist; }
             set { _imageexplist = value; OnPropertyChanged(); }
+        }
+        public DateTime MinDt
+        {
+            get { return _mindt; }
+            set { _mindt = value; OnPropertyChanged(); }
+        }
+        public DateTime MaxDt
+        {
+            get { return _maxdt; }
+            set { _maxdt = value; OnPropertyChanged(); }
         }
         #endregion
 
@@ -43,8 +61,11 @@ namespace Xperimen.ViewModel.Gallery
         {
             HasMedia = false;
             NoMedia = false;
-            ImageCommList = new ObservableCollection<byte[]>();
-            ImageExpList = new ObservableCollection<byte[]>();
+            ImageCommList = new ObservableCollection<SelfCommitment>();
+            ImageExpList = new ObservableCollection<Expenses>();
+            MinDt = DateTime.Now;
+            MaxDt = DateTime.Now;
+            HaveDateRange = false;
             connection = new SQLiteConnection(App.DB_PATH);
             userid = string.Empty;
             SetupData();
@@ -59,9 +80,9 @@ namespace Xperimen.ViewModel.Gallery
 
         public int GetAllMedia()
         {
-            HasMedia = false; NoMedia = false;
-            ImageCommList = new ObservableCollection<byte[]>();
-            ImageExpList = new ObservableCollection<byte[]>();
+            HasMedia = false; NoMedia = false; HaveDateRange = false;
+            ImageCommList = new ObservableCollection<SelfCommitment>();
+            ImageExpList = new ObservableCollection<Expenses>();
             try
             {
                 string querycomm = "SELECT * FROM SelfCommitment WHERE Userid = '" + userid + "'";
@@ -69,19 +90,40 @@ namespace Xperimen.ViewModel.Gallery
                 var listcomm = connection.Query<SelfCommitment>(querycomm).ToList();
                 var listexp = connection.Query<Expenses>(queryexp).ToList();
 
-                if (listcomm.Count == 0 && listexp.Count == 0) { HasMedia = false; NoMedia = true; }
-                else { HasMedia = true; NoMedia = false; }
                 if (listcomm.Count > 0)
                 {
                     foreach (var data in listcomm)
                         if (data.Picture != null)
-                            ImageCommList.Add(data.Picture);
+                            ImageCommList.Add(data);
                 }
                 if (listexp.Count > 0)
                 {
                     foreach (var data in listexp)
                         if (data.Picture != null)
-                            ImageExpList.Add(data.Picture);
+                            ImageExpList.Add(data);
+                }
+                if (ImageCommList.Count == 0 && ImageExpList.Count == 0) { HasMedia = false; NoMedia = true;}
+                else if (ImageCommList.Count > 0 || ImageExpList.Count > 0) 
+                { 
+                    HasMedia = true; NoMedia = false;
+                    if (ImageExpList.Count > 0)
+                    {
+                        if (ImageExpList.Count == 1) 
+                        { MaxDt = ImageExpList[0].ExpensesDt; }
+                        else
+                        {
+                            foreach (var item in ImageExpList)
+                            {
+                                if (item.ExpensesDt < MinDt) MinDt = item.ExpensesDt;
+                                if (item.ExpensesDt > MaxDt) MaxDt = item.ExpensesDt;
+                            }
+                            var remin = new DateTime(MinDt.Year, MinDt.Month, MinDt.Day);
+                            var remax = new DateTime(MaxDt.Year, MaxDt.Month, MaxDt.Day);
+                            var diff = remax - remin;
+                            if (diff.Days == 0) { HaveDateRange = false; }
+                            else if (diff.Days > 0) { HaveDateRange = true; }
+                        }
+                    }
                 }
                 return 1;
             }

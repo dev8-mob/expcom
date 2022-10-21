@@ -34,7 +34,7 @@
 
                     <!-- no commitment yet -->
                     <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand" Spacing="0" IsVisible="{Binding NoMedia}" 
-                                 VerticalOptions="Start" Margin="0,15,0,0">
+                                 VerticalOptions="Start" Margin="0,30,0,0">
                         <stylekit:XImageNoRecord HeightRequest="40" WidthRequest="40" VerticalOptions="Center" HorizontalOptions="Center"/>
                         <Label Text="no pictures" HorizontalOptions="CenterAndExpand"/>
                         <StackLayout.GestureRecognizers>
@@ -42,17 +42,39 @@
                         </StackLayout.GestureRecognizers>
                     </StackLayout>
 
-                    <!-- media gallery list -->
-                    <Grid x:Name="grid_media" HorizontalOptions="Start" VerticalOptions="Start" Margin="55,15,0,0" RowSpacing="0" ColumnSpacing="10"
-                          IsVisible="{Binding HasMedia}">
+                    <!-- media header -->
+                    <Grid x:Name="grid_media" HorizontalOptions="FillAndExpand" VerticalOptions="Start" Margin="55,15,0,0" 
+                          RowSpacing="0" ColumnSpacing="15" IsVisible="{Binding HasMedia}">
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="120"/>
+                            <RowDefinition Height="*"/>
                         </Grid.RowDefinitions>
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="Auto"/>
-                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
                     </Grid>
+
+                    <!-- gallery list -->
+                    <StackLayout x:Name="stack_piclist" Orientation="Horizontal" HorizontalOptions="FillAndExpand" Margin="55,30,0,0"
+                                 IsVisible="False">
+                        <stylekit:XLabel x:Name="lbl_selected" HorizontalOptions="Start"/>
+                        <stylekit:XLabel x:Name="lbl_expdate" Text="{Binding MaxDt, StringFormat='{0:d, MMM}'}" HorizontalOptions="FillAndExpand"
+                                         IsVisible="False"/>
+                        <StackLayout x:Name="lbl_expdaterange" Orientation="Horizontal" HorizontalOptions="FillAndExpand" Spacing="0"
+                                     IsVisible="False">
+                            <stylekit:XLabel Text="{Binding MinDt, StringFormat='{0:d MMM} - '}" HorizontalOptions="Start"/>
+                            <stylekit:XLabel Text="{Binding MaxDt, StringFormat='{0:d MMM}'}" HorizontalOptions="Start"/>
+                        </StackLayout>
+                    </StackLayout>
+                    <stylekit:XScrollview HorizontalOptions="FillAndExpand" Orientation="Horizontal" Margin="55,15,0,0">
+                        <Grid x:Name="grid_medialist" HorizontalOptions="FillAndExpand" VerticalOptions="Start" 
+                              RowSpacing="0" ColumnSpacing="0">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="60"/>
+                            </Grid.RowDefinitions>
+                        </Grid>
+                    </stylekit:XScrollview>
 
                 </stylekit:XStacklayout>
 
