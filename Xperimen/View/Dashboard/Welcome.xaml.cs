@@ -198,18 +198,6 @@ namespace Xperimen.View.Dashboard
             var drawer = (DrawerMaster)view.Parent.Parent.Parent.Parent.Parent.Parent;
             drawer.IsPresented = true;
             view.IsEnabled = true;
-
-            //viewmodel.IsLoading = true;
-            //if (viewmodel.NoCommitment) SetDisplayAlert("No Commitment", "You have no commitment for this month.", "", "", "");
-            //else if (viewmodel.HasCommitment)
-            //{
-            //    if (viewmodel.AllCommitmentDone) SetDisplayAlert("Completed", "All commitments for this month are completed.", "", "", "");
-            //    else
-            //    {
-            //        await Navigation.PushAsync(new CommitmentDetails());
-            //        viewmodel.IsLoading = false;
-            //    }
-            //}
         }
 
         public async void AddCommitmentClicked(object sender, EventArgs e)

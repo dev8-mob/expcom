@@ -40,6 +40,16 @@ namespace Xperimen.View.NavigationDrawer
                 if (lbl_title.Text.Equals("Commitment")) 
                     GetCommitmentList();
             });
+            MessagingCenter.Subscribe<AddRecord>(this, "CommitmentAdded", (sender) => 
+            {
+                if (lbl_title.Text.Equals("Commitment"))
+                    GetCommitmentList();
+            });
+            MessagingCenter.Subscribe<Details>(this, "CommitmentDeleted", (sender) =>
+            {
+                if (lbl_title.Text.Equals("Commitment"))
+                    GetCommitmentList();
+            });
         }
 
         public async void CellTapped(object sender, EventArgs e)

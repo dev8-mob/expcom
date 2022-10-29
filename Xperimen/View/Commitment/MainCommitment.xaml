@@ -24,16 +24,35 @@
                     </StackLayout.Padding>
 
                     <!-- top navigation bar -->
-                    <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="Start">
-                        <stylekit:XImage Source1="black_menudot.png" Source2="white_menudot.png" HeightRequest="35" WidthRequest="35" Aspect="AspectFit"
-                                         HorizontalOptions="Start" Margin="0,0,20,0">
-                            <Image.GestureRecognizers>
-                                <TapGestureRecognizer Tapped="DrawerTapped" NumberOfTapsRequired="1"/>
-                            </Image.GestureRecognizers>
-                        </stylekit:XImage>
-                        <stylekit:XLabel Text="Commitment List" HorizontalOptions="FillAndExpand" FontFamily="{DynamicResource Key=BoldFont}" 
-                                         FontSize="18" VerticalOptions="Center"/>
-                    </StackLayout>
+                    <Grid HorizontalOptions="FillAndExpand" VerticalOptions="Start" ColumnSpacing="0">
+                        <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="Start"
+                                     Grid.Row="0" Grid.Column="0" Margin="0,0,0,10">
+                            <stylekit:XImage Source1="black_menudot.png" Source2="white_menudot.png" HeightRequest="35" WidthRequest="35" Aspect="AspectFit"
+                                             HorizontalOptions="Start" Margin="0,0,20,0">
+                                <Image.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="DrawerTapped" NumberOfTapsRequired="1"/>
+                                </Image.GestureRecognizers>
+                            </stylekit:XImage>
+                            <stylekit:XLabel Text="Commitment List" HorizontalOptions="FillAndExpand" FontFamily="{DynamicResource Key=BoldFont}" 
+                                             FontSize="18" VerticalOptions="Center"/>
+                        </StackLayout>
+                        <!-- commitment badge number -->
+                        <Frame Grid.Row="0" Grid.Column="0" Padding="0" HasShadow="False" IsClippedToBounds="True" HeightRequest="30"
+                               BackgroundColor="{DynamicResource Key=CustomRed}" WidthRequest="30" Margin="15,0,0,0"
+                               HorizontalOptions="Start" VerticalOptions="End" IsVisible="{Binding AllCommitmentNotDone}">
+                            <Label Text="{Binding NotYetPaid}" TextColor="White" FontFamily="{DynamicResource Key=BoldFont}" 
+                                   HorizontalOptions="Center" VerticalOptions="Center"/>
+                            <Frame.CornerRadius>
+                                <OnPlatform x:TypeArguments="x:Single">
+                                    <On Platform="iOS">15</On>
+                                    <On Platform="Android">30</On>
+                                </OnPlatform>
+                            </Frame.CornerRadius>
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="TopCommitmentBadgeClicked" NumberOfTapsRequired="1"/>
+                            </Frame.GestureRecognizers>
+                        </Frame>
+                    </Grid>
 
                     <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="Start" Margin="0,15,0,0" Spacing="0">
                         

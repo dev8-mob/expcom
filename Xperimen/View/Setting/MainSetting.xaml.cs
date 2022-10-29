@@ -73,6 +73,28 @@ namespace Xperimen.View.Setting
             }
         }
 
+        public async void DrawerTapped(object sender, EventArgs e)
+        {
+            var view = (Image)sender;
+            await view.ScaleTo(0.9, 100);
+            view.Scale = 1;
+            view.IsEnabled = false;
+            var drawer = (DrawerMaster)view.Parent.Parent.Parent.Parent.Parent.Parent.Parent.Parent;
+            drawer.IsPresented = true;
+            view.IsEnabled = true;
+        }
+
+        public async void TopCommitmentBadgeClicked(object sender, EventArgs e)
+        {
+            var view = (Frame)sender;
+            await view.ScaleTo(0.9, 250);
+            view.Scale = 1;
+            view.IsEnabled = false;
+            var drawer = (DrawerMaster)view.Parent.Parent.Parent.Parent.Parent.Parent.Parent;
+            drawer.IsPresented = true;
+            view.IsEnabled = true;
+        }
+
         public async void ProfilePicClicked(object sender, EventArgs e)
         {
             var view = (Frame)sender;
@@ -227,17 +249,6 @@ namespace Xperimen.View.Setting
             img_profile.SetupView();
             viewmodel.IsViewing = true;
             viewmodel.IsEditing = false;
-            view.IsEnabled = true;
-        }
-
-        public async void DrawerTapped(object sender, EventArgs e)
-        {
-            var view = (Image)sender;
-            await view.ScaleTo(0.9, 100);
-            view.Scale = 1;
-            view.IsEnabled = false;
-            var drawer = (DrawerMaster)view.Parent.Parent.Parent.Parent.Parent.Parent.Parent;
-            drawer.IsPresented = true;
             view.IsEnabled = true;
         }
 
