@@ -1,9 +1,12 @@
 ﻿
+using SQLite;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using Xperimen.Model;
+using Xperimen.View.Commitment;
 
 namespace Xperimen.View.NavigationDrawer
 {
@@ -32,6 +35,11 @@ namespace Xperimen.View.NavigationDrawer
                     lbl_title.TextColor = Color.White;
                 }
             });
+            MessagingCenter.Subscribe<Details>(this, "CommitmentUpdated", (sender) => 
+            { 
+                if (lbl_title.Text.Equals("Commitment")) 
+                    GetCommitmentList();
+            });
         }
 
         public async void CellTapped(object sender, EventArgs e)
@@ -56,6 +64,41 @@ namespace Xperimen.View.NavigationDrawer
                 drawer.IsPresented = false;
             }
             view.IsEnabled = true;
+        }
+
+        public void GetCommitmentList()
+        {
+            int commitment = 0;
+            var userid = string.Empty;
+            if (Application.Current.Properties.ContainsKey("current_login"))
+                userid = Application.Current.Properties["current_login"] as string;
+
+            try
+            {
+                var connection = new SQLiteConnection(App.DB_PATH);
+                string query = "SELECT * FROM SelfCommitment WHERE Userid = '" + userid + "'";
+                var data = connection.Query<SelfCommitment>(query).ToList();
+
+                if (data.Count > 0)
+                {
+                    foreach (var item in data)
+                    {
+                        if (!item.IsDone)
+                            commitment++;
+                    }
+                    if (commitment != 0)
+                    {
+                        lbl_count.Text = commitment.ToString();
+                        frame_count.IsVisible = true;
+                    }
+                    else frame_count.IsVisible = false;
+                }
+            }
+            catch (Exception ex)
+            {
+                var error = ex.Message;
+                var desc = ex.StackTrace;
+            }
         }
     }
 }

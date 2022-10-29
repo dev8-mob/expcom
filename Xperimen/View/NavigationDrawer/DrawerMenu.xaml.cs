@@ -7,6 +7,7 @@ using Xamarin.Forms.Xaml;
 using Xperimen.Helper;
 using Xperimen.Model;
 using Xperimen.Stylekit;
+using Xperimen.View.Commitment;
 using Xperimen.ViewModel.NavigationDrawer;
 using Xperimen.ViewModel.Setting;
 
@@ -22,13 +23,12 @@ namespace Xperimen.View.NavigationDrawer
         public DrawerMenu()
         {
             InitializeComponent();
+            converter = new StreamByteConverter();
             viewmodel = new DrawerViewmodel();
             BindingContext = viewmodel;
-            converter = new StreamByteConverter();
             SetupView();
 
-            MessagingCenter.Subscribe<SettingViewmodel>(this, "AppThemeUpdated", (sender) =>
-            { UpdateDataProfile(); });
+            MessagingCenter.Subscribe<SettingViewmodel>(this, "AppThemeUpdated", (sender) => { UpdateDataProfile(); });
         }
 
         public void SetupView()
