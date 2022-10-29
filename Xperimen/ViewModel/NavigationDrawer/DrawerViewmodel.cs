@@ -1,5 +1,6 @@
 ﻿
 using SQLite;
+using System;
 using System.Collections.ObjectModel;
 using System.Linq;
 using Xamarin.Forms;
@@ -22,6 +23,7 @@ namespace Xperimen.ViewModel.NavigationDrawer
         string _description;
         byte[] _picture;
         ObservableCollection<ItemMenu> _menulist;
+        int _commitment;
         public string Username
         {
             get { return _username; }
@@ -52,6 +54,11 @@ namespace Xperimen.ViewModel.NavigationDrawer
             get { return _menulist; }
             set { _menulist = value; OnPropertyChanged(); }
         }
+        public int Commitment
+        {
+            get { return _commitment; }
+            set { _commitment = value; OnPropertyChanged(); }
+        }
         #endregion
 
         public SQLiteConnection connection;
@@ -64,6 +71,7 @@ namespace Xperimen.ViewModel.NavigationDrawer
             Description = string.Empty;
             Picture = null;
             connection = new SQLiteConnection(App.DB_PATH);
+            Commitment = 0;
             SetupData();
             SetupDataProfile();
             SetSelectedMenu("Admin");
@@ -71,6 +79,7 @@ namespace Xperimen.ViewModel.NavigationDrawer
 
         public void SetupData()
         {
+            GetCommitmentList();
             var textcolor = (Color)Application.Current.Resources["LabelTextColor"];
             if (Application.Current.Properties.ContainsKey("app_theme"))
             {
@@ -89,7 +98,9 @@ namespace Xperimen.ViewModel.NavigationDrawer
                 Title = "Dashboard",
                 Contentpage = typeof(Welcome),
                 IsSelected = false,
-                TextMenuColor = textcolor
+                TextMenuColor = textcolor,
+                BadgeVisible = false,
+                BadgeCount = 0
             });
             MenuList.Add(new ItemMenu
             {
@@ -98,7 +109,9 @@ namespace Xperimen.ViewModel.NavigationDrawer
                 Title = "Commitment",
                 Contentpage = typeof(MainCommitment),
                 IsSelected = false,
-                TextMenuColor = textcolor
+                TextMenuColor = textcolor,
+                BadgeVisible = Commitment == 0 ? false : true,
+                BadgeCount = Commitment
             });
             MenuList.Add(new ItemMenu
             {
@@ -107,7 +120,9 @@ namespace Xperimen.ViewModel.NavigationDrawer
                 Title = "Expenses",
                 Contentpage = typeof(MainExpenses),
                 IsSelected = false,
-                TextMenuColor = textcolor
+                TextMenuColor = textcolor,
+                BadgeVisible = false,
+                BadgeCount = 0
             });
             MenuList.Add(new ItemMenu
             {
@@ -116,7 +131,9 @@ namespace Xperimen.ViewModel.NavigationDrawer
                 Title = "Gallery",
                 Contentpage = typeof(MainGallery),
                 IsSelected = false,
-                TextMenuColor = textcolor
+                TextMenuColor = textcolor,
+                BadgeVisible = false,
+                BadgeCount = 0
             });
             MenuList.Add(new ItemMenu
             {
@@ -125,7 +142,9 @@ namespace Xperimen.ViewModel.NavigationDrawer
                 Title = "Settings",
                 Contentpage = typeof(MainSetting),
                 IsSelected = false,
-                TextMenuColor = textcolor
+                TextMenuColor = textcolor,
+                BadgeVisible = false,
+                BadgeCount = 0
             });
             MenuList.Add(new ItemMenu
             {
@@ -134,7 +153,9 @@ namespace Xperimen.ViewModel.NavigationDrawer
                 Title = "Logout",
                 Contentpage = typeof(Logout),
                 IsSelected = false,
-                TextMenuColor = textcolor
+                TextMenuColor = textcolor,
+                BadgeVisible = false,
+                BadgeCount = 0
             });
             #endregion
         }
@@ -176,6 +197,34 @@ namespace Xperimen.ViewModel.NavigationDrawer
                         }
                     }
                 }
+            }
+        }
+
+        public void GetCommitmentList()
+        {
+            Commitment = 0;
+            var userid = string.Empty;
+            if (Application.Current.Properties.ContainsKey("current_login"))
+                userid = Application.Current.Properties["current_login"] as string;
+
+            try
+            {
+                string query = "SELECT * FROM SelfCommitment WHERE Userid = '" + userid + "'";
+                var data = connection.Query<SelfCommitment>(query).ToList();
+
+                if (data.Count > 0)
+                {
+                    foreach (var item in data)
+                    {
+                        if (!item.IsDone)
+                            Commitment++;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                var error = ex.Message;
+                var desc = ex.StackTrace;
             }
         }
     }

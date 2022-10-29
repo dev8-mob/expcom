@@ -17,6 +17,8 @@ namespace Xperimen.ViewModel.Gallery
         bool _haveDateRange;
         ObservableCollection<SelfCommitment> _imagecommlist;
         ObservableCollection<Expenses> _imageexplist;
+        bool _hascommitmentdoneshowbadge;
+        int _commitmentnotdone;
         public bool HasMedia
         {
             get { return _hasmedia; }
@@ -52,6 +54,16 @@ namespace Xperimen.ViewModel.Gallery
             get { return _maxdt; }
             set { _maxdt = value; OnPropertyChanged(); }
         }
+        public bool HasCommitmentDoneShowBadge
+        {
+            get { return _hascommitmentdoneshowbadge; }
+            set { _hascommitmentdoneshowbadge = value; OnPropertyChanged(); }
+        }
+        public int CommitmentNotDone
+        {
+            get { return _commitmentnotdone; }
+            set { _commitmentnotdone = value; OnPropertyChanged(); }
+        }
         #endregion
 
         public SQLiteConnection connection;
@@ -66,6 +78,8 @@ namespace Xperimen.ViewModel.Gallery
             MinDt = DateTime.Now;
             MaxDt = DateTime.Now;
             HaveDateRange = false;
+            HasCommitmentDoneShowBadge = false;
+            CommitmentNotDone = 0;
             connection = new SQLiteConnection(App.DB_PATH);
             userid = string.Empty;
             SetupData();
@@ -76,6 +90,7 @@ namespace Xperimen.ViewModel.Gallery
             if (Application.Current.Properties.ContainsKey("current_login"))
                 userid = Application.Current.Properties["current_login"] as string;
             GetAllMedia();
+            GetCommitmentList();
         }
 
         public int GetAllMedia()
@@ -125,6 +140,36 @@ namespace Xperimen.ViewModel.Gallery
                         }
                     }
                 }
+                return 1;
+            }
+            catch (Exception ex)
+            {
+                var error = ex.Message;
+                var desc = ex.StackTrace;
+                return 2;
+            }
+        }
+
+        public int GetCommitmentList()
+        {
+            try
+            {
+                CommitmentNotDone = 0;
+                string query = "SELECT * FROM SelfCommitment WHERE Userid = '" + userid + "'";
+                var ListCommitments = connection.Query<SelfCommitment>(query).ToList();
+
+                if (ListCommitments.Count > 0)
+                {
+                    var checkdone = 0;
+                    foreach (var data in ListCommitments)
+                    {
+                        if (!data.IsDone) CommitmentNotDone++;
+                        if (data.IsDone) checkdone++;
+                    }
+                    if (CommitmentNotDone > 0) HasCommitmentDoneShowBadge = true;
+                    if (checkdone == ListCommitments.Count) HasCommitmentDoneShowBadge = false;
+                }
+                else HasCommitmentDoneShowBadge = false;
                 return 1;
             }
             catch (Exception ex)

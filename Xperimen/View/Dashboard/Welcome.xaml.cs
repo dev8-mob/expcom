@@ -49,7 +49,6 @@ namespace Xperimen.View.Dashboard
                 if (theme.Equals("dark"))
                 {
                     img_profile.BackgroundColor = Color.FromHex(App.CharcoalBlack);
-                    frame_commit.BackgroundColor = Color.FromHex(App.CharcoalBlack);
                     frame_expense.BackgroundColor = Color.FromHex(App.CharcoalBlack);
                     frame_noincome.BackgroundColor = Color.FromHex(App.CharcoalBlack);
                     frame_income.BackgroundColor = Color.FromHex(App.CharcoalBlack);
@@ -57,7 +56,6 @@ namespace Xperimen.View.Dashboard
                 if (theme.Equals("dim"))
                 {
                     img_profile.BackgroundColor = Color.FromHex(App.CharcoalGray);
-                    frame_commit.BackgroundColor = Color.FromHex(App.CharcoalGray);
                     frame_expense.BackgroundColor = Color.FromHex(App.CharcoalGray);
                     frame_noincome.BackgroundColor = Color.FromHex(App.CharcoalGray);
                     frame_income.BackgroundColor = Color.FromHex(App.CharcoalGray);
@@ -65,7 +63,6 @@ namespace Xperimen.View.Dashboard
                 if (theme.Equals("light"))
                 {
                     img_profile.BackgroundColor = Color.FromHex(App.DimGray2);
-                    frame_commit.BackgroundColor = Color.FromHex(App.DimGray2);
                     frame_expense.BackgroundColor = Color.FromHex(App.DimGray2);
                     frame_noincome.BackgroundColor = Color.FromHex(App.DimGray2);
                     frame_income.BackgroundColor = Color.FromHex(App.DimGray2);
@@ -74,7 +71,6 @@ namespace Xperimen.View.Dashboard
             else
             {
                 img_profile.BackgroundColor = Color.FromHex(App.DimGray2);
-                frame_commit.BackgroundColor = Color.FromHex(App.DimGray2);
                 frame_expense.BackgroundColor = Color.FromHex(App.DimGray2);
                 frame_noincome.BackgroundColor = Color.FromHex(App.DimGray2);
                 frame_income.BackgroundColor = Color.FromHex(App.DimGray2);
@@ -108,7 +104,7 @@ namespace Xperimen.View.Dashboard
             await view.ScaleTo(0.9, 250);
             view.Scale = 1;
             view.IsEnabled = false;
-            var drawer = (DrawerMaster)view.Parent.Parent.Parent.Parent.Parent.Parent;
+            var drawer = (DrawerMaster)view.Parent.Parent.Parent.Parent.Parent.Parent.Parent;
             drawer.IsPresented = true;
             view.IsEnabled = true;
         }
@@ -199,18 +195,8 @@ namespace Xperimen.View.Dashboard
             await view.ScaleTo(0.9, 250);
             view.Scale = 1;
             view.IsEnabled = false;
-
-            viewmodel.IsLoading = true;
-            if (viewmodel.NoCommitment) SetDisplayAlert("No Commitment", "You have no commitment for this month.", "", "", "");
-            else if (viewmodel.HasCommitment)
-            {
-                if (viewmodel.AllCommitmentDone) SetDisplayAlert("Completed", "All commitments for this month are completed.", "", "", "");
-                else
-                {
-                    await Navigation.PushAsync(new CommitmentDetails());
-                    viewmodel.IsLoading = false;
-                }
-            }
+            var drawer = (DrawerMaster)view.Parent.Parent.Parent.Parent.Parent.Parent;
+            drawer.IsPresented = true;
             view.IsEnabled = true;
         }
 

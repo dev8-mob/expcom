@@ -13,5 +13,7 @@ namespace Xperimen.Model
         public Type Contentpage { get; set; }
         public bool IsSelected { get; set; }
         public Color TextMenuColor { get; set; }
+        public bool BadgeVisible { get; set; }
+        public int BadgeCount { get; set; }
     }
 }

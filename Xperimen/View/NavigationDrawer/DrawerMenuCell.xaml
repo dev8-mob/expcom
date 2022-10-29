@@ -17,6 +17,18 @@
             <stylekit:XLabel x:Name="lbl_title" Text="{Binding Title}" HorizontalOptions="StartAndExpand" 
                              VerticalOptions="Center" TextColor="{Binding TextMenuColor}"/>
         </StackLayout>
+        <Frame Grid.Row="0" Grid.Column="0" Padding="0" HasShadow="False" IsClippedToBounds="True" HeightRequest="30"
+               x:Name="frame_count" BackgroundColor="{DynamicResource Key=CustomRed}" WidthRequest="30" Margin="0,0,15,0"
+               HorizontalOptions="End" VerticalOptions="Center" IsVisible="{Binding BadgeVisible}">
+            <Frame.CornerRadius>
+                <OnPlatform x:TypeArguments="x:Single">
+                    <On Platform="iOS">15</On>
+                    <On Platform="Android">30</On>
+                </OnPlatform>
+            </Frame.CornerRadius>
+            <Label x:Name="lbl_count" Text="{Binding BadgeCount}" TextColor="White" FontFamily="{DynamicResource Key=BoldFont}" 
+                   HorizontalOptions="Center" VerticalOptions="Center"/>
+        </Frame>
         <Grid.GestureRecognizers>
             <TapGestureRecognizer Tapped="CellTapped"/>
         </Grid.GestureRecognizers>

@@ -32,6 +32,8 @@ namespace Xperimen.ViewModel.Expense
         bool _ishaveincome;
         double _percentageused;
         double _percentageavailable;
+        bool _hascommitmentdoneshowbadge;
+        int _commitmentnotdone;
         public double Income
         {
             get { return _income; }
@@ -117,10 +119,21 @@ namespace Xperimen.ViewModel.Expense
             get { return _percentageavailable; }
             set { _percentageavailable = value; OnPropertyChanged(); }
         }
+        public bool HasCommitmentDoneShowBadge
+        {
+            get { return _hascommitmentdoneshowbadge; }
+            set { _hascommitmentdoneshowbadge = value; OnPropertyChanged(); }
+        }
+        public int CommitmentNotDone
+        {
+            get { return _commitmentnotdone; }
+            set { _commitmentnotdone = value; OnPropertyChanged(); }
+        }
         #endregion
 
         public SQLiteConnection connection;
         public string SelectedDate;
+        public string userid;
 
         public ExpensesViewmodel()
         {
@@ -142,6 +155,8 @@ namespace Xperimen.ViewModel.Expense
             IsHaveIncome = false;
             PercentageUsed = 0;
             PercentageAvailable = 0;
+            HasCommitmentDoneShowBadge = false;
+            CommitmentNotDone = 0;
         }
 
         public async Task<int> TakePhoto()
@@ -396,6 +411,38 @@ namespace Xperimen.ViewModel.Expense
                 string query = "UPDATE Clients SET Income = " + Income + ", TotalCommitment = " + commitment
                     + ", NetIncome = " + netincome + " WHERE Id = '" + userid + "'";
                 connection.Query<Clients>(query);
+                return 1;
+            }
+            catch (Exception ex)
+            {
+                var error = ex.Message;
+                var desc = ex.StackTrace;
+                return 2;
+            }
+        }
+
+        public int GetCommitmentList()
+        {
+            if (Application.Current.Properties.ContainsKey("current_login"))
+                userid = Application.Current.Properties["current_login"] as string;
+            try
+            {
+                CommitmentNotDone = 0;
+                string query = "SELECT * FROM SelfCommitment WHERE Userid = '" + userid + "'";
+                var ListCommitments = connection.Query<SelfCommitment>(query).ToList();
+
+                if (ListCommitments.Count > 0)
+                {
+                    var checkdone = 0;
+                    foreach (var data in ListCommitments)
+                    {
+                        if (!data.IsDone) CommitmentNotDone++;
+                        if (data.IsDone) checkdone++;
+                    }
+                    if (CommitmentNotDone > 0) HasCommitmentDoneShowBadge = true;
+                    if (checkdone == ListCommitments.Count) HasCommitmentDoneShowBadge = false;
+                }
+                else HasCommitmentDoneShowBadge = false;
                 return 1;
             }
             catch (Exception ex)

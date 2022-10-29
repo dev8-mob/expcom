@@ -165,6 +165,7 @@ namespace Xperimen.View.Expense
         public void SetupView()
         {
             viewmodel.IsLoading = true;
+            viewmodel.GetCommitmentList();
             if (Xamarin.Forms.Application.Current.Properties.ContainsKey("app_theme"))
             {
                 var theme = Xamarin.Forms.Application.Current.Properties["app_theme"] as string;
@@ -212,6 +213,17 @@ namespace Xperimen.View.Expense
         public async void DrawerTapped(object sender, EventArgs e)
         {
             var view = (Image)sender;
+            await view.ScaleTo(0.9, 250);
+            view.Scale = 1;
+            view.IsEnabled = false;
+            var drawer = (DrawerMaster)view.Parent.Parent.Parent.Parent.Parent.Parent.Parent;
+            drawer.IsPresented = true;
+            view.IsEnabled = true;
+        }
+
+        public async void TopCommitmentBadgeClicked(object sender, EventArgs e)
+        {
+            var view = (Frame)sender;
             await view.ScaleTo(0.9, 250);
             view.Scale = 1;
             view.IsEnabled = false;

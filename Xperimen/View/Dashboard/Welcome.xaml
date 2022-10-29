@@ -20,32 +20,51 @@
                 </StackLayout.Padding>
 
                 <!-- top navigation bar -->
-                <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="Start" Spacing="0">
-                    <stylekit:XImage Source1="black_menudot.png" Source2="white_menudot.png" HeightRequest="35" WidthRequest="35" Aspect="AspectFit"
-                                     HorizontalOptions="Start" Margin="0,0,20,0">
-                        <Image.GestureRecognizers>
-                            <TapGestureRecognizer Tapped="DrawerTapped" NumberOfTapsRequired="1"/>
-                        </Image.GestureRecognizers>
-                    </stylekit:XImage>
-                    <stylekit:XLabel Text="Hi, " HorizontalOptions="Fill" FontSize="18" VerticalOptions="Center"/>
-                    <stylekit:XLabel Text="{Binding Firstname}" HorizontalOptions="Fill" FontFamily="{DynamicResource Key=BoldFont}" 
-                                     FontSize="18" VerticalOptions="Center" MaxLines="1" LineBreakMode="TailTruncation" Margin="0,0,5,0"/>
-                    <stylekit:XLabel Text="{Binding Lastname}" HorizontalOptions="FillAndExpand" FontFamily="{DynamicResource Key=BoldFont}" 
-                                     FontSize="18" VerticalOptions="Center" MaxLines="1" LineBreakMode="TailTruncation" Margin="0,0,20,0"/>
-                    <!-- save income button -->
-                    <Frame Padding="0,5,0,5" CornerRadius="8" BorderColor="{DynamicResource Key=Primary}" HorizontalOptions="End"
-                           VerticalOptions="Center" BackgroundColor="{DynamicResource Key=Primary}" HasShadow="False" 
-                           IsClippedToBounds="True">
-                        <Image Source="white_wallet.png" Aspect="AspectFit" HeightRequest="25" WidthRequest="25" VerticalOptions="Center"
-                                       Margin="15,0,15,0"/>
+                <Grid HorizontalOptions="FillAndExpand" VerticalOptions="Start" ColumnSpacing="0">
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="Start" Spacing="0"
+                                 Grid.Row="0" Grid.Column="0" Margin="0,0,0,10">
+                        <stylekit:XImage Source1="black_menudot.png" Source2="white_menudot.png" HeightRequest="35" WidthRequest="35" Aspect="AspectFit"
+                                         HorizontalOptions="Start" Margin="0,0,20,0">
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="DrawerTapped" NumberOfTapsRequired="1"/>
+                            </Image.GestureRecognizers>
+                        </stylekit:XImage>
+                        <stylekit:XLabel Text="Hi, " HorizontalOptions="Fill" FontSize="18" VerticalOptions="Center"/>
+                        <stylekit:XLabel Text="{Binding Firstname}" HorizontalOptions="Fill" FontFamily="{DynamicResource Key=BoldFont}" 
+                                         FontSize="18" VerticalOptions="Center" MaxLines="1" LineBreakMode="TailTruncation" Margin="0,0,5,0"/>
+                        <stylekit:XLabel Text="{Binding Lastname}" HorizontalOptions="FillAndExpand" FontFamily="{DynamicResource Key=BoldFont}" 
+                                         FontSize="18" VerticalOptions="Center" MaxLines="1" LineBreakMode="TailTruncation" Margin="0,0,20,0"/>
+                        <!-- save income button -->
+                        <Frame Padding="0,5,0,5" CornerRadius="8" BorderColor="{DynamicResource Key=Primary}" HorizontalOptions="End"
+                               VerticalOptions="Center" BackgroundColor="{DynamicResource Key=Primary}" HasShadow="False" 
+                               IsClippedToBounds="True">
+                            <Image Source="white_wallet.png" Aspect="AspectFit" HeightRequest="25" WidthRequest="25" VerticalOptions="Center"
+                                   Margin="15,0,15,0"/>
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="SetIncomeClicked" NumberOfTapsRequired="1"/>
+                            </Frame.GestureRecognizers>
+                        </Frame>
+                    </StackLayout>
+                    <!-- commitment badge number -->
+                    <Frame Grid.Row="0" Grid.Column="0" Padding="0" HasShadow="False" IsClippedToBounds="True" HeightRequest="30"
+                           BackgroundColor="{DynamicResource Key=CustomRed}" WidthRequest="30" Margin="15,0,0,0"
+                           HorizontalOptions="Start" VerticalOptions="End" IsVisible="{Binding HasCommitmentDoneShowBadge}">
+                        <Label Text="{Binding CommitmentNotDone}" TextColor="White" FontFamily="{DynamicResource Key=BoldFont}" 
+                               HorizontalOptions="Center" VerticalOptions="Center"/>
+                        <Frame.CornerRadius>
+                            <OnPlatform x:TypeArguments="x:Single">
+                                <On Platform="iOS">15</On>
+                                <On Platform="Android">30</On>
+                            </OnPlatform>
+                        </Frame.CornerRadius>
                         <Frame.GestureRecognizers>
-                            <TapGestureRecognizer Tapped="SetIncomeClicked" NumberOfTapsRequired="1"/>
+                            <TapGestureRecognizer Tapped="CommitmentBadgeClicked" NumberOfTapsRequired="1"/>
                         </Frame.GestureRecognizers>
                     </Frame>
-                </StackLayout>
+                </Grid>
 
                 <!-- UI content -->
-                <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" RowSpacing="15" ColumnSpacing="15" Margin="0,15,0,0">
+                <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" RowSpacing="15" Margin="0,15,0,0">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="0.6*"/>
@@ -53,11 +72,10 @@
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
                     
                     <!-- profile picture and date today -->
-                    <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand" Spacing="0" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2">
+                    <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand" Spacing="0" Grid.Row="0" Grid.Column="0">
                         <Frame Padding="0" HasShadow="False" CornerRadius="8" HorizontalOptions="Center" VerticalOptions="Start"
                                IsClippedToBounds="True" BackgroundColor="Transparent">
                             <stylekit:XImage x:Name="img_profile" HeightRequest="100" WidthRequest="100" Aspect="AspectFill"
@@ -81,91 +99,6 @@
                             </StackLayout>
                         </StackLayout>
                     </StackLayout>
-
-                    <!-- #region COMMITMENT -->
-                    <!-- commitment frame background -->
-                    <Frame HasShadow="False" Padding="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" IsClippedToBounds="True"
-                           Grid.Row="1" Grid.Column="1" CornerRadius="8" x:Name="frame_commit" Margin="0,15,0,0"/>
-
-                    <!-- commitment all done -->
-                    <stylekit:XImage Source1="black_done.png" Source2="white_done.png" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"
-                                     Grid.Row="1" Grid.Column="1" Aspect="AspectFit" Opacity="0.4" IsVisible="{Binding AllCommitmentDone}"
-                                     Margin="0,65,0,60"/>
-                    
-                    <!-- commitment column -->
-                    <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Spacing="0" 
-                                 Padding="15,20,15,20" BackgroundColor="Transparent" Grid.Row="1" Grid.Column="1" Margin="0,15,0,0">
-
-                        <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand" VerticalOptions="Start" Spacing="0">
-                            <stylekit:XLabel Text="Commitment" HorizontalOptions="CenterAndExpand" FontFamily="{DynamicResource Key=BoldFont}"/>
-                            <stylekit:XLabel Text="this month" HorizontalOptions="CenterAndExpand" FontFamily="{DynamicResource Key=BoldFont}"/>
-                            <StackLayout.GestureRecognizers>
-                                <TapGestureRecognizer Tapped="CommitmentColumnClicked"/>
-                            </StackLayout.GestureRecognizers>
-                        </StackLayout>
-
-                        <!-- commitment list -->
-                        <ScrollView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Margin="0,15,0,0" IsVisible="{Binding HasCommitment}">
-                            <StackLayout HorizontalOptions="FillAndExpand" BindableLayout.ItemsSource="{Binding ListCommitments}" 
-                                         Spacing="0" VerticalOptions="Start">
-                                <BindableLayout.ItemTemplate>
-                                    <DataTemplate>
-                                        <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand" Spacing="0">
-                                            <stylekit:XLabel Text="{Binding Title}" HorizontalOptions="Start" MaxLines="1" Margin="0,5,0,5"
-                                                                 LineBreakMode="TailTruncation"/>
-                                            <BoxView HorizontalOptions="FillAndExpand" HeightRequest="1" BackgroundColor="DarkGray"/>
-                                        </StackLayout>
-                                    </DataTemplate>
-                                </BindableLayout.ItemTemplate>
-                                <StackLayout.GestureRecognizers>
-                                    <TapGestureRecognizer Tapped="CommitmentColumnClicked"/>
-                                </StackLayout.GestureRecognizers>
-                            </StackLayout>
-                        </ScrollView>
-
-                        <!-- no commitment yet -->
-                        <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand" Spacing="0" IsVisible="{Binding NoCommitment}" 
-                                     VerticalOptions="CenterAndExpand" Margin="0,15,0,0">
-                            <stylekit:XImageNoRecord HeightRequest="40" WidthRequest="40" VerticalOptions="Center" HorizontalOptions="Center"/>
-                            <Label Text="no record" HorizontalOptions="CenterAndExpand"/>
-                            <StackLayout.GestureRecognizers>
-                                <TapGestureRecognizer Tapped="CommitmentColumnClicked"/>
-                            </StackLayout.GestureRecognizers>
-                        </StackLayout>
-
-                        <!-- add commitment button -->
-                        <Frame Padding="20,10,20,10" CornerRadius="8" BorderColor="{DynamicResource Key=Primary}" HorizontalOptions="FillAndExpand"
-                               VerticalOptions="End" BackgroundColor="{DynamicResource Key=Primary}" HasShadow="False" Margin="0,15,0,0"
-                               IsClippedToBounds="True">
-                            <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Spacing="10" VerticalOptions="Center">
-                                <Label Text="Add" FontFamily="{DynamicResource Key=BoldFont}" TextColor="White" 
-                                       HorizontalOptions="Center" VerticalOptions="Center"/>
-                                <Image Source="white_wallet.png" Aspect="AspectFit" HeightRequest="20" WidthRequest="20" VerticalOptions="Center"/>
-                            </StackLayout>
-                            <Frame.GestureRecognizers>
-                                <TapGestureRecognizer Tapped="AddCommitmentClicked" NumberOfTapsRequired="1"/>
-                            </Frame.GestureRecognizers>
-                        </Frame>
-
-                    </StackLayout>
-
-                    <!-- commitment badge number -->
-                    <Frame Grid.Row="1" Grid.Column="1" Padding="0" HasShadow="False" IsClippedToBounds="True" HeightRequest="30"
-                           BackgroundColor="{DynamicResource Key=CustomRed}" WidthRequest="30" Margin="0,0,15,0"
-                           HorizontalOptions="End" VerticalOptions="Start" IsVisible="{Binding HasCommitmentDoneShowBadge}">
-                        <Label Text="{Binding CommitmentNotDone}" TextColor="White" FontFamily="{DynamicResource Key=BoldFont}" 
-                               HorizontalOptions="Center" VerticalOptions="Center"/>
-                        <Frame.CornerRadius>
-                            <OnPlatform x:TypeArguments="x:Single">
-                                <On Platform="iOS">15</On>
-                                <On Platform="Android">30</On>
-                            </OnPlatform>
-                        </Frame.CornerRadius>
-                        <Frame.GestureRecognizers>
-                            <TapGestureRecognizer Tapped="CommitmentBadgeClicked" NumberOfTapsRequired="1"/>
-                        </Frame.GestureRecognizers>
-                    </Frame>
-                    <!--#endregion-->
 
                     <!-- #region EXPENSES -->
                     <!-- expenses column -->
@@ -200,8 +133,12 @@
                                     <BindableLayout.ItemTemplate>
                                         <DataTemplate>
                                             <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand" Spacing="0">
-                                                <stylekit:XLabel Text="{Binding Title}" HorizontalOptions="Start" MaxLines="1" Margin="0,5,0,5"
-                                                                 LineBreakMode="TailTruncation"/>
+                                                <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Spacing="0">
+                                                    <stylekit:XLabel Text="{Binding Title}" HorizontalOptions="FillAndExpand" MaxLines="1" Margin="0,5,0,5"
+                                                                     LineBreakMode="TailTruncation"/>
+                                                    <stylekit:XLabel Text="{Binding Amount, StringFormat='RM {0:0.00}'}" HorizontalOptions="End" MaxLines="1" 
+                                                                     Margin="10,5,0,5" LineBreakMode="TailTruncation"/>
+                                                </StackLayout>
                                                 <BoxView HorizontalOptions="FillAndExpand" HeightRequest="1" BackgroundColor="DarkGray"/>
                                             </StackLayout>
                                         </DataTemplate>
@@ -249,14 +186,14 @@
 
                     <!-- not set income yet -->
                     <Frame HasShadow="False" Padding="15,10,15,10" HorizontalOptions="FillAndExpand" VerticalOptions="Start" IsClippedToBounds="True"
-                           Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" CornerRadius="8" x:Name="frame_noincome" IsVisible="{Binding IsNotSetIncome}">
+                           Grid.Row="2" Grid.Column="0" CornerRadius="8" x:Name="frame_noincome" IsVisible="{Binding IsNotSetIncome}">
                         <stylekit:XLabel Text="You do not set any income yet. Please set your income, click top right button" VerticalOptions="Start" 
                                          HorizontalOptions="Center" FontFamily="{DynamicResource Key=BoldFont}" HorizontalTextAlignment="Center" />
                     </Frame>
 
                     <!-- account summary -->
                     <Frame HasShadow="False" Padding="15,10,15,10" HorizontalOptions="Center" VerticalOptions="Start" IsClippedToBounds="True"
-                           Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" CornerRadius="8" x:Name="frame_income" IsVisible="{Binding IsHaveIncome}">
+                           Grid.Row="2" Grid.Column="0" CornerRadius="8" x:Name="frame_income" IsVisible="{Binding IsHaveIncome}">
                         <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Spacing="15" IsVisible="{Binding IsHaveIncome}">
                             
                             <!-- column income & commitment -->

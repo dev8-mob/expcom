@@ -60,6 +60,28 @@ namespace Xperimen.View.Commitment
             else if (result == 3) SetDisplayAlert("Error", "Technical error retrieving commitment list.", "", "", "");
         }
 
+        public async void DrawerTapped(object sender, EventArgs e)
+        {
+            var view = (Image)sender;
+            await view.ScaleTo(0.9, 250);
+            view.Scale = 1;
+            view.IsEnabled = false;
+            var drawer = (DrawerMaster)view.Parent.Parent.Parent.Parent.Parent.Parent.Parent.Parent;
+            drawer.IsPresented = true;
+            view.IsEnabled = true;
+        }
+
+        public async void TopCommitmentBadgeClicked(object sender, EventArgs e)
+        {
+            var view = (Frame)sender;
+            await view.ScaleTo(0.9, 250);
+            view.Scale = 1;
+            view.IsEnabled = false;
+            var drawer = (DrawerMaster)view.Parent.Parent.Parent.Parent.Parent.Parent.Parent;
+            drawer.IsPresented = true;
+            view.IsEnabled = true;
+        }
+
         public async void EditIncomeTapped(object sender, EventArgs e)
         {
             var view = (Image)sender;
@@ -103,17 +125,6 @@ namespace Xperimen.View.Commitment
             var stack = (StackLayout)grid.Children[0];
             var lbl_id = (Label)stack.Children[2];
             await Navigation.PushAsync(new Details(lbl_id.Text));
-            view.IsEnabled = true;
-        }
-
-        public async void DrawerTapped(object sender, EventArgs e)
-        {
-            var view = (Image)sender;
-            await view.ScaleTo(0.9, 250);
-            view.Scale = 1;
-            view.IsEnabled = false;
-            var drawer = (DrawerMaster)view.Parent.Parent.Parent.Parent.Parent.Parent.Parent;
-            drawer.IsPresented = true;
             view.IsEnabled = true;
         }
 

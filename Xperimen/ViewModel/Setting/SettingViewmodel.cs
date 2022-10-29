@@ -24,7 +24,8 @@ namespace Xperimen.ViewModel.Setting
         byte[] _picture;
         bool _isediting;
         bool _isviewing;
-
+        bool _hascommitmentdoneshowbadge;
+        int _commitmentnotdone;
         public string Username
         {
             get { return _username; }
@@ -75,10 +76,21 @@ namespace Xperimen.ViewModel.Setting
             get { return _isviewing; }
             set { _isviewing = value; OnPropertyChanged(); }
         }
+        public bool HasCommitmentDoneShowBadge
+        {
+            get { return _hascommitmentdoneshowbadge; }
+            set { _hascommitmentdoneshowbadge = value; OnPropertyChanged(); }
+        }
+        public int CommitmentNotDone
+        {
+            get { return _commitmentnotdone; }
+            set { _commitmentnotdone = value; OnPropertyChanged(); }
+        }
         #endregion
 
         public SQLiteConnection connection;
         public StreamByteConverter converter;
+        public string userid;
 
         public SettingViewmodel()
         {
@@ -86,12 +98,14 @@ namespace Xperimen.ViewModel.Setting
             converter = new StreamByteConverter();
             IsViewing = true;
             IsEditing = false;
+            HasCommitmentDoneShowBadge = false;
+            CommitmentNotDone = 0;
             SetupData();
         }
 
         public void SetupData()
         {
-            var userid = Application.Current.Properties["current_login"] as string;
+            userid = Application.Current.Properties["current_login"] as string;
             string query = "SELECT * FROM Clients WHERE Id = '" + userid + "'";
             var result = connection.Query<Clients>(query).ToList();
             if (result.Count > 0)
@@ -104,6 +118,7 @@ namespace Xperimen.ViewModel.Setting
                 Picture = result[0].ProfileImage;
                 Theme = result[0].AppTheme;
             }
+            GetCommitmentList();
         }
 
         public async Task<int> TakePhoto()
@@ -276,6 +291,36 @@ namespace Xperimen.ViewModel.Setting
                 var stack = ex.StackTrace;
                 var page = Application.Current.MainPage;
                 await page.DisplayAlert(error, stack, "OK");
+                return 2;
+            }
+        }
+
+        public int GetCommitmentList()
+        {
+            try
+            {
+                CommitmentNotDone = 0;
+                string query = "SELECT * FROM SelfCommitment WHERE Userid = '" + userid + "'";
+                var ListCommitments = connection.Query<SelfCommitment>(query).ToList();
+
+                if (ListCommitments.Count > 0)
+                {
+                    var checkdone = 0;
+                    foreach (var data in ListCommitments)
+                    {
+                        if (!data.IsDone) CommitmentNotDone++;
+                        if (data.IsDone) checkdone++;
+                    }
+                    if (CommitmentNotDone > 0) HasCommitmentDoneShowBadge = true;
+                    if (checkdone == ListCommitments.Count) HasCommitmentDoneShowBadge = false;
+                }
+                else HasCommitmentDoneShowBadge = false;
+                return 1;
+            }
+            catch (Exception ex)
+            {
+                var error = ex.Message;
+                var desc = ex.StackTrace;
                 return 2;
             }
         }
