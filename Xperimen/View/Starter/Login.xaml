@@ -60,7 +60,7 @@
 
                     <!-- app version info -->
                     <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
-                    <stylekit:XLabel Text="Version 1.0.0" HorizontalOptions="Center" VerticalOptions="End" FontSize="10" Margin="0,0,0,20">
+                    <stylekit:XLabel x:Name="lbl_version" Text="Version -" HorizontalOptions="Center" VerticalOptions="End" FontSize="10" Margin="0,0,0,20">
                         <!--<Label.Text>
                             <MultiBinding StringFormat="{}{0} {1}">
                                 <Binding Path="Currency" />

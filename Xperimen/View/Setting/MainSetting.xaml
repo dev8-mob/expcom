@@ -201,7 +201,7 @@
 
                     <!-- app version info -->
                     <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="Transparent"/>
-                    <stylekit:XLabel Text="Version 1.0.0" HorizontalOptions="Center" VerticalOptions="End" FontSize="10"/>
+                    <stylekit:XLabel x:Name="lbl_version" Text="Version -" HorizontalOptions="Center" VerticalOptions="End" FontSize="10"/>
                 </stylekit:XStacklayout>
                 
             </stylekit:XScrollview>

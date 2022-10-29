@@ -34,6 +34,7 @@ namespace Xperimen.View
                 if (theme.Equals("light")) frame_bg.BackgroundColor = Color.FromHex(App.DimGray2);
             }
             else frame_bg.BackgroundColor = Color.FromHex(App.DimGray2);
+            lbl_version.Text = "Version " + App.AppVersion;
         }
 
         public async void LoginClicked(object sender, EventArgs e)
