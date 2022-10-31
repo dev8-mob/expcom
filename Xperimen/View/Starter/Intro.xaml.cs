@@ -19,6 +19,7 @@ namespace Xperimen.View
             viewmodel = new IntroViewmodel();
             BindingContext = viewmodel;
             StartAnimation();
+            lbl_version.Text = "Version " + App.AppVersion;
 
             MessagingCenter.Subscribe<CustomDisplayAlert, string>(this, "DisplayAlertSelection", async (sender, arg) =>
             {

@@ -67,7 +67,7 @@
                             <StackLayout x:Name="stack_income" Orientation="Horizontal" HorizontalOptions="FillAndExpand">
                                 
                                 <!-- edit income button -->
-                                <stylekit:XImage Source1="black_edit.png" Source2="white_edit.png" HorizontalOptions="Start"
+                                <stylekit:XImage Source1="black_edit.png" Source2="white_edit.png" HorizontalOptions="EndAndExpand"
                                                  HeightRequest="30" WidthRequest="30" Aspect="AspectFit">
                                     <Image.GestureRecognizers>
                                         <TapGestureRecognizer Tapped="EditIncomeTapped"/>
@@ -75,10 +75,10 @@
                                 </stylekit:XImage>
 
                                 <!-- income amount -->
-                                <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand" Spacing="0">
+                                <StackLayout Orientation="Vertical" HorizontalOptions="End" Spacing="0">
                                     <stylekit:XLabel Text="Income" VerticalOptions="End" HorizontalOptions="End" />
-                                    <StackLayout Orientation="Horizontal" HorizontalOptions="EndAndExpand" Spacing="3">
-                                        <stylekit:XLabel Text="RM" HorizontalOptions="EndAndExpand" VerticalOptions="Start" Margin="0,2,0,0"/>
+                                    <StackLayout Orientation="Horizontal" HorizontalOptions="End" Spacing="3">
+                                        <stylekit:XLabel Text="RM" HorizontalOptions="End" VerticalOptions="Start" Margin="0,2,0,0"/>
                                         <stylekit:XLabel Text="{Binding Income, StringFormat='{0:0.00}'}" HorizontalOptions="End" 
                                                          FontSize="20" FontFamily="{DynamicResource Key=BoldFont}"
                                                          VerticalOptions="Start"/>

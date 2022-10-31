@@ -103,6 +103,7 @@ namespace Xperimen.View.NavigationDrawer
                     }
                     else frame_count.IsVisible = false;
                 }
+                else frame_count.IsVisible = false;
             }
             catch (Exception ex)
             {

@@ -35,7 +35,6 @@ namespace Xperimen.ViewModel.Commitment
         DateTime _upcomingdt;
         bool _alldone;
         bool _allnotdone;
-        bool _hascommitmentdoneshowbadge;
         public bool NoCommitment
         {
             get { return _norecord; }
@@ -141,11 +140,6 @@ namespace Xperimen.ViewModel.Commitment
             get { return _allnotdone; }
             set { _allnotdone = value; OnPropertyChanged(); }
         }
-        public bool HasCommitmentDoneShowBadge
-        {
-            get { return _hascommitmentdoneshowbadge; }
-            set { _hascommitmentdoneshowbadge = value; OnPropertyChanged(); }
-        }
         #endregion
 
         public SQLiteConnection connection;
@@ -171,7 +165,6 @@ namespace Xperimen.ViewModel.Commitment
             UpcomingDt = DateTime.Now.AddMonths(1);
             AllCommitmentDone = false;
             AllCommitmentNotDone = true;
-            HasCommitmentDoneShowBadge = false;
 
             var userid = Application.Current.Properties["current_login"] as string;
             string query = "SELECT * FROM Clients WHERE Id = '" + userid + "'";
@@ -307,7 +300,7 @@ namespace Xperimen.ViewModel.Commitment
                     { AllCommitmentDone = false; AllCommitmentNotDone = true; }
                 }
                 else
-                { NoCommitment = true; HasCommitment = false; HasCommitmentDoneShowBadge = false; }
+                { NoCommitment = true; HasCommitment = false; AllCommitmentNotDone = false; }
 
                 Balance = Income - TotalCommitment;
                 return SaveNetBalance();

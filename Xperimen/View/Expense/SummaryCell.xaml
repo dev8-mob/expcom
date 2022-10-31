@@ -32,7 +32,8 @@
         <Label Text="for spending" HorizontalOptions="FillAndExpand" MaxLines="1"
                VerticalOptions="Center" LineBreakMode="TailTruncation"/>
         <stylekit:XLabel Text="{Binding Balance, StringFormat='RM {0:0.00}'}" VerticalOptions="Center" 
-                         Margin="15,0,0,0" FontFamily="{DynamicResource Key=BoldFont}"/>
+                         Margin="15,0,0,0" FontFamily="{DynamicResource Key=BoldFont}"
+                         TextColor="{DynamicResource Key=Primary}"/>
     </StackLayout>
     
 </StackLayout>
