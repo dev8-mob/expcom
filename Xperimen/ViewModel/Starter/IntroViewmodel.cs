@@ -76,7 +76,8 @@ namespace Xperimen.ViewModel.Starter
                         HaveUpdated = false,
                         Income = 0,
                         TotalCommitment = 0,
-                        NetIncome = 0
+                        NetIncome = 0,
+                        Currency = "MYR"
                     };
                     var camelcase = new CamelCaseChecker();
                     Username = Firstname.Trim().ToLower() + Lastname.Trim().ToLower();
@@ -126,7 +127,8 @@ namespace Xperimen.ViewModel.Starter
                     HaveUpdated = false,
                     Income = 0,
                     TotalCommitment = 0,
-                    NetIncome = 0
+                    NetIncome = 0,
+                    Currency = "MYR"
                 };
                 var camelcase = new CamelCaseChecker();
                 Username = Firstname.Trim().ToLower() + Lastname.Trim().ToLower();

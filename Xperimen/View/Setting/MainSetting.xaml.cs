@@ -178,6 +178,16 @@ namespace Xperimen.View.Setting
             view.IsEnabled = true;
         }
 
+        public async void CurrencyClicked(object sender, EventArgs e)
+        {
+            var view = (Frame)sender;
+            await view.ScaleTo(0.9, 100);
+            view.Scale = 1;
+            view.IsEnabled = false;
+            await Navigation.PushPopupAsync(new CurrencyList());
+            view.IsEnabled = true;
+        }
+
         public async void AppThemeClicked(object sender, EventArgs e)
         {
             var view = (Frame)sender;

@@ -59,7 +59,8 @@ namespace Xperimen.ViewModel
                     HaveUpdated = result[0].HaveUpdated,
                     Income = result[0].Income,
                     TotalCommitment = result[0].TotalCommitment,
-                    NetIncome = result[0].NetIncome
+                    NetIncome = result[0].NetIncome,
+                    Currency = result[0].Currency
                 };
                 var success = connection.Update(model);
                 if (success == 1)
