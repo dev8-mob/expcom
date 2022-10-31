@@ -184,8 +184,8 @@
                     <!--#endregion-->
 
                     <!-- not set income yet -->
-                    <Frame HasShadow="False" Padding="15,25,15,10" HorizontalOptions="FillAndExpand" VerticalOptions="Start" IsClippedToBounds="True"
-                           Grid.Row="2" Grid.Column="0" CornerRadius="8" x:Name="frame_noincome" IsVisible="{Binding IsNotSetIncome}">
+                    <Frame HasShadow="False" Padding="15,10,15,10" HorizontalOptions="FillAndExpand" VerticalOptions="Start" IsClippedToBounds="True"
+                           Grid.Row="2" Grid.Column="0" CornerRadius="8" x:Name="frame_noincome" IsVisible="{Binding IsNotSetIncome}" Margin="0,15,0,0">
                         <stylekit:XLabel Text="You do not set any income yet. Please set your income, click top right button" VerticalOptions="Start" 
                                          HorizontalOptions="Center" FontFamily="{DynamicResource Key=BoldFont}" HorizontalTextAlignment="Center" />
                     </Frame>
@@ -229,7 +229,7 @@
                         </Grid>
                     </Frame>
                     <!-- more info button -->
-                    <Frame Grid.Row="2" Grid.Column="0" Padding="0" HasShadow="False" IsClippedToBounds="True" HeightRequest="30"
+                    <Frame Grid.Row="2" Grid.Column="0" Padding="0" HasShadow="False" IsClippedToBounds="True" HeightRequest="30" IsVisible="{Binding IsHaveIncome}"
                            BackgroundColor="{DynamicResource Key=CustomRed}" WidthRequest="30" Margin="0,8,0,0"
                            HorizontalOptions="Center" VerticalOptions="Start">
                         <Frame.CornerRadius>
