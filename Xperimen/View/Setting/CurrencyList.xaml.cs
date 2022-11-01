@@ -34,7 +34,7 @@ namespace Xperimen.View.Setting
                 if (success == 1)
                 {
                     await Task.Delay(300);
-                    MessagingCenter.Send(this, "CurrencyUpdated");
+                    MessagingCenter.Send(this, "CurrencyUpdated", arg);
                     var navigation = Application.Current.MainPage.Navigation;
                     await navigation.PopPopupAsync();
                 }

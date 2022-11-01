@@ -333,5 +333,53 @@ namespace Xperimen.ViewModel.Setting
                 return 2;
             }
         }
+
+        public int UpdateExpenseCurrency(string currency)
+        {
+            try
+            {
+                var allexpenses = connection.Table<Expenses>().ToList();
+                if (allexpenses.Count > 0)
+                {
+                    foreach (var data in allexpenses)
+                    {
+                        string query = "UPDATE Expenses SET Currency = '" + currency + "' WHERE Id = '" + data.Id + "'";
+                        connection.Query<Expenses>(query);
+                    }
+                    return 1;
+                }
+                else return 2;
+            }
+            catch (Exception ex)
+            {
+                var error = ex.Message;
+                var desc = ex.StackTrace;
+                return 2;
+            }
+        }
+
+        public int UpdateCommitmentCurrency(string currency)
+        {
+            try
+            {
+                var allcommit = connection.Table<SelfCommitment>().ToList();
+                if (allcommit.Count > 0)
+                {
+                    foreach (var data in allcommit)
+                    {
+                        string query = "UPDATE SelfCommitment SET Currency = '" + currency + "' WHERE Id = '" + data.Id + "'";
+                        connection.Query<SelfCommitment>(query);
+                    }
+                    return 1;
+                }
+                else return 2;
+            }
+            catch (Exception ex)
+            {
+                var error = ex.Message;
+                var desc = ex.StackTrace;
+                return 2;
+            }
+        }
     }
 }

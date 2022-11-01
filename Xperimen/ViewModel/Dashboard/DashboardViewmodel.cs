@@ -43,6 +43,7 @@ namespace Xperimen.ViewModel.Dashboard
         double _percentagecommitment;
         double _percentageexpenses;
         double _percentageavailable;
+        string _currency;
         public string Firstname
         {
             get { return _firstname; }
@@ -203,6 +204,11 @@ namespace Xperimen.ViewModel.Dashboard
             get { return _percentageavailable; }
             set { _percentageavailable = value; OnPropertyChanged(); }
         }
+        public string Currency
+        {
+            get { return _currency; }
+            set { _currency = value; OnPropertyChanged(); }
+        }
         #endregion
 
         public SQLiteConnection connection;
@@ -244,6 +250,7 @@ namespace Xperimen.ViewModel.Dashboard
             PercentageCommitment = 0;
             PercentageExpenses = 0;
             PercentageAvailable = 0;
+            Currency = string.Empty;
             SetupData();
         }
 
@@ -274,10 +281,11 @@ namespace Xperimen.ViewModel.Dashboard
         {
             try
             {
-                Income = 0;
+                Income = 0; Currency = string.Empty;
                 string getuser = "SELECT * FROM Clients WHERE Id = '" + userid + "'";
                 var user = connection.Query<Clients>(getuser).ToList();
-                if (user.Count > 0) Income = user[0].Income;
+                if (user.Count > 0)
+                { Income = user[0].Income; Currency = user[0].Currency; }
 
                 if (Income == 0) { IsNotSetIncome = true; IsHaveIncome = false; }
                 else { IsNotSetIncome = false; IsHaveIncome = true; }

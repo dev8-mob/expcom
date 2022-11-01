@@ -12,17 +12,20 @@
                VerticalOptions="Center" Margin="0,0,5,0"/>
         <Label Text="overall expenses" HorizontalOptions="FillAndExpand" MaxLines="1"
                VerticalOptions="Center" LineBreakMode="TailTruncation"/>
-        <stylekit:XLabel Text="{Binding UserTotalExp, StringFormat='RM {0:0.00}'}" VerticalOptions="Center" 
-                         Margin="15,0,0,0" FontFamily="{DynamicResource Key=BoldFont}"
+        <stylekit:XLabel Text="{Binding Currency}" Margin="15,0,0,0" VerticalOptions="Center" FontFamily="{DynamicResource Key=BoldFont}"
                          TextColor="{DynamicResource Key=CustomRed}"/>
+        <stylekit:XLabel Text="{Binding UserTotalExp, StringFormat='{0:0.00}'}" VerticalOptions="Center" Margin="5,0,0,0" 
+                         FontFamily="{DynamicResource Key=BoldFont}" TextColor="{DynamicResource Key=CustomRed}"/>
     </StackLayout>
     <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Spacing="0">
         <Label Text="Income" FontFamily="{DynamicResource Key=BoldFont}" HorizontalOptions="Start"
                VerticalOptions="Center" Margin="0,0,5,0"/>
         <Label x:Name="lbl_commitment" Text="- commitment" HorizontalOptions="FillAndExpand" MaxLines="1"
                VerticalOptions="Center" LineBreakMode="TailTruncation"/>
-        <stylekit:XLabel Text="{Binding NetIncome, StringFormat='RM {0:0.00}'}" VerticalOptions="Center" 
-                         Margin="15,0,0,0" FontFamily="{DynamicResource Key=BoldFont}"/>
+        <stylekit:XLabel Text="{Binding Currency}" VerticalOptions="Center" Margin="15,0,0,0"
+                         FontFamily="{DynamicResource Key=BoldFont}"/>
+        <stylekit:XLabel Text="{Binding NetIncome, StringFormat='{0:0.00}'}" VerticalOptions="Center" 
+                         Margin="5,0,0,0" FontFamily="{DynamicResource Key=BoldFont}"/>
     </StackLayout>
     <BoxView HorizontalOptions="FillAndExpand" HeightRequest="1" Margin="8,15,8,5"
              BackgroundColor="{DynamicResource Key=LabelTextColor}"/>
@@ -31,8 +34,10 @@
                VerticalOptions="Center" Margin="0,0,5,0"/>
         <Label Text="for spending" HorizontalOptions="FillAndExpand" MaxLines="1"
                VerticalOptions="Center" LineBreakMode="TailTruncation"/>
-        <stylekit:XLabel Text="{Binding Balance, StringFormat='RM {0:0.00}'}" VerticalOptions="Center" 
-                         Margin="15,0,0,0" FontFamily="{DynamicResource Key=BoldFont}"
+        <stylekit:XLabel Text="{Binding Currency}" VerticalOptions="Center" Margin="15,0,0,0" FontFamily="{DynamicResource Key=BoldFont}"
+                         TextColor="{DynamicResource Key=Primary}"/>
+        <stylekit:XLabel Text="{Binding Balance, StringFormat='{0:0.00}'}" VerticalOptions="Center" 
+                         Margin="5,0,0,0" FontFamily="{DynamicResource Key=BoldFont}"
                          TextColor="{DynamicResource Key=Primary}"/>
     </StackLayout>
     

@@ -135,8 +135,10 @@
                                                 <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Spacing="0">
                                                     <stylekit:XLabel Text="{Binding Title}" HorizontalOptions="FillAndExpand" MaxLines="1" Margin="0,5,0,5"
                                                                      LineBreakMode="TailTruncation"/>
-                                                    <stylekit:XLabel Text="{Binding Amount, StringFormat='RM {0:0.00}'}" HorizontalOptions="End" MaxLines="1" 
+                                                    <stylekit:XLabel Text="{Binding Currency, StringFormat='{0:0.00}'}" HorizontalOptions="End" MaxLines="1" 
                                                                      Margin="10,5,0,5" LineBreakMode="TailTruncation"/>
+                                                    <stylekit:XLabel Text="{Binding Amount, StringFormat='{0:0.00}'}" HorizontalOptions="End" MaxLines="1" 
+                                                                     Margin="5,5,0,5" LineBreakMode="TailTruncation"/>
                                                 </StackLayout>
                                                 <BoxView HorizontalOptions="FillAndExpand" HeightRequest="1" BackgroundColor="DarkGray"/>
                                             </StackLayout>

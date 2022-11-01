@@ -35,6 +35,7 @@ namespace Xperimen.ViewModel.Commitment
         DateTime _upcomingdt;
         bool _alldone;
         bool _allnotdone;
+        string _currency;
         public bool NoCommitment
         {
             get { return _norecord; }
@@ -140,6 +141,11 @@ namespace Xperimen.ViewModel.Commitment
             get { return _allnotdone; }
             set { _allnotdone = value; OnPropertyChanged(); }
         }
+        public string Currency
+        {
+            get { return _currency; }
+            set { _currency = value; OnPropertyChanged(); }
+        }
         #endregion
 
         public SQLiteConnection connection;
@@ -166,11 +172,16 @@ namespace Xperimen.ViewModel.Commitment
             else UpcomingDt = DateTime.Now.AddMonths(1);
             AllCommitmentDone = false;
             AllCommitmentNotDone = true;
+            Currency = string.Empty;
 
             var userid = Application.Current.Properties["current_login"] as string;
             string query = "SELECT * FROM Clients WHERE Id = '" + userid + "'";
             var result = connection.Query<Clients>(query).ToList();
-            if (result.Count > 0) ProfilePic = result[0].ProfileImage;
+            if (result.Count > 0)
+            {
+                ProfilePic = result[0].ProfileImage;
+                Currency = result[0].Currency;
+            }
         }
 
         public async Task<int> TakePhoto()
@@ -255,7 +266,8 @@ namespace Xperimen.ViewModel.Commitment
                     HasAccNo = HasAccNo,
                     HasAttachment = HasAttachment,
                     AccountNo = AccountNo,
-                    Picture = null
+                    Picture = null,
+                    Currency = Currency
                 };
                 if (Picture != null) data.Picture = convert.GetImageBytes(Picture.GetStream());
                 connection.Insert(data);
@@ -387,7 +399,8 @@ namespace Xperimen.ViewModel.Commitment
                         HasAccNo = HasAccNo,
                         HasAttachment = HasAttachment,
                         AccountNo = AccountNo,
-                        Picture = null
+                        Picture = null,
+                        Currency = Currency
                     };
 
                     var convert = new StreamByteConverter();
@@ -399,7 +412,7 @@ namespace Xperimen.ViewModel.Commitment
                 {
                     var query = "UPDATE SelfCommitment SET Title = '" + title + "', Description = '" + Description + "', Amount = "
                     + Amount + ", IsDone = " + IsDone + ", HasAccNo = " + HasAccNo + ", HasAttachment = " + HasAttachment
-                    + ", AccountNo = " + AccountNo + ", Picture = NULL WHERE Id = '" + data + "'";
+                    + ", AccountNo = " + AccountNo + ", Picture = NULL, Currency = '" + Currency + "' WHERE Id = '" + data + "'";
                     connection.Query<SelfCommitment>(query);
                 }
                 return 1;

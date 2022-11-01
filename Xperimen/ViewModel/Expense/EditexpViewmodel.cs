@@ -21,6 +21,7 @@ namespace Xperimen.ViewModel.Expense
         string _expensedatetime;
         byte[] _picture;
         MediaFile _picturemedia;
+        string _currency;
         public double Amount
         {
             get { return _amount; }
@@ -56,6 +57,11 @@ namespace Xperimen.ViewModel.Expense
             get { return _picturemedia; }
             set { _picturemedia = value; OnPropertyChanged(); }
         }
+        public string Currency
+        {
+            get { return _currency; }
+            set { _currency = value; OnPropertyChanged(); }
+        }
         #endregion
 
         public SQLiteConnection connection;
@@ -72,6 +78,7 @@ namespace Xperimen.ViewModel.Expense
             ExpenseDateTime = string.Empty;
             Picture = null;
             PictureMedia = null;
+            Currency = string.Empty;
             SetupView();
         }
 
@@ -87,6 +94,7 @@ namespace Xperimen.ViewModel.Expense
                 ExpensesDt = result[0].ExpensesDt;
                 ExpenseDateTime = result[0].ExpenseDateTime;
                 Picture = result[0].Picture;
+                Currency = result[0].Currency;
             }
         }
 
@@ -171,7 +179,8 @@ namespace Xperimen.ViewModel.Expense
                     HasAttachment = HasAttachment,
                     ExpensesDt = ExpensesDt,
                     ExpenseDateTime = ExpenseDateTime,
-                    Picture = null
+                    Picture = null,
+                    Currency = Currency
                 };
 
                 if (PictureMedia != null)

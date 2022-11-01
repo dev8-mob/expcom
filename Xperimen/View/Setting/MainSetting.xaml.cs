@@ -38,7 +38,16 @@ namespace Xperimen.View.Setting
                 viewmodel.IsLoading = true;
                 SetDisplayAlert("Success", "Account and all the data successfully deleted.", "", "", "reset"); 
             });
-            MessagingCenter.Subscribe<CurrencyList>(this, "CurrencyUpdated", (sender) => { viewmodel.SetupData(); });
+            MessagingCenter.Subscribe<CurrencyList, string>(this, "CurrencyUpdated", (sender, arg) => 
+            {
+                lbl_currency.Text = arg;
+                var success = viewmodel.UpdateExpenseCurrency(arg);
+                if (success == 1)
+                {
+                    success = viewmodel.UpdateCommitmentCurrency(arg);
+                    if (success == 1) viewmodel.SetupData();
+                }
+            });
         }
 
         public void SetupView()
