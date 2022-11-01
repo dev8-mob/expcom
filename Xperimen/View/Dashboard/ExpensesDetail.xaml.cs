@@ -49,7 +49,7 @@ namespace Xperimen.View.Dashboard
             if (theme.Equals("dim"))
             { 
                 lbl_percentmore.TextColor = Color.Black; lbl_percentless.TextColor = Color.Black;
-                lbl_percentmorevalue.TextColor = Color.Black; lbl_percentlessvalue.TextColor = Color.Black;
+                //lbl_percentmorevalue.TextColor = Color.Black; lbl_percentlessvalue.TextColor = Color.Black;
             }
 
             if (viewmodel.DiffYtdToday > 0)

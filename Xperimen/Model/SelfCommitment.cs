@@ -9,6 +9,7 @@ namespace Xperimen.Model
         public string Userid { get; set; }
         public string Title { get; set; }
         public string Description { get; set; }
+        public string Currency { get; set; }
         public double Amount { get; set; }
         public bool IsDone { get; set; }
         public bool HasAccNo { get; set; }

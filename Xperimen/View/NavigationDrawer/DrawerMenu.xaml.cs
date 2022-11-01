@@ -17,7 +17,6 @@ namespace Xperimen.View.NavigationDrawer
     public partial class DrawerMenu : ContentPage
     {
         public DrawerViewmodel viewmodel;
-        public Clients user_login;
         public StreamByteConverter converter;
 
         public DrawerMenu()

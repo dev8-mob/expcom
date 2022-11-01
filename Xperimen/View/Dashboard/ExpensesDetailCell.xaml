@@ -11,8 +11,11 @@
         <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand" Spacing="0" Margin="0,0,10,0"
                      VerticalOptions="Center">
             <Label x:Name="lbl_id" Text="{Binding Id}" FontSize="Small" IsVisible="False"/>
-            <stylekit:XLabel x:Name="lbl_amount" Text="{Binding Amount, StringFormat='RM {0:0.00}'}" FontSize="16"
-                             FontFamily="{DynamicResource Key=BoldFont}"/>
+            <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Spacing="0">
+                <stylekit:XLabel Text="{Binding Currency}" FontSize="16" FontFamily="{DynamicResource Key=BoldFont}"/>
+                <stylekit:XLabel x:Name="lbl_amount" Text="{Binding Amount, StringFormat='{0:0.00}'}" FontSize="16"
+                                 FontFamily="{DynamicResource Key=BoldFont}" Margin="5,0,0,0"/>
+            </StackLayout>
             <stylekit:XLabel Text="{Binding Title}" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Start"/>
             <stylekit:XLabel Text="{Binding ExpensesDt, StringFormat='{0:h:mm tt}'}" FontFamily="{DynamicResource Key=ItalicFont}"/>
         </StackLayout>

@@ -1,5 +1,6 @@
 ﻿using Rg.Plugins.Popup.Extensions;
 using System;
+using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
@@ -36,6 +37,16 @@ namespace Xperimen.View.Setting
             {
                 viewmodel.IsLoading = true;
                 SetDisplayAlert("Success", "Account and all the data successfully deleted.", "", "", "reset"); 
+            });
+            MessagingCenter.Subscribe<CurrencyList, string>(this, "CurrencyUpdated", (sender, arg) => 
+            {
+                lbl_currency.Text = arg;
+                var success = viewmodel.UpdateExpenseCurrency(arg);
+                if (success == 1)
+                {
+                    success = viewmodel.UpdateCommitmentCurrency(arg);
+                    if (success == 1) viewmodel.SetupData();
+                }
             });
         }
 
@@ -175,6 +186,16 @@ namespace Xperimen.View.Setting
                 });
                 viewmodel.IsLoading = false;
             }
+            view.IsEnabled = true;
+        }
+
+        public async void CurrencyClicked(object sender, EventArgs e)
+        {
+            var view = (Frame)sender;
+            await view.ScaleTo(0.9, 100);
+            view.Scale = 1;
+            view.IsEnabled = false;
+            await Navigation.PushPopupAsync(new CurrencyList());
             view.IsEnabled = true;
         }
 

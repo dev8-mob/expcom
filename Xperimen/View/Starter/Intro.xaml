@@ -71,8 +71,8 @@
 
                     <!-- app version info -->
                     <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
-                    <Label Text="Version 1.0.0" HorizontalOptions="Center" VerticalOptions="End" FontSize="10" Margin="0,0,0,20"
-                           TextColor="White">
+                    <Label Text="Version -" HorizontalOptions="Center" VerticalOptions="End" FontSize="10" Margin="0,0,0,20"
+                           x:Name="lbl_version" TextColor="White">
                         <!--<Label.Text>
                             <MultiBinding StringFormat="{}{0} {1}">
                                 <Binding Path="Currency" />

@@ -76,7 +76,8 @@ namespace Xperimen.ViewModel.Starter
                         HaveUpdated = false,
                         Income = 0,
                         TotalCommitment = 0,
-                        NetIncome = 0
+                        NetIncome = 0,
+                        Currency = "MYR"
                     };
                     var camelcase = new CamelCaseChecker();
                     Username = Firstname.Trim().ToLower() + Lastname.Trim().ToLower();
@@ -87,6 +88,7 @@ namespace Xperimen.ViewModel.Starter
                     connection.Insert(data);
                     Application.Current.Properties["current_login"] = data.Id;
                     Application.Current.Properties["app_theme"] = data.AppTheme;
+                    Application.Current.Properties["firstmonth_isreset"] = "false";
                     await Application.Current.SavePropertiesAsync();
                     return 1;
                 }
@@ -126,7 +128,8 @@ namespace Xperimen.ViewModel.Starter
                     HaveUpdated = false,
                     Income = 0,
                     TotalCommitment = 0,
-                    NetIncome = 0
+                    NetIncome = 0,
+                    Currency = "MYR"
                 };
                 var camelcase = new CamelCaseChecker();
                 Username = Firstname.Trim().ToLower() + Lastname.Trim().ToLower();
@@ -137,6 +140,7 @@ namespace Xperimen.ViewModel.Starter
                 connection.Insert(data);
                 Application.Current.Properties["current_login"] = data.Id;
                 Application.Current.Properties["app_theme"] = data.AppTheme;
+                Application.Current.Properties["firstmonth_isreset"] = "false";
                 await Application.Current.SavePropertiesAsync();
                 return 1;
             }

@@ -34,6 +34,7 @@ namespace Xperimen.ViewModel.Expense
         double _percentageavailable;
         bool _hascommitmentdoneshowbadge;
         int _commitmentnotdone;
+        string _currency;
         public double Income
         {
             get { return _income; }
@@ -129,6 +130,11 @@ namespace Xperimen.ViewModel.Expense
             get { return _commitmentnotdone; }
             set { _commitmentnotdone = value; OnPropertyChanged(); }
         }
+        public string Currency
+        {
+            get { return _currency; }
+            set { _currency = value; OnPropertyChanged(); }
+        }
         #endregion
 
         public SQLiteConnection connection;
@@ -157,6 +163,16 @@ namespace Xperimen.ViewModel.Expense
             PercentageAvailable = 0;
             HasCommitmentDoneShowBadge = false;
             CommitmentNotDone = 0;
+            Currency = string.Empty;
+            SetupData();
+        }
+
+        public void SetupData()
+        {
+            var userid = Application.Current.Properties["current_login"] as string;
+            string query = "SELECT * FROM Clients WHERE Id = '" + userid + "'";
+            var result = connection.Query<Clients>(query).ToList();
+            if (result.Count > 0) Currency = result[0].Currency;
         }
 
         public async Task<int> TakePhoto()
@@ -223,9 +239,13 @@ namespace Xperimen.ViewModel.Expense
         {
             try
             {
-                var userid = string.Empty;
+                var userid = string.Empty; var curr = string.Empty;
                 if (Application.Current.Properties.ContainsKey("current_login"))
+                {
                     userid = Application.Current.Properties["current_login"] as string;
+                    var user = connection.Query<Clients>("SELECT * FROM Clients WHERE Id = '" + userid + "'").ToList();
+                    if (user.Count > 0) curr = user[0].Currency;
+                }
 
                 var camelcase = new CamelCaseChecker();
                 var title = camelcase.CapitalizeWord(Title);
@@ -250,7 +270,8 @@ namespace Xperimen.ViewModel.Expense
                     HasAttachment = HasAttachment,
                     ExpensesDt = modeldate,
                     ExpenseDateTime = modeldate.ToString("dd.MM.yyyy"),
-                    Picture = null
+                    Picture = null,
+                    Currency = curr
                 };
                 if (Picture != null) data.Picture = convert.GetImageBytes(Picture.GetStream());
                 connection.Insert(data);

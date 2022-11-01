@@ -9,7 +9,7 @@ namespace Xperimen
 {
     public partial class App : Application
     {
-        public static string AppVersion = "1.6";
+        public static string AppVersion = "1.7.3";
         public static string DB_PATH = string.Empty;
         public static string Primary = "#db5e0a";
         public static string PrimaryLight = "#f79655";

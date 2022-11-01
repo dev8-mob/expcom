@@ -33,7 +33,7 @@
                         </StackLayout>
                     </ScrollView>
 
-                    <!-- cancel button -->
+                    <!-- okay button -->
                     <stylekit:XLabel Text="Okay" HorizontalOptions="Center" FontFamily="{DynamicResource Key=BoldFont}" Margin="0,15,0,0"
                                      Padding="20,15,20,15">
                         <Label.GestureRecognizers>

@@ -7,6 +7,7 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using Xperimen.Model;
 using Xperimen.View.Commitment;
+using Xperimen.ViewModel.Dashboard;
 
 namespace Xperimen.View.NavigationDrawer
 {
@@ -46,6 +47,11 @@ namespace Xperimen.View.NavigationDrawer
                     GetCommitmentList();
             });
             MessagingCenter.Subscribe<Details>(this, "CommitmentDeleted", (sender) =>
+            {
+                if (lbl_title.Text.Equals("Commitment"))
+                    GetCommitmentList();
+            });
+            MessagingCenter.Subscribe<DashboardViewmodel>(this, "CommitmentReset", (sender) =>
             {
                 if (lbl_title.Text.Equals("Commitment"))
                     GetCommitmentList();
@@ -103,6 +109,7 @@ namespace Xperimen.View.NavigationDrawer
                     }
                     else frame_count.IsVisible = false;
                 }
+                else frame_count.IsVisible = false;
             }
             catch (Exception ex)
             {

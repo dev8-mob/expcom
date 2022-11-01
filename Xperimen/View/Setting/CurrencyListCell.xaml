@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<StackLayout xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Xperimen.View.Setting.CurrencyListCell"
+             xmlns:stylekit="clr-namespace:Xperimen.Stylekit"
+             Orientation="Vertical" HorizontalOptions="FillAndExpand">
+
+    <Grid HorizontalOptions="FillAndExpand">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Label x:Name="lbl_code" Text="{Binding Code}" FontSize="Small" IsVisible="False" Grid.Row="0" Grid.Column="0"/>
+        <Frame x:Name="frame_select" Padding="0" HasShadow="False" HorizontalOptions="FillAndExpand" CornerRadius="8" IsVisible="{Binding IsSelected}" 
+               Grid.Row="0" Grid.Column="0" BackgroundColor="{DynamicResource Key=PrimaryLight}" Margin="15,0,15,0"/>
+        <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Padding="30,0,30,0" 
+                     Grid.Row="0" Grid.Column="0">
+            <stylekit:XLabel Text="{Binding Name, StringFormat='{0} - '}" HorizontalOptions="Start" VerticalOptions="Center"
+                             Margin="0,10,0,10"/>
+            <stylekit:XLabel Text="{Binding Shortform}" HorizontalOptions="StartAndExpand" VerticalOptions="Center"
+                             Margin="0,10,0,10"/>
+            <stylekit:XImage x:Name="img_select" Source1="black_done.png" Source2="white_done.png" IsVisible="{Binding IsSelected}" 
+                             HeightRequest="20" WidthRequest="20" Aspect="AspectFit" HorizontalOptions="End" 
+                             VerticalOptions="Center"/>
+        </StackLayout>
+        <Grid.GestureRecognizers>
+            <TapGestureRecognizer Tapped="CellTapped"/>
+        </Grid.GestureRecognizers>
+    </Grid>
+
+</StackLayout>

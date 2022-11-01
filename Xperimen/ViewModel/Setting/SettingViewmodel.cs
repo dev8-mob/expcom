@@ -21,6 +21,7 @@ namespace Xperimen.ViewModel.Setting
         string _repassword;
         string _description;
         string _theme;
+        string _currency;
         byte[] _picture;
         bool _isediting;
         bool _isviewing;
@@ -60,6 +61,11 @@ namespace Xperimen.ViewModel.Setting
         {
             get { return _theme; }
             set { _theme = value; OnPropertyChanged(); }
+        }
+        public string Currency
+        {
+            get { return _currency; }
+            set { _currency = value; OnPropertyChanged(); }
         }
         public byte[] Picture
         {
@@ -117,6 +123,7 @@ namespace Xperimen.ViewModel.Setting
                 Description = result[0].Description;
                 Picture = result[0].ProfileImage;
                 Theme = result[0].AppTheme;
+                Currency = result[0].Currency;
             }
             GetCommitmentList();
         }
@@ -216,7 +223,8 @@ namespace Xperimen.ViewModel.Setting
                 HaveUpdated = true,
                 Income = 0,
                 TotalCommitment = 0,
-                NetIncome = 0
+                NetIncome = 0,
+                Currency = string.Empty
             };
 
             string getuser = "SELECT * FROM Clients WHERE Id = '" + userid + "'";
@@ -229,6 +237,7 @@ namespace Xperimen.ViewModel.Setting
                 model.Income = user[0].Income;
                 model.NetIncome = user[0].NetIncome;
                 model.TotalCommitment = user[0].TotalCommitment;
+                model.Currency = user[0].Currency;
             }
 
             string query = "SELECT * FROM Clients WHERE Id = '" + userid + "'";
@@ -316,6 +325,54 @@ namespace Xperimen.ViewModel.Setting
                 }
                 else HasCommitmentDoneShowBadge = false;
                 return 1;
+            }
+            catch (Exception ex)
+            {
+                var error = ex.Message;
+                var desc = ex.StackTrace;
+                return 2;
+            }
+        }
+
+        public int UpdateExpenseCurrency(string currency)
+        {
+            try
+            {
+                var allexpenses = connection.Table<Expenses>().ToList();
+                if (allexpenses.Count > 0)
+                {
+                    foreach (var data in allexpenses)
+                    {
+                        string query = "UPDATE Expenses SET Currency = '" + currency + "' WHERE Id = '" + data.Id + "'";
+                        connection.Query<Expenses>(query);
+                    }
+                    return 1;
+                }
+                else return 2;
+            }
+            catch (Exception ex)
+            {
+                var error = ex.Message;
+                var desc = ex.StackTrace;
+                return 2;
+            }
+        }
+
+        public int UpdateCommitmentCurrency(string currency)
+        {
+            try
+            {
+                var allcommit = connection.Table<SelfCommitment>().ToList();
+                if (allcommit.Count > 0)
+                {
+                    foreach (var data in allcommit)
+                    {
+                        string query = "UPDATE SelfCommitment SET Currency = '" + currency + "' WHERE Id = '" + data.Id + "'";
+                        connection.Query<SelfCommitment>(query);
+                    }
+                    return 1;
+                }
+                else return 2;
             }
             catch (Exception ex)
             {

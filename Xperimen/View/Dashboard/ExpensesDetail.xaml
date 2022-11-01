@@ -28,7 +28,8 @@
                                 <TapGestureRecognizer Tapped="BackTapped" NumberOfTapsRequired="1"/>
                             </Image.GestureRecognizers>
                         </stylekit:XImage>
-                        <stylekit:XLabel Text="Total  RM" HorizontalOptions="Fill" FontSize="18" VerticalOptions="Center"/>
+                        <stylekit:XLabel Text="Total " HorizontalOptions="Fill" FontSize="18" VerticalOptions="Center"/>
+                        <stylekit:XLabel Text="{Binding Currency}" HorizontalOptions="Fill" FontSize="18" VerticalOptions="Center" Margin="0,0,5,0"/>
                         <stylekit:XLabel Text="{Binding TodayTotalExpenses, StringFormat='{0:0.00}'}" HorizontalOptions="Fill" FontSize="20" 
                                          VerticalOptions="Center" FontFamily="{DynamicResource Key=BoldFont}"/>
                     </StackLayout>
@@ -45,9 +46,9 @@
                                              TextColor="{DynamicResource Key=CustomRed}" x:Name="lbl_percentmore"/>
                             <stylekit:XLabel Text=" than yesterday" HorizontalOptions="Center" VerticalOptions="Start" HorizontalTextAlignment="Center"/>
                         </StackLayout>
-                        <stylekit:XLabel Text="{Binding DiffYtdToday, StringFormat='more RM {0:0.00}'}" HorizontalOptions="CenterAndExpand" VerticalOptions="Start" 
+                        <!--<stylekit:XLabel Text="{Binding DiffYtdToday, StringFormat='more RM {0:0.00}'}" HorizontalOptions="CenterAndExpand" VerticalOptions="Start" 
                                          HorizontalTextAlignment="Center" FontFamily="{DynamicResource Key=ItalicFont}" x:Name="lbl_percentmorevalue"
-                                         TextColor="{DynamicResource Key=CustomRed}"/>
+                                         TextColor="{DynamicResource Key=CustomRed}"/>-->
                     </StackLayout>
                     <!-- expense less UI -->
                     <StackLayout x:Name="stack_less" Orientation="Vertical" HorizontalOptions="Center" Spacing="0" IsVisible="False">

@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xperimen.Model;
 
@@ -26,8 +27,11 @@ namespace Xperimen.ViewModel.Dashboard
         double _totalcommitment;
         bool _noexpenses;
         bool _hasexpenses;
+        bool _nototalexpenses;
+        bool _hastotalexpenses;
         int _expensescount;
         double _todayexpenses;
+        double _totalexpenses;
         bool _exptodayhasvalue;
         bool _exptodaynovalue;
         double _diffytdtoday;
@@ -35,6 +39,11 @@ namespace Xperimen.ViewModel.Dashboard
         bool _isnotsetincome;
         bool _ishaveincome;
         double _balanceavailable;
+        bool _hasbalanceavailable;
+        double _percentagecommitment;
+        double _percentageexpenses;
+        double _percentageavailable;
+        string _currency;
         public string Firstname
         {
             get { return _firstname; }
@@ -115,6 +124,16 @@ namespace Xperimen.ViewModel.Dashboard
             get { return _hasexpenses; }
             set { _hasexpenses = value; OnPropertyChanged(); }
         }
+        public bool NoTotalExpenses
+        {
+            get { return _nototalexpenses; }
+            set { _nototalexpenses = value; OnPropertyChanged(); }
+        }
+        public bool HasTotalExpenses
+        {
+            get { return _hastotalexpenses; }
+            set { _hastotalexpenses = value; OnPropertyChanged(); }
+        }
         public int ExpensesCount
         {
             get { return _expensescount; }
@@ -124,6 +143,11 @@ namespace Xperimen.ViewModel.Dashboard
         {
             get { return _todayexpenses; }
             set { _todayexpenses = value; OnPropertyChanged(); }
+        }
+        public double TotalExpenses
+        {
+            get { return _totalexpenses; }
+            set { _totalexpenses = value; OnPropertyChanged(); }
         }
         public bool ExpTodayHasValue
         {
@@ -160,6 +184,31 @@ namespace Xperimen.ViewModel.Dashboard
             get { return _balanceavailable; }
             set { _balanceavailable = value; OnPropertyChanged(); }
         }
+        public bool HasBalanceAvailable
+        {
+            get { return _hasbalanceavailable; }
+            set { _hasbalanceavailable = value; OnPropertyChanged(); }
+        }
+        public double PercentageCommitment
+        {
+            get { return _percentagecommitment; }
+            set { _percentagecommitment = value; OnPropertyChanged(); }
+        }
+        public double PercentageExpenses
+        {
+            get { return _percentageexpenses; }
+            set { _percentageexpenses = value; OnPropertyChanged(); }
+        }
+        public double PercentageAvailable
+        {
+            get { return _percentageavailable; }
+            set { _percentageavailable = value; OnPropertyChanged(); }
+        }
+        public string Currency
+        {
+            get { return _currency; }
+            set { _currency = value; OnPropertyChanged(); }
+        }
         #endregion
 
         public SQLiteConnection connection;
@@ -183,21 +232,29 @@ namespace Xperimen.ViewModel.Dashboard
             TotalCommitment = 0;
             NoExpenses = false;
             HasExpenses = false;
+            NoTotalExpenses = false;
+            HasTotalExpenses = false;
             ExpensesCount = 0;
             ExpTodayHasValue = false;
             ExpTodayNoValue = false;
             TodayTotalExpenses = 0;
+            TotalExpenses = 0;
             DiffYtdToday = 0;
             PercentageYtdToday = 0;
             IsNotSetIncome = false;
             IsHaveIncome = false;
             BalanceAvailable = 0;
+            HasBalanceAvailable = false;
             connection = new SQLiteConnection(App.DB_PATH);
             userid = string.Empty;
+            PercentageCommitment = 0;
+            PercentageExpenses = 0;
+            PercentageAvailable = 0;
+            Currency = string.Empty;
             SetupData();
         }
 
-        public void SetupData()
+        public async void SetupData()
         {
             if (Application.Current.Properties.ContainsKey("current_login"))
             {
@@ -211,9 +268,11 @@ namespace Xperimen.ViewModel.Dashboard
                     Picture = user[0].ProfileImage;
                 }
             }
-            ResetAllCommitment();
+            await ResetAllCommitment();
             SetupIncome();
+            GetExpensesList();
             GetCommitmentList();
+            CalculateAllPercentage();
             GetTodayExpenses();
             GetBalanceAvailable();
         }
@@ -222,10 +281,11 @@ namespace Xperimen.ViewModel.Dashboard
         {
             try
             {
-                Income = 0;
+                Income = 0; Currency = string.Empty;
                 string getuser = "SELECT * FROM Clients WHERE Id = '" + userid + "'";
                 var user = connection.Query<Clients>(getuser).ToList();
-                if (user.Count > 0) Income = user[0].Income;
+                if (user.Count > 0)
+                { Income = user[0].Income; Currency = user[0].Currency; }
 
                 if (Income == 0) { IsNotSetIncome = true; IsHaveIncome = false; }
                 else { IsNotSetIncome = false; IsHaveIncome = true; }
@@ -239,23 +299,39 @@ namespace Xperimen.ViewModel.Dashboard
             }
         }
 
-        public int ResetAllCommitment()
+        public async Task<int> ResetAllCommitment()
         {
             try
             {
+                var totalDays = DateTime.DaysInMonth(CurrentDt.Year, CurrentDt.Month);
+                if (CurrentDt.Day == totalDays)
+                {
+                    Application.Current.Properties["firstmonth_isreset"] = "false";
+                    await Application.Current.SavePropertiesAsync();
+                }
                 if (CurrentDt.Day == 1)
                 {
-                    var query = "SELECT * FROM SelfCommitment WHERE Userid = '" + userid + "'";
-                    var result = connection.Query<SelfCommitment>(query).ToList();
-                    if (result.Count > 0)
+                    var isreset = string.Empty;
+                    if (Application.Current.Properties.ContainsKey("firstmonth_isreset"))
+                        isreset = Application.Current.Properties["firstmonth_isreset"] as string;
+
+                    if (isreset.Equals("false"))
                     {
-                        var update = string.Empty;
-                        foreach (var data in result)
+                        var query = "SELECT * FROM SelfCommitment WHERE Userid = '" + userid + "'";
+                        var result = connection.Query<SelfCommitment>(query).ToList();
+                        if (result.Count > 0)
                         {
-                            update = "UPDATE SelfCommitment SET IsDone = FALSE WHERE Id = '" + data.Id + "'";
-                            connection.Query<SelfCommitment>(update);
+                            var update = string.Empty;
+                            foreach (var data in result)
+                            {
+                                update = "UPDATE SelfCommitment SET IsDone = FALSE WHERE Id = '" + data.Id + "'";
+                                connection.Query<SelfCommitment>(update);
+                            }
+                            result = connection.Query<SelfCommitment>(query).ToList();
                         }
-                        result = connection.Query<SelfCommitment>(query).ToList();
+                        MessagingCenter.Send(this, "CommitmentReset");
+                        Application.Current.Properties["firstmonth_isreset"] = "true";
+                        await Application.Current.SavePropertiesAsync();
                     }
                     return 1;
                 }
@@ -266,6 +342,30 @@ namespace Xperimen.ViewModel.Dashboard
                 var error = ex.Message;
                 var desc = ex.StackTrace;
                 return 3;
+            }
+        }
+
+        public int GetExpensesList()
+        {
+            try
+            {
+                TotalExpenses = 0; NoTotalExpenses = false; HasTotalExpenses = false;
+                string query = "SELECT * FROM Expenses WHERE Userid = '" + userid + "'";
+                var allexpenses = connection.Query<Expenses>(query).ToList();
+                if (allexpenses.Count > 0)
+                {
+                    NoTotalExpenses = false; HasTotalExpenses = true;
+                    foreach (var item in allexpenses)
+                        TotalExpenses += item.Amount;
+                }
+                else { NoTotalExpenses = true; HasTotalExpenses = false; }
+                return 1;
+            }
+            catch (Exception ex)
+            {
+                var error = ex.Message;
+                var desc = ex.StackTrace;
+                return 2;
             }
         }
 
@@ -308,6 +408,29 @@ namespace Xperimen.ViewModel.Dashboard
                 var desc = ex.StackTrace;
                 return 2;
             }
+        }
+
+        public void CalculateAllPercentage()
+        {
+            var balance = Income - TotalCommitment - TotalExpenses;
+            if (HasCommitment && NoTotalExpenses)
+            { 
+                PercentageExpenses = 0; 
+                PercentageCommitment = Math.Round(TotalCommitment / Income * 100, 3); 
+            }
+            if (HasCommitment && HasTotalExpenses)
+            {
+                PercentageExpenses = Math.Round(TotalExpenses / Income * 100, 3);
+                PercentageCommitment = Math.Round(TotalCommitment / Income * 100, 3);
+            }
+            if (NoCommitment && NoTotalExpenses) 
+            { PercentageExpenses = 0; PercentageCommitment = 0; PercentageAvailable = 0; }
+            if (NoCommitment && HasTotalExpenses)
+            {
+                PercentageExpenses = Math.Round(TotalExpenses / Income * 100, 3);
+                PercentageCommitment = 0;
+            }
+            PercentageAvailable = Math.Round(balance / Income * 100, 3);
         }
 
         public int SetCommitmentDonePaid(string data, bool status)
@@ -431,7 +554,11 @@ namespace Xperimen.ViewModel.Dashboard
         }
 
         public void GetBalanceAvailable()
-        { BalanceAvailable = Income - TotalCommitment; }
+        {
+            HasBalanceAvailable = false;
+            BalanceAvailable = Income - TotalCommitment - TotalExpenses;
+            if (BalanceAvailable != 0) HasBalanceAvailable = true;
+        }
 
         public int SaveNetBalance()
         {

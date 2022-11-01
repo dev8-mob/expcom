@@ -64,7 +64,7 @@
                 </Grid>
 
                 <!-- UI content -->
-                <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" RowSpacing="15" Margin="0,15,0,0">
+                <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" RowSpacing="0" Margin="0,15,0,0">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="0.6*"/>
@@ -103,14 +103,13 @@
                     <!-- #region EXPENSES -->
                     <!-- expenses column -->
                     <Frame HasShadow="False" Padding="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" IsClippedToBounds="True"
-                           Grid.Row="1" Grid.Column="0" CornerRadius="8" x:Name="frame_expense" Margin="0,15,0,0">
+                           Grid.Row="1" Grid.Column="0" CornerRadius="8" x:Name="frame_expense" Margin="0,30,0,0">
                         <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Spacing="0" 
                                      Padding="15,20,15,20">
 
                             <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand" VerticalOptions="Start" Spacing="0"
                                          Margin="0,0,0,15">
-                                <stylekit:XLabel Text="Expenses" HorizontalOptions="CenterAndExpand" FontFamily="{DynamicResource Key=BoldFont}"/>
-                                <stylekit:XLabel Text="for today" HorizontalOptions="CenterAndExpand" FontFamily="{DynamicResource Key=BoldFont}"/>
+                                <stylekit:XLabel Text="Expenses for today" HorizontalOptions="CenterAndExpand" FontFamily="{DynamicResource Key=BoldFont}"/>
                                 <StackLayout.GestureRecognizers>
                                     <TapGestureRecognizer Tapped="ExpensesColumnClicked"/>
                                 </StackLayout.GestureRecognizers>
@@ -136,8 +135,10 @@
                                                 <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Spacing="0">
                                                     <stylekit:XLabel Text="{Binding Title}" HorizontalOptions="FillAndExpand" MaxLines="1" Margin="0,5,0,5"
                                                                      LineBreakMode="TailTruncation"/>
-                                                    <stylekit:XLabel Text="{Binding Amount, StringFormat='RM {0:0.00}'}" HorizontalOptions="End" MaxLines="1" 
+                                                    <stylekit:XLabel Text="{Binding Currency, StringFormat='{0:0.00}'}" HorizontalOptions="End" MaxLines="1" 
                                                                      Margin="10,5,0,5" LineBreakMode="TailTruncation"/>
+                                                    <stylekit:XLabel Text="{Binding Amount, StringFormat='{0:0.00}'}" HorizontalOptions="End" MaxLines="1" 
+                                                                     Margin="5,5,0,5" LineBreakMode="TailTruncation"/>
                                                 </StackLayout>
                                                 <BoxView HorizontalOptions="FillAndExpand" HeightRequest="1" BackgroundColor="DarkGray"/>
                                             </StackLayout>
@@ -168,7 +169,7 @@
 
                     <!-- expenses badge number -->
                     <Frame Grid.Row="1" Grid.Column="0" Padding="0" HasShadow="False" IsClippedToBounds="True" HeightRequest="30"
-                           BackgroundColor="{DynamicResource Key=CustomRed}" WidthRequest="30" Margin="0,0,15,0"
+                           BackgroundColor="{DynamicResource Key=CustomRed}" WidthRequest="30" Margin="0,15,15,0"
                            HorizontalOptions="End" VerticalOptions="Start" IsVisible="{Binding HasExpenses}">
                         <Frame.CornerRadius>
                             <OnPlatform x:TypeArguments="x:Single">
@@ -186,51 +187,63 @@
 
                     <!-- not set income yet -->
                     <Frame HasShadow="False" Padding="15,10,15,10" HorizontalOptions="FillAndExpand" VerticalOptions="Start" IsClippedToBounds="True"
-                           Grid.Row="2" Grid.Column="0" CornerRadius="8" x:Name="frame_noincome" IsVisible="{Binding IsNotSetIncome}">
+                           Grid.Row="2" Grid.Column="0" CornerRadius="8" x:Name="frame_noincome" IsVisible="{Binding IsNotSetIncome}" Margin="0,15,0,0">
                         <stylekit:XLabel Text="You do not set any income yet. Please set your income, click top right button" VerticalOptions="Start" 
                                          HorizontalOptions="Center" FontFamily="{DynamicResource Key=BoldFont}" HorizontalTextAlignment="Center" />
                     </Frame>
 
                     <!-- account summary -->
-                    <Frame HasShadow="False" Padding="15,10,15,10" HorizontalOptions="Center" VerticalOptions="Start" IsClippedToBounds="True"
-                           Grid.Row="2" Grid.Column="0" CornerRadius="8" x:Name="frame_income" IsVisible="{Binding IsHaveIncome}">
-                        <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Spacing="15" IsVisible="{Binding IsHaveIncome}">
-                            
-                            <!-- column income & commitment -->
-                            <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand" Spacing="0">
-                                <!-- row income -->
-                                <StackLayout Orientation="Vertical" HorizontalOptions="End" Spacing="0" IsVisible="{Binding IsHaveIncome}">
-                                    <stylekit:XLabel Text="Income" HorizontalOptions="End"/>
-                                    <StackLayout Orientation="Horizontal" Spacing="0" HorizontalOptions="End">
-                                        <stylekit:XLabel Text="RM " HorizontalOptions="End" VerticalOptions="End"/>
-                                        <stylekit:XLabel Text="{Binding Income, StringFormat='{0:0.00}'}" HorizontalOptions="Start" FontSize="18"
-                                                         FontFamily="{DynamicResource Key=BoldFont}"/>
-                                    </StackLayout>
+                    <Frame HorizontalOptions="FillAndExpand" HasShadow="False" Padding="15,10,15,10" Grid.Row="2" Grid.Column="0" IsVisible="{Binding IsHaveIncome}"
+                           x:Name="frame_summary" VerticalOptions="Start" IsClippedToBounds="True" CornerRadius="8" Margin="0,15,0,0">
+                        <Grid HorizontalOptions="FillAndExpand" RowSpacing="5">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <!-- progress bar -->
+                            <Frame HasShadow="False" HorizontalOptions="FillAndExpand" Padding="0" Grid.Row="0" Grid.Column="0" BorderColor="DarkGray" 
+                                   HeightRequest="20" CornerRadius="20" IsClippedToBounds="True" x:Name="frame_progressbar" Margin="0,5,0,0">
+                                <Frame.CornerRadius>
+                                    <OnPlatform x:TypeArguments="x:Single">
+                                        <On Platform="iOS">10</On>
+                                        <On Platform="Android">20</On>
+                                    </OnPlatform>
+                                </Frame.CornerRadius>
+                            </Frame>
+                            <!-- income, commitment, expenses info -->
+                            <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand" Spacing="0" Grid.Row="1" Grid.Column="0">
+                                <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Spacing="0" IsVisible="{Binding HasCommitment}">
+                                    <stylekit:XLabel Text="Commitment" FontFamily="{DynamicResource Key=BoldFont}" HorizontalOptions="StartAndExpand"
+                                                     TextColor="{DynamicResource CustomRed}"/>
+                                    <stylekit:XLabel Text="{Binding PercentageCommitment, StringFormat='{0:0.00}%'}" HorizontalOptions="End"/>
                                 </StackLayout>
-                                <!-- row commitment -->
-                                <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand" Spacing="0" IsVisible="{Binding HasCommitment}">
-                                    <BoxView HeightRequest="1" HorizontalOptions="FillAndExpand" BackgroundColor="DarkGray" Margin="0,5,0,5"/>
-                                    <stylekit:XLabel Text="Commitment" HorizontalOptions="End"/>
-                                    <StackLayout Orientation="Horizontal" Spacing="0" HorizontalOptions="End">
-                                        <stylekit:XLabel Text="RM " HorizontalOptions="End" VerticalOptions="End"/>
-                                        <stylekit:XLabel Text="{Binding TotalCommitment, StringFormat='{0:0.00}'}" HorizontalOptions="Start" 
-                                                         FontSize="18" FontFamily="{DynamicResource Key=BoldFont}"/>
-                                    </StackLayout>
+                                <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Spacing="0" IsVisible="{Binding HasTotalExpenses}">
+                                    <stylekit:XLabel Text="Expenses" FontFamily="{DynamicResource Key=BoldFont}" HorizontalOptions="StartAndExpand"
+                                                     TextColor="{DynamicResource CustomGreen}"/>
+                                    <stylekit:XLabel Text="{Binding PercentageExpenses, StringFormat='{0:0.00}%'}" HorizontalOptions="End"/>
+                                </StackLayout>
+                                <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Spacing="0" IsVisible="{Binding HasBalanceAvailable}">
+                                    <stylekit:XLabel Text="Available" FontFamily="{DynamicResource Key=BoldFont}" HorizontalOptions="StartAndExpand"
+                                                     TextColor="{DynamicResource Primary}"/>
+                                    <stylekit:XLabel Text="{Binding PercentageAvailable, StringFormat='{0:0.00}%'}" HorizontalOptions="End"/>
                                 </StackLayout>
                             </StackLayout>
-                            
-                            <!-- column balance -->
-                            <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand" Spacing="0" IsVisible="{Binding HasCommitment}"
-                                         VerticalOptions="Center">
-                                <stylekit:XLabel Text="Balance Available" HorizontalOptions="Start"/>
-                                <StackLayout Orientation="Horizontal" Spacing="0" HorizontalOptions="Start">
-                                    <stylekit:XLabel Text="RM " HorizontalOptions="End" VerticalOptions="End"/>
-                                    <stylekit:XLabel Text="{Binding BalanceAvailable, StringFormat='{0:0.00}'}" HorizontalOptions="Start" FontSize="20"
-                                                     FontFamily="{DynamicResource Key=BoldFont}"/>
-                                </StackLayout>
-                                
-                            </StackLayout>
-                        </StackLayout>
+                        </Grid>
+                    </Frame>
+                    <!-- more info button -->
+                    <Frame Grid.Row="2" Grid.Column="0" Padding="0" HasShadow="False" IsClippedToBounds="True" HeightRequest="30" IsVisible="{Binding IsHaveIncome}"
+                           BackgroundColor="{DynamicResource Key=CustomRed}" WidthRequest="30" Margin="0,8,0,0"
+                           HorizontalOptions="Center" VerticalOptions="Start">
+                        <Frame.CornerRadius>
+                            <OnPlatform x:TypeArguments="x:Single">
+                                <On Platform="iOS">15</On>
+                                <On Platform="Android">30</On>
+                            </OnPlatform>
+                        </Frame.CornerRadius>
+                        <Label Text="!" TextColor="White" FontFamily="{DynamicResource Key=BoldFont}" HorizontalOptions="Center" VerticalOptions="Center"/>
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="MoreInfoClicked" NumberOfTapsRequired="1"/>
+                        </Frame.GestureRecognizers>
                     </Frame>
 
                 </Grid>

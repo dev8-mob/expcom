@@ -29,15 +29,15 @@ namespace Xperimen.View.Dashboard
             MessagingCenter.Subscribe<CustomDisplayAlert, string>(this, "DisplayAlertSelection", (sender, arg) =>
             { viewmodel.IsLoading = false; });
             MessagingCenter.Subscribe<Commitment.AddRecord>(this, "CommitmentAdded", (sender) => 
-            { viewmodel.SetupData(); });
+            { viewmodel.SetupData(); BuildProgressbarUI(); });
             MessagingCenter.Subscribe<AddExpenses, string>(this, "ExpensesAdded", (sender, arg) =>
-            { viewmodel.SetupData(); });
+            { viewmodel.SetupData(); BuildProgressbarUI(); });
             MessagingCenter.Subscribe<DashboardViewmodel>(this, "ExpensesDeleted", (sender) =>
-            { viewmodel.SetupData(); });
+            { viewmodel.SetupData(); BuildProgressbarUI(); });
             MessagingCenter.Subscribe<DashboardViewmodel>(this, "CommitmentSetDone", (sender) =>
-            { viewmodel.SetupData(); });
+            { viewmodel.SetupData(); BuildProgressbarUI(); });
             MessagingCenter.Subscribe<AddIncome>(this, "IncomeUpdated", (sender) =>
-            { viewmodel.SetupData(); });
+            { viewmodel.SetupData(); BuildProgressbarUI(); });
             #endregion
         }
 
@@ -51,21 +51,21 @@ namespace Xperimen.View.Dashboard
                     img_profile.BackgroundColor = Color.FromHex(App.CharcoalBlack);
                     frame_expense.BackgroundColor = Color.FromHex(App.CharcoalBlack);
                     frame_noincome.BackgroundColor = Color.FromHex(App.CharcoalBlack);
-                    frame_income.BackgroundColor = Color.FromHex(App.CharcoalBlack);
+                    frame_summary.BackgroundColor = Color.FromHex(App.CharcoalBlack);
                 }
                 if (theme.Equals("dim"))
                 {
                     img_profile.BackgroundColor = Color.FromHex(App.CharcoalGray);
                     frame_expense.BackgroundColor = Color.FromHex(App.CharcoalGray);
                     frame_noincome.BackgroundColor = Color.FromHex(App.CharcoalGray);
-                    frame_income.BackgroundColor = Color.FromHex(App.CharcoalGray);
+                    frame_summary.BackgroundColor = Color.FromHex(App.CharcoalGray);
                 }
                 if (theme.Equals("light"))
                 {
                     img_profile.BackgroundColor = Color.FromHex(App.DimGray2);
                     frame_expense.BackgroundColor = Color.FromHex(App.DimGray2);
                     frame_noincome.BackgroundColor = Color.FromHex(App.DimGray2);
-                    frame_income.BackgroundColor = Color.FromHex(App.DimGray2);
+                    frame_summary.BackgroundColor = Color.FromHex(App.DimGray2);
                 }
             }
             else
@@ -73,7 +73,7 @@ namespace Xperimen.View.Dashboard
                 img_profile.BackgroundColor = Color.FromHex(App.DimGray2);
                 frame_expense.BackgroundColor = Color.FromHex(App.DimGray2);
                 frame_noincome.BackgroundColor = Color.FromHex(App.DimGray2);
-                frame_income.BackgroundColor = Color.FromHex(App.DimGray2);
+                frame_summary.BackgroundColor = Color.FromHex(App.DimGray2);
             }
 
             if (viewmodel.Picture != null)
@@ -95,6 +95,79 @@ namespace Xperimen.View.Dashboard
                     safeInsets.Top = -20;
                     Padding = safeInsets;
                 }
+            }
+            BuildProgressbarUI();
+        }
+
+        public void BuildProgressbarUI()
+        {
+            try // for error: auto-logout to login screen
+            {
+                var expsize = Math.Round(viewmodel.PercentageExpenses, 2);
+                var commitsize = Math.Round(viewmodel.PercentageCommitment, 2);
+                var availsize = Math.Round(viewmodel.PercentageAvailable, 2);
+                if (commitsize != 0 || availsize != 0 || expsize != 0)
+                {
+                    var colexp = new ColumnDefinition();
+                    var colcommit = new ColumnDefinition();
+                    var colavail = new ColumnDefinition();
+                    if (expsize >= 100)
+                    {
+                        colexp = new ColumnDefinition() { Width = new GridLength(1, GridUnitType.Star) };
+                        colcommit = new ColumnDefinition() { Width = new GridLength(0, GridUnitType.Star) };
+                        colavail = new ColumnDefinition() { Width = new GridLength(0, GridUnitType.Star) };
+                    }
+                    else if (commitsize >= 100)
+                    {
+                        colexp = new ColumnDefinition() { Width = new GridLength(0, GridUnitType.Star) };
+                        colcommit = new ColumnDefinition() { Width = new GridLength(1, GridUnitType.Star) };
+                        colavail = new ColumnDefinition() { Width = new GridLength(0, GridUnitType.Star) };
+                    }
+                    else if (availsize >= 100)
+                    {
+                        colexp = new ColumnDefinition() { Width = new GridLength(0, GridUnitType.Star) };
+                        colcommit = new ColumnDefinition() { Width = new GridLength(0, GridUnitType.Star) };
+                        colavail = new ColumnDefinition() { Width = new GridLength(1, GridUnitType.Star) };
+                    }
+                    else if (expsize <= 100 || commitsize <= 100 || availsize <= 100)
+                    {
+                        colexp = new ColumnDefinition() { Width = new GridLength(Math.Round(expsize / 100, 2), GridUnitType.Star) };
+                        colcommit = new ColumnDefinition() { Width = new GridLength(Math.Round(commitsize / 100, 2), GridUnitType.Star) };
+                        colavail = new ColumnDefinition() { Width = new GridLength(Math.Round(availsize / 100, 2), GridUnitType.Star) };
+                    }
+
+                    var grid = new Grid { ColumnSpacing = 0 };
+                    grid.ColumnDefinitions.Add(colcommit);
+                    grid.ColumnDefinitions.Add(colexp);
+                    grid.ColumnDefinitions.Add(colavail);
+                    var stackused = new StackLayout
+                    {
+                        BackgroundColor = Color.FromHex(App.CustomRedLight),
+                        VerticalOptions = LayoutOptions.FillAndExpand,
+                        HorizontalOptions = LayoutOptions.FillAndExpand
+                    };
+                    var stackexp = new StackLayout
+                    {
+                        BackgroundColor = Color.FromHex(App.CustomGreenLight),
+                        VerticalOptions = LayoutOptions.FillAndExpand,
+                        HorizontalOptions = LayoutOptions.FillAndExpand
+                    };
+                    var stackavail = new StackLayout
+                    {
+                        BackgroundColor = Color.FromHex(App.PrimaryLight),
+                        VerticalOptions = LayoutOptions.FillAndExpand,
+                        HorizontalOptions = LayoutOptions.FillAndExpand
+                    };
+                    grid.Children.Add(stackused, 0, 0);
+                    grid.Children.Add(stackexp, 1, 0);
+                    grid.Children.Add(stackavail, 2, 0);
+                    frame_progressbar.Content = grid;
+                }
+            }
+            catch (Exception ex)
+            {
+                var error = ex.Message;
+                var desc = ex.StackTrace;
             }
         }
 
@@ -197,6 +270,21 @@ namespace Xperimen.View.Dashboard
             view.IsEnabled = false;
             var drawer = (DrawerMaster)view.Parent.Parent.Parent.Parent.Parent.Parent;
             drawer.IsPresented = true;
+            view.IsEnabled = true;
+        }
+
+        public async void MoreInfoClicked(object sender, EventArgs e)
+        {
+            var view = (Frame)sender;
+            await view.ScaleTo(0.9, 250);
+            view.Scale = 1;
+            view.IsEnabled = false;
+            viewmodel.IsLoading = true;
+            var build = "Income : " + viewmodel.Currency + " " + string.Format("{0:0.00}", viewmodel.Income) 
+                + "\r\nTotal Commitment : " + viewmodel.Currency + " " + string.Format("{0:0.00}", viewmodel.TotalCommitment)
+                + "\r\nTotal Expenses : " + viewmodel.Currency + " " + string.Format("{0:0.00}", viewmodel.TotalExpenses);
+            var avail = "Available : " + viewmodel.Currency + " " + string.Format("{0:0.00}", viewmodel.BalanceAvailable);
+            SetDisplayAlert("Summary", build, avail, "", "");
             view.IsEnabled = true;
         }
 

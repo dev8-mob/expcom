@@ -68,10 +68,22 @@
                         <!-- information view -->
                         <viewcell:SettingInfo x:Name="view_setting" Grid.Row="0" Grid.Column="0" IsVisible="{Binding IsViewing}"/>
 
-                        <!-- apps theme -->
+                        <!-- apps theme, currency -->
                         <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand" Spacing="0" Margin="0,30,0,0"
                                      Grid.Row="1" Grid.Column="0" IsVisible="{Binding IsViewing}">
-                            <stylekit:XLabel Text="Application Theme" HorizontalOptions="Start"/>
+                            <!-- currency -->
+                            <stylekit:XLabel Text="Currency" HorizontalOptions="Start"/>
+                            <stylekit:XFrameButton Padding="0,5,0,5" Margin="0,5,0,0">
+                                <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" Spacing="0" BackgroundColor="Transparent">
+                                    <stylekit:XImage Source1="black_money.png" Source2="white_money.png" HeightRequest="25" WidthRequest="25" Aspect="AspectFit"
+                                                     HorizontalOptions="End"/>
+                                    <stylekit:XLabel x:Name="lbl_currency" Text="{Binding Currency}" HorizontalOptions="Center" VerticalOptions="Center" Margin="5,0,0,0"/>
+                                </StackLayout>
+                                <Frame.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="CurrencyClicked" NumberOfTapsRequired="1"/>
+                                </Frame.GestureRecognizers>
+                            </stylekit:XFrameButton>
+                            <stylekit:XLabel Text="Application Theme" HorizontalOptions="Start" Margin="0,15,0,0"/>
                             <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal" Margin="0,5,0,0" Spacing="5">
                                 <!-- dark theme -->
                                 <stylekit:XFrameButton Padding="0,5,0,5">
