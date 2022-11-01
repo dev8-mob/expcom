@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xperimen.Model;
 
@@ -246,7 +247,7 @@ namespace Xperimen.ViewModel.Dashboard
             SetupData();
         }
 
-        public void SetupData()
+        public async void SetupData()
         {
             if (Application.Current.Properties.ContainsKey("current_login"))
             {
@@ -260,7 +261,7 @@ namespace Xperimen.ViewModel.Dashboard
                     Picture = user[0].ProfileImage;
                 }
             }
-            ResetAllCommitment();
+            await ResetAllCommitment();
             SetupIncome();
             GetExpensesList();
             GetCommitmentList();
@@ -290,23 +291,39 @@ namespace Xperimen.ViewModel.Dashboard
             }
         }
 
-        public int ResetAllCommitment()
+        public async Task<int> ResetAllCommitment()
         {
             try
             {
+                var totalDays = DateTime.DaysInMonth(CurrentDt.Year, CurrentDt.Month);
+                if (CurrentDt.Day == totalDays)
+                {
+                    Application.Current.Properties["firstmonth_isreset"] = "false";
+                    await Application.Current.SavePropertiesAsync();
+                }
                 if (CurrentDt.Day == 1)
                 {
-                    var query = "SELECT * FROM SelfCommitment WHERE Userid = '" + userid + "'";
-                    var result = connection.Query<SelfCommitment>(query).ToList();
-                    if (result.Count > 0)
+                    var isreset = string.Empty;
+                    if (Application.Current.Properties.ContainsKey("firstmonth_isreset"))
+                        isreset = Application.Current.Properties["firstmonth_isreset"] as string;
+
+                    if (isreset.Equals("false"))
                     {
-                        var update = string.Empty;
-                        foreach (var data in result)
+                        var query = "SELECT * FROM SelfCommitment WHERE Userid = '" + userid + "'";
+                        var result = connection.Query<SelfCommitment>(query).ToList();
+                        if (result.Count > 0)
                         {
-                            update = "UPDATE SelfCommitment SET IsDone = FALSE WHERE Id = '" + data.Id + "'";
-                            connection.Query<SelfCommitment>(update);
+                            var update = string.Empty;
+                            foreach (var data in result)
+                            {
+                                update = "UPDATE SelfCommitment SET IsDone = FALSE WHERE Id = '" + data.Id + "'";
+                                connection.Query<SelfCommitment>(update);
+                            }
+                            result = connection.Query<SelfCommitment>(query).ToList();
                         }
-                        result = connection.Query<SelfCommitment>(query).ToList();
+                        MessagingCenter.Send(this, "CommitmentReset");
+                        Application.Current.Properties["firstmonth_isreset"] = "true";
+                        await Application.Current.SavePropertiesAsync();
                     }
                     return 1;
                 }

@@ -1,5 +1,6 @@
 ﻿using Rg.Plugins.Popup.Extensions;
 using System;
+using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
@@ -37,6 +38,7 @@ namespace Xperimen.View.Setting
                 viewmodel.IsLoading = true;
                 SetDisplayAlert("Success", "Account and all the data successfully deleted.", "", "", "reset"); 
             });
+            MessagingCenter.Subscribe<CurrencyList>(this, "CurrencyUpdated", (sender) => { viewmodel.SetupData(); });
         }
 
         public void SetupView()

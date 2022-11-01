@@ -162,7 +162,8 @@ namespace Xperimen.ViewModel.Commitment
             Balance = 0;
             NotYetPaid = 0;
             CurrentDt = DateTime.Now;
-            UpcomingDt = DateTime.Now.AddMonths(1);
+            if (DateTime.Now.Month == 12) UpcomingDt = new DateTime(DateTime.Now.Year + 1, 1, 1);
+            else UpcomingDt = DateTime.Now.AddMonths(1);
             AllCommitmentDone = false;
             AllCommitmentNotDone = true;
 

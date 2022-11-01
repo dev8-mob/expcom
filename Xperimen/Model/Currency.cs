@@ -6,5 +6,6 @@ namespace Xperimen.Model
         public string Code { get; set; }
         public string Name { get; set; }
         public string Shortform { get; set; }
+        public bool IsSelected { get; set; }
     }
 }

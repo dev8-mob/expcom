@@ -163,7 +163,7 @@
                             <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" Spacing="0" VerticalOptions="Start" Margin="0,30,0,0">
                                 <stylekit:XLabel Text="Upcoming commitment is" HorizontalOptions="Center" VerticalOptions="End" Margin="0,0,5,0"/>
                                 <stylekit:XLabel Text="{Binding UpcomingDt, StringFormat='({0:MMM yyyy})'}" HorizontalOptions="Center" 
-                                                     VerticalOptions="End" FontFamily="{DynamicResource Key=BoldFont}"/>
+                                                 VerticalOptions="End" FontFamily="{DynamicResource Key=BoldFont}"/>
                             </StackLayout>
                         </StackLayout>
 

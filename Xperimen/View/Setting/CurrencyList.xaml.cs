@@ -1,6 +1,7 @@
 ﻿using Rg.Plugins.Popup.Extensions;
 using Rg.Plugins.Popup.Pages;
 using System;
+using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using Xperimen.ViewModel.Setting;
@@ -25,6 +26,19 @@ namespace Xperimen.View.Setting
                 if (theme.Equals("dim")) stack_bg.BackgroundColor = Color.FromHex(App.CharcoalGray);
                 if (theme.Equals("light")) stack_bg.BackgroundColor = Color.FromHex(App.DimGray2);
             }
+
+            MessagingCenter.Subscribe<CurrencyListCell, string>(this, "CurrencySelected", async (sender, arg) =>
+            {
+                viewmodel.Currency = arg;
+                var success = viewmodel.UpdateCurrency();
+                if (success == 1)
+                {
+                    await Task.Delay(300);
+                    MessagingCenter.Send(this, "CurrencyUpdated");
+                    var navigation = Application.Current.MainPage.Navigation;
+                    await navigation.PopPopupAsync();
+                }
+            });
         }
 
         public async void CancelClicked(object sender, EventArgs e)

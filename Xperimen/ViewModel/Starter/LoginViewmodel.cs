@@ -67,6 +67,7 @@ namespace Xperimen.ViewModel
                 {
                     Application.Current.Properties["current_login"] = result[0].Id;
                     Application.Current.Properties["app_theme"] = result[0].AppTheme;
+                    Application.Current.Properties["firstmonth_isreset"] = "false";
                     await Application.Current.SavePropertiesAsync();
 
                     try { MessagingCenter.Send(this, "AppThemeUpdated"); }
