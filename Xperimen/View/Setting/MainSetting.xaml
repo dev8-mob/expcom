@@ -4,8 +4,15 @@
              x:Class="Xperimen.View.Setting.MainSetting"
              xmlns:stylekit="clr-namespace:Xperimen.Stylekit"
              xmlns:viewcell="clr-namespace:Xperimen.View.Setting"
+             xmlns:helper="clr-namespace:Xperimen.Helper"
              NavigationPage.HasNavigationBar="False">
-    
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <helper:CurrencyConverter x:Key="CurrencyConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
     <ContentPage.Content>
 
         <AbsoluteLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="Transparent">
@@ -77,7 +84,8 @@
                                 <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" Spacing="0" BackgroundColor="Transparent">
                                     <stylekit:XImage Source1="black_money.png" Source2="white_money.png" HeightRequest="25" WidthRequest="25" Aspect="AspectFit"
                                                      HorizontalOptions="End"/>
-                                    <stylekit:XLabel x:Name="lbl_currency" Text="{Binding Currency}" HorizontalOptions="Center" VerticalOptions="Center" Margin="5,0,0,0"/>
+                                    <stylekit:XLabel x:Name="lbl_currency" Text="{Binding Currency, Converter={StaticResource CurrencyConverter}}" 
+                                                     HorizontalOptions="Center" VerticalOptions="Center" Margin="5,0,0,0"/>
                                 </StackLayout>
                                 <Frame.GestureRecognizers>
                                     <TapGestureRecognizer Tapped="CurrencyClicked" NumberOfTapsRequired="1"/>

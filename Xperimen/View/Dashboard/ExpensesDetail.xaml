@@ -28,7 +28,7 @@
                                 <TapGestureRecognizer Tapped="BackTapped" NumberOfTapsRequired="1"/>
                             </Image.GestureRecognizers>
                         </stylekit:XImage>
-                        <stylekit:XLabel Text="Total " HorizontalOptions="Fill" FontSize="18" VerticalOptions="Center"/>
+                        <stylekit:XLabel Text="Total   " HorizontalOptions="Fill" FontSize="18" VerticalOptions="Center"/>
                         <stylekit:XLabel Text="{Binding Currency}" HorizontalOptions="Fill" FontSize="18" VerticalOptions="Center" Margin="0,0,5,0"/>
                         <stylekit:XLabel Text="{Binding TodayTotalExpenses, StringFormat='{0:0.00}'}" HorizontalOptions="Fill" FontSize="20" 
                                          VerticalOptions="Center" FontFamily="{DynamicResource Key=BoldFont}"/>

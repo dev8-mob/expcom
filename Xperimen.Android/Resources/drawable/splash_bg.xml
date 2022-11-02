@@ -2,6 +2,6 @@
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
 	<item android:drawable="@drawable/splash_gradient"/>
 	<item>
-		<bitmap android:src="@drawable/black_logo" android:tileMode="disabled" android:gravity="center"/>
+		<bitmap android:src="@drawable/app_logo" android:tileMode="disabled" android:gravity="center"/>
 	</item>
 </layer-list>

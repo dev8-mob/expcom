@@ -77,7 +77,7 @@ namespace Xperimen.ViewModel.Starter
                         Income = 0,
                         TotalCommitment = 0,
                         NetIncome = 0,
-                        Currency = "MYR"
+                        Currency = "RM"
                     };
                     var camelcase = new CamelCaseChecker();
                     Username = Firstname.Trim().ToLower() + Lastname.Trim().ToLower();
@@ -129,7 +129,7 @@ namespace Xperimen.ViewModel.Starter
                     Income = 0,
                     TotalCommitment = 0,
                     NetIncome = 0,
-                    Currency = "MYR"
+                    Currency = "RM"
                 };
                 var camelcase = new CamelCaseChecker();
                 Username = Firstname.Trim().ToLower() + Lastname.Trim().ToLower();

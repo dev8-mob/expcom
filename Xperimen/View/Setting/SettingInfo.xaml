@@ -15,7 +15,7 @@
 
                 <!-- profile info -->
                 <Frame x:Name="frame_profile" HorizontalOptions="Fill" VerticalOptions="Center" BorderColor="DarkGray" 
-                       HasShadow="False" Padding="0" CornerRadius="20" IsClippedToBounds="True">
+                       HasShadow="False" Padding="0" CornerRadius="20" IsClippedToBounds="True" BackgroundColor="Transparent">
                     <stylekit:XImage x:Name="img_profile" Aspect="AspectFill" HeightRequest="70" WidthRequest="70"
                                      Source1="black_logo.png" Source2="white_logo.png"/>
                     <Frame.GestureRecognizers>
