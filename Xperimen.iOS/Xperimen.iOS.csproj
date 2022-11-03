@@ -209,13 +209,13 @@
     <ImageAsset Include="Assets.xcassets\black_invisible.imageset\outline_visibility_off_black_36pt_3x.png">
       <Visible>false</Visible>
     </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\black_logo.imageset\black_logo@1x.png">
+    <ImageAsset Include="Assets.xcassets\black_logo.imageset\white_logo@1x.png">
       <Visible>false</Visible>
     </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\black_logo.imageset\black_logo@2x.png">
+    <ImageAsset Include="Assets.xcassets\black_logo.imageset\white_logo@2x.png">
       <Visible>false</Visible>
     </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\black_logo.imageset\black_logo@3x.png">
+    <ImageAsset Include="Assets.xcassets\black_logo.imageset\white_logo@3x.png">
       <Visible>false</Visible>
     </ImageAsset>
     <ImageAsset Include="Assets.xcassets\black_logout.imageset\baseline_logout_black_48pt_1x.png">
@@ -915,6 +915,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\black_logo.png" />
+    <BundleResource Include="Resources\app_logo.png" />
   </ItemGroup>
 </Project>

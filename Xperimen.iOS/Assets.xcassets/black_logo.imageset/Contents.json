@@ -4,19 +4,19 @@
       "appearances": [],
       "scale": "1x",
       "idiom": "iphone",
-      "filename": "black_logo@1x.png"
+      "filename": "white_logo@1x.png"
     },
     {
       "appearances": [],
       "scale": "2x",
       "idiom": "iphone",
-      "filename": "black_logo@2x.png"
+      "filename": "white_logo@2x.png"
     },
     {
       "appearances": [],
       "scale": "3x",
       "idiom": "iphone",
-      "filename": "black_logo@3x.png"
+      "filename": "white_logo@3x.png"
     }
   ],
   "properties": {},
