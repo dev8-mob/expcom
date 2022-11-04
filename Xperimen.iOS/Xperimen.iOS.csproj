@@ -68,7 +68,7 @@
     <CodesignKey>Apple Distribution: App Lab Sdn Bhd (W85M8AA6SJ)</CodesignKey>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
     <BuildIpa>true</BuildIpa>
-    <MtouchLink>None</MtouchLink>
+    <MtouchLink>SdkOnly</MtouchLink>
     <OptimizePNGs>true</OptimizePNGs>
     <CodesignProvision>Expcom Distribution AppStore</CodesignProvision>
   </PropertyGroup>
