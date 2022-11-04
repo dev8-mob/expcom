@@ -16,7 +16,7 @@ namespace Xperimen.View.Setting
             {
                 frame_select.IsVisible = false;
                 img_select.IsVisible = false;
-                if (lbl_code.Text.Equals(arg))
+                if (lbl_shortform.Text.Equals(arg))
                 {
                     frame_select.IsVisible = true;
                     img_select.IsVisible = true;
@@ -30,7 +30,8 @@ namespace Xperimen.View.Setting
             await view.ScaleTo(0.9, 100);
             view.Scale = 1;
             view.IsEnabled = false;
-            MessagingCenter.Send(this, "CurrencySelected", lbl_code.Text);
+            var build = lbl_shortform.Text + "," + lbl_currcode.Text + "," + lbl_currname.Text;
+            MessagingCenter.Send(this, "CurrencySelected", build);
             view.IsEnabled = true;
         }
     }

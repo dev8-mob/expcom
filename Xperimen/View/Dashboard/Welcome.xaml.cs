@@ -280,10 +280,10 @@ namespace Xperimen.View.Dashboard
             view.Scale = 1;
             view.IsEnabled = false;
             viewmodel.IsLoading = true;
-            var build = "Income : " + viewmodel.Currency + " " + string.Format("{0:0.00}", viewmodel.Income) 
-                + "\r\nTotal Commitment : " + viewmodel.Currency + " " + string.Format("{0:0.00}", viewmodel.TotalCommitment)
-                + "\r\nTotal Expenses : " + viewmodel.Currency + " " + string.Format("{0:0.00}", viewmodel.TotalExpenses);
-            var avail = "Available : " + viewmodel.Currency + " " + string.Format("{0:0.00}", viewmodel.BalanceAvailable);
+            var build = "Income :   " + viewmodel.Currency + " " + string.Format("{0:0.00}", viewmodel.Income) 
+                + "\r\nTotal Commitment :   " + viewmodel.Currency + " " + string.Format("{0:0.00}", viewmodel.TotalCommitment)
+                + "\r\nTotal Expenses :   " + viewmodel.Currency + " " + string.Format("{0:0.00}", viewmodel.TotalExpenses);
+            var avail = "Available :   " + viewmodel.Currency + " " + string.Format("{0:0.00}", viewmodel.BalanceAvailable);
             SetDisplayAlert("Summary", build, avail, "", "");
             view.IsEnabled = true;
         }

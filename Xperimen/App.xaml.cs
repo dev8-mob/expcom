@@ -9,7 +9,7 @@ namespace Xperimen
 {
     public partial class App : Application
     {
-        public static string AppVersion = "1.7.3";
+        public static string AppVersion = "1.7.5";
         public static string DB_PATH = string.Empty;
         public static string Primary = "#db5e0a";
         public static string PrimaryLight = "#f79655";
@@ -35,10 +35,8 @@ namespace Xperimen
             connection.CreateTable<SelfCommitment>();
             connection.CreateTable<Expenses>();
 
+            CleanData();
             var clients = connection.Table<Clients>().ToList();
-            var cek2 = connection.Table<SelfCommitment>().ToList();
-            var cek3 = connection.Table<Expenses>().ToList();
-
             if (clients.Count > 0) 
             {
                 if (Current.Properties.ContainsKey("current_login")) 
@@ -46,6 +44,36 @@ namespace Xperimen
                 else MainPage = new NavigationPage(new Login());
             }
             else MainPage = new NavigationPage(new Intro());
+        }
+
+        public void CleanData()
+        {
+            var connection = new SQLiteConnection(DB_PATH);
+            var listcommit = connection.Table<SelfCommitment>().ToList();
+            var listexp = connection.Table<Expenses>().ToList();
+
+            if (listcommit.Count > 0)
+            {
+                foreach (var item in listcommit)
+                {
+                    if (string.IsNullOrEmpty(item.Currency))
+                    {
+                        var query = "UPDATE SelfCommitment SET Currency = 'RM' WHERE Id = '" + item.Id + "'";
+                        connection.Query<SelfCommitment>(query);
+                    }
+                }
+            }
+            if (listexp.Count > 0)
+            {
+                foreach (var item in listexp)
+                {
+                    if (string.IsNullOrEmpty(item.Currency))
+                    {
+                        var query = "UPDATE Expenses SET Currency = 'RM' WHERE Id = '" + item.Id + "'";
+                        connection.Query<Expenses>(query);
+                    }
+                }
+            }
         }
 
         protected override void OnStart()

@@ -19,12 +19,12 @@
                                BorderColor="DarkGray" Padding="20,15,20,25">
                             <Frame.CornerRadius>
                                 <OnPlatform x:TypeArguments="x:Single">
-                                    <On Platform="iOS">65</On>
-                                    <On Platform="Android">130</On>
+                                    <On Platform="iOS">50</On>
+                                    <On Platform="Android">100</On>
                                 </OnPlatform>
                             </Frame.CornerRadius>
-                            <stylekit:XImage HeightRequest="130" WidthRequest="130" HorizontalOptions="CenterAndExpand" VerticalOptions="Center" 
-                                             Aspect="AspectFit" Source1="black_logo.png" Source2="white_logo.png"/>
+                            <Image HeightRequest="100" WidthRequest="100" HorizontalOptions="CenterAndExpand" VerticalOptions="Center" 
+                                   Aspect="AspectFit" Source="app_logo.png"/>
                         </Frame>
 
                         <!-- username -->

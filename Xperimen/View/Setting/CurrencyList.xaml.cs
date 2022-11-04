@@ -1,6 +1,7 @@
 ﻿using Rg.Plugins.Popup.Extensions;
 using Rg.Plugins.Popup.Pages;
 using System;
+using System.Linq;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -29,14 +30,18 @@ namespace Xperimen.View.Setting
 
             MessagingCenter.Subscribe<CurrencyListCell, string>(this, "CurrencySelected", async (sender, arg) =>
             {
-                viewmodel.Currency = arg;
-                var success = viewmodel.UpdateCurrency();
-                if (success == 1)
+                var split = arg.Split(',');
+                if (split.Count() > 0)
                 {
-                    await Task.Delay(300);
-                    MessagingCenter.Send(this, "CurrencyUpdated", arg);
-                    var navigation = Application.Current.MainPage.Navigation;
-                    await navigation.PopPopupAsync();
+                    viewmodel.Currency = split[0];
+                    var success = viewmodel.UpdateCurrency();
+                    if (success == 1)
+                    {
+                        await Task.Delay(300);
+                        MessagingCenter.Send(this, "CurrencyUpdated", arg);
+                        var navigation = Application.Current.MainPage.Navigation;
+                        await navigation.PopPopupAsync();
+                    }
                 }
             });
         }

@@ -1,5 +1,6 @@
 ﻿using Rg.Plugins.Popup.Extensions;
 using System;
+using System.Linq;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
@@ -40,12 +41,16 @@ namespace Xperimen.View.Setting
             });
             MessagingCenter.Subscribe<CurrencyList, string>(this, "CurrencyUpdated", (sender, arg) => 
             {
-                lbl_currency.Text = arg;
-                var success = viewmodel.UpdateExpenseCurrency(arg);
-                if (success == 1)
+                var split = arg.Split(',');
+                if (split.Count() > 0)
                 {
-                    success = viewmodel.UpdateCommitmentCurrency(arg);
-                    if (success == 1) viewmodel.SetupData();
+                    lbl_currency.Text = split[1] + " - " + split[2];
+                    var success = viewmodel.UpdateExpenseCurrency(split[0]);
+                    if (success == 1)
+                    {
+                        success = viewmodel.UpdateCommitmentCurrency(split[0]);
+                        if (success == 1) viewmodel.SetupData();
+                    }
                 }
             });
         }
@@ -55,11 +60,11 @@ namespace Xperimen.View.Setting
             if (Xamarin.Forms.Application.Current.Properties.ContainsKey("app_theme"))
             {
                 var theme = Xamarin.Forms.Application.Current.Properties["app_theme"] as string;
-                if (theme.Equals("dark")) img_profile.BackgroundColor = Color.FromHex(App.CharcoalBlack);
-                if (theme.Equals("dim")) img_profile.BackgroundColor = Color.FromHex(App.CharcoalGray);
-                if (theme.Equals("light")) img_profile.BackgroundColor = Color.FromHex(App.DimGray2);
+                if (theme.Equals("dark")) frame_profile.BackgroundColor = Color.FromHex(App.CharcoalBlack);
+                if (theme.Equals("dim")) frame_profile.BackgroundColor = Color.FromHex(App.CharcoalGray);
+                if (theme.Equals("light")) frame_profile.BackgroundColor = Color.FromHex(App.DimGray2);
             }
-            else img_profile.BackgroundColor = Color.FromHex(App.DimGray2);
+            else frame_profile.BackgroundColor = Color.FromHex(App.DimGray2);
 
             img_profile.Source = string.Empty;
             if (viewmodel.Picture != null)

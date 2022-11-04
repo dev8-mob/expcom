@@ -49,7 +49,7 @@ namespace Xperimen.View.Gallery
             {
                 frame_exp.IsVisible = true;
                 lbl_exptitle.Text = exp.Title;
-                lbl_expamount.Text = string.Format("RM {0:0.00}", exp.Amount);
+                lbl_expamount.Text = exp.Currency + " " + string.Format("{0:0.00}", exp.Amount);
                 lbl_expdt.Text = string.Format("{0:d, MMM yyyy - h:mm tt}", exp.ExpensesDt);
                 img_data.Source = ImageSource.FromStream(() =>
                 {
@@ -62,7 +62,7 @@ namespace Xperimen.View.Gallery
                 frame_comm.IsVisible = true;
                 lbl_commtitle.Text = comm.Title;
                 lbl_commdesc.Text = comm.Description;
-                lbl_commamount.Text = string.Format("RM {0:0.00}", comm.Amount);
+                lbl_commamount.Text = comm.Currency + " " + string.Format("{0:0.00}", comm.Amount);
                 if (comm.HasAccNo) { lbl_commaccno.Text = string.Format("Acc. No : {0}", comm.AccountNo); lbl_commaccno.IsVisible = true; }
                 if (comm.IsDone) stack_isdone.IsVisible = true;
                 img_data.Source = ImageSource.FromStream(() =>

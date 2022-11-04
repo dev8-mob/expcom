@@ -27,7 +27,7 @@ namespace Xperimen.View.NavigationDrawer
             BindingContext = viewmodel;
             SetupView();
 
-            MessagingCenter.Subscribe<SettingViewmodel>(this, "AppThemeUpdated", (sender) => { UpdateDataProfile(); });
+            MessagingCenter.Subscribe<SettingViewmodel>(this, "AppThemeUpdated", (sender) => { SetupView(); });
         }
 
         public void SetupView()
@@ -43,6 +43,16 @@ namespace Xperimen.View.NavigationDrawer
                     Padding = safeInsets;
                 }
             }
+
+            if (Xamarin.Forms.Application.Current.Properties.ContainsKey("app_theme"))
+            {
+                var theme = Xamarin.Forms.Application.Current.Properties["app_theme"] as string;
+                if (theme.Equals("dark")) frame_profile.BackgroundColor = Color.FromHex(App.CharcoalBlack);
+                if (theme.Equals("dim")) frame_profile.BackgroundColor = Color.FromHex(App.CharcoalGray);
+                if (theme.Equals("light")) frame_profile.BackgroundColor = Color.FromHex(App.DimGray2);
+            }
+            else frame_profile.BackgroundColor = Color.FromHex(App.DimGray2);
+
             UpdateDataProfile();
         }
 

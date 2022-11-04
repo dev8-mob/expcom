@@ -158,7 +158,7 @@ namespace Xperimen.ViewModel
                     Income = 0,
                     TotalCommitment = 0,
                     NetIncome = 0,
-                    Currency = "MYR"
+                    Currency = "RM"
                 };
                 var camelcase = new CamelCaseChecker();
                 data.Firstname = camelcase.CapitalizeWord(Firstname);

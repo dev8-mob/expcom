@@ -42,6 +42,10 @@ namespace Xperimen.ViewModel.Setting
             var result = connection.Query<Clients>(query).ToList();
             if (result.Count > 0) Currency = result[0].Currency;
 
+            ListCurrency.Add(new Currency { Code = "AUD", Name = "Australian Dollar", Shortform = "A$", IsSelected = false });
+            ListCurrency.Add(new Currency { Code = "BND", Name = "Brunei Dollar", Shortform = "B$", IsSelected = false });
+            ListCurrency.Add(new Currency { Code = "JPY", Name = "Japanese Yen", Shortform = "¥", IsSelected = false });
+            ListCurrency.Add(new Currency { Code = "INR", Name = "Indian Rupee", Shortform = "₹", IsSelected = false });
             ListCurrency.Add(new Currency { Code = "IDR", Name = "Indonesian Rupiah", Shortform = "RP", IsSelected = false });
             ListCurrency.Add(new Currency { Code = "MYR", Name = "Malaysian Ringgit", Shortform = "RM", IsSelected = false });
             ListCurrency.Add(new Currency { Code = "PHP", Name = "Philippine Peso", Shortform = "₱", IsSelected = false });
@@ -50,7 +54,7 @@ namespace Xperimen.ViewModel.Setting
 
             foreach (var item in ListCurrency)
             {
-                if (item.Code.Equals(Currency))
+                if (item.Shortform.Equals(Currency))
                     item.IsSelected = true;
             }
         }
