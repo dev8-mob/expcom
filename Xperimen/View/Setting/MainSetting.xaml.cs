@@ -53,6 +53,11 @@ namespace Xperimen.View.Setting
                     }
                 }
             });
+            MessagingCenter.Subscribe<LanguageListCell, string>(this, "LanguageSelected", async (sender, arg) =>
+            {
+                var split = arg.Split(',');
+                if (split.Count() > 0) lbl_language.Text = split[1];
+            });
         }
 
         public void SetupView()
@@ -201,6 +206,16 @@ namespace Xperimen.View.Setting
             view.Scale = 1;
             view.IsEnabled = false;
             await Navigation.PushPopupAsync(new CurrencyList());
+            view.IsEnabled = true;
+        }
+
+        public async void LanguageClicked(object sender, EventArgs e)
+        {
+            var view = (Frame)sender;
+            await view.ScaleTo(0.9, 100);
+            view.Scale = 1;
+            view.IsEnabled = false;
+            await Navigation.PushPopupAsync(new LanguageList());
             view.IsEnabled = true;
         }
 

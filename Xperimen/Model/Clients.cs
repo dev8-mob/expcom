@@ -26,5 +26,6 @@ namespace Xperimen.Model
         public double TotalCommitment { get; set; }
         public double NetIncome { get; set; }
         public string Currency { get; set; }
+        public string Language { get; set; }
     }
 }

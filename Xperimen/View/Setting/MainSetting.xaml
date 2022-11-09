@@ -10,6 +10,7 @@
     <ContentPage.Resources>
         <ResourceDictionary>
             <helper:CurrencyConverter x:Key="CurrencyConverter" />
+            <helper:LanguageConverter x:Key="LanguageConverter" />
         </ResourceDictionary>
     </ContentPage.Resources>
 
@@ -91,6 +92,20 @@
                                     <TapGestureRecognizer Tapped="CurrencyClicked" NumberOfTapsRequired="1"/>
                                 </Frame.GestureRecognizers>
                             </stylekit:XFrameButton>
+                            <!-- language -->
+                            <stylekit:XLabel Text="Language" HorizontalOptions="Start" Margin="0,15,0,0"/>
+                            <stylekit:XFrameButton Padding="0,5,0,5" Margin="0,5,0,0">
+                                <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" Spacing="0" BackgroundColor="Transparent">
+                                    <stylekit:XImage Source1="black_web.png" Source2="white_web.png" HeightRequest="25" WidthRequest="25" Aspect="AspectFit"
+                                                     HorizontalOptions="End"/>
+                                    <stylekit:XLabel x:Name="lbl_language" Text="{Binding Language, Converter={StaticResource LanguageConverter}}" 
+                                                     HorizontalOptions="Center" VerticalOptions="Center" Margin="5,0,0,0"/>
+                                </StackLayout>
+                                <Frame.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="LanguageClicked" NumberOfTapsRequired="1"/>
+                                </Frame.GestureRecognizers>
+                            </stylekit:XFrameButton>
+                            <!-- apps theme -->
                             <stylekit:XLabel Text="Application Theme" HorizontalOptions="Start" Margin="0,15,0,0"/>
                             <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal" Margin="0,5,0,0" Spacing="5">
                                 <!-- dark theme -->

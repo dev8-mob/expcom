@@ -60,7 +60,8 @@ namespace Xperimen.ViewModel
                     Income = result[0].Income,
                     TotalCommitment = result[0].TotalCommitment,
                     NetIncome = result[0].NetIncome,
-                    Currency = result[0].Currency
+                    Currency = result[0].Currency,
+                    Language = result[0].Language
                 };
                 var success = connection.Update(model);
                 if (success == 1)

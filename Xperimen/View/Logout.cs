@@ -41,7 +41,8 @@ namespace Xperimen.View
                         Income = user[0].Income,
                         TotalCommitment = user[0].TotalCommitment,
                         NetIncome = user[0].NetIncome,
-                        Currency = user[0].Currency
+                        Currency = user[0].Currency,
+                        Language = user[0].Language
                     };
                     model.Logout = DateTime.Now;
                     var result = connection.Update(model);
