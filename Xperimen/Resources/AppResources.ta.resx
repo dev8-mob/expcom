@@ -141,4 +141,31 @@
   <data name="intro_welcome" xml:space="preserve">
     <value>வரவேற்பு</value>
   </data>
+  <data name="setting_apptheme" xml:space="preserve">
+    <value>விண்ணப்ப தீம்</value>
+  </data>
+  <data name="setting_currency" xml:space="preserve">
+    <value>நாணய</value>
+  </data>
+  <data name="setting_dark" xml:space="preserve">
+    <value>இருள்</value>
+  </data>
+  <data name="setting_dim" xml:space="preserve">
+    <value>மங்கலான</value>
+  </data>
+  <data name="setting_editprofile" xml:space="preserve">
+    <value>சுயவிவரத்தைத் திருத்து</value>
+  </data>
+  <data name="setting_language" xml:space="preserve">
+    <value>மொழி</value>
+  </data>
+  <data name="setting_light" xml:space="preserve">
+    <value>ஒளி</value>
+  </data>
+  <data name="setting_navbar" xml:space="preserve">
+    <value>அமைப்புகள்</value>
+  </data>
+  <data name="setting_version" xml:space="preserve">
+    <value>பதிப்பு</value>
+  </data>
 </root>

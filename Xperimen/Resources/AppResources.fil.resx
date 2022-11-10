@@ -141,4 +141,31 @@
   <data name="intro_welcome" xml:space="preserve">
     <value>Maligayang pagdating</value>
   </data>
+  <data name="setting_apptheme" xml:space="preserve">
+    <value>Tema ng Aplikasyon</value>
+  </data>
+  <data name="setting_currency" xml:space="preserve">
+    <value>Pera</value>
+  </data>
+  <data name="setting_dark" xml:space="preserve">
+    <value>Madilim</value>
+  </data>
+  <data name="setting_dim" xml:space="preserve">
+    <value>Dim</value>
+  </data>
+  <data name="setting_editprofile" xml:space="preserve">
+    <value>Ibahin ang profile</value>
+  </data>
+  <data name="setting_language" xml:space="preserve">
+    <value>Wika</value>
+  </data>
+  <data name="setting_light" xml:space="preserve">
+    <value>Liwanag</value>
+  </data>
+  <data name="setting_navbar" xml:space="preserve">
+    <value>Mga setting</value>
+  </data>
+  <data name="setting_version" xml:space="preserve">
+    <value>Bersyon</value>
+  </data>
 </root>

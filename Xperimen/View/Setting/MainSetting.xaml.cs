@@ -1,11 +1,14 @@
 ﻿using Rg.Plugins.Popup.Extensions;
 using System;
+using System.Globalization;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
 using Xperimen.Helper;
+using Xperimen.Resources;
 using Xperimen.Stylekit;
 using Xperimen.View.NavigationDrawer;
 using Xperimen.ViewModel.Setting;
@@ -53,10 +56,17 @@ namespace Xperimen.View.Setting
                     }
                 }
             });
-            MessagingCenter.Subscribe<LanguageListCell, string>(this, "LanguageSelected", async (sender, arg) =>
+            MessagingCenter.Subscribe<LanguageList, string>(this, "LanguageUpdated", (sender, arg) =>
             {
                 var split = arg.Split(',');
-                if (split.Count() > 0) lbl_language.Text = split[1];
+                if (split.Count() > 0)
+                {
+                    viewmodel.Language = split[0];
+                    CultureInfo language = new CultureInfo(split[0]);
+                    Thread.CurrentThread.CurrentUICulture = language;
+                    AppResources.Culture = language;
+                    Xamarin.Forms.Application.Current.MainPage = new Xamarin.Forms.NavigationPage(new DrawerMaster());
+                }
             });
         }
 

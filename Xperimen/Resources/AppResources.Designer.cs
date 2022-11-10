@@ -131,5 +131,86 @@ namespace Xperimen.Resources {
                 return ResourceManager.GetString("intro_welcome", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Application Theme.
+        /// </summary>
+        internal static string setting_apptheme {
+            get {
+                return ResourceManager.GetString("setting_apptheme", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Currency.
+        /// </summary>
+        internal static string setting_currency {
+            get {
+                return ResourceManager.GetString("setting_currency", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Dark.
+        /// </summary>
+        internal static string setting_dark {
+            get {
+                return ResourceManager.GetString("setting_dark", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Dim.
+        /// </summary>
+        internal static string setting_dim {
+            get {
+                return ResourceManager.GetString("setting_dim", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Edit Profile.
+        /// </summary>
+        internal static string setting_editprofile {
+            get {
+                return ResourceManager.GetString("setting_editprofile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Language.
+        /// </summary>
+        internal static string setting_language {
+            get {
+                return ResourceManager.GetString("setting_language", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Light.
+        /// </summary>
+        internal static string setting_light {
+            get {
+                return ResourceManager.GetString("setting_light", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Settings.
+        /// </summary>
+        internal static string setting_navbar {
+            get {
+                return ResourceManager.GetString("setting_navbar", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Version.
+        /// </summary>
+        internal static string setting_version {
+            get {
+                return ResourceManager.GetString("setting_version", resourceCulture);
+            }
+        }
     }
 }

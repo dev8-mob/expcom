@@ -4,6 +4,7 @@
              x:Class="Xperimen.View.Setting.MainSetting"
              xmlns:stylekit="clr-namespace:Xperimen.Stylekit"
              xmlns:viewcell="clr-namespace:Xperimen.View.Setting"
+             xmlns:resource="clr-namespace:Xperimen.Resources"
              xmlns:helper="clr-namespace:Xperimen.Helper"
              NavigationPage.HasNavigationBar="False">
 
@@ -40,8 +41,8 @@
                                     <TapGestureRecognizer Tapped="DrawerTapped" NumberOfTapsRequired="1"/>
                                 </Image.GestureRecognizers>
                             </stylekit:XImage>
-                            <stylekit:XLabel Text="Setting" FontFamily="{DynamicResource Key=BoldFont}" FontSize="18" VerticalOptions="Center"
-                                             HorizontalOptions="StartAndExpand"/>
+                            <stylekit:XLabel Text="{x:Static resource:AppResources.setting_navbar}" FontFamily="{DynamicResource Key=BoldFont}" FontSize="18" 
+                                             VerticalOptions="Center" HorizontalOptions="StartAndExpand"/>
                             <stylekit:XImage Source1="black_setting.png" Source2="white_setting.png" HeightRequest="35" WidthRequest="35" Aspect="AspectFit"
                                              HorizontalOptions="End" Margin="20,0,0,0">
                                 <Image.GestureRecognizers>
@@ -80,7 +81,7 @@
                         <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand" Spacing="0" Margin="0,30,0,0"
                                      Grid.Row="1" Grid.Column="0" IsVisible="{Binding IsViewing}">
                             <!-- currency -->
-                            <stylekit:XLabel Text="Currency" HorizontalOptions="Start"/>
+                            <stylekit:XLabel Text="{x:Static resource:AppResources.setting_currency}" HorizontalOptions="Start"/>
                             <stylekit:XFrameButton Padding="0,5,0,5" Margin="0,5,0,0">
                                 <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" Spacing="0" BackgroundColor="Transparent">
                                     <stylekit:XImage Source1="black_money.png" Source2="white_money.png" HeightRequest="25" WidthRequest="25" Aspect="AspectFit"
@@ -93,7 +94,7 @@
                                 </Frame.GestureRecognizers>
                             </stylekit:XFrameButton>
                             <!-- language -->
-                            <stylekit:XLabel Text="Language" HorizontalOptions="Start" Margin="0,15,0,0"/>
+                            <stylekit:XLabel Text="{x:Static resource:AppResources.setting_language}" HorizontalOptions="Start" Margin="0,15,0,0"/>
                             <stylekit:XFrameButton Padding="0,5,0,5" Margin="0,5,0,0">
                                 <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" Spacing="0" BackgroundColor="Transparent">
                                     <stylekit:XImage Source1="black_web.png" Source2="white_web.png" HeightRequest="25" WidthRequest="25" Aspect="AspectFit"
@@ -106,13 +107,14 @@
                                 </Frame.GestureRecognizers>
                             </stylekit:XFrameButton>
                             <!-- apps theme -->
-                            <stylekit:XLabel Text="Application Theme" HorizontalOptions="Start" Margin="0,15,0,0"/>
+                            <stylekit:XLabel Text="{x:Static resource:AppResources.setting_apptheme}" HorizontalOptions="Start" Margin="0,15,0,0"/>
                             <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal" Margin="0,5,0,0" Spacing="5">
                                 <!-- dark theme -->
                                 <stylekit:XFrameButton Padding="0,5,0,5">
                                     <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" Spacing="0" BackgroundColor="Transparent">
                                         <Image Source="theme_dark.png" HeightRequest="25" WidthRequest="25" Aspect="AspectFit" VerticalOptions="Center"/>
-                                        <stylekit:XLabel Text="Dark" HorizontalOptions="Center" VerticalOptions="Center" Margin="5,0,0,0"/>
+                                        <stylekit:XLabel Text="{x:Static resource:AppResources.setting_dark}" HorizontalOptions="Center" VerticalOptions="Center"
+                                                         Margin="5,0,0,0"/>
                                     </StackLayout>
                                     <Frame.GestureRecognizers>
                                         <TapGestureRecognizer Tapped="AppThemeClicked" NumberOfTapsRequired="1"/>
@@ -122,7 +124,8 @@
                                 <stylekit:XFrameButton>
                                     <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" Spacing="0" BackgroundColor="Transparent">
                                         <Image Source="theme_dim.png" HeightRequest="25" WidthRequest="25" Aspect="AspectFit" VerticalOptions="Center"/>
-                                        <stylekit:XLabel Text="Dim" HorizontalOptions="Center" VerticalOptions="Center" Margin="5,0,0,0"/>
+                                        <stylekit:XLabel Text="{x:Static resource:AppResources.setting_dim}" HorizontalOptions="Center" VerticalOptions="Center"
+                                                         Margin="5,0,0,0"/>
                                     </StackLayout>
                                     <Frame.GestureRecognizers>
                                         <TapGestureRecognizer Tapped="AppThemeClicked" NumberOfTapsRequired="1"/>
@@ -132,7 +135,8 @@
                                 <stylekit:XFrameButton>
                                     <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" Spacing="0" BackgroundColor="Transparent">
                                         <Image Source="theme_light.png" HeightRequest="25" WidthRequest="25" Aspect="AspectFit" VerticalOptions="Center"/>
-                                        <stylekit:XLabel Text="Light" HorizontalOptions="Center" VerticalOptions="Center" Margin="5,0,0,0"/>
+                                        <stylekit:XLabel Text="{x:Static resource:AppResources.setting_light}" HorizontalOptions="Center" VerticalOptions="Center"
+                                                         Margin="5,0,0,0"/>
                                     </StackLayout>
                                     <Frame.GestureRecognizers>
                                         <TapGestureRecognizer Tapped="AppThemeClicked" NumberOfTapsRequired="1"/>

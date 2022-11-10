@@ -2,12 +2,15 @@
 using Plugin.Media.Abstractions;
 using SQLite;
 using System;
+using System.Globalization;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xperimen.Helper;
 using Xperimen.Model;
+using Xperimen.Resources;
 
 namespace Xperimen.ViewModel
 {
@@ -166,6 +169,9 @@ namespace Xperimen.ViewModel
                 data.Lastname = camelcase.CapitalizeWord(Lastname);
                 if (Picture != null) data.ProfileImage = convert.GetImageBytes(Picture.GetStream());
                 connection.Insert(data);
+                CultureInfo language = new CultureInfo("en");
+                Thread.CurrentThread.CurrentUICulture = language;
+                AppResources.Culture = language;
                 Application.Current.Properties["app_theme"] = Theme;
                 await Application.Current.SavePropertiesAsync();
 

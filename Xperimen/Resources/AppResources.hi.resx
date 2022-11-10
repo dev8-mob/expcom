@@ -141,4 +141,31 @@
   <data name="intro_welcome" xml:space="preserve">
     <value>स्वागत</value>
   </data>
+  <data name="setting_apptheme" xml:space="preserve">
+    <value>एप्लिकेशन थीम</value>
+  </data>
+  <data name="setting_currency" xml:space="preserve">
+    <value>मुद्रा</value>
+  </data>
+  <data name="setting_dark" xml:space="preserve">
+    <value>अँधेरा</value>
+  </data>
+  <data name="setting_dim" xml:space="preserve">
+    <value>धुंधला</value>
+  </data>
+  <data name="setting_editprofile" xml:space="preserve">
+    <value>प्रोफ़ाइल संपादित करें</value>
+  </data>
+  <data name="setting_language" xml:space="preserve">
+    <value>भाषा</value>
+  </data>
+  <data name="setting_light" xml:space="preserve">
+    <value>रोशनी</value>
+  </data>
+  <data name="setting_navbar" xml:space="preserve">
+    <value>समायोजन</value>
+  </data>
+  <data name="setting_version" xml:space="preserve">
+    <value>संस्करण</value>
+  </data>
 </root>

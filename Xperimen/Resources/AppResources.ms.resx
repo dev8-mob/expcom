@@ -141,4 +141,31 @@
   <data name="intro_welcome" xml:space="preserve">
     <value>Selamat datang</value>
   </data>
+  <data name="setting_apptheme" xml:space="preserve">
+    <value>Tema Aplikasi</value>
+  </data>
+  <data name="setting_currency" xml:space="preserve">
+    <value>Mata Wang</value>
+  </data>
+  <data name="setting_dark" xml:space="preserve">
+    <value>Gelap</value>
+  </data>
+  <data name="setting_dim" xml:space="preserve">
+    <value>Malap</value>
+  </data>
+  <data name="setting_editprofile" xml:space="preserve">
+    <value>Edit Profil</value>
+  </data>
+  <data name="setting_language" xml:space="preserve">
+    <value>Bahasa</value>
+  </data>
+  <data name="setting_light" xml:space="preserve">
+    <value>Cerah</value>
+  </data>
+  <data name="setting_navbar" xml:space="preserve">
+    <value>Tetapan</value>
+  </data>
+  <data name="setting_version" xml:space="preserve">
+    <value>Versi</value>
+  </data>
 </root>

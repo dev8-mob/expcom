@@ -5,6 +5,9 @@ using Xperimen.Helper;
 using Xperimen.Model;
 using System.Threading.Tasks;
 using Xamarin.Forms;
+using System.Globalization;
+using System.Threading;
+using Xperimen.Resources;
 
 namespace Xperimen.ViewModel.Starter
 {
@@ -87,6 +90,9 @@ namespace Xperimen.ViewModel.Starter
                     data.Lastname = camelcase.CapitalizeWord(Lastname);
                     
                     connection.Insert(data);
+                    CultureInfo language = new CultureInfo("en");
+                    Thread.CurrentThread.CurrentUICulture = language;
+                    AppResources.Culture = language;
                     Application.Current.Properties["current_login"] = data.Id;
                     Application.Current.Properties["app_theme"] = data.AppTheme;
                     Application.Current.Properties["firstmonth_isreset"] = "false";
@@ -140,6 +146,9 @@ namespace Xperimen.ViewModel.Starter
                 data.Lastname = camelcase.CapitalizeWord(Lastname);
 
                 connection.Insert(data);
+                CultureInfo language = new CultureInfo("en");
+                Thread.CurrentThread.CurrentUICulture = language;
+                AppResources.Culture = language;
                 Application.Current.Properties["current_login"] = data.Id;
                 Application.Current.Properties["app_theme"] = data.AppTheme;
                 Application.Current.Properties["firstmonth_isreset"] = "false";

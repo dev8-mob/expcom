@@ -4,6 +4,7 @@
        x:Class="Xperimen.View.Setting.SettingInfo"
        xmlns:stylekit="clr-namespace:Xperimen.Stylekit" 
        xmlns:setting="clr-namespace:Xperimen.ViewModel.Setting" 
+       xmlns:resource="clr-namespace:Xperimen.Resources"
        x:DataType="setting:SettingViewmodel"
        Padding="0" HasShadow="False" IsVisible="{Binding IsViewing}">
 
@@ -38,8 +39,8 @@
             <Frame Padding="0,10,0,10" CornerRadius="8" BorderColor="{DynamicResource Key=Primary}" HorizontalOptions="FillAndExpand"
                    Margin="0,15,0,0" BackgroundColor="{DynamicResource Key=Primary}" HasShadow="False" IsClippedToBounds="True">
                 <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Spacing="10" VerticalOptions="Center">
-                    <Label Text="Edit Profile" FontFamily="{DynamicResource Key=BoldFont}" TextColor="White" 
-                           HorizontalOptions="Center" VerticalOptions="Center"/>
+                    <Label Text="{x:Static resource:AppResources.setting_editprofile}" FontFamily="{DynamicResource Key=BoldFont}" 
+                           TextColor="White" HorizontalOptions="Center" VerticalOptions="Center"/>
                     <Image Source="white_edit.png" Aspect="AspectFit" HeightRequest="20" WidthRequest="20" VerticalOptions="Center"/>
                 </StackLayout>
                 <Frame.GestureRecognizers>

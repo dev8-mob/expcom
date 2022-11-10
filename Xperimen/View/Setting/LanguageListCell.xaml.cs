@@ -20,7 +20,7 @@ namespace Xperimen.View.Setting
                 if (!string.IsNullOrEmpty(arg))
                 {
                     var split = arg.Split(',');
-                    if (lbl_code.Text.Equals(arg))
+                    if (lbl_code.Text.Equals(split[0]))
                     {
                         frame_select.IsVisible = true;
                         img_select.IsVisible = true;

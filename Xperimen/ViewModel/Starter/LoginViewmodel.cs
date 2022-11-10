@@ -1,10 +1,13 @@
 ﻿
 using SQLite;
 using System;
+using System.Globalization;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xperimen.Model;
+using Xperimen.Resources;
 
 namespace Xperimen.ViewModel
 {
@@ -66,6 +69,9 @@ namespace Xperimen.ViewModel
                 var success = connection.Update(model);
                 if (success == 1)
                 {
+                    CultureInfo language = new CultureInfo(model.Language);
+                    Thread.CurrentThread.CurrentUICulture = language;
+                    AppResources.Culture = language;
                     Application.Current.Properties["current_login"] = result[0].Id;
                     Application.Current.Properties["app_theme"] = result[0].AppTheme;
                     Application.Current.Properties["firstmonth_isreset"] = "false";
