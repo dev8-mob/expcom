@@ -1,7 +1,11 @@
 ﻿
 using SQLite;
+using System.Globalization;
+using System.Linq;
+using System.Threading;
 using Xamarin.Forms;
 using Xperimen.Model;
+using Xperimen.Resources;
 using Xperimen.View;
 using Xperimen.View.NavigationDrawer;
 
@@ -39,8 +43,18 @@ namespace Xperimen
             var clients = connection.Table<Clients>().ToList();
             if (clients.Count > 0) 
             {
-                if (Current.Properties.ContainsKey("current_login")) 
+                if (Current.Properties.ContainsKey("current_login"))
+                {
+                    var lang = string.Empty;
+                    var userid = Current.Properties["current_login"] as string;
+                    string query = "SELECT * FROM Clients WHERE Id = '" + userid + "'";
+                    var result = connection.Query<Clients>(query).ToList();
+                    if (result.Count > 0) lang = result[0].Language;
+                    CultureInfo language = new CultureInfo(lang);
+                    Thread.CurrentThread.CurrentUICulture = language;
+                    AppResources.Culture = language;
                     Current.MainPage = new NavigationPage(new DrawerMaster());
+                }
                 else MainPage = new NavigationPage(new Login());
             }
             else MainPage = new NavigationPage(new Intro());

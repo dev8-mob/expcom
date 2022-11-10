@@ -102,7 +102,7 @@ namespace Xperimen.View.Setting
                     Padding = safeInsets;
                 }
             }
-            lbl_version.Text = "Version " + App.AppVersion;
+            lbl_version.Text = AppResources.setting_version + " " + App.AppVersion;
         }
 
         public async void DrawerTapped(object sender, EventArgs e)

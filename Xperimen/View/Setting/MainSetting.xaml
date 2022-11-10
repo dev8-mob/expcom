@@ -240,7 +240,8 @@
 
                     <!-- app version info -->
                     <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="Transparent"/>
-                    <stylekit:XLabel x:Name="lbl_version" Text="Version -" HorizontalOptions="Center" VerticalOptions="End" FontSize="10"/>
+                    <stylekit:XLabel x:Name="lbl_version" Text="{x:Static resource:AppResources.setting_version}" HorizontalOptions="Center" 
+                                     VerticalOptions="End" FontSize="10"/>
                 </stylekit:XStacklayout>
                 
             </stylekit:XScrollview>
