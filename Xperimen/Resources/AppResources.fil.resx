@@ -165,7 +165,67 @@
   <data name="setting_navbar" xml:space="preserve">
     <value>Mga setting</value>
   </data>
+  <data name="setting_topright_created" xml:space="preserve">
+    <value>Nilikha</value>
+  </data>
+  <data name="setting_topright_current" xml:space="preserve">
+    <value>Kasalukuyang login</value>
+  </data>
+  <data name="setting_topright_delete" xml:space="preserve">
+    <value>Tanggalin ang Aking Account</value>
+  </data>
+  <data name="setting_topright_lastlogin" xml:space="preserve">
+    <value>Huling Login</value>
+  </data>
+  <data name="setting_topright_okay" xml:space="preserve">
+    <value>Sige</value>
+  </data>
+  <data name="setting_topright_title" xml:space="preserve">
+    <value>(Mga) Account sa device na ito</value>
+  </data>
+  <data name="setting_topright_updated" xml:space="preserve">
+    <value>Na-update</value>
+  </data>
   <data name="setting_version" xml:space="preserve">
     <value>Bersyon</value>
+  </data>
+  <data name="settupdate_cancel" xml:space="preserve">
+    <value>Kanselahin</value>
+  </data>
+  <data name="settupdate_descplaceholder" xml:space="preserve">
+    <value>Bio, tagline, quotes, atbp...</value>
+  </data>
+  <data name="settupdate_description" xml:space="preserve">
+    <value>Paglalarawan</value>
+  </data>
+  <data name="settupdate_media" xml:space="preserve">
+    <value>I-update ang iyong larawan</value>
+  </data>
+  <data name="settupdate_password" xml:space="preserve">
+    <value>Password</value>
+  </data>
+  <data name="settupdate_retype" xml:space="preserve">
+    <value>muling i-type ang password</value>
+  </data>
+  <data name="settupdate_update" xml:space="preserve">
+    <value>Update</value>
+  </data>
+  <data name="sidemenu_commitment" xml:space="preserve">
+    <value>Pangako</value>
+  </data>
+  <data name="sidemenu_dashboard" xml:space="preserve">
+    <value>Dashboard</value>
+  </data>
+  <data name="sidemenu_expenses" xml:space="preserve">
+    <value>Mga gastos</value>
+  </data>
+  <data name="sidemenu_gallery" xml:space="preserve">
+    <value>Gallery</value>
+  </data>
+  <data name="sidemenu_logout" xml:space="preserve">
+    <value>Mag-logout</value>
+  </data>
+  <data name="sidemenu_settings" xml:space="preserve">
+    <value>Mga setting</value>
   </data>
 </root>

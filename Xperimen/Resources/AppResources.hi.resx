@@ -165,7 +165,67 @@
   <data name="setting_navbar" xml:space="preserve">
     <value>समायोजन</value>
   </data>
+  <data name="setting_topright_created" xml:space="preserve">
+    <value>बनाया था</value>
+  </data>
+  <data name="setting_topright_current" xml:space="preserve">
+    <value>वर्तमान में लॉगिन</value>
+  </data>
+  <data name="setting_topright_delete" xml:space="preserve">
+    <value>मेरा एकाउंट हटा दो</value>
+  </data>
+  <data name="setting_topright_lastlogin" xml:space="preserve">
+    <value>आखरी लॉगइन</value>
+  </data>
+  <data name="setting_topright_okay" xml:space="preserve">
+    <value>ठीक है</value>
+  </data>
+  <data name="setting_topright_title" xml:space="preserve">
+    <value>इस डिवाइस पर खाता(खाते)</value>
+  </data>
+  <data name="setting_topright_updated" xml:space="preserve">
+    <value>अद्यतन</value>
+  </data>
   <data name="setting_version" xml:space="preserve">
     <value>संस्करण</value>
+  </data>
+  <data name="settupdate_cancel" xml:space="preserve">
+    <value>रद्द करना</value>
+  </data>
+  <data name="settupdate_descplaceholder" xml:space="preserve">
+    <value>जैव, टैगलाइन, उद्धरण, आदि...</value>
+  </data>
+  <data name="settupdate_description" xml:space="preserve">
+    <value>विवरण</value>
+  </data>
+  <data name="settupdate_media" xml:space="preserve">
+    <value>अपनी छवि अपडेट करें</value>
+  </data>
+  <data name="settupdate_password" xml:space="preserve">
+    <value>पासवर्ड</value>
+  </data>
+  <data name="settupdate_retype" xml:space="preserve">
+    <value>अपना पासवर्ड फिर से लिखें</value>
+  </data>
+  <data name="settupdate_update" xml:space="preserve">
+    <value>अद्यतन</value>
+  </data>
+  <data name="sidemenu_commitment" xml:space="preserve">
+    <value>प्रतिबद्धता</value>
+  </data>
+  <data name="sidemenu_dashboard" xml:space="preserve">
+    <value>डैशबोर्ड</value>
+  </data>
+  <data name="sidemenu_expenses" xml:space="preserve">
+    <value>खर्च</value>
+  </data>
+  <data name="sidemenu_gallery" xml:space="preserve">
+    <value>गेलरी</value>
+  </data>
+  <data name="sidemenu_logout" xml:space="preserve">
+    <value>लॉग आउट</value>
+  </data>
+  <data name="sidemenu_settings" xml:space="preserve">
+    <value>समायोजन</value>
   </data>
 </root>

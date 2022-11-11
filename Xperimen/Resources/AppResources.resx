@@ -117,6 +117,118 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="app_alert" xml:space="preserve">
+    <value>Alert</value>
+  </data>
+  <data name="app_cancel" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="app_confirm" xml:space="preserve">
+    <value>Confirm</value>
+  </data>
+  <data name="app_confirmpwd" xml:space="preserve">
+    <value>Confirmation Password</value>
+  </data>
+  <data name="app_error" xml:space="preserve">
+    <value>Error</value>
+  </data>
+  <data name="app_exist" xml:space="preserve">
+    <value>Exist</value>
+  </data>
+  <data name="app_failed" xml:space="preserve">
+    <value>Failed</value>
+  </data>
+  <data name="app_notmatch" xml:space="preserve">
+    <value>Not Match</value>
+  </data>
+  <data name="app_okay" xml:space="preserve">
+    <value>Okay</value>
+  </data>
+  <data name="app_permission" xml:space="preserve">
+    <value>Permission</value>
+  </data>
+  <data name="app_success" xml:space="preserve">
+    <value>Success</value>
+    <comment>start new here</comment>
+  </data>
+  <data name="app_unavailable" xml:space="preserve">
+    <value>Unavailable</value>
+  </data>
+  <data name="camgal_camcancel" xml:space="preserve">
+    <value>Take photo cancelled.</value>
+  </data>
+  <data name="camgal_camunavailable" xml:space="preserve">
+    <value>Camera is not available or take photo not supported.</value>
+  </data>
+  <data name="camgal_nophotoselect" xml:space="preserve">
+    <value>No photo selected.</value>
+  </data>
+  <data name="camgal_permmedia" xml:space="preserve">
+    <value>App required permission to access media gallery to pick photos.</value>
+  </data>
+  <data name="camgal_permphoto" xml:space="preserve">
+    <value>App required permission to access photos to pick photos.</value>
+  </data>
+  <data name="camgal_photounavailable" xml:space="preserve">
+    <value>Photo gallery is not available to pick photo.</value>
+  </data>
+  <data name="code_setting_allsuccessdelete" xml:space="preserve">
+    <value>Account and all the data successfully deleted.</value>
+  </data>
+  <data name="code_setting_deleted" xml:space="preserve">
+    <value>User deleted.</value>
+  </data>
+  <data name="code_setting_edyexist" xml:space="preserve">
+    <value>A user with that username already exist. Please choose a different username.</value>
+  </data>
+  <data name="code_setting_faildelete" xml:space="preserve">
+    <value>Technical error. Failed to delete this account.</value>
+  </data>
+  <data name="code_setting_faildeleteuser" xml:space="preserve">
+    <value>Technical error. Failed to delete the user.</value>
+  </data>
+  <data name="code_setting_fnameempty" xml:space="preserve">
+    <value>First name cannot be empty. Please insert your first name.</value>
+  </data>
+  <data name="code_setting_idnotfound" xml:space="preserve">
+    <value>Technical error. Current login ID not found.</value>
+  </data>
+  <data name="code_setting_lnameempty" xml:space="preserve">
+    <value>Last name cannot be empty. Please insert your last name.</value>
+  </data>
+  <data name="code_setting_lognotfound" xml:space="preserve">
+    <value>Current login information not found.</value>
+  </data>
+  <data name="code_setting_profupdated" xml:space="preserve">
+    <value>Profile updated.</value>
+  </data>
+  <data name="code_setting_pwdempty" xml:space="preserve">
+    <value>Password cannot be empty. Please insert your password.</value>
+  </data>
+  <data name="code_setting_pwdmore6" xml:space="preserve">
+    <value>Password must be more than 6 characters.</value>
+  </data>
+  <data name="code_setting_pwdnotmatch" xml:space="preserve">
+    <value>Confirmation password is not match with current password.</value>
+  </data>
+  <data name="code_setting_retypepwd" xml:space="preserve">
+    <value>Please re-type your password.</value>
+  </data>
+  <data name="code_setting_themefailed" xml:space="preserve">
+    <value>Update application theme failed.</value>
+  </data>
+  <data name="code_setting_updatefailed" xml:space="preserve">
+    <value>Update information failed.</value>
+  </data>
+  <data name="code_setting_usermore6" xml:space="preserve">
+    <value>Username must be more than 6 characters.</value>
+  </data>
+  <data name="code_setting_username" xml:space="preserve">
+    <value>create your username</value>
+  </data>
+  <data name="code_setting_usernameempty" xml:space="preserve">
+    <value>Username cannot be empty. Please insert your username.</value>
+  </data>
   <data name="intro_btnokay" xml:space="preserve">
     <value>Okay</value>
   </data>
@@ -165,7 +277,67 @@
   <data name="setting_navbar" xml:space="preserve">
     <value>Settings</value>
   </data>
+  <data name="setting_topright_created" xml:space="preserve">
+    <value>Created</value>
+  </data>
+  <data name="setting_topright_current" xml:space="preserve">
+    <value>Currently login</value>
+  </data>
+  <data name="setting_topright_delete" xml:space="preserve">
+    <value>Delete My Account</value>
+  </data>
+  <data name="setting_topright_lastlogin" xml:space="preserve">
+    <value>Last Login</value>
+  </data>
+  <data name="setting_topright_okay" xml:space="preserve">
+    <value>Okay</value>
+  </data>
+  <data name="setting_topright_title" xml:space="preserve">
+    <value>Account(s) on this device</value>
+  </data>
+  <data name="setting_topright_updated" xml:space="preserve">
+    <value>Updated</value>
+  </data>
   <data name="setting_version" xml:space="preserve">
     <value>Version</value>
+  </data>
+  <data name="settupdate_cancel" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="settupdate_descplaceholder" xml:space="preserve">
+    <value>Bio, tagline, quotes, etc...</value>
+  </data>
+  <data name="settupdate_description" xml:space="preserve">
+    <value>Description</value>
+  </data>
+  <data name="settupdate_media" xml:space="preserve">
+    <value>Update your image</value>
+  </data>
+  <data name="settupdate_password" xml:space="preserve">
+    <value>Password</value>
+  </data>
+  <data name="settupdate_retype" xml:space="preserve">
+    <value>re-type your password</value>
+  </data>
+  <data name="settupdate_update" xml:space="preserve">
+    <value>Update</value>
+  </data>
+  <data name="sidemenu_commitment" xml:space="preserve">
+    <value>Commitment</value>
+  </data>
+  <data name="sidemenu_dashboard" xml:space="preserve">
+    <value>Dashboard</value>
+  </data>
+  <data name="sidemenu_expenses" xml:space="preserve">
+    <value>Expenses</value>
+  </data>
+  <data name="sidemenu_gallery" xml:space="preserve">
+    <value>Gallery</value>
+  </data>
+  <data name="sidemenu_logout" xml:space="preserve">
+    <value>Logout</value>
+  </data>
+  <data name="sidemenu_settings" xml:space="preserve">
+    <value>Settings</value>
   </data>
 </root>

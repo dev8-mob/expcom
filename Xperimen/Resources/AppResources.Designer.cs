@@ -61,6 +61,339 @@ namespace Xperimen.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Alert.
+        /// </summary>
+        internal static string app_alert {
+            get {
+                return ResourceManager.GetString("app_alert", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cancel.
+        /// </summary>
+        internal static string app_cancel {
+            get {
+                return ResourceManager.GetString("app_cancel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Confirm.
+        /// </summary>
+        internal static string app_confirm {
+            get {
+                return ResourceManager.GetString("app_confirm", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Confirmation Password.
+        /// </summary>
+        internal static string app_confirmpwd {
+            get {
+                return ResourceManager.GetString("app_confirmpwd", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error.
+        /// </summary>
+        internal static string app_error {
+            get {
+                return ResourceManager.GetString("app_error", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Exist.
+        /// </summary>
+        internal static string app_exist {
+            get {
+                return ResourceManager.GetString("app_exist", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Failed.
+        /// </summary>
+        internal static string app_failed {
+            get {
+                return ResourceManager.GetString("app_failed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Not Match.
+        /// </summary>
+        internal static string app_notmatch {
+            get {
+                return ResourceManager.GetString("app_notmatch", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Okay.
+        /// </summary>
+        internal static string app_okay {
+            get {
+                return ResourceManager.GetString("app_okay", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Permission.
+        /// </summary>
+        internal static string app_permission {
+            get {
+                return ResourceManager.GetString("app_permission", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Success.
+        /// </summary>
+        internal static string app_success {
+            get {
+                return ResourceManager.GetString("app_success", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Unavailable.
+        /// </summary>
+        internal static string app_unavailable {
+            get {
+                return ResourceManager.GetString("app_unavailable", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Take photo cancelled..
+        /// </summary>
+        internal static string camgal_camcancel {
+            get {
+                return ResourceManager.GetString("camgal_camcancel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Camera is not available or take photo not supported..
+        /// </summary>
+        internal static string camgal_camunavailable {
+            get {
+                return ResourceManager.GetString("camgal_camunavailable", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No photo selected..
+        /// </summary>
+        internal static string camgal_nophotoselect {
+            get {
+                return ResourceManager.GetString("camgal_nophotoselect", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to App required permission to access media gallery to pick photos..
+        /// </summary>
+        internal static string camgal_permmedia {
+            get {
+                return ResourceManager.GetString("camgal_permmedia", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to App required permission to access photos to pick photos..
+        /// </summary>
+        internal static string camgal_permphoto {
+            get {
+                return ResourceManager.GetString("camgal_permphoto", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Photo gallery is not available to pick photo..
+        /// </summary>
+        internal static string camgal_photounavailable {
+            get {
+                return ResourceManager.GetString("camgal_photounavailable", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Account and all the data successfully deleted..
+        /// </summary>
+        internal static string code_setting_allsuccessdelete {
+            get {
+                return ResourceManager.GetString("code_setting_allsuccessdelete", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to User deleted..
+        /// </summary>
+        internal static string code_setting_deleted {
+            get {
+                return ResourceManager.GetString("code_setting_deleted", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to A user with that username already exist. Please choose a different username..
+        /// </summary>
+        internal static string code_setting_edyexist {
+            get {
+                return ResourceManager.GetString("code_setting_edyexist", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Technical error. Failed to delete this account..
+        /// </summary>
+        internal static string code_setting_faildelete {
+            get {
+                return ResourceManager.GetString("code_setting_faildelete", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Technical error. Failed to delete the user..
+        /// </summary>
+        internal static string code_setting_faildeleteuser {
+            get {
+                return ResourceManager.GetString("code_setting_faildeleteuser", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to First name cannot be empty. Please insert your first name..
+        /// </summary>
+        internal static string code_setting_fnameempty {
+            get {
+                return ResourceManager.GetString("code_setting_fnameempty", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Technical error. Current login ID not found..
+        /// </summary>
+        internal static string code_setting_idnotfound {
+            get {
+                return ResourceManager.GetString("code_setting_idnotfound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Last name cannot be empty. Please insert your last name..
+        /// </summary>
+        internal static string code_setting_lnameempty {
+            get {
+                return ResourceManager.GetString("code_setting_lnameempty", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Current login information not found..
+        /// </summary>
+        internal static string code_setting_lognotfound {
+            get {
+                return ResourceManager.GetString("code_setting_lognotfound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Profile updated..
+        /// </summary>
+        internal static string code_setting_profupdated {
+            get {
+                return ResourceManager.GetString("code_setting_profupdated", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Password cannot be empty. Please insert your password..
+        /// </summary>
+        internal static string code_setting_pwdempty {
+            get {
+                return ResourceManager.GetString("code_setting_pwdempty", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Password must be more than 6 characters..
+        /// </summary>
+        internal static string code_setting_pwdmore6 {
+            get {
+                return ResourceManager.GetString("code_setting_pwdmore6", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Confirmation password is not match with current password..
+        /// </summary>
+        internal static string code_setting_pwdnotmatch {
+            get {
+                return ResourceManager.GetString("code_setting_pwdnotmatch", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please re-type your password..
+        /// </summary>
+        internal static string code_setting_retypepwd {
+            get {
+                return ResourceManager.GetString("code_setting_retypepwd", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Update application theme failed..
+        /// </summary>
+        internal static string code_setting_themefailed {
+            get {
+                return ResourceManager.GetString("code_setting_themefailed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Update information failed..
+        /// </summary>
+        internal static string code_setting_updatefailed {
+            get {
+                return ResourceManager.GetString("code_setting_updatefailed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Username must be more than 6 characters..
+        /// </summary>
+        internal static string code_setting_usermore6 {
+            get {
+                return ResourceManager.GetString("code_setting_usermore6", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to create your username.
+        /// </summary>
+        internal static string code_setting_username {
+            get {
+                return ResourceManager.GetString("code_setting_username", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Username cannot be empty. Please insert your username..
+        /// </summary>
+        internal static string code_setting_usernameempty {
+            get {
+                return ResourceManager.GetString("code_setting_usernameempty", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Okay.
         /// </summary>
         internal static string intro_btnokay {
@@ -205,11 +538,191 @@ namespace Xperimen.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Created.
+        /// </summary>
+        internal static string setting_topright_created {
+            get {
+                return ResourceManager.GetString("setting_topright_created", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Currently login.
+        /// </summary>
+        internal static string setting_topright_current {
+            get {
+                return ResourceManager.GetString("setting_topright_current", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Delete My Account.
+        /// </summary>
+        internal static string setting_topright_delete {
+            get {
+                return ResourceManager.GetString("setting_topright_delete", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Last Login.
+        /// </summary>
+        internal static string setting_topright_lastlogin {
+            get {
+                return ResourceManager.GetString("setting_topright_lastlogin", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Okay.
+        /// </summary>
+        internal static string setting_topright_okay {
+            get {
+                return ResourceManager.GetString("setting_topright_okay", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Account(s) on this device.
+        /// </summary>
+        internal static string setting_topright_title {
+            get {
+                return ResourceManager.GetString("setting_topright_title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Updated.
+        /// </summary>
+        internal static string setting_topright_updated {
+            get {
+                return ResourceManager.GetString("setting_topright_updated", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Version.
         /// </summary>
         internal static string setting_version {
             get {
                 return ResourceManager.GetString("setting_version", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cancel.
+        /// </summary>
+        internal static string settupdate_cancel {
+            get {
+                return ResourceManager.GetString("settupdate_cancel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Bio, tagline, quotes, etc....
+        /// </summary>
+        internal static string settupdate_descplaceholder {
+            get {
+                return ResourceManager.GetString("settupdate_descplaceholder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Description.
+        /// </summary>
+        internal static string settupdate_description {
+            get {
+                return ResourceManager.GetString("settupdate_description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Update your image.
+        /// </summary>
+        internal static string settupdate_media {
+            get {
+                return ResourceManager.GetString("settupdate_media", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Password.
+        /// </summary>
+        internal static string settupdate_password {
+            get {
+                return ResourceManager.GetString("settupdate_password", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to re-type your password.
+        /// </summary>
+        internal static string settupdate_retype {
+            get {
+                return ResourceManager.GetString("settupdate_retype", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Update.
+        /// </summary>
+        internal static string settupdate_update {
+            get {
+                return ResourceManager.GetString("settupdate_update", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Commitment.
+        /// </summary>
+        internal static string sidemenu_commitment {
+            get {
+                return ResourceManager.GetString("sidemenu_commitment", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Dashboard.
+        /// </summary>
+        internal static string sidemenu_dashboard {
+            get {
+                return ResourceManager.GetString("sidemenu_dashboard", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Expenses.
+        /// </summary>
+        internal static string sidemenu_expenses {
+            get {
+                return ResourceManager.GetString("sidemenu_expenses", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Gallery.
+        /// </summary>
+        internal static string sidemenu_gallery {
+            get {
+                return ResourceManager.GetString("sidemenu_gallery", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Logout.
+        /// </summary>
+        internal static string sidemenu_logout {
+            get {
+                return ResourceManager.GetString("sidemenu_logout", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Settings.
+        /// </summary>
+        internal static string sidemenu_settings {
+            get {
+                return ResourceManager.GetString("sidemenu_settings", resourceCulture);
             }
         }
     }

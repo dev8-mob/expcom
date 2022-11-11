@@ -165,7 +165,67 @@
   <data name="setting_navbar" xml:space="preserve">
     <value>அமைப்புகள்</value>
   </data>
+  <data name="setting_topright_created" xml:space="preserve">
+    <value>உருவாக்கப்பட்டது</value>
+  </data>
+  <data name="setting_topright_current" xml:space="preserve">
+    <value>தற்போதுஉள்நுழைய</value>
+  </data>
+  <data name="setting_topright_delete" xml:space="preserve">
+    <value>எனது கணக்கை நீக்கு</value>
+  </data>
+  <data name="setting_topright_lastlogin" xml:space="preserve">
+    <value>கடைசி உள்நுழைவு</value>
+  </data>
+  <data name="setting_topright_okay" xml:space="preserve">
+    <value>சரி</value>
+  </data>
+  <data name="setting_topright_title" xml:space="preserve">
+    <value>இந்தச் சாதனத்தில் கணக்கு(கள்)</value>
+  </data>
+  <data name="setting_topright_updated" xml:space="preserve">
+    <value>புதுப்பிக்கப்பட்டது</value>
+  </data>
   <data name="setting_version" xml:space="preserve">
     <value>பதிப்பு</value>
+  </data>
+  <data name="settupdate_cancel" xml:space="preserve">
+    <value>ரத்து செய்</value>
+  </data>
+  <data name="settupdate_descplaceholder" xml:space="preserve">
+    <value>பயோ, டேக்லைன், மேற்கோள்கள் போன்றவை...</value>
+  </data>
+  <data name="settupdate_description" xml:space="preserve">
+    <value>விளக்கம்</value>
+  </data>
+  <data name="settupdate_media" xml:space="preserve">
+    <value>மேம்படுத்தல்படம்</value>
+  </data>
+  <data name="settupdate_password" xml:space="preserve">
+    <value>கடவுச்சொல்</value>
+  </data>
+  <data name="settupdate_retype" xml:space="preserve">
+    <value>மறு வகை கடவுச்சொல்</value>
+  </data>
+  <data name="settupdate_update" xml:space="preserve">
+    <value>புதுப்பிக்கவும்</value>
+  </data>
+  <data name="sidemenu_commitment" xml:space="preserve">
+    <value>அர்ப்பணிப்பு</value>
+  </data>
+  <data name="sidemenu_dashboard" xml:space="preserve">
+    <value>டாஷ்போர்டு</value>
+  </data>
+  <data name="sidemenu_expenses" xml:space="preserve">
+    <value>செலவுகள்</value>
+  </data>
+  <data name="sidemenu_gallery" xml:space="preserve">
+    <value>கேலரி</value>
+  </data>
+  <data name="sidemenu_logout" xml:space="preserve">
+    <value>வெளியேறு</value>
+  </data>
+  <data name="sidemenu_settings" xml:space="preserve">
+    <value>அமைப்புகள்</value>
   </data>
 </root>

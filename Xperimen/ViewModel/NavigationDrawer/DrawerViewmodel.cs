@@ -5,6 +5,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using Xamarin.Forms;
 using Xperimen.Model;
+using Xperimen.Resources;
 using Xperimen.View;
 using Xperimen.View.Commitment;
 using Xperimen.View.Dashboard;
@@ -95,7 +96,8 @@ namespace Xperimen.ViewModel.NavigationDrawer
             {
                 ImageIcon1 = "black_user.png",
                 ImageIcon2 = "white_user.png",
-                Title = "Dashboard",
+                Title = AppResources.sidemenu_dashboard,
+                Code = "dashboard",
                 Contentpage = typeof(Welcome),
                 IsSelected = false,
                 TextMenuColor = textcolor,
@@ -106,7 +108,8 @@ namespace Xperimen.ViewModel.NavigationDrawer
             {
                 ImageIcon1 = "black_wallet.png",
                 ImageIcon2 = "white_wallet.png",
-                Title = "Commitment",
+                Title = AppResources.sidemenu_commitment,
+                Code = "commitment",
                 Contentpage = typeof(MainCommitment),
                 IsSelected = false,
                 TextMenuColor = textcolor,
@@ -117,7 +120,8 @@ namespace Xperimen.ViewModel.NavigationDrawer
             {
                 ImageIcon1 = "black_money.png",
                 ImageIcon2 = "white_money.png",
-                Title = "Expenses",
+                Title = AppResources.sidemenu_expenses,
+                Code = "expenses",
                 Contentpage = typeof(MainExpenses),
                 IsSelected = false,
                 TextMenuColor = textcolor,
@@ -128,7 +132,8 @@ namespace Xperimen.ViewModel.NavigationDrawer
             {
                 ImageIcon1 = "black_image.png",
                 ImageIcon2 = "white_image.png",
-                Title = "Gallery",
+                Title = AppResources.sidemenu_gallery,
+                Code = "gallery",
                 Contentpage = typeof(MainGallery),
                 IsSelected = false,
                 TextMenuColor = textcolor,
@@ -139,7 +144,8 @@ namespace Xperimen.ViewModel.NavigationDrawer
             {
                 ImageIcon1 = "black_setting.png",
                 ImageIcon2 = "white_setting.png",
-                Title = "Settings",
+                Title = AppResources.sidemenu_settings,
+                Code = "settings",
                 Contentpage = typeof(MainSetting),
                 IsSelected = false,
                 TextMenuColor = textcolor,
@@ -150,7 +156,8 @@ namespace Xperimen.ViewModel.NavigationDrawer
             {
                 ImageIcon1 = "black_logout.png",
                 ImageIcon2 = "white_logout.png",
-                Title = "Logout",
+                Title = AppResources.sidemenu_logout,
+                Code = "logout",
                 Contentpage = typeof(Logout),
                 IsSelected = false,
                 TextMenuColor = textcolor,

@@ -29,7 +29,7 @@ namespace Xperimen.View.NavigationDrawer
                     if (theme.Equals("light")) lbl_title.TextColor = (Color)Application.Current.Resources["LabelTextColor"];
                 }
 
-                if (lbl_title.Text.Equals(arg))
+                if (lbl_code.Text.Equals(arg))
                 {
                     //set here and DrawerViewModel SetSelectedMenu
                     frame_bg.IsVisible = true;
@@ -65,12 +65,12 @@ namespace Xperimen.View.NavigationDrawer
             view.Scale = 1;
             view.IsEnabled = false;
 
-            MessagingCenter.Send(this, "SelectedMenu", lbl_title.Text);
+            MessagingCenter.Send(this, "SelectedMenu", lbl_code.Text);
 
-            var title = lbl_title.Text;
+            var code = lbl_code.Text;
             var parent = (DrawerMenu)view.Parent.Parent.Parent.Parent;
             var drawer = (DrawerMaster)parent.Parent;
-            var item = parent.viewmodel.MenuList.Where(x => x.Title.Equals(title)).ToList();
+            var item = parent.viewmodel.MenuList.Where(x => x.Code.Equals(code)).ToList();
             if (item.Count() > 0)
             {
                 Type page = item[0].Contentpage;

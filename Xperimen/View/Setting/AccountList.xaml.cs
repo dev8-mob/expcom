@@ -3,6 +3,7 @@ using Rg.Plugins.Popup.Pages;
 using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using Xperimen.Resources;
 using Xperimen.Stylekit;
 using Xperimen.ViewModel.Setting;
 
@@ -40,8 +41,8 @@ namespace Xperimen.View.Setting
                             var navigation = Application.Current.MainPage.Navigation;
                             await navigation.PopPopupAsync();
                         }
-                        else if (result == 2) SetDisplayAlert("Failed", "Technical error. Current login ID not found.", "", "", "");
-                        else if (result == 3) SetDisplayAlert("Failed", "Technical error. Failed to delete this account.", "", "", "");
+                        else if (result == 2) SetDisplayAlert(AppResources.app_failed, "Technical error. Current login ID not found.", "", "", "");
+                        else if (result == 3) SetDisplayAlert(AppResources.app_failed, "Technical error. Failed to delete this account.", "", "", "");
                         viewmodel.IsLoading = false;
                     }
                     else
@@ -49,11 +50,11 @@ namespace Xperimen.View.Setting
                         var result = viewmodel.DeleteUser(alert.CodeObject);
                         if (result == 1)
                         {
-                            SetDisplayAlert("Success", "User deleted.", "", "", "");
+                            SetDisplayAlert(AppResources.app_success, "User deleted.", "", "", "");
                             viewmodel.GetClientsList();
                             viewmodel.IsLoading = false;
                         }
-                        else if (result == 2) SetDisplayAlert("Failed", "Technical error. Failed to delete the user.", "", "", "");
+                        else if (result == 2) SetDisplayAlert(AppResources.app_failed, "Technical error. Failed to delete the user.", "", "", "");
                     }
                 }
                 else viewmodel.IsLoading = false;

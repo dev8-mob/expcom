@@ -5,6 +5,7 @@
                  xmlns:viewcell="clr-namespace:Xperimen.View.Setting"
                  xmlns:stylekit="clr-namespace:Xperimen.Stylekit"
                  xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
+                 xmlns:resource="clr-namespace:Xperimen.Resources"
                  Padding="0">
 
     <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Margin="0">
@@ -17,7 +18,7 @@
 
                 <StackLayout HorizontalOptions="FillAndExpand" Padding="0,15,0,0" VerticalOptions="Fill" x:Name="stack_bg">
 
-                    <stylekit:XLabel Text="Account(s) on this device" HorizontalOptions="CenterAndExpand" 
+                    <stylekit:XLabel Text="{x:Static resource:AppResources.setting_topright_title}" HorizontalOptions="CenterAndExpand" 
                                      FontFamily="{DynamicResource Key=BoldFont}"/>
 
                     <!-- clients list -->
@@ -34,8 +35,8 @@
                     </ScrollView>
 
                     <!-- okay button -->
-                    <stylekit:XLabel Text="Okay" HorizontalOptions="Center" FontFamily="{DynamicResource Key=BoldFont}" Margin="0,15,0,0"
-                                     Padding="20,15,20,15">
+                    <stylekit:XLabel Text="{x:Static resource:AppResources.setting_topright_okay}" HorizontalOptions="Center" 
+                                     FontFamily="{DynamicResource Key=BoldFont}" Margin="0,15,0,0" Padding="20,15,20,15">
                         <Label.GestureRecognizers>
                             <TapGestureRecognizer Tapped="OkayClicked" NumberOfTapsRequired="1"/>
                         </Label.GestureRecognizers>
