@@ -117,6 +117,126 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="app_alert" xml:space="preserve">
+    <value>எச்சரிக்கை</value>
+  </data>
+  <data name="app_cancel" xml:space="preserve">
+    <value>ரத்து செய்</value>
+  </data>
+  <data name="app_confirm" xml:space="preserve">
+    <value>உறுதிப்படுத்தவும்</value>
+  </data>
+  <data name="app_confirmpwd" xml:space="preserve">
+    <value>உறுதிப்படுத்தல் கடவுச்சொல்</value>
+  </data>
+  <data name="app_delete" xml:space="preserve">
+    <value>நீக்கு</value>
+  </data>
+  <data name="app_error" xml:space="preserve">
+    <value>பிழை</value>
+  </data>
+  <data name="app_exist" xml:space="preserve">
+    <value>உள்ளது</value>
+  </data>
+  <data name="app_failed" xml:space="preserve">
+    <value>தோல்வி</value>
+  </data>
+  <data name="app_notmatch" xml:space="preserve">
+    <value>பொருத்தம் இல்லை</value>
+  </data>
+  <data name="app_okay" xml:space="preserve">
+    <value>சரி</value>
+  </data>
+  <data name="app_permission" xml:space="preserve">
+    <value>அனுமதி</value>
+  </data>
+  <data name="app_success" xml:space="preserve">
+    <value>வெற்றி</value>
+  </data>
+  <data name="app_unavailable" xml:space="preserve">
+    <value>கிடைக்கவில்லை</value>
+  </data>
+  <data name="camgal_camcancel" xml:space="preserve">
+    <value>புகைப்படம் எடுப்பது ரத்து செய்யப்பட்டது.</value>
+  </data>
+  <data name="camgal_camunavailable" xml:space="preserve">
+    <value>கேமரா இல்லை அல்லது புகைப்படம் எடுப்பது ஆதரிக்கப்படவில்லை.</value>
+  </data>
+  <data name="camgal_nophotoselect" xml:space="preserve">
+    <value>புகைப்படம் எதுவும் தேர்ந்தெடுக்கப்படவில்லை.</value>
+  </data>
+  <data name="camgal_permmedia" xml:space="preserve">
+    <value>படங்களை எடுக்க மீடியா கேலரியை அணுக பயன்பாட்டிற்கு அனுமதி தேவை.</value>
+  </data>
+  <data name="camgal_permphoto" xml:space="preserve">
+    <value>புகைப்படங்களை எடுக்க, புகைப்படங்களை அணுக, பயன்பாட்டிற்கு அனுமதி தேவை.</value>
+  </data>
+  <data name="camgal_photounavailable" xml:space="preserve">
+    <value>புகைப்படத்தை எடுக்க புகைப்பட தொகுப்பு கிடைக்கவில்லை.</value>
+  </data>
+  <data name="code_setting_allsuccessdelete" xml:space="preserve">
+    <value>கணக்கு மற்றும் அனைத்து தரவுகளும் வெற்றிகரமாக நீக்கப்பட்டன.</value>
+  </data>
+  <data name="code_setting_deleted" xml:space="preserve">
+    <value>பயனர் நீக்கப்பட்டார்.</value>
+  </data>
+  <data name="code_setting_edyexist" xml:space="preserve">
+    <value>அந்த பயனர்பெயருடன் ஏற்கனவே ஒரு பயனர் இருக்கிறார். தயவுசெய்து வேறு பயனர்பெயரை தேர்வு செய்யவும்.</value>
+  </data>
+  <data name="code_setting_faildelete" xml:space="preserve">
+    <value>தொழில்நுட்ப பிழை. இந்தக் கணக்கை நீக்க முடியவில்லை.</value>
+  </data>
+  <data name="code_setting_faildeleteuser" xml:space="preserve">
+    <value>தொழில்நுட்ப பிழை. பயனரை நீக்க முடியவில்லை.</value>
+  </data>
+  <data name="code_setting_fnameempty" xml:space="preserve">
+    <value>முதல் பெயர் காலியாக இருக்கக்கூடாது. உங்கள் முதல் பெயரைச் செருகவும்.</value>
+  </data>
+  <data name="code_setting_idnotfound" xml:space="preserve">
+    <value>தொழில்நுட்ப பிழை. தற்போதைய உள்நுழைவு ஐடி கிடைக்கவில்லை.</value>
+  </data>
+  <data name="code_setting_lnameempty" xml:space="preserve">
+    <value>கடைசி பெயர் காலியாக இருக்கக்கூடாது. உங்கள் கடைசி பெயரைச் செருகவும்.</value>
+  </data>
+  <data name="code_setting_lognotfound" xml:space="preserve">
+    <value>தற்போதைய உள்நுழைவு தகவல் கிடைக்கவில்லை.</value>
+  </data>
+  <data name="code_setting_profupdated" xml:space="preserve">
+    <value>சுயவிவரம் புதுப்பிக்கப்பட்டது.</value>
+  </data>
+  <data name="code_setting_pwdempty" xml:space="preserve">
+    <value>கடவுச்சொல் காலியாக இருக்கக்கூடாது. உங்கள் கடவுச்சொல்லைச் செருகவும்.</value>
+  </data>
+  <data name="code_setting_pwdmore6" xml:space="preserve">
+    <value>கடவுச்சொல் 6 எழுத்துகளுக்கு மேல் இருக்க வேண்டும்.</value>
+  </data>
+  <data name="code_setting_pwdnotmatch" xml:space="preserve">
+    <value>உறுதிப்படுத்தல் கடவுச்சொல் தற்போதைய கடவுச்சொல்லுடன் பொருந்தவில்லை.</value>
+  </data>
+  <data name="code_setting_retypepwd" xml:space="preserve">
+    <value>உங்கள் கடவுச்சொல்லை மீண்டும் தட்டச்சு செய்யவும்.</value>
+  </data>
+  <data name="code_setting_suredelself" xml:space="preserve">
+    <value>உங்கள் கணக்கை நீக்குவதை உறுதிப்படுத்துகிறீர்களா? பொறுப்புகள் மற்றும் செலவுகள் போன்ற அனைத்து தரவுகளும் நீக்கப்படும்.</value>
+  </data>
+  <data name="code_setting_suredeluser" xml:space="preserve">
+    <value>நீக்குவது உறுதி </value>
+  </data>
+  <data name="code_setting_themefailed" xml:space="preserve">
+    <value>பயன்பாட்டு தீம் புதுப்பிக்க முடியவில்லை.</value>
+  </data>
+  <data name="code_setting_updatefailed" xml:space="preserve">
+    <value>தகவலைப் புதுப்பிக்க முடியவில்லை.</value>
+  </data>
+  <data name="code_setting_usermore6" xml:space="preserve">
+    <value>பயனர் பெயர் 6 எழுத்துகளுக்கு மேல் இருக்க வேண்டும்.</value>
+  </data>
+  <data name="code_setting_username" xml:space="preserve">
+    <value>உங்கள் பயனர்பெயரை உருவாக்கவும்</value>
+  </data>
+  <data name="code_setting_usernameempty" xml:space="preserve">
+    <value>பயனர் பெயர் காலியாக இருக்கக்கூடாது. தயவுசெய்து உங்கள் பயனர் பெயரைச் செருகவும்.</value>
+  </data>
   <data name="intro_btnokay" xml:space="preserve">
     <value>சரி</value>
   </data>

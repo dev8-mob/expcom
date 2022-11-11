@@ -41,8 +41,8 @@ namespace Xperimen.View.Setting
                             var navigation = Application.Current.MainPage.Navigation;
                             await navigation.PopPopupAsync();
                         }
-                        else if (result == 2) SetDisplayAlert(AppResources.app_failed, "Technical error. Current login ID not found.", "", "", "");
-                        else if (result == 3) SetDisplayAlert(AppResources.app_failed, "Technical error. Failed to delete this account.", "", "", "");
+                        else if (result == 2) SetDisplayAlert(AppResources.app_failed, AppResources.code_setting_idnotfound, "", "", "");
+                        else if (result == 3) SetDisplayAlert(AppResources.app_failed, AppResources.code_setting_faildelete, "", "", "");
                         viewmodel.IsLoading = false;
                     }
                     else
@@ -50,11 +50,11 @@ namespace Xperimen.View.Setting
                         var result = viewmodel.DeleteUser(alert.CodeObject);
                         if (result == 1)
                         {
-                            SetDisplayAlert(AppResources.app_success, "User deleted.", "", "", "");
+                            SetDisplayAlert(AppResources.app_success, AppResources.code_setting_deleted, "", "", "");
                             viewmodel.GetClientsList();
                             viewmodel.IsLoading = false;
                         }
-                        else if (result == 2) SetDisplayAlert(AppResources.app_failed, "Technical error. Failed to delete the user.", "", "", "");
+                        else if (result == 2) SetDisplayAlert(AppResources.app_failed, AppResources.code_setting_faildeleteuser, "", "", "");
                     }
                 }
                 else viewmodel.IsLoading = false;

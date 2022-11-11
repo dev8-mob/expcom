@@ -129,6 +129,9 @@
   <data name="app_confirmpwd" xml:space="preserve">
     <value>Kata Laluan Pengesahan</value>
   </data>
+  <data name="app_delete" xml:space="preserve">
+    <value>Padam</value>
+  </data>
   <data name="app_error" xml:space="preserve">
     <value>Ralat</value>
   </data>
@@ -149,7 +152,6 @@
   </data>
   <data name="app_success" xml:space="preserve">
     <value>Berjaya</value>
-    <comment>start new here</comment>
   </data>
   <data name="app_unavailable" xml:space="preserve">
     <value>Tidak Tersedia</value>
@@ -213,6 +215,12 @@
   </data>
   <data name="code_setting_retypepwd" xml:space="preserve">
     <value>Sila taip semula kata laluan anda.</value>
+  </data>
+  <data name="code_setting_suredelself" xml:space="preserve">
+    <value>Anda pasti untuk memadam akaun anda? Semua data seperti komitmen dan perbelanjaan akan dipadamkan.</value>
+  </data>
+  <data name="code_setting_suredeluser" xml:space="preserve">
+    <value>Anda pasti untuk memadam </value>
   </data>
   <data name="code_setting_themefailed" xml:space="preserve">
     <value>Kemas kini tema aplikasi gagal.</value>

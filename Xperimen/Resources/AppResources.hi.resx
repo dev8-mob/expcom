@@ -117,6 +117,126 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="app_alert" xml:space="preserve">
+    <value>चेतावनी</value>
+  </data>
+  <data name="app_cancel" xml:space="preserve">
+    <value>रद्द करना</value>
+  </data>
+  <data name="app_confirm" xml:space="preserve">
+    <value>पुष्टि करें</value>
+  </data>
+  <data name="app_confirmpwd" xml:space="preserve">
+    <value>पुष्टिकरण पासवर्ड</value>
+  </data>
+  <data name="app_delete" xml:space="preserve">
+    <value>मिटाना</value>
+  </data>
+  <data name="app_error" xml:space="preserve">
+    <value>गलती</value>
+  </data>
+  <data name="app_exist" xml:space="preserve">
+    <value>अस्तित्व</value>
+  </data>
+  <data name="app_failed" xml:space="preserve">
+    <value>असफल</value>
+  </data>
+  <data name="app_notmatch" xml:space="preserve">
+    <value>मेल नहीं करता</value>
+  </data>
+  <data name="app_okay" xml:space="preserve">
+    <value>ठीक है</value>
+  </data>
+  <data name="app_permission" xml:space="preserve">
+    <value>अनुमति</value>
+  </data>
+  <data name="app_success" xml:space="preserve">
+    <value>सफलता</value>
+  </data>
+  <data name="app_unavailable" xml:space="preserve">
+    <value>अनुपलब्ध</value>
+  </data>
+  <data name="camgal_camcancel" xml:space="preserve">
+    <value>फोटो लेना रद्द कर दिया।</value>
+  </data>
+  <data name="camgal_camunavailable" xml:space="preserve">
+    <value>कैमरा उपलब्ध नहीं है या फ़ोटो लेना समर्थित नहीं है।</value>
+  </data>
+  <data name="camgal_nophotoselect" xml:space="preserve">
+    <value>कोई फ़ोटो नहीं चुना गया.</value>
+  </data>
+  <data name="camgal_permmedia" xml:space="preserve">
+    <value>ऐप को फोटो लेने के लिए मीडिया गैलरी तक पहुंचने की अनुमति की आवश्यकता है।</value>
+  </data>
+  <data name="camgal_permphoto" xml:space="preserve">
+    <value>फ़ोटो लेने के लिए फ़ोटो तक पहुँचने के लिए ऐप को अनुमति की आवश्यकता है।</value>
+  </data>
+  <data name="camgal_photounavailable" xml:space="preserve">
+    <value>फोटो लेने के लिए फोटो गैलरी उपलब्ध नहीं है।</value>
+  </data>
+  <data name="code_setting_allsuccessdelete" xml:space="preserve">
+    <value>खाता और सारा डेटा सफलतापूर्वक हटा दिया गया।</value>
+  </data>
+  <data name="code_setting_deleted" xml:space="preserve">
+    <value>उपयोगकर्ता हटा दिया गया।</value>
+  </data>
+  <data name="code_setting_edyexist" xml:space="preserve">
+    <value>उस उपयोगकर्ता नाम वाला एक उपयोगकर्ता पहले से मौजूद है। कृपया अन्य यूज़रनेम का चुनें।</value>
+  </data>
+  <data name="code_setting_faildelete" xml:space="preserve">
+    <value>तकनीकी त्रुटि। इस खाते को हटाने में विफल।</value>
+  </data>
+  <data name="code_setting_faildeleteuser" xml:space="preserve">
+    <value>तकनीकी त्रुटि। उपयोगकर्ता को हटाने में विफल।</value>
+  </data>
+  <data name="code_setting_fnameempty" xml:space="preserve">
+    <value>पहला नाम खाली नहीं हो सकता. कृपया अपना पहला नाम डालें।</value>
+  </data>
+  <data name="code_setting_idnotfound" xml:space="preserve">
+    <value>तकनीकी त्रुटि। वर्तमान लॉगिन आईडी नहीं मिला।</value>
+  </data>
+  <data name="code_setting_lnameempty" xml:space="preserve">
+    <value>अंतिम नाम खाली नहीं हो सकता. कृपया अपना अंतिम नाम डालें।</value>
+  </data>
+  <data name="code_setting_lognotfound" xml:space="preserve">
+    <value>वर्तमान लॉगिन जानकारी नहीं मिली।</value>
+  </data>
+  <data name="code_setting_profupdated" xml:space="preserve">
+    <value>प्रोफाइल अद्यतन किया गया।</value>
+  </data>
+  <data name="code_setting_pwdempty" xml:space="preserve">
+    <value>पासवर्ड खाली नहीं हो सकता. कृपया अपना पासवर्ड डालें।</value>
+  </data>
+  <data name="code_setting_pwdmore6" xml:space="preserve">
+    <value>पासवर्ड 6 अक्षरों से अधिक का होना चाहिए।</value>
+  </data>
+  <data name="code_setting_pwdnotmatch" xml:space="preserve">
+    <value>पुष्टिकरण पासवर्ड वर्तमान पासवर्ड से मेल नहीं खाता है।</value>
+  </data>
+  <data name="code_setting_retypepwd" xml:space="preserve">
+    <value>कृपया अपना पासवर्ड दोबारा टाइप करें।</value>
+  </data>
+  <data name="code_setting_suredelself" xml:space="preserve">
+    <value>क्या आप अपना खाता हटाने की पुष्टि कर रहे हैं? प्रतिबद्धताओं और खर्चों जैसे सभी डेटा हटा दिए जाएंगे।</value>
+  </data>
+  <data name="code_setting_suredeluser" xml:space="preserve">
+    <value>क्या वाकई हटाना है </value>
+  </data>
+  <data name="code_setting_themefailed" xml:space="preserve">
+    <value>ऐप्लिकेशन थीम अपडेट करना विफल रहा.</value>
+  </data>
+  <data name="code_setting_updatefailed" xml:space="preserve">
+    <value>अद्यतन जानकारी विफल।</value>
+  </data>
+  <data name="code_setting_usermore6" xml:space="preserve">
+    <value>उपयोगकर्ता नाम 6 वर्णों से अधिक होना चाहिए।</value>
+  </data>
+  <data name="code_setting_username" xml:space="preserve">
+    <value>अपना उपयोगकर्ता नाम बनाएं</value>
+  </data>
+  <data name="code_setting_usernameempty" xml:space="preserve">
+    <value>उपयोगकर्ता नाम खाली नहीं हो सकता. अपने उपयोगकर्ता नाम दर्ज करें।</value>
+  </data>
   <data name="intro_btnokay" xml:space="preserve">
     <value>ठीक</value>
   </data>

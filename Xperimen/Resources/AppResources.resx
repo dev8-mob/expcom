@@ -129,6 +129,9 @@
   <data name="app_confirmpwd" xml:space="preserve">
     <value>Confirmation Password</value>
   </data>
+  <data name="app_delete" xml:space="preserve">
+    <value>Delete</value>
+  </data>
   <data name="app_error" xml:space="preserve">
     <value>Error</value>
   </data>
@@ -213,6 +216,12 @@
   </data>
   <data name="code_setting_retypepwd" xml:space="preserve">
     <value>Please re-type your password.</value>
+  </data>
+  <data name="code_setting_suredelself" xml:space="preserve">
+    <value>Are you confirm to delete your account ? All data such as commitments and expenses will be deleted.</value>
+  </data>
+  <data name="code_setting_suredeluser" xml:space="preserve">
+    <value>Are you sure to delete </value>
   </data>
   <data name="code_setting_themefailed" xml:space="preserve">
     <value>Update application theme failed.</value>

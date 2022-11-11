@@ -117,6 +117,126 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="app_alert" xml:space="preserve">
+    <value>Alerto</value>
+  </data>
+  <data name="app_cancel" xml:space="preserve">
+    <value>Kanselahin</value>
+  </data>
+  <data name="app_confirm" xml:space="preserve">
+    <value>Kumpirmahin</value>
+  </data>
+  <data name="app_confirmpwd" xml:space="preserve">
+    <value>Password sa Pagkumpirma</value>
+  </data>
+  <data name="app_delete" xml:space="preserve">
+    <value>Tanggalin</value>
+  </data>
+  <data name="app_error" xml:space="preserve">
+    <value>Error</value>
+  </data>
+  <data name="app_exist" xml:space="preserve">
+    <value>Umiiral</value>
+  </data>
+  <data name="app_failed" xml:space="preserve">
+    <value>Nabigo</value>
+  </data>
+  <data name="app_notmatch" xml:space="preserve">
+    <value>Hindi parehas</value>
+  </data>
+  <data name="app_okay" xml:space="preserve">
+    <value>Sige</value>
+  </data>
+  <data name="app_permission" xml:space="preserve">
+    <value>Pahintulot</value>
+  </data>
+  <data name="app_success" xml:space="preserve">
+    <value>Tagumpay</value>
+  </data>
+  <data name="app_unavailable" xml:space="preserve">
+    <value>Hindi magagamit</value>
+  </data>
+  <data name="camgal_camcancel" xml:space="preserve">
+    <value>Kinansela ang pagkuha ng larawan.</value>
+  </data>
+  <data name="camgal_camunavailable" xml:space="preserve">
+    <value>Hindi available ang camera o hindi suportado ang pagkuha ng larawan.</value>
+  </data>
+  <data name="camgal_nophotoselect" xml:space="preserve">
+    <value>Walang napiling larawan.</value>
+  </data>
+  <data name="camgal_permmedia" xml:space="preserve">
+    <value>Ang app ay nangangailangan ng pahintulot upang ma-access ang media gallery upang pumili ng mga larawan.</value>
+  </data>
+  <data name="camgal_permphoto" xml:space="preserve">
+    <value>Ang app ay nangangailangan ng pahintulot upang ma-access ang mga larawan upang pumili ng mga larawan.</value>
+  </data>
+  <data name="camgal_photounavailable" xml:space="preserve">
+    <value>Hindi available ang photo gallery para pumili ng larawan.</value>
+  </data>
+  <data name="code_setting_allsuccessdelete" xml:space="preserve">
+    <value>Matagumpay na natanggal ang account at lahat ng data.</value>
+  </data>
+  <data name="code_setting_deleted" xml:space="preserve">
+    <value>Tinanggal ang user.</value>
+  </data>
+  <data name="code_setting_edyexist" xml:space="preserve">
+    <value>Mayroon nang user na may ganoong username. Mangyaring pumili ng ibang username.</value>
+  </data>
+  <data name="code_setting_faildelete" xml:space="preserve">
+    <value>Teknikal na error. Nabigong tanggalin ang account na ito.</value>
+  </data>
+  <data name="code_setting_faildeleteuser" xml:space="preserve">
+    <value>Teknikal na error. Nabigong tanggalin ang user.</value>
+  </data>
+  <data name="code_setting_fnameempty" xml:space="preserve">
+    <value>Hindi maaaring walang laman ang pangalan. Pakipasok ang iyong pangalan.</value>
+  </data>
+  <data name="code_setting_idnotfound" xml:space="preserve">
+    <value>Teknikal na error. Hindi nahanap ang kasalukuyang login ID.</value>
+  </data>
+  <data name="code_setting_lnameempty" xml:space="preserve">
+    <value>Hindi maaaring walang laman ang apelyido. Pakipasok ang iyong apelyido.</value>
+  </data>
+  <data name="code_setting_lognotfound" xml:space="preserve">
+    <value>Hindi nahanap ang kasalukuyang impormasyon sa pag-log in.</value>
+  </data>
+  <data name="code_setting_profupdated" xml:space="preserve">
+    <value>Na-update ang profile.</value>
+  </data>
+  <data name="code_setting_pwdempty" xml:space="preserve">
+    <value>Hindi maaaring walang laman ang password. Pakipasok ang iyong password.</value>
+  </data>
+  <data name="code_setting_pwdmore6" xml:space="preserve">
+    <value>Ang password ay dapat na higit sa 6 na character.</value>
+  </data>
+  <data name="code_setting_pwdnotmatch" xml:space="preserve">
+    <value>Ang password sa pagkumpirma ay hindi tumutugma sa kasalukuyang password.</value>
+  </data>
+  <data name="code_setting_retypepwd" xml:space="preserve">
+    <value>Paki-type muli ang iyong password.</value>
+  </data>
+  <data name="code_setting_suredelself" xml:space="preserve">
+    <value>Kinukumpirma mo bang tanggalin ang iyong account? Ang lahat ng data tulad ng mga pangako at gastos ay tatanggalin.</value>
+  </data>
+  <data name="code_setting_suredeluser" xml:space="preserve">
+    <value>Sigurado ka bang tatanggalin</value>
+  </data>
+  <data name="code_setting_themefailed" xml:space="preserve">
+    <value>Nabigo ang pag-update ng tema ng application.</value>
+  </data>
+  <data name="code_setting_updatefailed" xml:space="preserve">
+    <value>Nabigo ang pag-update ng impormasyon.</value>
+  </data>
+  <data name="code_setting_usermore6" xml:space="preserve">
+    <value>Ang username ay dapat na higit sa 6 na character.</value>
+  </data>
+  <data name="code_setting_username" xml:space="preserve">
+    <value>lumikha ng iyong username</value>
+  </data>
+  <data name="code_setting_usernameempty" xml:space="preserve">
+    <value>Hindi maaaring walang laman ang username. Mangyaring ipasok ang iyong username.</value>
+  </data>
   <data name="intro_btnokay" xml:space="preserve">
     <value>Sige</value>
   </data>

@@ -97,6 +97,15 @@ namespace Xperimen.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Delete.
+        /// </summary>
+        internal static string app_delete {
+            get {
+                return ResourceManager.GetString("app_delete", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Error.
         /// </summary>
         internal static string app_error {
@@ -345,6 +354,24 @@ namespace Xperimen.Resources {
         internal static string code_setting_retypepwd {
             get {
                 return ResourceManager.GetString("code_setting_retypepwd", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you confirm to delete your account ? All data such as commitments and expenses will be deleted..
+        /// </summary>
+        internal static string code_setting_suredelself {
+            get {
+                return ResourceManager.GetString("code_setting_suredelself", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure to delete .
+        /// </summary>
+        internal static string code_setting_suredeluser {
+            get {
+                return ResourceManager.GetString("code_setting_suredeluser", resourceCulture);
             }
         }
         

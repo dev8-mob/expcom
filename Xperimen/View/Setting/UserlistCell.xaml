@@ -10,7 +10,7 @@
         <!-- profile image -->
         <Frame x:Name="frame_profile" HorizontalOptions="Start" VerticalOptions="Center" BorderColor="DarkGray" HasShadow="False" 
                Padding="0" CornerRadius="20" IsClippedToBounds="True" BackgroundColor="Transparent"
-                HeightRequest="50" WidthRequest="50">
+               HeightRequest="50" WidthRequest="50">
             <stylekit:XImage x:Name="img_profile" Aspect="AspectFill" VerticalOptions="Center"
                              Source1="black_logo.png" Source2="white_logo.png"/>
         </Frame>
@@ -47,21 +47,23 @@
                  Padding="15" IsVisible="False">
         <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="Start" Spacing="0">
             <stylekit:XLabel Text="{x:Static resource:AppResources.setting_topright_created}" HorizontalOptions="Start"
-                             MaxLines="1" LineBreakMode="TailTruncation"/>
+                             LineBreakMode="WordWrap"/>
             <stylekit:XLabel Text="{Binding AccountCreated, StringFormat=' : {0:d MMM, ddd - h:mm tt}'}"
-                             HorizontalOptions="FillAndExpand"/>
+                             HorizontalOptions="FillAndExpand" LineBreakMode="WordWrap"/>
         </StackLayout>
         <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="Start" Spacing="0"
                      IsVisible="{Binding HaveUpdated}">
-            <stylekit:XLabel Text="{x:Static resource:AppResources.setting_topright_updated}" HorizontalOptions="Start"/>
-            <stylekit:XLabel Text="{Binding AccountUpdated, StringFormat=' : {0:d MMM, ddd - h:mm tt}'}" MaxLines="1"
-                             HorizontalOptions="FillAndExpand" LineBreakMode="TailTruncation"/>
+            <stylekit:XLabel Text="{x:Static resource:AppResources.setting_topright_updated}" HorizontalOptions="Start"
+                             LineBreakMode="WordWrap"/>
+            <stylekit:XLabel Text="{Binding AccountUpdated, StringFormat=' : {0:d MMM, ddd - h:mm tt}'}"
+                             HorizontalOptions="FillAndExpand" LineBreakMode="WordWrap"/>
         </StackLayout>
         <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="Start" Spacing="0"
                      x:Name="stack_lastlogin" IsVisible="{Binding HaveOnetimeLogin}">
-            <stylekit:XLabel Text="{x:Static resource:AppResources.setting_topright_lastlogin}" HorizontalOptions="Start"/>
-            <stylekit:XLabel Text="{Binding Logout, StringFormat=' : {0:d MMM, ddd - h:mm tt}'}" MaxLines="1"
-                             HorizontalOptions="FillAndExpand" LineBreakMode="TailTruncation"/>
+            <stylekit:XLabel Text="{x:Static resource:AppResources.setting_topright_lastlogin}" HorizontalOptions="Start"
+                             LineBreakMode="WordWrap"/>
+            <stylekit:XLabel Text="{Binding Logout, StringFormat=' : {0:d MMM, ddd - h:mm tt}'}"
+                             HorizontalOptions="FillAndExpand" LineBreakMode="WordWrap"/>
         </StackLayout>
         <!-- delete me button -->
         <Frame Padding="15,10,15,10" CornerRadius="8" BorderColor="{DynamicResource Key=CustomRed}" HorizontalOptions="Center"
