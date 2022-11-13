@@ -4,12 +4,14 @@
              x:Class="Xperimen.View.Setting.MainSetting"
              xmlns:stylekit="clr-namespace:Xperimen.Stylekit"
              xmlns:viewcell="clr-namespace:Xperimen.View.Setting"
+             xmlns:resource="clr-namespace:Xperimen.Resources"
              xmlns:helper="clr-namespace:Xperimen.Helper"
              NavigationPage.HasNavigationBar="False">
 
     <ContentPage.Resources>
         <ResourceDictionary>
             <helper:CurrencyConverter x:Key="CurrencyConverter" />
+            <helper:LanguageConverter x:Key="LanguageConverter" />
         </ResourceDictionary>
     </ContentPage.Resources>
 
@@ -39,8 +41,8 @@
                                     <TapGestureRecognizer Tapped="DrawerTapped" NumberOfTapsRequired="1"/>
                                 </Image.GestureRecognizers>
                             </stylekit:XImage>
-                            <stylekit:XLabel Text="Setting" FontFamily="{DynamicResource Key=BoldFont}" FontSize="18" VerticalOptions="Center"
-                                             HorizontalOptions="StartAndExpand"/>
+                            <stylekit:XLabel Text="{x:Static resource:AppResources.setting_navbar}" FontFamily="{DynamicResource Key=BoldFont}" FontSize="18" 
+                                             VerticalOptions="Center" HorizontalOptions="StartAndExpand"/>
                             <stylekit:XImage Source1="black_setting.png" Source2="white_setting.png" HeightRequest="35" WidthRequest="35" Aspect="AspectFit"
                                              HorizontalOptions="End" Margin="20,0,0,0">
                                 <Image.GestureRecognizers>
@@ -79,7 +81,7 @@
                         <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand" Spacing="0" Margin="0,30,0,0"
                                      Grid.Row="1" Grid.Column="0" IsVisible="{Binding IsViewing}">
                             <!-- currency -->
-                            <stylekit:XLabel Text="Currency" HorizontalOptions="Start"/>
+                            <stylekit:XLabel Text="{x:Static resource:AppResources.setting_currency}" HorizontalOptions="Start"/>
                             <stylekit:XFrameButton Padding="0,5,0,5" Margin="0,5,0,0">
                                 <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" Spacing="0" BackgroundColor="Transparent">
                                     <stylekit:XImage Source1="black_money.png" Source2="white_money.png" HeightRequest="25" WidthRequest="25" Aspect="AspectFit"
@@ -91,13 +93,29 @@
                                     <TapGestureRecognizer Tapped="CurrencyClicked" NumberOfTapsRequired="1"/>
                                 </Frame.GestureRecognizers>
                             </stylekit:XFrameButton>
-                            <stylekit:XLabel Text="Application Theme" HorizontalOptions="Start" Margin="0,15,0,0"/>
+                            <!-- language -->
+                            <stylekit:XLabel Text="{x:Static resource:AppResources.setting_language}" HorizontalOptions="Start" Margin="0,15,0,0"/>
+                            <stylekit:XFrameButton Padding="0,5,0,5" Margin="0,5,0,0">
+                                <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" Spacing="0" BackgroundColor="Transparent">
+                                    <stylekit:XImage Source1="black_web.png" Source2="white_web.png" HeightRequest="25" WidthRequest="25" Aspect="AspectFit"
+                                                     HorizontalOptions="End"/>
+                                    <stylekit:XLabel x:Name="lbl_language" Text="{Binding Language, Converter={StaticResource LanguageConverter}}" 
+                                                     HorizontalOptions="Center" VerticalOptions="Center" Margin="5,0,0,0"/>
+                                </StackLayout>
+                                <Frame.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="LanguageClicked" NumberOfTapsRequired="1"/>
+                                </Frame.GestureRecognizers>
+                            </stylekit:XFrameButton>
+                            <!-- apps theme -->
+                            <stylekit:XLabel Text="{x:Static resource:AppResources.setting_apptheme}" HorizontalOptions="Start" Margin="0,15,0,0"/>
                             <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal" Margin="0,5,0,0" Spacing="5">
                                 <!-- dark theme -->
                                 <stylekit:XFrameButton Padding="0,5,0,5">
                                     <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" Spacing="0" BackgroundColor="Transparent">
                                         <Image Source="theme_dark.png" HeightRequest="25" WidthRequest="25" Aspect="AspectFit" VerticalOptions="Center"/>
-                                        <stylekit:XLabel Text="Dark" HorizontalOptions="Center" VerticalOptions="Center" Margin="5,0,0,0"/>
+                                        <stylekit:XLabel Text="{x:Static resource:AppResources.setting_dark}" HorizontalOptions="Center" VerticalOptions="Center"
+                                                         Margin="5,0,0,0" MaxLines="1" LineBreakMode="WordWrap"/>
+                                        <Label Text="1" IsVisible="False"/>
                                     </StackLayout>
                                     <Frame.GestureRecognizers>
                                         <TapGestureRecognizer Tapped="AppThemeClicked" NumberOfTapsRequired="1"/>
@@ -107,7 +125,9 @@
                                 <stylekit:XFrameButton>
                                     <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" Spacing="0" BackgroundColor="Transparent">
                                         <Image Source="theme_dim.png" HeightRequest="25" WidthRequest="25" Aspect="AspectFit" VerticalOptions="Center"/>
-                                        <stylekit:XLabel Text="Dim" HorizontalOptions="Center" VerticalOptions="Center" Margin="5,0,0,0"/>
+                                        <stylekit:XLabel Text="{x:Static resource:AppResources.setting_dim}" HorizontalOptions="Center" VerticalOptions="Center"
+                                                         Margin="5,0,0,0" MaxLines="1" LineBreakMode="WordWrap"/>
+                                        <Label Text="2" IsVisible="False"/>
                                     </StackLayout>
                                     <Frame.GestureRecognizers>
                                         <TapGestureRecognizer Tapped="AppThemeClicked" NumberOfTapsRequired="1"/>
@@ -117,7 +137,9 @@
                                 <stylekit:XFrameButton>
                                     <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" Spacing="0" BackgroundColor="Transparent">
                                         <Image Source="theme_light.png" HeightRequest="25" WidthRequest="25" Aspect="AspectFit" VerticalOptions="Center"/>
-                                        <stylekit:XLabel Text="Light" HorizontalOptions="Center" VerticalOptions="Center" Margin="5,0,0,0"/>
+                                        <stylekit:XLabel Text="{x:Static resource:AppResources.setting_light}" HorizontalOptions="Center" VerticalOptions="Center"
+                                                         Margin="5,0,0,0" MaxLines="1" LineBreakMode="WordWrap"/>
+                                        <Label Text="3" IsVisible="False"/>
                                     </StackLayout>
                                     <Frame.GestureRecognizers>
                                         <TapGestureRecognizer Tapped="AppThemeClicked" NumberOfTapsRequired="1"/>
@@ -135,9 +157,9 @@
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="Auto"/>
                                 </Grid.RowDefinitions>
-                                <Frame x:Name="frame_profile" HorizontalOptions="Start" HeightRequest="60" WidthRequest="60" BorderColor="DarkGray" HasShadow="False"
-                                       BackgroundColor="Transparent" Padding="0" CornerRadius="20" IsClippedToBounds="True" Grid.Row="0" Grid.Column="0"
-                                       Margin="0,15,15,0">
+                                <Frame x:Name="frame_profile" HorizontalOptions="Start" HeightRequest="60" WidthRequest="60" BorderColor="DarkGray" 
+                                       HasShadow="False" BackgroundColor="Transparent" Padding="0" CornerRadius="20" IsClippedToBounds="True" 
+                                       Grid.Row="0" Grid.Column="0" Margin="0,15,15,0">
                                     <stylekit:XImage x:Name="img_profile" Aspect="AspectFill" Source1="black_logo.png" Source2="white_logo.png"/>
                                     <Frame.GestureRecognizers>
                                         <TapGestureRecognizer Tapped="ProfilePicClicked" NumberOfTapsRequired="1"/>
@@ -151,8 +173,9 @@
                                     </Image.GestureRecognizers>
                                 </Image>
                                 <!-- pick gallery & camera -->
-                                <StackLayout Orientation="Vertical" HorizontalOptions="End" Spacing="0" Grid.Row="0" Grid.Column="1" Margin="0,15,0,0">
-                                    <stylekit:XLabel Text="Update your image" HorizontalOptions="Start"/>
+                                <StackLayout Orientation="Vertical" HorizontalOptions="EndAndExpand" Spacing="0" Grid.Row="0" Grid.Column="1" Margin="0,15,0,0">
+                                    <stylekit:XLabel Text="{x:Static resource:AppResources.settupdate_media}" HorizontalOptions="EndAndExpand" 
+                                                     MaxLines="1" LineBreakMode="TailTruncation"/>
                                     <StackLayout Orientation="Horizontal" HorizontalOptions="End" Spacing="0" Margin="0,5,0,0">
                                         <stylekit:XImage Source1="black_image.png" Source2="white_image.png" HeightRequest="30" WidthRequest="30"
                                                          Aspect="AspectFit" VerticalOptions="Center" Margin="0,0,10,0">
@@ -172,35 +195,35 @@
                             
                             <!-- first name and last name -->
                             <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Spacing="20" Margin="0,10,0,0">
-                                <stylekit:CustomEntry Placeholder="first name" BindingText="Firstname"/>
-                                <stylekit:CustomEntry Placeholder="last name" BindingText="Lastname"/>
+                                <stylekit:CustomEntry Placeholder="{x:Static resource:AppResources.intro_fname}" BindingText="Firstname"/>
+                                <stylekit:CustomEntry Placeholder="{x:Static resource:AppResources.intro_lname}" BindingText="Lastname"/>
                             </StackLayout>
 
                             <!-- username -->
-                            <stylekit:CustomEntry BindingText="Username" Placeholder="choose your username" ImgLeft="black_user.png" ImgLeft_="white_user.png" 
-                                                  Margin="0,10,0,0"/>
+                            <stylekit:CustomEntry BindingText="Username" Placeholder="{x:Static resource:AppResources.code_setting_username}" ImgLeft="black_user.png" 
+                                                  ImgLeft_="white_user.png" Margin="0,10,0,0"/>
 
                             <!-- password -->
                             <stylekit:CustomEntry Ispassword="True" ImgLeft="black_password.png" ImgLeft_="white_password.png" 
-                                                  Placeholder="insert your password" Margin="0,10,0,0" ImgRight="black_visible.png" ImgRight_="white_visible.png" 
-                                                  ImgRight2="black_invisible.png" ImgRight2_="white_invisible.png" 
-                                                  BindingText="Password"/>
+                                                  Placeholder="{x:Static resource:AppResources.settupdate_password}" Margin="0,10,0,0" 
+                                                  ImgRight="black_visible.png" ImgRight_="white_visible.png" ImgRight2="black_invisible.png" 
+                                                  ImgRight2_="white_invisible.png" BindingText="Password"/>
 
                             <!-- retype password -->
                             <stylekit:CustomEntry Ispassword="True" ImgLeft="black_password.png" ImgLeft_="white_password.png" 
-                                                  Placeholder="re-type your password" Margin="0,10,0,0" ImgRight="black_visible.png" ImgRight_="white_visible.png" 
+                                                  Placeholder="{x:Static resource:AppResources.settupdate_retype}" Margin="0,10,0,0" ImgRight="black_visible.png" ImgRight_="white_visible.png" 
                                                   ImgRight2="black_invisible.png" ImgRight2_="white_invisible.png" 
                                                   BindingText="Repassword"/>
 
                             <!-- description -->
-                            <stylekit:XLabel Text="Description" HorizontalOptions="Start" Margin="0,10,0,0"/>
-                            <stylekit:CustomEditor Margin="0,5,0,0" Placeholder="Bio, tagline, quotes, etc..." BindingText="Description"/>
+                            <stylekit:XLabel Text="{x:Static resource:AppResources.settupdate_description}" HorizontalOptions="Start" Margin="0,10,0,0"/>
+                            <stylekit:CustomEditor Margin="0,5,0,0" Placeholder="{x:Static resource:AppResources.settupdate_descplaceholder}" BindingText="Description"/>
 
                             <!-- update button -->
                             <Frame Padding="0,10,0,10" CornerRadius="8" BorderColor="{DynamicResource Key=Primary}" HorizontalOptions="FillAndExpand"
                                    Margin="0,15,0,0" BackgroundColor="{DynamicResource Key=Primary}" HasShadow="False" IsClippedToBounds="True">
                                 <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Spacing="10" VerticalOptions="Center">
-                                    <Label Text="Update" FontFamily="{DynamicResource Key=BoldFont}" TextColor="White" 
+                                    <Label Text="{x:Static resource:AppResources.settupdate_update}" FontFamily="{DynamicResource Key=BoldFont}" TextColor="White" 
                                            HorizontalOptions="Center" VerticalOptions="Center"/>
                                     <Image Source="white_save.png" Aspect="AspectFit" HeightRequest="20" WidthRequest="20" VerticalOptions="Center"/>
                                 </StackLayout>
@@ -210,8 +233,8 @@
                             </Frame>
 
                             <!-- cancel button -->
-                            <stylekit:XLabel Text="Cancel" HorizontalOptions="Center" FontFamily="{DynamicResource Key=BoldFont}" Margin="0,15,0,0"
-                                             Padding="20,15,20,15">
+                            <stylekit:XLabel Text="{x:Static resource:AppResources.settupdate_cancel}" HorizontalOptions="Center" FontFamily="{DynamicResource Key=BoldFont}" 
+                                             Margin="0,15,0,0" Padding="20,15,20,15">
                                 <Label.GestureRecognizers>
                                     <TapGestureRecognizer Tapped="CancelClicked" NumberOfTapsRequired="1"/>
                                 </Label.GestureRecognizers>
@@ -221,7 +244,8 @@
 
                     <!-- app version info -->
                     <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="Transparent"/>
-                    <stylekit:XLabel x:Name="lbl_version" Text="Version -" HorizontalOptions="Center" VerticalOptions="End" FontSize="10"/>
+                    <stylekit:XLabel x:Name="lbl_version" Text="{x:Static resource:AppResources.setting_version}" HorizontalOptions="Center" 
+                                     VerticalOptions="End" FontSize="10"/>
                 </stylekit:XStacklayout>
                 
             </stylekit:XScrollview>

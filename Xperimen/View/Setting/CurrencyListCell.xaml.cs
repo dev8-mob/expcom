@@ -1,5 +1,6 @@
 ﻿
 using System;
+using System.Linq;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -16,10 +17,18 @@ namespace Xperimen.View.Setting
             {
                 frame_select.IsVisible = false;
                 img_select.IsVisible = false;
-                if (lbl_shortform.Text.Equals(arg))
+
+                if (!string.IsNullOrEmpty(arg))
                 {
-                    frame_select.IsVisible = true;
-                    img_select.IsVisible = true;
+                    var split = arg.Split(',');
+                    if (split.Count() > 0)
+                    {
+                        if (lbl_currcode.Text.Equals(split[1]))
+                        {
+                            frame_select.IsVisible = true;
+                            img_select.IsVisible = true;
+                        }
+                    }
                 }
             });
         }

@@ -1,11 +1,13 @@
 ﻿using Rg.Plugins.Popup.Extensions;
 using System;
+using System.Globalization;
 using System.Linq;
-using System.Threading.Tasks;
+using System.Threading;
 using Xamarin.Forms;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
 using Xperimen.Helper;
+using Xperimen.Resources;
 using Xperimen.Stylekit;
 using Xperimen.View.NavigationDrawer;
 using Xperimen.ViewModel.Setting;
@@ -37,7 +39,7 @@ namespace Xperimen.View.Setting
             MessagingCenter.Subscribe<AccountList>(this, "deleteme", (sender) => 
             {
                 viewmodel.IsLoading = true;
-                SetDisplayAlert("Success", "Account and all the data successfully deleted.", "", "", "reset"); 
+                SetDisplayAlert(AppResources.app_success, AppResources.code_setting_allsuccessdelete, "", "", "reset"); 
             });
             MessagingCenter.Subscribe<CurrencyList, string>(this, "CurrencyUpdated", (sender, arg) => 
             {
@@ -51,6 +53,18 @@ namespace Xperimen.View.Setting
                         success = viewmodel.UpdateCommitmentCurrency(split[0]);
                         if (success == 1) viewmodel.SetupData();
                     }
+                }
+            });
+            MessagingCenter.Subscribe<LanguageList, string>(this, "LanguageUpdated", (sender, arg) =>
+            {
+                var split = arg.Split(',');
+                if (split.Count() > 0)
+                {
+                    viewmodel.Language = split[0];
+                    CultureInfo language = new CultureInfo(split[0]);
+                    Thread.CurrentThread.CurrentUICulture = language;
+                    AppResources.Culture = language;
+                    Xamarin.Forms.Application.Current.MainPage = new Xamarin.Forms.NavigationPage(new DrawerMaster());
                 }
             });
         }
@@ -87,7 +101,7 @@ namespace Xperimen.View.Setting
                     Padding = safeInsets;
                 }
             }
-            lbl_version.Text = "Version " + App.AppVersion;
+            lbl_version.Text = AppResources.setting_version + " " + App.AppVersion;
         }
 
         public async void DrawerTapped(object sender, EventArgs e)
@@ -145,13 +159,13 @@ namespace Xperimen.View.Setting
 
             viewmodel.IsLoading = true;
             var result = await viewmodel.PickPhoto();
-            if (result == 5) SetDisplayAlert("Permission", "App required permission to access media gallery to pick photos.", "", "", "");
-            if (result == 4) SetDisplayAlert("Permission", "App required permission to access photos to pick photos.", "", "", "");
-            if (result == 3) SetDisplayAlert("Unavailable", "Photo gallery is not available to pick photo.", "", "", "");
+            if (result == 5) SetDisplayAlert(AppResources.app_permission, AppResources.camgal_permmedia, "", "", "");
+            if (result == 4) SetDisplayAlert(AppResources.app_permission, AppResources.camgal_permphoto, "", "", "");
+            if (result == 3) SetDisplayAlert(AppResources.app_unavailable, AppResources.camgal_photounavailable, "", "", "");
             else if (result == 2)
             {
                 img_profile.Source = "";
-                SetDisplayAlert("Alert", "No photo selected.", "", "", "");
+                SetDisplayAlert(AppResources.app_alert, AppResources.camgal_nophotoselect, "", "", "");
             }
             else if (result == 1)
             {
@@ -174,13 +188,13 @@ namespace Xperimen.View.Setting
 
             viewmodel.IsLoading = true;
             var result = await viewmodel.TakePhoto();
-            if (result == 5) SetDisplayAlert("Permission", "App required permission to access media gallery to pick photos.", "", "", "");
-            if (result == 4) SetDisplayAlert("Permission", "App required permission to access photos to pick photos.", "", "", "");
-            if (result == 3) SetDisplayAlert("Unavailable", "Camera is not available or take photo not supported.", "", "", "");
+            if (result == 5) SetDisplayAlert(AppResources.app_permission, AppResources.camgal_permmedia, "", "", "");
+            if (result == 4) SetDisplayAlert(AppResources.app_permission, AppResources.camgal_permphoto, "", "", "");
+            if (result == 3) SetDisplayAlert(AppResources.app_unavailable, AppResources.camgal_camunavailable, "", "", "");
             else if (result == 2)
             {
                 img_profile.Source = "";
-                SetDisplayAlert("Alert", "Take photo cancelled.", "", "", "");
+                SetDisplayAlert(AppResources.app_alert, AppResources.camgal_camcancel, "", "", "");
             }
             else if (result == 1)
             {
@@ -204,6 +218,16 @@ namespace Xperimen.View.Setting
             view.IsEnabled = true;
         }
 
+        public async void LanguageClicked(object sender, EventArgs e)
+        {
+            var view = (Frame)sender;
+            await view.ScaleTo(0.9, 100);
+            view.Scale = 1;
+            view.IsEnabled = false;
+            await Navigation.PushPopupAsync(new LanguageList());
+            view.IsEnabled = true;
+        }
+
         public async void AppThemeClicked(object sender, EventArgs e)
         {
             var view = (Frame)sender;
@@ -211,11 +235,11 @@ namespace Xperimen.View.Setting
             view.Scale = 1;
             view.IsEnabled = false;
             var stack = (StackLayout)view.Content;
-            var lbltheme = (Label)stack.Children[1];
+            var lbltheme = (Label)stack.Children[2];
 
-            if (lbltheme.Text.Equals("Dark")) { viewmodel.Theme = "dark"; }
-            else if (lbltheme.Text.Equals("Dim")) { viewmodel.Theme = "dim"; }
-            else if (lbltheme.Text.Equals("Light")) { viewmodel.Theme = "light"; }
+            if (lbltheme.Text.Equals("1")) { viewmodel.Theme = "dark"; }
+            else if (lbltheme.Text.Equals("2")) { viewmodel.Theme = "dim"; }
+            else if (lbltheme.Text.Equals("3")) { viewmodel.Theme = "light"; }
 
             viewmodel.IsLoading = true;
             var result = await viewmodel.UpdateAppTheme();
@@ -224,7 +248,7 @@ namespace Xperimen.View.Setting
                 viewmodel.IsLoading = false;
                 SetupView();
             }
-            if (result == 2) SetDisplayAlert("Error", "Update application theme failed.", "", "", "");
+            if (result == 2) SetDisplayAlert(AppResources.app_error, AppResources.code_setting_themefailed, "", "", "");
             view.IsEnabled = true;
         }
 
@@ -236,17 +260,17 @@ namespace Xperimen.View.Setting
             view.IsEnabled = false;
 
             viewmodel.IsLoading = true;
-            //if (viewmodel.Picture == null) SetDisplayAlert("Alert", "Profile picture is empty. Please take a photo or choose a picture.", "", "", "");
-            if (string.IsNullOrEmpty(viewmodel.Firstname)) SetDisplayAlert("Alert", "First name cannot be empty. Please insert your first name.", "", "", "");
-            else if (string.IsNullOrEmpty(viewmodel.Lastname)) SetDisplayAlert("Alert", "Last name cannot be empty. Please insert your last name.", "", "", "");
-            else if (string.IsNullOrEmpty(viewmodel.Username)) SetDisplayAlert("Alert", "Username cannot be empty. Please insert your username.", "", "", "");
-            else if (viewmodel.Username.Length < 6) SetDisplayAlert("Alert", "Username must be more than 6 characters.", "", "", "");
-            else if (string.IsNullOrEmpty(viewmodel.Password)) SetDisplayAlert("Alert", "Password cannot be empty. Please insert your password.", "", "", "");
-            else if (viewmodel.Password.Length < 6) SetDisplayAlert("Alert", "Password must be more than 6 characters.", "", "", "");
-            else if (string.IsNullOrEmpty(viewmodel.Repassword)) SetDisplayAlert("Confirmation Password", "Please re-type your password.", "", "", "");
+            //if (viewmodel.Picture == null) SetDisplayAlert(AppResources.app_alert, "Profile picture is empty. Please take a photo or choose a picture.", "", "", "");
+            if (string.IsNullOrEmpty(viewmodel.Firstname)) SetDisplayAlert(AppResources.app_alert, AppResources.code_setting_fnameempty, "", "", "");
+            else if (string.IsNullOrEmpty(viewmodel.Lastname)) SetDisplayAlert(AppResources.app_alert, AppResources.code_setting_lnameempty, "", "", "");
+            else if (string.IsNullOrEmpty(viewmodel.Username)) SetDisplayAlert(AppResources.app_alert, AppResources.code_setting_usernameempty, "", "", "");
+            else if (viewmodel.Username.Length < 6) SetDisplayAlert(AppResources.app_alert, AppResources.code_setting_usermore6, "", "", "");
+            else if (string.IsNullOrEmpty(viewmodel.Password)) SetDisplayAlert(AppResources.app_alert, AppResources.code_setting_pwdempty, "", "", "");
+            else if (viewmodel.Password.Length < 6) SetDisplayAlert(AppResources.app_alert, AppResources.code_setting_pwdmore6, "", "", "");
+            else if (string.IsNullOrEmpty(viewmodel.Repassword)) SetDisplayAlert(AppResources.app_confirmpwd, AppResources.code_setting_retypepwd, "", "", "");
             else if (!viewmodel.Repassword.Equals(viewmodel.Password))
             {
-                SetDisplayAlert("Not Match", "Confirmation password is not match with current password.", "", "", "");
+                SetDisplayAlert(AppResources.app_notmatch, AppResources.code_setting_pwdnotmatch, "", "", "");
                 viewmodel.Repassword = string.Empty;
             }
             else
@@ -254,13 +278,13 @@ namespace Xperimen.View.Setting
                 var result = viewmodel.UpdateSetting();
                 if (result == 1)
                 {
-                    SetDisplayAlert("Success", "Profile updated.", "", "", "");
+                    SetDisplayAlert(AppResources.app_success, AppResources.code_setting_profupdated, "", "", "");
                     viewmodel.IsViewing = true;
                     viewmodel.IsEditing = false;
                 }
-                else if (result == 2) SetDisplayAlert("Error", "Current login information not found.", "", "", "");
-                else if (result == 3) SetDisplayAlert("Error", "Update information failed.", "", "", "");
-                else if (result == 4) SetDisplayAlert("Exist", "A user with that username already exist. Please choose a different username.", "", "", "");
+                else if (result == 2) SetDisplayAlert(AppResources.app_error, AppResources.code_setting_lognotfound, "", "", "");
+                else if (result == 3) SetDisplayAlert(AppResources.app_error, AppResources.code_setting_updatefailed, "", "", "");
+                else if (result == 4) SetDisplayAlert(AppResources.app_exist, AppResources.code_setting_edyexist, "", "", "");
             }
             view.IsEnabled = true;
         }

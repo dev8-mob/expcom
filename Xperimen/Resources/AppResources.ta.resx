@@ -1,0 +1,351 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="app_alert" xml:space="preserve">
+    <value>எச்சரிக்கை</value>
+  </data>
+  <data name="app_cancel" xml:space="preserve">
+    <value>ரத்து செய்</value>
+  </data>
+  <data name="app_confirm" xml:space="preserve">
+    <value>உறுதிப்படுத்தவும்</value>
+  </data>
+  <data name="app_confirmpwd" xml:space="preserve">
+    <value>உறுதிப்படுத்தல் கடவுச்சொல்</value>
+  </data>
+  <data name="app_delete" xml:space="preserve">
+    <value>நீக்கு</value>
+  </data>
+  <data name="app_error" xml:space="preserve">
+    <value>பிழை</value>
+  </data>
+  <data name="app_exist" xml:space="preserve">
+    <value>உள்ளது</value>
+  </data>
+  <data name="app_failed" xml:space="preserve">
+    <value>தோல்வி</value>
+  </data>
+  <data name="app_notmatch" xml:space="preserve">
+    <value>பொருத்தம் இல்லை</value>
+  </data>
+  <data name="app_okay" xml:space="preserve">
+    <value>சரி</value>
+  </data>
+  <data name="app_permission" xml:space="preserve">
+    <value>அனுமதி</value>
+  </data>
+  <data name="app_success" xml:space="preserve">
+    <value>வெற்றி</value>
+  </data>
+  <data name="app_unavailable" xml:space="preserve">
+    <value>கிடைக்கவில்லை</value>
+  </data>
+  <data name="camgal_camcancel" xml:space="preserve">
+    <value>புகைப்படம் எடுப்பது ரத்து செய்யப்பட்டது.</value>
+  </data>
+  <data name="camgal_camunavailable" xml:space="preserve">
+    <value>கேமரா இல்லை அல்லது புகைப்படம் எடுப்பது ஆதரிக்கப்படவில்லை.</value>
+  </data>
+  <data name="camgal_nophotoselect" xml:space="preserve">
+    <value>புகைப்படம் எதுவும் தேர்ந்தெடுக்கப்படவில்லை.</value>
+  </data>
+  <data name="camgal_permmedia" xml:space="preserve">
+    <value>படங்களை எடுக்க மீடியா கேலரியை அணுக பயன்பாட்டிற்கு அனுமதி தேவை.</value>
+  </data>
+  <data name="camgal_permphoto" xml:space="preserve">
+    <value>புகைப்படங்களை எடுக்க, புகைப்படங்களை அணுக, பயன்பாட்டிற்கு அனுமதி தேவை.</value>
+  </data>
+  <data name="camgal_photounavailable" xml:space="preserve">
+    <value>புகைப்படத்தை எடுக்க புகைப்பட தொகுப்பு கிடைக்கவில்லை.</value>
+  </data>
+  <data name="code_setting_allsuccessdelete" xml:space="preserve">
+    <value>கணக்கு மற்றும் அனைத்து தரவுகளும் வெற்றிகரமாக நீக்கப்பட்டன.</value>
+  </data>
+  <data name="code_setting_deleted" xml:space="preserve">
+    <value>பயனர் நீக்கப்பட்டார்.</value>
+  </data>
+  <data name="code_setting_edyexist" xml:space="preserve">
+    <value>அந்த பயனர்பெயருடன் ஏற்கனவே ஒரு பயனர் இருக்கிறார். தயவுசெய்து வேறு பயனர்பெயரை தேர்வு செய்யவும்.</value>
+  </data>
+  <data name="code_setting_faildelete" xml:space="preserve">
+    <value>தொழில்நுட்ப பிழை. இந்தக் கணக்கை நீக்க முடியவில்லை.</value>
+  </data>
+  <data name="code_setting_faildeleteuser" xml:space="preserve">
+    <value>தொழில்நுட்ப பிழை. பயனரை நீக்க முடியவில்லை.</value>
+  </data>
+  <data name="code_setting_fnameempty" xml:space="preserve">
+    <value>முதல் பெயர் காலியாக இருக்கக்கூடாது. உங்கள் முதல் பெயரைச் செருகவும்.</value>
+  </data>
+  <data name="code_setting_idnotfound" xml:space="preserve">
+    <value>தொழில்நுட்ப பிழை. தற்போதைய உள்நுழைவு ஐடி கிடைக்கவில்லை.</value>
+  </data>
+  <data name="code_setting_lnameempty" xml:space="preserve">
+    <value>கடைசி பெயர் காலியாக இருக்கக்கூடாது. உங்கள் கடைசி பெயரைச் செருகவும்.</value>
+  </data>
+  <data name="code_setting_lognotfound" xml:space="preserve">
+    <value>தற்போதைய உள்நுழைவு தகவல் கிடைக்கவில்லை.</value>
+  </data>
+  <data name="code_setting_profupdated" xml:space="preserve">
+    <value>சுயவிவரம் புதுப்பிக்கப்பட்டது.</value>
+  </data>
+  <data name="code_setting_pwdempty" xml:space="preserve">
+    <value>கடவுச்சொல் காலியாக இருக்கக்கூடாது. உங்கள் கடவுச்சொல்லைச் செருகவும்.</value>
+  </data>
+  <data name="code_setting_pwdmore6" xml:space="preserve">
+    <value>கடவுச்சொல் 6 எழுத்துகளுக்கு மேல் இருக்க வேண்டும்.</value>
+  </data>
+  <data name="code_setting_pwdnotmatch" xml:space="preserve">
+    <value>உறுதிப்படுத்தல் கடவுச்சொல் தற்போதைய கடவுச்சொல்லுடன் பொருந்தவில்லை.</value>
+  </data>
+  <data name="code_setting_retypepwd" xml:space="preserve">
+    <value>உங்கள் கடவுச்சொல்லை மீண்டும் தட்டச்சு செய்யவும்.</value>
+  </data>
+  <data name="code_setting_suredelself" xml:space="preserve">
+    <value>உங்கள் கணக்கை நீக்குவதை உறுதிப்படுத்துகிறீர்களா? பொறுப்புகள் மற்றும் செலவுகள் போன்ற அனைத்து தரவுகளும் நீக்கப்படும்.</value>
+  </data>
+  <data name="code_setting_suredeluser" xml:space="preserve">
+    <value>நீக்குவது உறுதி </value>
+  </data>
+  <data name="code_setting_themefailed" xml:space="preserve">
+    <value>பயன்பாட்டு தீம் புதுப்பிக்க முடியவில்லை.</value>
+  </data>
+  <data name="code_setting_updatefailed" xml:space="preserve">
+    <value>தகவலைப் புதுப்பிக்க முடியவில்லை.</value>
+  </data>
+  <data name="code_setting_usermore6" xml:space="preserve">
+    <value>பயனர் பெயர் 6 எழுத்துகளுக்கு மேல் இருக்க வேண்டும்.</value>
+  </data>
+  <data name="code_setting_username" xml:space="preserve">
+    <value>உங்கள் பயனர்பெயரை உருவாக்கவும்</value>
+  </data>
+  <data name="code_setting_usernameempty" xml:space="preserve">
+    <value>பயனர் பெயர் காலியாக இருக்கக்கூடாது. தயவுசெய்து உங்கள் பயனர் பெயரைச் செருகவும்.</value>
+  </data>
+  <data name="intro_btnokay" xml:space="preserve">
+    <value>சரி</value>
+  </data>
+  <data name="intro_btnskip" xml:space="preserve">
+    <value>இப்போதைக்கு தவிர்க்கவும்</value>
+  </data>
+  <data name="intro_fname" xml:space="preserve">
+    <value>முதல் பெயர்</value>
+  </data>
+  <data name="intro_line1" xml:space="preserve">
+    <value>இதுவரை கணக்கு எதுவும் உருவாக்கப்படவில்லை</value>
+  </data>
+  <data name="intro_line2" xml:space="preserve">
+    <value>உங்கள் பயனர்பெயர் மற்றும் கடவுச்சொல்லை உருவாக்கவும்</value>
+  </data>
+  <data name="intro_lname" xml:space="preserve">
+    <value>கடைசி பெயர்</value>
+  </data>
+  <data name="intro_password" xml:space="preserve">
+    <value>உங்கள் கடவுச்சொல்லை உருவாக்கவும்</value>
+  </data>
+  <data name="intro_welcome" xml:space="preserve">
+    <value>வரவேற்பு</value>
+  </data>
+  <data name="setting_apptheme" xml:space="preserve">
+    <value>விண்ணப்ப தீம்</value>
+  </data>
+  <data name="setting_currency" xml:space="preserve">
+    <value>நாணய</value>
+  </data>
+  <data name="setting_dark" xml:space="preserve">
+    <value>இருள்</value>
+  </data>
+  <data name="setting_dim" xml:space="preserve">
+    <value>மங்கலான</value>
+  </data>
+  <data name="setting_editprofile" xml:space="preserve">
+    <value>சுயவிவரத்தைத் திருத்து</value>
+  </data>
+  <data name="setting_language" xml:space="preserve">
+    <value>மொழி</value>
+  </data>
+  <data name="setting_light" xml:space="preserve">
+    <value>ஒளி</value>
+  </data>
+  <data name="setting_navbar" xml:space="preserve">
+    <value>அமைப்புகள்</value>
+  </data>
+  <data name="setting_topright_created" xml:space="preserve">
+    <value>உருவாக்கப்பட்டது</value>
+  </data>
+  <data name="setting_topright_current" xml:space="preserve">
+    <value>தற்போதுஉள்நுழைய</value>
+  </data>
+  <data name="setting_topright_delete" xml:space="preserve">
+    <value>எனது கணக்கை நீக்கு</value>
+  </data>
+  <data name="setting_topright_lastlogin" xml:space="preserve">
+    <value>கடைசி உள்நுழைவு</value>
+  </data>
+  <data name="setting_topright_okay" xml:space="preserve">
+    <value>சரி</value>
+  </data>
+  <data name="setting_topright_title" xml:space="preserve">
+    <value>இந்தச் சாதனத்தில் கணக்கு(கள்)</value>
+  </data>
+  <data name="setting_topright_updated" xml:space="preserve">
+    <value>புதுப்பிக்கப்பட்டது</value>
+  </data>
+  <data name="setting_version" xml:space="preserve">
+    <value>பதிப்பு</value>
+  </data>
+  <data name="settupdate_cancel" xml:space="preserve">
+    <value>ரத்து செய்</value>
+  </data>
+  <data name="settupdate_descplaceholder" xml:space="preserve">
+    <value>பயோ, டேக்லைன், மேற்கோள்கள் போன்றவை...</value>
+  </data>
+  <data name="settupdate_description" xml:space="preserve">
+    <value>விளக்கம்</value>
+  </data>
+  <data name="settupdate_media" xml:space="preserve">
+    <value>மேம்படுத்தல்படம்</value>
+  </data>
+  <data name="settupdate_password" xml:space="preserve">
+    <value>கடவுச்சொல்</value>
+  </data>
+  <data name="settupdate_retype" xml:space="preserve">
+    <value>மறு வகை கடவுச்சொல்</value>
+  </data>
+  <data name="settupdate_update" xml:space="preserve">
+    <value>புதுப்பிக்கவும்</value>
+  </data>
+  <data name="sidemenu_commitment" xml:space="preserve">
+    <value>அர்ப்பணிப்பு</value>
+  </data>
+  <data name="sidemenu_dashboard" xml:space="preserve">
+    <value>டாஷ்போர்டு</value>
+  </data>
+  <data name="sidemenu_expenses" xml:space="preserve">
+    <value>செலவுகள்</value>
+  </data>
+  <data name="sidemenu_gallery" xml:space="preserve">
+    <value>கேலரி</value>
+  </data>
+  <data name="sidemenu_logout" xml:space="preserve">
+    <value>வெளியேறு</value>
+  </data>
+  <data name="sidemenu_settings" xml:space="preserve">
+    <value>அமைப்புகள்</value>
+  </data>
+</root>

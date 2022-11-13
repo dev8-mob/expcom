@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<pages:PopupPage xmlns="http://xamarin.com/schemas/2014/forms"
+                 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                 x:Class="Xperimen.View.Setting.LanguageList"
+                 xmlns:stylekit="clr-namespace:Xperimen.Stylekit"
+                 xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
+                 xmlns:viewcell="clr-namespace:Xperimen.View.Setting"
+                 Padding="0">
+
+    <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
+
+        <!-- UI content -->
+        <Frame Padding="0" HasShadow="False" CornerRadius="8" IsClippedToBounds="True" Margin="35,70,35,70"
+               VerticalOptions="Center">
+
+            <StackLayout HorizontalOptions="FillAndExpand" Padding="0,15,0,0" VerticalOptions="Fill" x:Name="stack_bg">
+
+                <stylekit:XLabel Text="Select Language" HorizontalOptions="CenterAndExpand" FontFamily="{DynamicResource Key=BoldFont}"/>
+
+                <!-- currency list -->
+                <ScrollView HorizontalOptions="FillAndExpand" VerticalOptions="Fill" Margin="0,15,0,0">
+                    <StackLayout HorizontalOptions="FillAndExpand" BindableLayout.ItemsSource="{Binding ListLanguage}" 
+                                 Spacing="0" VerticalOptions="Fill">
+                        <BindableLayout.ItemTemplate>
+                            <DataTemplate>
+                                <viewcell:LanguageListCell />
+                            </DataTemplate>
+                        </BindableLayout.ItemTemplate>
+                    </StackLayout>
+                </ScrollView>
+
+                <!-- okay button -->
+                <stylekit:XLabel Text="Cancel" HorizontalOptions="Center" FontFamily="{DynamicResource Key=BoldFont}" Margin="0,15,0,0"
+                                 Padding="20,15,20,15">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="CancelClicked" NumberOfTapsRequired="1"/>
+                    </Label.GestureRecognizers>
+                </stylekit:XLabel>
+
+            </StackLayout>
+
+        </Frame>
+
+    </StackLayout>
+
+</pages:PopupPage>

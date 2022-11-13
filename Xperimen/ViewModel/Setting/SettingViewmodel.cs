@@ -22,6 +22,7 @@ namespace Xperimen.ViewModel.Setting
         string _description;
         string _theme;
         string _currency;
+        string _language;
         byte[] _picture;
         bool _isediting;
         bool _isviewing;
@@ -66,6 +67,11 @@ namespace Xperimen.ViewModel.Setting
         {
             get { return _currency; }
             set { _currency = value; OnPropertyChanged(); }
+        }
+        public string Language
+        {
+            get { return _language; }
+            set { _language = value; OnPropertyChanged(); }
         }
         public byte[] Picture
         {
@@ -124,6 +130,7 @@ namespace Xperimen.ViewModel.Setting
                 Picture = result[0].ProfileImage;
                 Theme = result[0].AppTheme;
                 Currency = result[0].Currency;
+                Language = result[0].Language;
             }
             GetCommitmentList();
         }
@@ -224,7 +231,8 @@ namespace Xperimen.ViewModel.Setting
                 Income = 0,
                 TotalCommitment = 0,
                 NetIncome = 0,
-                Currency = string.Empty
+                Currency = string.Empty,
+                Language = string.Empty
             };
 
             string getuser = "SELECT * FROM Clients WHERE Id = '" + userid + "'";
@@ -238,6 +246,7 @@ namespace Xperimen.ViewModel.Setting
                 model.NetIncome = user[0].NetIncome;
                 model.TotalCommitment = user[0].TotalCommitment;
                 model.Currency = user[0].Currency;
+                model.Language = user[0].Language;
             }
 
             string query = "SELECT * FROM Clients WHERE Id = '" + userid + "'";
@@ -262,6 +271,7 @@ namespace Xperimen.ViewModel.Setting
                             Description = updated[0].Description;
                             Theme = updated[0].AppTheme;
                             Picture = updated[0].ProfileImage;
+                            Language = updated[0].Language;
                             MessagingCenter.Send(this, "AppThemeUpdated");
                         }
                         return 1;

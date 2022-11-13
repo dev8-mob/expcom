@@ -4,6 +4,7 @@ using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using Xperimen.Helper;
+using Xperimen.Resources;
 
 namespace Xperimen.View.Setting
 {
@@ -88,7 +89,7 @@ namespace Xperimen.View.Setting
 
             var fullname = lbl_fname.Text + " " + lbl_lname.Text;
             parent.viewmodel.IsLoading = true;
-            parent.SetDisplayAlert("Delete", "Are you sure to delete " + fullname + "?", "Okay", "Cancel", lbl_id.Text);
+            parent.SetDisplayAlert(AppResources.app_delete, AppResources.code_setting_suredeluser + fullname + "?", AppResources.app_okay, AppResources.app_cancel, lbl_id.Text);
             // send the rest of the delete process to parent viewmodel
             view.IsEnabled = true;
         }
@@ -102,8 +103,7 @@ namespace Xperimen.View.Setting
             var parent = (AccountList)view.Parent.Parent.Parent.Parent.Parent.Parent.Parent.Parent.Parent;
 
             parent.viewmodel.IsLoading = true;
-            parent.SetDisplayAlert("Delete", "Are you confirm to delete your account ? All data such as commitments and expenses will be deleted.",
-                "Okay", "Cancel", "deleteme");
+            parent.SetDisplayAlert(AppResources.app_delete, AppResources.code_setting_suredelself, AppResources.app_okay, AppResources.app_cancel, "deleteme");
             // send the rest of the delete process to parent viewmodel
             view.IsEnabled = true;
         }

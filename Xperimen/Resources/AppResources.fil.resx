@@ -1,0 +1,351 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="app_alert" xml:space="preserve">
+    <value>Alerto</value>
+  </data>
+  <data name="app_cancel" xml:space="preserve">
+    <value>Kanselahin</value>
+  </data>
+  <data name="app_confirm" xml:space="preserve">
+    <value>Kumpirmahin</value>
+  </data>
+  <data name="app_confirmpwd" xml:space="preserve">
+    <value>Password sa Pagkumpirma</value>
+  </data>
+  <data name="app_delete" xml:space="preserve">
+    <value>Tanggalin</value>
+  </data>
+  <data name="app_error" xml:space="preserve">
+    <value>Error</value>
+  </data>
+  <data name="app_exist" xml:space="preserve">
+    <value>Umiiral</value>
+  </data>
+  <data name="app_failed" xml:space="preserve">
+    <value>Nabigo</value>
+  </data>
+  <data name="app_notmatch" xml:space="preserve">
+    <value>Hindi parehas</value>
+  </data>
+  <data name="app_okay" xml:space="preserve">
+    <value>Sige</value>
+  </data>
+  <data name="app_permission" xml:space="preserve">
+    <value>Pahintulot</value>
+  </data>
+  <data name="app_success" xml:space="preserve">
+    <value>Tagumpay</value>
+  </data>
+  <data name="app_unavailable" xml:space="preserve">
+    <value>Hindi magagamit</value>
+  </data>
+  <data name="camgal_camcancel" xml:space="preserve">
+    <value>Kinansela ang pagkuha ng larawan.</value>
+  </data>
+  <data name="camgal_camunavailable" xml:space="preserve">
+    <value>Hindi available ang camera o hindi suportado ang pagkuha ng larawan.</value>
+  </data>
+  <data name="camgal_nophotoselect" xml:space="preserve">
+    <value>Walang napiling larawan.</value>
+  </data>
+  <data name="camgal_permmedia" xml:space="preserve">
+    <value>Ang app ay nangangailangan ng pahintulot upang ma-access ang media gallery upang pumili ng mga larawan.</value>
+  </data>
+  <data name="camgal_permphoto" xml:space="preserve">
+    <value>Ang app ay nangangailangan ng pahintulot upang ma-access ang mga larawan upang pumili ng mga larawan.</value>
+  </data>
+  <data name="camgal_photounavailable" xml:space="preserve">
+    <value>Hindi available ang photo gallery para pumili ng larawan.</value>
+  </data>
+  <data name="code_setting_allsuccessdelete" xml:space="preserve">
+    <value>Matagumpay na natanggal ang account at lahat ng data.</value>
+  </data>
+  <data name="code_setting_deleted" xml:space="preserve">
+    <value>Tinanggal ang user.</value>
+  </data>
+  <data name="code_setting_edyexist" xml:space="preserve">
+    <value>Mayroon nang user na may ganoong username. Mangyaring pumili ng ibang username.</value>
+  </data>
+  <data name="code_setting_faildelete" xml:space="preserve">
+    <value>Teknikal na error. Nabigong tanggalin ang account na ito.</value>
+  </data>
+  <data name="code_setting_faildeleteuser" xml:space="preserve">
+    <value>Teknikal na error. Nabigong tanggalin ang user.</value>
+  </data>
+  <data name="code_setting_fnameempty" xml:space="preserve">
+    <value>Hindi maaaring walang laman ang pangalan. Pakipasok ang iyong pangalan.</value>
+  </data>
+  <data name="code_setting_idnotfound" xml:space="preserve">
+    <value>Teknikal na error. Hindi nahanap ang kasalukuyang login ID.</value>
+  </data>
+  <data name="code_setting_lnameempty" xml:space="preserve">
+    <value>Hindi maaaring walang laman ang apelyido. Pakipasok ang iyong apelyido.</value>
+  </data>
+  <data name="code_setting_lognotfound" xml:space="preserve">
+    <value>Hindi nahanap ang kasalukuyang impormasyon sa pag-log in.</value>
+  </data>
+  <data name="code_setting_profupdated" xml:space="preserve">
+    <value>Na-update ang profile.</value>
+  </data>
+  <data name="code_setting_pwdempty" xml:space="preserve">
+    <value>Hindi maaaring walang laman ang password. Pakipasok ang iyong password.</value>
+  </data>
+  <data name="code_setting_pwdmore6" xml:space="preserve">
+    <value>Ang password ay dapat na higit sa 6 na character.</value>
+  </data>
+  <data name="code_setting_pwdnotmatch" xml:space="preserve">
+    <value>Ang password sa pagkumpirma ay hindi tumutugma sa kasalukuyang password.</value>
+  </data>
+  <data name="code_setting_retypepwd" xml:space="preserve">
+    <value>Paki-type muli ang iyong password.</value>
+  </data>
+  <data name="code_setting_suredelself" xml:space="preserve">
+    <value>Kinukumpirma mo bang tanggalin ang iyong account? Ang lahat ng data tulad ng mga pangako at gastos ay tatanggalin.</value>
+  </data>
+  <data name="code_setting_suredeluser" xml:space="preserve">
+    <value>Sigurado ka bang tatanggalin</value>
+  </data>
+  <data name="code_setting_themefailed" xml:space="preserve">
+    <value>Nabigo ang pag-update ng tema ng application.</value>
+  </data>
+  <data name="code_setting_updatefailed" xml:space="preserve">
+    <value>Nabigo ang pag-update ng impormasyon.</value>
+  </data>
+  <data name="code_setting_usermore6" xml:space="preserve">
+    <value>Ang username ay dapat na higit sa 6 na character.</value>
+  </data>
+  <data name="code_setting_username" xml:space="preserve">
+    <value>lumikha ng iyong username</value>
+  </data>
+  <data name="code_setting_usernameempty" xml:space="preserve">
+    <value>Hindi maaaring walang laman ang username. Mangyaring ipasok ang iyong username.</value>
+  </data>
+  <data name="intro_btnokay" xml:space="preserve">
+    <value>Sige</value>
+  </data>
+  <data name="intro_btnskip" xml:space="preserve">
+    <value>Laktawan sa ngayon</value>
+  </data>
+  <data name="intro_fname" xml:space="preserve">
+    <value>pangalan</value>
+  </data>
+  <data name="intro_line1" xml:space="preserve">
+    <value>Wala pang nagagawang account</value>
+  </data>
+  <data name="intro_line2" xml:space="preserve">
+    <value>Mangyaring lumikha ng iyong username at password</value>
+  </data>
+  <data name="intro_lname" xml:space="preserve">
+    <value>huling pangalan</value>
+  </data>
+  <data name="intro_password" xml:space="preserve">
+    <value>lumikha ng iyong password</value>
+  </data>
+  <data name="intro_welcome" xml:space="preserve">
+    <value>Maligayang pagdating</value>
+  </data>
+  <data name="setting_apptheme" xml:space="preserve">
+    <value>Tema ng Aplikasyon</value>
+  </data>
+  <data name="setting_currency" xml:space="preserve">
+    <value>Pera</value>
+  </data>
+  <data name="setting_dark" xml:space="preserve">
+    <value>Madilim</value>
+  </data>
+  <data name="setting_dim" xml:space="preserve">
+    <value>Dim</value>
+  </data>
+  <data name="setting_editprofile" xml:space="preserve">
+    <value>Ibahin ang profile</value>
+  </data>
+  <data name="setting_language" xml:space="preserve">
+    <value>Wika</value>
+  </data>
+  <data name="setting_light" xml:space="preserve">
+    <value>Liwanag</value>
+  </data>
+  <data name="setting_navbar" xml:space="preserve">
+    <value>Mga setting</value>
+  </data>
+  <data name="setting_topright_created" xml:space="preserve">
+    <value>Nilikha</value>
+  </data>
+  <data name="setting_topright_current" xml:space="preserve">
+    <value>Kasalukuyang login</value>
+  </data>
+  <data name="setting_topright_delete" xml:space="preserve">
+    <value>Tanggalin ang Aking Account</value>
+  </data>
+  <data name="setting_topright_lastlogin" xml:space="preserve">
+    <value>Huling Login</value>
+  </data>
+  <data name="setting_topright_okay" xml:space="preserve">
+    <value>Sige</value>
+  </data>
+  <data name="setting_topright_title" xml:space="preserve">
+    <value>(Mga) Account sa device na ito</value>
+  </data>
+  <data name="setting_topright_updated" xml:space="preserve">
+    <value>Na-update</value>
+  </data>
+  <data name="setting_version" xml:space="preserve">
+    <value>Bersyon</value>
+  </data>
+  <data name="settupdate_cancel" xml:space="preserve">
+    <value>Kanselahin</value>
+  </data>
+  <data name="settupdate_descplaceholder" xml:space="preserve">
+    <value>Bio, tagline, quotes, atbp...</value>
+  </data>
+  <data name="settupdate_description" xml:space="preserve">
+    <value>Paglalarawan</value>
+  </data>
+  <data name="settupdate_media" xml:space="preserve">
+    <value>I-update ang iyong larawan</value>
+  </data>
+  <data name="settupdate_password" xml:space="preserve">
+    <value>Password</value>
+  </data>
+  <data name="settupdate_retype" xml:space="preserve">
+    <value>muling i-type ang password</value>
+  </data>
+  <data name="settupdate_update" xml:space="preserve">
+    <value>Update</value>
+  </data>
+  <data name="sidemenu_commitment" xml:space="preserve">
+    <value>Pangako</value>
+  </data>
+  <data name="sidemenu_dashboard" xml:space="preserve">
+    <value>Dashboard</value>
+  </data>
+  <data name="sidemenu_expenses" xml:space="preserve">
+    <value>Mga gastos</value>
+  </data>
+  <data name="sidemenu_gallery" xml:space="preserve">
+    <value>Gallery</value>
+  </data>
+  <data name="sidemenu_logout" xml:space="preserve">
+    <value>Mag-logout</value>
+  </data>
+  <data name="sidemenu_settings" xml:space="preserve">
+    <value>Mga setting</value>
+  </data>
+</root>
