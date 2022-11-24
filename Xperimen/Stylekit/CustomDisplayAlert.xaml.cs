@@ -91,7 +91,7 @@ namespace Xperimen.Stylekit
             view.IsEnabled = false;
             await this.FadeTo(0, 500);
             IsVisible = false;
-            MessagingCenter.Send(this, "DisplayAlertSelection", lbl_btn1.Text);
+            MessagingCenter.Send(this, "DisplayAlertSelection", "okay");
             Opacity = 1;
             view.IsEnabled = true;
         }
@@ -104,7 +104,7 @@ namespace Xperimen.Stylekit
             view.IsEnabled = false;
             await this.FadeTo(0, 500);
             IsVisible = false;
-            MessagingCenter.Send(this, "DisplayAlertSelection", lbl_btn2.Text);
+            MessagingCenter.Send(this, "DisplayAlertSelection", "cancel");
             Opacity = 1;
             view.IsEnabled = true;
         }

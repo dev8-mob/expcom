@@ -50,7 +50,7 @@ namespace Xperimen.View
             else
             {
                 var result = await viewmodel.Login();
-                if (result == 1) Application.Current.MainPage = new NavigationPage(new DrawerMaster());
+                if (result == 1) Application.Current.MainPage = new NavigationPage(new DrawerMaster("welcome"));
                 else if (result == 2) SetDisplayAlert("Alert", "Your password is incorrect. Please insert the correct password.", "", "", "");
                 else if (result == 3) SetDisplayAlert("Alert", "The username is not found.", "", "", "");
                 else if (result == 4) SetDisplayAlert("Error", "Technical error updating login information.", "", "", "");

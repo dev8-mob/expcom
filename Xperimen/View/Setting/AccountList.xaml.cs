@@ -30,7 +30,7 @@ namespace Xperimen.View.Setting
 
             MessagingCenter.Subscribe<CustomDisplayAlert, string>(this, "DisplayAlertSelection", async (sender, arg) =>
             {
-                if (arg.Equals("Okay"))
+                if (arg.Equals("okay"))
                 {
                     if (alert.CodeObject.Equals("deleteme"))
                     {

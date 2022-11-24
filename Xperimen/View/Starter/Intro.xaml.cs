@@ -1,10 +1,7 @@
 ﻿using System;
-using System.Globalization;
-using System.Threading;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-using Xperimen.Resources;
 using Xperimen.Stylekit;
 using Xperimen.View.NavigationDrawer;
 using Xperimen.ViewModel.Starter;
@@ -26,12 +23,12 @@ namespace Xperimen.View
 
             MessagingCenter.Subscribe<CustomDisplayAlert, string>(this, "DisplayAlertSelection", async (sender, arg) =>
             {
-                if (arg.Equals("Okay"))
+                if (arg.Equals("okay"))
                 {
                     if (alert.CodeObject.Equals("skip"))
                     {
                         var result = await viewmodel.SkipIntroProfile();
-                        if (result == 1) Application.Current.MainPage = new NavigationPage(new DrawerMaster());
+                        if (result == 1) Application.Current.MainPage = new NavigationPage(new DrawerMaster("welcome"));
                         else if (result == 2) SetDisplayAlert("Error", "Technical error creating test account.", "", "", "");
                     }
                     else viewmodel.IsLoading = false;
@@ -65,7 +62,7 @@ namespace Xperimen.View
             else
             {
                 var result = await viewmodel.IntroProfile();
-                if (result == 1) Application.Current.MainPage = new NavigationPage(new DrawerMaster());
+                if (result == 1) Application.Current.MainPage = new NavigationPage(new DrawerMaster("welcome"));
                 else if (result == 2) SetDisplayAlert("Exist", "Account with the username already exist in this device.", "", "", "");
                 else if (result == 3) SetDisplayAlert("Error", "Technical error creating new account.", "", "", "");
             }

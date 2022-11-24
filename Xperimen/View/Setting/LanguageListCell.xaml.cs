@@ -37,7 +37,7 @@ namespace Xperimen.View.Setting
             view.IsEnabled = false;
             var build = lbl_code.Text + "," + lbl_langname.Text;
             MessagingCenter.Send(this, "LanguageSelected", build);
-            view.IsEnabled = true;
+            //view.IsEnabled = true;
         }
     }
 }

@@ -60,11 +60,13 @@ namespace Xperimen.View.Setting
                 var split = arg.Split(',');
                 if (split.Count() > 0)
                 {
+                    viewmodel.IsLoading = true;
                     viewmodel.Language = split[0];
                     CultureInfo language = new CultureInfo(split[0]);
                     Thread.CurrentThread.CurrentUICulture = language;
                     AppResources.Culture = language;
-                    Xamarin.Forms.Application.Current.MainPage = new Xamarin.Forms.NavigationPage(new DrawerMaster());
+                    Device.BeginInvokeOnMainThread(() => 
+                    { Xamarin.Forms.Application.Current.MainPage = new Xamarin.Forms.NavigationPage(new DrawerMaster("setting")); });
                 }
             });
         }

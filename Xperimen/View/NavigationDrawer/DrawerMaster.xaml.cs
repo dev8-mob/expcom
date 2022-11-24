@@ -3,6 +3,7 @@ using SQLite;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using Xperimen.View.Dashboard;
+using Xperimen.View.Setting;
 
 namespace Xperimen.View.NavigationDrawer
 {
@@ -11,10 +12,12 @@ namespace Xperimen.View.NavigationDrawer
     {
         public SQLiteConnection connection;
 
-        public DrawerMaster()
+        public DrawerMaster(string openpage)
         {
             InitializeComponent();
-            Detail = new NavigationPage(new Welcome());
+
+            if (openpage.Equals("welcome")) Detail = new NavigationPage(new Welcome());
+            else if (openpage.Equals("setting")) Detail = new NavigationPage(new MainSetting());
         }
     }
 }
