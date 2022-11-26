@@ -261,6 +261,30 @@
   <data name="intro_welcome" xml:space="preserve">
     <value>स्वागत</value>
   </data>
+  <data name="media_alertdescnopic" xml:space="preserve">
+    <value>आपने व्यय या प्रतिबद्धता में कोई चित्र संलग्न नहीं किया है।</value>
+  </data>
+  <data name="media_alerttitlenopic" xml:space="preserve">
+    <value>कोई तस्वीर नहीं</value>
+  </data>
+  <data name="media_colcommitment" xml:space="preserve">
+    <value>प्रतिबद्धता</value>
+  </data>
+  <data name="media_colcommitmentselected" xml:space="preserve">
+    <value>प्रतिबद्धता की कुर्की</value>
+  </data>
+  <data name="media_colexpenses" xml:space="preserve">
+    <value>खर्च</value>
+  </data>
+  <data name="media_colexpenseselected" xml:space="preserve">
+    <value>खर्च चालू</value>
+  </data>
+  <data name="media_navtitle" xml:space="preserve">
+    <value>मीडिया गैलरी</value>
+  </data>
+  <data name="media_nopic" xml:space="preserve">
+    <value>कोई तस्वीर नहीं</value>
+  </data>
   <data name="setting_apptheme" xml:space="preserve">
     <value>एप्लिकेशन थीम</value>
   </data>

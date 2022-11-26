@@ -38,9 +38,9 @@ namespace Xperimen.View.Setting
                     if (success == 1)
                     {
                         await Task.Delay(300);
-                        MessagingCenter.Send(this, "LanguageUpdated", arg);
                         var navigation = Application.Current.MainPage.Navigation;
                         await navigation.PopPopupAsync();
+                        MessagingCenter.Send(this, "LanguageUpdated", arg);
                     }
                 }
             });

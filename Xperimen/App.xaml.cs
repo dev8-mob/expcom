@@ -41,7 +41,7 @@ namespace Xperimen
 
             CleanData();
             var clients = connection.Table<Clients>().ToList();
-            if (clients.Count > 0) 
+            if (clients.Count > 0)
             {
                 if (Current.Properties.ContainsKey("current_login"))
                 {
@@ -53,11 +53,16 @@ namespace Xperimen
                     CultureInfo language = new CultureInfo(lang);
                     Thread.CurrentThread.CurrentUICulture = language;
                     AppResources.Culture = language;
-                    Current.MainPage = new NavigationPage(new DrawerMaster());
+                    Current.MainPage = new NavigationPage(new DrawerMaster("welcome"));
                 }
                 else MainPage = new NavigationPage(new Login());
             }
-            else MainPage = new NavigationPage(new Intro());
+            else
+            {
+                Current.Properties.Remove("app_theme");
+                Current.SavePropertiesAsync();
+                MainPage = new NavigationPage(new Intro());
+            }
         }
 
         public void CleanData()

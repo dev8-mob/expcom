@@ -6,6 +6,7 @@ using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
 using Xperimen.Helper;
 using Xperimen.Model;
+using Xperimen.Resources;
 using Xperimen.Stylekit;
 using Xperimen.View.NavigationDrawer;
 using Xperimen.ViewModel.Gallery;
@@ -93,7 +94,7 @@ namespace Xperimen.View.Gallery
 
             viewmodel.IsLoading = true;
             if (viewmodel.NoMedia)
-                SetDisplayAlert("No Pictures", "You have not attach any pictures in Expenses or Commitment.", "", "", "");
+                SetDisplayAlert(AppResources.media_alerttitlenopic, AppResources.media_alertdescnopic, "", "", "");
             view.IsEnabled = true;
         }
 
@@ -133,8 +134,8 @@ namespace Xperimen.View.Gallery
                 return stream;
             });
             var lbltitle = new XLabel { HorizontalOptions = LayoutOptions.Center };
-            if (code == 1) lbltitle.Text = "Expenses";
-            else if (code == 2) lbltitle.Text = "Commitment";
+            if (code == 1) lbltitle.Text = AppResources.media_colexpenses;
+            else if (code == 2) lbltitle.Text = AppResources.media_colcommitment;
             frame.Content = img;
             container.Children.Add(frame);
             container.Children.Add(lbltitle);
@@ -249,9 +250,21 @@ namespace Xperimen.View.Gallery
             var view = (StackLayout)sender;
             await view.ScaleTo(0.9, 100);
             view.Scale = 1;
+            BuildExpensesMedia();
+        }
 
+        public async void ExpensesBadgeClicked(object sender, EventArgs e)
+        {
+            var view = (Frame)sender;
+            await view.ScaleTo(0.9, 100);
+            view.Scale = 1;
+            BuildExpensesMedia();
+        }
+
+        public void BuildExpensesMedia()
+        {
             stack_piclist.IsVisible = true;
-            lbl_selected.Text = "Expenses on";
+            lbl_selected.Text = AppResources.media_colexpenseselected;
             if (viewmodel.HaveDateRange) { lbl_expdate.IsVisible = false; lbl_expdaterange.IsVisible = true; }
             else if (!viewmodel.HaveDateRange) { lbl_expdate.IsVisible = true; lbl_expdaterange.IsVisible = false; }
             grid_medialist.Children.Clear();
@@ -267,13 +280,6 @@ namespace Xperimen.View.Gallery
                     col++;
                 }
             }
-        }
-
-        public async void ExpensesBadgeClicked(object sender, EventArgs e)
-        {
-            var view = (Frame)sender;
-            await view.ScaleTo(0.9, 100);
-            view.Scale = 1;
         }
 
         public async void ExpensesListClicked(object sender, EventArgs e)
@@ -296,9 +302,21 @@ namespace Xperimen.View.Gallery
             var view = (StackLayout)sender;
             await view.ScaleTo(0.9, 100);
             view.Scale = 1;
+            BuildCommitmentMedia();
+        }
 
+        public async void CommitmentBadgeClicked(object sender, EventArgs e)
+        {
+            var view = (Frame)sender;
+            await view.ScaleTo(0.9, 100);
+            view.Scale = 1;
+            BuildCommitmentMedia();
+        }
+
+        public void BuildCommitmentMedia()
+        {
             stack_piclist.IsVisible = true;
-            lbl_selected.Text = "Attachment of commitment(s)";
+            lbl_selected.Text = AppResources.media_colcommitmentselected;
             lbl_expdate.IsVisible = false; lbl_expdaterange.IsVisible = false;
             grid_medialist.Children.Clear();
             grid_medialist.ColumnDefinitions.Clear();
@@ -313,13 +331,6 @@ namespace Xperimen.View.Gallery
                     col++;
                 }
             }
-        }
-
-        public async void CommitmentBadgeClicked(object sender, EventArgs e)
-        {
-            var view = (Frame)sender;
-            await view.ScaleTo(0.9, 100);
-            view.Scale = 1;
         }
 
         public async void CommitmentListClicked(object sender, EventArgs e)
