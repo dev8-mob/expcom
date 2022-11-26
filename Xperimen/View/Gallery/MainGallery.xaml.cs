@@ -249,7 +249,19 @@ namespace Xperimen.View.Gallery
             var view = (StackLayout)sender;
             await view.ScaleTo(0.9, 100);
             view.Scale = 1;
+            BuildExpensesMedia();
+        }
 
+        public async void ExpensesBadgeClicked(object sender, EventArgs e)
+        {
+            var view = (Frame)sender;
+            await view.ScaleTo(0.9, 100);
+            view.Scale = 1;
+            BuildExpensesMedia();
+        }
+
+        public void BuildExpensesMedia()
+        {
             stack_piclist.IsVisible = true;
             lbl_selected.Text = "Expenses on";
             if (viewmodel.HaveDateRange) { lbl_expdate.IsVisible = false; lbl_expdaterange.IsVisible = true; }
@@ -267,13 +279,6 @@ namespace Xperimen.View.Gallery
                     col++;
                 }
             }
-        }
-
-        public async void ExpensesBadgeClicked(object sender, EventArgs e)
-        {
-            var view = (Frame)sender;
-            await view.ScaleTo(0.9, 100);
-            view.Scale = 1;
         }
 
         public async void ExpensesListClicked(object sender, EventArgs e)
@@ -296,7 +301,19 @@ namespace Xperimen.View.Gallery
             var view = (StackLayout)sender;
             await view.ScaleTo(0.9, 100);
             view.Scale = 1;
+            BuildCommitmentMedia();
+        }
 
+        public async void CommitmentBadgeClicked(object sender, EventArgs e)
+        {
+            var view = (Frame)sender;
+            await view.ScaleTo(0.9, 100);
+            view.Scale = 1;
+            BuildCommitmentMedia();
+        }
+
+        public void BuildCommitmentMedia()
+        {
             stack_piclist.IsVisible = true;
             lbl_selected.Text = "Attachment of commitment(s)";
             lbl_expdate.IsVisible = false; lbl_expdaterange.IsVisible = false;
@@ -313,13 +330,6 @@ namespace Xperimen.View.Gallery
                     col++;
                 }
             }
-        }
-
-        public async void CommitmentBadgeClicked(object sender, EventArgs e)
-        {
-            var view = (Frame)sender;
-            await view.ScaleTo(0.9, 100);
-            view.Scale = 1;
         }
 
         public async void CommitmentListClicked(object sender, EventArgs e)

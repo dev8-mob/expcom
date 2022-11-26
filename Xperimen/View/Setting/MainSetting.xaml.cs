@@ -29,6 +29,7 @@ namespace Xperimen.View.Setting
             BindingContext = viewmodel;
             SetupView();
 
+            #region messaging center
             MessagingCenter.Subscribe<CustomDisplayAlert, string>(this, "DisplayAlertSelection", (sender, arg) => 
             { 
                 viewmodel.IsLoading = false;
@@ -69,6 +70,7 @@ namespace Xperimen.View.Setting
                     { Xamarin.Forms.Application.Current.MainPage = new Xamarin.Forms.NavigationPage(new DrawerMaster("setting")); });
                 }
             });
+            #endregion
         }
 
         public void SetupView()
