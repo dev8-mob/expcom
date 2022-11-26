@@ -261,6 +261,30 @@
   <data name="intro_welcome" xml:space="preserve">
     <value>Selamat datang</value>
   </data>
+  <data name="media_alertdescnopic" xml:space="preserve">
+    <value>Anda tidak melampirkan sebarang gambar dalam Perbelanjaan atau Komitmen.</value>
+  </data>
+  <data name="media_alerttitlenopic" xml:space="preserve">
+    <value>Tiada Gambar</value>
+  </data>
+  <data name="media_colcommitment" xml:space="preserve">
+    <value>Komitmen</value>
+  </data>
+  <data name="media_colcommitmentselected" xml:space="preserve">
+    <value>Lampiran gambar komitmen</value>
+  </data>
+  <data name="media_colexpenses" xml:space="preserve">
+    <value>Perbelanjaan</value>
+  </data>
+  <data name="media_colexpenseselected" xml:space="preserve">
+    <value>Perbelanjaan pada</value>
+  </data>
+  <data name="media_navtitle" xml:space="preserve">
+    <value>Galeri Media</value>
+  </data>
+  <data name="media_nopic" xml:space="preserve">
+    <value>tiada sebarang gambar</value>
+  </data>
   <data name="setting_apptheme" xml:space="preserve">
     <value>Tema Aplikasi</value>
   </data>

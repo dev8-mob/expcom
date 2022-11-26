@@ -261,6 +261,30 @@
   <data name="intro_welcome" xml:space="preserve">
     <value>Maligayang pagdating</value>
   </data>
+  <data name="media_alertdescnopic" xml:space="preserve">
+    <value>Hindi ka nag-attach ng anumang mga larawan sa Mga gastos o Pangako.</value>
+  </data>
+  <data name="media_alerttitlenopic" xml:space="preserve">
+    <value>Walang Larawan</value>
+  </data>
+  <data name="media_colcommitment" xml:space="preserve">
+    <value>Pangako</value>
+  </data>
+  <data name="media_colcommitmentselected" xml:space="preserve">
+    <value>Kalakip ng (mga) pangako</value>
+  </data>
+  <data name="media_colexpenses" xml:space="preserve">
+    <value>Mga gastos</value>
+  </data>
+  <data name="media_colexpenseselected" xml:space="preserve">
+    <value>Mga gastos sa</value>
+  </data>
+  <data name="media_navtitle" xml:space="preserve">
+    <value>Media Gallery</value>
+  </data>
+  <data name="media_nopic" xml:space="preserve">
+    <value>walang mga larawan</value>
+  </data>
   <data name="setting_apptheme" xml:space="preserve">
     <value>Tema ng Aplikasyon</value>
   </data>

@@ -262,6 +262,30 @@
   <data name="intro_welcome" xml:space="preserve">
     <value>Welcome</value>
   </data>
+  <data name="media_alertdescnopic" xml:space="preserve">
+    <value>You have not attach any pictures in Expenses or Commitment.</value>
+  </data>
+  <data name="media_alerttitlenopic" xml:space="preserve">
+    <value>No Pictures</value>
+  </data>
+  <data name="media_colcommitment" xml:space="preserve">
+    <value>Commitment</value>
+  </data>
+  <data name="media_colcommitmentselected" xml:space="preserve">
+    <value>Attachment of commitment(s)</value>
+  </data>
+  <data name="media_colexpenses" xml:space="preserve">
+    <value>Expenses</value>
+  </data>
+  <data name="media_colexpenseselected" xml:space="preserve">
+    <value>Expenses on</value>
+  </data>
+  <data name="media_navtitle" xml:space="preserve">
+    <value>Media Gallery</value>
+  </data>
+  <data name="media_nopic" xml:space="preserve">
+    <value>no pictures</value>
+  </data>
   <data name="setting_apptheme" xml:space="preserve">
     <value>Application Theme</value>
   </data>

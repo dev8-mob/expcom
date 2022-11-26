@@ -261,6 +261,30 @@
   <data name="intro_welcome" xml:space="preserve">
     <value>வரவேற்பு</value>
   </data>
+  <data name="media_alertdescnopic" xml:space="preserve">
+    <value>செலவுகள் அல்லது உறுதிமொழியில் நீங்கள் எந்தப் படங்களையும் இணைக்கவில்லை.</value>
+  </data>
+  <data name="media_alerttitlenopic" xml:space="preserve">
+    <value>படங்கள் இல்லை</value>
+  </data>
+  <data name="media_colcommitment" xml:space="preserve">
+    <value>அர்ப்பணிப்பு</value>
+  </data>
+  <data name="media_colcommitmentselected" xml:space="preserve">
+    <value>அர்ப்பணிப்பு(கள்) இணைப்பு</value>
+  </data>
+  <data name="media_colexpenses" xml:space="preserve">
+    <value>செலவுகள்</value>
+  </data>
+  <data name="media_colexpenseselected" xml:space="preserve">
+    <value>அன்று செலவுகள்</value>
+  </data>
+  <data name="media_navtitle" xml:space="preserve">
+    <value>மீடியா கேலரி</value>
+  </data>
+  <data name="media_nopic" xml:space="preserve">
+    <value>படங்கள் இல்லை</value>
+  </data>
   <data name="setting_apptheme" xml:space="preserve">
     <value>விண்ணப்ப தீம்</value>
   </data>

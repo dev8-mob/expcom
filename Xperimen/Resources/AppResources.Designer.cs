@@ -493,6 +493,78 @@ namespace Xperimen.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to You have not attach any pictures in Expenses or Commitment..
+        /// </summary>
+        internal static string media_alertdescnopic {
+            get {
+                return ResourceManager.GetString("media_alertdescnopic", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No Pictures.
+        /// </summary>
+        internal static string media_alerttitlenopic {
+            get {
+                return ResourceManager.GetString("media_alerttitlenopic", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Commitment.
+        /// </summary>
+        internal static string media_colcommitment {
+            get {
+                return ResourceManager.GetString("media_colcommitment", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Attachment of commitment(s).
+        /// </summary>
+        internal static string media_colcommitmentselected {
+            get {
+                return ResourceManager.GetString("media_colcommitmentselected", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Expenses.
+        /// </summary>
+        internal static string media_colexpenses {
+            get {
+                return ResourceManager.GetString("media_colexpenses", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Expenses on.
+        /// </summary>
+        internal static string media_colexpenseselected {
+            get {
+                return ResourceManager.GetString("media_colexpenseselected", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Media Gallery.
+        /// </summary>
+        internal static string media_navtitle {
+            get {
+                return ResourceManager.GetString("media_navtitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to no pictures.
+        /// </summary>
+        internal static string media_nopic {
+            get {
+                return ResourceManager.GetString("media_nopic", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Application Theme.
         /// </summary>
         internal static string setting_apptheme {
