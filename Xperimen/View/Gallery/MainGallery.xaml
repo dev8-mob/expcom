@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Xperimen.View.Gallery.MainGallery"
              xmlns:stylekit="clr-namespace:Xperimen.Stylekit"
+             xmlns:resource="clr-namespace:Xperimen.Resources"
              NavigationPage.HasNavigationBar="False">
     
     <ContentPage.Content>
@@ -30,8 +31,8 @@
                                     <TapGestureRecognizer Tapped="DrawerTapped" NumberOfTapsRequired="1"/>
                                 </Image.GestureRecognizers>
                             </stylekit:XImage>
-                            <stylekit:XLabel Text="Media Gallery" HorizontalOptions="FillAndExpand" FontFamily="{DynamicResource Key=BoldFont}" 
-                                             FontSize="18" VerticalOptions="Center"/>
+                            <stylekit:XLabel Text="{x:Static resource:AppResources.media_navtitle}" HorizontalOptions="FillAndExpand" 
+                                             FontFamily="{DynamicResource Key=BoldFont}" FontSize="18" VerticalOptions="Center"/>
                         </StackLayout>
                         <!-- commitment badge number -->
                         <Frame Grid.Row="0" Grid.Column="0" Padding="0" HasShadow="False" IsClippedToBounds="True" HeightRequest="30"
@@ -55,7 +56,7 @@
                     <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand" Spacing="0" IsVisible="{Binding NoMedia}" 
                                  VerticalOptions="Start" Margin="0,30,0,0">
                         <stylekit:XImageNoRecord HeightRequest="40" WidthRequest="40" VerticalOptions="Center" HorizontalOptions="Center"/>
-                        <Label Text="no pictures" HorizontalOptions="CenterAndExpand"/>
+                        <Label Text="{x:Static resource:AppResources.media_nopic}" HorizontalOptions="CenterAndExpand"/>
                         <StackLayout.GestureRecognizers>
                             <TapGestureRecognizer Tapped="NoPicturesClicked"/>
                         </StackLayout.GestureRecognizers>
