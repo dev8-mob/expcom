@@ -4,6 +4,7 @@ using Xamarin.Forms;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
 using Xperimen.Helper;
+using Xperimen.Resources;
 using Xperimen.Stylekit;
 using Xperimen.View.Expense;
 using Xperimen.View.NavigationDrawer;
@@ -213,7 +214,7 @@ namespace Xperimen.View.Dashboard
             view.IsEnabled = false;
 
             viewmodel.IsLoading = true;
-            if (viewmodel.NoExpenses) SetDisplayAlert("No Expenses", "You have no expenses for today.", "", "", "");
+            if (viewmodel.NoExpenses) SetDisplayAlert(AppResources.dashboard_noexp, AppResources.dashboard_noexpdesc, "", "", "");
             else if (viewmodel.HasExpenses)
             { await Navigation.PushAsync(new ExpensesDetail()); viewmodel.IsLoading = false; }
             view.IsEnabled = true;

@@ -4,7 +4,14 @@
              x:Class="Xperimen.View.Dashboard.Welcome"
              xmlns:stylekit="clr-namespace:Xperimen.Stylekit"
              xmlns:resource="clr-namespace:Xperimen.Resources"
+             xmlns:helper="clr-namespace:Xperimen.Helper"
              NavigationPage.HasNavigationBar="False">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <helper:DayLanguageConverter x:Key="DayConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
 
     <ContentPage.Content>
 
@@ -89,8 +96,9 @@
                         <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Spacing="15" Margin="0,15,0,0" VerticalOptions="Center">
                             <StackLayout Orientation="Vertical" HorizontalOptions="Center" Spacing="0">
                                 <stylekit:XLabel Text="{x:Static resource:AppResources.dashboard_today}" HorizontalOptions="Start" VerticalOptions="Center"/>
-                                <stylekit:XLabel Text="{Binding CurrentDt, StringFormat='{0:dddd},'}" HorizontalOptions="End"
-                                                 FontSize="20" FontFamily="{DynamicResource Key=BoldFont}"/>
+                                <stylekit:XLabel Text="{Binding CurrentDt, StringFormat='{0:dddd},', Converter={StaticResource DayConverter}}" 
+                                                 HorizontalOptions="End" FontSize="20" FontFamily="{DynamicResource Key=BoldFont}"
+                                                 LineBreakMode="TailTruncation"/>
                             </StackLayout>
                             <StackLayout Orientation="Vertical" HorizontalOptions="Center" Spacing="0" VerticalOptions="Center">
                                 <stylekit:XLabel Text="{Binding CurrentDt, StringFormat='{0:dd}'}" HorizontalOptions="Fill" FontSize="20"

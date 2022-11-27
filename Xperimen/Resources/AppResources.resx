@@ -141,6 +141,12 @@
   <data name="app_failed" xml:space="preserve">
     <value>Failed</value>
   </data>
+  <data name="app_friday" xml:space="preserve">
+    <value>Friday</value>
+  </data>
+  <data name="app_monday" xml:space="preserve">
+    <value>Monday</value>
+  </data>
   <data name="app_notmatch" xml:space="preserve">
     <value>Not Match</value>
   </data>
@@ -150,12 +156,27 @@
   <data name="app_permission" xml:space="preserve">
     <value>Permission</value>
   </data>
+  <data name="app_saturday" xml:space="preserve">
+    <value>Saturday</value>
+  </data>
   <data name="app_success" xml:space="preserve">
     <value>Success</value>
     <comment>start new here</comment>
   </data>
+  <data name="app_sunday" xml:space="preserve">
+    <value>Sunday</value>
+  </data>
+  <data name="app_thursday" xml:space="preserve">
+    <value>Thursday</value>
+  </data>
+  <data name="app_tuesday" xml:space="preserve">
+    <value>Tuesday</value>
+  </data>
   <data name="app_unavailable" xml:space="preserve">
     <value>Unavailable</value>
+  </data>
+  <data name="app_wednesday" xml:space="preserve">
+    <value>Wednesday</value>
   </data>
   <data name="camgal_camcancel" xml:space="preserve">
     <value>Take photo cancelled.</value>
@@ -244,6 +265,9 @@
   <data name="dashboard_expdeleted" xml:space="preserve">
     <value>Expenses deleted.</value>
   </data>
+  <data name="dashboard_expdeleteerror" xml:space="preserve">
+    <value>Technical error deleting selected expenses.</value>
+  </data>
   <data name="dashboard_expfortoday" xml:space="preserve">
     <value>Expenses for today</value>
   </data>
@@ -255,6 +279,12 @@
   </data>
   <data name="dashboard_hi" xml:space="preserve">
     <value>Hi,</value>
+  </data>
+  <data name="dashboard_noexp" xml:space="preserve">
+    <value>No Expenses</value>
+  </data>
+  <data name="dashboard_noexpdesc" xml:space="preserve">
+    <value>You have no expenses for today.</value>
   </data>
   <data name="dashboard_norecord" xml:space="preserve">
     <value>no record</value>

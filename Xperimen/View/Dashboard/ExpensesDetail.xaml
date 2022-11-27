@@ -51,23 +51,21 @@
                                              HorizontalTextAlignment="Center" Margin="5,0,0,0"/>
                         </StackLayout>
                         <!--<stylekit:XLabel Text="{Binding DiffYtdToday, StringFormat='more RM {0:0.00}'}" HorizontalOptions="CenterAndExpand" VerticalOptions="Start" 
-                                         HorizontalTextAlignment="Center" FontFamily="{DynamicResource Key=ItalicFont}" x:Name="lbl_percentmorevalue"
-                                         TextColor="{DynamicResource Key=CustomRed}"/>-->
+                                         HorizontalTextAlignment="Center" x:Name="lbl_percentmorevalue" TextColor="{DynamicResource Key=CustomRed}"/>-->
                     </StackLayout>
                     <!-- expense less UI -->
                     <StackLayout x:Name="stack_less" Orientation="Vertical" HorizontalOptions="Center" Spacing="0" IsVisible="False">
                         <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Spacing="0">
                             <stylekit:XLabel Text="{x:Static resource:AppResources.dashboard_todayis}" HorizontalOptions="Center" VerticalOptions="Start" 
                                              HorizontalTextAlignment="Center" Margin="0,0,5,0"/>
-                            <stylekit:XLabel Text="{Binding PercentageYtdToday, StringFormat='-{0:0.00}%'}" HorizontalOptions="Center" VerticalOptions="Start"
+                            <stylekit:XLabel Text="{Binding PercentageYtdToday, StringFormat='{0:0.00}%'}" HorizontalOptions="Center" VerticalOptions="Start"
                                              FontFamily="{DynamicResource Key=BoldFont}" FontSize="16" HorizontalTextAlignment="Center"
                                              TextColor="{DynamicResource Key=CustomGreen}" x:Name="lbl_percentless"/>
                             <stylekit:XLabel Text="{x:Static resource:AppResources.dashboard_thanytd}" HorizontalOptions="Center" VerticalOptions="Start" 
                                              HorizontalTextAlignment="Center" Margin="5,0,0,0"/>
                         </StackLayout>
-                        <stylekit:XLabel Text="{Binding DiffYtdToday, StringFormat='less RM {0:0.00}'}" HorizontalOptions="CenterAndExpand" VerticalOptions="Start" 
-                                         HorizontalTextAlignment="Center" FontFamily="{DynamicResource Key=ItalicFont}" x:Name="lbl_percentlessvalue"
-                                         TextColor="{DynamicResource Key=CustomGreen}"/>
+                        <!--<stylekit:XLabel Text="{Binding DiffYtdToday, StringFormat='less RM {0:0.00}'}" HorizontalOptions="CenterAndExpand" VerticalOptions="Start" 
+                                         HorizontalTextAlignment="Center" x:Name="lbl_percentlessvalue" TextColor="{DynamicResource Key=CustomGreen}"/>-->
                     </StackLayout>
                     <!-- expense same UI -->
                     <StackLayout x:Name="stack_same" Orientation="Horizontal" HorizontalOptions="Center" Spacing="0" Margin="0,0,0,0" IsVisible="False">

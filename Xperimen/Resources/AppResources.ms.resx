@@ -141,6 +141,12 @@
   <data name="app_failed" xml:space="preserve">
     <value>Gagal</value>
   </data>
+  <data name="app_friday" xml:space="preserve">
+    <value>Jumaat</value>
+  </data>
+  <data name="app_monday" xml:space="preserve">
+    <value>Isnin</value>
+  </data>
   <data name="app_notmatch" xml:space="preserve">
     <value>Tidak Padan</value>
   </data>
@@ -150,11 +156,26 @@
   <data name="app_permission" xml:space="preserve">
     <value>Keizinan</value>
   </data>
+  <data name="app_saturday" xml:space="preserve">
+    <value>Sabtu</value>
+  </data>
   <data name="app_success" xml:space="preserve">
     <value>Berjaya</value>
   </data>
+  <data name="app_sunday" xml:space="preserve">
+    <value>Ahad</value>
+  </data>
+  <data name="app_thursday" xml:space="preserve">
+    <value>Khamis</value>
+  </data>
+  <data name="app_tuesday" xml:space="preserve">
+    <value>Selasa</value>
+  </data>
   <data name="app_unavailable" xml:space="preserve">
     <value>Tidak Tersedia</value>
+  </data>
+  <data name="app_wednesday" xml:space="preserve">
+    <value>Rabu</value>
   </data>
   <data name="camgal_camcancel" xml:space="preserve">
     <value>Mengambil gambar dibatalkan.</value>
@@ -243,6 +264,9 @@
   <data name="dashboard_expdeleted" xml:space="preserve">
     <value>Perbelanjaan dipadam.</value>
   </data>
+  <data name="dashboard_expdeleteerror" xml:space="preserve">
+    <value>Berlaku kesilapan teknikal ketika memadam perbelanjaan.</value>
+  </data>
   <data name="dashboard_expfortoday" xml:space="preserve">
     <value>Perbelanjaan untuk hari ini</value>
   </data>
@@ -254,6 +278,12 @@
   </data>
   <data name="dashboard_hi" xml:space="preserve">
     <value>Hai,</value>
+  </data>
+  <data name="dashboard_noexp" xml:space="preserve">
+    <value>Tiada Perbelanjaan</value>
+  </data>
+  <data name="dashboard_noexpdesc" xml:space="preserve">
+    <value>Tiada sebarang perbelanjaan pada hari ini.</value>
   </data>
   <data name="dashboard_norecord" xml:space="preserve">
     <value>tiada rekod</value>

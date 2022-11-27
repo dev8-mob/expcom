@@ -141,6 +141,12 @@
   <data name="app_failed" xml:space="preserve">
     <value>தோல்வி</value>
   </data>
+  <data name="app_friday" xml:space="preserve">
+    <value>வெள்ளி</value>
+  </data>
+  <data name="app_monday" xml:space="preserve">
+    <value>திங்கட்கிழமை</value>
+  </data>
   <data name="app_notmatch" xml:space="preserve">
     <value>பொருத்தம் இல்லை</value>
   </data>
@@ -150,11 +156,26 @@
   <data name="app_permission" xml:space="preserve">
     <value>அனுமதி</value>
   </data>
+  <data name="app_saturday" xml:space="preserve">
+    <value>சனிக்கிழமை</value>
+  </data>
   <data name="app_success" xml:space="preserve">
     <value>வெற்றி</value>
   </data>
+  <data name="app_sunday" xml:space="preserve">
+    <value>ஞாயிற்றுக்கிழமை</value>
+  </data>
+  <data name="app_thursday" xml:space="preserve">
+    <value>வியாழன்</value>
+  </data>
+  <data name="app_tuesday" xml:space="preserve">
+    <value>செவ்வாய்</value>
+  </data>
   <data name="app_unavailable" xml:space="preserve">
     <value>கிடைக்கவில்லை</value>
+  </data>
+  <data name="app_wednesday" xml:space="preserve">
+    <value>புதன்</value>
   </data>
   <data name="camgal_camcancel" xml:space="preserve">
     <value>புகைப்படம் எடுப்பது ரத்து செய்யப்பட்டது.</value>
@@ -243,6 +264,9 @@
   <data name="dashboard_expdeleted" xml:space="preserve">
     <value>செலவுகள் நீக்கப்பட்டன.</value>
   </data>
+  <data name="dashboard_expdeleteerror" xml:space="preserve">
+    <value>தேர்ந்தெடுக்கப்பட்ட செலவுகளை நீக்குவதில் தொழில்நுட்பப் பிழை.</value>
+  </data>
   <data name="dashboard_expfortoday" xml:space="preserve">
     <value>இன்றைய செலவுகள்</value>
   </data>
@@ -254,6 +278,12 @@
   </data>
   <data name="dashboard_hi" xml:space="preserve">
     <value>வணக்கம்,</value>
+  </data>
+  <data name="dashboard_noexp" xml:space="preserve">
+    <value>செலவுகள் இல்லை</value>
+  </data>
+  <data name="dashboard_noexpdesc" xml:space="preserve">
+    <value>இன்றைக்கு உனக்கு எந்தச் செலவும் இல்லை.</value>
   </data>
   <data name="dashboard_norecord" xml:space="preserve">
     <value>விவரம் இல்லை</value>

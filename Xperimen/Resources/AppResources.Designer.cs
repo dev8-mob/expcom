@@ -133,6 +133,24 @@ namespace Xperimen.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Friday.
+        /// </summary>
+        internal static string app_friday {
+            get {
+                return ResourceManager.GetString("app_friday", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Monday.
+        /// </summary>
+        internal static string app_monday {
+            get {
+                return ResourceManager.GetString("app_monday", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Not Match.
         /// </summary>
         internal static string app_notmatch {
@@ -160,6 +178,15 @@ namespace Xperimen.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Saturday.
+        /// </summary>
+        internal static string app_saturday {
+            get {
+                return ResourceManager.GetString("app_saturday", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Success.
         /// </summary>
         internal static string app_success {
@@ -169,11 +196,47 @@ namespace Xperimen.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Sunday.
+        /// </summary>
+        internal static string app_sunday {
+            get {
+                return ResourceManager.GetString("app_sunday", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Thursday.
+        /// </summary>
+        internal static string app_thursday {
+            get {
+                return ResourceManager.GetString("app_thursday", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tuesday.
+        /// </summary>
+        internal static string app_tuesday {
+            get {
+                return ResourceManager.GetString("app_tuesday", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Unavailable.
         /// </summary>
         internal static string app_unavailable {
             get {
                 return ResourceManager.GetString("app_unavailable", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Wednesday.
+        /// </summary>
+        internal static string app_wednesday {
+            get {
+                return ResourceManager.GetString("app_wednesday", resourceCulture);
             }
         }
         
@@ -439,6 +502,15 @@ namespace Xperimen.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Technical error deleting selected expenses..
+        /// </summary>
+        internal static string dashboard_expdeleteerror {
+            get {
+                return ResourceManager.GetString("dashboard_expdeleteerror", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Expenses for today.
         /// </summary>
         internal static string dashboard_expfortoday {
@@ -471,6 +543,24 @@ namespace Xperimen.Resources {
         internal static string dashboard_hi {
             get {
                 return ResourceManager.GetString("dashboard_hi", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No Expenses.
+        /// </summary>
+        internal static string dashboard_noexp {
+            get {
+                return ResourceManager.GetString("dashboard_noexp", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You have no expenses for today..
+        /// </summary>
+        internal static string dashboard_noexpdesc {
+            get {
+                return ResourceManager.GetString("dashboard_noexpdesc", resourceCulture);
             }
         }
         

@@ -34,9 +34,9 @@ namespace Xperimen.View.Dashboard
                         if (success == 1)
                         { SetDisplayAlert(AppResources.app_success, AppResources.dashboard_expdeleted, "", "", ""); SetupView(); }
                         else if (success == 2) await Navigation.PopAsync();
-                        else if (success == 3) SetDisplayAlert(AppResources.app_error, "Technical error deleting selected expenses.", "", "", "");
+                        else if (success == 3) SetDisplayAlert(AppResources.app_error, AppResources.dashboard_expdeleteerror, "", "", "");
                     }
-                    else if (result == 2) SetDisplayAlert(AppResources.app_error, "Technical error deleting selected expenses.", "", "", "");
+                    else if (result == 2) SetDisplayAlert(AppResources.app_error, AppResources.dashboard_expdeleteerror, "", "", "");
                 }
                 else viewmodel.IsLoading = false; 
             });

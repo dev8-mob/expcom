@@ -141,6 +141,12 @@
   <data name="app_failed" xml:space="preserve">
     <value>असफल</value>
   </data>
+  <data name="app_friday" xml:space="preserve">
+    <value>शुक्रवार</value>
+  </data>
+  <data name="app_monday" xml:space="preserve">
+    <value>सोमवार</value>
+  </data>
   <data name="app_notmatch" xml:space="preserve">
     <value>मेल नहीं करता</value>
   </data>
@@ -150,11 +156,26 @@
   <data name="app_permission" xml:space="preserve">
     <value>अनुमति</value>
   </data>
+  <data name="app_saturday" xml:space="preserve">
+    <value>शनिवार</value>
+  </data>
   <data name="app_success" xml:space="preserve">
     <value>सफलता</value>
   </data>
+  <data name="app_sunday" xml:space="preserve">
+    <value>रविवार</value>
+  </data>
+  <data name="app_thursday" xml:space="preserve">
+    <value>गुरुवार</value>
+  </data>
+  <data name="app_tuesday" xml:space="preserve">
+    <value>मंगलवार</value>
+  </data>
   <data name="app_unavailable" xml:space="preserve">
     <value>अनुपलब्ध</value>
+  </data>
+  <data name="app_wednesday" xml:space="preserve">
+    <value>बुधवार</value>
   </data>
   <data name="camgal_camcancel" xml:space="preserve">
     <value>फोटो लेना रद्द कर दिया।</value>
@@ -243,6 +264,9 @@
   <data name="dashboard_expdeleted" xml:space="preserve">
     <value>व्यय हटा दिया गया।</value>
   </data>
+  <data name="dashboard_expdeleteerror" xml:space="preserve">
+    <value>चुने गए खर्चों को मिटाने में तकनीकी गड़बड़ी.</value>
+  </data>
   <data name="dashboard_expfortoday" xml:space="preserve">
     <value>आज के लिए व्यय</value>
   </data>
@@ -254,6 +278,12 @@
   </data>
   <data name="dashboard_hi" xml:space="preserve">
     <value>नमस्ते,</value>
+  </data>
+  <data name="dashboard_noexp" xml:space="preserve">
+    <value>कोई खर्च नहीं</value>
+  </data>
+  <data name="dashboard_noexpdesc" xml:space="preserve">
+    <value>आज के लिए आपके पास कोई खर्च नहीं है।</value>
   </data>
   <data name="dashboard_norecord" xml:space="preserve">
     <value>कोई रिकॉर्ड नहीं</value>

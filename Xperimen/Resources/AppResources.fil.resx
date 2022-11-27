@@ -141,6 +141,12 @@
   <data name="app_failed" xml:space="preserve">
     <value>Nabigo</value>
   </data>
+  <data name="app_friday" xml:space="preserve">
+    <value>Biyernes</value>
+  </data>
+  <data name="app_monday" xml:space="preserve">
+    <value>Lunes</value>
+  </data>
   <data name="app_notmatch" xml:space="preserve">
     <value>Hindi parehas</value>
   </data>
@@ -150,11 +156,26 @@
   <data name="app_permission" xml:space="preserve">
     <value>Pahintulot</value>
   </data>
+  <data name="app_saturday" xml:space="preserve">
+    <value>Sabado</value>
+  </data>
   <data name="app_success" xml:space="preserve">
     <value>Tagumpay</value>
   </data>
+  <data name="app_sunday" xml:space="preserve">
+    <value>Linggo</value>
+  </data>
+  <data name="app_thursday" xml:space="preserve">
+    <value>Huwebes</value>
+  </data>
+  <data name="app_tuesday" xml:space="preserve">
+    <value>Martes</value>
+  </data>
   <data name="app_unavailable" xml:space="preserve">
     <value>Hindi magagamit</value>
+  </data>
+  <data name="app_wednesday" xml:space="preserve">
+    <value>Miyerkules</value>
   </data>
   <data name="camgal_camcancel" xml:space="preserve">
     <value>Kinansela ang pagkuha ng larawan.</value>
@@ -243,6 +264,9 @@
   <data name="dashboard_expdeleted" xml:space="preserve">
     <value>Tinanggal ang mga gastos.</value>
   </data>
+  <data name="dashboard_expdeleteerror" xml:space="preserve">
+    <value>Teknikal na error sa pagtanggal ng mga napiling gastos.</value>
+  </data>
   <data name="dashboard_expfortoday" xml:space="preserve">
     <value>Mga gastos para sa araw na ito</value>
   </data>
@@ -254,6 +278,12 @@
   </data>
   <data name="dashboard_hi" xml:space="preserve">
     <value>Hi,</value>
+  </data>
+  <data name="dashboard_noexp" xml:space="preserve">
+    <value>Walang Gastos</value>
+  </data>
+  <data name="dashboard_noexpdesc" xml:space="preserve">
+    <value>Wala kang gastos para sa araw na ito.</value>
   </data>
   <data name="dashboard_norecord" xml:space="preserve">
     <value>walang naitala</value>
