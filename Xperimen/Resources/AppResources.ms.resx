@@ -237,6 +237,45 @@
   <data name="code_setting_usernameempty" xml:space="preserve">
     <value>Nama pengguna tidak boleh kosong. Sila masukkan nama pengguna anda.</value>
   </data>
+  <data name="dashboard_editexp" xml:space="preserve">
+    <value>Kemas kini perbelanjaan di butang kiri menu sampingan</value>
+  </data>
+  <data name="dashboard_expfortoday" xml:space="preserve">
+    <value>Perbelanjaan untuk hari ini</value>
+  </data>
+  <data name="dashboard_expsameas" xml:space="preserve">
+    <value>adalah sama dengan</value>
+  </data>
+  <data name="dashboard_exptodayis" xml:space="preserve">
+    <value>Perbelanjaan hari ini</value>
+  </data>
+  <data name="dashboard_hi" xml:space="preserve">
+    <value>Hai,</value>
+  </data>
+  <data name="dashboard_norecord" xml:space="preserve">
+    <value>tiada rekod</value>
+  </data>
+  <data name="dashboard_setincome" xml:space="preserve">
+    <value>Pendapatan belum ditetapkan. Kemas kini pendapatan di butang kanan atas</value>
+  </data>
+  <data name="dashboard_thanytd" xml:space="preserve">
+    <value>daripada semalam</value>
+  </data>
+  <data name="dashboard_today" xml:space="preserve">
+    <value>Hari ini</value>
+  </data>
+  <data name="dashboard_todayis" xml:space="preserve">
+    <value>Hari ini</value>
+  </data>
+  <data name="dashboard_total" xml:space="preserve">
+    <value>Jumlah</value>
+  </data>
+  <data name="dashboard_ytd" xml:space="preserve">
+    <value>semalam</value>
+  </data>
+  <data name="dashobard_add" xml:space="preserve">
+    <value>Tambah</value>
+  </data>
   <data name="intro_btnokay" xml:space="preserve">
     <value>Okay</value>
   </data>

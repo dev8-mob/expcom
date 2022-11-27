@@ -237,6 +237,45 @@
   <data name="code_setting_usernameempty" xml:space="preserve">
     <value>Hindi maaaring walang laman ang username. Mangyaring ipasok ang iyong username.</value>
   </data>
+  <data name="dashboard_editexp" xml:space="preserve">
+    <value>I-update ang mga gastos sa kaliwang bahagi ng menu button</value>
+  </data>
+  <data name="dashboard_expfortoday" xml:space="preserve">
+    <value>Mga gastos para sa araw na ito</value>
+  </data>
+  <data name="dashboard_expsameas" xml:space="preserve">
+    <value>katulad ng</value>
+  </data>
+  <data name="dashboard_exptodayis" xml:space="preserve">
+    <value>Ang mga gastos ngayon ay</value>
+  </data>
+  <data name="dashboard_hi" xml:space="preserve">
+    <value>Hi,</value>
+  </data>
+  <data name="dashboard_norecord" xml:space="preserve">
+    <value>walang naitala</value>
+  </data>
+  <data name="dashboard_setincome" xml:space="preserve">
+    <value>Hindi pa nakatakda ang kita. I-update ang kita sa kanang pindutan sa itaas</value>
+  </data>
+  <data name="dashboard_thanytd" xml:space="preserve">
+    <value>kumpara sa kahapon</value>
+  </data>
+  <data name="dashboard_today" xml:space="preserve">
+    <value>Ngayong araw</value>
+  </data>
+  <data name="dashboard_todayis" xml:space="preserve">
+    <value>Ngayon ay</value>
+  </data>
+  <data name="dashboard_total" xml:space="preserve">
+    <value>Kabuuan</value>
+  </data>
+  <data name="dashboard_ytd" xml:space="preserve">
+    <value>kahapon</value>
+  </data>
+  <data name="dashobard_add" xml:space="preserve">
+    <value>Idagdag</value>
+  </data>
   <data name="intro_btnokay" xml:space="preserve">
     <value>Sige</value>
   </data>

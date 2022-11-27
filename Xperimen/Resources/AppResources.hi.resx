@@ -237,6 +237,45 @@
   <data name="code_setting_usernameempty" xml:space="preserve">
     <value>उपयोगकर्ता नाम खाली नहीं हो सकता. अपने उपयोगकर्ता नाम दर्ज करें।</value>
   </data>
+  <data name="dashboard_editexp" xml:space="preserve">
+    <value>बाईं ओर के मेनू बटन में खर्चों को अपडेट करें</value>
+  </data>
+  <data name="dashboard_expfortoday" xml:space="preserve">
+    <value>आज के लिए व्यय</value>
+  </data>
+  <data name="dashboard_expsameas" xml:space="preserve">
+    <value>के समान</value>
+  </data>
+  <data name="dashboard_exptodayis" xml:space="preserve">
+    <value>आज खर्चा है</value>
+  </data>
+  <data name="dashboard_hi" xml:space="preserve">
+    <value>नमस्ते,</value>
+  </data>
+  <data name="dashboard_norecord" xml:space="preserve">
+    <value>कोई रिकॉर्ड नहीं</value>
+  </data>
+  <data name="dashboard_setincome" xml:space="preserve">
+    <value>आय अभी निर्धारित नहीं है। शीर्ष-दाएं बटन पर आय अपडेट करें</value>
+  </data>
+  <data name="dashboard_thanytd" xml:space="preserve">
+    <value>कल की तुलना में</value>
+  </data>
+  <data name="dashboard_today" xml:space="preserve">
+    <value>आज</value>
+  </data>
+  <data name="dashboard_todayis" xml:space="preserve">
+    <value>आज है</value>
+  </data>
+  <data name="dashboard_total" xml:space="preserve">
+    <value>कुल</value>
+  </data>
+  <data name="dashboard_ytd" xml:space="preserve">
+    <value>कल</value>
+  </data>
+  <data name="dashobard_add" xml:space="preserve">
+    <value>जोड़ें</value>
+  </data>
   <data name="intro_btnokay" xml:space="preserve">
     <value>ठीक</value>
   </data>

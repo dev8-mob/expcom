@@ -421,6 +421,123 @@ namespace Xperimen.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Update expenses in the left side menu button.
+        /// </summary>
+        internal static string dashboard_editexp {
+            get {
+                return ResourceManager.GetString("dashboard_editexp", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Expenses for today.
+        /// </summary>
+        internal static string dashboard_expfortoday {
+            get {
+                return ResourceManager.GetString("dashboard_expfortoday", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to same as.
+        /// </summary>
+        internal static string dashboard_expsameas {
+            get {
+                return ResourceManager.GetString("dashboard_expsameas", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Expenses today is.
+        /// </summary>
+        internal static string dashboard_exptodayis {
+            get {
+                return ResourceManager.GetString("dashboard_exptodayis", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Hi,.
+        /// </summary>
+        internal static string dashboard_hi {
+            get {
+                return ResourceManager.GetString("dashboard_hi", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to no record.
+        /// </summary>
+        internal static string dashboard_norecord {
+            get {
+                return ResourceManager.GetString("dashboard_norecord", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Income not yet set. Update income at top-right button.
+        /// </summary>
+        internal static string dashboard_setincome {
+            get {
+                return ResourceManager.GetString("dashboard_setincome", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to than yesterday.
+        /// </summary>
+        internal static string dashboard_thanytd {
+            get {
+                return ResourceManager.GetString("dashboard_thanytd", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Today.
+        /// </summary>
+        internal static string dashboard_today {
+            get {
+                return ResourceManager.GetString("dashboard_today", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Today is.
+        /// </summary>
+        internal static string dashboard_todayis {
+            get {
+                return ResourceManager.GetString("dashboard_todayis", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Total.
+        /// </summary>
+        internal static string dashboard_total {
+            get {
+                return ResourceManager.GetString("dashboard_total", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to yesterday.
+        /// </summary>
+        internal static string dashboard_ytd {
+            get {
+                return ResourceManager.GetString("dashboard_ytd", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Add.
+        /// </summary>
+        internal static string dashobard_add {
+            get {
+                return ResourceManager.GetString("dashobard_add", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Okay.
         /// </summary>
         internal static string intro_btnokay {

@@ -237,6 +237,45 @@
   <data name="code_setting_usernameempty" xml:space="preserve">
     <value>பயனர் பெயர் காலியாக இருக்கக்கூடாது. தயவுசெய்து உங்கள் பயனர் பெயரைச் செருகவும்.</value>
   </data>
+  <data name="dashboard_editexp" xml:space="preserve">
+    <value>இடது பக்க மெனு பொத்தானில் செலவுகளைப் புதுப்பிக்கவும்</value>
+  </data>
+  <data name="dashboard_expfortoday" xml:space="preserve">
+    <value>இன்றைய செலவுகள்</value>
+  </data>
+  <data name="dashboard_expsameas" xml:space="preserve">
+    <value>அதே போல்</value>
+  </data>
+  <data name="dashboard_exptodayis" xml:space="preserve">
+    <value>இன்றைய செலவுகள்</value>
+  </data>
+  <data name="dashboard_hi" xml:space="preserve">
+    <value>வணக்கம்,</value>
+  </data>
+  <data name="dashboard_norecord" xml:space="preserve">
+    <value>விவரம் இல்லை</value>
+  </data>
+  <data name="dashboard_setincome" xml:space="preserve">
+    <value>வருமானம் இன்னும் நிர்ணயிக்கப்படவில்லை. மேல் வலது பொத்தானில் வருமானத்தைப் புதுப்பிக்கவும்</value>
+  </data>
+  <data name="dashboard_thanytd" xml:space="preserve">
+    <value>நேற்றோடு ஒப்பிடும்போது</value>
+  </data>
+  <data name="dashboard_today" xml:space="preserve">
+    <value>இன்று</value>
+  </data>
+  <data name="dashboard_todayis" xml:space="preserve">
+    <value>இன்று</value>
+  </data>
+  <data name="dashboard_total" xml:space="preserve">
+    <value>மொத்தம்</value>
+  </data>
+  <data name="dashboard_ytd" xml:space="preserve">
+    <value>நேற்று</value>
+  </data>
+  <data name="dashobard_add" xml:space="preserve">
+    <value>கூட்டு</value>
+  </data>
   <data name="intro_btnokay" xml:space="preserve">
     <value>சரி</value>
   </data>
