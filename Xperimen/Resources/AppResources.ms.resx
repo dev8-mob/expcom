@@ -120,14 +120,23 @@
   <data name="app_alert" xml:space="preserve">
     <value>Waspada</value>
   </data>
+  <data name="app_apr" xml:space="preserve">
+    <value>April</value>
+  </data>
+  <data name="app_aug" xml:space="preserve">
+    <value>Ogos</value>
+  </data>
   <data name="app_cancel" xml:space="preserve">
     <value>Batal</value>
   </data>
   <data name="app_confirm" xml:space="preserve">
-    <value>Pasti</value>
+    <value>Kepastian</value>
   </data>
   <data name="app_confirmpwd" xml:space="preserve">
     <value>Kata Laluan Pengesahan</value>
+  </data>
+  <data name="app_dec" xml:space="preserve">
+    <value>Disember</value>
   </data>
   <data name="app_delete" xml:space="preserve">
     <value>Padam</value>
@@ -141,14 +150,38 @@
   <data name="app_failed" xml:space="preserve">
     <value>Gagal</value>
   </data>
+  <data name="app_feb" xml:space="preserve">
+    <value>Februari</value>
+  </data>
   <data name="app_friday" xml:space="preserve">
     <value>Jumaat</value>
+  </data>
+  <data name="app_jan" xml:space="preserve">
+    <value>Januari</value>
+  </data>
+  <data name="app_jul" xml:space="preserve">
+    <value>Julai</value>
+  </data>
+  <data name="app_jun" xml:space="preserve">
+    <value>Jun</value>
+  </data>
+  <data name="app_mar" xml:space="preserve">
+    <value>Mac</value>
+  </data>
+  <data name="app_may" xml:space="preserve">
+    <value>Mei</value>
   </data>
   <data name="app_monday" xml:space="preserve">
     <value>Isnin</value>
   </data>
   <data name="app_notmatch" xml:space="preserve">
     <value>Tidak Padan</value>
+  </data>
+  <data name="app_nov" xml:space="preserve">
+    <value>November</value>
+  </data>
+  <data name="app_oct" xml:space="preserve">
+    <value>Oktober</value>
   </data>
   <data name="app_okay" xml:space="preserve">
     <value>Okay</value>
@@ -158,6 +191,9 @@
   </data>
   <data name="app_saturday" xml:space="preserve">
     <value>Sabtu</value>
+  </data>
+  <data name="app_sept" xml:space="preserve">
+    <value>September</value>
   </data>
   <data name="app_success" xml:space="preserve">
     <value>Berjaya</value>
@@ -258,6 +294,9 @@
   <data name="code_setting_usernameempty" xml:space="preserve">
     <value>Nama pengguna tidak boleh kosong. Sila masukkan nama pengguna anda.</value>
   </data>
+  <data name="dashboard_available" xml:space="preserve">
+    <value>Baki Tersedia</value>
+  </data>
   <data name="dashboard_editexp" xml:space="preserve">
     <value>Kemas kini perbelanjaan di butang kiri menu sampingan</value>
   </data>
@@ -278,6 +317,18 @@
   </data>
   <data name="dashboard_hi" xml:space="preserve">
     <value>Hai,</value>
+  </data>
+  <data name="dashboard_infoincome" xml:space="preserve">
+    <value>Pendapatan</value>
+  </data>
+  <data name="dashboard_infosummary" xml:space="preserve">
+    <value>Ringkasan</value>
+  </data>
+  <data name="dashboard_infototalcomm" xml:space="preserve">
+    <value>Jumlah Komitmen</value>
+  </data>
+  <data name="dashboard_infototalexp" xml:space="preserve">
+    <value>Jumlah Perbelanjaan</value>
   </data>
   <data name="dashboard_noexp" xml:space="preserve">
     <value>Tiada Perbelanjaan</value>
@@ -386,6 +437,9 @@
   </data>
   <data name="setting_navbar" xml:space="preserve">
     <value>Tetapan</value>
+  </data>
+  <data name="setting_selectlang" xml:space="preserve">
+    <value>Pilih Bahasa</value>
   </data>
   <data name="setting_topright_created" xml:space="preserve">
     <value>Dicipta</value>

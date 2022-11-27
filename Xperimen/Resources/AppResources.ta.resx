@@ -120,14 +120,23 @@
   <data name="app_alert" xml:space="preserve">
     <value>எச்சரிக்கை</value>
   </data>
+  <data name="app_apr" xml:space="preserve">
+    <value>ஏப்ரல்</value>
+  </data>
+  <data name="app_aug" xml:space="preserve">
+    <value>ஆகஸ்ட்</value>
+  </data>
   <data name="app_cancel" xml:space="preserve">
     <value>ரத்து செய்</value>
   </data>
   <data name="app_confirm" xml:space="preserve">
-    <value>உறுதிப்படுத்தவும்</value>
+    <value>पुष्टीकरण</value>
   </data>
   <data name="app_confirmpwd" xml:space="preserve">
     <value>உறுதிப்படுத்தல் கடவுச்சொல்</value>
+  </data>
+  <data name="app_dec" xml:space="preserve">
+    <value>டிசம்பர்</value>
   </data>
   <data name="app_delete" xml:space="preserve">
     <value>நீக்கு</value>
@@ -141,14 +150,38 @@
   <data name="app_failed" xml:space="preserve">
     <value>தோல்வி</value>
   </data>
+  <data name="app_feb" xml:space="preserve">
+    <value>பிப்ரவரி</value>
+  </data>
   <data name="app_friday" xml:space="preserve">
     <value>வெள்ளி</value>
+  </data>
+  <data name="app_jan" xml:space="preserve">
+    <value>ஜனவரி</value>
+  </data>
+  <data name="app_jul" xml:space="preserve">
+    <value>ஜூலை</value>
+  </data>
+  <data name="app_jun" xml:space="preserve">
+    <value>ஜூன்</value>
+  </data>
+  <data name="app_mar" xml:space="preserve">
+    <value>மார்ச்</value>
+  </data>
+  <data name="app_may" xml:space="preserve">
+    <value>மே</value>
   </data>
   <data name="app_monday" xml:space="preserve">
     <value>திங்கட்கிழமை</value>
   </data>
   <data name="app_notmatch" xml:space="preserve">
     <value>பொருத்தம் இல்லை</value>
+  </data>
+  <data name="app_nov" xml:space="preserve">
+    <value>நவம்பர்</value>
+  </data>
+  <data name="app_oct" xml:space="preserve">
+    <value>அக்டோபர்</value>
   </data>
   <data name="app_okay" xml:space="preserve">
     <value>சரி</value>
@@ -158,6 +191,9 @@
   </data>
   <data name="app_saturday" xml:space="preserve">
     <value>சனிக்கிழமை</value>
+  </data>
+  <data name="app_sept" xml:space="preserve">
+    <value>செப்டம்பர்</value>
   </data>
   <data name="app_success" xml:space="preserve">
     <value>வெற்றி</value>
@@ -258,6 +294,9 @@
   <data name="code_setting_usernameempty" xml:space="preserve">
     <value>பயனர் பெயர் காலியாக இருக்கக்கூடாது. தயவுசெய்து உங்கள் பயனர் பெயரைச் செருகவும்.</value>
   </data>
+  <data name="dashboard_available" xml:space="preserve">
+    <value>கிடைக்கும்</value>
+  </data>
   <data name="dashboard_editexp" xml:space="preserve">
     <value>இடது பக்க மெனு பொத்தானில் செலவுகளைப் புதுப்பிக்கவும்</value>
   </data>
@@ -278,6 +317,18 @@
   </data>
   <data name="dashboard_hi" xml:space="preserve">
     <value>வணக்கம்,</value>
+  </data>
+  <data name="dashboard_infoincome" xml:space="preserve">
+    <value>வருமானம்</value>
+  </data>
+  <data name="dashboard_infosummary" xml:space="preserve">
+    <value>சுருக்கம்</value>
+  </data>
+  <data name="dashboard_infototalcomm" xml:space="preserve">
+    <value>மொத்த அர்ப்பணிப்பு</value>
+  </data>
+  <data name="dashboard_infototalexp" xml:space="preserve">
+    <value>மொத்த செலவுகள்</value>
   </data>
   <data name="dashboard_noexp" xml:space="preserve">
     <value>செலவுகள் இல்லை</value>
@@ -386,6 +437,9 @@
   </data>
   <data name="setting_navbar" xml:space="preserve">
     <value>அமைப்புகள்</value>
+  </data>
+  <data name="setting_selectlang" xml:space="preserve">
+    <value>மொழியை தேர்ந்தெடுங்கள்</value>
   </data>
   <data name="setting_topright_created" xml:space="preserve">
     <value>உருவாக்கப்பட்டது</value>

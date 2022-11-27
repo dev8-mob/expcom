@@ -10,6 +10,7 @@
     <ContentPage.Resources>
         <ResourceDictionary>
             <helper:DayLanguageConverter x:Key="DayConverter" />
+            <helper:MonthLanguageConverter x:Key="MonthConverter" />
         </ResourceDictionary>
     </ContentPage.Resources>
 
@@ -103,9 +104,9 @@
                             <StackLayout Orientation="Vertical" HorizontalOptions="Center" Spacing="0" VerticalOptions="Center">
                                 <stylekit:XLabel Text="{Binding CurrentDt, StringFormat='{0:dd}'}" HorizontalOptions="Fill" FontSize="20"
                                                  FontFamily="{DynamicResource Key=BoldFont}" VerticalOptions="Center"/>
-                                <stylekit:XLabel Text="{Binding CurrentDt, StringFormat='{0:MMMM}'}" HorizontalOptions="Fill" 
-                                                 FontFamily="{DynamicResource Key=BoldFont}" VerticalOptions="Center" MaxLines="1" 
-                                                 LineBreakMode="TailTruncation"/>
+                                <stylekit:XLabel Text="{Binding CurrentDt, StringFormat='{0:MMMM}', Converter={StaticResource MonthConverter}}" 
+                                                 HorizontalOptions="Fill" FontFamily="{DynamicResource Key=BoldFont}" VerticalOptions="Center" 
+                                                 MaxLines="1" LineBreakMode="TailTruncation"/>
                             </StackLayout>
                         </StackLayout>
                     </StackLayout>
@@ -224,18 +225,18 @@
                             <!-- income, commitment, expenses info -->
                             <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand" Spacing="0" Grid.Row="1" Grid.Column="0">
                                 <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Spacing="0" IsVisible="{Binding HasCommitment}">
-                                    <stylekit:XLabel Text="Commitment" FontFamily="{DynamicResource Key=BoldFont}" HorizontalOptions="StartAndExpand"
-                                                     TextColor="{DynamicResource CustomRed}"/>
+                                    <stylekit:XLabel Text="{x:Static resource:AppResources.sidemenu_commitment}" FontFamily="{DynamicResource Key=BoldFont}" 
+                                                     HorizontalOptions="StartAndExpand" TextColor="{DynamicResource CustomRed}"/>
                                     <stylekit:XLabel Text="{Binding PercentageCommitment, StringFormat='{0:0.00}%'}" HorizontalOptions="End"/>
                                 </StackLayout>
                                 <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Spacing="0" IsVisible="{Binding HasTotalExpenses}">
-                                    <stylekit:XLabel Text="Expenses" FontFamily="{DynamicResource Key=BoldFont}" HorizontalOptions="StartAndExpand"
-                                                     TextColor="{DynamicResource CustomGreen}"/>
+                                    <stylekit:XLabel Text="{x:Static resource:AppResources.sidemenu_expenses}" FontFamily="{DynamicResource Key=BoldFont}" 
+                                                     HorizontalOptions="StartAndExpand" TextColor="{DynamicResource CustomGreen}"/>
                                     <stylekit:XLabel Text="{Binding PercentageExpenses, StringFormat='{0:0.00}%'}" HorizontalOptions="End"/>
                                 </StackLayout>
                                 <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Spacing="0" IsVisible="{Binding HasBalanceAvailable}">
-                                    <stylekit:XLabel Text="Available" FontFamily="{DynamicResource Key=BoldFont}" HorizontalOptions="StartAndExpand"
-                                                     TextColor="{DynamicResource Primary}"/>
+                                    <stylekit:XLabel Text="{x:Static resource:AppResources.dashboard_available}" FontFamily="{DynamicResource Key=BoldFont}" 
+                                                     HorizontalOptions="StartAndExpand" TextColor="{DynamicResource Primary}"/>
                                     <stylekit:XLabel Text="{Binding PercentageAvailable, StringFormat='{0:0.00}%'}" HorizontalOptions="End"/>
                                 </StackLayout>
                             </StackLayout>

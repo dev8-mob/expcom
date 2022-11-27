@@ -120,14 +120,23 @@
   <data name="app_alert" xml:space="preserve">
     <value>चेतावनी</value>
   </data>
+  <data name="app_apr" xml:space="preserve">
+    <value>अप्रैल</value>
+  </data>
+  <data name="app_aug" xml:space="preserve">
+    <value>अगस्त</value>
+  </data>
   <data name="app_cancel" xml:space="preserve">
     <value>रद्द करना</value>
   </data>
   <data name="app_confirm" xml:space="preserve">
-    <value>पुष्टि करें</value>
+    <value>पुष्टीकरण</value>
   </data>
   <data name="app_confirmpwd" xml:space="preserve">
     <value>पुष्टिकरण पासवर्ड</value>
+  </data>
+  <data name="app_dec" xml:space="preserve">
+    <value>दिसंबर</value>
   </data>
   <data name="app_delete" xml:space="preserve">
     <value>मिटाना</value>
@@ -141,14 +150,38 @@
   <data name="app_failed" xml:space="preserve">
     <value>असफल</value>
   </data>
+  <data name="app_feb" xml:space="preserve">
+    <value>फ़रवरी</value>
+  </data>
   <data name="app_friday" xml:space="preserve">
     <value>शुक्रवार</value>
+  </data>
+  <data name="app_jan" xml:space="preserve">
+    <value>जनवरी</value>
+  </data>
+  <data name="app_jul" xml:space="preserve">
+    <value>जुलाई</value>
+  </data>
+  <data name="app_jun" xml:space="preserve">
+    <value>जून</value>
+  </data>
+  <data name="app_mar" xml:space="preserve">
+    <value>मार्च</value>
+  </data>
+  <data name="app_may" xml:space="preserve">
+    <value>मई</value>
   </data>
   <data name="app_monday" xml:space="preserve">
     <value>सोमवार</value>
   </data>
   <data name="app_notmatch" xml:space="preserve">
     <value>मेल नहीं करता</value>
+  </data>
+  <data name="app_nov" xml:space="preserve">
+    <value>नवंबर</value>
+  </data>
+  <data name="app_oct" xml:space="preserve">
+    <value>अक्टूबर</value>
   </data>
   <data name="app_okay" xml:space="preserve">
     <value>ठीक है</value>
@@ -158,6 +191,9 @@
   </data>
   <data name="app_saturday" xml:space="preserve">
     <value>शनिवार</value>
+  </data>
+  <data name="app_sept" xml:space="preserve">
+    <value>सितंबर</value>
   </data>
   <data name="app_success" xml:space="preserve">
     <value>सफलता</value>
@@ -258,6 +294,9 @@
   <data name="code_setting_usernameempty" xml:space="preserve">
     <value>उपयोगकर्ता नाम खाली नहीं हो सकता. अपने उपयोगकर्ता नाम दर्ज करें।</value>
   </data>
+  <data name="dashboard_available" xml:space="preserve">
+    <value>उपलब्ध</value>
+  </data>
   <data name="dashboard_editexp" xml:space="preserve">
     <value>बाईं ओर के मेनू बटन में खर्चों को अपडेट करें</value>
   </data>
@@ -278,6 +317,18 @@
   </data>
   <data name="dashboard_hi" xml:space="preserve">
     <value>नमस्ते,</value>
+  </data>
+  <data name="dashboard_infoincome" xml:space="preserve">
+    <value>आय</value>
+  </data>
+  <data name="dashboard_infosummary" xml:space="preserve">
+    <value>सारांश</value>
+  </data>
+  <data name="dashboard_infototalcomm" xml:space="preserve">
+    <value>कुल प्रतिबद्धता</value>
+  </data>
+  <data name="dashboard_infototalexp" xml:space="preserve">
+    <value>कुल खर्च</value>
   </data>
   <data name="dashboard_noexp" xml:space="preserve">
     <value>कोई खर्च नहीं</value>
@@ -386,6 +437,9 @@
   </data>
   <data name="setting_navbar" xml:space="preserve">
     <value>समायोजन</value>
+  </data>
+  <data name="setting_selectlang" xml:space="preserve">
+    <value>भाषा चुने</value>
   </data>
   <data name="setting_topright_created" xml:space="preserve">
     <value>बनाया था</value>

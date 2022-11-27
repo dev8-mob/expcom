@@ -120,14 +120,23 @@
   <data name="app_alert" xml:space="preserve">
     <value>Alerto</value>
   </data>
+  <data name="app_apr" xml:space="preserve">
+    <value>Abril</value>
+  </data>
+  <data name="app_aug" xml:space="preserve">
+    <value>Agosto</value>
+  </data>
   <data name="app_cancel" xml:space="preserve">
     <value>Kanselahin</value>
   </data>
   <data name="app_confirm" xml:space="preserve">
-    <value>Kumpirmahin</value>
+    <value>Kumpirmasyon</value>
   </data>
   <data name="app_confirmpwd" xml:space="preserve">
     <value>Password sa Pagkumpirma</value>
+  </data>
+  <data name="app_dec" xml:space="preserve">
+    <value>Disyembre</value>
   </data>
   <data name="app_delete" xml:space="preserve">
     <value>Tanggalin</value>
@@ -141,14 +150,38 @@
   <data name="app_failed" xml:space="preserve">
     <value>Nabigo</value>
   </data>
+  <data name="app_feb" xml:space="preserve">
+    <value>Pebrero</value>
+  </data>
   <data name="app_friday" xml:space="preserve">
     <value>Biyernes</value>
+  </data>
+  <data name="app_jan" xml:space="preserve">
+    <value>Enero</value>
+  </data>
+  <data name="app_jul" xml:space="preserve">
+    <value>Hulyo</value>
+  </data>
+  <data name="app_jun" xml:space="preserve">
+    <value>Hunyo</value>
+  </data>
+  <data name="app_mar" xml:space="preserve">
+    <value>Marso</value>
+  </data>
+  <data name="app_may" xml:space="preserve">
+    <value>May</value>
   </data>
   <data name="app_monday" xml:space="preserve">
     <value>Lunes</value>
   </data>
   <data name="app_notmatch" xml:space="preserve">
     <value>Hindi parehas</value>
+  </data>
+  <data name="app_nov" xml:space="preserve">
+    <value>Nobyembre</value>
+  </data>
+  <data name="app_oct" xml:space="preserve">
+    <value>Oktubre</value>
   </data>
   <data name="app_okay" xml:space="preserve">
     <value>Sige</value>
@@ -158,6 +191,9 @@
   </data>
   <data name="app_saturday" xml:space="preserve">
     <value>Sabado</value>
+  </data>
+  <data name="app_sept" xml:space="preserve">
+    <value>Setyembre</value>
   </data>
   <data name="app_success" xml:space="preserve">
     <value>Tagumpay</value>
@@ -258,6 +294,9 @@
   <data name="code_setting_usernameempty" xml:space="preserve">
     <value>Hindi maaaring walang laman ang username. Mangyaring ipasok ang iyong username.</value>
   </data>
+  <data name="dashboard_available" xml:space="preserve">
+    <value>Available</value>
+  </data>
   <data name="dashboard_editexp" xml:space="preserve">
     <value>I-update ang mga gastos sa kaliwang bahagi ng menu button</value>
   </data>
@@ -278,6 +317,18 @@
   </data>
   <data name="dashboard_hi" xml:space="preserve">
     <value>Hi,</value>
+  </data>
+  <data name="dashboard_infoincome" xml:space="preserve">
+    <value>Kita</value>
+  </data>
+  <data name="dashboard_infosummary" xml:space="preserve">
+    <value>Buod</value>
+  </data>
+  <data name="dashboard_infototalcomm" xml:space="preserve">
+    <value>Kabuuang Pangako</value>
+  </data>
+  <data name="dashboard_infototalexp" xml:space="preserve">
+    <value>Kabuuang Gastos</value>
   </data>
   <data name="dashboard_noexp" xml:space="preserve">
     <value>Walang Gastos</value>
@@ -386,6 +437,9 @@
   </data>
   <data name="setting_navbar" xml:space="preserve">
     <value>Mga setting</value>
+  </data>
+  <data name="setting_selectlang" xml:space="preserve">
+    <value>Piliin ang Wika</value>
   </data>
   <data name="setting_topright_created" xml:space="preserve">
     <value>Nilikha</value>

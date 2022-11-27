@@ -228,7 +228,7 @@ namespace Xperimen.View.Dashboard
             view.IsEnabled = false;
 
             viewmodel.IsLoading = true;
-            if (viewmodel.NoExpenses) SetDisplayAlert("No Expenses", "You have no expenses for today.", "", "", "");
+            if (viewmodel.NoExpenses) SetDisplayAlert(AppResources.dashboard_noexp, AppResources.dashboard_noexpdesc, "", "", "");
             else if (viewmodel.HasExpenses)
             { await Navigation.PushAsync(new ExpensesDetail()); viewmodel.IsLoading = false; }
             view.IsEnabled = true;
@@ -281,11 +281,11 @@ namespace Xperimen.View.Dashboard
             view.Scale = 1;
             view.IsEnabled = false;
             viewmodel.IsLoading = true;
-            var build = "Income :   " + viewmodel.Currency + " " + string.Format("{0:0.00}", viewmodel.Income) 
-                + "\r\nTotal Commitment :   " + viewmodel.Currency + " " + string.Format("{0:0.00}", viewmodel.TotalCommitment)
-                + "\r\nTotal Expenses :   " + viewmodel.Currency + " " + string.Format("{0:0.00}", viewmodel.TotalExpenses);
-            var avail = "Available :   " + viewmodel.Currency + " " + string.Format("{0:0.00}", viewmodel.BalanceAvailable);
-            SetDisplayAlert("Summary", build, avail, "", "");
+            var build = AppResources.dashboard_infoincome + " :   " + viewmodel.Currency + " " + string.Format("{0:0.00}", viewmodel.Income) 
+                + "\r\n" + AppResources.dashboard_infototalcomm + " :   " + viewmodel.Currency + " " + string.Format("{0:0.00}", viewmodel.TotalCommitment)
+                + "\r\n" + AppResources.dashboard_infototalexp + " :   " + viewmodel.Currency + " " + string.Format("{0:0.00}", viewmodel.TotalExpenses);
+            var avail = AppResources.dashboard_available + " :   " + viewmodel.Currency + " " + string.Format("{0:0.00}", viewmodel.BalanceAvailable);
+            SetDisplayAlert(AppResources.dashboard_infosummary, build, avail, "", "");
             view.IsEnabled = true;
         }
 

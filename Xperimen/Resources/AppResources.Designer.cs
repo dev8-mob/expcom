@@ -70,6 +70,24 @@ namespace Xperimen.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to April.
+        /// </summary>
+        internal static string app_apr {
+            get {
+                return ResourceManager.GetString("app_apr", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to August.
+        /// </summary>
+        internal static string app_aug {
+            get {
+                return ResourceManager.GetString("app_aug", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Cancel.
         /// </summary>
         internal static string app_cancel {
@@ -79,7 +97,7 @@ namespace Xperimen.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Confirm.
+        ///   Looks up a localized string similar to Confirmation.
         /// </summary>
         internal static string app_confirm {
             get {
@@ -93,6 +111,15 @@ namespace Xperimen.Resources {
         internal static string app_confirmpwd {
             get {
                 return ResourceManager.GetString("app_confirmpwd", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to December.
+        /// </summary>
+        internal static string app_dec {
+            get {
+                return ResourceManager.GetString("app_dec", resourceCulture);
             }
         }
         
@@ -133,11 +160,65 @@ namespace Xperimen.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to February.
+        /// </summary>
+        internal static string app_feb {
+            get {
+                return ResourceManager.GetString("app_feb", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Friday.
         /// </summary>
         internal static string app_friday {
             get {
                 return ResourceManager.GetString("app_friday", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to January.
+        /// </summary>
+        internal static string app_jan {
+            get {
+                return ResourceManager.GetString("app_jan", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to July.
+        /// </summary>
+        internal static string app_jul {
+            get {
+                return ResourceManager.GetString("app_jul", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to June.
+        /// </summary>
+        internal static string app_jun {
+            get {
+                return ResourceManager.GetString("app_jun", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to March.
+        /// </summary>
+        internal static string app_mar {
+            get {
+                return ResourceManager.GetString("app_mar", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to May.
+        /// </summary>
+        internal static string app_may {
+            get {
+                return ResourceManager.GetString("app_may", resourceCulture);
             }
         }
         
@@ -156,6 +237,24 @@ namespace Xperimen.Resources {
         internal static string app_notmatch {
             get {
                 return ResourceManager.GetString("app_notmatch", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to November.
+        /// </summary>
+        internal static string app_nov {
+            get {
+                return ResourceManager.GetString("app_nov", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to October.
+        /// </summary>
+        internal static string app_oct {
+            get {
+                return ResourceManager.GetString("app_oct", resourceCulture);
             }
         }
         
@@ -183,6 +282,15 @@ namespace Xperimen.Resources {
         internal static string app_saturday {
             get {
                 return ResourceManager.GetString("app_saturday", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to September.
+        /// </summary>
+        internal static string app_sept {
+            get {
+                return ResourceManager.GetString("app_sept", resourceCulture);
             }
         }
         
@@ -484,6 +592,15 @@ namespace Xperimen.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Available.
+        /// </summary>
+        internal static string dashboard_available {
+            get {
+                return ResourceManager.GetString("dashboard_available", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Update expenses in the left side menu button.
         /// </summary>
         internal static string dashboard_editexp {
@@ -543,6 +660,42 @@ namespace Xperimen.Resources {
         internal static string dashboard_hi {
             get {
                 return ResourceManager.GetString("dashboard_hi", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Income.
+        /// </summary>
+        internal static string dashboard_infoincome {
+            get {
+                return ResourceManager.GetString("dashboard_infoincome", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Summary.
+        /// </summary>
+        internal static string dashboard_infosummary {
+            get {
+                return ResourceManager.GetString("dashboard_infosummary", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Total Commitment.
+        /// </summary>
+        internal static string dashboard_infototalcomm {
+            get {
+                return ResourceManager.GetString("dashboard_infototalcomm", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Total Expenses.
+        /// </summary>
+        internal static string dashboard_infototalexp {
+            get {
+                return ResourceManager.GetString("dashboard_infototalexp", resourceCulture);
             }
         }
         
@@ -867,6 +1020,15 @@ namespace Xperimen.Resources {
         internal static string setting_navbar {
             get {
                 return ResourceManager.GetString("setting_navbar", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Select Language.
+        /// </summary>
+        internal static string setting_selectlang {
+            get {
+                return ResourceManager.GetString("setting_selectlang", resourceCulture);
             }
         }
         
