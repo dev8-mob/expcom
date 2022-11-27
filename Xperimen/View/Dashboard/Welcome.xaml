@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Xperimen.View.Dashboard.Welcome"
              xmlns:stylekit="clr-namespace:Xperimen.Stylekit"
+             xmlns:resource="clr-namespace:Xperimen.Resources"
              NavigationPage.HasNavigationBar="False">
 
     <ContentPage.Content>
@@ -29,7 +30,8 @@
                                 <TapGestureRecognizer Tapped="DrawerTapped" NumberOfTapsRequired="1"/>
                             </Image.GestureRecognizers>
                         </stylekit:XImage>
-                        <stylekit:XLabel Text="Hi, " HorizontalOptions="Fill" FontSize="18" VerticalOptions="Center"/>
+                        <stylekit:XLabel Text="{x:Static resource:AppResources.dashboard_hi}" HorizontalOptions="Fill" FontSize="18" VerticalOptions="Center"
+                                         Margin="0,0,5,0"/>
                         <stylekit:XLabel Text="{Binding Firstname}" HorizontalOptions="Fill" FontFamily="{DynamicResource Key=BoldFont}" 
                                          FontSize="18" VerticalOptions="Center" MaxLines="1" LineBreakMode="TailTruncation" Margin="0,0,5,0"/>
                         <stylekit:XLabel Text="{Binding Lastname}" HorizontalOptions="FillAndExpand" FontFamily="{DynamicResource Key=BoldFont}" 
@@ -86,7 +88,7 @@
                         </Frame>
                         <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Spacing="15" Margin="0,15,0,0" VerticalOptions="Center">
                             <StackLayout Orientation="Vertical" HorizontalOptions="Center" Spacing="0">
-                                <stylekit:XLabel Text="Today" HorizontalOptions="Start" VerticalOptions="Center"/>
+                                <stylekit:XLabel Text="{x:Static resource:AppResources.dashboard_today}" HorizontalOptions="Start" VerticalOptions="Center"/>
                                 <stylekit:XLabel Text="{Binding CurrentDt, StringFormat='{0:dddd},'}" HorizontalOptions="End"
                                                  FontSize="20" FontFamily="{DynamicResource Key=BoldFont}"/>
                             </StackLayout>
@@ -109,7 +111,8 @@
 
                             <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand" VerticalOptions="Start" Spacing="0"
                                          Margin="0,0,0,15">
-                                <stylekit:XLabel Text="Expenses for today" HorizontalOptions="CenterAndExpand" FontFamily="{DynamicResource Key=BoldFont}"/>
+                                <stylekit:XLabel Text="{x:Static resource:AppResources.dashboard_expfortoday}" HorizontalOptions="CenterAndExpand" 
+                                                 FontFamily="{DynamicResource Key=BoldFont}"/>
                                 <StackLayout.GestureRecognizers>
                                     <TapGestureRecognizer Tapped="ExpensesColumnClicked"/>
                                 </StackLayout.GestureRecognizers>
@@ -119,7 +122,7 @@
                             <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" Spacing="0"
                                          IsVisible="{Binding NoExpenses}">
                                 <stylekit:XImageNoRecord HeightRequest="40" WidthRequest="40" VerticalOptions="Center" HorizontalOptions="Center"/>
-                                <Label Text="no record" HorizontalOptions="CenterAndExpand" IsVisible="{Binding NoExpenses}"/>
+                                <Label Text="{x:Static resource:AppResources.dashboard_norecord}" HorizontalOptions="CenterAndExpand" IsVisible="{Binding NoExpenses}"/>
                                 <StackLayout.GestureRecognizers>
                                     <TapGestureRecognizer Tapped="ExpensesColumnClicked"/>
                                 </StackLayout.GestureRecognizers>
@@ -155,7 +158,7 @@
                                    HorizontalOptions="FillAndExpand" VerticalOptions="End" BackgroundColor="{DynamicResource Key=CustomGreen}" 
                                    IsClippedToBounds="True" Margin="0,15,0,0">
                                 <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Spacing="10" VerticalOptions="Center">
-                                    <Label Text="Add" FontFamily="{DynamicResource Key=BoldFont}" TextColor="White" 
+                                    <Label Text="{x:Static resource:AppResources.dashobard_add}" FontFamily="{DynamicResource Key=BoldFont}" TextColor="White" 
                                            HorizontalOptions="Center" VerticalOptions="Center"/>
                                     <Image Source="white_money.png" Aspect="AspectFit" HeightRequest="20" WidthRequest="20" VerticalOptions="Center"/>
                                 </StackLayout>
@@ -188,7 +191,7 @@
                     <!-- not set income yet -->
                     <Frame HasShadow="False" Padding="15,10,15,10" HorizontalOptions="FillAndExpand" VerticalOptions="Start" IsClippedToBounds="True"
                            Grid.Row="2" Grid.Column="0" CornerRadius="8" x:Name="frame_noincome" IsVisible="{Binding IsNotSetIncome}" Margin="0,15,0,0">
-                        <stylekit:XLabel Text="You do not set any income yet. Please set your income, click top right button" VerticalOptions="Start" 
+                        <stylekit:XLabel Text="{x:Static resource:AppResources.dashboard_setincome}" VerticalOptions="Start" 
                                          HorizontalOptions="Center" FontFamily="{DynamicResource Key=BoldFont}" HorizontalTextAlignment="Center" />
                     </Frame>
 

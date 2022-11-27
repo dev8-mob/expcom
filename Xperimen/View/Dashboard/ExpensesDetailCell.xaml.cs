@@ -3,6 +3,7 @@ using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using Xperimen.Helper;
+using Xperimen.Resources;
 using Xperimen.Stylekit;
 
 namespace Xperimen.View.Dashboard
@@ -88,7 +89,8 @@ namespace Xperimen.View.Dashboard
             view.IsEnabled = false;
             var parent = (ExpensesDetail)view.Parent.Parent.Parent.Parent.Parent.Parent.Parent;
             parent.viewmodel.IsLoading = true;
-            parent.SetDisplayAlert("Confirmation", "Are you sure to delete " + lbl_amount.Text + " from today expenses ?", "Yes", "Cancel", lbl_id.Text);
+            parent.SetDisplayAlert(AppResources.app_confirm, AppResources.dashboard_suredel1 + " " + lbl_amount.Text 
+                + " " + AppResources.dashboard_suredel2, AppResources.app_okay, AppResources.app_cancel, lbl_id.Text);
             view.IsEnabled = true;
         }
     }

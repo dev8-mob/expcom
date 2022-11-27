@@ -240,6 +240,9 @@
   <data name="dashboard_editexp" xml:space="preserve">
     <value>இடது பக்க மெனு பொத்தானில் செலவுகளைப் புதுப்பிக்கவும்</value>
   </data>
+  <data name="dashboard_expdeleted" xml:space="preserve">
+    <value>செலவுகள் நீக்கப்பட்டன.</value>
+  </data>
   <data name="dashboard_expfortoday" xml:space="preserve">
     <value>இன்றைய செலவுகள்</value>
   </data>
@@ -257,6 +260,12 @@
   </data>
   <data name="dashboard_setincome" xml:space="preserve">
     <value>வருமானம் இன்னும் நிர்ணயிக்கப்படவில்லை. மேல் வலது பொத்தானில் வருமானத்தைப் புதுப்பிக்கவும்</value>
+  </data>
+  <data name="dashboard_suredel1" xml:space="preserve">
+    <value>நீக்குவது உறுதி</value>
+  </data>
+  <data name="dashboard_suredel2" xml:space="preserve">
+    <value>இன்று முதல் செலவுகள்?</value>
   </data>
   <data name="dashboard_thanytd" xml:space="preserve">
     <value>நேற்றோடு ஒப்பிடும்போது</value>

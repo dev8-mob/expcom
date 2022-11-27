@@ -3,6 +3,7 @@ using Xamarin.Forms;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
 using Xperimen.Helper;
+using Xperimen.Resources;
 using Xperimen.Stylekit;
 using Xperimen.ViewModel.Dashboard;
 
@@ -24,18 +25,18 @@ namespace Xperimen.View.Dashboard
 
             MessagingCenter.Subscribe<CustomDisplayAlert, string>(this, "DisplayAlertSelection", async (sender, arg) =>
             { 
-                if (arg.Equals("Yes")) 
+                if (arg.Equals("okay")) 
                 {
                     var result = viewmodel.DeleteTodayExpenses(alert.CodeObject);
                     if (result == 1)
                     {
                         var success = viewmodel.GetTodayExpenses();
                         if (success == 1)
-                        { SetDisplayAlert("Success", "Expenses delete.", "", "", ""); SetupView(); }
+                        { SetDisplayAlert(AppResources.app_success, AppResources.dashboard_expdeleted, "", "", ""); SetupView(); }
                         else if (success == 2) await Navigation.PopAsync();
-                        else if (success == 3) SetDisplayAlert("Error", "Technical error deleting selected expenses.", "", "", "");
+                        else if (success == 3) SetDisplayAlert(AppResources.app_error, "Technical error deleting selected expenses.", "", "", "");
                     }
-                    else if (result == 2) SetDisplayAlert("Error", "Technical error deleting selected expenses.", "", "", "");
+                    else if (result == 2) SetDisplayAlert(AppResources.app_error, "Technical error deleting selected expenses.", "", "", "");
                 }
                 else viewmodel.IsLoading = false; 
             });

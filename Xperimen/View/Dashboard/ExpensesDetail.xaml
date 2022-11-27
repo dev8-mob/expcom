@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Xperimen.View.Dashboard.ExpensesDetail"
              xmlns:stylekit="clr-namespace:Xperimen.Stylekit"
+             xmlns:resource="clr-namespace:Xperimen.Resources"
              xmlns:cell="clr-namespace:Xperimen.View.Dashboard"
              NavigationPage.HasNavigationBar="False">
     
@@ -28,23 +29,26 @@
                                 <TapGestureRecognizer Tapped="BackTapped" NumberOfTapsRequired="1"/>
                             </Image.GestureRecognizers>
                         </stylekit:XImage>
-                        <stylekit:XLabel Text="Total   " HorizontalOptions="Fill" FontSize="18" VerticalOptions="Center"/>
+                        <stylekit:XLabel Text="{x:Static resource:AppResources.dashboard_total}" HorizontalOptions="Fill" FontSize="18" VerticalOptions="Center" Margin="0,0,5,0"/>
                         <stylekit:XLabel Text="{Binding Currency}" HorizontalOptions="Fill" FontSize="18" VerticalOptions="Center" Margin="0,0,5,0"/>
                         <stylekit:XLabel Text="{Binding TodayTotalExpenses, StringFormat='{0:0.00}'}" HorizontalOptions="Fill" FontSize="20" 
                                          VerticalOptions="Center" FontFamily="{DynamicResource Key=BoldFont}"/>
                     </StackLayout>
 
                     <!-- data information -->
-                    <stylekit:XLabel Text="Edit expenses in the side menu" HorizontalOptions="Center" VerticalOptions="Start" Margin="0,15,0,0"/>
+                    <stylekit:XLabel Text="{x:Static resource:AppResources.dashboard_editexp}" HorizontalOptions="Center" VerticalOptions="Start" 
+                                     Margin="0,15,0,0" HorizontalTextAlignment="Center"/>
                     
                     <!-- expense more UI -->
                     <StackLayout x:Name="stack_more" Orientation="Vertical" HorizontalOptions="Center" Spacing="0" IsVisible="False">
                         <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Spacing="0">
-                            <stylekit:XLabel Text="Today is " HorizontalOptions="Center" VerticalOptions="Start" HorizontalTextAlignment="Center"/>
-                            <stylekit:XLabel Text="{Binding PercentageYtdToday, StringFormat='{0:0.00}% more'}" HorizontalOptions="Center" VerticalOptions="Start"
+                            <stylekit:XLabel Text="{x:Static resource:AppResources.dashboard_todayis}" HorizontalOptions="Center" VerticalOptions="Start" 
+                                             HorizontalTextAlignment="Center" Margin="0,0,5,0"/>
+                            <stylekit:XLabel Text="{Binding PercentageYtdToday, StringFormat='+{0:0.00}%'}" HorizontalOptions="Center" VerticalOptions="Start"
                                              FontFamily="{DynamicResource Key=BoldFont}" FontSize="16" HorizontalTextAlignment="Center"
                                              TextColor="{DynamicResource Key=CustomRed}" x:Name="lbl_percentmore"/>
-                            <stylekit:XLabel Text=" than yesterday" HorizontalOptions="Center" VerticalOptions="Start" HorizontalTextAlignment="Center"/>
+                            <stylekit:XLabel Text="{x:Static resource:AppResources.dashboard_thanytd}" HorizontalOptions="Center" VerticalOptions="Start" 
+                                             HorizontalTextAlignment="Center" Margin="5,0,0,0"/>
                         </StackLayout>
                         <!--<stylekit:XLabel Text="{Binding DiffYtdToday, StringFormat='more RM {0:0.00}'}" HorizontalOptions="CenterAndExpand" VerticalOptions="Start" 
                                          HorizontalTextAlignment="Center" FontFamily="{DynamicResource Key=ItalicFont}" x:Name="lbl_percentmorevalue"
@@ -53,11 +57,13 @@
                     <!-- expense less UI -->
                     <StackLayout x:Name="stack_less" Orientation="Vertical" HorizontalOptions="Center" Spacing="0" IsVisible="False">
                         <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Spacing="0">
-                            <stylekit:XLabel Text="Today is " HorizontalOptions="Center" VerticalOptions="Start" HorizontalTextAlignment="Center"/>
-                            <stylekit:XLabel Text="{Binding PercentageYtdToday, StringFormat='{0:0.00}% less'}" HorizontalOptions="Center" VerticalOptions="Start"
+                            <stylekit:XLabel Text="{x:Static resource:AppResources.dashboard_todayis}" HorizontalOptions="Center" VerticalOptions="Start" 
+                                             HorizontalTextAlignment="Center" Margin="0,0,5,0"/>
+                            <stylekit:XLabel Text="{Binding PercentageYtdToday, StringFormat='-{0:0.00}%'}" HorizontalOptions="Center" VerticalOptions="Start"
                                              FontFamily="{DynamicResource Key=BoldFont}" FontSize="16" HorizontalTextAlignment="Center"
                                              TextColor="{DynamicResource Key=CustomGreen}" x:Name="lbl_percentless"/>
-                            <stylekit:XLabel Text=" than yesterday" HorizontalOptions="Center" VerticalOptions="Start" HorizontalTextAlignment="Center"/>
+                            <stylekit:XLabel Text="{x:Static resource:AppResources.dashboard_thanytd}" HorizontalOptions="Center" VerticalOptions="Start" 
+                                             HorizontalTextAlignment="Center" Margin="5,0,0,0"/>
                         </StackLayout>
                         <stylekit:XLabel Text="{Binding DiffYtdToday, StringFormat='less RM {0:0.00}'}" HorizontalOptions="CenterAndExpand" VerticalOptions="Start" 
                                          HorizontalTextAlignment="Center" FontFamily="{DynamicResource Key=ItalicFont}" x:Name="lbl_percentlessvalue"
@@ -65,10 +71,12 @@
                     </StackLayout>
                     <!-- expense same UI -->
                     <StackLayout x:Name="stack_same" Orientation="Horizontal" HorizontalOptions="Center" Spacing="0" Margin="0,0,0,0" IsVisible="False">
-                        <stylekit:XLabel Text="Expenses today is " HorizontalOptions="Center" VerticalOptions="Start" HorizontalTextAlignment="Center"/>
-                        <stylekit:XLabel Text="same as" HorizontalOptions="Center" VerticalOptions="Start" FontFamily="{DynamicResource Key=BoldFont}"
+                        <stylekit:XLabel Text="{x:Static resource:AppResources.dashboard_exptodayis}" HorizontalOptions="Center" VerticalOptions="Start" 
+                                         HorizontalTextAlignment="Center" Margin="0,0,5,0"/>
+                        <stylekit:XLabel Text="{x:Static resource:AppResources.dashboard_expsameas}" HorizontalOptions="Center" VerticalOptions="Start" FontFamily="{DynamicResource Key=BoldFont}"
                                          HorizontalTextAlignment="Center" FontSize="16"/>
-                        <stylekit:XLabel Text=" yesterday" HorizontalOptions="Center" VerticalOptions="Start" HorizontalTextAlignment="Center"/>
+                        <stylekit:XLabel Text="{x:Static resource:AppResources.dashboard_ytd}" HorizontalOptions="Center" VerticalOptions="Start" 
+                                         HorizontalTextAlignment="Center" Margin="5,0,0,0"/>
                     </StackLayout>
 
                     <!-- expenses list -->

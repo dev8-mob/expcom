@@ -241,6 +241,9 @@
   <data name="dashboard_editexp" xml:space="preserve">
     <value>Update expenses in the left side menu button</value>
   </data>
+  <data name="dashboard_expdeleted" xml:space="preserve">
+    <value>Expenses deleted.</value>
+  </data>
   <data name="dashboard_expfortoday" xml:space="preserve">
     <value>Expenses for today</value>
   </data>
@@ -258,6 +261,12 @@
   </data>
   <data name="dashboard_setincome" xml:space="preserve">
     <value>Income not yet set. Update income at top-right button</value>
+  </data>
+  <data name="dashboard_suredel1" xml:space="preserve">
+    <value>Are you sure to delete</value>
+  </data>
+  <data name="dashboard_suredel2" xml:space="preserve">
+    <value>from today expenses ?</value>
   </data>
   <data name="dashboard_thanytd" xml:space="preserve">
     <value>than yesterday</value>

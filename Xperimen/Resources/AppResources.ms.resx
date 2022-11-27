@@ -240,6 +240,9 @@
   <data name="dashboard_editexp" xml:space="preserve">
     <value>Kemas kini perbelanjaan di butang kiri menu sampingan</value>
   </data>
+  <data name="dashboard_expdeleted" xml:space="preserve">
+    <value>Perbelanjaan dipadam.</value>
+  </data>
   <data name="dashboard_expfortoday" xml:space="preserve">
     <value>Perbelanjaan untuk hari ini</value>
   </data>
@@ -257,6 +260,12 @@
   </data>
   <data name="dashboard_setincome" xml:space="preserve">
     <value>Pendapatan belum ditetapkan. Kemas kini pendapatan di butang kanan atas</value>
+  </data>
+  <data name="dashboard_suredel1" xml:space="preserve">
+    <value>Anda pasti untuk memadam</value>
+  </data>
+  <data name="dashboard_suredel2" xml:space="preserve">
+    <value>daripada perbelanjaan hari ini ?</value>
   </data>
   <data name="dashboard_thanytd" xml:space="preserve">
     <value>daripada semalam</value>

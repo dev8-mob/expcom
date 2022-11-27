@@ -240,6 +240,9 @@
   <data name="dashboard_editexp" xml:space="preserve">
     <value>I-update ang mga gastos sa kaliwang bahagi ng menu button</value>
   </data>
+  <data name="dashboard_expdeleted" xml:space="preserve">
+    <value>Tinanggal ang mga gastos.</value>
+  </data>
   <data name="dashboard_expfortoday" xml:space="preserve">
     <value>Mga gastos para sa araw na ito</value>
   </data>
@@ -257,6 +260,12 @@
   </data>
   <data name="dashboard_setincome" xml:space="preserve">
     <value>Hindi pa nakatakda ang kita. I-update ang kita sa kanang pindutan sa itaas</value>
+  </data>
+  <data name="dashboard_suredel1" xml:space="preserve">
+    <value>Sigurado ka bang tatanggalin</value>
+  </data>
+  <data name="dashboard_suredel2" xml:space="preserve">
+    <value>mula ngayon gastos ?</value>
   </data>
   <data name="dashboard_thanytd" xml:space="preserve">
     <value>kumpara sa kahapon</value>

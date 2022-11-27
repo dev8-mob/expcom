@@ -430,6 +430,15 @@ namespace Xperimen.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Expenses deleted..
+        /// </summary>
+        internal static string dashboard_expdeleted {
+            get {
+                return ResourceManager.GetString("dashboard_expdeleted", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Expenses for today.
         /// </summary>
         internal static string dashboard_expfortoday {
@@ -480,6 +489,24 @@ namespace Xperimen.Resources {
         internal static string dashboard_setincome {
             get {
                 return ResourceManager.GetString("dashboard_setincome", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure to delete.
+        /// </summary>
+        internal static string dashboard_suredel1 {
+            get {
+                return ResourceManager.GetString("dashboard_suredel1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to from today expenses ?.
+        /// </summary>
+        internal static string dashboard_suredel2 {
+            get {
+                return ResourceManager.GetString("dashboard_suredel2", resourceCulture);
             }
         }
         
