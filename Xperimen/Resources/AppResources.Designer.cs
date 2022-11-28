@@ -133,6 +133,15 @@ namespace Xperimen.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Empty.
+        /// </summary>
+        internal static string app_empty {
+            get {
+                return ResourceManager.GetString("app_empty", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Error.
         /// </summary>
         internal static string app_error {
@@ -282,6 +291,15 @@ namespace Xperimen.Resources {
         internal static string app_saturday {
             get {
                 return ResourceManager.GetString("app_saturday", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Save.
+        /// </summary>
+        internal static string app_save {
+            get {
+                return ResourceManager.GetString("app_save", resourceCulture);
             }
         }
         
@@ -610,6 +628,42 @@ namespace Xperimen.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Expenses amount is empty. Please insert expenses amount..
+        /// </summary>
+        internal static string dashboard_emptyexp {
+            get {
+                return ResourceManager.GetString("dashboard_emptyexp", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Expenses title is empty. Please insert any title (food, groceries, bills, entertainment, transfer, etc...).
+        /// </summary>
+        internal static string dashboard_emptytitle {
+            get {
+                return ResourceManager.GetString("dashboard_emptytitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Technical error adding new expenses..
+        /// </summary>
+        internal static string dashboard_erroraddexp {
+            get {
+                return ResourceManager.GetString("dashboard_erroraddexp", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to New expenses added..
+        /// </summary>
+        internal static string dashboard_expadded {
+            get {
+                return ResourceManager.GetString("dashboard_expadded", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Expenses deleted..
         /// </summary>
         internal static string dashboard_expdeleted {
@@ -700,6 +754,15 @@ namespace Xperimen.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Money spent today.
+        /// </summary>
+        internal static string dashboard_moneyspent {
+            get {
+                return ResourceManager.GetString("dashboard_moneyspent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to No Expenses.
         /// </summary>
         internal static string dashboard_noexp {
@@ -732,6 +795,15 @@ namespace Xperimen.Resources {
         internal static string dashboard_setincome {
             get {
                 return ResourceManager.GetString("dashboard_setincome", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to the money spent on ?.
+        /// </summary>
+        internal static string dashboard_spendon {
+            get {
+                return ResourceManager.GetString("dashboard_spendon", resourceCulture);
             }
         }
         
@@ -804,6 +876,33 @@ namespace Xperimen.Resources {
         internal static string dashobard_add {
             get {
                 return ResourceManager.GetString("dashobard_add", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please insert income amount..
+        /// </summary>
+        internal static string exp_emptydesc {
+            get {
+                return ResourceManager.GetString("exp_emptydesc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Technical error updating income amount..
+        /// </summary>
+        internal static string exp_errorupdincome {
+            get {
+                return ResourceManager.GetString("exp_errorupdincome", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Update Income.
+        /// </summary>
+        internal static string exp_updateincome {
+            get {
+                return ResourceManager.GetString("exp_updateincome", resourceCulture);
             }
         }
         

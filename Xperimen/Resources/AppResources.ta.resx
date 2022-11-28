@@ -141,6 +141,9 @@
   <data name="app_delete" xml:space="preserve">
     <value>நீக்கு</value>
   </data>
+  <data name="app_empty" xml:space="preserve">
+    <value>காலியாக</value>
+  </data>
   <data name="app_error" xml:space="preserve">
     <value>பிழை</value>
   </data>
@@ -191,6 +194,9 @@
   </data>
   <data name="app_saturday" xml:space="preserve">
     <value>சனிக்கிழமை</value>
+  </data>
+  <data name="app_save" xml:space="preserve">
+    <value>சேமிக்கவும்</value>
   </data>
   <data name="app_sept" xml:space="preserve">
     <value>செப்டம்பர்</value>
@@ -300,6 +306,18 @@
   <data name="dashboard_editexp" xml:space="preserve">
     <value>இடது பக்க மெனு பொத்தானில் செலவுகளைப் புதுப்பிக்கவும்</value>
   </data>
+  <data name="dashboard_emptyexp" xml:space="preserve">
+    <value>செலவு தொகை காலியாக உள்ளது. தயவுசெய்து செலவுத் தொகையைச் சேர்க்கவும்.</value>
+  </data>
+  <data name="dashboard_emptytitle" xml:space="preserve">
+    <value>செலவுகள் தலைப்பு காலியாக உள்ளது. ஏதேனும் தலைப்பைச் செருகவும் (உணவு, மளிகைப் பொருட்கள், பில்கள், பொழுதுபோக்கு, பரிமாற்றம் போன்றவை...)</value>
+  </data>
+  <data name="dashboard_erroraddexp" xml:space="preserve">
+    <value>புதிய செலவுகளைச் சேர்ப்பதில் தொழில்நுட்பப் பிழை.</value>
+  </data>
+  <data name="dashboard_expadded" xml:space="preserve">
+    <value>புதிய செலவுகள் சேர்க்கப்படும்.</value>
+  </data>
   <data name="dashboard_expdeleted" xml:space="preserve">
     <value>செலவுகள் நீக்கப்பட்டன.</value>
   </data>
@@ -330,6 +348,9 @@
   <data name="dashboard_infototalexp" xml:space="preserve">
     <value>மொத்த செலவுகள்</value>
   </data>
+  <data name="dashboard_moneyspent" xml:space="preserve">
+    <value>இன்று செலவழித்த பணம்</value>
+  </data>
   <data name="dashboard_noexp" xml:space="preserve">
     <value>செலவுகள் இல்லை</value>
   </data>
@@ -341,6 +362,9 @@
   </data>
   <data name="dashboard_setincome" xml:space="preserve">
     <value>வருமானம் இன்னும் நிர்ணயிக்கப்படவில்லை. மேல் வலது பொத்தானில் வருமானத்தைப் புதுப்பிக்கவும்</value>
+  </data>
+  <data name="dashboard_spendon" xml:space="preserve">
+    <value>செலவழித்த பணம்?</value>
   </data>
   <data name="dashboard_suredel1" xml:space="preserve">
     <value>நீக்குவது உறுதி</value>
@@ -365,6 +389,15 @@
   </data>
   <data name="dashobard_add" xml:space="preserve">
     <value>கூட்டு</value>
+  </data>
+  <data name="exp_emptydesc" xml:space="preserve">
+    <value>வருமானத் தொகையைச் சேர்க்கவும்.</value>
+  </data>
+  <data name="exp_errorupdincome" xml:space="preserve">
+    <value>வருமானத் தொகையைப் புதுப்பிப்பதில் தொழில்நுட்பப் பிழை.</value>
+  </data>
+  <data name="exp_updateincome" xml:space="preserve">
+    <value>வருமானத்தைப் புதுப்பிக்கவும்</value>
   </data>
   <data name="intro_btnokay" xml:space="preserve">
     <value>சரி</value>

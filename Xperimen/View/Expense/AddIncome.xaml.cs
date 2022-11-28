@@ -4,6 +4,7 @@ using Rg.Plugins.Popup.Pages;
 using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using Xperimen.Resources;
 using Xperimen.Stylekit;
 using Xperimen.ViewModel.Expense;
 
@@ -54,7 +55,7 @@ namespace Xperimen.View.Expense
             view.IsEnabled = false;
 
             viewmodel.IsLoading = true;
-            if (viewmodel.Income == 0) SetDisplayAlert("Empty", "Please insert income amount.", "", "", "");
+            if (viewmodel.Income == 0) SetDisplayAlert(AppResources.app_empty, AppResources.exp_emptydesc, "", "", "");
             else
             {
                 var result = viewmodel.UpdateIncome();
@@ -64,7 +65,7 @@ namespace Xperimen.View.Expense
                     var navigation = Application.Current.MainPage.Navigation;
                     await navigation.PopPopupAsync();
                 }
-                else if (result == 2) SetDisplayAlert("Error", "Technical error updating income amount.", "", "", "");
+                else if (result == 2) SetDisplayAlert(AppResources.app_error, AppResources.exp_errorupdincome, "", "", "");
             }
             view.IsEnabled = true;
         }

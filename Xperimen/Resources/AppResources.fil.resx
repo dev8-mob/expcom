@@ -141,6 +141,9 @@
   <data name="app_delete" xml:space="preserve">
     <value>Tanggalin</value>
   </data>
+  <data name="app_empty" xml:space="preserve">
+    <value>Walang laman</value>
+  </data>
   <data name="app_error" xml:space="preserve">
     <value>Error</value>
   </data>
@@ -191,6 +194,9 @@
   </data>
   <data name="app_saturday" xml:space="preserve">
     <value>Sabado</value>
+  </data>
+  <data name="app_save" xml:space="preserve">
+    <value>I-save</value>
   </data>
   <data name="app_sept" xml:space="preserve">
     <value>Setyembre</value>
@@ -300,6 +306,18 @@
   <data name="dashboard_editexp" xml:space="preserve">
     <value>I-update ang mga gastos sa kaliwang bahagi ng menu button</value>
   </data>
+  <data name="dashboard_emptyexp" xml:space="preserve">
+    <value>Walang laman ang halaga ng mga gastos. Mangyaring ipasok ang halaga ng gastos.</value>
+  </data>
+  <data name="dashboard_emptytitle" xml:space="preserve">
+    <value>Walang laman ang pamagat ng mga gastos. Mangyaring maglagay ng anumang pamagat (pagkain, groceries, bill, entertainment, transfer, atbp...)</value>
+  </data>
+  <data name="dashboard_erroraddexp" xml:space="preserve">
+    <value>Teknikal na error sa pagdaragdag ng mga bagong gastos.</value>
+  </data>
+  <data name="dashboard_expadded" xml:space="preserve">
+    <value>Idinagdag ang mga bagong gastos.</value>
+  </data>
   <data name="dashboard_expdeleted" xml:space="preserve">
     <value>Tinanggal ang mga gastos.</value>
   </data>
@@ -330,6 +348,9 @@
   <data name="dashboard_infototalexp" xml:space="preserve">
     <value>Kabuuang Gastos</value>
   </data>
+  <data name="dashboard_moneyspent" xml:space="preserve">
+    <value>Pera na ginastos ngayon</value>
+  </data>
   <data name="dashboard_noexp" xml:space="preserve">
     <value>Walang Gastos</value>
   </data>
@@ -341,6 +362,9 @@
   </data>
   <data name="dashboard_setincome" xml:space="preserve">
     <value>Hindi pa nakatakda ang kita. I-update ang kita sa kanang pindutan sa itaas</value>
+  </data>
+  <data name="dashboard_spendon" xml:space="preserve">
+    <value>ang pera na ginastos sa ?</value>
   </data>
   <data name="dashboard_suredel1" xml:space="preserve">
     <value>Sigurado ka bang tatanggalin</value>
@@ -365,6 +389,15 @@
   </data>
   <data name="dashobard_add" xml:space="preserve">
     <value>Idagdag</value>
+  </data>
+  <data name="exp_emptydesc" xml:space="preserve">
+    <value>Mangyaring ipasok ang halaga ng kita.</value>
+  </data>
+  <data name="exp_errorupdincome" xml:space="preserve">
+    <value>Teknikal na error sa pag-update ng halaga ng kita.</value>
+  </data>
+  <data name="exp_updateincome" xml:space="preserve">
+    <value>I-update ang Kita</value>
   </data>
   <data name="intro_btnokay" xml:space="preserve">
     <value>Sige</value>

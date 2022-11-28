@@ -141,6 +141,9 @@
   <data name="app_delete" xml:space="preserve">
     <value>Delete</value>
   </data>
+  <data name="app_empty" xml:space="preserve">
+    <value>Empty</value>
+  </data>
   <data name="app_error" xml:space="preserve">
     <value>Error</value>
   </data>
@@ -191,6 +194,9 @@
   </data>
   <data name="app_saturday" xml:space="preserve">
     <value>Saturday</value>
+  </data>
+  <data name="app_save" xml:space="preserve">
+    <value>Save</value>
   </data>
   <data name="app_sept" xml:space="preserve">
     <value>September</value>
@@ -301,6 +307,18 @@
   <data name="dashboard_editexp" xml:space="preserve">
     <value>Update expenses in the left side menu button</value>
   </data>
+  <data name="dashboard_emptyexp" xml:space="preserve">
+    <value>Expenses amount is empty. Please insert expenses amount.</value>
+  </data>
+  <data name="dashboard_emptytitle" xml:space="preserve">
+    <value>Expenses title is empty. Please insert any title (food, groceries, bills, entertainment, transfer, etc...)</value>
+  </data>
+  <data name="dashboard_erroraddexp" xml:space="preserve">
+    <value>Technical error adding new expenses.</value>
+  </data>
+  <data name="dashboard_expadded" xml:space="preserve">
+    <value>New expenses added.</value>
+  </data>
   <data name="dashboard_expdeleted" xml:space="preserve">
     <value>Expenses deleted.</value>
   </data>
@@ -331,6 +349,9 @@
   <data name="dashboard_infototalexp" xml:space="preserve">
     <value>Total Expenses</value>
   </data>
+  <data name="dashboard_moneyspent" xml:space="preserve">
+    <value>Money spent today</value>
+  </data>
   <data name="dashboard_noexp" xml:space="preserve">
     <value>No Expenses</value>
   </data>
@@ -342,6 +363,9 @@
   </data>
   <data name="dashboard_setincome" xml:space="preserve">
     <value>Income not yet set. Update income at top-right button</value>
+  </data>
+  <data name="dashboard_spendon" xml:space="preserve">
+    <value>the money spent on ?</value>
   </data>
   <data name="dashboard_suredel1" xml:space="preserve">
     <value>Are you sure to delete</value>
@@ -366,6 +390,15 @@
   </data>
   <data name="dashobard_add" xml:space="preserve">
     <value>Add</value>
+  </data>
+  <data name="exp_emptydesc" xml:space="preserve">
+    <value>Please insert income amount.</value>
+  </data>
+  <data name="exp_errorupdincome" xml:space="preserve">
+    <value>Technical error updating income amount.</value>
+  </data>
+  <data name="exp_updateincome" xml:space="preserve">
+    <value>Update Income</value>
   </data>
   <data name="intro_btnokay" xml:space="preserve">
     <value>Okay</value>

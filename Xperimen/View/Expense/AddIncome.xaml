@@ -3,7 +3,8 @@
                  xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
                  x:Class="Xperimen.View.Expense.AddIncome"
                  xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
-                 xmlns:stylekit="clr-namespace:Xperimen.Stylekit">
+                 xmlns:stylekit="clr-namespace:Xperimen.Stylekit"
+                 xmlns:resource="clr-namespace:Xperimen.Resources">
 
     <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
         <Grid.RowDefinitions>
@@ -29,7 +30,8 @@
             <StackLayout x:Name="stack_bg" Orientation="Vertical" HorizontalOptions="FillAndExpand" Spacing="0" Padding="15,20,15,20">
 
                 <!-- title header -->
-                <stylekit:XLabel Text="Update Income" HorizontalOptions="Center" FontFamily="{DynamicResource Key=BoldFont}" FontSize="18"/>
+                <stylekit:XLabel Text="{x:Static resource:AppResources.exp_updateincome}" HorizontalOptions="Center" FontFamily="{DynamicResource Key=BoldFont}" 
+                                 FontSize="18" HorizontalTextAlignment="Center"/>
 
                 <!-- money amount -->
                 <stylekit:CustomEntry ImgLeft="black_money.png" ImgLeft_="white_money.png" BindingText="Income" Margin="0,30,0,0"
@@ -40,7 +42,7 @@
                        VerticalOptions="End" Margin="0,30,0,0" BackgroundColor="{DynamicResource Key=CustomGreen}" HasShadow="False" 
                        IsClippedToBounds="True">
                     <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Spacing="10" VerticalOptions="Center">
-                        <Label Text="Save" FontFamily="{DynamicResource Key=BoldFont}" TextColor="White" HorizontalOptions="Center" 
+                        <Label Text="{x:Static resource:AppResources.app_save}" FontFamily="{DynamicResource Key=BoldFont}" TextColor="White" HorizontalOptions="Center" 
                                VerticalOptions="Center"/>
                         <Image Source="white_wallet.png" Aspect="AspectFit" HeightRequest="20" WidthRequest="20" VerticalOptions="Center"/>
                     </StackLayout>
@@ -50,7 +52,7 @@
                 </Frame>
 
                 <!-- cancel button -->
-                <stylekit:XLabel Text="Cancel" HorizontalOptions="Center" FontFamily="{DynamicResource Key=BoldFont}" Margin="0,10,0,0"
+                <stylekit:XLabel Text="{x:Static resource:AppResources.app_cancel}" HorizontalOptions="Center" FontFamily="{DynamicResource Key=BoldFont}" Margin="0,10,0,0"
                                  Padding="20,15,20,15">
                     <Label.GestureRecognizers>
                         <TapGestureRecognizer Tapped="CancelClicked" NumberOfTapsRequired="1"/>

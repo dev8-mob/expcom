@@ -141,6 +141,9 @@
   <data name="app_delete" xml:space="preserve">
     <value>मिटाना</value>
   </data>
+  <data name="app_empty" xml:space="preserve">
+    <value>खाली</value>
+  </data>
   <data name="app_error" xml:space="preserve">
     <value>गलती</value>
   </data>
@@ -191,6 +194,9 @@
   </data>
   <data name="app_saturday" xml:space="preserve">
     <value>शनिवार</value>
+  </data>
+  <data name="app_save" xml:space="preserve">
+    <value>बचाना</value>
   </data>
   <data name="app_sept" xml:space="preserve">
     <value>सितंबर</value>
@@ -300,6 +306,18 @@
   <data name="dashboard_editexp" xml:space="preserve">
     <value>बाईं ओर के मेनू बटन में खर्चों को अपडेट करें</value>
   </data>
+  <data name="dashboard_emptyexp" xml:space="preserve">
+    <value>व्यय राशि खाली है। कृपया व्यय राशि डालें।</value>
+  </data>
+  <data name="dashboard_emptytitle" xml:space="preserve">
+    <value>व्यय शीर्षक खाली है। कृपया कोई शीर्षक डालें (भोजन, किराने का सामान, बिल, मनोरंजन, स्थानांतरण, आदि...)</value>
+  </data>
+  <data name="dashboard_erroraddexp" xml:space="preserve">
+    <value>नए खर्च जोड़ने में तकनीकी गड़बड़ी.</value>
+  </data>
+  <data name="dashboard_expadded" xml:space="preserve">
+    <value>नए खर्चे जोड़े गए।</value>
+  </data>
   <data name="dashboard_expdeleted" xml:space="preserve">
     <value>व्यय हटा दिया गया।</value>
   </data>
@@ -330,6 +348,9 @@
   <data name="dashboard_infototalexp" xml:space="preserve">
     <value>कुल खर्च</value>
   </data>
+  <data name="dashboard_moneyspent" xml:space="preserve">
+    <value>आज खर्च हुआ पैसा</value>
+  </data>
   <data name="dashboard_noexp" xml:space="preserve">
     <value>कोई खर्च नहीं</value>
   </data>
@@ -341,6 +362,9 @@
   </data>
   <data name="dashboard_setincome" xml:space="preserve">
     <value>आय अभी निर्धारित नहीं है। शीर्ष-दाएं बटन पर आय अपडेट करें</value>
+  </data>
+  <data name="dashboard_spendon" xml:space="preserve">
+    <value>पर खर्च किया गया पैसा?</value>
   </data>
   <data name="dashboard_suredel1" xml:space="preserve">
     <value>क्या वाकई हटाना है</value>
@@ -365,6 +389,15 @@
   </data>
   <data name="dashobard_add" xml:space="preserve">
     <value>जोड़ें</value>
+  </data>
+  <data name="exp_emptydesc" xml:space="preserve">
+    <value>कृपया आय राशि डालें।</value>
+  </data>
+  <data name="exp_errorupdincome" xml:space="preserve">
+    <value>आय राशि अपडेट करने में तकनीकी गड़बड़ी.</value>
+  </data>
+  <data name="exp_updateincome" xml:space="preserve">
+    <value>आय अपडेट करें</value>
   </data>
   <data name="intro_btnokay" xml:space="preserve">
     <value>ठीक</value>

@@ -50,7 +50,7 @@ namespace Xperimen.View.Commitment
                 }
                 else if (alert.CodeObject.Equals("delete"))
                 {
-                    if (arg.Equals("Yes"))
+                    if (arg.Equals("okay"))
                     {
                         var result = viewmodel.DeleteCommitment(data);
                         if (result == 1)
@@ -60,7 +60,7 @@ namespace Xperimen.View.Commitment
                         }
                         if (result == 2) SetDisplayAlert("Error", "Technical error deleting the selected commitment.", "", "", "error");
                     }
-                    else if (arg.Equals("Cancel")) viewmodel.IsLoading = false;
+                    else if (arg.Equals("cancel")) viewmodel.IsLoading = false;
                     else viewmodel.IsLoading = false;
                 }
                 else if (alert.CodeObject.Equals("markdone"))

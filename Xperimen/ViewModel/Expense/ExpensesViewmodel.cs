@@ -15,6 +15,7 @@ namespace Xperimen.ViewModel.Expense
     public class ExpensesViewmodel : BaseViewModel
     {
         #region bindable properties
+        DateTime _currentdt;
         double _income;
         double _usertotalexp;
         double _netincome;
@@ -35,6 +36,11 @@ namespace Xperimen.ViewModel.Expense
         bool _hascommitmentdoneshowbadge;
         int _commitmentnotdone;
         string _currency;
+        public DateTime CurrentDt
+        {
+            get { return _currentdt; }
+            set { _currentdt = value; OnPropertyChanged(); }
+        }
         public double Income
         {
             get { return _income; }
@@ -145,6 +151,7 @@ namespace Xperimen.ViewModel.Expense
         {
             connection = new SQLiteConnection(App.DB_PATH);
             SelectedDate = DateTime.Now.ToString("dd.MM.yyyy");
+            CurrentDt = DateTime.Now;
             UserTotalExp = 0;
             NetIncome = 0;
             Balance = 0;

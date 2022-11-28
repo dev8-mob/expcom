@@ -39,7 +39,7 @@
                             </Image.GestureRecognizers>
                         </stylekit:XImage>
                         <stylekit:XLabel Text="{x:Static resource:AppResources.dashboard_hi}" HorizontalOptions="Fill" FontSize="18" VerticalOptions="Center"
-                                         Margin="0,0,5,0"/>
+                                         Margin="0,0,5,0" HorizontalTextAlignment="Start" LineBreakMode="TailTruncation"/>
                         <stylekit:XLabel Text="{Binding Firstname}" HorizontalOptions="Fill" FontFamily="{DynamicResource Key=BoldFont}" 
                                          FontSize="18" VerticalOptions="Center" MaxLines="1" LineBreakMode="TailTruncation" Margin="0,0,5,0"/>
                         <stylekit:XLabel Text="{Binding Lastname}" HorizontalOptions="FillAndExpand" FontFamily="{DynamicResource Key=BoldFont}" 

@@ -141,6 +141,9 @@
   <data name="app_delete" xml:space="preserve">
     <value>Padam</value>
   </data>
+  <data name="app_empty" xml:space="preserve">
+    <value>Kosong</value>
+  </data>
   <data name="app_error" xml:space="preserve">
     <value>Ralat</value>
   </data>
@@ -191,6 +194,9 @@
   </data>
   <data name="app_saturday" xml:space="preserve">
     <value>Sabtu</value>
+  </data>
+  <data name="app_save" xml:space="preserve">
+    <value>Simpan</value>
   </data>
   <data name="app_sept" xml:space="preserve">
     <value>September</value>
@@ -300,6 +306,18 @@
   <data name="dashboard_editexp" xml:space="preserve">
     <value>Kemas kini perbelanjaan di butang kiri menu sampingan</value>
   </data>
+  <data name="dashboard_emptyexp" xml:space="preserve">
+    <value>Tiada jumlah perbelanjaan dimasukkan. Sila masukkan jumlah perbelanjaan.</value>
+  </data>
+  <data name="dashboard_emptytitle" xml:space="preserve">
+    <value>Tajuk perbelanjaan kosong. Sila masukkan sebarang penerangan perbelanjaan (makanan, barang runcit, bil, hiburan, dll...)</value>
+  </data>
+  <data name="dashboard_erroraddexp" xml:space="preserve">
+    <value>Kesilapan teknikal ketika menambah perbelanjaan.</value>
+  </data>
+  <data name="dashboard_expadded" xml:space="preserve">
+    <value>Perbelanjaan berjaya ditambah.</value>
+  </data>
   <data name="dashboard_expdeleted" xml:space="preserve">
     <value>Perbelanjaan dipadam.</value>
   </data>
@@ -330,6 +348,9 @@
   <data name="dashboard_infototalexp" xml:space="preserve">
     <value>Jumlah Perbelanjaan</value>
   </data>
+  <data name="dashboard_moneyspent" xml:space="preserve">
+    <value>Jumlah dibelanjakan hari ini</value>
+  </data>
   <data name="dashboard_noexp" xml:space="preserve">
     <value>Tiada Perbelanjaan</value>
   </data>
@@ -341,6 +362,9 @@
   </data>
   <data name="dashboard_setincome" xml:space="preserve">
     <value>Pendapatan belum ditetapkan. Kemas kini pendapatan di butang kanan atas</value>
+  </data>
+  <data name="dashboard_spendon" xml:space="preserve">
+    <value>jumlah dibelanjakan untuk ?</value>
   </data>
   <data name="dashboard_suredel1" xml:space="preserve">
     <value>Anda pasti untuk memadam</value>
@@ -365,6 +389,15 @@
   </data>
   <data name="dashobard_add" xml:space="preserve">
     <value>Tambah</value>
+  </data>
+  <data name="exp_emptydesc" xml:space="preserve">
+    <value>Sila masukkan jumlah pendapatan.</value>
+  </data>
+  <data name="exp_errorupdincome" xml:space="preserve">
+    <value>Kesilapan teknikal ketika kemas kini jumlah pendapatan.</value>
+  </data>
+  <data name="exp_updateincome" xml:space="preserve">
+    <value>Kemas Kini Pendapatan</value>
   </data>
   <data name="intro_btnokay" xml:space="preserve">
     <value>Okay</value>
