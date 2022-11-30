@@ -7,6 +7,7 @@ using Xamarin.Forms;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
 using Xperimen.Helper;
+using Xperimen.Resources;
 using Xperimen.Stylekit;
 using Xperimen.View.NavigationDrawer;
 using Xperimen.ViewModel.Expense;
@@ -79,7 +80,7 @@ namespace Xperimen.View.Expense
                             sampledate = new DateTime(Convert.ToInt32(split[2]), Convert.ToInt32(split[1]), Convert.ToInt32(split[0]));
                         lbl_ondateselect.Text = "on " + sampledate.ToString("MMM d");
                         lbl_ondateselect_zero.Text = sampledate.ToString("MMM d");
-                        lbl_intro.Text = "Expenses Summary";
+                        lbl_intro.Text = AppResources.exp_summary;
                     }
                     viewmodel.IsLoading = false;
                 }
@@ -100,7 +101,7 @@ namespace Xperimen.View.Expense
                             sampledate = new DateTime(Convert.ToInt32(split[2]), Convert.ToInt32(split[1]), Convert.ToInt32(split[0]));
                         lbl_ondateselect.Text = "on " + sampledate.ToString("MMM d");
                         lbl_ondateselect_zero.Text = sampledate.ToString("MMM d");
-                        lbl_intro.Text = "Expenses Summary";
+                        lbl_intro.Text = AppResources.exp_summary;
                     }
                     viewmodel.IsLoading = false;
                 }
@@ -201,7 +202,7 @@ namespace Xperimen.View.Expense
                 }
             }
 
-            lbl_intro.Text = "Expenses Summary";
+            lbl_intro.Text = AppResources.exp_summary;
             lbl_ondateselect_zero.Text = string.Empty;
             var result = viewmodel.GetUserTotalExpense();
             if (result == 1) viewmodel.IsLoading = false;

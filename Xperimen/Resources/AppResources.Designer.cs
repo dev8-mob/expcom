@@ -61,6 +61,15 @@ namespace Xperimen.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Add.
+        /// </summary>
+        internal static string app_add {
+            get {
+                return ResourceManager.GetString("app_add", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Alert.
         /// </summary>
         internal static string app_alert {
@@ -1222,6 +1231,15 @@ namespace Xperimen.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to overall expenses.
+        /// </summary>
+        internal static string exp_allexp {
+            get {
+                return ResourceManager.GetString("exp_allexp", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Please insert income amount..
         /// </summary>
         internal static string exp_emptydesc {
@@ -1236,6 +1254,51 @@ namespace Xperimen.Resources {
         internal static string exp_errorupdincome {
             get {
                 return ResourceManager.GetString("exp_errorupdincome", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to for spending.
+        /// </summary>
+        internal static string exp_forspending {
+            get {
+                return ResourceManager.GetString("exp_forspending", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to commitment(s).
+        /// </summary>
+        internal static string exp_minuscomm {
+            get {
+                return ResourceManager.GetString("exp_minuscomm", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You do not set any income yet. Please set your income.
+        /// </summary>
+        internal static string exp_notsetincome {
+            get {
+                return ResourceManager.GetString("exp_notsetincome", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Expenses Summary.
+        /// </summary>
+        internal static string exp_summary {
+            get {
+                return ResourceManager.GetString("exp_summary", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Total.
+        /// </summary>
+        internal static string exp_total {
+            get {
+                return ResourceManager.GetString("exp_total", resourceCulture);
             }
         }
         

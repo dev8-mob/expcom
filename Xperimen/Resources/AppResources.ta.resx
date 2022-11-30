@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="app_add" xml:space="preserve">
+    <value>கூட்டு</value>
+  </data>
   <data name="app_alert" xml:space="preserve">
     <value>எச்சரிக்கை</value>
   </data>
@@ -504,11 +507,29 @@
   <data name="dashobard_add" xml:space="preserve">
     <value>கூட்டு</value>
   </data>
+  <data name="exp_allexp" xml:space="preserve">
+    <value>மொத்த செலவுகள்</value>
+  </data>
   <data name="exp_emptydesc" xml:space="preserve">
     <value>வருமானத் தொகையைச் சேர்க்கவும்.</value>
   </data>
   <data name="exp_errorupdincome" xml:space="preserve">
     <value>வருமானத் தொகையைப் புதுப்பிப்பதில் தொழில்நுட்பப் பிழை.</value>
+  </data>
+  <data name="exp_forspending" xml:space="preserve">
+    <value>செலவுக்காக</value>
+  </data>
+  <data name="exp_minuscomm" xml:space="preserve">
+    <value>அர்ப்பணிப்பு(கள்)</value>
+  </data>
+  <data name="exp_notsetincome" xml:space="preserve">
+    <value>நீங்கள் இன்னும் வருமானம் எதையும் அமைக்கவில்லை. தயவுசெய்து உங்கள் வருமானத்தை அமைக்கவும்</value>
+  </data>
+  <data name="exp_summary" xml:space="preserve">
+    <value>செலவுகளின் சுருக்கம்</value>
+  </data>
+  <data name="exp_total" xml:space="preserve">
+    <value>மொத்தம்</value>
   </data>
   <data name="exp_updateincome" xml:space="preserve">
     <value>வருமானத்தைப் புதுப்பிக்கவும்</value>

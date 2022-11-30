@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="app_add" xml:space="preserve">
+    <value>Tambah</value>
+  </data>
   <data name="app_alert" xml:space="preserve">
     <value>Waspada</value>
   </data>
@@ -394,7 +397,7 @@
     <value>Anda belum mempunyai sebarang komitmen. Klik butang di bawah untuk menambah komitmen baharu.</value>
   </data>
   <data name="comm_placeholder" xml:space="preserve">
-    <value>penerangan (tajuk, bil, sewa, dll...)</value>
+    <value>tajuk (bil, sewa, dll...)</value>
   </data>
   <data name="comm_savecomm" xml:space="preserve">
     <value>Simpan Komitmen</value>
@@ -504,11 +507,29 @@
   <data name="dashobard_add" xml:space="preserve">
     <value>Tambah</value>
   </data>
+  <data name="exp_allexp" xml:space="preserve">
+    <value>perbelanjaan</value>
+  </data>
   <data name="exp_emptydesc" xml:space="preserve">
     <value>Sila masukkan jumlah pendapatan.</value>
   </data>
   <data name="exp_errorupdincome" xml:space="preserve">
     <value>Kesilapan teknikal ketika kemas kini jumlah pendapatan.</value>
+  </data>
+  <data name="exp_forspending" xml:space="preserve">
+    <value>untuk dibelanjakan</value>
+  </data>
+  <data name="exp_minuscomm" xml:space="preserve">
+    <value>komitmen</value>
+  </data>
+  <data name="exp_notsetincome" xml:space="preserve">
+    <value>Anda belum menetapkan sebarang pendapatan. Sila tetapkan pendapatan anda</value>
+  </data>
+  <data name="exp_summary" xml:space="preserve">
+    <value>Ringkasan Perbelanjaan</value>
+  </data>
+  <data name="exp_total" xml:space="preserve">
+    <value>Jumlah</value>
   </data>
   <data name="exp_updateincome" xml:space="preserve">
     <value>Kemas Kini Pendapatan</value>

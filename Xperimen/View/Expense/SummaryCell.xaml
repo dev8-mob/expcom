@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Xperimen.View.Expense.SummaryCell"
              xmlns:stylekit="clr-namespace:Xperimen.Stylekit"
+             xmlns:resource="clr-namespace:Xperimen.Resources"
              HorizontalOptions="FillAndExpand" Spacing="0"
              Orientation="Vertical" Padding="15"
              VerticalOptions="Start">
@@ -10,7 +11,7 @@
     <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Spacing="0">
         <Label x:Name="lbl_month" FontFamily="{DynamicResource Key=BoldFont}" HorizontalOptions="Start"
                VerticalOptions="Center" Margin="0,0,5,0"/>
-        <Label Text="overall expenses" HorizontalOptions="FillAndExpand" MaxLines="1"
+        <Label Text="{x:Static resource:AppResources.exp_allexp}" HorizontalOptions="FillAndExpand" MaxLines="1"
                VerticalOptions="Center" LineBreakMode="TailTruncation"/>
         <stylekit:XLabel Text="{Binding Currency}" Margin="15,0,0,0" VerticalOptions="Center" FontFamily="{DynamicResource Key=BoldFont}"
                          TextColor="{DynamicResource Key=CustomRed}"/>
@@ -18,7 +19,7 @@
                          FontFamily="{DynamicResource Key=BoldFont}" TextColor="{DynamicResource Key=CustomRed}"/>
     </StackLayout>
     <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Spacing="0">
-        <Label Text="Income" FontFamily="{DynamicResource Key=BoldFont}" HorizontalOptions="Start"
+        <Label Text="{x:Static resource:AppResources.dashboard_infoincome}" FontFamily="{DynamicResource Key=BoldFont}" HorizontalOptions="Start"
                VerticalOptions="Center" Margin="0,0,5,0"/>
         <Label x:Name="lbl_commitment" Text="- commitment" HorizontalOptions="FillAndExpand" MaxLines="1"
                VerticalOptions="Center" LineBreakMode="TailTruncation"/>
@@ -30,9 +31,9 @@
     <BoxView HorizontalOptions="FillAndExpand" HeightRequest="1" Margin="8,15,8,5"
              BackgroundColor="{DynamicResource Key=LabelTextColor}"/>
     <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Spacing="0">
-        <Label Text="Available" FontFamily="{DynamicResource Key=BoldFont}" HorizontalOptions="Start"
+        <Label Text="{x:Static resource:AppResources.dashboard_available}" FontFamily="{DynamicResource Key=BoldFont}" HorizontalOptions="Start"
                VerticalOptions="Center" Margin="0,0,5,0"/>
-        <Label Text="for spending" HorizontalOptions="FillAndExpand" MaxLines="1"
+        <Label Text="{x:Static resource:AppResources.exp_forspending}" HorizontalOptions="FillAndExpand" MaxLines="1"
                VerticalOptions="Center" LineBreakMode="TailTruncation"/>
         <stylekit:XLabel Text="{Binding Currency}" VerticalOptions="Center" Margin="15,0,0,0" FontFamily="{DynamicResource Key=BoldFont}"
                          TextColor="{DynamicResource Key=Primary}"/>

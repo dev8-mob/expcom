@@ -4,6 +4,7 @@ using System.Linq;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using Xperimen.Model;
+using Xperimen.Resources;
 
 namespace Xperimen.View.Expense
 {
@@ -40,7 +41,7 @@ namespace Xperimen.View.Expense
 
                 string query = "SELECT * FROM SelfCommitment WHERE Userid = '" + userid + "'";
                 var result = connection.Query<SelfCommitment>(query).ToList();
-                lbl_commitment.Text = "-" + result.Count + " commitment(s)";
+                lbl_commitment.Text = "-" + result.Count + " " + AppResources.exp_minuscomm;
             }
             catch (Exception ex)
             {
