@@ -141,6 +141,9 @@
   <data name="app_delete" xml:space="preserve">
     <value>Padam</value>
   </data>
+  <data name="app_done" xml:space="preserve">
+    <value>Selesai</value>
+  </data>
   <data name="app_empty" xml:space="preserve">
     <value>Kosong</value>
   </data>
@@ -176,6 +179,9 @@
   </data>
   <data name="app_monday" xml:space="preserve">
     <value>Isnin</value>
+  </data>
+  <data name="app_notfound" xml:space="preserve">
+    <value>Tidak Dijumpai</value>
   </data>
   <data name="app_notmatch" xml:space="preserve">
     <value>Tidak Padan</value>
@@ -215,6 +221,12 @@
   </data>
   <data name="app_unavailable" xml:space="preserve">
     <value>Tidak Tersedia</value>
+  </data>
+  <data name="app_undone" xml:space="preserve">
+    <value>Belum Selesai</value>
+  </data>
+  <data name="app_update" xml:space="preserve">
+    <value>Kemas Kini</value>
   </data>
   <data name="app_wednesday" xml:space="preserve">
     <value>Rabu</value>
@@ -299,6 +311,108 @@
   </data>
   <data name="code_setting_usernameempty" xml:space="preserve">
     <value>Nama pengguna tidak boleh kosong. Sila masukkan nama pengguna anda.</value>
+  </data>
+  <data name="comm_accno" xml:space="preserve">
+    <value>Akaun No</value>
+  </data>
+  <data name="comm_addcomm" xml:space="preserve">
+    <value>Tambah Komitmen</value>
+  </data>
+  <data name="comm_commadded" xml:space="preserve">
+    <value>Komitmen baharu ditambah.</value>
+  </data>
+  <data name="comm_commdeleted" xml:space="preserve">
+    <value>Komitmen dipadam.</value>
+  </data>
+  <data name="comm_congrats" xml:space="preserve">
+    <value>Tahniah ! Semua komitmen telah diselesaikan untuk bulan ini</value>
+  </data>
+  <data name="comm_desc" xml:space="preserve">
+    <value>Penerangan (pilihan)</value>
+  </data>
+  <data name="comm_descplaceholder" xml:space="preserve">
+    <value>butiran (nombor akaun, nama bank, dll...)</value>
+  </data>
+  <data name="comm_detailmarknotdone" xml:space="preserve">
+    <value>Komitmen ditandai sebagai belum selesai.</value>
+  </data>
+  <data name="comm_detailmarkpaid" xml:space="preserve">
+    <value>Komitmen ditanda sebagai dibayar.</value>
+  </data>
+  <data name="comm_detailupdated" xml:space="preserve">
+    <value>Butiran komitmen dikemas kini.</value>
+  </data>
+  <data name="comm_detailupdateerror" xml:space="preserve">
+    <value>Kesilapan teknikal semasa mengemas kini komitmen.</value>
+  </data>
+  <data name="comm_donepaid" xml:space="preserve">
+    <value>Sudah Dibayar</value>
+  </data>
+  <data name="comm_editcomm" xml:space="preserve">
+    <value>Kemas Kini Komitmen</value>
+  </data>
+  <data name="comm_emptyaccno" xml:space="preserve">
+    <value>Nombor akaun tiada. Sila masukkan nombor akaun.</value>
+  </data>
+  <data name="comm_emptyamount" xml:space="preserve">
+    <value>Jumlah komitmen tiada. Sila masukkan jumlah komitmen.</value>
+  </data>
+  <data name="comm_emptytitle" xml:space="preserve">
+    <value>Penerangan tiada. Sila masukkan sebarang tajuk (bil, sewa, pelaburan, dll...)</value>
+  </data>
+  <data name="comm_erroraddcomm" xml:space="preserve">
+    <value>Kesilapan teknikal menambah komitmen baharu.</value>
+  </data>
+  <data name="comm_errordel" xml:space="preserve">
+    <value>Kesilapan teknikal memadam komitmen yang dipilih.</value>
+  </data>
+  <data name="comm_errorgetcomm" xml:space="preserve">
+    <value>Kesilapan teknikal mendapatkan komitmen yang dipilih.</value>
+  </data>
+  <data name="comm_errorgetcommlist" xml:space="preserve">
+    <value>Kesilapan teknikal mendapatkan senarai komitmen.</value>
+  </data>
+  <data name="comm_errorupdnet" xml:space="preserve">
+    <value>Kesilapan teknikal kemas kini baki bersih.</value>
+  </data>
+  <data name="comm_marknotdone" xml:space="preserve">
+    <value>Tandai sebagai Belum Selesai</value>
+  </data>
+  <data name="comm_navtitle" xml:space="preserve">
+    <value>Senarai Komitment</value>
+  </data>
+  <data name="comm_net" xml:space="preserve">
+    <value>Baki Bersih :</value>
+  </data>
+  <data name="comm_newcomm" xml:space="preserve">
+    <value>Komitment Baharu</value>
+  </data>
+  <data name="comm_notfound" xml:space="preserve">
+    <value>Komitmen yang dipilih tidak dijumpai.</value>
+  </data>
+  <data name="comm_notyet" xml:space="preserve">
+    <value>Anda belum mempunyai sebarang komitmen. Klik butang di bawah untuk menambah komitmen baharu.</value>
+  </data>
+  <data name="comm_placeholder" xml:space="preserve">
+    <value>penerangan (tajuk, bil, sewa, dll...)</value>
+  </data>
+  <data name="comm_savecomm" xml:space="preserve">
+    <value>Simpan Komitmen</value>
+  </data>
+  <data name="comm_suredel" xml:space="preserve">
+    <value>Anda pasti untuk memadam komitmen ini ?</value>
+  </data>
+  <data name="comm_upcoming" xml:space="preserve">
+    <value>Komitmen akan datang ialah</value>
+  </data>
+  <data name="comm_youhave" xml:space="preserve">
+    <value>Anda mempunyai</value>
+  </data>
+  <data name="comm_youhave2" xml:space="preserve">
+    <value>komitmen belum selesai</value>
+  </data>
+  <data name="comm_youhave3" xml:space="preserve">
+    <value>untuk bulan ini</value>
   </data>
   <data name="dashboard_available" xml:space="preserve">
     <value>Baki Tersedia</value>

@@ -133,6 +133,15 @@ namespace Xperimen.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Done.
+        /// </summary>
+        internal static string app_done {
+            get {
+                return ResourceManager.GetString("app_done", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Empty.
         /// </summary>
         internal static string app_empty {
@@ -237,6 +246,15 @@ namespace Xperimen.Resources {
         internal static string app_monday {
             get {
                 return ResourceManager.GetString("app_monday", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Not Found.
+        /// </summary>
+        internal static string app_notfound {
+            get {
+                return ResourceManager.GetString("app_notfound", resourceCulture);
             }
         }
         
@@ -354,6 +372,24 @@ namespace Xperimen.Resources {
         internal static string app_unavailable {
             get {
                 return ResourceManager.GetString("app_unavailable", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Undone.
+        /// </summary>
+        internal static string app_undone {
+            get {
+                return ResourceManager.GetString("app_undone", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Update.
+        /// </summary>
+        internal static string app_update {
+            get {
+                return ResourceManager.GetString("app_update", resourceCulture);
             }
         }
         
@@ -606,6 +642,312 @@ namespace Xperimen.Resources {
         internal static string code_setting_usernameempty {
             get {
                 return ResourceManager.GetString("code_setting_usernameempty", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Account No.
+        /// </summary>
+        internal static string comm_accno {
+            get {
+                return ResourceManager.GetString("comm_accno", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Add Commitment.
+        /// </summary>
+        internal static string comm_addcomm {
+            get {
+                return ResourceManager.GetString("comm_addcomm", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to New commitment added..
+        /// </summary>
+        internal static string comm_commadded {
+            get {
+                return ResourceManager.GetString("comm_commadded", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Commitment deleted..
+        /// </summary>
+        internal static string comm_commdeleted {
+            get {
+                return ResourceManager.GetString("comm_commdeleted", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Congrats ! All commitment(s) are completed for this month.
+        /// </summary>
+        internal static string comm_congrats {
+            get {
+                return ResourceManager.GetString("comm_congrats", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Description (optional).
+        /// </summary>
+        internal static string comm_desc {
+            get {
+                return ResourceManager.GetString("comm_desc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to details (account number, bank name, etc...).
+        /// </summary>
+        internal static string comm_descplaceholder {
+            get {
+                return ResourceManager.GetString("comm_descplaceholder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Commitment marked as not done yet..
+        /// </summary>
+        internal static string comm_detailmarknotdone {
+            get {
+                return ResourceManager.GetString("comm_detailmarknotdone", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Commitment marked as paid..
+        /// </summary>
+        internal static string comm_detailmarkpaid {
+            get {
+                return ResourceManager.GetString("comm_detailmarkpaid", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Commitment details updated..
+        /// </summary>
+        internal static string comm_detailupdated {
+            get {
+                return ResourceManager.GetString("comm_detailupdated", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Technical error when updating commitment..
+        /// </summary>
+        internal static string comm_detailupdateerror {
+            get {
+                return ResourceManager.GetString("comm_detailupdateerror", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Done Paid.
+        /// </summary>
+        internal static string comm_donepaid {
+            get {
+                return ResourceManager.GetString("comm_donepaid", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Edit Commitment.
+        /// </summary>
+        internal static string comm_editcomm {
+            get {
+                return ResourceManager.GetString("comm_editcomm", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Account number  is empty. Please insert account number..
+        /// </summary>
+        internal static string comm_emptyaccno {
+            get {
+                return ResourceManager.GetString("comm_emptyaccno", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Commitment amount is empty. Please insert commitment amount..
+        /// </summary>
+        internal static string comm_emptyamount {
+            get {
+                return ResourceManager.GetString("comm_emptyamount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Title is empty. Please insert any title (bill, rent, investment, etc...).
+        /// </summary>
+        internal static string comm_emptytitle {
+            get {
+                return ResourceManager.GetString("comm_emptytitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Technical error adding new commitment..
+        /// </summary>
+        internal static string comm_erroraddcomm {
+            get {
+                return ResourceManager.GetString("comm_erroraddcomm", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Technical error deleting the selected commitment..
+        /// </summary>
+        internal static string comm_errordel {
+            get {
+                return ResourceManager.GetString("comm_errordel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Technical error retrieving the selected commitment..
+        /// </summary>
+        internal static string comm_errorgetcomm {
+            get {
+                return ResourceManager.GetString("comm_errorgetcomm", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Technical error retrieving commitment list..
+        /// </summary>
+        internal static string comm_errorgetcommlist {
+            get {
+                return ResourceManager.GetString("comm_errorgetcommlist", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Technical error updating net balance..
+        /// </summary>
+        internal static string comm_errorupdnet {
+            get {
+                return ResourceManager.GetString("comm_errorupdnet", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Mark as Not Done.
+        /// </summary>
+        internal static string comm_marknotdone {
+            get {
+                return ResourceManager.GetString("comm_marknotdone", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Commitment List.
+        /// </summary>
+        internal static string comm_navtitle {
+            get {
+                return ResourceManager.GetString("comm_navtitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Net :.
+        /// </summary>
+        internal static string comm_net {
+            get {
+                return ResourceManager.GetString("comm_net", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to New Commitment.
+        /// </summary>
+        internal static string comm_newcomm {
+            get {
+                return ResourceManager.GetString("comm_newcomm", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The selected commitment is not found..
+        /// </summary>
+        internal static string comm_notfound {
+            get {
+                return ResourceManager.GetString("comm_notfound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You do not have any commitment yet. Click button below to add new commitment..
+        /// </summary>
+        internal static string comm_notyet {
+            get {
+                return ResourceManager.GetString("comm_notyet", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to title (bill, rent, etc...).
+        /// </summary>
+        internal static string comm_placeholder {
+            get {
+                return ResourceManager.GetString("comm_placeholder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Save Commitment.
+        /// </summary>
+        internal static string comm_savecomm {
+            get {
+                return ResourceManager.GetString("comm_savecomm", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure to delete this commitment ?.
+        /// </summary>
+        internal static string comm_suredel {
+            get {
+                return ResourceManager.GetString("comm_suredel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Upcoming commitment is.
+        /// </summary>
+        internal static string comm_upcoming {
+            get {
+                return ResourceManager.GetString("comm_upcoming", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You have.
+        /// </summary>
+        internal static string comm_youhave {
+            get {
+                return ResourceManager.GetString("comm_youhave", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to commitment(s) not yet done.
+        /// </summary>
+        internal static string comm_youhave2 {
+            get {
+                return ResourceManager.GetString("comm_youhave2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to for this month.
+        /// </summary>
+        internal static string comm_youhave3 {
+            get {
+                return ResourceManager.GetString("comm_youhave3", resourceCulture);
             }
         }
         

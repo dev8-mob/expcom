@@ -141,6 +141,9 @@
   <data name="app_delete" xml:space="preserve">
     <value>मिटाना</value>
   </data>
+  <data name="app_done" xml:space="preserve">
+    <value>पूर्ण</value>
+  </data>
   <data name="app_empty" xml:space="preserve">
     <value>खाली</value>
   </data>
@@ -176,6 +179,9 @@
   </data>
   <data name="app_monday" xml:space="preserve">
     <value>सोमवार</value>
+  </data>
+  <data name="app_notfound" xml:space="preserve">
+    <value>पता नहीं चला</value>
   </data>
   <data name="app_notmatch" xml:space="preserve">
     <value>मेल नहीं करता</value>
@@ -215,6 +221,12 @@
   </data>
   <data name="app_unavailable" xml:space="preserve">
     <value>अनुपलब्ध</value>
+  </data>
+  <data name="app_undone" xml:space="preserve">
+    <value>नष्ट कर दिया</value>
+  </data>
+  <data name="app_update" xml:space="preserve">
+    <value>अद्यतन</value>
   </data>
   <data name="app_wednesday" xml:space="preserve">
     <value>बुधवार</value>
@@ -299,6 +311,108 @@
   </data>
   <data name="code_setting_usernameempty" xml:space="preserve">
     <value>उपयोगकर्ता नाम खाली नहीं हो सकता. अपने उपयोगकर्ता नाम दर्ज करें।</value>
+  </data>
+  <data name="comm_accno" xml:space="preserve">
+    <value>खाता संख्या</value>
+  </data>
+  <data name="comm_addcomm" xml:space="preserve">
+    <value>प्रतिबद्धता जोड़ें</value>
+  </data>
+  <data name="comm_commadded" xml:space="preserve">
+    <value>नई प्रतिबद्धता जोड़ी गई।</value>
+  </data>
+  <data name="comm_commdeleted" xml:space="preserve">
+    <value>प्रतिबद्धता हटाई गई.</value>
+  </data>
+  <data name="comm_congrats" xml:space="preserve">
+    <value>बधाई ! इस महीने के लिए सभी प्रतिबद्धताएं पूरी कर ली गई हैं</value>
+  </data>
+  <data name="comm_desc" xml:space="preserve">
+    <value>विवरण (वैकल्पिक)</value>
+  </data>
+  <data name="comm_descplaceholder" xml:space="preserve">
+    <value>विवरण (खाता संख्या, बैंक का नाम, आदि...)</value>
+  </data>
+  <data name="comm_detailmarknotdone" xml:space="preserve">
+    <value>प्रतिबद्धता को अभी तक पूरा नहीं किया गया के रूप में चिह्नित किया गया.</value>
+  </data>
+  <data name="comm_detailmarkpaid" xml:space="preserve">
+    <value>भुगतान के रूप में चिह्नित प्रतिबद्धता।</value>
+  </data>
+  <data name="comm_detailupdated" xml:space="preserve">
+    <value>प्रतिबद्धता विवरण अपडेट किया गया।</value>
+  </data>
+  <data name="comm_detailupdateerror" xml:space="preserve">
+    <value>प्रतिबद्धता अपडेट करते समय तकनीकी गड़बड़ी.</value>
+  </data>
+  <data name="comm_donepaid" xml:space="preserve">
+    <value>भुगतान किया</value>
+  </data>
+  <data name="comm_editcomm" xml:space="preserve">
+    <value>प्रतिबद्धता संपादित करें</value>
+  </data>
+  <data name="comm_emptyaccno" xml:space="preserve">
+    <value>खाता संख्या खाली है। कृपया खाता संख्या डालें।</value>
+  </data>
+  <data name="comm_emptyamount" xml:space="preserve">
+    <value>प्रतिबद्धता राशि खाली है। कृपया प्रतिबद्धता राशि डालें।</value>
+  </data>
+  <data name="comm_emptytitle" xml:space="preserve">
+    <value>शीर्षक खाली है। कृपया कोई शीर्षक डालें (बिल, किराया, निवेश, आदि...)</value>
+  </data>
+  <data name="comm_erroraddcomm" xml:space="preserve">
+    <value>नई प्रतिबद्धता जोड़ने में तकनीकी गड़बड़ी.</value>
+  </data>
+  <data name="comm_errordel" xml:space="preserve">
+    <value>चयनित वचनबद्धता को हटाने में तकनीकी त्रुटि.</value>
+  </data>
+  <data name="comm_errorgetcomm" xml:space="preserve">
+    <value>चयनित प्रतिबद्धता को पुनः प्राप्त करने में तकनीकी त्रुटि।</value>
+  </data>
+  <data name="comm_errorgetcommlist" xml:space="preserve">
+    <value>वचनबद्धता सूची पुनर्प्राप्त करने में तकनीकी गड़बड़ी.</value>
+  </data>
+  <data name="comm_errorupdnet" xml:space="preserve">
+    <value>नेट बैलेंस अपडेट करने में तकनीकी त्रुटि।</value>
+  </data>
+  <data name="comm_marknotdone" xml:space="preserve">
+    <value>नहीं हुआ के रूप में चिह्नित करें</value>
+  </data>
+  <data name="comm_navtitle" xml:space="preserve">
+    <value>प्रतिबद्धता सूची</value>
+  </data>
+  <data name="comm_net" xml:space="preserve">
+    <value>निवल शेष :</value>
+  </data>
+  <data name="comm_newcomm" xml:space="preserve">
+    <value>नई प्रतिबद्धता</value>
+  </data>
+  <data name="comm_notfound" xml:space="preserve">
+    <value>चयनित प्रतिबद्धता नहीं मिली।</value>
+  </data>
+  <data name="comm_notyet" xml:space="preserve">
+    <value>आपकी अभी तक कोई प्रतिबद्धता नहीं है। नई प्रतिबद्धता जोड़ने के लिए नीचे बटन पर क्लिक करें।</value>
+  </data>
+  <data name="comm_placeholder" xml:space="preserve">
+    <value>शीर्षक (बिल, किराया, आदि...)</value>
+  </data>
+  <data name="comm_savecomm" xml:space="preserve">
+    <value>प्रतिबद्धता बचाओ</value>
+  </data>
+  <data name="comm_suredel" xml:space="preserve">
+    <value>क्या आप वाकई इस प्रतिबद्धता को हटाना चाहते हैं?</value>
+  </data>
+  <data name="comm_upcoming" xml:space="preserve">
+    <value>आगामी प्रतिबद्धता है</value>
+  </data>
+  <data name="comm_youhave" xml:space="preserve">
+    <value>आपके पास</value>
+  </data>
+  <data name="comm_youhave2" xml:space="preserve">
+    <value>प्रतिबद्धता (ओं) अभी तक नहीं किया गया है</value>
+  </data>
+  <data name="comm_youhave3" xml:space="preserve">
+    <value>इस महीने के लिए</value>
   </data>
   <data name="dashboard_available" xml:space="preserve">
     <value>उपलब्ध</value>

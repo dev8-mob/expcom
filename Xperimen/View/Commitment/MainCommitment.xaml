@@ -5,6 +5,7 @@
              xmlns:stylekit="clr-namespace:Xperimen.Stylekit"
              xmlns:viewcell="clr-namespace:Xperimen.View.Commitment"
              xmlns:vm="clr-namespace:Xperimen.ViewModel.Commitment"
+             xmlns:resource="clr-namespace:Xperimen.Resources"
              x:DataType="vm:CommitmentViewmodel"
              NavigationPage.HasNavigationBar="False">
     
@@ -33,7 +34,7 @@
                                     <TapGestureRecognizer Tapped="DrawerTapped" NumberOfTapsRequired="1"/>
                                 </Image.GestureRecognizers>
                             </stylekit:XImage>
-                            <stylekit:XLabel Text="Commitment List" HorizontalOptions="FillAndExpand" FontFamily="{DynamicResource Key=BoldFont}" 
+                            <stylekit:XLabel Text="{x:Static resource:AppResources.comm_navtitle}" HorizontalOptions="FillAndExpand" FontFamily="{DynamicResource Key=BoldFont}" 
                                              FontSize="18" VerticalOptions="Center"/>
                         </StackLayout>
                         <!-- commitment badge number -->
@@ -76,7 +77,7 @@
 
                                 <!-- income amount -->
                                 <StackLayout Orientation="Vertical" HorizontalOptions="End" Spacing="0">
-                                    <stylekit:XLabel Text="Income" VerticalOptions="End" HorizontalOptions="End" />
+                                    <stylekit:XLabel Text="{x:Static resource:AppResources.dashboard_infoincome}" VerticalOptions="End" HorizontalOptions="End" />
                                     <StackLayout Orientation="Horizontal" HorizontalOptions="End" Spacing="3">
                                         <stylekit:XLabel Text="{Binding Currency}" HorizontalOptions="End" VerticalOptions="Start" Margin="0,2,0,0"/>
                                         <stylekit:XLabel Text="{Binding Income, StringFormat='{0:0.00}'}" HorizontalOptions="End" 
@@ -99,7 +100,7 @@
                             </StackLayout>
 
                             <!-- total commitment amount -->
-                            <stylekit:XLabel Text="Total Commitment" VerticalOptions="End" HorizontalOptions="End" Margin="0,10,0,0"/>
+                            <stylekit:XLabel Text="{x:Static resource:AppResources.dashboard_infototalcomm}" VerticalOptions="End" HorizontalOptions="End" Margin="0,10,0,0"/>
                             <StackLayout Orientation="Horizontal" HorizontalOptions="EndAndExpand" VerticalOptions="Start" Spacing="3">
                                 <stylekit:XLabel Text="{Binding Currency}" HorizontalOptions="EndAndExpand" VerticalOptions="Start" Margin="0,2,0,0"/>
                                 <stylekit:XLabel Text="{Binding TotalCommitment, StringFormat='{0:0.00}'}" FontSize="20"
@@ -109,7 +110,8 @@
                             <!-- balance amount -->
                             <StackLayout Orientation="Horizontal" HorizontalOptions="EndAndExpand" VerticalOptions="End"
                                          Spacing="10" Margin="0,20,0,0">
-                                <stylekit:XLabel Text="Net :" VerticalOptions="End" HorizontalOptions="End" Margin="0,0,5,0"/>
+                                <stylekit:XLabel Text="{x:Static resource:AppResources.comm_net}" VerticalOptions="End" HorizontalOptions="End" Margin="0,0,5,0"
+                                                 LineBreakMode="TailTruncation"/>
                                 <StackLayout Orientation="Horizontal" VerticalOptions="End" Spacing="3">
                                     <stylekit:XLabel Text="{Binding Currency}" VerticalOptions="End" Margin="0,0,0,0"/>
                                     <stylekit:XLabel Text="{Binding Balance, StringFormat='{0:0.00}'}" FontSize="20"
@@ -126,8 +128,8 @@
                     <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" Spacing="15" Margin="30,30,30,0"
                                  IsVisible="{Binding NoCommitment}">
                         <stylekit:XImageNoRecord HeightRequest="40" WidthRequest="40" VerticalOptions="Center" HorizontalOptions="Start"/>
-                        <stylekit:XLabel Text="You do not have any commitment yet. Click button below to add new commitment." 
-                                         VerticalOptions="Start" HorizontalOptions="Center" HorizontalTextAlignment="Start"/>
+                        <stylekit:XLabel Text="{x:Static resource:AppResources.comm_notyet}" VerticalOptions="Start" HorizontalOptions="Center" 
+                                         HorizontalTextAlignment="Start"/>
                     </StackLayout>
 
                     <!-- commitment list, button done and undone -->
@@ -138,14 +140,14 @@
                         <StackLayout Orientation="Vertical" HorizontalOptions="CenterAndExpand" Spacing="0" VerticalOptions="Start"
                                      IsVisible="{Binding AllCommitmentNotDone}">
                             <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" Spacing="0" VerticalOptions="Start">
-                                <stylekit:XLabel Text="You have " HorizontalOptions="Center" VerticalOptions="End"/>
+                                <stylekit:XLabel Text="{x:Static resource:AppResources.comm_youhave}" HorizontalOptions="Center" VerticalOptions="End" Margin="0,0,5,0"/>
                                 <stylekit:XLabel Text="{Binding NotYetPaid}" FontSize="18" FontFamily="{DynamicResource Key=BoldFont}" 
-                                                 VerticalOptions="End" HorizontalOptions="Center" Margin="0,0,0,0"/>
-                                <stylekit:XLabel Text=" commitment(s) not yet done" HorizontalOptions="Center" 
+                                                 VerticalOptions="End" HorizontalOptions="Center" Margin="0,0,5,0"/>
+                                <stylekit:XLabel Text="{x:Static resource:AppResources.comm_youhave2}" HorizontalOptions="Center" 
                                                  HorizontalTextAlignment="Center" VerticalOptions="End"/>
                             </StackLayout>
                             <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" Spacing="0" VerticalOptions="Start">
-                                <stylekit:XLabel Text="for this month " HorizontalOptions="Center" VerticalOptions="End" Margin="0,0,5,0"/>
+                                <stylekit:XLabel Text="{x:Static resource:AppResources.comm_youhave3}" HorizontalOptions="Center" VerticalOptions="End" Margin="0,0,5,0"/>
                                 <stylekit:XLabel Text="{Binding CurrentDt, StringFormat='({0:MMM yyyy})'}" HorizontalOptions="Center" 
                                                  VerticalOptions="End" FontFamily="{DynamicResource Key=BoldFont}"/>
                             </StackLayout>
@@ -157,11 +159,11 @@
                             <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Spacing="0" VerticalOptions="Start" Margin="20,0,20,0">
                                 <stylekit:XImage Source1="black_done.png" Source2="white_done.png" HeightRequest="35" WidthRequest="35"
                                                  Aspect="AspectFit" HorizontalOptions="Center" VerticalOptions="Center"/>
-                                <stylekit:XLabel Text="Congrats ! All commitment(s) are completed for this month" HorizontalOptions="Center" 
+                                <stylekit:XLabel Text="{x:Static resource:AppResources.comm_congrats}" HorizontalOptions="Center" 
                                                  HorizontalTextAlignment="Start" VerticalOptions="Center" Margin="5,0,0,0"/>
                             </StackLayout>
                             <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" Spacing="0" VerticalOptions="Start" Margin="0,30,0,0">
-                                <stylekit:XLabel Text="Upcoming commitment is" HorizontalOptions="Center" VerticalOptions="End" Margin="0,0,5,0"/>
+                                <stylekit:XLabel Text="{x:Static resource:AppResources.comm_upcoming}" HorizontalOptions="Center" VerticalOptions="End" Margin="0,0,5,0"/>
                                 <stylekit:XLabel Text="{Binding UpcomingDt, StringFormat='({0:MMM yyyy})'}" HorizontalOptions="Center" 
                                                  VerticalOptions="End" FontFamily="{DynamicResource Key=BoldFont}"/>
                             </StackLayout>
@@ -188,8 +190,8 @@
                            VerticalOptions="End" Margin="0,30,0,0" BackgroundColor="{DynamicResource Key=Primary}" HasShadow="False" 
                            IsClippedToBounds="True">
                         <StackLayout Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="Center" Spacing="10">
-                            <Label Text="Add Commitment" FontFamily="{DynamicResource Key=BoldFont}" TextColor="White" HorizontalOptions="Center" 
-                                   VerticalOptions="Center"/>
+                            <Label Text="{x:Static resource:AppResources.comm_addcomm}" FontFamily="{DynamicResource Key=BoldFont}" TextColor="White" 
+                                   HorizontalOptions="Center" VerticalOptions="Center"/>
                             <Image Source="white_add1.png" Aspect="AspectFit" HeightRequest="20" WidthRequest="20" VerticalOptions="Center"/>
                         </StackLayout>
                         <Frame.GestureRecognizers>

@@ -3,6 +3,7 @@ using Xamarin.Forms;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
 using Xperimen.Helper;
+using Xperimen.Resources;
 using Xperimen.Stylekit;
 using Xperimen.View.NavigationDrawer;
 using Xperimen.ViewModel.Commitment;
@@ -29,7 +30,7 @@ namespace Xperimen.View.Commitment
             {
                 SetupView();
                 viewmodel.IsLoading = true;
-                SetDisplayAlert("Success", "Commitment deleted.", "", "", "");
+                SetDisplayAlert(AppResources.app_success, AppResources.comm_commdeleted, "", "", "");
             });
         }
 
@@ -56,8 +57,8 @@ namespace Xperimen.View.Commitment
             }
 
             var result = viewmodel.GetCommitmentList();
-            if (result == 2) SetDisplayAlert("Error", "Technical error updating net balance.", "", "", "");
-            else if (result == 3) SetDisplayAlert("Error", "Technical error retrieving commitment list.", "", "", "");
+            if (result == 2) SetDisplayAlert(AppResources.app_error, AppResources.comm_errorupdnet, "", "", "");
+            else if (result == 3) SetDisplayAlert(AppResources.app_error, AppResources.comm_errorgetcommlist, "", "", "");
         }
 
         public async void DrawerTapped(object sender, EventArgs e)
@@ -101,12 +102,12 @@ namespace Xperimen.View.Commitment
             view.IsEnabled = false;
 
             viewmodel.IsLoading = true;
-            if (viewmodel.Income == 0) SetDisplayAlert("Empty", "Please insert income amount.", "", "", "");
+            if (viewmodel.Income == 0) SetDisplayAlert(AppResources.app_empty, AppResources.exp_emptydesc, "", "", "");
             else
             {
                 var result = viewmodel.SaveIncome();
                 if (result == 1) viewmodel.IsLoading = false;
-                if (result == 2) SetDisplayAlert("Error", "Technical error saving income amount.", "", "", "");
+                if (result == 2) SetDisplayAlert(AppResources.app_error, AppResources.exp_errorupdincome, "", "", "");
                 viewmodel.GetCommitmentList();
                 stack_income.IsVisible = true;
                 stack_editincome.IsVisible = false;

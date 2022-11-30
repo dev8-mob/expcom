@@ -6,6 +6,7 @@ using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
 using Xperimen.Helper;
 using Xperimen.Model;
+using Xperimen.Resources;
 using Xperimen.Stylekit;
 using Xperimen.ViewModel.Commitment;
 
@@ -58,7 +59,7 @@ namespace Xperimen.View.Commitment
                             MessagingCenter.Send(this, "CommitmentDeleted");
                             await Navigation.PopAsync();
                         }
-                        if (result == 2) SetDisplayAlert("Error", "Technical error deleting the selected commitment.", "", "", "error");
+                        if (result == 2) SetDisplayAlert(AppResources.app_error, AppResources.comm_errordel, "", "", "error");
                     }
                     else if (arg.Equals("cancel")) viewmodel.IsLoading = false;
                     else viewmodel.IsLoading = false;
@@ -68,6 +69,7 @@ namespace Xperimen.View.Commitment
                     viewmodel.IsLoading = false;
                     SetupView();
                 }
+                else viewmodel.IsLoading = false;
             });
         }
 
@@ -106,8 +108,8 @@ namespace Xperimen.View.Commitment
             }
 
             var result = viewmodel.SetDataCommitment(data);
-            if (result == 2) SetDisplayAlert("Not Found", "The selected commitment is not found.", "", "", "error");
-            else if (result == 3) SetDisplayAlert("Error", "Technical error retrieving the selected commitment.", "", "", "error");
+            if (result == 2) SetDisplayAlert(AppResources.app_notfound, AppResources.comm_notfound, "", "", "error");
+            else if (result == 3) SetDisplayAlert(AppResources.app_error, AppResources.comm_errorgetcomm, "", "", "error");
 
             // set done paid button visibility
             if (viewmodel.IsDone) frame_donepaid.IsVisible = false;
@@ -149,7 +151,7 @@ namespace Xperimen.View.Commitment
             view.IsEnabled = false;
 
             viewmodel.IsLoading = true;
-            SetDisplayAlert("Confirmation", "Are you sure to delete this commitment", "Yes", "Cancel", "delete");
+            SetDisplayAlert(AppResources.app_confirm, AppResources.comm_suredel, AppResources.app_okay, AppResources.app_cancel, "delete");
             view.IsEnabled = true;
         }
 
@@ -187,10 +189,10 @@ namespace Xperimen.View.Commitment
 
             viewmodel.IsLoading = true;
             var result = await viewmodel.PickPhoto();
-            if (result == 5) SetDisplayAlert("Permission", "App required permission to access media gallery to pick photos.", "", "", "");
-            if (result == 4) SetDisplayAlert("Permission", "App required permission to access photos to pick photos.", "", "", "");
-            if (result == 3) SetDisplayAlert("Unavailable", "Photo gallery is not available to pick photo.", "", "", "");
-            else if (result == 2) SetDisplayAlert("Alert", "No photo selected.", "", "", "nomedia");
+            if (result == 5) SetDisplayAlert(AppResources.app_permission, AppResources.camgal_permmedia, "", "", "");
+            if (result == 4) SetDisplayAlert(AppResources.app_permission, AppResources.camgal_permphoto, "", "", "");
+            if (result == 3) SetDisplayAlert(AppResources.app_unavailable, AppResources.camgal_photounavailable, "", "", "");
+            else if (result == 2) SetDisplayAlert(AppResources.app_alert, AppResources.camgal_nophotoselect, "", "", "nomedia");
             else if (result == 1)
             {
                 var picpath = viewmodel.Picture.Path.Split('/');
@@ -211,10 +213,10 @@ namespace Xperimen.View.Commitment
 
             viewmodel.IsLoading = true;
             var result = await viewmodel.TakePhoto();
-            if (result == 5) SetDisplayAlert("Permission", "App required permission to access media gallery to pick photos.", "", "", "");
-            if (result == 4) SetDisplayAlert("Permission", "App required permission to access photos to pick photos.", "", "", "");
-            if (result == 3) SetDisplayAlert("Unavailable", "Camera is not available or take photo not supported.", "", "", "");
-            else if (result == 2) SetDisplayAlert("Alert", "Take photo cancelled.", "", "", "nomedia");
+            if (result == 5) SetDisplayAlert(AppResources.app_permission, AppResources.camgal_permmedia, "", "", "");
+            if (result == 4) SetDisplayAlert(AppResources.app_permission, AppResources.camgal_permphoto, "", "", "");
+            if (result == 3) SetDisplayAlert(AppResources.app_unavailable, AppResources.camgal_camunavailable, "", "", "");
+            else if (result == 2) SetDisplayAlert(AppResources.app_alert, AppResources.camgal_camcancel, "", "", "nomedia");
             else if (result == 1)
             {
                 var picpath = viewmodel.Picture.Path.Split('/');
@@ -279,18 +281,18 @@ namespace Xperimen.View.Commitment
             view.IsEnabled = false;
 
             viewmodel.IsLoading = true;
-            if (string.IsNullOrEmpty(viewmodel.Title)) SetDisplayAlert("Alert", "Title is empty. Please insert any title (bill, rent, investment, etc...)", "", "", "");
-            else if (viewmodel.Amount == 0) SetDisplayAlert("Alert", "Commitment amount is empty. Please insert commitment amount.", "", "", "");
-            else if (viewmodel.HasAccNo && viewmodel.AccountNo == 0) SetDisplayAlert("Alert", "Account number  is empty. Please insert account number.", "", "", "");
+            if (string.IsNullOrEmpty(viewmodel.Title)) SetDisplayAlert(AppResources.app_alert, AppResources.comm_emptytitle, "", "", "");
+            else if (viewmodel.Amount == 0) SetDisplayAlert(AppResources.app_alert, AppResources.comm_emptyamount, "", "", "");
+            else if (viewmodel.HasAccNo && viewmodel.AccountNo == 0) SetDisplayAlert(AppResources.app_alert, AppResources.comm_emptyaccno, "", "", "");
             else
             {
                 var result = viewmodel.UpdateCommitment(data);
                 if (result == 1)
                 {
-                    SetDisplayAlert("Success", "Commitment details updated.", "", "", "success");
+                    SetDisplayAlert(AppResources.app_success, AppResources.comm_detailupdated, "", "", "success");
                     MessagingCenter.Send(this, "CommitmentUpdated");
                 }
-                else if (result == 2) SetDisplayAlert("Error", "Technical error when updating commitment.", "", "", "error");
+                else if (result == 2) SetDisplayAlert(AppResources.app_error, AppResources.comm_detailupdateerror, "", "", "error");
             }
             view.IsEnabled = true;
         }
@@ -306,7 +308,7 @@ namespace Xperimen.View.Commitment
             var result = viewmodel.SetStatusDonePaid(data, true);
             if (result == 1)
             {
-                SetDisplayAlert("Done", "Commitment marked as paid.", "", "", "markdone");
+                SetDisplayAlert(AppResources.app_done, AppResources.comm_detailmarkpaid, "", "", "markdone");
                 MessagingCenter.Send(this, "CommitmentUpdated");
             }
             view.IsEnabled = true;
@@ -323,7 +325,7 @@ namespace Xperimen.View.Commitment
             var result = viewmodel.SetStatusDonePaid(data, false);
             if (result == 1)
             {
-                SetDisplayAlert("Undone", "Commitment marked as not done yet.", "", "", "markdone");
+                SetDisplayAlert(AppResources.app_undone, AppResources.comm_detailmarknotdone, "", "", "markdone");
                 MessagingCenter.Send(this, "CommitmentUpdated");
             }
             view.IsEnabled = true;

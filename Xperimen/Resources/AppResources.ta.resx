@@ -141,6 +141,9 @@
   <data name="app_delete" xml:space="preserve">
     <value>நீக்கு</value>
   </data>
+  <data name="app_done" xml:space="preserve">
+    <value>முடிந்தது</value>
+  </data>
   <data name="app_empty" xml:space="preserve">
     <value>காலியாக</value>
   </data>
@@ -176,6 +179,9 @@
   </data>
   <data name="app_monday" xml:space="preserve">
     <value>திங்கட்கிழமை</value>
+  </data>
+  <data name="app_notfound" xml:space="preserve">
+    <value>கிடைக்கவில்லை</value>
   </data>
   <data name="app_notmatch" xml:space="preserve">
     <value>பொருத்தம் இல்லை</value>
@@ -215,6 +221,12 @@
   </data>
   <data name="app_unavailable" xml:space="preserve">
     <value>கிடைக்கவில்லை</value>
+  </data>
+  <data name="app_undone" xml:space="preserve">
+    <value>செயல்தவிர்க்கப்பட்டது</value>
+  </data>
+  <data name="app_update" xml:space="preserve">
+    <value>புதுப்பிக்கவும்</value>
   </data>
   <data name="app_wednesday" xml:space="preserve">
     <value>புதன்</value>
@@ -299,6 +311,108 @@
   </data>
   <data name="code_setting_usernameempty" xml:space="preserve">
     <value>பயனர் பெயர் காலியாக இருக்கக்கூடாது. தயவுசெய்து உங்கள் பயனர் பெயரைச் செருகவும்.</value>
+  </data>
+  <data name="comm_accno" xml:space="preserve">
+    <value>கணக்கு எண்</value>
+  </data>
+  <data name="comm_addcomm" xml:space="preserve">
+    <value>அர்ப்பணிப்பைச் சேர்க்கவும்</value>
+  </data>
+  <data name="comm_commadded" xml:space="preserve">
+    <value>புதிய அர்ப்பணிப்பு சேர்க்கப்பட்டது.</value>
+  </data>
+  <data name="comm_commdeleted" xml:space="preserve">
+    <value>உறுதி நீக்கப்பட்டது.</value>
+  </data>
+  <data name="comm_congrats" xml:space="preserve">
+    <value>வாழ்த்துகள்! இந்த மாதத்திற்கான அனைத்து அர்ப்பணிப்புகளும் நிறைவடைந்தன</value>
+  </data>
+  <data name="comm_desc" xml:space="preserve">
+    <value>விளக்கம் (விரும்பினால்)</value>
+  </data>
+  <data name="comm_descplaceholder" xml:space="preserve">
+    <value>விவரங்கள் (கணக்கு எண், வங்கி பெயர் போன்றவை...)</value>
+  </data>
+  <data name="comm_detailmarknotdone" xml:space="preserve">
+    <value>உறுதி இன்னும் முடிக்கப்படவில்லை எனக் குறிக்கப்பட்டது.</value>
+  </data>
+  <data name="comm_detailmarkpaid" xml:space="preserve">
+    <value>அர்ப்பணிப்பு செலுத்தப்பட்டதாகக் குறிக்கப்பட்டது.</value>
+  </data>
+  <data name="comm_detailupdated" xml:space="preserve">
+    <value>அர்ப்பணிப்பு விவரங்கள் புதுப்பிக்கப்பட்டன.</value>
+  </data>
+  <data name="comm_detailupdateerror" xml:space="preserve">
+    <value>உறுதிமொழியைப் புதுப்பிக்கும்போது தொழில்நுட்பப் பிழை.</value>
+  </data>
+  <data name="comm_donepaid" xml:space="preserve">
+    <value>பணம் செலுத்தப்பட்டது</value>
+  </data>
+  <data name="comm_editcomm" xml:space="preserve">
+    <value>உறுதியைத் திருத்தவும்</value>
+  </data>
+  <data name="comm_emptyaccno" xml:space="preserve">
+    <value>கணக்கு எண் காலியாக உள்ளது. கணக்கு எண்ணைச் செருகவும்.</value>
+  </data>
+  <data name="comm_emptyamount" xml:space="preserve">
+    <value>உறுதித் தொகை காலியாக உள்ளது. உறுதித் தொகையைச் செருகவும்.</value>
+  </data>
+  <data name="comm_emptytitle" xml:space="preserve">
+    <value>தலைப்பு காலியாக உள்ளது. ஏதேனும் தலைப்பைச் செருகவும் (பில், வாடகை, முதலீடு போன்றவை...)</value>
+  </data>
+  <data name="comm_erroraddcomm" xml:space="preserve">
+    <value>புதிய அர்ப்பணிப்பைச் சேர்ப்பதில் தொழில்நுட்பப் பிழை.</value>
+  </data>
+  <data name="comm_errordel" xml:space="preserve">
+    <value>தேர்ந்தெடுக்கப்பட்ட உறுதியை நீக்குவதில் தொழில்நுட்பப் பிழை.</value>
+  </data>
+  <data name="comm_errorgetcomm" xml:space="preserve">
+    <value>தேர்ந்தெடுக்கப்பட்ட உறுதிப்பாட்டை மீட்டெடுப்பதில் தொழில்நுட்பப் பிழை.</value>
+  </data>
+  <data name="comm_errorgetcommlist" xml:space="preserve">
+    <value>உறுதிப் பட்டியலை மீட்டெடுப்பதில் தொழில்நுட்பப் பிழை.</value>
+  </data>
+  <data name="comm_errorupdnet" xml:space="preserve">
+    <value>நிகர சமநிலையைப் புதுப்பிப்பதில் தொழில்நுட்பப் பிழை.</value>
+  </data>
+  <data name="comm_marknotdone" xml:space="preserve">
+    <value>முடியவில்லை எனக் குறிக்கவும்</value>
+  </data>
+  <data name="comm_navtitle" xml:space="preserve">
+    <value>உறுதிப் பட்டியல்</value>
+  </data>
+  <data name="comm_net" xml:space="preserve">
+    <value>நிகரம் :</value>
+  </data>
+  <data name="comm_newcomm" xml:space="preserve">
+    <value>புதிய அர்ப்பணிப்பு</value>
+  </data>
+  <data name="comm_notfound" xml:space="preserve">
+    <value>தேர்ந்தெடுக்கப்பட்ட உறுதி கிடைக்கவில்லை.</value>
+  </data>
+  <data name="comm_notyet" xml:space="preserve">
+    <value>உங்களிடம் இன்னும் எந்த உறுதிப்பாடும் இல்லை. புதிய உறுதிப்பாட்டைச் சேர்க்க கீழே உள்ள பொத்தானைக் கிளிக் செய்யவும்.</value>
+  </data>
+  <data name="comm_placeholder" xml:space="preserve">
+    <value>தலைப்பு</value>
+  </data>
+  <data name="comm_savecomm" xml:space="preserve">
+    <value>உறுதியை சேமிக்கவும்</value>
+  </data>
+  <data name="comm_suredel" xml:space="preserve">
+    <value>இந்த உறுதிமொழியை நிச்சயமாக நீக்குகிறீர்களா?</value>
+  </data>
+  <data name="comm_upcoming" xml:space="preserve">
+    <value>வரவிருக்கும் அர்ப்பணிப்பு</value>
+  </data>
+  <data name="comm_youhave" xml:space="preserve">
+    <value>வேண்டும்</value>
+  </data>
+  <data name="comm_youhave2" xml:space="preserve">
+    <value>இன்னும் செய்யப்படவில்லை</value>
+  </data>
+  <data name="comm_youhave3" xml:space="preserve">
+    <value>இந்த மாதத்திற்கு</value>
   </data>
   <data name="dashboard_available" xml:space="preserve">
     <value>கிடைக்கும்</value>

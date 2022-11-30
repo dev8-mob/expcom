@@ -2,6 +2,7 @@
 using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using Xperimen.Resources;
 using Xperimen.Stylekit;
 using Xperimen.ViewModel.Commitment;
 
@@ -43,10 +44,10 @@ namespace Xperimen.View.Commitment
 
             viewmodel.IsLoading = true;
             var result = await viewmodel.PickPhoto();
-            if (result == 5) SetDisplayAlert("Permission", "App required permission to access media gallery to pick photos.", "", "", "");
-            if (result == 4) SetDisplayAlert("Permission", "App required permission to access photos to pick photos.", "", "", "");
-            if (result == 3) SetDisplayAlert("Unavailable", "Photo gallery is not available to pick photo.", "", "", "");
-            else if (result == 2) SetDisplayAlert("Alert", "No photo selected.", "", "", "");
+            if (result == 5) SetDisplayAlert(AppResources.app_permission, AppResources.camgal_permmedia, "", "", "");
+            if (result == 4) SetDisplayAlert(AppResources.app_permission, AppResources.camgal_permphoto, "", "", "");
+            if (result == 3) SetDisplayAlert(AppResources.app_unavailable, AppResources.camgal_photounavailable, "", "", "");
+            else if (result == 2) SetDisplayAlert(AppResources.app_alert, AppResources.camgal_nophotoselect, "", "", "");
             else if (result == 1)
             {
                 var picpath = viewmodel.Picture.Path.Split('/');
@@ -67,10 +68,10 @@ namespace Xperimen.View.Commitment
 
             viewmodel.IsLoading = true;
             var result = await viewmodel.TakePhoto();
-            if (result == 5) SetDisplayAlert("Permission", "App required permission to access media gallery to pick photos.", "", "", "");
-            if (result == 4) SetDisplayAlert("Permission", "App required permission to access photos to pick photos.", "", "", "");
-            if (result == 3) SetDisplayAlert("Unavailable", "Camera is not available or take photo not supported.", "", "", "");
-            else if (result == 2) SetDisplayAlert("Alert", "Take photo cancelled.", "", "", "");
+            if (result == 5) SetDisplayAlert(AppResources.app_permission, AppResources.camgal_permmedia, "", "", "");
+            if (result == 4) SetDisplayAlert(AppResources.app_permission, AppResources.camgal_permphoto, "", "", "");
+            if (result == 3) SetDisplayAlert(AppResources.app_unavailable, AppResources.camgal_camunavailable, "", "", "");
+            else if (result == 2) SetDisplayAlert(AppResources.app_alert, AppResources.camgal_camcancel, "", "", "");
             else if (result == 1)
             {
                 var picpath = viewmodel.Picture.Path.Split('/');
@@ -90,18 +91,18 @@ namespace Xperimen.View.Commitment
             view.IsEnabled = false;
 
             viewmodel.IsLoading = true;
-            if (string.IsNullOrEmpty(viewmodel.Title)) SetDisplayAlert("Alert", "Title is empty. Please insert any title (bill, rent, investment, etc...)", "", "", "");
-            else if (viewmodel.Amount == 0) SetDisplayAlert("Alert", "Commitment amount is empty. Please insert commitment amount.", "", "", "");
-            else if (viewmodel.HasAccNo && viewmodel.AccountNo == 0) SetDisplayAlert("Alert", "Account number  is empty. Please insert account number.", "", "", "");
+            if (string.IsNullOrEmpty(viewmodel.Title)) SetDisplayAlert(AppResources.app_alert, AppResources.comm_emptytitle, "", "", "");
+            else if (viewmodel.Amount == 0) SetDisplayAlert(AppResources.app_alert, AppResources.comm_emptyamount, "", "", "");
+            else if (viewmodel.HasAccNo && viewmodel.AccountNo == 0) SetDisplayAlert(AppResources.app_alert, AppResources.comm_emptyaccno, "", "", "");
             else
             {
                 var result = viewmodel.AddCommitment();
                 if (result == 1)
                 {
-                    SetDisplayAlert("Success", "New commitment added.", "", "", "success");
+                    SetDisplayAlert(AppResources.app_success, AppResources.comm_commadded, "", "", "success");
                     MessagingCenter.Send(this, "CommitmentAdded");
                 }
-                else if (result == 2) SetDisplayAlert("Error", "Technical error adding new commitment.", "", "", "");
+                else if (result == 2) SetDisplayAlert(AppResources.app_error, AppResources.comm_erroraddcomm, "", "", "");
             }
             view.IsEnabled = true;
         }

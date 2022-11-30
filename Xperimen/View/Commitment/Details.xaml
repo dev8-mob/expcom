@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Xperimen.View.Commitment.Details"
              xmlns:stylekit="clr-namespace:Xperimen.Stylekit"
+             xmlns:resource="clr-namespace:Xperimen.Resources"
              NavigationPage.HasNavigationBar="False">
     
     <ContentPage.Content>
@@ -110,13 +111,14 @@
                             <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" Orientation="Vertical" Spacing="0"
                                          Padding="20" x:Name="stack_bg">
 
-                                <stylekit:XLabel Text="Edit Commitment" HorizontalOptions="Center" FontFamily="{DynamicResource Key=BoldFont}" FontSize="18"/>
+                                <stylekit:XLabel Text="{x:Static resource:AppResources.comm_editcomm}" HorizontalOptions="Center" 
+                                                 FontFamily="{DynamicResource Key=BoldFont}" FontSize="18"/>
 
                                 <!-- title and attachment -->
                                 <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Spacing="10" Margin="0,30,0,0">
 
                                     <!-- title -->
-                                    <stylekit:CustomEntry Placeholder="title (bill, rent, etc...)" BindingText="Title"/>
+                                    <stylekit:CustomEntry Placeholder="{x:Static resource:AppResources.comm_placeholder}" BindingText="Title"/>
 
                                     <!-- pick gallery and take photo -->
                                     <stylekit:XImage Source1="black_image.png" Source2="white_image.png" HeightRequest="30" WidthRequest="30"
@@ -139,7 +141,7 @@
                                              Spacing="10" Margin="0,10,0,0">
                                     <stylekit:CustomEntry ImgLeft="black_money.png" ImgLeft_="white_money.png" BindingText="Amount" KeyboardType="Numeric" 
                                                           VerticalOptions="Center"/>
-                                    <stylekit:XLabel Text="Account No" VerticalOptions="Center" Margin="10,0,0,0"/>
+                                    <stylekit:XLabel Text="{x:Static resource:AppResources.comm_accno}" VerticalOptions="Center" Margin="10,0,0,0"/>
                                     <stylekit:CustomCheckbox x:Name="checkbox" CheckOff1="black_checkbox_off.png" CheckOn1="black_checkbox_on.png" 
                                                              CheckOff2="white_checkbox_off.png" CheckOn2="white_checkbox_on.png" BindingCheck="HasAccNo"/>
                                 </StackLayout>
@@ -148,8 +150,8 @@
                                 <stylekit:CustomEntry IsVisible="{Binding HasAccNo}" Margin="0,10,0,0" BindingText="AccountNo" KeyboardType="Numeric"/>
 
                                 <!-- editor description -->
-                                <stylekit:XLabel Text="Description (optional)" HorizontalOptions="Start" Margin="0,30,0,0"/>
-                                <stylekit:CustomEditor Margin="0,5,0,0" Placeholder="details (account number, bank name, etc...)" BindingText="Description"/>
+                                <stylekit:XLabel Text="{x:Static resource:AppResources.comm_desc}" HorizontalOptions="Start" Margin="0,30,0,0"/>
+                                <stylekit:CustomEditor Margin="0,5,0,0" Placeholder="{x:Static resource:AppResources.comm_descplaceholder}" BindingText="Description"/>
 
                                 <!-- attachment picture -->
                                 <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Spacing="10" Margin="0,10,0,0"
@@ -172,7 +174,7 @@
                                 <Frame Padding="0,10,0,10" CornerRadius="8" BorderColor="{DynamicResource Key=Primary}" HorizontalOptions="FillAndExpand"
                                        Margin="0,30,0,0" BackgroundColor="{DynamicResource Key=Primary}" HasShadow="False" IsClippedToBounds="True">
                                     <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Spacing="10" VerticalOptions="Center">
-                                        <Label Text="Update" FontFamily="{DynamicResource Key=BoldFont}" TextColor="White" 
+                                        <Label Text="{x:Static resource:AppResources.app_update}" FontFamily="{DynamicResource Key=BoldFont}" TextColor="White" 
                                                HorizontalOptions="Center" VerticalOptions="Center"/>
                                         <Image Source="white_save.png" Aspect="AspectFit" HeightRequest="20" WidthRequest="20" VerticalOptions="Center"/>
                                     </StackLayout>
@@ -182,8 +184,8 @@
                                 </Frame>
 
                                 <!-- cancel button -->
-                                <stylekit:XLabel x:Name="lbl_cancel" Text="Cancel" HorizontalOptions="Center" FontFamily="{DynamicResource Key=BoldFont}" 
-                                                 Margin="0,15,0,0" Padding="20,15,20,15">
+                                <stylekit:XLabel x:Name="lbl_cancel" Text="{x:Static resource:AppResources.app_cancel}" HorizontalOptions="Center" 
+                                                 FontFamily="{DynamicResource Key=BoldFont}" Margin="0,15,0,0" Padding="20,15,20,15">
                                     <Label.GestureRecognizers>
                                         <TapGestureRecognizer Tapped="CancelClicked" NumberOfTapsRequired="1"/>
                                     </Label.GestureRecognizers>
@@ -202,7 +204,7 @@
                                    VerticalOptions="End" BackgroundColor="{DynamicResource Key=Primary}" HasShadow="False" 
                                    IsClippedToBounds="True" IsVisible="{Binding IsDone}">
                                 <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Spacing="10" VerticalOptions="Center">
-                                    <Label Text="Mark as Not Done" FontFamily="{DynamicResource Key=BoldFont}" TextColor="White" 
+                                    <Label Text="{x:Static resource:AppResources.comm_marknotdone}" FontFamily="{DynamicResource Key=BoldFont}" TextColor="White" 
                                            HorizontalOptions="Center" VerticalOptions="Center"/>
                                     <Image Source="white_undo.png" Aspect="AspectFit" HeightRequest="20" WidthRequest="20" VerticalOptions="Center"/>
                                 </StackLayout>
@@ -216,7 +218,7 @@
                                    VerticalOptions="End" BackgroundColor="{DynamicResource Key=CustomGreen}" HasShadow="False" 
                                    IsClippedToBounds="True" x:Name="frame_donepaid">
                                 <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Spacing="10" VerticalOptions="Center">
-                                    <Label Text="Done Paid" FontFamily="{DynamicResource Key=BoldFont}" TextColor="White" 
+                                    <Label Text="{x:Static resource:AppResources.comm_donepaid}" FontFamily="{DynamicResource Key=BoldFont}" TextColor="White" 
                                            HorizontalOptions="Center" VerticalOptions="Center"/>
                                     <Image Source="white_done.png" Aspect="AspectFit" HeightRequest="20" WidthRequest="20" VerticalOptions="Center"/>
                                 </StackLayout>

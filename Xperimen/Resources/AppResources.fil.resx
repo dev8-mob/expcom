@@ -141,6 +141,9 @@
   <data name="app_delete" xml:space="preserve">
     <value>Tanggalin</value>
   </data>
+  <data name="app_done" xml:space="preserve">
+    <value>Tapos na</value>
+  </data>
   <data name="app_empty" xml:space="preserve">
     <value>Walang laman</value>
   </data>
@@ -176,6 +179,9 @@
   </data>
   <data name="app_monday" xml:space="preserve">
     <value>Lunes</value>
+  </data>
+  <data name="app_notfound" xml:space="preserve">
+    <value>Hindi mahanap</value>
   </data>
   <data name="app_notmatch" xml:space="preserve">
     <value>Hindi parehas</value>
@@ -215,6 +221,12 @@
   </data>
   <data name="app_unavailable" xml:space="preserve">
     <value>Hindi magagamit</value>
+  </data>
+  <data name="app_undone" xml:space="preserve">
+    <value>Inalis na</value>
+  </data>
+  <data name="app_update" xml:space="preserve">
+    <value>Update</value>
   </data>
   <data name="app_wednesday" xml:space="preserve">
     <value>Miyerkules</value>
@@ -299,6 +311,108 @@
   </data>
   <data name="code_setting_usernameempty" xml:space="preserve">
     <value>Hindi maaaring walang laman ang username. Mangyaring ipasok ang iyong username.</value>
+  </data>
+  <data name="comm_accno" xml:space="preserve">
+    <value>Account No</value>
+  </data>
+  <data name="comm_addcomm" xml:space="preserve">
+    <value>Magdagdag ng Commitment</value>
+  </data>
+  <data name="comm_commadded" xml:space="preserve">
+    <value>Idinagdag ang bagong pangako.</value>
+  </data>
+  <data name="comm_commdeleted" xml:space="preserve">
+    <value>Tinanggal ang pangako.</value>
+  </data>
+  <data name="comm_congrats" xml:space="preserve">
+    <value>Congrats! Ang lahat ng (mga) pangako ay nakumpleto para sa buwang ito</value>
+  </data>
+  <data name="comm_desc" xml:space="preserve">
+    <value>Paglalarawan (opsyonal)</value>
+  </data>
+  <data name="comm_descplaceholder" xml:space="preserve">
+    <value>mga detalye (account number, pangalan ng bangko, atbp...)</value>
+  </data>
+  <data name="comm_detailmarknotdone" xml:space="preserve">
+    <value>Ang pangako ay minarkahan bilang hindi pa tapos.</value>
+  </data>
+  <data name="comm_detailmarkpaid" xml:space="preserve">
+    <value>Ang pangako ay minarkahan bilang bayad.</value>
+  </data>
+  <data name="comm_detailupdated" xml:space="preserve">
+    <value>Na-update ang mga detalye ng pangako.</value>
+  </data>
+  <data name="comm_detailupdateerror" xml:space="preserve">
+    <value>Teknikal na error kapag nag-a-update ng commitment.</value>
+  </data>
+  <data name="comm_donepaid" xml:space="preserve">
+    <value>Tapos Nagbayad</value>
+  </data>
+  <data name="comm_editcomm" xml:space="preserve">
+    <value>I-edit ang Pangako</value>
+  </data>
+  <data name="comm_emptyaccno" xml:space="preserve">
+    <value>Walang laman ang account number. Pakipasok ang account number.</value>
+  </data>
+  <data name="comm_emptyamount" xml:space="preserve">
+    <value>Walang laman ang halaga ng pangako. Mangyaring ipasok ang halaga ng pangako.</value>
+  </data>
+  <data name="comm_emptytitle" xml:space="preserve">
+    <value>Walang laman ang pamagat. Mangyaring maglagay ng anumang pamagat (bill, upa, pamumuhunan, atbp...)</value>
+  </data>
+  <data name="comm_erroraddcomm" xml:space="preserve">
+    <value>Teknikal na error sa pagdaragdag ng bagong pangako.</value>
+  </data>
+  <data name="comm_errordel" xml:space="preserve">
+    <value>Teknikal na error sa pagtanggal sa napiling pangako.</value>
+  </data>
+  <data name="comm_errorgetcomm" xml:space="preserve">
+    <value>Teknikal na error sa pagkuha ng napiling pangako.</value>
+  </data>
+  <data name="comm_errorgetcommlist" xml:space="preserve">
+    <value>Teknikal na error sa pagkuha ng listahan ng pangako.</value>
+  </data>
+  <data name="comm_errorupdnet" xml:space="preserve">
+    <value>Teknikal na error sa pag-update ng netong balanse.</value>
+  </data>
+  <data name="comm_marknotdone" xml:space="preserve">
+    <value>Markahan bilang Hindi Tapos</value>
+  </data>
+  <data name="comm_navtitle" xml:space="preserve">
+    <value>Listahan ng Pangako</value>
+  </data>
+  <data name="comm_net" xml:space="preserve">
+    <value>Net Balanse :</value>
+  </data>
+  <data name="comm_newcomm" xml:space="preserve">
+    <value>Bagong Pangako</value>
+  </data>
+  <data name="comm_notfound" xml:space="preserve">
+    <value>Hindi nahanap ang napiling pangako.</value>
+  </data>
+  <data name="comm_notyet" xml:space="preserve">
+    <value>Wala ka pang commitment. I-click ang button sa ibaba para magdagdag ng bagong commitment.</value>
+  </data>
+  <data name="comm_placeholder" xml:space="preserve">
+    <value>pamagat (bill, upa, atbp...)</value>
+  </data>
+  <data name="comm_savecomm" xml:space="preserve">
+    <value>I-save ang Commitment</value>
+  </data>
+  <data name="comm_suredel" xml:space="preserve">
+    <value>Sigurado ka bang tatanggalin ang pangakong ito?</value>
+  </data>
+  <data name="comm_upcoming" xml:space="preserve">
+    <value>Ang paparating na pangako ay</value>
+  </data>
+  <data name="comm_youhave" xml:space="preserve">
+    <value>meron ka</value>
+  </data>
+  <data name="comm_youhave2" xml:space="preserve">
+    <value>(mga) pangako ay hindi pa tapos</value>
+  </data>
+  <data name="comm_youhave3" xml:space="preserve">
+    <value>para sa buwang ito</value>
   </data>
   <data name="dashboard_available" xml:space="preserve">
     <value>Available</value>
