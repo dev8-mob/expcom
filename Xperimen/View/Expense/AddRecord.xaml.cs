@@ -4,6 +4,7 @@ using System;
 using System.Linq;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using Xperimen.Resources;
 using Xperimen.Stylekit;
 using Xperimen.ViewModel.Expense;
 
@@ -63,10 +64,10 @@ namespace Xperimen.View.Expense
 
             viewmodel.IsLoading = true;
             var result = await viewmodel.PickPhoto();
-            if (result == 5) SetDisplayAlert("Permission", "App required permission to access media gallery to pick photos.", "", "", "");
-            if (result == 4) SetDisplayAlert("Permission", "App required permission to access photos to pick photos.", "", "", "");
-            if (result == 3) SetDisplayAlert("Unavailable", "Photo gallery is not available to pick photo.", "", "", "");
-            else if (result == 2) SetDisplayAlert("Alert", "No photo selected.", "", "", "");
+            if (result == 5) SetDisplayAlert(AppResources.app_permission, AppResources.camgal_permmedia, "", "", "");
+            if (result == 4) SetDisplayAlert(AppResources.app_permission, AppResources.camgal_permphoto, "", "", "");
+            if (result == 3) SetDisplayAlert(AppResources.app_unavailable, AppResources.camgal_photounavailable, "", "", "");
+            else if (result == 2) SetDisplayAlert(AppResources.app_alert, AppResources.camgal_nophotoselect, "", "", "");
             else if (result == 1)
             {
                 var picpath = viewmodel.Picture.Path.Split('/');
@@ -87,10 +88,10 @@ namespace Xperimen.View.Expense
 
             viewmodel.IsLoading = true;
             var result = await viewmodel.TakePhoto();
-            if (result == 5) SetDisplayAlert("Permission", "App required permission to access media gallery to pick photos.", "", "", "");
-            if (result == 4) SetDisplayAlert("Permission", "App required permission to access photos to pick photos.", "", "", "");
-            if (result == 3) SetDisplayAlert("Unavailable", "Camera is not available or take photo not supported.", "", "", "");
-            else if (result == 2) SetDisplayAlert("Alert", "Take photo cancelled.", "", "", "");
+            if (result == 5) SetDisplayAlert(AppResources.app_permission, AppResources.camgal_permmedia, "", "", "");
+            if (result == 4) SetDisplayAlert(AppResources.app_permission, AppResources.camgal_permphoto, "", "", "");
+            if (result == 3) SetDisplayAlert(AppResources.app_unavailable, AppResources.camgal_camunavailable, "", "", "");
+            else if (result == 2) SetDisplayAlert(AppResources.app_alert, AppResources.camgal_camcancel, "", "", "");
             else if (result == 1)
             {
                 var picpath = viewmodel.Picture.Path.Split('/');
@@ -120,18 +121,17 @@ namespace Xperimen.View.Expense
             view.IsEnabled = false;
 
             viewmodel.IsLoading = true;
-            if (viewmodel.Amount == 0) SetDisplayAlert("Alert", "Expenses amount is empty. Please insert expenses amount.", "", "", "");
-            else if (string.IsNullOrEmpty(viewmodel.Title)) SetDisplayAlert("Alert", "Expenses title is empty. Please insert any title " +
-                "(food, groceries, bills, entertainment, transfer, etc...)", "", "", "");
+            if (viewmodel.Amount == 0) SetDisplayAlert(AppResources.app_alert, AppResources.dashboard_emptyexp, "", "", "");
+            else if (string.IsNullOrEmpty(viewmodel.Title)) SetDisplayAlert(AppResources.app_alert, AppResources.dashboard_emptytitle, "", "", "");
             else
             {
                 var result = viewmodel.AddExpenses();
                 if (result == 1)
                 {
-                    SetDisplayAlert("Success", "New expenses added.", "", "", "success");
+                    SetDisplayAlert(AppResources.app_success, AppResources.dashboard_expadded, "", "", "success");
                     MessagingCenter.Send(this, "ExpensesAdded", viewmodel.SelectedDate);
                 }
-                else if (result == 2) SetDisplayAlert("Error", "Technical error adding new expenses.", "", "", "");
+                else if (result == 2) SetDisplayAlert(AppResources.app_error, AppResources.dashboard_erroraddexp, "", "", "");
             }
             view.IsEnabled = true;
         }

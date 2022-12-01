@@ -212,7 +212,6 @@
   </data>
   <data name="app_success" xml:space="preserve">
     <value>Success</value>
-    <comment>start new here</comment>
   </data>
   <data name="app_sunday" xml:space="preserve">
     <value>Sunday</value>
@@ -508,11 +507,41 @@
   <data name="dashobard_add" xml:space="preserve">
     <value>Add</value>
   </data>
+  <data name="exp_addhowmuch" xml:space="preserve">
+    <value>How much money I spent ?</value>
+  </data>
   <data name="exp_allexp" xml:space="preserve">
     <value>overall expenses</value>
   </data>
+  <data name="exp_asksuredelete" xml:space="preserve">
+    <value>Are you sure to delete</value>
+  </data>
+  <data name="exp_balance" xml:space="preserve">
+    <value>Available</value>
+  </data>
+  <data name="exp_changedate" xml:space="preserve">
+    <value>Change Date</value>
+  </data>
+  <data name="exp_deleted" xml:space="preserve">
+    <value>Selected expenses deleted.</value>
+  </data>
+  <data name="exp_editexp" xml:space="preserve">
+    <value>Edit Expenses</value>
+  </data>
   <data name="exp_emptydesc" xml:space="preserve">
     <value>Please insert income amount.</value>
+  </data>
+  <data name="exp_errordelexp" xml:space="preserve">
+    <value>Technical error deleting selected expenses.</value>
+  </data>
+  <data name="exp_errorgetallexp" xml:space="preserve">
+    <value>Technical error retrieving all expenses.</value>
+  </data>
+  <data name="exp_errorgetexp" xml:space="preserve">
+    <value>Technical error retrieving expenses for selected date.</value>
+  </data>
+  <data name="exp_errorgetfile" xml:space="preserve">
+    <value>Technical error retrieving selected attachment file.</value>
   </data>
   <data name="exp_errorupdincome" xml:space="preserve">
     <value>Technical error updating income amount.</value>
@@ -520,14 +549,32 @@
   <data name="exp_forspending" xml:space="preserve">
     <value>for spending</value>
   </data>
+  <data name="exp_fromexp" xml:space="preserve">
+    <value>from expenses ?</value>
+  </data>
   <data name="exp_minuscomm" xml:space="preserve">
     <value>commitment(s)</value>
+  </data>
+  <data name="exp_noexpyet" xml:space="preserve">
+    <value>No expenses yet for</value>
   </data>
   <data name="exp_notsetincome" xml:space="preserve">
     <value>You do not set any income yet. Please set your income</value>
   </data>
+  <data name="exp_ondate" xml:space="preserve">
+    <value>on</value>
+  </data>
+  <data name="exp_picnotfound" xml:space="preserve">
+    <value>The attachment picture is not found.</value>
+  </data>
+  <data name="exp_successupdate" xml:space="preserve">
+    <value>Expenses updated.</value>
+  </data>
   <data name="exp_summary" xml:space="preserve">
     <value>Expenses Summary</value>
+  </data>
+  <data name="exp_thismonthnoexp" xml:space="preserve">
+    <value>You do not have any expenses yet for this month.</value>
   </data>
   <data name="exp_total" xml:space="preserve">
     <value>Total</value>

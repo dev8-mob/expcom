@@ -507,11 +507,41 @@
   <data name="dashobard_add" xml:space="preserve">
     <value>Idagdag</value>
   </data>
+  <data name="exp_addhowmuch" xml:space="preserve">
+    <value>Magkano ang nagastos ko?</value>
+  </data>
   <data name="exp_allexp" xml:space="preserve">
     <value>pangkalahatang gastos</value>
   </data>
+  <data name="exp_asksuredelete" xml:space="preserve">
+    <value>Sigurado ka bang tatanggalin</value>
+  </data>
+  <data name="exp_balance" xml:space="preserve">
+    <value>Balanse</value>
+  </data>
+  <data name="exp_changedate" xml:space="preserve">
+    <value>Pagpalit ng petsa</value>
+  </data>
+  <data name="exp_deleted" xml:space="preserve">
+    <value>Ang mga napiling gastos ay tinanggal.</value>
+  </data>
+  <data name="exp_editexp" xml:space="preserve">
+    <value>I-edit ang mga Gastos</value>
+  </data>
   <data name="exp_emptydesc" xml:space="preserve">
     <value>Mangyaring ipasok ang halaga ng kita.</value>
+  </data>
+  <data name="exp_errordelexp" xml:space="preserve">
+    <value>Teknikal na error sa pagtanggal ng mga napiling gastos.</value>
+  </data>
+  <data name="exp_errorgetallexp" xml:space="preserve">
+    <value>Teknikal na error sa pagkuha ng lahat ng gastos.</value>
+  </data>
+  <data name="exp_errorgetexp" xml:space="preserve">
+    <value>Teknikal na error sa pagkuha ng mga gastos para sa napiling petsa.</value>
+  </data>
+  <data name="exp_errorgetfile" xml:space="preserve">
+    <value>Teknikal na error sa pagkuha ng napiling attachment file.</value>
   </data>
   <data name="exp_errorupdincome" xml:space="preserve">
     <value>Teknikal na error sa pag-update ng halaga ng kita.</value>
@@ -519,14 +549,32 @@
   <data name="exp_forspending" xml:space="preserve">
     <value>para sa paggastos</value>
   </data>
+  <data name="exp_fromexp" xml:space="preserve">
+    <value>mula sa mga gastos?</value>
+  </data>
   <data name="exp_minuscomm" xml:space="preserve">
     <value>(mga) pangako</value>
+  </data>
+  <data name="exp_noexpyet" xml:space="preserve">
+    <value>Wala pang gastos para</value>
   </data>
   <data name="exp_notsetincome" xml:space="preserve">
     <value>Wala ka pang itinatakdang kita. Mangyaring itakda ang iyong kita</value>
   </data>
+  <data name="exp_ondate" xml:space="preserve">
+    <value>sa</value>
+  </data>
+  <data name="exp_picnotfound" xml:space="preserve">
+    <value>Ang attachment na larawan ay hindi nahanap.</value>
+  </data>
+  <data name="exp_successupdate" xml:space="preserve">
+    <value>Na-update ang mga gastos.</value>
+  </data>
   <data name="exp_summary" xml:space="preserve">
     <value>Buod ng mga gastos</value>
+  </data>
+  <data name="exp_thismonthnoexp" xml:space="preserve">
+    <value>Wala ka pang gastos para sa buwang ito.</value>
   </data>
   <data name="exp_total" xml:space="preserve">
     <value>Kabuuan</value>

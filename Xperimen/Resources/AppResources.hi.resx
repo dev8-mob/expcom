@@ -507,11 +507,41 @@
   <data name="dashobard_add" xml:space="preserve">
     <value>जोड़ें</value>
   </data>
+  <data name="exp_addhowmuch" xml:space="preserve">
+    <value>मैंने कितना पैसा खर्च किया?</value>
+  </data>
   <data name="exp_allexp" xml:space="preserve">
     <value>कुल खर्च</value>
   </data>
+  <data name="exp_asksuredelete" xml:space="preserve">
+    <value>क्या वाकई हटाना है</value>
+  </data>
+  <data name="exp_balance" xml:space="preserve">
+    <value>संतुलन</value>
+  </data>
+  <data name="exp_changedate" xml:space="preserve">
+    <value>बदलाव दिनांक</value>
+  </data>
+  <data name="exp_deleted" xml:space="preserve">
+    <value>चयनित खर्च हटा दिए गए।</value>
+  </data>
+  <data name="exp_editexp" xml:space="preserve">
+    <value>व्यय संपादित करें</value>
+  </data>
   <data name="exp_emptydesc" xml:space="preserve">
     <value>कृपया आय राशि डालें।</value>
+  </data>
+  <data name="exp_errordelexp" xml:space="preserve">
+    <value>चुने गए खर्चों को मिटाने में तकनीकी गड़बड़ी.</value>
+  </data>
+  <data name="exp_errorgetallexp" xml:space="preserve">
+    <value>सभी खर्चों को पुनर्प्राप्त करने में तकनीकी त्रुटि।</value>
+  </data>
+  <data name="exp_errorgetexp" xml:space="preserve">
+    <value>चयनित दिनांक के लिए व्यय पुनर्प्राप्त करने में तकनीकी त्रुटि.</value>
+  </data>
+  <data name="exp_errorgetfile" xml:space="preserve">
+    <value>चयनित अनुलग्नक फ़ाइल पुनर्प्राप्त करने में तकनीकी त्रुटि.</value>
   </data>
   <data name="exp_errorupdincome" xml:space="preserve">
     <value>आय राशि अपडेट करने में तकनीकी गड़बड़ी.</value>
@@ -519,14 +549,32 @@
   <data name="exp_forspending" xml:space="preserve">
     <value>खर्च करने के लिए</value>
   </data>
+  <data name="exp_fromexp" xml:space="preserve">
+    <value>खर्चे से ?</value>
+  </data>
   <data name="exp_minuscomm" xml:space="preserve">
     <value>प्रतिबद्धता</value>
+  </data>
+  <data name="exp_noexpyet" xml:space="preserve">
+    <value>के लिए अभी तक कोई खर्च नहीं हुआ है</value>
   </data>
   <data name="exp_notsetincome" xml:space="preserve">
     <value>आपने अभी तक कोई आय निर्धारित नहीं की है। कृपया अपनी आय निर्धारित करें</value>
   </data>
+  <data name="exp_ondate" xml:space="preserve">
+    <value>उस दिन</value>
+  </data>
+  <data name="exp_picnotfound" xml:space="preserve">
+    <value>अनुलग्न चित्र नहीं मिला.</value>
+  </data>
+  <data name="exp_successupdate" xml:space="preserve">
+    <value>व्यय अपडेट किया गया।</value>
+  </data>
   <data name="exp_summary" xml:space="preserve">
     <value>व्यय सारांश</value>
+  </data>
+  <data name="exp_thismonthnoexp" xml:space="preserve">
+    <value>इस महीने के लिए आपका अभी तक कोई खर्च नहीं है।</value>
   </data>
   <data name="exp_total" xml:space="preserve">
     <value>कुल</value>

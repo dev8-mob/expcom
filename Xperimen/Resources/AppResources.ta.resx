@@ -507,11 +507,41 @@
   <data name="dashobard_add" xml:space="preserve">
     <value>கூட்டு</value>
   </data>
+  <data name="exp_addhowmuch" xml:space="preserve">
+    <value>நான் எவ்வளவு பணம் செலவு செய்தேன்?</value>
+  </data>
   <data name="exp_allexp" xml:space="preserve">
     <value>மொத்த செலவுகள்</value>
   </data>
+  <data name="exp_asksuredelete" xml:space="preserve">
+    <value>நீக்குவது உறுதி</value>
+  </data>
+  <data name="exp_balance" xml:space="preserve">
+    <value>இருப்பு</value>
+  </data>
+  <data name="exp_changedate" xml:space="preserve">
+    <value>தேதியை மாற்றவும்</value>
+  </data>
+  <data name="exp_deleted" xml:space="preserve">
+    <value>தேர்ந்தெடுக்கப்பட்ட செலவுகள் நீக்கப்பட்டன.</value>
+  </data>
+  <data name="exp_editexp" xml:space="preserve">
+    <value>செலவுகளைத் திருத்தவும்</value>
+  </data>
   <data name="exp_emptydesc" xml:space="preserve">
     <value>வருமானத் தொகையைச் சேர்க்கவும்.</value>
+  </data>
+  <data name="exp_errordelexp" xml:space="preserve">
+    <value>தேர்ந்தெடுக்கப்பட்ட செலவுகளை நீக்குவதில் தொழில்நுட்பப் பிழை.</value>
+  </data>
+  <data name="exp_errorgetallexp" xml:space="preserve">
+    <value>அனைத்து செலவுகளையும் மீட்டெடுப்பதில் தொழில்நுட்ப பிழை.</value>
+  </data>
+  <data name="exp_errorgetexp" xml:space="preserve">
+    <value>தேர்ந்தெடுக்கப்பட்ட தேதிக்கான செலவுகளை மீட்டெடுப்பதில் தொழில்நுட்ப பிழை.</value>
+  </data>
+  <data name="exp_errorgetfile" xml:space="preserve">
+    <value>தேர்ந்தெடுக்கப்பட்ட இணைப்பு கோப்பை மீட்டெடுப்பதில் தொழில்நுட்ப பிழை.</value>
   </data>
   <data name="exp_errorupdincome" xml:space="preserve">
     <value>வருமானத் தொகையைப் புதுப்பிப்பதில் தொழில்நுட்பப் பிழை.</value>
@@ -519,14 +549,32 @@
   <data name="exp_forspending" xml:space="preserve">
     <value>செலவுக்காக</value>
   </data>
+  <data name="exp_fromexp" xml:space="preserve">
+    <value>செலவில் இருந்து?</value>
+  </data>
   <data name="exp_minuscomm" xml:space="preserve">
     <value>அர்ப்பணிப்பு(கள்)</value>
+  </data>
+  <data name="exp_noexpyet" xml:space="preserve">
+    <value>அதற்கான செலவுகள் எதுவும் இல்லை</value>
   </data>
   <data name="exp_notsetincome" xml:space="preserve">
     <value>நீங்கள் இன்னும் வருமானம் எதையும் அமைக்கவில்லை. தயவுசெய்து உங்கள் வருமானத்தை அமைக்கவும்</value>
   </data>
+  <data name="exp_ondate" xml:space="preserve">
+    <value>அன்று</value>
+  </data>
+  <data name="exp_picnotfound" xml:space="preserve">
+    <value>இணைப்புப் படம் கிடைக்கவில்லை.</value>
+  </data>
+  <data name="exp_successupdate" xml:space="preserve">
+    <value>செலவுகள் புதுப்பிக்கப்பட்டன.</value>
+  </data>
   <data name="exp_summary" xml:space="preserve">
     <value>செலவுகளின் சுருக்கம்</value>
+  </data>
+  <data name="exp_thismonthnoexp" xml:space="preserve">
+    <value>இந்த மாதத்திற்கான செலவுகள் எதுவும் உங்களிடம் இல்லை.</value>
   </data>
   <data name="exp_total" xml:space="preserve">
     <value>மொத்தம்</value>

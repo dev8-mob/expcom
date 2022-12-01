@@ -31,7 +31,7 @@ namespace Xperimen.View.Expense
             #region messagingcenter
             MessagingCenter.Subscribe<CustomDisplayAlert, string>(this, "DisplayAlertSelection", (sender, arg) =>
             {
-                if (arg.Equals("Yes"))
+                if (arg.Equals("okay"))
                 {
                     if (!string.IsNullOrEmpty(alert.CodeObject))
                     {
@@ -39,28 +39,28 @@ namespace Xperimen.View.Expense
                         if (result == 1)
                         {
                             calendar.SetupView();
-                            SetDisplayAlert("Success", "Selected expenses deleted.", "", "", "");
+                            SetDisplayAlert(AppResources.app_success, AppResources.exp_deleted, "", "", "");
                             var success = viewmodel.GetExpensesOnDate(viewmodel.SelectedDate);
                             if (success == 1)
                             {
                                 if (viewmodel.NoExpenses) SetupView();
                                 else
                                 {
-                                    lbl_intro.Text = "No expenses yet for";
+                                    lbl_intro.Text = AppResources.exp_noexpyet;
                                     if (!string.IsNullOrEmpty(viewmodel.SelectedDate))
                                     {
                                         var sampledate = new DateTime();
                                         var split = viewmodel.SelectedDate.Split('.');
                                         if (split.Count() > 0)
                                             sampledate = new DateTime(Convert.ToInt32(split[2]), Convert.ToInt32(split[1]), Convert.ToInt32(split[0]));
-                                        lbl_ondateselect.Text = "on " + sampledate.ToString("MMM d");
+                                        lbl_ondateselect.Text = AppResources.exp_ondate + " " + sampledate.ToString("MMM d");
                                         lbl_ondateselect_zero.Text = sampledate.ToString("MMM d");
                                     }
                                 }
                             }
-                            if (success == 2) SetDisplayAlert("Error", "Technical error retrieving expenses for selected date.", "", "", "");
+                            if (success == 2) SetDisplayAlert(AppResources.app_error, AppResources.exp_errorgetexp, "", "", "");
                         }
-                        else if (result == 2) SetDisplayAlert("Error", "Technical error deleting selected expenses.", "", "", "");
+                        else if (result == 2) SetDisplayAlert(AppResources.app_error, AppResources.exp_errordelexp, "", "", "");
                     }
                 }
                 else viewmodel.IsLoading = false;
@@ -78,13 +78,13 @@ namespace Xperimen.View.Expense
                         var split = arg.Split('.');
                         if (split.Count() > 0)
                             sampledate = new DateTime(Convert.ToInt32(split[2]), Convert.ToInt32(split[1]), Convert.ToInt32(split[0]));
-                        lbl_ondateselect.Text = "on " + sampledate.ToString("MMM d");
+                        lbl_ondateselect.Text = AppResources.exp_ondate + " " + sampledate.ToString("MMM d");
                         lbl_ondateselect_zero.Text = sampledate.ToString("MMM d");
                         lbl_intro.Text = AppResources.exp_summary;
                     }
                     viewmodel.IsLoading = false;
                 }
-                if (result == 2) SetDisplayAlert("Error", "Technical error retrieving expenses for selected date.", "", "", "");
+                if (result == 2) SetDisplayAlert(AppResources.app_error, AppResources.exp_errorgetexp, "", "", "");
             });
             MessagingCenter.Subscribe<EditExpenses, string>(this, "ExpensesUpdated", (sender, arg) =>
             {
@@ -99,13 +99,13 @@ namespace Xperimen.View.Expense
                         var split = arg.Split('.');
                         if (split.Count() > 0)
                             sampledate = new DateTime(Convert.ToInt32(split[2]), Convert.ToInt32(split[1]), Convert.ToInt32(split[0]));
-                        lbl_ondateselect.Text = "on " + sampledate.ToString("MMM d");
+                        lbl_ondateselect.Text = AppResources.exp_ondate + " " + sampledate.ToString("MMM d");
                         lbl_ondateselect_zero.Text = sampledate.ToString("MMM d");
                         lbl_intro.Text = AppResources.exp_summary;
                     }
                     viewmodel.IsLoading = false;
                 }
-                if (result == 2) SetDisplayAlert("Error", "Technical error retrieving expenses for selected date.", "", "", "");
+                if (result == 2) SetDisplayAlert(AppResources.app_error, AppResources.exp_errorgetexp, "", "", "");
             });
             MessagingCenter.Subscribe<CustomCalendar, string>(this, "CalendarDateTap", (sender, arg) =>
             {
@@ -123,15 +123,15 @@ namespace Xperimen.View.Expense
                         if (viewmodel.NoExpenses)
                         {
                             SetupView();
-                            lbl_intro.Text = "No expenses yet for";
+                            lbl_intro.Text = AppResources.exp_noexpyet;
                             lbl_ondateselect_zero.Text = sampledate.ToString("MMM d");
                         }
                         if (viewmodel.HasExpenses)
-                            lbl_ondateselect.Text = "on " + sampledate.ToString("MMM d");
+                            lbl_ondateselect.Text = AppResources.exp_ondate + " " + sampledate.ToString("MMM d");
                     }
                     viewmodel.IsLoading = false;
                 }
-                if (result == 2) SetDisplayAlert("Error", "Technical error retrieving expenses for selected date.", "", "", "");
+                if (result == 2) SetDisplayAlert(AppResources.app_error, AppResources.exp_errorgetexp, "", "", "");
             });
             MessagingCenter.Subscribe<ListCell, string>(this, "ExpenseImageTap", (sender, arg) =>
             {
@@ -141,12 +141,12 @@ namespace Xperimen.View.Expense
                 else if (result == 2)
                 {
                     viewmodel.IsLoading = true;
-                    SetDisplayAlert("Not Found", "The attachment picture is not found.", "", "", "");
+                    SetDisplayAlert(AppResources.app_notfound, AppResources.exp_picnotfound, "", "", "");
                 }
                 else if (result == 2)
                 {
                     viewmodel.IsLoading = true;
-                    SetDisplayAlert("Error", "Technical error retrieving selected attachment file.", "", "", "");
+                    SetDisplayAlert(AppResources.app_error, AppResources.exp_errorgetfile, "", "", "");
                 }
             });
             MessagingCenter.Subscribe<ListCell, Dictionary<string, string>>(this, "DeleteImageTap", (sender, arg) =>
@@ -156,7 +156,7 @@ namespace Xperimen.View.Expense
                 { 
                     var id = arg.Where(x => x.Key == "id").FirstOrDefault().Value;
                     var amount = arg.Where(x => x.Key == "amount").FirstOrDefault().Value;
-                    SetDisplayAlert("Confirmation", "Are you sure to delete " + amount + " from expenses ?", "Yes", "Cancel", id); 
+                    SetDisplayAlert(AppResources.app_confirm, AppResources.exp_asksuredelete + " " + amount + " " + AppResources.exp_fromexp, AppResources.app_okay, AppResources.app_cancel, id);
                 }
             });
             MessagingCenter.Subscribe<AddIncome>(this, "IncomeUpdated", (sender) => { SetupView(); });
@@ -206,8 +206,8 @@ namespace Xperimen.View.Expense
             lbl_ondateselect_zero.Text = string.Empty;
             var result = viewmodel.GetUserTotalExpense();
             if (result == 1) viewmodel.IsLoading = false;
-            else if (result == 2) SetDisplayAlert("No Data", "You do not have any expenses yet for this month.", "", "", "");
-            else if (result == 3) SetDisplayAlert("Error", "Technical error retrieving all expenses.", "", "", "");
+            else if (result == 2) SetDisplayAlert(AppResources.app_notfound, AppResources.exp_thismonthnoexp, "", "", "");
+            else if (result == 3) SetDisplayAlert(AppResources.app_error, AppResources.exp_errorgetallexp, "", "", "");
             BuildProgressbarUI();
         }
 

@@ -3,6 +3,7 @@
                  xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
                  x:Class="Xperimen.View.Expense.EditExpenses"
                  xmlns:stylekit="clr-namespace:Xperimen.Stylekit"
+                 xmlns:resource="clr-namespace:Xperimen.Resources"
                  xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup">
 
     <!-- UI content -->
@@ -26,7 +27,8 @@
                          Padding="20" x:Name="stack_bg">
                 <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="Center" Orientation="Vertical" Spacing="0">
 
-                    <stylekit:XLabel Text="Edit Expenses" HorizontalOptions="Center" FontFamily="{DynamicResource Key=BoldFont}" FontSize="18"/>
+                    <stylekit:XLabel Text="{x:Static resource:AppResources.exp_editexp}" HorizontalOptions="Center" FontSize="18"
+                                     FontFamily="{DynamicResource Key=BoldFont}"/>
                     <stylekit:XLabel x:Name="lbl_currentdt" Text="-" HorizontalOptions="Center" />
 
                     <!-- amount and attachment-->
@@ -53,8 +55,8 @@
                     </StackLayout>
 
                     <!-- expenses title -->
-                    <stylekit:CustomEntry Placeholder="the money spend on ?" ImgLeft="black_whatshot.png" ImgLeft_="white_whatshot.png"
-                                          Margin="0,10,0,0" BindingText="Title"/>
+                    <stylekit:CustomEntry Placeholder="{x:Static resource:AppResources.dashboard_spendon}" ImgLeft="black_whatshot.png" 
+                                          ImgLeft_="white_whatshot.png" Margin="0,10,0,0" BindingText="Title"/>
 
                     <!-- attachment picture -->
                     <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Spacing="10" IsVisible="{Binding HasAttachment}"
@@ -78,7 +80,7 @@
                            VerticalOptions="End" Margin="0,30,0,0" BackgroundColor="{DynamicResource Key=CustomGreen}" HasShadow="False" 
                            IsClippedToBounds="True">
                         <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Spacing="10" VerticalOptions="Center">
-                            <Label Text="Update" FontFamily="{DynamicResource Key=BoldFont}" TextColor="White" HorizontalOptions="Center" 
+                            <Label Text="{x:Static resource:AppResources.app_update}" FontFamily="{DynamicResource Key=BoldFont}" TextColor="White" HorizontalOptions="Center" 
                                    VerticalOptions="Center"/>
                             <Image Source="white_save.png" Aspect="AspectFit" HeightRequest="20" WidthRequest="20" VerticalOptions="Center"/>
                         </StackLayout>
@@ -88,7 +90,7 @@
                     </Frame>
 
                     <!-- cancel button -->
-                    <stylekit:XLabel Text="Cancel" HorizontalOptions="Center" FontFamily="{DynamicResource Key=BoldFont}" Margin="0,15,0,0"
+                    <stylekit:XLabel Text="{x:Static resource:AppResources.app_cancel}" HorizontalOptions="Center" FontFamily="{DynamicResource Key=BoldFont}" Margin="0,15,0,0"
                                      Padding="20,15,20,15">
                         <Label.GestureRecognizers>
                             <TapGestureRecognizer Tapped="CancelClicked" NumberOfTapsRequired="1"/>

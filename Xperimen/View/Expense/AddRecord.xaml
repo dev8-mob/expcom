@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Xperimen.View.Expense.AddRecord"
              xmlns:stylekit="clr-namespace:Xperimen.Stylekit"
+             xmlns:resource="clr-namespace:Xperimen.Resources"
              Padding="0" BackgroundColor="Transparent"
              NavigationPage.HasNavigationBar="False">
 
@@ -37,7 +38,8 @@
                                 <!-- UI content -->
                                 <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="Center" Orientation="Vertical" Spacing="0">
 
-                                    <stylekit:XLabel Text="How much money I spent ?" HorizontalOptions="Center" FontFamily="{DynamicResource Key=BoldFont}" FontSize="18"/>
+                                    <stylekit:XLabel Text="{x:Static resource:AppResources.exp_addhowmuch}" HorizontalOptions="Center" FontSize="18"
+                                                     FontFamily="{DynamicResource Key=BoldFont}" HorizontalTextAlignment="Center"/>
 
                                     <!-- amount and attachment-->
                                     <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Spacing="15" Margin="0,30,0,0">
@@ -63,8 +65,8 @@
                                     </StackLayout>
 
                                     <!-- expenses title -->
-                                    <stylekit:CustomEntry Placeholder="the money spend on ?" ImgLeft="black_whatshot.png" ImgLeft_="white_whatshot.png"
-                                                          Margin="0,10,0,0" BindingText="Title"/>
+                                    <stylekit:CustomEntry Placeholder="{x:Static resource:AppResources.dashboard_spendon}" ImgLeft="black_whatshot.png" 
+                                                          ImgLeft_="white_whatshot.png" Margin="0,10,0,0" BindingText="Title"/>
 
                                     <!-- attachment picture -->
                                     <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Spacing="10" IsVisible="{Binding HasAttachment}"
@@ -88,7 +90,7 @@
                                            VerticalOptions="End" BackgroundColor="{DynamicResource Key=Primary}" HasShadow="False" Margin="0,30,0,0"
                                            IsClippedToBounds="True" IsVisible="{Binding IsDone}">
                                         <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Spacing="10" VerticalOptions="Center">
-                                            <Label Text="Change Date" FontFamily="{DynamicResource Key=BoldFont}" TextColor="White" 
+                                            <Label Text="{x:Static resource:AppResources.exp_changedate}" FontFamily="{DynamicResource Key=BoldFont}" TextColor="White" 
                                            HorizontalOptions="Center" VerticalOptions="Center"/>
                                             <Image Source="white_undo.png" Aspect="AspectFit" HeightRequest="20" WidthRequest="20" VerticalOptions="Center"/>
                                         </StackLayout>
@@ -102,8 +104,8 @@
                                            VerticalOptions="End" Margin="0,10,0,0" BackgroundColor="{DynamicResource Key=CustomGreen}" HasShadow="False" 
                                            IsClippedToBounds="True">
                                         <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Spacing="10" VerticalOptions="Center">
-                                            <Label Text="Save" FontFamily="{DynamicResource Key=BoldFont}" TextColor="White" HorizontalOptions="Center" 
-                                                   VerticalOptions="Center"/>
+                                            <Label Text="{x:Static resource:AppResources.app_save}" FontFamily="{DynamicResource Key=BoldFont}" TextColor="White" 
+                                                   HorizontalOptions="Center" VerticalOptions="Center"/>
                                             <Image Source="white_wallet.png" Aspect="AspectFit" HeightRequest="20" WidthRequest="20" VerticalOptions="Center"/>
                                         </StackLayout>
                                         <Frame.GestureRecognizers>
@@ -112,8 +114,8 @@
                                     </Frame>
 
                                     <!-- cancel button -->
-                                    <stylekit:XLabel Text="Cancel" HorizontalOptions="Center" FontFamily="{DynamicResource Key=BoldFont}" Margin="0,15,0,0"
-                                                     Padding="20,15,20,15">
+                                    <stylekit:XLabel Text="{x:Static resource:AppResources.app_cancel}" HorizontalOptions="Center" FontFamily="{DynamicResource Key=BoldFont}" 
+                                                     Margin="0,15,0,0" Padding="20,15,20,15">
                                         <Label.GestureRecognizers>
                                             <TapGestureRecognizer Tapped="CancelClicked" NumberOfTapsRequired="1"/>
                                         </Label.GestureRecognizers>

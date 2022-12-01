@@ -507,11 +507,41 @@
   <data name="dashobard_add" xml:space="preserve">
     <value>Tambah</value>
   </data>
+  <data name="exp_addhowmuch" xml:space="preserve">
+    <value>Berapa banyak yang saya belanjakan?</value>
+  </data>
   <data name="exp_allexp" xml:space="preserve">
     <value>perbelanjaan</value>
   </data>
+  <data name="exp_asksuredelete" xml:space="preserve">
+    <value>Anda pasti untuk memadam</value>
+  </data>
+  <data name="exp_balance" xml:space="preserve">
+    <value>Baki</value>
+  </data>
+  <data name="exp_changedate" xml:space="preserve">
+    <value>Tukar Tarikh</value>
+  </data>
+  <data name="exp_deleted" xml:space="preserve">
+    <value>Perbelanjaan berjaya dipadam.</value>
+  </data>
+  <data name="exp_editexp" xml:space="preserve">
+    <value>Kemas Kini Perbelanjaan</value>
+  </data>
   <data name="exp_emptydesc" xml:space="preserve">
     <value>Sila masukkan jumlah pendapatan.</value>
+  </data>
+  <data name="exp_errordelexp" xml:space="preserve">
+    <value>Kesilapan teknikal memadam perbelanjaan yang dipilih.</value>
+  </data>
+  <data name="exp_errorgetallexp" xml:space="preserve">
+    <value>Kesilapan teknikal mendapatkan semua perbelanjaan.</value>
+  </data>
+  <data name="exp_errorgetexp" xml:space="preserve">
+    <value>Kesilapan teknikal mendapatkan perbelanjaan untuk tarikh yang dipilih.</value>
+  </data>
+  <data name="exp_errorgetfile" xml:space="preserve">
+    <value>Kesilapan teknikal mendapatkan fail yang dipilih.</value>
   </data>
   <data name="exp_errorupdincome" xml:space="preserve">
     <value>Kesilapan teknikal ketika kemas kini jumlah pendapatan.</value>
@@ -519,14 +549,32 @@
   <data name="exp_forspending" xml:space="preserve">
     <value>untuk dibelanjakan</value>
   </data>
+  <data name="exp_fromexp" xml:space="preserve">
+    <value>daripada perbelanjaan ?</value>
+  </data>
   <data name="exp_minuscomm" xml:space="preserve">
     <value>komitmen</value>
+  </data>
+  <data name="exp_noexpyet" xml:space="preserve">
+    <value>Belum ada perbelanjaan untuk</value>
   </data>
   <data name="exp_notsetincome" xml:space="preserve">
     <value>Anda belum menetapkan sebarang pendapatan. Sila tetapkan pendapatan anda</value>
   </data>
+  <data name="exp_ondate" xml:space="preserve">
+    <value>pada</value>
+  </data>
+  <data name="exp_picnotfound" xml:space="preserve">
+    <value>Gambar lampiran tidak dijumpai.</value>
+  </data>
+  <data name="exp_successupdate" xml:space="preserve">
+    <value>Perbelanjaan dikemas kini.</value>
+  </data>
   <data name="exp_summary" xml:space="preserve">
     <value>Ringkasan Perbelanjaan</value>
+  </data>
+  <data name="exp_thismonthnoexp" xml:space="preserve">
+    <value>Anda belum mempunyai sebarang perbelanjaan lagi untuk bulan ini.</value>
   </data>
   <data name="exp_total" xml:space="preserve">
     <value>Jumlah</value>

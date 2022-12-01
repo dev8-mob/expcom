@@ -31,7 +31,7 @@
     <BoxView HorizontalOptions="FillAndExpand" HeightRequest="1" Margin="8,15,8,5"
              BackgroundColor="{DynamicResource Key=LabelTextColor}"/>
     <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Spacing="0">
-        <Label Text="{x:Static resource:AppResources.dashboard_available}" FontFamily="{DynamicResource Key=BoldFont}" HorizontalOptions="Start"
+        <Label Text="{x:Static resource:AppResources.exp_balance}" FontFamily="{DynamicResource Key=BoldFont}" HorizontalOptions="Start"
                VerticalOptions="Center" Margin="0,0,5,0"/>
         <Label Text="{x:Static resource:AppResources.exp_forspending}" HorizontalOptions="FillAndExpand" MaxLines="1"
                VerticalOptions="Center" LineBreakMode="TailTruncation"/>

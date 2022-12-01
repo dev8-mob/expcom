@@ -1231,6 +1231,15 @@ namespace Xperimen.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to How much money I spent ?.
+        /// </summary>
+        internal static string exp_addhowmuch {
+            get {
+                return ResourceManager.GetString("exp_addhowmuch", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to overall expenses.
         /// </summary>
         internal static string exp_allexp {
@@ -1240,11 +1249,92 @@ namespace Xperimen.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Are you sure to delete.
+        /// </summary>
+        internal static string exp_asksuredelete {
+            get {
+                return ResourceManager.GetString("exp_asksuredelete", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Available.
+        /// </summary>
+        internal static string exp_balance {
+            get {
+                return ResourceManager.GetString("exp_balance", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Change Date.
+        /// </summary>
+        internal static string exp_changedate {
+            get {
+                return ResourceManager.GetString("exp_changedate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Selected expenses deleted..
+        /// </summary>
+        internal static string exp_deleted {
+            get {
+                return ResourceManager.GetString("exp_deleted", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Edit Expenses.
+        /// </summary>
+        internal static string exp_editexp {
+            get {
+                return ResourceManager.GetString("exp_editexp", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Please insert income amount..
         /// </summary>
         internal static string exp_emptydesc {
             get {
                 return ResourceManager.GetString("exp_emptydesc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Technical error deleting selected expenses..
+        /// </summary>
+        internal static string exp_errordelexp {
+            get {
+                return ResourceManager.GetString("exp_errordelexp", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Technical error retrieving all expenses..
+        /// </summary>
+        internal static string exp_errorgetallexp {
+            get {
+                return ResourceManager.GetString("exp_errorgetallexp", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Technical error retrieving expenses for selected date..
+        /// </summary>
+        internal static string exp_errorgetexp {
+            get {
+                return ResourceManager.GetString("exp_errorgetexp", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Technical error retrieving selected attachment file..
+        /// </summary>
+        internal static string exp_errorgetfile {
+            get {
+                return ResourceManager.GetString("exp_errorgetfile", resourceCulture);
             }
         }
         
@@ -1267,11 +1357,29 @@ namespace Xperimen.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to from expenses ?.
+        /// </summary>
+        internal static string exp_fromexp {
+            get {
+                return ResourceManager.GetString("exp_fromexp", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to commitment(s).
         /// </summary>
         internal static string exp_minuscomm {
             get {
                 return ResourceManager.GetString("exp_minuscomm", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No expenses yet for.
+        /// </summary>
+        internal static string exp_noexpyet {
+            get {
+                return ResourceManager.GetString("exp_noexpyet", resourceCulture);
             }
         }
         
@@ -1285,11 +1393,47 @@ namespace Xperimen.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to on.
+        /// </summary>
+        internal static string exp_ondate {
+            get {
+                return ResourceManager.GetString("exp_ondate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The attachment picture is not found..
+        /// </summary>
+        internal static string exp_picnotfound {
+            get {
+                return ResourceManager.GetString("exp_picnotfound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Expenses updated..
+        /// </summary>
+        internal static string exp_successupdate {
+            get {
+                return ResourceManager.GetString("exp_successupdate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Expenses Summary.
         /// </summary>
         internal static string exp_summary {
             get {
                 return ResourceManager.GetString("exp_summary", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You do not have any expenses yet for this month..
+        /// </summary>
+        internal static string exp_thismonthnoexp {
+            get {
+                return ResourceManager.GetString("exp_thismonthnoexp", resourceCulture);
             }
         }
         
